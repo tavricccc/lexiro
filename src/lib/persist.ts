@@ -1,41 +1,86 @@
-import { get, set } from 'idb-keyval'
-import { STORAGE_SAVE_DELAY_MS } from '@/constants'
+import { get } from 'idb-keyval'
 
-let saveTimer: ReturnType<typeof setTimeout> | null = null
-let pendingData: Record<string, string> = {}
-
-async function flush() {
-  const data = { ...pendingData }
-  pendingData = {}
-  saveTimer = null
-
-  for (const [key, value] of Object.entries(data)) {
-    try {
-      await set(key, value)
-    }
-    catch {
-      // IndexedDB write failed
-    }
-  }
+export interface StorageLoadResult {
+  value: string | null
+  sourceKey: string | null
+  source: 'localStorage' | 'indexedDB' | null
 }
 
-export function scheduleSave(key: string, data: unknown) {
-  pendingData[key] = JSON.stringify(data)
-  if (saveTimer)
-    return
-  saveTimer = setTimeout(flush, STORAGE_SAVE_DELAY_MS)
+export function saveToStorage(key: string, data: unknown): void {
+  localStorage.setItem(key, JSON.stringify(data))
 }
 
-export async function loadFromStorage(key: string): Promise<string | null> {
-  const local = localStorage.getItem(key)
-  if (local)
-    return local
-
+function isValidRaw(raw: string, validate: (raw: string) => boolean): boolean {
   try {
-    const idb = await get<string>(key)
-    return idb ?? null
+    return validate(raw)
   }
   catch {
-    return null
+    return false
   }
+}
+
+export async function loadFromStorage(key: string, legacyKeys: string[] = []): Promise<StorageLoadResult> {
+  const keys = [key, ...legacyKeys]
+
+  for (const candidateKey of keys) {
+    const local = localStorage.getItem(candidateKey)
+    if (local) {
+      return {
+        value: local,
+        sourceKey: candidateKey,
+        source: 'localStorage',
+      }
+    }
+  }
+
+  for (const candidateKey of legacyKeys) {
+    try {
+      const idb = await get<string>(candidateKey)
+      if (idb) {
+        return {
+          value: idb,
+          sourceKey: candidateKey,
+          source: 'indexedDB',
+        }
+      }
+    }
+    catch {
+      // Legacy IndexedDB read failed.
+    }
+  }
+
+  return {
+    value: null,
+    sourceKey: null,
+    source: null,
+  }
+}
+
+export async function migrateStorage(
+  sourceKey: string,
+  targetKey: string,
+  validate: (raw: string) => boolean,
+): Promise<boolean> {
+  if (localStorage.getItem(targetKey))
+    return false
+
+  const local = localStorage.getItem(sourceKey)
+  if (local && isValidRaw(local, validate)) {
+    localStorage.setItem(targetKey, local)
+    return true
+  }
+
+  let idb: string | undefined
+  try {
+    idb = await get<string>(sourceKey)
+  }
+  catch {
+    idb = undefined
+  }
+
+  if (!idb || !isValidRaw(idb, validate))
+    return false
+
+  localStorage.setItem(targetKey, idb)
+  return true
 }

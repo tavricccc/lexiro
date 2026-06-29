@@ -1,4 +1,6 @@
-export const STORAGE_KEY = 'vocab_study_data'
+export const LEGACY_STORAGE_KEY = 'vocab_study_data'
+export const SETS_STORAGE_KEY = 'lexiro_sets_data'
+export const SESSION_STORAGE_KEY = 'lexiro_session_data'
 export const THEME_KEY = 'vocp_theme'
 export const DRIVE_ACCESS_TOKEN_KEY = 'lexiro_drive_access_token'
 export const DRIVE_TOKEN_EXPIRES_AT_KEY = 'lexiro_drive_token_expires_at'

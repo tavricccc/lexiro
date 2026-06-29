@@ -11,9 +11,9 @@ import type {
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { STORAGE_KEY } from '@/constants'
+import { LEGACY_STORAGE_KEY, SESSION_STORAGE_KEY } from '@/constants'
 import { i18n } from '@/lib/i18n'
-import { loadFromStorage, scheduleSave } from '@/lib/persist'
+import { loadFromStorage, saveToStorage } from '@/lib/persist'
 import { normalizeSession, toSessionEntries } from '@/lib/validation'
 import { useSetsStore } from './sets'
 import { useUIStore } from './ui'
@@ -87,7 +87,7 @@ export const useSessionStore = defineStore('session', () => {
   })
 
   function saveState() {
-    scheduleSave(STORAGE_KEY, {
+    saveToStorage(SESSION_STORAGE_KEY, {
       currentView: currentView.value,
       currentSession: currentSession.value,
       flashcardIndex: flashcardIndex.value,
@@ -96,12 +96,21 @@ export const useSessionStore = defineStore('session', () => {
   }
 
   async function loadState() {
-    const raw = await loadFromStorage(STORAGE_KEY)
-    if (!raw)
+    const loaded = await loadFromStorage(SESSION_STORAGE_KEY, [LEGACY_STORAGE_KEY])
+    if (!loaded.value)
       return
 
     try {
-      const parsed = JSON.parse(raw)
+      const parsed = JSON.parse(loaded.value)
+      if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed))
+        return
+
+      const hasSessionPayload = 'currentView' in parsed
+        || 'currentSession' in parsed
+        || 'flashcardIndex' in parsed
+        || 'practiceCounts' in parsed
+      if (!hasSessionPayload)
+        return
 
       const setsStore = useSetsStore()
       const validSetIds = new Set(setsStore.sets.map(s => s.id))
@@ -122,6 +131,9 @@ export const useSessionStore = defineStore('session', () => {
         flashcardIndex.value = 0
         practiceCounts.value = {}
       }
+
+      if (loaded.sourceKey !== SESSION_STORAGE_KEY)
+        saveState()
     }
     catch {
       // Ignore

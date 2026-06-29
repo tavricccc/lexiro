@@ -1,11 +1,11 @@
 import type { EditorItem, ImportMode, ImportResult, VersionDiff, VocabSet } from '@/types'
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
-import { STORAGE_KEY } from '@/constants'
+import { LEGACY_STORAGE_KEY, SETS_STORAGE_KEY } from '@/constants'
 import { buildExportFileName, buildExportZipBlob, downloadBlob } from '@/lib/file'
 import { i18n } from '@/lib/i18n'
 import { applyImportedSets, parseImportJson, refreshImportVersionDiffs, summarizeDuplicateResult } from '@/lib/import'
-import { loadFromStorage, scheduleSave } from '@/lib/persist'
+import { loadFromStorage, saveToStorage } from '@/lib/persist'
 import { createBlankEditorItem, createEditorItems, normalizeItem, normalizeSet } from '@/lib/validation'
 import { useSessionStore } from './session'
 import { useUIStore } from './ui'
@@ -56,19 +56,19 @@ export const useSetsStore = defineStore('sets', () => {
   const exportError = ref('')
 
   function saveState() {
-    scheduleSave(STORAGE_KEY, {
+    saveToStorage(SETS_STORAGE_KEY, {
       sets: sets.value,
       activeSetId: activeSetId.value,
     })
   }
 
   async function loadState() {
-    const raw = await loadFromStorage(STORAGE_KEY)
-    if (!raw)
+    const loaded = await loadFromStorage(SETS_STORAGE_KEY, [LEGACY_STORAGE_KEY])
+    if (!loaded.value)
       return
 
     try {
-      const parsed = JSON.parse(raw)
+      const parsed = JSON.parse(loaded.value)
       if (Array.isArray(parsed.sets)) {
         const sanitizedSets = parsed.sets
           .map((set: unknown, index: number) => {
@@ -90,6 +90,9 @@ export const useSetsStore = defineStore('sets', () => {
         else if (sanitizedSets.length > 0) {
           activeSetId.value = sanitizedSets[0].id
         }
+
+        if (loaded.sourceKey !== SETS_STORAGE_KEY)
+          saveState()
       }
     }
     catch {

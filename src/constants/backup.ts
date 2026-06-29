@@ -3,4 +3,3 @@ export const APP_NAME = 'lexiro'
 export const MAX_BACKUP_FILES = 10
 export const BACKUP_FILE_PREFIX = 'lexiro-backup-'
 export const ZIP_INTERNAL_FILENAME = 'vocp-sets.json'
-export const STORAGE_SAVE_DELAY_MS = 500
