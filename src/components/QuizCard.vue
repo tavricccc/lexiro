@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ArrowRight } from 'lucide-vue-next'
-import { computed, ref, watch } from 'vue'
+import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
 import { cn } from '@/lib/cn'
 import Button from './ui/button/Button.vue'
 import Card from './ui/card/Card.vue'
@@ -16,12 +16,12 @@ const props = defineProps<{
 const emit = defineEmits<{
   'draft-change': [payload: { selectedIndex: number | null }]
   'next': []
-  'toast': [message: string]
 }>()
 
 const labels = ['A', 'B', 'C', 'D']
 const selectedIndex = ref<number | null>(null)
 const answered = ref(false)
+const feedbackClass = ref('')
 
 const answerText = computed(() => props.entry.item.question.opts[props.entry.item.question.ans])
 const promptParts = computed(() => props.entry.item.question.prompt.split('_____'))
@@ -36,16 +36,30 @@ watch(
   { immediate: true },
 )
 
+watch(() => props.index, () => {
+  feedbackClass.value = ''
+})
+
 function choose(index: number) {
   if (answered.value)
     return
   answered.value = true
   selectedIndex.value = index
+  const correct = index === props.entry.item.question.ans
+  feedbackClass.value = correct ? 'feedback-correct' : 'feedback-wrong'
   emit('draft-change', { selectedIndex: index })
 }
 
 function next() {
   emit('next')
+}
+
+function skip() {
+  if (answered.value)
+    return
+  answered.value = true
+  selectedIndex.value = null
+  emit('draft-change', { selectedIndex: null })
 }
 
 function optionClass(index: number) {
@@ -62,10 +76,33 @@ function optionClass(index: number) {
     answered.value && !isSelected && !isCorrect && 'border-ink-200/60 dark:border-ink-200/20 bg-ink-50/50 dark:bg-ink-900 text-ink-400 dark:text-ink-500 opacity-45',
   )
 }
+
+function onKeydown(e: KeyboardEvent) {
+  if (e.target instanceof HTMLElement) {
+    const tag = e.target.tagName
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || e.target.isContentEditable)
+      return
+  }
+  if (!answered.value) {
+    const map: Record<string, number> = { 1: 0, 2: 1, 3: 2, 4: 3, a: 0, b: 1, c: 2, d: 3, A: 0, B: 1, C: 2, D: 3 }
+    if (e.key in map) {
+      e.preventDefault()
+      choose(map[e.key])
+      return
+    }
+  }
+  if (e.key === 'Enter' && answered.value) {
+    e.preventDefault()
+    next()
+  }
+}
+
+onMounted(() => window.addEventListener('keydown', onKeydown))
+onUnmounted(() => window.removeEventListener('keydown', onKeydown))
 </script>
 
 <template>
-  <Card class="p-5 sm:p-8">
+  <Card :class="cn('p-5 sm:p-8', feedbackClass)">
     <div class="rounded-2xl bg-ink-100/80 dark:bg-ink-900 border border-ink-200/70 dark:border-ink-200/25 p-5 text-left">
       <p class="text-xs font-extrabold uppercase tracking-widest text-ink-400 dark:text-ink-500">
         {{ $t('practice.quizPromptLabel') }}
@@ -92,6 +129,7 @@ function optionClass(index: number) {
         type="button"
         :class="optionClass(optionIndex)"
         :disabled="answered"
+        :aria-pressed="selectedIndex === optionIndex"
         @click="choose(optionIndex)"
       >
         <span class="shrink-0 text-ink-400 dark:text-ink-500 font-extrabold">{{ labels[optionIndex] }}.</span>
@@ -99,9 +137,14 @@ function optionClass(index: number) {
       </button>
     </div>
 
-    <div v-if="answered" class="mt-6 rounded-2xl border border-ink-200/70 bg-white/80 p-5 text-left transition-all duration-300 dark:border-ink-200/25 dark:bg-ink-900">
-      <p class="text-sm font-extrabold" :class="[selectedIndex === entry.item.question.ans ? 'text-emerald-600 dark:text-emerald-400' : 'text-red-500']">
-        {{ selectedIndex === entry.item.question.ans ? $t('result.correct') : $t('result.wrong') }}
+    <div
+      v-if="answered"
+      class="mt-6 rounded-2xl border border-ink-200/70 bg-white/80 p-5 text-left transition-all duration-300 dark:border-ink-200/25 dark:bg-ink-900"
+      role="status"
+      aria-live="polite"
+    >
+      <p class="text-sm font-extrabold" :class="[selectedIndex === entry.item.question.ans ? 'text-emerald-600 dark:text-emerald-400' : selectedIndex == null ? 'text-ink-500' : 'text-red-500']">
+        {{ selectedIndex === entry.item.question.ans ? $t('result.correct') : selectedIndex == null ? $t('result.skipped') : $t('result.wrong') }}
       </p>
       <p class="mt-2 text-sm leading-relaxed text-ink-600 dark:text-ink-400">
         {{ $t('result.correctAnswer') }}：<span class="font-bold text-emerald-600 dark:text-emerald-400"> {{ answerText }}</span>。
@@ -109,9 +152,13 @@ function optionClass(index: number) {
       </p>
     </div>
 
-    <div class="mt-6 flex justify-end">
-      <Button variant="default" class="w-full gap-2 sm:w-auto" @click="next">
-        <span>{{ answered ? (index + 1 >= total ? $t('practice.submitAll') : $t('practice.next')) : $t('practice.skip') }}</span>
+    <div class="mt-6 flex justify-end gap-2">
+      <Button v-if="!answered" variant="outline" class="w-full gap-2 sm:w-auto" @click="skip">
+        <span>{{ $t('practice.skip') }}</span>
+        <ArrowRight class="h-4 w-4" />
+      </Button>
+      <Button v-else variant="default" class="w-full gap-2 sm:w-auto" @click="next">
+        <span>{{ index + 1 >= total ? $t('practice.submitAll') : $t('practice.next') }}</span>
         <ArrowRight class="h-4 w-4" />
       </Button>
     </div>

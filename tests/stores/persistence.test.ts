@@ -2,7 +2,7 @@ import type { PracticeSession, VocabSet } from '@/types'
 import { createPinia, setActivePinia } from 'pinia'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { LEGACY_STORAGE_KEY, SESSION_STORAGE_KEY, SETS_STORAGE_KEY } from '@/constants'
-import { useSessionStore } from '@/stores/session'
+import { makeSessionKey, useSessionStore } from '@/stores/session'
 import { useSetsStore } from '@/stores/sets'
 
 const idbMock = vi.hoisted(() => {
@@ -22,6 +22,7 @@ vi.mock('idb-keyval', () => ({
 vi.mock('vue-router', () => ({
   useRouter: () => ({
     push: routerPush,
+    currentRoute: { value: { name: 'home', params: {} } },
   }),
 }))
 
@@ -114,13 +115,35 @@ describe('store persistence', () => {
     setsStore.activeSetId = validSet.id
     setsStore.saveState()
 
-    sessionStore.currentSession = validSession
+    const key = makeSessionKey(validSet.id, 'quiz')
+    sessionStore.sessionsByKey = { [key]: validSession }
+    sessionStore.activeKey = key
     sessionStore.currentView = 'quiz'
     sessionStore.practiceCounts = { [validSet.id]: 1 }
-    sessionStore.saveState()
+    sessionStore.saveState(true)
 
+    const saved = JSON.parse(localStorage.getItem(SESSION_STORAGE_KEY) ?? '{}')
     expect(JSON.parse(localStorage.getItem(SETS_STORAGE_KEY) ?? '{}').sets).toHaveLength(1)
-    expect(JSON.parse(localStorage.getItem(SESSION_STORAGE_KEY) ?? '{}').currentView).toBe('quiz')
+    expect(saved.currentView).toBe('quiz')
+    expect(saved.sessionsByKey[key].mode).toBe('quiz')
+  })
+
+  it('stores quiz and flashcard progress independently', () => {
+    const sessionStore = useSessionStore()
+    const quizKey = makeSessionKey('set-1', 'quiz')
+    const cardKey = makeSessionKey('set-1', 'flashcard')
+
+    sessionStore.sessionsByKey = {
+      [quizKey]: { ...validSession, mode: 'quiz', index: 2 },
+      [cardKey]: { ...validSession, mode: 'flashcard', index: 5 },
+    }
+    sessionStore.saveState(true)
+
+    const saved = JSON.parse(localStorage.getItem(SESSION_STORAGE_KEY) ?? '{}')
+    expect(saved.sessionsByKey[quizKey].index).toBe(2)
+    expect(saved.sessionsByKey[cardKey].index).toBe(5)
+    expect(saved.sessionsByKey[quizKey].mode).toBe('quiz')
+    expect(saved.sessionsByKey[cardKey].mode).toBe('flashcard')
   })
 
   it('migrates legacy sets payload to the new sets key', async () => {
@@ -138,7 +161,7 @@ describe('store persistence', () => {
     expect(localStorage.getItem(SESSION_STORAGE_KEY)).toBeNull()
   })
 
-  it('migrates legacy session payload to the new session key', async () => {
+  it('migrates legacy session payload to the multi-session map', async () => {
     const setsStore = useSetsStore()
     setsStore.sets = [validSet]
     localStorage.setItem(LEGACY_STORAGE_KEY, JSON.stringify({
@@ -151,9 +174,11 @@ describe('store persistence', () => {
     const sessionStore = useSessionStore()
     await sessionStore.loadState()
 
+    const key = makeSessionKey(validSet.id, 'quiz')
     expect(sessionStore.currentView).toBe('quiz')
+    expect(sessionStore.sessionsByKey[key]?.sourceSetId).toBe(validSet.id)
     expect(sessionStore.currentSession?.sourceSetId).toBe(validSet.id)
-    expect(JSON.parse(localStorage.getItem(SESSION_STORAGE_KEY) ?? '{}').currentView).toBe('quiz')
+    expect(JSON.parse(localStorage.getItem(SESSION_STORAGE_KEY) ?? '{}').sessionsByKey[key]).toBeTruthy()
     expect(localStorage.getItem(SETS_STORAGE_KEY)).toBeNull()
   })
 

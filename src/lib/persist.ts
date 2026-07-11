@@ -84,3 +84,30 @@ export async function migrateStorage(
   localStorage.setItem(targetKey, idb)
   return true
 }
+
+/** Debounced save helper: schedule() coalesces writes; flush() writes immediately. */
+export function createDebouncedSaver(write: () => void, delayMs = 300) {
+  let timer: ReturnType<typeof setTimeout> | null = null
+
+  function cancel() {
+    if (timer != null) {
+      clearTimeout(timer)
+      timer = null
+    }
+  }
+
+  function schedule() {
+    cancel()
+    timer = setTimeout(() => {
+      timer = null
+      write()
+    }, delayMs)
+  }
+
+  function flush() {
+    cancel()
+    write()
+  }
+
+  return { schedule, flush, cancel }
+}

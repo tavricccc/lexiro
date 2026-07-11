@@ -33,7 +33,7 @@ const { sets } = storeToRefs(setsStore)
         </div>
 
         <input
-          v-model="practiceDialogCount"
+          v-model.number="practiceDialogCount"
           class="mt-5 h-1.5 w-full cursor-pointer appearance-none rounded-full bg-ink-200 dark:bg-ink-200/40 accent-accent-primary focus:outline-none relative z-10"
           type="range"
           min="1"

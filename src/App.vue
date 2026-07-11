@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref } from 'vue'
+import { onMounted, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
 import AppHeader from '@/components/AppHeader.vue'
 import ConfirmDialog from '@/components/dialogs/ConfirmDialog.vue'
@@ -10,16 +10,11 @@ import TransferDialog from '@/components/dialogs/TransferDialog.vue'
 import VersionUpdateDialog from '@/components/dialogs/VersionUpdateDialog.vue'
 import Toast from '@/components/ui/toast/Toast.vue'
 import { useSessionStore } from '@/stores/session'
-import { useSetsStore } from '@/stores/sets'
 import { useUIStore } from '@/stores/ui'
 
 const uiStore = useUIStore()
 const sessionStore = useSessionStore()
-const setsStore = useSetsStore()
 const router = useRouter()
-
-const dataLoaded = ref(false)
-const isAnimationsPaused = ref(false)
 
 let versionCheckInterval: ReturnType<typeof setInterval> | null = null
 let controllerChangeListener: (() => void) | null = null
@@ -55,43 +50,36 @@ async function checkVersion() {
 }
 
 function handleVisibilityChange() {
-  isAnimationsPaused.value = document.hidden
-  if (!document.hidden) {
+  document.documentElement.classList.toggle('motion-paused', document.hidden)
+  if (document.hidden) {
+    sessionStore.saveState(true)
+  }
+  else {
     checkVersion()
   }
 }
 
-function handleKeydown(event: KeyboardEvent) {
-  if (event.key === 'Escape' && uiStore.transferOpen)
-    uiStore.closeTransfer()
-  if (event.key === 'Escape' && uiStore.confirmOpen)
-    uiStore.resolveConfirm(false)
+function handleBeforeUnload() {
+  sessionStore.saveState(true)
 }
 
-onMounted(async () => {
-  await setsStore.loadState()
-  await sessionStore.loadState()
-  uiStore.initTheme()
-  dataLoaded.value = true
-
+onMounted(() => {
   document.addEventListener('visibilitychange', handleVisibilityChange)
-  window.addEventListener('keydown', handleKeydown)
+  window.addEventListener('beforeunload', handleBeforeUnload)
 
   if (!import.meta.env.DEV) {
     setTimeout(checkVersion, 2000)
     versionCheckInterval = setInterval(checkVersion, 10 * 60 * 1000)
   }
 
-  if (router) {
-    router.afterEach((to) => {
-      if (to.path === '/' && uiStore.versionUpdatePending) {
-        uiStore.versionUpdateAvailable = true
-      }
-      else {
-        checkVersion()
-      }
-    })
-  }
+  router.afterEach((to) => {
+    if (to.path === '/' && uiStore.versionUpdatePending) {
+      uiStore.versionUpdateAvailable = true
+    }
+    else {
+      checkVersion()
+    }
+  })
 
   if ('serviceWorker' in navigator) {
     controllerChangeListener = () => {
@@ -106,7 +94,7 @@ onMounted(async () => {
 
 onUnmounted(() => {
   document.removeEventListener('visibilitychange', handleVisibilityChange)
-  window.removeEventListener('keydown', handleKeydown)
+  window.removeEventListener('beforeunload', handleBeforeUnload)
   if (versionCheckInterval) {
     clearInterval(versionCheckInterval)
   }
@@ -117,7 +105,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div v-if="dataLoaded" class="min-h-screen text-ink-950 dark:text-ink-50 transition-colors duration-250 pb-20 relative overflow-x-hidden">
+  <div class="min-h-screen text-ink-950 dark:text-ink-50 transition-colors duration-250 pb-20 relative overflow-x-hidden">
     <AppHeader />
 
     <main class="mx-auto max-w-5xl px-4 pt-20 sm:px-6 sm:pt-24 relative">

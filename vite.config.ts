@@ -40,8 +40,9 @@ export default defineConfig({
         start_url: '/',
         scope: '/',
         display: 'standalone',
-        background_color: '#f8fafc',
-        theme_color: '#111827',
+        background_color: '#fafafa',
+        theme_color: '#111111',
+
         orientation: 'portrait-primary',
         icons: [
           {

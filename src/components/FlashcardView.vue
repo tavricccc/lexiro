@@ -1,50 +1,88 @@
 <script setup lang="ts">
+import { computed, ref, watch } from 'vue'
 import Badge from './ui/badge/Badge.vue'
-import Card from './ui/card/Card.vue'
 
-defineProps<{
-  item: { word: string, pos: string, meaning: string, example: string } | null
+const props = defineProps<{
+  item: { id?: string, word: string, pos: string, meaning: string, example: string } | null
   index: number
+  flipped?: boolean
 }>()
+
+const emit = defineEmits<{
+  'update:flipped': [value: boolean]
+}>()
+
+const localFlipped = ref(false)
+
+watch(() => [props.item?.id, props.item?.word, props.index] as const, () => {
+  localFlipped.value = false
+  emit('update:flipped', false)
+})
+
+watch(() => props.flipped, (val) => {
+  if (typeof val === 'boolean')
+    localFlipped.value = val
+})
+
+const isFlipped = computed(() =>
+  typeof props.flipped === 'boolean' ? props.flipped : localFlipped.value,
+)
+
+function toggle() {
+  const next = !isFlipped.value
+  localFlipped.value = next
+  emit('update:flipped', next)
+}
 </script>
 
 <template>
-  <Card v-if="item" class="p-5 sm:p-8">
-    <div class="flex flex-wrap items-start justify-between gap-4 text-left">
-      <div class="space-y-2">
-        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-ink-950 dark:text-ink-50">
+  <div
+    v-if="item"
+    class="flashcard-scene"
+    role="button"
+    tabindex="0"
+    :aria-pressed="isFlipped"
+    :aria-label="$t('flashcard.flip')"
+    @click="toggle"
+    @keydown.space.prevent="toggle"
+  >
+    <div class="flashcard-inner" :class="{ 'is-flipped': isFlipped }">
+      <div class="flashcard-face flashcard-front">
+        <Badge variant="secondary" class="flashcard-index">
+          {{ $t('flashcard.cardIndex', { index: index + 1 }) }}
+        </Badge>
+        <h2 class="flashcard-word">
           {{ item.word }}
         </h2>
         <Badge v-if="item.pos" variant="default" class="text-xs uppercase tracking-wider font-semibold rounded-lg px-2.5 py-0.5">
           {{ item.pos }}
         </Badge>
+        <p class="flashcard-hint">
+          {{ $t('flashcard.tapToFlip') }}
+        </p>
       </div>
 
-      <Badge variant="secondary">
-        {{ $t('flashcard.cardIndex', { index: index + 1 }) }}
-      </Badge>
-    </div>
-
-    <div class="mt-8 grid gap-4 md:grid-cols-2 text-left">
-      <div class="rounded-2xl bg-accent-primary/10 border border-accent-primary/10 p-5 sm:p-6 flex flex-col justify-between">
-        <div>
-          <p class="text-xs font-extrabold uppercase tracking-widest text-accent-primary">
+      <div class="flashcard-face flashcard-back">
+        <Badge variant="secondary" class="flashcard-index">
+          {{ $t('flashcard.cardIndex', { index: index + 1 }) }}
+        </Badge>
+        <div class="flashcard-block flashcard-block-primary">
+          <p class="flashcard-label text-accent-primary">
             {{ $t('flashcard.meaning') }}
           </p>
-          <p class="mt-4 text-base sm:text-lg font-bold leading-relaxed text-ink-950 dark:text-ink-50">
+          <p class="flashcard-body">
             {{ item.meaning }}
           </p>
         </div>
-      </div>
-
-      <div class="rounded-2xl bg-ink-100/80 dark:bg-ink-900 border border-ink-200/70 dark:border-ink-200/25 p-5 sm:p-6">
-        <p class="text-xs font-bold uppercase tracking-widest text-ink-400 dark:text-ink-500">
-          {{ $t('flashcard.example') }}
-        </p>
-        <p class="mt-4 text-[15px] sm:text-base leading-relaxed text-ink-700 dark:text-ink-300 font-medium">
-          {{ item.example }}
-        </p>
+        <div class="flashcard-block flashcard-block-muted">
+          <p class="flashcard-label text-ink-400 dark:text-ink-500">
+            {{ $t('flashcard.example') }}
+          </p>
+          <p class="flashcard-example">
+            {{ item.example }}
+          </p>
+        </div>
       </div>
     </div>
-  </Card>
+  </div>
 </template>

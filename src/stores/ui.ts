@@ -9,6 +9,9 @@ export const useUIStore = defineStore('ui', () => {
   const confirmOpen = ref(false)
   const confirmTitle = ref('')
   const confirmMessage = ref('')
+  const confirmConfirmLabel = ref('')
+  const confirmCancelLabel = ref('')
+  const confirmDestructive = ref(true)
   const transferOpen = ref(false)
   const versionUpdateAvailable = ref(false)
   const versionUpdatePending = ref(false)
@@ -27,9 +30,20 @@ export const useUIStore = defineStore('ui', () => {
     }, 2200)
   }
 
-  function showConfirm(title: string, message: string): Promise<boolean> {
+  function showConfirm(
+    title: string,
+    message: string,
+    options?: {
+      confirmLabel?: string
+      cancelLabel?: string
+      destructive?: boolean
+    },
+  ): Promise<boolean> {
     confirmTitle.value = title
     confirmMessage.value = message
+    confirmConfirmLabel.value = options?.confirmLabel ?? ''
+    confirmCancelLabel.value = options?.cancelLabel ?? ''
+    confirmDestructive.value = options?.destructive ?? true
     confirmOpen.value = true
     return new Promise((resolve) => {
       confirmResolver = resolve
@@ -88,6 +102,9 @@ export const useUIStore = defineStore('ui', () => {
     confirmOpen,
     confirmTitle,
     confirmMessage,
+    confirmConfirmLabel,
+    confirmCancelLabel,
+    confirmDestructive,
     transferOpen,
     versionUpdateAvailable,
     versionUpdatePending,

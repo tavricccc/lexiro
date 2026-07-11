@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { ResultRow } from '@/types'
 import { BookOpenText, ClipboardCopy, RotateCcw, SpellCheck2 } from 'lucide-vue-next'
+import { storeToRefs } from 'pinia'
 import { computed, nextTick, onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { copyToClipboard } from '@/lib/clipboard'
@@ -11,24 +12,28 @@ import { useUIStore } from '@/stores/ui'
 import Badge from './ui/badge/Badge.vue'
 import Button from './ui/button/Button.vue'
 import Card from './ui/card/Card.vue'
+import ScoreRing from './ui/score-ring/ScoreRing.vue'
 
-const { activeSet } = useSetsStore()
+const setsStore = useSetsStore()
+const sessionStore = useSessionStore()
+const uiStore = useUIStore()
+const { activeSet } = storeToRefs(setsStore)
+const { resultSummary, resultRows } = storeToRefs(sessionStore)
 const {
-  resultSummary,
-  resultRows,
   restartCurrentMode,
   reviewWrongAnswers,
   switchModeAfterResult,
-} = useSessionStore()
+} = sessionStore
 const { t } = useI18n()
-const { showToast } = useUIStore()
+const { showToast } = uiStore
 
-const wrongRows = computed(() => resultRows.filter(row => !row.record?.isCorrect))
+const wrongRows = computed(() => resultRows.value.filter(row => !row.record?.isCorrect))
+const isPerfect = computed(() => resultSummary.value != null && resultSummary.value.wrongCount === 0)
 
 async function copyQuestionExplainPrompt(row: ResultRow) {
-  if (!resultSummary)
+  if (!resultSummary.value)
     return
-  const promptText = buildQuestionExplainPrompt(row.entry, row.record, resultSummary.mode, t('result.notAnswered'))
+  const promptText = buildQuestionExplainPrompt(row.entry, row.record, resultSummary.value.mode, t('result.notAnswered'))
   try {
     await copyToClipboard(promptText)
     showToast(t('result.copiedAiPromptSingle', { word: row.entry.item.word }))
@@ -39,14 +44,14 @@ async function copyQuestionExplainPrompt(row: ResultRow) {
 }
 
 async function copyAllWrongQuestionsPrompt() {
-  if (!resultSummary || resultSummary.wrongCount === 0)
+  if (!resultSummary.value || resultSummary.value.wrongCount === 0)
     return
 
   const rows = wrongRows.value
   if (rows.length === 0)
     return
 
-  const promptText = buildAllWrongQuestionsPrompt(rows, resultSummary.mode)
+  const promptText = buildAllWrongQuestionsPrompt(rows, resultSummary.value.mode)
 
   try {
     await copyToClipboard(promptText)
@@ -82,20 +87,16 @@ onMounted(() => {
           </div>
         </div>
 
-        <!-- Circular Score Visual Indicator equivalent -->
         <div class="flex items-center gap-4 self-start md:self-auto shrink-0 bg-ink-100/80 dark:bg-ink-900 border border-ink-200/70 dark:border-ink-200/25 rounded-2xl p-4">
+          <ScoreRing :score="resultSummary.score" />
           <div class="text-left">
-            <div class="flex items-baseline gap-0.5">
-              <span class="text-4xl font-extrabold tracking-tight text-ink-950 dark:text-ink-50">{{ $t('result.score', { score: resultSummary.score }) }}</span>
-            </div>
-            <p class="text-xs font-semibold text-ink-500 dark:text-ink-400 mt-1">
+            <p class="text-xs font-semibold text-ink-500 dark:text-ink-400">
               {{ $t('result.correctCount', { correct: resultSummary.correctCount, total: resultSummary.total, wrong: resultSummary.wrongCount }) }}
             </p>
           </div>
         </div>
       </div>
 
-      <!-- Bottom toolbar actions -->
       <div class="mt-6 flex flex-wrap items-center justify-start gap-3">
         <Button variant="default" class="gap-2" @click="restartCurrentMode">
           <RotateCcw class="h-4 w-4" />
@@ -125,18 +126,21 @@ onMounted(() => {
         </Button>
       </div>
 
-      <p v-if="!resultSummary.wrongCount" class="mt-6 text-xs text-accent-primary dark:text-accent-primary font-extrabold flex items-center gap-1.5">
+      <p
+        v-if="isPerfect"
+        class="mt-6 text-xs text-accent-primary dark:text-accent-primary font-extrabold flex items-center gap-1.5 animate-perfect-in"
+      >
         <span class="h-2 w-2 rounded-full bg-accent-primary inline-block animate-ping" />
         {{ $t('result.perfectScore') }}
       </p>
     </Card>
 
-    <!-- Wrong/Skipped Results Rows List -->
     <div v-if="wrongRows.length" class="space-y-4">
       <Card
-        v-for="row in wrongRows"
+        v-for="(row, i) in wrongRows"
         :key="`${row.entry.item.id}-${row.index}`"
-        class="p-5 text-left"
+        class="p-5 text-left result-row-enter"
+        :style="{ animationDelay: `${Math.min(i, 8) * 40}ms` }"
       >
         <div class="flex flex-wrap items-start justify-between gap-4 pb-4 border-b border-ink-200/40 dark:border-ink-200/10">
           <div class="space-y-1">
@@ -166,7 +170,6 @@ onMounted(() => {
           </div>
         </div>
 
-        <!-- Detailed Content block -->
         <div class="mt-4 space-y-3 text-sm leading-relaxed text-ink-700 dark:text-ink-300">
           <div v-if="resultSummary.mode === 'quiz'" class="space-y-2">
             <p class="font-bold text-ink-950 dark:text-ink-50">

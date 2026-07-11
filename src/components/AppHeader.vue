@@ -17,7 +17,7 @@ const uiStore = useUIStore()
 const route = useRoute()
 const { t } = useI18n()
 const { exitCurrentView } = sessionStore
-const { currentSession, currentIndex, totalItems, progressPercent } = storeToRefs(sessionStore)
+const { currentSession, currentIndex, totalItems, progressPercent, flashcardIndex } = storeToRefs(sessionStore)
 const { hasSets, sets, totalWordCount, activeSet } = storeToRefs(setsStore)
 const { editActiveSet, deleteActiveSet, openImport } = setsStore
 const { theme } = storeToRefs(uiStore)
@@ -25,13 +25,23 @@ const { openTransfer, toggleTheme } = uiStore
 
 const isHome = computed(() => route.name === 'home')
 const isPractice = computed(() => route.name === 'quiz' || route.name === 'spelling')
+const isFlashcard = computed(() => route.name === 'flashcard')
+const showSessionProgress = computed(() => (isPractice.value || isFlashcard.value) && !!currentSession.value)
 
 const practiceLabel = computed(() => {
   if (route.name === 'quiz')
     return t('practice.quiz')
   if (route.name === 'spelling')
     return t('practice.spelling')
+  if (route.name === 'flashcard')
+    return t('flashcard.title')
   return ''
+})
+
+const progressIndex = computed(() => {
+  if (isFlashcard.value)
+    return flashcardIndex.value
+  return currentIndex.value
 })
 </script>
 
@@ -64,41 +74,17 @@ const practiceLabel = computed(() => {
             </span>
           </p>
           <p v-else-if="activeSet" class="text-xs text-ink-500 dark:text-ink-400 mt-0.5 truncate font-semibold">
-            {{ activeSet.setName }}<span v-if="isPractice">{{ $t('appHeader.practiceStats', { label: practiceLabel, count: totalItems }) }}</span>
+            {{ activeSet.setName }}<span v-if="isPractice || isFlashcard">{{ $t('appHeader.practiceStats', { label: practiceLabel, count: totalItems }) }}</span>
           </p>
         </div>
       </div>
 
       <div class="flex items-center gap-2 shrink-0">
-        <template v-if="isPractice && currentSession">
+        <template v-if="showSessionProgress">
           <Progress :model-value="progressPercent" class="hidden h-1.5 w-16 sm:block sm:w-24" />
           <span class="text-xs sm:text-sm font-bold tabular-nums text-ink-950 dark:text-ink-50">
-            {{ currentIndex + 1 }}<span class="text-[10px] sm:text-xs text-ink-400">/{{ totalItems }}</span>
+            {{ progressIndex + 1 }}<span class="text-[10px] sm:text-xs text-ink-400">/{{ totalItems }}</span>
           </span>
-        </template>
-
-        <template v-else-if="!isHome && activeSet">
-          <Badge variant="secondary" class="hidden sm:inline-flex rounded-xl px-3 py-1.5 text-xs font-semibold bg-ink-200 dark:bg-ink-200/40 border-none">
-            {{ activeSet.setName }}
-          </Badge>
-          <Button
-            variant="outline"
-            size="icon"
-            class="h-9 w-9 text-ink-600 dark:text-ink-400 hover:text-accent-primary dark:hover:text-accent-primary"
-            :aria-label="t('appHeader.editSet')"
-            @click="editActiveSet"
-          >
-            <PencilLine class="h-4 w-4" />
-          </Button>
-          <Button
-            variant="outline"
-            size="icon"
-            class="h-9 w-9 text-red-500 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-950/15"
-            :aria-label="t('appHeader.deleteSet')"
-            @click="deleteActiveSet"
-          >
-            <Trash2 class="h-4 w-4" />
-          </Button>
         </template>
 
         <template v-else-if="isHome && hasSets">
@@ -124,20 +110,49 @@ const practiceLabel = computed(() => {
           </Button>
         </template>
 
+        <template v-else-if="!isHome && activeSet && !showSessionProgress">
+          <Badge variant="secondary" class="hidden sm:inline-flex rounded-xl px-3 py-1.5 text-xs font-semibold bg-ink-200 dark:bg-ink-200/40 border-none">
+            {{ activeSet.setName }}
+          </Badge>
+          <Button
+            variant="outline"
+            size="icon"
+            class="h-9 w-9 text-ink-600 dark:text-ink-400 hover:text-accent-primary dark:hover:text-accent-primary"
+            :aria-label="t('appHeader.editSet')"
+            @click="editActiveSet"
+          >
+            <PencilLine class="h-4 w-4" />
+          </Button>
+          <Button
+            variant="outline"
+            size="icon"
+            class="h-9 w-9 text-red-500 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-950/15"
+            :aria-label="t('appHeader.deleteSet')"
+            @click="deleteActiveSet"
+          >
+            <Trash2 class="h-4 w-4" />
+          </Button>
+        </template>
+
         <span class="w-px h-5 bg-ink-200/60 dark:bg-ink-200/10 mx-1 hidden sm:inline-block" />
 
         <Button
           variant="ghost"
           size="icon"
-          class="h-9 w-9"
+          class="h-9 w-9 relative overflow-hidden"
           :title="t('appHeader.toggleTheme')"
           :aria-label="t('appHeader.toggleTheme')"
           @click="toggleTheme"
         >
-          <Sun v-if="theme === 'dark'" class="h-4.5 w-4.5 text-accent-primary" />
-          <Moon v-else class="h-4.5 w-4.5 text-accent-primary" />
+          <Transition name="theme-icon" mode="out-in">
+            <Sun v-if="theme === 'dark'" key="sun" class="h-4.5 w-4.5 text-accent-primary" />
+            <Moon v-else key="moon" class="h-4.5 w-4.5 text-accent-primary" />
+          </Transition>
         </Button>
       </div>
+    </div>
+    <div v-if="showSessionProgress" class="sm:hidden px-4 pb-2">
+      <Progress :model-value="progressPercent" class="h-1 w-full" />
     </div>
   </header>
 </template>

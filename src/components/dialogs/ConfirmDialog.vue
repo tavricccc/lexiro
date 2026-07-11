@@ -1,12 +1,25 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
+import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { useUIStore } from '@/stores/ui'
 import Button from '../ui/button/Button.vue'
 import Dialog from '../ui/dialog/Dialog.vue'
 
 const uiStore = useUIStore()
-const { confirmOpen, confirmTitle, confirmMessage } = storeToRefs(uiStore)
+const {
+  confirmOpen,
+  confirmTitle,
+  confirmMessage,
+  confirmConfirmLabel,
+  confirmCancelLabel,
+  confirmDestructive,
+} = storeToRefs(uiStore)
 const { resolveConfirm } = uiStore
+const { t } = useI18n()
+
+const cancelText = computed(() => confirmCancelLabel.value || t('confirm.cancel'))
+const confirmText = computed(() => confirmConfirmLabel.value || t('confirm.confirm'))
 </script>
 
 <template>
@@ -20,10 +33,13 @@ const { resolveConfirm } = uiStore
   >
     <div class="flex justify-end gap-2 pt-2">
       <Button variant="outline" @click="resolveConfirm(false)">
-        {{ $t('confirm.cancel') }}
+        {{ cancelText }}
       </Button>
-      <Button variant="destructive" @click="resolveConfirm(true)">
-        {{ $t('confirm.confirm') }}
+      <Button
+        :variant="confirmDestructive ? 'destructive' : 'default'"
+        @click="resolveConfirm(true)"
+      >
+        {{ confirmText }}
       </Button>
     </div>
   </Dialog>

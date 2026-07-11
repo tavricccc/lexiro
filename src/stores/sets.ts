@@ -107,7 +107,7 @@ export const useSetsStore = defineStore('sets', () => {
 
   function isSetInProgress(setId: string): boolean {
     const sessionStore = useSessionStore()
-    return sessionStore.currentSession?.status === 'in-progress' && sessionStore.currentSession.sourceSetId === setId
+    return sessionStore.isSetInProgress(setId)
   }
 
   function openSetEditor(mode: 'create' | 'edit', set?: VocabSet | null) {
@@ -163,8 +163,8 @@ export const useSetsStore = defineStore('sets', () => {
         sets.value = sets.value.map(s => (s.id === setEditorId.value ? nextSet : s))
 
         const sessionStore = useSessionStore()
-        if (sessionStore.currentSession?.sourceSetId === nextSet.id) {
-          sessionStore.resetStudyView()
+        if (sessionStore.isSetInProgress(nextSet.id) || sessionStore.currentSession?.sourceSetId === nextSet.id) {
+          sessionStore.clearSessionsForSet(nextSet.id)
         }
         uiStore.showToast(t('editor.updated', { name: nextSet.setName, count: nextSet.items.length }))
       }
@@ -239,9 +239,9 @@ export const useSetsStore = defineStore('sets', () => {
     }
     else {
       sets.value = sets.value.filter(s => s.id !== pendingDeleteId.value)
+      sessionStore.clearSessionsForSet(pendingDeleteId.value!)
       if (activeSetId.value === pendingDeleteId.value) {
         activeSetId.value = sets.value[0]?.id ?? null
-        sessionStore.resetStudyView()
       }
     }
 
@@ -328,8 +328,9 @@ export const useSetsStore = defineStore('sets', () => {
     sets.value = [...nextSets, ...newSets]
     exportSelectedIds.value = [...exportSelectedIds.value, ...newSets.map(s => s.id)]
 
-    if (result.replacedVersions.length && sessionStore.currentSession && replacedSetIds.has(sessionStore.currentSession.sourceSetId)) {
-      sessionStore.resetStudyView()
+    if (result.replacedVersions.length) {
+      for (const id of replacedSetIds)
+        sessionStore.clearSessionsForSet(id)
     }
 
     if (!activeSetId.value && newSets.length > 0) {

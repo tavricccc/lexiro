@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import { cn } from '@/lib/cn'
 
 withDefaults(defineProps<{
@@ -17,10 +18,19 @@ withDefaults(defineProps<{
 defineEmits<{
   'update:modelValue': [value: string]
 }>()
+
+const el = ref<HTMLInputElement | null>(null)
+
+function focus() {
+  el.value?.focus()
+}
+
+defineExpose({ focus, el })
 </script>
 
 <template>
   <input
+    ref="el"
     :type="type"
     :value="modelValue"
     :placeholder="placeholder"

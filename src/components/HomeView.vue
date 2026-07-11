@@ -1,12 +1,14 @@
 <script setup lang="ts">
-import { FileQuestion, Plus, Upload } from 'lucide-vue-next'
+import { FileQuestion, Plus, Search, Upload } from 'lucide-vue-next'
 import { storeToRefs } from 'pinia'
+import { computed, ref } from 'vue'
 import { useSessionStore } from '@/stores/session'
 import { useSetsStore } from '@/stores/sets'
 import { useUIStore } from '@/stores/ui'
 import SetCard from './SetCard.vue'
 import Button from './ui/button/Button.vue'
 import EmptyState from './ui/empty-state/EmptyState.vue'
+import Input from './ui/input/Input.vue'
 
 const setsStore = useSetsStore()
 const sessionStore = useSessionStore()
@@ -15,6 +17,15 @@ const { hasSets, sets } = storeToRefs(setsStore)
 const { isSetInProgress, requestDelete, openSetEditor, openImport } = setsStore
 const { startFlashcards, openPracticeDialog } = sessionStore
 const { openTransfer } = uiStore
+
+const query = ref('')
+
+const filteredSets = computed(() => {
+  const q = query.value.trim().toLowerCase()
+  if (!q)
+    return sets.value
+  return sets.value.filter(set => set.setName.toLowerCase().includes(q))
+})
 </script>
 
 <template>
@@ -37,18 +48,48 @@ const { openTransfer } = uiStore
       </EmptyState>
     </div>
 
-    <div v-else class="grid gap-4 md:grid-cols-2">
-      <SetCard
-        v-for="set in sets"
-        :key="set.id"
-        :set="set"
-        :active="isSetInProgress(set.id)"
-        @flashcards="startFlashcards"
-        @quiz="openPracticeDialog('quiz', $event)"
-        @spelling="openPracticeDialog('spelling', $event)"
-        @delete="requestDelete"
-        @edit="openSetEditor('edit', sets.find((item) => item.id === $event))"
-      />
-    </div>
+    <template v-else>
+      <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+        <div class="text-left space-y-1">
+          <p class="text-xs font-extrabold uppercase tracking-widest text-ink-400 dark:text-ink-500">
+            {{ $t('home.library') }}
+          </p>
+          <h2 class="text-xl sm:text-2xl font-extrabold tracking-tight text-ink-950 dark:text-ink-50">
+            {{ $t('home.readyTitle') }}
+          </h2>
+        </div>
+        <div class="relative w-full sm:max-w-xs">
+          <Search class="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-ink-400" />
+          <Input
+            v-model="query"
+            :placeholder="$t('home.searchPlaceholder')"
+            class="pl-9 rounded-xl"
+          />
+        </div>
+      </div>
+
+      <div v-if="filteredSets.length === 0" class="py-12 text-center text-sm font-semibold text-ink-400">
+        {{ $t('home.noSearchResults') }}
+      </div>
+
+      <div v-else class="grid gap-4 md:grid-cols-2">
+        <div
+          v-for="(set, i) in filteredSets"
+          :key="set.id"
+          class="set-card-enter"
+          :style="{ animationDelay: `${Math.min(i, 10) * 40}ms` }"
+        >
+          <SetCard
+            :set="set"
+            :active="isSetInProgress(set.id)"
+            @flashcards="startFlashcards"
+            @quiz="openPracticeDialog('quiz', $event)"
+            @spelling="openPracticeDialog('spelling', $event)"
+            @delete="requestDelete"
+            @edit="openSetEditor('edit', sets.find((item) => item.id === $event))"
+          />
+        </div>
+      </div>
+    </template>
   </section>
 </template>

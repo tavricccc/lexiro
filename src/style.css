@@ -353,3 +353,238 @@ textarea {
     transform: scale(0.94) translateY(15px);
   }
 }
+
+/* Practice card swap */
+.practice-card-enter-active,
+.practice-card-leave-active {
+  transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1), transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.practice-card-enter-from {
+  opacity: 0;
+  transform: translateX(16px);
+}
+
+.practice-card-leave-to {
+  opacity: 0;
+  transform: translateX(-12px);
+}
+
+/* Flashcard flip — dedicated styles (do NOT use .panel: it sets transform) */
+.flashcard-scene {
+  cursor: pointer;
+  perspective: 1200px;
+  width: 100%;
+  outline: none;
+}
+
+.flashcard-scene:focus-visible .flashcard-inner {
+  box-shadow: 0 0 0 2px var(--color-primary);
+}
+
+.flashcard-inner {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  transform-style: preserve-3d;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (min-width: 640px) {
+  .flashcard-inner {
+    height: 360px;
+  }
+}
+
+.flashcard-inner.is-flipped {
+  transform: rotateY(180deg);
+}
+
+.flashcard-face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  border-radius: 1.15rem;
+  border: 1px solid var(--color-outline-variant);
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-soft);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  /* keep faces in parent 3D space */
+  transform-style: preserve-3d;
+}
+
+.flashcard-front {
+  transform: rotateY(0deg);
+  text-align: center;
+}
+
+.flashcard-back {
+  transform: rotateY(180deg);
+  align-items: stretch;
+  justify-content: center;
+  gap: 1rem;
+  text-align: left;
+}
+
+.flashcard-index {
+  position: absolute !important;
+  top: 1rem;
+  right: 1rem;
+}
+
+.flashcard-word {
+  font-size: clamp(1.75rem, 4vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--color-on-surface);
+  margin: 0;
+  padding: 0 2.5rem;
+  word-break: break-word;
+}
+
+.flashcard-hint {
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-on-surface-variant);
+}
+
+.flashcard-block {
+  border-radius: 1rem;
+  padding: 1.1rem 1.25rem;
+  border: 1px solid transparent;
+}
+
+.flashcard-block-primary {
+  background: color-mix(in srgb, var(--color-primary) 10%, transparent);
+  border-color: color-mix(in srgb, var(--color-primary) 12%, transparent);
+}
+
+.flashcard-block-muted {
+  background: var(--color-surface-container);
+  border-color: var(--color-outline-variant);
+}
+
+.flashcard-label {
+  margin: 0;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.flashcard-body {
+  margin: 0.75rem 0 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--color-on-surface);
+}
+
+.flashcard-example {
+  margin: 0.75rem 0 0;
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.55;
+  color: var(--color-on-surface-variant);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flashcard-inner {
+    transition: none;
+    transform: none !important;
+  }
+  .flashcard-back {
+    transform: none;
+  }
+  .flashcard-inner:not(.is-flipped) .flashcard-back {
+    display: none;
+  }
+  .flashcard-inner.is-flipped .flashcard-front {
+    display: none;
+  }
+  .flashcard-inner.is-flipped .flashcard-back {
+    display: flex;
+  }
+}
+
+/* Answer feedback */
+.feedback-correct {
+  animation: feedback-correct-pop 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.feedback-wrong {
+  animation: feedback-wrong-shake 0.35s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+}
+
+@keyframes feedback-correct-pop {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.015); }
+  100% { transform: scale(1); }
+}
+
+@keyframes feedback-wrong-shake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-6px); }
+  40% { transform: translateX(6px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(4px); }
+}
+
+/* Score ring */
+.score-ring-progress {
+  transition: stroke-dashoffset 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Home set cards enter */
+.set-card-enter {
+  animation: set-card-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes set-card-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.result-row-enter {
+  animation: set-card-in 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-perfect-in {
+  animation: set-card-in 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Theme icon crossfade */
+.theme-icon-enter-active,
+.theme-icon-leave-active {
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.theme-icon-enter-from {
+  opacity: 0;
+  transform: rotate(-30deg) scale(0.8);
+}
+
+.theme-icon-leave-to {
+  opacity: 0;
+  transform: rotate(30deg) scale(0.8);
+}
+
+/* Pause infinite animations when tab hidden */
+html.motion-paused *,
+html.motion-paused *::before,
+html.motion-paused *::after {
+  animation-play-state: paused !important;
+}
