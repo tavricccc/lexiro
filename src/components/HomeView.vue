@@ -1,10 +1,12 @@
 <script setup lang="ts">
-import { FileQuestion, Plus, Search, Upload } from 'lucide-vue-next'
+import type { PracticeMode } from '@/types'
+import { ClipboardPaste, FileQuestion, Plus, Search, Sparkles, Upload } from 'lucide-vue-next'
 import { storeToRefs } from 'pinia'
 import { computed, ref } from 'vue'
 import { useSessionStore } from '@/stores/session'
 import { useSetsStore } from '@/stores/sets'
 import { useUIStore } from '@/stores/ui'
+import HomeOverview from './HomeOverview.vue'
 import SetCard from './SetCard.vue'
 import Button from './ui/button/Button.vue'
 import EmptyState from './ui/empty-state/EmptyState.vue'
@@ -15,7 +17,7 @@ const sessionStore = useSessionStore()
 const uiStore = useUIStore()
 const { hasSets, sets } = storeToRefs(setsStore)
 const { isSetInProgress, requestDelete, openSetEditor, openImport } = setsStore
-const { startFlashcards, openPracticeDialog } = sessionStore
+const { startFlashcards } = sessionStore
 const { openTransfer } = uiStore
 
 const query = ref('')
@@ -26,6 +28,14 @@ const filteredSets = computed(() => {
     return sets.value
   return sets.value.filter(set => set.setName.toLowerCase().includes(q))
 })
+
+function startPractice(mode: PracticeMode, setId: string) {
+  if (sessionStore.getInProgressModes(setId).includes(mode)) {
+    sessionStore.startRound(mode, setId)
+    return
+  }
+  sessionStore.openPracticeDialog(mode, setId)
+}
 </script>
 
 <template>
@@ -45,10 +55,32 @@ const filteredSets = computed(() => {
             <span>{{ $t('home.backupAndImport') }}</span>
           </Button>
         </template>
+        <div class="grid gap-2 rounded-2xl border border-ink-200/60 bg-white/70 p-3 dark:border-ink-200/15 dark:bg-ink-900/70">
+          <div class="flex items-center gap-3 rounded-xl p-2">
+            <Plus class="h-4 w-4 shrink-0 text-accent-primary" />
+            <p class="text-xs font-semibold text-ink-600 dark:text-ink-400">
+              {{ $t('home.emptyStepWords') }}
+            </p>
+          </div>
+          <div class="flex items-center gap-3 rounded-xl p-2">
+            <Sparkles class="h-4 w-4 shrink-0 text-accent-primary" />
+            <p class="text-xs font-semibold text-ink-600 dark:text-ink-400">
+              {{ $t('home.emptyStepAi') }}
+            </p>
+          </div>
+          <div class="flex items-center gap-3 rounded-xl p-2">
+            <ClipboardPaste class="h-4 w-4 shrink-0 text-accent-primary" />
+            <p class="text-xs font-semibold text-ink-600 dark:text-ink-400">
+              {{ $t('home.emptyStepPaste') }}
+            </p>
+          </div>
+        </div>
       </EmptyState>
     </div>
 
     <template v-else>
+      <HomeOverview />
+
       <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div class="text-left space-y-1">
           <p class="text-xs font-extrabold uppercase tracking-widest text-ink-400 dark:text-ink-500">
@@ -83,8 +115,8 @@ const filteredSets = computed(() => {
             :set="set"
             :active="isSetInProgress(set.id)"
             @flashcards="startFlashcards"
-            @quiz="openPracticeDialog('quiz', $event)"
-            @spelling="openPracticeDialog('spelling', $event)"
+            @quiz="startPractice('quiz', $event)"
+            @spelling="startPractice('spelling', $event)"
             @delete="requestDelete"
             @edit="openSetEditor('edit', sets.find((item) => item.id === $event))"
           />

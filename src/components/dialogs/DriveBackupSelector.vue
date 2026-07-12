@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ChevronDown } from 'lucide-vue-next'
 import { storeToRefs } from 'pinia'
 import { computed, nextTick, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
@@ -55,12 +56,12 @@ function selectOption(id: string) {
         ref="triggerRef"
         type="button"
         class="w-full flex items-center justify-between rounded-xl border border-ink-200 dark:border-ink-800 bg-white dark:bg-ink-900 px-4 py-2.5 text-sm text-ink-900 dark:text-ink-100 outline-none focus:border-emerald-500 text-left transition-all hover:bg-ink-50 dark:hover:bg-ink-850"
+        aria-haspopup="listbox"
+        :aria-expanded="dropdownOpen"
         @click="toggleDropdown"
       >
         <span class="truncate pr-4">{{ selectedBackupLabel }}</span>
-        <svg class="h-4 w-4 text-ink-400 dark:text-ink-500 transition-transform duration-200 shrink-0" :class="{ 'rotate-180': dropdownOpen }" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
-        </svg>
+        <ChevronDown class="h-4 w-4 text-ink-400 dark:text-ink-500 transition-transform duration-200 shrink-0" :class="{ 'rotate-180': dropdownOpen }" />
       </button>
 
       <!-- Custom Options List (Teleported to body for highest z-index and no layout squeezing!) -->
@@ -80,12 +81,15 @@ function selectOption(id: string) {
             v-if="dropdownOpen"
             :style="dropdownStyle"
             class="max-h-60 overflow-y-auto rounded-xl border border-ink-200 dark:border-ink-800 bg-white dark:bg-ink-900 shadow-2xl p-1.5 space-y-0.5 text-left"
+            role="listbox"
           >
             <!-- Default Placeholder Option -->
             <button
               type="button"
               class="w-full text-left px-3 py-2 text-xs font-semibold rounded-lg transition-colors"
-              :class="!driveSelectedFileId ? 'bg-ink-100 dark:bg-ink-800 text-emerald-600 dark:text-emerald-400' : 'text-ink-50 hover:bg-ink-50 dark:hover:bg-ink-850'"
+              :class="!driveSelectedFileId ? 'bg-ink-100 dark:bg-ink-800 text-emerald-600 dark:text-emerald-400' : 'text-ink-700 dark:text-ink-300 hover:bg-ink-50 dark:hover:bg-ink-850'"
+              role="option"
+              :aria-selected="!driveSelectedFileId"
               @click="selectOption('')"
             >
               {{ $t('backup.selectBackupPlaceholder') }}
@@ -98,6 +102,8 @@ function selectOption(id: string) {
               type="button"
               class="w-full text-left px-3 py-2.5 rounded-lg transition-colors flex flex-col gap-0.5 border-l-2"
               :class="driveSelectedFileId === file.id ? 'bg-ink-100 dark:bg-ink-800 text-ink-950 dark:text-ink-50 border-emerald-500' : 'border-transparent text-ink-700 dark:text-ink-300 hover:bg-ink-50 dark:hover:bg-ink-850'"
+              role="option"
+              :aria-selected="driveSelectedFileId === file.id"
               @click="selectOption(file.id)"
             >
               <span class="font-bold text-ink-900 dark:text-ink-100 text-xs sm:text-sm">{{ file.name }}</span>

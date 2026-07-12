@@ -4,6 +4,7 @@ import { storeToRefs } from 'pinia'
 import { useBackupStore } from '@/stores/backup'
 import { useSetsStore } from '@/stores/sets'
 import { useUIStore } from '@/stores/ui'
+import SyncProgressPanel from '../SyncProgressPanel.vue'
 import Button from '../ui/button/Button.vue'
 import Dialog from '../ui/dialog/Dialog.vue'
 import SectionPanel from '../ui/section-panel/SectionPanel.vue'
@@ -51,6 +52,8 @@ const { signOutDrive, backupToDrive, refreshDriveBackups, applyDriveImport, rese
     @close="closeTransfer"
   >
     <div class="space-y-6">
+      <SyncProgressPanel />
+
       <!-- 1. Google Drive Section -->
       <SectionPanel>
         <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">

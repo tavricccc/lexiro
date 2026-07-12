@@ -2,6 +2,9 @@ export type {
   BackupPayload,
   ImportMode,
   ImportResult,
+  SyncTaskKind,
+  SyncTaskState,
+  SyncTaskStatus,
   VersionDiff,
 } from './backup'
 export type {

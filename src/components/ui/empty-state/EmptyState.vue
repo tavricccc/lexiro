@@ -18,6 +18,9 @@ withDefaults(defineProps<{
     <p v-if="description" class="mt-2 text-sm font-medium leading-relaxed text-ink-500 dark:text-ink-400">
       {{ description }}
     </p>
+    <div v-if="$slots.default" class="mt-6 w-full text-left">
+      <slot />
+    </div>
     <div v-if="$slots.actions" class="mt-6 flex w-full flex-col gap-2 sm:w-auto sm:flex-row">
       <slot name="actions" />
     </div>

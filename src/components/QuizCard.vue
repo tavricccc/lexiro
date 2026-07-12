@@ -130,12 +130,17 @@ onUnmounted(() => window.removeEventListener('keydown', onKeydown))
         :class="optionClass(optionIndex)"
         :disabled="answered"
         :aria-pressed="selectedIndex === optionIndex"
+        :aria-keyshortcuts="labels[optionIndex]"
         @click="choose(optionIndex)"
       >
         <span class="shrink-0 text-ink-400 dark:text-ink-500 font-extrabold">{{ labels[optionIndex] }}.</span>
         <span class="text-ink-850 dark:text-ink-200">{{ option }}</span>
       </button>
     </div>
+
+    <p v-if="!answered" class="mt-3 text-center text-[11px] font-semibold text-ink-400">
+      {{ $t('practice.keyboardHint') }}
+    </p>
 
     <div
       v-if="answered"

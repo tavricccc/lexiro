@@ -1,12 +1,11 @@
 <script setup lang="ts">
-import { ClipboardCopy } from 'lucide-vue-next'
+import { Check, ClipboardCopy } from 'lucide-vue-next'
 import { storeToRefs } from 'pinia'
 import { computed, nextTick, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { copyToClipboard } from '@/lib/clipboard'
-import { DIFFICULTY_PROMPTS } from '@/lib/difficulty-prompts'
 import { parseImportJson } from '@/lib/import'
-import prompts from '@/lib/prompts'
+import { buildImportPrompt } from '@/lib/importPrompt'
 import { useSetsStore } from '@/stores/sets'
 import { useUIStore } from '@/stores/ui'
 import Button from '../ui/button/Button.vue'
@@ -28,6 +27,7 @@ const importTextarea = ref<InstanceType<typeof Textarea> | null>(null)
 
 const difficultyLevels = ['', t('import.difficulty1'), t('import.difficulty2'), t('import.difficulty3')] as const
 const difficultyLabel = computed(() => difficultyLevels[importDifficulty.value])
+const wordCount = computed(() => importWords.value.split(/[\s,，、;；]+/).filter(Boolean).length)
 
 watch([importOpen, importStep], ([open]) => {
   if (open) {
@@ -55,13 +55,15 @@ watch(importJson, (val) => {
 })
 
 async function copyImportPrompt() {
-  const prompt = prompts.generateWordSet
-    .replace('{{WORDS}}', importWords.value)
-    .replace('{{DIFFICULTY_PROMPT}}', DIFFICULTY_PROMPTS[importDifficulty.value])
-    .replaceAll('{{DIFFICULTY_NUM}}', String(importDifficulty.value))
+  if (!wordCount.value) {
+    setsStore.importError = t('import.wordsRequired')
+    return
+  }
+  const prompt = buildImportPrompt(importWords.value, importDifficulty.value)
   try {
     await copyToClipboard(prompt)
     showToast(t('import.copied'))
+    nextImportStep()
   }
   catch {
     showToast(t('toast.copyFailed'))
@@ -76,6 +78,21 @@ async function copyImportPrompt() {
     :description="importStep === 1 ? $t('import.step1') : $t('import.step2')"
     @close="closeImport"
   >
+    <ol class="mb-6 grid grid-cols-2 gap-2" :aria-label="$t('import.progressLabel')">
+      <li
+        v-for="step in 2"
+        :key="step"
+        class="flex items-center gap-2 rounded-xl border px-3 py-2 text-xs font-bold"
+        :class="step <= importStep ? 'border-accent-primary/20 bg-accent-primary/10 text-accent-primary' : 'border-ink-200/60 text-ink-400 dark:border-ink-200/20'"
+      >
+        <span class="flex h-5 w-5 items-center justify-center rounded-full border border-current text-[10px]">
+          <Check v-if="step < importStep" class="h-3 w-3" />
+          <span v-else>{{ step }}</span>
+        </span>
+        {{ step === 1 ? $t('import.progressWords') : $t('import.progressPaste') }}
+      </li>
+    </ol>
+
     <div v-if="importStep === 1" class="space-y-5">
       <div class="flex flex-col gap-1.5 w-full text-left">
         <label class="text-xs font-semibold uppercase tracking-wider text-ink-500 dark:text-ink-400">
@@ -88,6 +105,9 @@ async function copyImportPrompt() {
           class="font-mono text-sm leading-relaxed"
           :placeholder="$t('import.wordPlaceholder')"
         />
+        <p class="text-xs font-semibold text-ink-400">
+          {{ $t('import.wordCount', { count: wordCount }) }}
+        </p>
       </div>
 
       <div class="flex flex-col gap-1.5 w-full text-left">
@@ -122,12 +142,12 @@ async function copyImportPrompt() {
         <Button variant="outline" @click="closeImport">
           {{ $t('editor.cancel') }}
         </Button>
-        <Button variant="outline" class="gap-2" @click="copyImportPrompt">
+        <Button variant="outline" @click="nextImportStep">
+          {{ $t('import.nextStep') }}
+        </Button>
+        <Button variant="default" class="gap-2" :disabled="!wordCount" @click="copyImportPrompt">
           <ClipboardCopy class="h-4 w-4 text-accent-primary" />
           <span>{{ $t('import.copyPrompt') }}</span>
-        </Button>
-        <Button variant="default" @click="nextImportStep">
-          {{ $t('import.nextStep') }}
         </Button>
       </DialogFooter>
     </div>
@@ -155,7 +175,7 @@ async function copyImportPrompt() {
 
       <DialogFooter>
         <Button variant="outline" @click="importStep = 1">
-          {{ $t('editor.cancel') }}
+          {{ $t('import.backToWords') }}
         </Button>
         <Button variant="default" :disabled="!importPreview" @click="importSet">
           {{ $t('import.import') }}

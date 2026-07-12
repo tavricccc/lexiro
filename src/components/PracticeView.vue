@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { CheckCircle2 } from 'lucide-vue-next'
 import { storeToRefs } from 'pinia'
 import { computed } from 'vue'
 import { useSessionStore } from '@/stores/session'
@@ -32,6 +33,10 @@ const spellingDraft = computed<{ answer: string } | null>(() => {
 
 <template>
   <section v-if="activeSet && currentSession" class="min-h-[65vh]">
+    <p class="mb-3 flex items-center justify-center gap-1.5 text-[11px] font-semibold text-ink-400" role="status">
+      <CheckCircle2 class="h-3.5 w-3.5 text-emerald-500" />
+      {{ $t('practice.autoSaved') }}
+    </p>
     <Transition name="practice-card" mode="out-in">
       <div :key="`${currentView}-${currentIndex}`">
         <QuizCard
