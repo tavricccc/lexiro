@@ -15,7 +15,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@': resolve(__dirname, 'src'),
+      '@': resolve(import.meta.dirname, 'src'),
     },
   },
   plugins: [
@@ -24,7 +24,7 @@ export default defineConfig({
     {
       name: 'generate-version',
       closeBundle() {
-        const distDir = resolve(__dirname, 'dist')
+        const distDir = resolve(import.meta.dirname, 'dist')
         if (!existsSync(distDir)) {
           mkdirSync(distDir, { recursive: true })
         }
