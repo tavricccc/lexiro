@@ -2,11 +2,12 @@ import type { User } from 'firebase/auth'
 import type { Unsubscribe } from 'firebase/firestore'
 import type { FirestoreDailyStatsDoc, FirestoreProgressDoc, FirestoreSetDoc, FirestoreStatsDoc, SetSyncConflict, SyncStatus } from '@/types'
 import { useDocumentVisibility, useOnline } from '@vueuse/core'
-import { onAuthStateChanged, signInWithPopup, signOut } from 'firebase/auth'
+import { GoogleAuthProvider, onAuthStateChanged, signInWithCredential, signOut } from 'firebase/auth'
 import { collection, deleteDoc, doc, getDoc, getDocs, onSnapshot, setDoc } from 'firebase/firestore'
 import { defineStore, storeToRefs } from 'pinia'
 import { computed, ref, watch } from 'vue'
-import { configureFirebaseAuth, createGoogleProvider, getFirebaseAuth, getFirebaseFirestore, isFirebaseConfigured } from '@/lib/firebase'
+import { configureFirebaseAuth, getFirebaseAuth, getFirebaseFirestore, isFirebaseConfigured } from '@/lib/firebase'
+import { requestGoogleAccessToken } from '@/lib/googleIdentity'
 import { estimateJsonBytes, stableHash } from '@/lib/hash'
 import { useLearningStore } from './learning'
 import { useSetsStore } from './sets'
@@ -439,7 +440,9 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
     }
     error.value = ''
     try {
-      await signInWithPopup(auth, createGoogleProvider())
+      const accessToken = await requestGoogleAccessToken()
+      const credential = GoogleAuthProvider.credential(null, accessToken)
+      await signInWithCredential(auth, credential)
     }
     catch (authError) {
       setError((authError as Error).message)

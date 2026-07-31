@@ -4,7 +4,7 @@ import type { Auth } from 'firebase/auth'
 import type { Firestore } from 'firebase/firestore'
 import { getApp, getApps, initializeApp } from 'firebase/app'
 import { initializeAppCheck, ReCaptchaEnterpriseProvider } from 'firebase/app-check'
-import { browserLocalPersistence, getAuth, GoogleAuthProvider, setPersistence } from 'firebase/auth'
+import { browserLocalPersistence, getAuth, setPersistence } from 'firebase/auth'
 import { getFirestore, initializeFirestore, persistentLocalCache, persistentMultipleTabManager } from 'firebase/firestore'
 
 const config = {
@@ -15,10 +15,11 @@ const config = {
   messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID as string | undefined,
   appId: import.meta.env.VITE_FIREBASE_APP_ID as string | undefined,
   appCheckSiteKey: import.meta.env.VITE_FIREBASE_APPCHECK_SITE_KEY as string | undefined,
+  googleClientId: import.meta.env.VITE_GOOGLE_CLIENT_ID as string | undefined,
 }
 
 export function isFirebaseConfigured(): boolean {
-  return Boolean(config.apiKey && config.authDomain && config.projectId && config.appId)
+  return Boolean(config.apiKey && config.authDomain && config.projectId && config.appId && config.googleClientId)
 }
 
 let firebaseApp: FirebaseApp | null = null
@@ -71,8 +72,4 @@ export async function configureFirebaseAuth(): Promise<Auth | null> {
     return null
   await setPersistence(auth, browserLocalPersistence)
   return auth
-}
-
-export function createGoogleProvider(): GoogleAuthProvider {
-  return new GoogleAuthProvider()
 }
