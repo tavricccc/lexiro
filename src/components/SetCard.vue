@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { VocabItem } from '@/types'
-import { ArrowRight, Flame, PencilLine, Trash2 } from 'lucide-vue-next'
+import type { VocabFolder, VocabItem } from '@/types'
+import { ArrowRight, Flame, FolderInput, PencilLine, Trash2 } from 'lucide-vue-next'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useLearningStore } from '@/stores/learning'
@@ -10,14 +10,16 @@ import Card from './ui/card/Card.vue'
 import MetricPill from './ui/metric-pill/MetricPill.vue'
 
 const props = defineProps<{
-  set: { id: string, setName: string, difficulty: number, items: VocabItem[] }
+  set: { id: string, setName: string, difficulty: number, items: VocabItem[], folderId?: string }
   active?: boolean
+  folders?: VocabFolder[]
 }>()
 
 defineEmits<{
   study: [setId: string]
   delete: [setId: string]
   edit: [setId: string]
+  move: [setId: string, folderId: string]
 }>()
 
 const { t } = useI18n()
@@ -82,11 +84,19 @@ const weakCount = computed(() => props.set.items.filter((item) => {
 
     <div class="mt-4 flex flex-wrap gap-2">
       <MetricPill :label="$t('setCard.difficulty')" :value="set.difficulty" />
-      <MetricPill :value="$t('practice.questions', { count: set.items.length })" />
       <MetricPill v-if="learnedCount" :label="$t('learning.learned')" :value="`${learnedCount}/${set.items.length}`" />
       <MetricPill v-if="favoriteCount" :label="$t('learning.favorites')" :value="favoriteCount" />
       <MetricPill v-if="weakCount" :label="$t('learning.weak')" :value="weakCount" />
     </div>
+
+    <label v-if="folders?.length" class="mt-4 flex items-center gap-2 text-xs font-semibold text-ink-500" @click.stop>
+      <FolderInput class="h-3.5 w-3.5 shrink-0" />
+      <span class="sr-only">{{ $t('setCard.moveFolder') }}</span>
+      <select :value="set.folderId ?? ''" class="min-w-0 flex-1 rounded-lg border border-ink-200/70 bg-transparent px-2 py-1.5 text-xs font-semibold outline-none focus:border-accent-primary dark:border-ink-200/20" @change="$emit('move', set.id, ($event.target as HTMLSelectElement).value)">
+        <option value="">{{ $t('study.folderNone') }}</option>
+        <option v-for="folder in folders" :key="folder.id" :value="folder.id">{{ folder.name }}</option>
+      </select>
+    </label>
 
     <div class="mt-5">
       <Button
@@ -94,7 +104,7 @@ const weakCount = computed(() => props.set.items.filter((item) => {
         class="w-full justify-center gap-2 font-black"
         @click.stop="$emit('study', set.id)"
       >
-        <span>{{ dueCount > 0 ? $t('study.review') : (active ? $t('home.continue') : $t('study.startStudy')) }}</span>
+        <span>{{ $t('setCard.enter') }}</span>
         <ArrowRight class="h-4 w-4" />
       </Button>
     </div>

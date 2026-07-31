@@ -56,6 +56,7 @@ export interface LibraryQuestionBase {
 
 export interface MultipleChoiceQuestion extends LibraryQuestionBase {
   kind: 'multipleChoice'
+  questionStyle?: 'standard' | 'fillBlank'
   prompt: string
   options: string[]
   answerIndex: number

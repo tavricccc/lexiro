@@ -162,10 +162,10 @@ describe('normalizeItem', () => {
     expect(normalizeItem({ ...validItem, question: null }, 0).question).toBeUndefined()
   })
 
-  it('normalized question is validated through normalizeQuestion', () => {
+  it('validates a non-empty question through normalizeQuestion', () => {
     expect(() =>
-      normalizeItem({ ...validItem, question: { prompt: '', opts: ['a', 'b', 'c', 'd'], ans: 0 } }, 0),
-    ).toThrow('缺少 question.prompt')
+      normalizeItem({ ...validItem, question: { prompt: 'Choose one', opts: ['a', 'b', 'c'], ans: 0 } }, 0),
+    ).toThrow('question.opts 必須剛好有 4 個選項')
   })
 })
 

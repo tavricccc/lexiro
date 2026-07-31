@@ -1,11 +1,12 @@
 import type { VocabItem } from './set'
 
-export type PracticeMode = 'quiz' | 'spelling' | 'flashcard'
+export type PracticeMode = 'quiz' | 'cloze' | 'reading' | 'spelling' | 'flashcard'
 export type SessionStatus = 'in-progress' | 'completed'
 
 export interface SessionEntry {
   item: VocabItem
   originalIndex: number
+  readingPassage?: string
 }
 
 export interface QuizDraft {

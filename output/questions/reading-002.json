@@ -13,6 +13,7 @@
         {
           "id": "child-745a5aa8",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the main idea of the passage?",
           "options": [
             "Eating breakfast helps students focus and learn better.",
@@ -36,6 +37,7 @@
         {
           "id": "child-a406821c",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What can we infer about students who skip breakfast?",
           "options": [
             "They are more likely to feel tired and lose focus in early classes.",
@@ -59,6 +61,7 @@
         {
           "id": "child-9254aeed",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'alert' is closest in meaning to:",
           "options": [
             "awake and able to think clearly",
@@ -82,6 +85,7 @@
         {
           "id": "child-88725f02",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the main idea of the passage?",
           "options": [
             "Festivals strengthen communities by fostering connection, belonging, and cooperation.",
@@ -105,6 +109,7 @@
         {
           "id": "child-c93533b4",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What can be inferred from the passage about people in modern society?",
           "options": [
             "Many of them may experience a sense of isolation.",
@@ -128,6 +133,7 @@
         {
           "id": "child-97f96a9e",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'dissolve' is closest in meaning to:",
           "options": [
             "break down",
@@ -151,6 +157,7 @@
         {
           "id": "child-02c976f4",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the main idea of this passage?",
           "options": [
             "Simple daily habits can help students sleep better.",
@@ -174,6 +181,7 @@
         {
           "id": "child-f438d2de",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, what should you do with your phone before sleep?",
           "options": [
             "Put it away at least half an hour before bed.",
@@ -197,6 +205,7 @@
         {
           "id": "child-66bf9a60",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the main point of the passage?",
           "options": [
             "AI tools should be banned from classrooms because they spread misinformation.",
@@ -220,6 +229,7 @@
         {
           "id": "child-e8eaeb85",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What can be inferred about students who cannot evaluate AI-generated answers?",
           "options": [
             "They are more likely to be misled by inaccurate information.",
@@ -243,6 +253,7 @@
         {
           "id": "child-fb46a1e2",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'erode' is closest in meaning to:",
           "options": [
             "gradually weaken",
@@ -266,6 +277,7 @@
         {
           "id": "child-6ce2a4f7",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is this passage mainly about?",
           "options": [
             "Basic facts about the moon and why it shines",
@@ -289,6 +301,7 @@
         {
           "id": "child-82221292",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, why does the moon shine at night?",
           "options": [
             "It reflects light from the sun",
@@ -312,6 +325,7 @@
         {
           "id": "child-9c214f0e",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the main lesson Mei learns in the story?",
           "options": [
             "Making mistakes is a normal part of learning",
@@ -335,6 +349,7 @@
         {
           "id": "child-71997411",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "How did Mei most likely feel after her parents praised the breakfast?",
           "options": [
             "Proud of what she had done",
@@ -358,6 +373,7 @@
         {
           "id": "child-9f61b109",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the news report mainly about?",
           "options": [
             "A community tree-planting event in a local park",
@@ -381,6 +397,7 @@
         {
           "id": "child-c38ddd60",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, why are the new trees helpful?",
           "options": [
             "They give shade and homes for birds",
@@ -404,6 +421,7 @@
         {
           "id": "child-31b4e09c",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What are Leo and Nina mainly doing in this dialogue?",
           "options": [
             "Caring for a weak bird until it can fly",
@@ -427,6 +445,7 @@
         {
           "id": "child-0b08fb20",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "Why did Leo say they should not feed the bird bread?",
           "options": [
             "Small birds need seeds and water instead",
@@ -450,6 +469,7 @@
         {
           "id": "child-149e19fa",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the writer trying to argue in this passage?",
           "options": [
             "Hobbies bring real benefits to our lives",
@@ -473,6 +493,7 @@
         {
           "id": "child-9adaf324",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, how can a hobby help with friendship?",
           "options": [
             "It lets people meet others with the same interest",
@@ -496,6 +517,7 @@
         {
           "id": "child-05e718ec",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the main message of this story?",
           "options": [
             "Teamwork can help someone feel that they belong",
@@ -519,6 +541,7 @@
         {
           "id": "child-d5a16066",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What can we infer about why Sofia asked Daniel to join her team?",
           "options": [
             "She valued cooperation more than speed alone",
@@ -542,6 +565,7 @@
         {
           "id": "child-b37b4b3a",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the main point of the passage?",
           "options": [
             "The Moon physically expands when it nears the horizon.",
@@ -565,6 +589,7 @@
         {
           "id": "child-56125bfe",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What can be inferred about why the coin test works?",
           "options": [
             "The coin changes size depending on the time of night.",
@@ -588,6 +613,7 @@
         {
           "id": "child-32465ce1",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'illusion' is closest in meaning to:",
           "options": [
             "a false impression",
@@ -611,6 +637,7 @@
         {
           "id": "child-46f64c80",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the story mainly about?",
           "options": [
             "A girl who refuses to enter a school fair.",
@@ -634,6 +661,7 @@
         {
           "id": "child-9c080005",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "Why did the brother's comment matter to Mina?",
           "options": [
             "It reminded her the cakes were too sweet.",
@@ -657,6 +685,7 @@
         {
           "id": "child-d5b39ca3",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'tremble' is closest in meaning to:",
           "options": [
             "shake slightly",
@@ -680,6 +709,7 @@
         {
           "id": "child-eb1de95f",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the writer's main argument?",
           "options": [
             "Children should specialize in one sport as early as possible.",
@@ -703,6 +733,7 @@
         {
           "id": "child-1ee00504",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does the writer suggest about early specialization?",
           "options": [
             "It guarantees a child will become a champion.",
@@ -726,6 +757,7 @@
         {
           "id": "child-7f169e27",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'dedication' is closest in meaning to:",
           "options": [
             "lack of interest",
@@ -749,6 +781,7 @@
         {
           "id": "child-d7b19c5a",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the news report mainly about?",
           "options": [
             "A town building a large concrete wall on its beach.",
@@ -772,6 +805,7 @@
         {
           "id": "child-d1dc8a4d",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "Why did the town choose grasses instead of concrete walls?",
           "options": [
             "Grasses look more colorful than walls.",
@@ -795,6 +829,7 @@
         {
           "id": "child-1c729978",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'restored' is closest in meaning to:",
           "options": [
             "brought back to good condition",
@@ -818,6 +853,7 @@
         {
           "id": "child-bf102bf7",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the conversation mainly about?",
           "options": [
             "Two friends arguing about ticket prices.",
@@ -841,6 +877,7 @@
         {
           "id": "child-1cf7c710",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "How does Leo's attitude change by the end?",
           "options": [
             "He becomes angrier at the artist.",
@@ -864,6 +901,7 @@
         {
           "id": "child-9c146c6d",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'restless' is closest in meaning to:",
           "options": [
             "unable to stay calm",
@@ -887,6 +925,7 @@
         {
           "id": "child-efaa2d38",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does the passage mainly explain?",
           "options": [
             "Why wireless earphones are more expensive than wired ones.",
@@ -910,6 +949,7 @@
         {
           "id": "child-ada3405c",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "Why is the short range of the signal described as helpful?",
           "options": [
             "It allows the earphones to reach far-away phones.",
@@ -933,6 +973,7 @@
         {
           "id": "child-8c736921",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'interference' is closest in meaning to:",
           "options": [
             "unwanted disturbance",
@@ -956,6 +997,7 @@
         {
           "id": "child-dd70f1a9",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the passage mainly about?",
           "options": [
             "How astronomers detect and study planets around other stars",
@@ -979,6 +1021,7 @@
         {
           "id": "child-8ec220e4",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "It can be inferred that a planet in the habitable zone:",
           "options": [
             "is certain to contain living organisms",
@@ -1002,6 +1045,7 @@
         {
           "id": "child-8d58a75d",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'betraying' is closest in meaning to:",
           "options": [
             "revealing",
@@ -1025,6 +1069,7 @@
         {
           "id": "child-7f4ed88a",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's main argument?",
           "options": [
             "Cities are inevitably harmful to nature",
@@ -1048,6 +1093,7 @@
         {
           "id": "child-9bc84141",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The author would most likely agree that:",
           "options": [
             "spreading people across the land saves resources",
@@ -1071,6 +1117,7 @@
         {
           "id": "child-911d1443",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'compact' is closest in meaning to:",
           "options": [
             "densely arranged",
@@ -1094,6 +1141,7 @@
         {
           "id": "child-70bcf025",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the main point of the story?",
           "options": [
             "A community came together to revive a beloved local bakery",
@@ -1117,6 +1165,7 @@
         {
           "id": "child-21958d6b",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "Why did people linger longer at the counter after the reopening?",
           "options": [
             "The new bread was much tastier than before",
@@ -1140,6 +1189,7 @@
         {
           "id": "child-84178a9f",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The phrase 'could not shake' is closest in meaning to:",
           "options": [
             "could not get rid of",
@@ -1163,6 +1213,7 @@
         {
           "id": "child-dec21ff2",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does the passage mainly explain?",
           "options": [
             "That memory is selective and can change rather than record events perfectly",
@@ -1186,6 +1237,7 @@
         {
           "id": "child-04d5f1b1",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "It can be inferred from the passage that a strongly felt memory:",
           "options": [
             "is always completely accurate",
@@ -1209,6 +1261,7 @@
         {
           "id": "child-9876c593",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'retrieve' is closest in meaning to:",
           "options": [
             "recall",
@@ -1232,6 +1285,7 @@
         {
           "id": "child-a0421da9",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the news report mainly about?",
           "options": [
             "A flash flood that destroyed a valley town",
@@ -1255,6 +1309,7 @@
         {
           "id": "child-a7deafab",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "Why do the students plan to share the design freely?",
           "options": [
             "So that other regions can build their own affordable sensors",
@@ -1278,6 +1333,7 @@
         {
           "id": "child-30aff7e3",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The phrase 'caught off guard' is closest in meaning to:",
           "options": [
             "taken by surprise",
@@ -1301,6 +1357,7 @@
         {
           "id": "child-ba29f797",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the central idea of the passage?",
           "options": [
             "Languages are constantly changing, and such change is natural and healthy",
@@ -1324,6 +1381,7 @@
         {
           "id": "child-5978a112",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, when does a language stop changing?",
           "options": [
             "When young people invent new slang",
@@ -1347,6 +1405,7 @@
         {
           "id": "child-ed13842a",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'drift' is closest in meaning to:",
           "options": [
             "gradual change",
@@ -1370,6 +1429,7 @@
         {
           "id": "child-d7077bc8",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the passage mainly about?",
           "options": [
             "A new student who gets help on her first day",
@@ -1393,6 +1453,7 @@
         {
           "id": "child-6abe5f28",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "Where was Mina's classroom?",
           "options": [
             "On the second floor",
@@ -1416,6 +1477,7 @@
         {
           "id": "child-5cecc7a5",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the passage mainly about?",
           "options": [
             "Basic facts about rabbits",
@@ -1439,6 +1501,7 @@
         {
           "id": "child-d1489276",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What helps rabbits run fast?",
           "options": [
             "Their big back legs",
@@ -1462,6 +1525,7 @@
         {
           "id": "child-b0b20893",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What are Lena and Theo doing?",
           "options": [
             "Deciding what to eat for lunch",
@@ -1485,6 +1549,7 @@
         {
           "id": "child-27be61b8",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What did they finally order?",
           "options": [
             "Noodles and rice",
@@ -1508,6 +1573,7 @@
         {
           "id": "child-97e86fcf",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the news about?",
           "options": [
             "A running race in a small town",
@@ -1531,6 +1597,7 @@
         {
           "id": "child-6da377a9",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "Who won the first prize?",
           "options": [
             "A young girl named Priya",
@@ -1554,6 +1621,7 @@
         {
           "id": "child-b1a8d3f9",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the story mainly about?",
           "options": [
             "Two children playing in the snow",
@@ -1577,6 +1645,7 @@
         {
           "id": "child-42dbb470",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What did Kofi and his sister make?",
           "options": [
             "A snowman with a carrot nose",
@@ -1600,6 +1669,7 @@
         {
           "id": "child-282d0a9c",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the passage mainly about?",
           "options": [
             "Drawing as a fun and easy hobby",
@@ -1623,6 +1693,7 @@
         {
           "id": "child-1209312b",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What do you need to start drawing?",
           "options": [
             "Paper and a pencil",
@@ -1646,6 +1717,7 @@
         {
           "id": "child-584c7dc5",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is this story mainly about?",
           "options": [
             "A new student who makes a friend at school",
@@ -1669,6 +1741,7 @@
         {
           "id": "child-4435515e",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What did Marco show Kenji after class?",
           "options": [
             "The way to the right bus",
@@ -1692,6 +1765,7 @@
         {
           "id": "child-6e1942d2",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is this passage mainly about?",
           "options": [
             "What plants need to grow well",
@@ -1715,6 +1789,7 @@
         {
           "id": "child-a8c9e446",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, where do most plants like to sit?",
           "options": [
             "Close to a window",
@@ -1738,6 +1813,7 @@
         {
           "id": "child-b9180ce4",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the story mainly about?",
           "options": [
             "A girl and her father enjoying a day at the beach",
@@ -1761,6 +1837,7 @@
         {
           "id": "child-3622a00b",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What did Lucia find on the sand?",
           "options": [
             "A small pink shell",
@@ -1784,6 +1861,7 @@
         {
           "id": "child-28a36b3d",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is this dialogue mainly about?",
           "options": [
             "A man buying food at a shop",
@@ -1807,6 +1885,7 @@
         {
           "id": "child-a8e84249",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "How many apples did Tomas pick up?",
           "options": [
             "Six",
@@ -1830,6 +1909,7 @@
         {
           "id": "child-e40d005e",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is this passage mainly about?",
           "options": [
             "How to make a simple sandwich",
@@ -1853,6 +1933,7 @@
         {
           "id": "child-3a37bf4b",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, what do you spread on the bread first?",
           "options": [
             "Some soft butter",
@@ -1876,6 +1957,7 @@
         {
           "id": "child-79ec23c4",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is this news report mainly about?",
           "options": [
             "A new library that opened in a small town",
@@ -1899,6 +1981,7 @@
         {
           "id": "child-d297cee8",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, what can people use for free at the library?",
           "options": [
             "Computers",
@@ -1922,6 +2005,7 @@
         {
           "id": "child-1b83f051",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is this story mainly about?",
           "options": [
             "A girl's happy birthday at home",
@@ -1945,6 +2029,7 @@
         {
           "id": "child-bf8754d1",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What was inside the box on Mina's bed?",
           "options": [
             "A red hat with a small star",
@@ -1968,6 +2053,7 @@
         {
           "id": "child-df3c337a",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the main idea of this passage?",
           "options": [
             "Recycling is a simple way to help the planet",
@@ -1991,6 +2077,7 @@
         {
           "id": "child-2305b3c4",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What should we do before putting bottles in the box?",
           "options": [
             "Clean them and keep them dry",
@@ -2014,6 +2101,7 @@
         {
           "id": "child-42fd4916",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is this conversation mainly about?",
           "options": [
             "A boy helping his sister fix her bike",
@@ -2037,6 +2125,7 @@
         {
           "id": "child-f4c66c20",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What was wrong with Anna's bike?",
           "options": [
             "It had a flat tire",
@@ -2060,6 +2149,7 @@
         {
           "id": "child-460a81cc",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is this news report mainly about?",
           "options": [
             "A new park that opened in a small town",
@@ -2083,6 +2173,7 @@
         {
           "id": "child-e0fca572",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What can children find near the gate of the park?",
           "options": [
             "New swings and slides",
@@ -2106,6 +2197,7 @@
         {
           "id": "child-912cea00",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the main idea of this story?",
           "options": [
             "A student welcomes a new classmate",
@@ -2129,6 +2221,7 @@
         {
           "id": "child-034d604e",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "Where did Sam sit when he first came to class?",
           "options": [
             "Alone near the window",
@@ -2152,6 +2245,7 @@
         {
           "id": "child-1a5628bb",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is this passage mainly about?",
           "options": [
             "Vegetables and why they are good for us",
@@ -2175,6 +2269,7 @@
         {
           "id": "child-404fe2a0",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, what can carrots help?",
           "options": [
             "Our eyes",
@@ -2198,6 +2293,7 @@
         {
           "id": "child-88284476",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is this passage mainly about?",
           "options": [
             "Why tree leaves change color in autumn",
@@ -2221,6 +2317,7 @@
         {
           "id": "child-b07340e1",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What can we infer about the yellow color in the leaves?",
           "options": [
             "It was present all along but hidden by the green",
@@ -2244,6 +2341,7 @@
         {
           "id": "child-b1a1b7c3",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the story mainly about?",
           "options": [
             "Sofia's enjoyable trip to the mountains with her aunt",
@@ -2267,6 +2365,7 @@
         {
           "id": "child-6c8bb9b8",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "Why did Sofia most likely not mind that her phone had no signal?",
           "options": [
             "She was enjoying the calm beauty around her",
@@ -2290,6 +2389,7 @@
         {
           "id": "child-2fdb4835",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is this news report mainly about?",
           "options": [
             "Students building and showing their own electric car",
@@ -2313,6 +2413,7 @@
         {
           "id": "child-c1ea318a",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What can we infer about the students from this report?",
           "options": [
             "They have skills and can work well as a team",
@@ -2336,6 +2437,7 @@
         {
           "id": "child-59066ac8",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the writer mainly arguing?",
           "options": [
             "Getting enough sleep is important for health and learning",
@@ -2359,6 +2461,7 @@
         {
           "id": "child-10f3c0fe",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does the writer suggest about drinking coffee to stay awake?",
           "options": [
             "It does not truly fix the problem of being tired",
@@ -2382,6 +2485,7 @@
         {
           "id": "child-967fd106",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What are Mark and Hana mainly talking about?",
           "options": [
             "How Mark can begin learning to paint",
@@ -2405,6 +2509,7 @@
         {
           "id": "child-b1317798",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What can we infer about Hana's view on making mistakes?",
           "options": [
             "She believes mistakes are a normal part of learning",
@@ -2428,6 +2533,7 @@
         {
           "id": "child-28db84d9",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is this passage mainly about?",
           "options": [
             "Why bees are important and how we can protect them",
@@ -2451,6 +2557,7 @@
         {
           "id": "child-e88a0641",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What can we infer would happen if bees disappeared?",
           "options": [
             "Growing many fruits and vegetables would become harder",
@@ -2474,6 +2581,7 @@
         {
           "id": "child-37c778b2",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is this story mainly about?",
           "options": [
             "A young person learning to grow plants from seeds",
@@ -2497,6 +2605,7 @@
         {
           "id": "child-86deae0f",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What can we infer about the narrator after the seed sprouted?",
           "options": [
             "The narrator felt that the waiting had been worth it",
@@ -2520,6 +2629,7 @@
         {
           "id": "child-f0f2b115",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the main idea of this passage?",
           "options": [
             "How the umbrella developed and changed over time",
@@ -2543,6 +2653,7 @@
         {
           "id": "child-34366d44",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What can we infer about the earliest umbrellas?",
           "options": [
             "They were mainly meant to protect users from the sun",
@@ -2566,6 +2677,7 @@
         {
           "id": "child-74786155",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What point is the writer mainly trying to make?",
           "options": [
             "People should recycle because it is worth the small effort",
@@ -2589,6 +2701,7 @@
         {
           "id": "child-c9a30a26",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does the writer suggest by mentioning new notebooks and clean bottles?",
           "options": [
             "Sorted materials can be made into useful things again",
@@ -2612,6 +2725,7 @@
         {
           "id": "child-a455636b",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is this news report mainly about?",
           "options": [
             "The opening of a new hands-on science museum",
@@ -2635,6 +2749,7 @@
         {
           "id": "child-440b8109",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What can we infer about the museum from the report?",
           "options": [
             "It is designed for visitors to learn by doing",
@@ -2658,6 +2773,7 @@
         {
           "id": "child-f7a9a918",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is this conversation mainly about?",
           "options": [
             "A father teaching his daughter to cook soup",
@@ -2681,6 +2797,7 @@
         {
           "id": "child-34955e45",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "Why does the father tell Mia to cut the carrots into small pieces?",
           "options": [
             "So that the soup will be ready in less time",
@@ -2704,6 +2821,7 @@
         {
           "id": "child-975f2dfa",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is this passage mainly about?",
           "options": [
             "Simple ideas that help people take better photos",
@@ -2727,6 +2845,7 @@
         {
           "id": "child-a6822e13",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What can we infer about taking photos at midday?",
           "options": [
             "The strong light may make the photo less pleasing",
@@ -2750,6 +2869,7 @@
         {
           "id": "child-13b642f0",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the main idea of this passage?",
           "options": [
             "Small, simple habits can keep people healthy over time",

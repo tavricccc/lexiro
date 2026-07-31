@@ -13,6 +13,7 @@
         {
           "id": "child-8405b845",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "Why does the coach tell Daniel to do a gentle jog the next day?",
           "options": [
             "Because the coach wants Daniel to give up running.",
@@ -36,6 +37,7 @@
         {
           "id": "child-13e84364",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'strain' is closest in meaning to:",
           "options": [
             "push the body too hard",
@@ -59,6 +61,7 @@
         {
           "id": "child-c94ace08",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the passage mainly about?",
           "options": [
             "The harsh conditions of the deep sea and the strange life that survives there.",
@@ -82,6 +85,7 @@
         {
           "id": "child-1a1b3fe8",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "Why does much of the food in the deep sea drift down from above?",
           "options": [
             "Because hunters carry the food down on purpose.",
@@ -105,6 +109,7 @@
         {
           "id": "child-bf5c69de",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'scarce' is closest in meaning to:",
           "options": [
             "hard to find",
@@ -128,6 +133,7 @@
         {
           "id": "child-3702546d",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the passage mainly about?",
           "options": [
             "Planets that drift through space without orbiting a star, and why they are hard to study.",
@@ -151,6 +157,7 @@
         {
           "id": "child-cac8fb9e",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What can be inferred about why rogue planets are detected indirectly?",
           "options": [
             "They are too small to have any measurable mass.",
@@ -174,6 +181,7 @@
         {
           "id": "child-365832e3",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'bleak' is closest in meaning to:",
           "options": [
             "harsh and unwelcoming",
@@ -197,6 +205,7 @@
         {
           "id": "child-a0e7ac18",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the writer mainly arguing?",
           "options": [
             "Schools should keep teaching handwriting because it can support learning, even alongside keyboards.",
@@ -220,6 +229,7 @@
         {
           "id": "child-9555e65c",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "Why does the writer say handwritten notes may strengthen understanding?",
           "options": [
             "Because handwriting always looks neater than typing.",
@@ -243,6 +253,7 @@
         {
           "id": "child-eec3e5b9",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'deliberate' is closest in meaning to:",
           "options": [
             "slow and carefully done",
@@ -266,6 +277,7 @@
         {
           "id": "child-7d5bb96c",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the main idea of the story?",
           "options": [
             "While cleaning an old portrait, a restorer uncovers a hidden inscription that hints at the painting's forgotten maker.",
@@ -289,6 +301,7 @@
         {
           "id": "child-e303a733",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What can be inferred about Lena's feelings at the end?",
           "options": [
             "She is mainly disappointed that the painting may be worthless.",
@@ -312,6 +325,7 @@
         {
           "id": "child-9a93a504",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'emerged' is closest in meaning to:",
           "options": [
             "came gradually into view",
@@ -335,6 +349,7 @@
         {
           "id": "child-1c550a15",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the news report mainly about?",
           "options": [
             "A trial program using drones to carry urgent medical supplies between two hospitals.",
@@ -358,6 +373,7 @@
         {
           "id": "child-816d745a",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What can be inferred about how the city is handling public concerns?",
           "options": [
             "It is ignoring residents and refusing to share any information.",
@@ -381,6 +397,7 @@
         {
           "id": "child-8f4c4ce0",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'shrink' is closest in meaning to:",
           "options": [
             "become smaller or shorter",
@@ -404,6 +421,7 @@
         {
           "id": "child-d49db706",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the passage mainly explaining?",
           "options": [
             "Why people in a crowd may hesitate to help, and how that hesitation can be overcome.",
@@ -427,6 +445,7 @@
         {
           "id": "child-7932e33d",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "Why does pointing at one specific person tend to produce help?",
           "options": [
             "Because that person becomes frightened of the crowd.",
@@ -450,6 +469,7 @@
         {
           "id": "child-67861253",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'cues' is closest in meaning to:",
           "options": [
             "signals that guide behavior",
@@ -473,6 +493,7 @@
         {
           "id": "child-5ccd2bcc",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the writer mainly arguing?",
           "options": [
             "Encouraging repair, instead of constant replacement, would benefit consumers and the wider economy.",
@@ -496,6 +517,7 @@
         {
           "id": "child-7178c30b",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "How does the writer respond to companies that say repair would reduce their sales?",
           "options": [
             "By agreeing that repair should therefore be discouraged.",
@@ -519,6 +541,7 @@
         {
           "id": "child-4b85aeb8",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'imposes' is closest in meaning to:",
           "options": [
             "forces or places (a burden) on",
@@ -542,6 +565,7 @@
         {
           "id": "child-b6fe7c44",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the main idea of the passage?",
           "options": [
             "The brain reshapes itself through practice and rest in a lifelong process.",
@@ -565,6 +589,7 @@
         {
           "id": "child-01603d06",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What can be inferred about a student who studies hard but sleeps poorly?",
           "options": [
             "Their learning may improve less than their effort suggests.",
@@ -588,6 +613,7 @@
         {
           "id": "child-a9039c82",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'consolidates' is closest in meaning to:",
           "options": [
             "strengthens and secures",
@@ -611,6 +637,7 @@
         {
           "id": "child-8cd160a4",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's main argument?",
           "options": [
             "Deep reading remains valuable and should be defended despite digital distractions.",
@@ -634,6 +661,7 @@
         {
           "id": "child-1650b219",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does the author imply about instant access to information?",
           "options": [
             "It does not automatically produce real understanding.",
@@ -657,6 +685,7 @@
         {
           "id": "child-814b2cd5",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'sustained' is closest in meaning to:",
           "options": [
             "continuous and prolonged",
@@ -680,6 +709,7 @@
         {
           "id": "child-45658dd9",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does Mei ultimately learn?",
           "options": [
             "Creativity returns when she stops fearing imperfection and simply begins.",
@@ -703,6 +733,7 @@
         {
           "id": "child-629c46e9",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "Why was watching the old man significant for Mei?",
           "options": [
             "His trust in practised rhythm showed her she was overthinking.",
@@ -726,6 +757,7 @@
         {
           "id": "child-5b6431d3",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'weathered' is closest in meaning to:",
           "options": [
             "worn by long experience",
@@ -749,6 +781,7 @@
         {
           "id": "child-682417d9",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the news report mainly about?",
           "options": [
             "A flood-defence design that works with the sea instead of merely blocking it.",
@@ -772,6 +805,7 @@
         {
           "id": "child-0ad5cbef",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "Why do critics remain cautious about the project?",
           "options": [
             "It has not yet been tested by a truly extreme storm.",
@@ -795,6 +829,7 @@
         {
           "id": "child-4b76bb80",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'resilient' is closest in meaning to:",
           "options": [
             "able to recover and withstand stress",
@@ -818,6 +853,7 @@
         {
           "id": "child-5398da9e",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the passage mainly explaining?",
           "options": [
             "Several reasons why music can stir powerful human emotions.",
@@ -841,6 +877,7 @@
         {
           "id": "child-252673ee",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What can be inferred about a surprising note in a melody?",
           "options": [
             "It can feel thrilling as long as it is not too jarring.",
@@ -864,6 +901,7 @@
         {
           "id": "child-a586e819",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'synchronise' is closest in meaning to:",
           "options": [
             "match in timing",
@@ -887,6 +925,7 @@
         {
           "id": "child-9398a181",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's central claim?",
           "options": [
             "Trust, more than surveillance, is what truly holds a society together.",
@@ -910,6 +949,7 @@
         {
           "id": "child-0375bfa8",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does the author suggest about societies full of suspicion?",
           "options": [
             "They tend to function poorly because constant checking is exhausting.",
@@ -933,6 +973,7 @@
         {
           "id": "child-666fd338",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'flourish' is closest in meaning to:",
           "options": [
             "thrive and develop well",
@@ -956,6 +997,7 @@
         {
           "id": "child-7e05f332",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the passage mainly about?",
           "options": [
             "How renewable sources work and how their main weakness can be managed.",
@@ -979,6 +1021,7 @@
         {
           "id": "child-871dfd6d",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "Why do engineers connect distant regions through shared networks?",
           "options": [
             "To make electricity more expensive for households.",
@@ -1002,6 +1045,7 @@
         {
           "id": "child-71b2021d",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'replenish' is closest in meaning to:",
           "options": [
             "fill up or restore again",
@@ -1025,6 +1069,7 @@
         {
           "id": "child-93e73bbe",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the writer mainly arguing?",
           "options": [
             "Cities should protect free public spaces because of their social value.",
@@ -1048,6 +1093,7 @@
         {
           "id": "child-7e2edbfb",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does the writer imply about a city 'measured only in profit'?",
           "options": [
             "It becomes friendlier to people with little money.",
@@ -1071,6 +1117,7 @@
         {
           "id": "child-dc886146",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'generous' is closest in meaning to:",
           "options": [
             "large and plentiful",
@@ -1094,6 +1141,7 @@
         {
           "id": "child-2be5a611",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does Liang mainly come to understand during the visit?",
           "options": [
             "That writing developed gradually from practical record-keeping into a vast inheritance.",
@@ -1117,6 +1165,7 @@
         {
           "id": "child-8dfb7919",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What can be inferred about early writing from the grandfather's explanation?",
           "options": [
             "It was first created mainly to entertain readers with stories.",
@@ -1140,6 +1189,7 @@
         {
           "id": "child-81f2438e",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'inheritance' is closest in meaning to:",
           "options": [
             "something valuable passed down from earlier generations",
@@ -1163,6 +1213,7 @@
         {
           "id": "child-829f9f29",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the news report mainly about?",
           "options": [
             "A wetland's wildlife recovering thanks to restoration efforts.",
@@ -1186,6 +1237,7 @@
         {
           "id": "child-0a336e4e",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "Why are visitors asked to stay on marked paths?",
           "options": [
             "Because the boardwalks are too expensive to repair.",
@@ -1209,6 +1261,7 @@
         {
           "id": "child-95a56b82",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'fragile' is closest in meaning to:",
           "options": [
             "easily harmed or broken",
@@ -1232,6 +1285,7 @@
         {
           "id": "child-1c1d5e30",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the passage mainly explaining?",
           "options": [
             "What the night sky reveals and why artificial light threatens that view.",
@@ -1255,6 +1309,7 @@
         {
           "id": "child-bc08b3bc",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "Why does the passage say that looking at distant stars is like looking into the past?",
           "options": [
             "Because the stars were photographed many years ago.",
@@ -1278,6 +1333,7 @@
         {
           "id": "child-f1cb11ac",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'deprives' is closest in meaning to:",
           "options": [
             "takes something away from",
@@ -1301,6 +1357,7 @@
         {
           "id": "child-8b8de1a4",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the writer mainly arguing?",
           "options": [
             "Scientists have a duty to communicate their findings clearly to the public.",
@@ -1324,6 +1381,7 @@
         {
           "id": "child-822addbb",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does the writer suggest happens when findings stay locked in difficult jargon?",
           "options": [
             "Citizens become better at judging scientific issues.",
@@ -1347,6 +1405,7 @@
         {
           "id": "child-6a29f5a0",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'distorting' is closest in meaning to:",
           "options": [
             "twisting or misrepresenting something",
@@ -1370,6 +1429,7 @@
         {
           "id": "child-cd17c3a7",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the passage mainly about?",
           "options": [
             "Why communicating with distant spacecraft is challenging and how engineers respond",
@@ -1393,6 +1453,7 @@
         {
           "id": "child-633f903e",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What can be inferred about distant space probes?",
           "options": [
             "They must be able to handle some situations without immediate human control",
@@ -1416,6 +1477,7 @@
         {
           "id": "child-5c492427",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'lag' is closest in meaning to:",
           "options": [
             "delay",
@@ -1439,6 +1501,7 @@
         {
           "id": "child-cc5feaab",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's main argument?",
           "options": [
             "Mistakes should be examined and used for learning rather than hidden",
@@ -1462,6 +1525,7 @@
         {
           "id": "child-ba3b7fc3",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does the author suggest about confidence?",
           "options": [
             "Confidence that survives setbacks is stronger than confidence from never failing",
@@ -1485,6 +1549,7 @@
         {
           "id": "child-b5f4fe43",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'fragile' is closest in meaning to:",
           "options": [
             "easily broken",
@@ -1508,6 +1573,7 @@
         {
           "id": "child-34658510",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is this passage mainly about?",
           "options": [
             "The narrator's observation of a young swallow's first migration",
@@ -1531,6 +1597,7 @@
         {
           "id": "child-6e95299e",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What can be inferred about the young swallow's journey?",
           "options": [
             "She relied on instinct because she had never flown the route before",
@@ -1554,6 +1621,7 @@
         {
           "id": "child-bdaba99e",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'hesitate' is closest in meaning to:",
           "options": [
             "pause uncertainly",
@@ -1577,6 +1645,7 @@
         {
           "id": "child-f4bdb03e",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does the news report mainly describe?",
           "options": [
             "A community lending shelf that runs on residents' honesty",
@@ -1600,6 +1669,7 @@
         {
           "id": "child-8b3a7d40",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What can be inferred from the shopkeepers' early prediction?",
           "options": [
             "They did not expect people to behave so honestly",
@@ -1623,6 +1693,7 @@
         {
           "id": "child-19737651",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'modest' is closest in meaning to:",
           "options": [
             "small and unassuming",
@@ -1646,6 +1717,7 @@
         {
           "id": "child-54705e64",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the main idea of the passage?",
           "options": [
             "A heat-driven reaction creates the appealing flavours and colours of cooked food",
@@ -1669,6 +1741,7 @@
         {
           "id": "child-3326ff9c",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "Why do wet vegetables steam instead of browning?",
           "options": [
             "Their surface water must evaporate before browning can occur",
@@ -1692,6 +1765,7 @@
         {
           "id": "child-59cb22b0",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'coax' is closest in meaning to:",
           "options": [
             "gently draw out",
@@ -1715,6 +1789,7 @@
         {
           "id": "child-d7534102",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author mainly arguing?",
           "options": [
             "Designing our environment works better than relying on willpower alone",
@@ -1738,6 +1813,7 @@
         {
           "id": "child-2c026699",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does the swimmer comparison suggest?",
           "options": [
             "Using helpful conditions to reach a goal is reasonable, not cheating",
@@ -1761,6 +1837,7 @@
         {
           "id": "child-1a3e94c9",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'tempting' is closest in meaning to:",
           "options": [
             "hard to resist",
@@ -1784,6 +1861,7 @@
         {
           "id": "child-58537427",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the passage mainly about?",
           "options": [
             "The active and essential work the brain carries out during sleep.",
@@ -1807,6 +1885,7 @@
         {
           "id": "child-e1f1e63e",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What can be inferred about someone who regularly sleeps too little?",
           "options": [
             "Their thinking and mood are likely to suffer over time.",
@@ -1830,6 +1909,7 @@
         {
           "id": "child-ed92cf11",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'idle' is closest in meaning to:",
           "options": [
             "doing nothing",
@@ -1853,6 +1933,7 @@
         {
           "id": "child-effe565a",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the writer mainly arguing?",
           "options": [
             "Protecting digital privacy is a reasonable defense of personal freedom.",
@@ -1876,6 +1957,7 @@
         {
           "id": "child-630014fb",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does the writer suggest about the 'nothing to hide' attitude?",
           "options": [
             "It misunderstands what privacy is really meant to protect.",
@@ -1899,6 +1981,7 @@
         {
           "id": "child-964c016e",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'surrendering' is closest in meaning to:",
           "options": [
             "giving up",
@@ -1922,6 +2005,7 @@
         {
           "id": "child-c51c1995",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What lesson does Nadia take from her experience?",
           "options": [
             "The willingness to keep going matters more than one perfect performance.",
@@ -1945,6 +2029,7 @@
         {
           "id": "child-4501c352",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What can be inferred about Nadia from how she handled the early mistake?",
           "options": [
             "She was able to stay composed and recover under pressure.",
@@ -1968,6 +2053,7 @@
         {
           "id": "child-8156d52e",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'wobble' is closest in meaning to:",
           "options": [
             "become unsteady",
@@ -1991,6 +2077,7 @@
         {
           "id": "child-4568a5b4",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the news report mainly about?",
           "options": [
             "Early encouraging results from an effort to rebuild damaged coral reefs.",
@@ -2014,6 +2101,7 @@
         {
           "id": "child-92df132e",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "Why did the researchers 'temper their optimism'?",
           "options": [
             "Because lasting recovery still depends on solving the problem of warming seas.",
@@ -2037,6 +2125,7 @@
         {
           "id": "child-d84724d1",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'sheltered' is closest in meaning to:",
           "options": [
             "protected",
@@ -2060,6 +2149,7 @@
         {
           "id": "child-a93fc916",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the passage mainly explaining?",
           "options": [
             "How ideas move through a population and why the process matters.",
@@ -2083,6 +2173,7 @@
         {
           "id": "child-3ff0973f",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What can be inferred about well-connected individuals?",
           "options": [
             "They can carry ideas between groups that might not otherwise mix.",
@@ -2106,6 +2197,7 @@
         {
           "id": "child-1034e815",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'accelerated' is closest in meaning to:",
           "options": [
             "sped up",
@@ -2129,6 +2221,7 @@
         {
           "id": "child-a7b39a23",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the writer mainly arguing?",
           "options": [
             "We should rely more on renewable materials despite their current limits.",
@@ -2152,6 +2245,7 @@
         {
           "id": "child-b1cdc290",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "How does the writer respond to critics who say renewable materials are not yet good enough?",
           "options": [
             "By saying this calls for steady improvement rather than abandoning them.",
@@ -2175,6 +2269,7 @@
         {
           "id": "child-491e651f",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'extracted' is closest in meaning to:",
           "options": [
             "taken out of the ground",
@@ -2198,6 +2293,7 @@
         {
           "id": "child-013a1c7c",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the writer mainly arguing?",
           "options": [
             "Those who deploy consequential algorithms must remain accountable for their decisions.",
@@ -2221,6 +2317,7 @@
         {
           "id": "child-9aa054a0",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does the writer suggest about the consistency of algorithms?",
           "options": [
             "Being consistent does not guarantee that the outcome is fair.",
@@ -2244,6 +2341,7 @@
         {
           "id": "child-e05cb06a",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'diffusion' is closest in meaning to:",
           "options": [
             "spreading out and weakening",
@@ -2267,6 +2365,7 @@
         {
           "id": "child-8a79aaf8",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the passage mainly about?",
           "options": [
             "How scientific knowledge advances through upheavals rather than steady accumulation alone.",
@@ -2290,6 +2389,7 @@
         {
           "id": "child-26ce1ada",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What can be inferred about why established scientists may resist a new framework?",
           "options": [
             "Their standing and habits are tied to the older view they have long defended.",
@@ -2313,6 +2413,7 @@
         {
           "id": "child-21823462",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'anomalies' is closest in meaning to:",
           "options": [
             "observations that do not fit expectations",
@@ -2336,6 +2437,7 @@
         {
           "id": "child-41fc6da0",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does the story mainly convey?",
           "options": [
             "A student's genuine curiosity reawakens a tired teacher's love of inquiry.",
@@ -2359,6 +2461,7 @@
         {
           "id": "child-5d6c823e",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What can be inferred about Mr. Oyelaran by the end of the story?",
           "options": [
             "He has rediscovered enthusiasm he believed he had lost.",
@@ -2382,6 +2485,7 @@
         {
           "id": "child-6112e9c4",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'stirred' is closest in meaning to:",
           "options": [
             "awakened",
@@ -2405,6 +2509,7 @@
         {
           "id": "child-34741efc",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the writer mainly arguing?",
           "options": [
             "Media literacy requires cultivating habits of mind, not just delivering more facts.",
@@ -2428,6 +2533,7 @@
         {
           "id": "child-cd82c1f6",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "Why might a factual correction sometimes strengthen a person's original error?",
           "options": [
             "Because accepting it can feel like giving up part of one's identity.",
@@ -2451,6 +2557,7 @@
         {
           "id": "child-31b26bb1",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'cling' is closest in meaning to:",
           "options": [
             "hold on tightly",
@@ -2474,6 +2581,7 @@
         {
           "id": "child-998333e0",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the news report mainly about?",
           "options": [
             "A study finding that automation is reshaping jobs gradually rather than eliminating them outright.",
@@ -2497,6 +2605,7 @@
         {
           "id": "child-e01a988f",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What can be inferred about who benefits most from the changes described?",
           "options": [
             "Workers who are already able to adapt their skills gain the most readily.",
@@ -2520,6 +2629,7 @@
         {
           "id": "child-4f6ab14d",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'hollowed out' is closest in meaning to:",
           "options": [
             "gradually stripped of substance",
@@ -2543,6 +2653,7 @@
         {
           "id": "child-f73c8cee",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the passage mainly explaining?",
           "options": [
             "Language gently influences thought without rigidly determining it.",
@@ -2566,6 +2677,7 @@
         {
           "id": "child-211e4a69",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "Why is translation between languages still possible, according to the passage?",
           "options": [
             "Because language tilts thought as a tendency rather than confining it absolutely.",
@@ -2589,6 +2701,7 @@
         {
           "id": "child-ec3a5b39",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'deflated' is closest in meaning to:",
           "options": [
             "weakened or undermined",
@@ -2612,6 +2725,7 @@
         {
           "id": "child-24e65f9d",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the main idea of the passage?",
           "options": [
             "Acknowledging the limits of knowledge keeps inquiry honest and ongoing.",
@@ -2635,6 +2749,7 @@
         {
           "id": "child-621374c0",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What can be inferred about societies that believe they possess the whole truth?",
           "options": [
             "They tend to resist doubt and become resistant to change.",
@@ -2658,6 +2773,7 @@
         {
           "id": "child-3550d103",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'concede' is closest in meaning to:",
           "options": [
             "acknowledge",
@@ -2681,6 +2797,7 @@
         {
           "id": "child-d2f49f66",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's central argument?",
           "options": [
             "Attention is a precious resource that we must deliberately protect.",
@@ -2704,6 +2821,7 @@
         {
           "id": "child-eb78947a",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does the author imply about applications designed by the advertising industry?",
           "options": [
             "They are intentionally built to keep users distracted.",
@@ -2727,6 +2845,7 @@
         {
           "id": "child-53a6065f",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'fracture' is closest in meaning to:",
           "options": [
             "break apart",
@@ -2750,6 +2869,7 @@
         {
           "id": "child-b95d6749",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the main point of the story?",
           "options": [
             "Failure, when examined honestly, can become a valuable teacher.",

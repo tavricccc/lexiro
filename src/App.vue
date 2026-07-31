@@ -6,7 +6,6 @@ import AppHeader from '@/components/AppHeader.vue'
 import AppSidebar from '@/components/AppSidebar.vue'
 import ConfirmDialog from '@/components/dialogs/ConfirmDialog.vue'
 import ImportDialog from '@/components/dialogs/ImportDialog.vue'
-import PracticeDialog from '@/components/dialogs/PracticeDialog.vue'
 import SetEditorDialog from '@/components/dialogs/SetEditorDialog.vue'
 import TransferDialog from '@/components/dialogs/TransferDialog.vue'
 import VersionUpdateDialog from '@/components/dialogs/VersionUpdateDialog.vue'
@@ -21,7 +20,7 @@ const router = useRouter()
 const route = useRoute()
 const { sidebarExpanded } = storeToRefs(uiStore)
 
-const isSessionRoute = computed(() => ['quiz', 'spelling', 'flashcard', 'review', 'result'].includes(String(route.name)))
+const isSessionRoute = computed(() => ['quiz', 'spelling', 'cloze', 'reading', 'review', 'result'].includes(String(route.name)))
 
 let versionCheckInterval: ReturnType<typeof setInterval> | null = null
 let controllerChangeListener: (() => void) | null = null
@@ -136,7 +135,6 @@ onUnmounted(() => {
     <TransferDialog />
     <SetEditorDialog />
     <ConfirmDialog />
-    <PracticeDialog />
     <VersionUpdateDialog />
 
     <Toast :message="uiStore.toastMessage" :visible="uiStore.toastVisible" />

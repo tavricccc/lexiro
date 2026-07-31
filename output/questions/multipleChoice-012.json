@@ -6,6 +6,7 @@
     {
       "id": "child-1f482f09",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「全體成員；會員群體」的英文是？",
       "options": [
         "politician",
@@ -22,6 +23,7 @@
     {
       "id": "child-b440cf53",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「記憶力；記憶能力」的英文是？",
       "options": [
         "memory",
@@ -38,6 +40,7 @@
     {
       "id": "child-fbcfba59",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「訊息；消息」的英文是？",
       "options": [
         "message",
@@ -54,6 +57,7 @@
     {
       "id": "child-c1be79f4",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「金屬」的英文是？",
       "options": [
         "metal",
@@ -70,6 +74,7 @@
     {
       "id": "child-88415f5f",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「方法；方式」的英文是？",
       "options": [
         "napkin",
@@ -86,6 +91,7 @@
     {
       "id": "child-1a93e2c2",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「捷運；地下鐵」的英文是？",
       "options": [
         "price",
@@ -102,6 +108,7 @@
     {
       "id": "child-1da3d638",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「軍事的；軍隊的」的英文是？",
       "options": [
         "several",
@@ -118,6 +125,7 @@
     {
       "id": "child-db1105f2",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「未成年的；未達法定年齡的」的英文是？",
       "options": [
         "every",
@@ -134,6 +142,7 @@
     {
       "id": "child-89fe6cf6",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「少數族群；少數民族」的英文是？",
       "options": [
         "daughter",
@@ -150,6 +159,7 @@
     {
       "id": "child-ff0927e2",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「鏡子；反光鏡」的英文是？",
       "options": [
         "mirror",
@@ -166,6 +176,7 @@
     {
       "id": "child-09de3790",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「混合；攪拌過程」的英文是？",
       "options": [
         "concert",
@@ -182,6 +193,7 @@
     {
       "id": "child-26f10f2b",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「模型；縮小比例模型」的英文是？",
       "options": [
         "frank",
@@ -198,6 +210,7 @@
     {
       "id": "child-c7b3217f",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「拖把」的英文是？",
       "options": [
         "ski",
@@ -214,6 +227,7 @@
     {
       "id": "child-a4828fbe",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「移動；運動」的英文是？",
       "options": [
         "bamboo",
@@ -230,6 +244,7 @@
     {
       "id": "child-b16c12f2",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「臉；嘴臉」的英文是？",
       "options": [
         "jam",
@@ -246,6 +261,7 @@
     {
       "id": "child-a943b97f",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「音樂劇」的英文是？",
       "options": [
         "measure",
@@ -262,6 +278,7 @@
     {
       "id": "child-ae0dcdb2",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「釘子；鐵釘」的英文是？",
       "options": [
         "rush",
@@ -278,6 +295,7 @@
     {
       "id": "child-d088ad41",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「全國人民；國民」的英文是？",
       "options": [
         "heater",
@@ -294,6 +312,7 @@
     {
       "id": "child-a437cd02",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「自然的；天然的」的英文是？",
       "options": [
         "absent",
@@ -310,6 +329,7 @@
     {
       "id": "child-2fa0bac3",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「項鍊；頸鍊」的英文是？",
       "options": [
         "raincoat",
@@ -326,6 +346,7 @@
     {
       "id": "child-ed08bdc6",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「針；縫針；注射針」的英文是？",
       "options": [
         "potato",
@@ -342,6 +363,7 @@
     {
       "id": "child-c84403c2",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「負面的；消極的」的英文是？",
       "options": [
         "handsome",
@@ -358,6 +380,7 @@
     {
       "id": "child-1f04fedb",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「鄰居；鄰人」的英文是？",
       "options": [
         "struggle",
@@ -374,6 +397,7 @@
     {
       "id": "child-993ca3d4",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「姪子；外甥」的英文是？",
       "options": [
         "dragon",
@@ -390,6 +414,7 @@
     {
       "id": "child-2da28046",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「網路；網絡」的英文是？",
       "options": [
         "support",
@@ -406,6 +431,7 @@
     {
       "id": "child-6b9017f1",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「姪女；外甥女」的英文是？",
       "options": [
         "proof",
@@ -422,6 +448,7 @@
     {
       "id": "child-10188154",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「點頭；頷首」的英文是？",
       "options": [
         "boy",
@@ -438,6 +465,7 @@
     {
       "id": "child-c8ebd296",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「無；沒有任何」的英文是？",
       "options": [
         "tube",
@@ -454,6 +482,7 @@
     {
       "id": "child-4a3e18a9",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「來自北方的；北向的（風）」的英文是？",
       "options": [
         "interested",
@@ -470,6 +499,7 @@
     {
       "id": "child-09e98407",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「筆記型電腦；手提電腦」的英文是？",
       "options": [
         "anything",
@@ -486,6 +516,7 @@
     {
       "id": "child-7d8823fd",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「小說」的英文是？",
       "options": [
         "trend",
@@ -502,6 +533,7 @@
     {
       "id": "child-7e83f39e",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「堅果；硬殼果」的英文是？",
       "options": [
         "nut",
@@ -518,6 +550,7 @@
     {
       "id": "child-29d277d4",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「物體；實物」的英文是？",
       "options": [
         "bottle",
@@ -534,6 +567,7 @@
     {
       "id": "child-8d65884a",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「浮現腦海；想到」的英文是？",
       "options": [
         "shock",
@@ -550,6 +584,7 @@
     {
       "id": "child-ec4042f8",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「海洋；大洋」的英文是？",
       "options": [
         "ocean",
@@ -566,6 +601,7 @@
     {
       "id": "child-c9edba91",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「提供；供給」的英文是？",
       "options": [
         "offer",
@@ -582,6 +618,7 @@
     {
       "id": "child-ca2f4181",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「官方的；正式的」的英文是？",
       "options": [
         "interested",
@@ -598,6 +635,7 @@
     {
       "id": "child-d757bd5e",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「經營；管理」的英文是？",
       "options": [
         "confuse",
@@ -614,6 +652,7 @@
     {
       "id": "child-743b1a26",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「意見；個人看法」的英文是？",
       "options": [
         "musical",
@@ -630,6 +669,7 @@
     {
       "id": "child-c446e684",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「器官」的英文是？",
       "options": [
         "local",
@@ -646,6 +686,7 @@
     {
       "id": "child-34fd6233",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「組織；機構」的英文是？",
       "options": [
         "organization",
@@ -662,6 +703,7 @@
     {
       "id": "child-1fed216f",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「（數學）原點；交點」的英文是？",
       "options": [
         "origin",
@@ -678,6 +720,7 @@
     {
       "id": "child-d2530c2e",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「疼痛；痛苦」的英文是？",
       "options": [
         "leaf",
@@ -694,6 +737,7 @@
     {
       "id": "child-55801472",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「繪畫；作畫」的英文是？",
       "options": [
         "painting",
@@ -710,6 +754,7 @@
     {
       "id": "child-15bd5c13",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「睡衣；睡衣褲」的英文是？",
       "options": [
         "pajamas",
@@ -726,6 +771,7 @@
     {
       "id": "child-46deea9f",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「蒼白的；面無血色的」的英文是？",
       "options": [
         "iron",
@@ -742,6 +788,7 @@
     {
       "id": "child-de5fe21b",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「平底鍋；煎鍋」的英文是？",
       "options": [
         "pad",
@@ -758,6 +805,7 @@
     {
       "id": "child-bfe93601",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「熊貓；大貓熊」的英文是？",
       "options": [
         "doubt",
@@ -774,6 +822,7 @@
     {
       "id": "child-133f0cb3",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「木瓜樹」的英文是？",
       "options": [
         "health",
@@ -790,6 +839,7 @@
     {
       "id": "child-096d95ac",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「原諒；寬恕」的英文是？",
       "options": [
         "belong",
@@ -806,6 +856,7 @@
     {
       "id": "child-3284a7ff",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「特定的；特有的」的英文是？",
       "options": [
         "particular",
@@ -822,6 +873,7 @@
     {
       "id": "child-e52940b9",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「夥伴；合夥人」的英文是？",
       "options": [
         "baggage",
@@ -838,6 +890,7 @@
     {
       "id": "child-0490be02",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「口令；通關密語」的英文是？",
       "options": [
         "password",
@@ -854,6 +907,7 @@
     {
       "id": "child-5e0dd235",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「路徑；軌跡」的英文是？",
       "options": [
         "want",
@@ -870,6 +924,7 @@
     {
       "id": "child-1cbd738b",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「病人；患者」的英文是？",
       "options": [
         "chapter",
@@ -886,6 +941,7 @@
     {
       "id": "child-0bd33688",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「版型；紙樣」的英文是？",
       "options": [
         "service",
@@ -902,6 +958,7 @@
     {
       "id": "child-ea4d115a",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「和平；太平」的英文是？",
       "options": [
         "march",
@@ -918,6 +975,7 @@
     {
       "id": "child-bbcdde0e",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「平靜的；安寧的」的英文是？",
       "options": [
         "several",
@@ -934,6 +992,7 @@
     {
       "id": "child-5c650fcf",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「告密；洩露秘密」的英文是？",
       "options": [
         "write",
@@ -950,6 +1009,7 @@
     {
       "id": "child-0cd83bfa",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「梨樹」的英文是？",
       "options": [
         "suit",
@@ -966,6 +1026,7 @@
     {
       "id": "child-514a94f1",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「依照；按照」的英文是？",
       "options": [
         "to",
@@ -982,6 +1043,7 @@
     {
       "id": "child-806aa720",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「完美的；無瑕的」的英文是？",
       "options": [
         "handsome",
@@ -998,6 +1060,7 @@
     {
       "id": "child-74923c20",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「時期；一段時間」的英文是？",
       "options": [
         "marble",
@@ -1014,6 +1077,7 @@
     {
       "id": "child-a9315009",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「個人的；私人的」的英文是？",
       "options": [
         "interested",
@@ -1030,6 +1094,7 @@
     {
       "id": "child-5f158f74",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「知名人士；名人」的英文是？",
       "options": [
         "requirement",
@@ -1046,6 +1111,7 @@
     {
       "id": "child-81d76902",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「枕頭；靠枕」的英文是？",
       "options": [
         "crayon",
@@ -1062,6 +1128,7 @@
     {
       "id": "child-7a9404e3",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「披薩；比薩」的英文是？",
       "options": [
         "zebra",
@@ -1078,6 +1145,7 @@
     {
       "id": "child-e509093d",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「平台；作業系統環境」的英文是？",
       "options": [
         "guidance",
@@ -1094,6 +1162,7 @@
     {
       "id": "child-44085334",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「遊樂場；操場」的英文是？",
       "options": [
         "playground",
@@ -1110,6 +1179,7 @@
     {
       "id": "child-b5628755",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「令人愉快的；宜人的」的英文是？",
       "options": [
         "absent",
@@ -1126,6 +1196,7 @@
     {
       "id": "child-3ce506e8",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「加上；還有」的英文是？",
       "options": [
         "nor",
@@ -1142,6 +1213,7 @@
     {
       "id": "child-4ebe15a3",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「詩人」的英文是？",
       "options": [
         "poet",
@@ -1158,6 +1230,7 @@
     {
       "id": "child-5aa07a94",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「詩意；詩一般的美感」的英文是？",
       "options": [
         "branch",
@@ -1174,6 +1247,7 @@
     {
       "id": "child-ca316e97",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「毒害；下毒」的英文是？",
       "options": [
         "beyond",
@@ -1190,6 +1264,7 @@
     {
       "id": "child-78ae405d",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「政策；方針」的英文是？",
       "options": [
         "author",
@@ -1206,6 +1281,7 @@
     {
       "id": "child-e546ae90",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「服藥；吞藥丸」的英文是？",
       "options": [
         "pop",
@@ -1222,6 +1298,7 @@
     {
       "id": "child-ac3aa5ef",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「擺姿勢；擺拍」的英文是？",
       "options": [
         "cash",
@@ -1238,6 +1315,7 @@
     {
       "id": "child-65c5e24d",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「正面的；積極的」的英文是？",
       "options": [
         "positive",
@@ -1254,6 +1332,7 @@
     {
       "id": "child-db6272d6",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「可能性；可能發生」的英文是？",
       "options": [
         "performance",
@@ -1270,6 +1349,7 @@
     {
       "id": "child-56b24158",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「木樁；立柱」的英文是？",
       "options": [
         "post",
@@ -1286,6 +1366,7 @@
     {
       "id": "child-cea0bf14",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「明信片」的英文是？",
       "options": [
         "decision",
@@ -1302,6 +1383,7 @@
     {
       "id": "child-c4f887cd",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「英鎊」的英文是？",
       "options": [
         "pound",
@@ -1318,6 +1400,7 @@
     {
       "id": "child-553a9a16",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「讚美；稱讚」的英文是？",
       "options": [
         "planet",
@@ -1334,6 +1417,7 @@
     {
       "id": "child-93d10b7e",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「祈禱；禱告」的英文是？",
       "options": [
         "tone",
@@ -1350,6 +1434,7 @@
     {
       "id": "child-d4b0ce09",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「祈禱者」的英文是？",
       "options": [
         "prayer",
@@ -1366,6 +1451,7 @@
     {
       "id": "child-07cd15f0",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「總統；總裁」的英文是？",
       "options": [
         "spaghetti",
@@ -1382,6 +1468,7 @@
     {
       "id": "child-ad322b22",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「按壓；壓印」的英文是？",
       "options": [
         "dizzy",
@@ -1398,6 +1485,7 @@
     {
       "id": "child-85118003",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「壓感；擠壓感」的英文是？",
       "options": [
         "musician",
@@ -1414,6 +1502,7 @@
     {
       "id": "child-ca37a300",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「神父；牧師；教士」的英文是？",
       "options": [
         "refuse",
@@ -1430,6 +1519,7 @@
     {
       "id": "child-441a1494",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「首要的；主要的」的英文是？",
       "options": [
         "handsome",
@@ -1446,6 +1536,7 @@
     {
       "id": "child-441589e2",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「校長」的英文是？",
       "options": [
         "democracy",
@@ -1462,6 +1553,7 @@
     {
       "id": "child-0370ab40",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「原理；法則」的英文是？",
       "options": [
         "chopstick",
@@ -1478,6 +1570,7 @@
     {
       "id": "child-2cf7feb7",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「監獄；看守所」的英文是？",
       "options": [
         "church",
@@ -1494,6 +1587,7 @@
     {
       "id": "child-54b926fe",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「私人的；非公開的」的英文是？",
       "options": [
         "absent",
@@ -1510,6 +1604,7 @@
     {
       "id": "child-605ee6aa",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「獎品；獎勵」的英文是？",
       "options": [
         "novel",
@@ -1526,6 +1621,7 @@
     {
       "id": "child-7ab12b13",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「生產；出產」的英文是？",
       "options": [
         "process",
@@ -1542,6 +1638,7 @@
     {
       "id": "child-67060c0a",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「生產；製造」的英文是？",
       "options": [
         "commercial",
@@ -1558,6 +1655,7 @@
     {
       "id": "child-df64e078",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「進展；逐步累積」的英文是？",
       "options": [
         "progress",
@@ -1574,6 +1672,7 @@
     {
       "id": "child-2459d1e6",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「承諾；誓言」的英文是？",
       "options": [
         "general",
@@ -1590,6 +1689,7 @@
     {
       "id": "child-137e7353",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「適當的；合宜的」的英文是？",
       "options": [
         "every",
@@ -1606,6 +1706,7 @@
     {
       "id": "child-e1fbb4f7",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「防護的；保護用的」的英文是？",
       "options": [
         "interested",
@@ -1622,6 +1723,7 @@
     {
       "id": "child-d2c01a93",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「證明；驗證」的英文是？",
       "options": [
         "early",
@@ -1638,6 +1740,7 @@
     {
       "id": "child-eb1cee13",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「提供；供給」的英文是？",
       "options": [
         "receipt",
@@ -1654,6 +1757,7 @@
     {
       "id": "child-5053df6c",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「烤布丁；麵包布丁」的英文是？",
       "options": [
         "mystery",
@@ -1670,6 +1774,7 @@
     {
       "id": "child-afcf5571",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「南瓜植株」的英文是？",
       "options": [
         "meeting",
@@ -1686,6 +1791,7 @@
     {
       "id": "child-33a9ca31",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「懲罰；處罰」的英文是？",
       "options": [
         "asleep",
@@ -1702,6 +1808,7 @@
     {
       "id": "child-300119e7",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「懲罰；刑罰」的英文是？",
       "options": [
         "motorcycle",
@@ -1718,6 +1825,7 @@
     {
       "id": "child-30a20a6d",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「學生；學員」的英文是？",
       "options": [
         "match",
@@ -1734,6 +1842,7 @@
     {
       "id": "child-5118aa85",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「小寶貝（暱稱）」的英文是？",
       "options": [
         "jeans",
@@ -1750,6 +1859,7 @@
     {
       "id": "child-6aacdc3d",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「辭藻過度華麗的；浮誇的」的英文是？",
       "options": [
         "purple",
@@ -1766,6 +1876,7 @@
     {
       "id": "child-f47861a3",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「益智玩具；拼圖」的英文是？",
       "options": [
         "needle",
@@ -1782,6 +1893,7 @@
     {
       "id": "child-2d30f59a",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「特性；性質」的英文是？",
       "options": [
         "pumpkin",
@@ -1798,6 +1910,7 @@
     {
       "id": "child-ea6454f7",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「數量；份量」的英文是？",
       "options": [
         "pressure",
@@ -1814,6 +1927,7 @@
     {
       "id": "child-5cb7e4e6",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「小測驗；隨堂測驗」的英文是？",
       "options": [
         "rest",
@@ -1830,6 +1944,7 @@
     {
       "id": "child-f9858aab",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「雨衣」的英文是？",
       "options": [
         "traveler",
@@ -1846,6 +1961,7 @@
     {
       "id": "child-0216f4f6",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「極限；能力範圍」的英文是？",
       "options": [
         "wound",
@@ -1862,6 +1978,7 @@
     {
       "id": "child-6277a2ca",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「（肉）半生的；三分熟的」的英文是？",
       "options": [
         "very",
@@ -1878,6 +1995,7 @@
     {
       "id": "child-f1a76774",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「寧願；更願意」的英文是？",
       "options": [
         "aboard",
@@ -1894,6 +2012,7 @@
     {
       "id": "child-460d8710",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「現實；實際存在的事物」的英文是？",
       "options": [
         "silence",
@@ -1910,6 +2029,7 @@
     {
       "id": "child-a41f1495",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "「意識到；領悟」的英文是？",
       "options": [
         "realize",

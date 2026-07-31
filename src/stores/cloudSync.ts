@@ -90,8 +90,22 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
     status.value = next
   }
 
+  function explainSyncError(error: unknown): string {
+    const message = error instanceof Error ? error.message : String(error)
+    const normalized = message.toLowerCase()
+    if (normalized.includes('permission-denied') || normalized.includes('missing or insufficient permissions'))
+      return 'Firestore 權限不足，請確認登入帳號、Firestore Rules 與 App Check 設定。'
+    if (normalized.includes('app check') || normalized.includes('recaptcha') || normalized.includes('token is invalid'))
+      return 'Firebase App Check／reCAPTCHA 驗證失敗；本機開發已停用 App Check，正式環境請確認網域與 site key。'
+    if (normalized.includes('unauthenticated') || normalized.includes('auth'))
+      return '登入狀態已失效，請重新登入 Google。'
+    if (normalized.includes('unavailable') || normalized.includes('network'))
+      return '網路或 Firebase 暫時無法連線，稍後可重新連線。'
+    return message || 'Firebase 回傳未命名的同步錯誤。'
+  }
+
   function setError(message: string) {
-    error.value = message
+    error.value = explainSyncError(message)
     status.value = 'error'
   }
 
@@ -340,13 +354,12 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
           todayLearningReviews: remote.todayLearningReviews ?? remote.todayReviews,
           todayLearningCorrectReviews: remote.todayLearningCorrectReviews ?? remote.todayCorrectReviews,
         }
-        learningStore.setDailyGoal(remote.dailyGoal)
+        learningStore.setDailyWordGoal(remote.dailyWordGoal ?? remote.dailyGoal)
+        learningStore.setDailyQuestionGoal(remote.dailyQuestionGoal ?? learningStore.stats.dailyQuestionGoal)
         knownStatsHash = stableHash(remote)
         learningStore.saveState()
       }
-    }, () => {
-      // A missing stats document is normal for a new account.
-    })
+    }, snapshotError => setError(snapshotError.message))
   }
 
   async function flushLearning() {
@@ -374,11 +387,13 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
           schemaVersion: SCHEMA_VERSION,
         }))
       }
-      if (learningStore.stats.todayReviews > 0) {
+      if (learningStore.stats.todayReviews > 0 || learningStore.stats.todayQuestionReviews > 0) {
         const daily: FirestoreDailyStatsDoc = {
           date: learningStore.stats.lastStudyDate,
           reviews: learningStore.stats.todayReviews,
           correctReviews: learningStore.stats.todayCorrectReviews,
+          questionReviews: learningStore.stats.todayQuestionReviews,
+          correctQuestionReviews: learningStore.stats.todayQuestionCorrectReviews,
           xpEarned: learningStore.stats.xp,
           updatedAt: learningStore.stats.updatedAt,
           ownerId: user.value.uid,
@@ -415,6 +430,12 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
     catch (syncError) {
       setError((syncError as Error).message)
     }
+  }
+
+  async function flushAll() {
+    if (!user.value)
+      return
+    await Promise.all([flushLearning(), flushLibrary()])
   }
 
   function scheduleLearningSync() {
@@ -480,6 +501,11 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
     clearListeners()
     if (user.value)
       setStatus(navigator.onLine ? 'offline' : 'offline')
+  }
+
+  function retryConnection() {
+    if (user.value)
+      void startRealtime(user.value.uid)
   }
 
   async function init() {
@@ -606,6 +632,8 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
     signIn,
     signOutAccount,
     flushLearning,
+    flushAll,
+    retryConnection,
     resolveConflict,
   }
 })

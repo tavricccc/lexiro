@@ -6,6 +6,7 @@
     {
       "id": "child-ec10dd52",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Sarah was very interested _____ astronomy and would spend hours stargazing every night.",
       "options": [
         "in",
@@ -22,6 +23,7 @@
     {
       "id": "child-42f38255",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The university provides a facility _____ students to access the internet, print documents, and study in a quiet environment.",
       "options": [
         "about",
@@ -38,6 +40,7 @@
     {
       "id": "child-2defb295",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "_____ his grandmother passed away, he was able to inherit her antique jewelry collection.",
       "options": [
         "unless",
@@ -54,6 +57,7 @@
     {
       "id": "child-a39d51b4",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Which book would you like to borrow _____ the library?",
       "options": [
         "from",
@@ -70,6 +74,7 @@
     {
       "id": "child-703bb89a",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "_____ the party convention yesterday, the incumbent’s nomination was challenged by a young, charismatic politician putting himself forward as a better candidate.",
       "options": [
         "at",
@@ -86,6 +91,7 @@
     {
       "id": "child-4f353f24",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The helicopter can hover over the building _____ extended periods of time.",
       "options": [
         "for",
@@ -102,6 +108,7 @@
     {
       "id": "child-06accc95",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The horror movie was so terrifying that I had trouble sleeping _____ days after watching it.",
       "options": [
         "for",
@@ -118,6 +125,7 @@
     {
       "id": "child-3f0a4e73",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "John decided to hang the painting _____ the wall using a sturdy hook.",
       "options": [
         "on",
@@ -134,6 +142,7 @@
     {
       "id": "child-fd6bd9ec",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "When reading a book, some people tend to skip _____ the boring parts.",
       "options": [
         "at",
@@ -150,6 +159,7 @@
     {
       "id": "child-c727525e",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "_____ months of training and preparation, her motivation to win the race propelled her across the finish line.",
       "options": [
         "although",
@@ -166,6 +176,7 @@
     {
       "id": "child-2e524fa1",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Sarah's dedication and hard work led her to achieve excellence _____ her chosen field.",
       "options": [
         "by",
@@ -182,6 +193,7 @@
     {
       "id": "child-ffdd7a1e",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "In chemistry, the formula _____ calculating the molar mass of a compound is to sum the atomic masses of all its constituent elements.",
       "options": [
         "by",
@@ -198,6 +210,7 @@
     {
       "id": "child-7398eb39",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The postage _____ sending a letter within the country is $1.",
       "options": [
         "in",
@@ -214,6 +227,7 @@
     {
       "id": "child-62a4045f",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The army was called _____ to help during the natural disaster.",
       "options": [
         "through",
@@ -230,6 +244,7 @@
     {
       "id": "child-d35f3d62",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The explosion was so loud that it temporarily deafened everyone _____ the vicinity.",
       "options": [
         "in",
@@ -246,6 +261,7 @@
     {
       "id": "child-fa5071f1",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The military personnel were equipped _____ various arms including rifles, grenades, and combat knives.",
       "options": [
         "by",
@@ -262,6 +278,7 @@
     {
       "id": "child-ab684c6c",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The farmers harvested a bountiful crop of yams from the fields in preparation _____ the upcoming festival.",
       "options": [
         "under",
@@ -278,6 +295,7 @@
     {
       "id": "child-8dd5e915",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Despite her allergy to cats, she chose to live _____ her new roommate who owned three felines.",
       "options": [
         "by",
@@ -294,6 +312,7 @@
     {
       "id": "child-8af365c9",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "_____ her commencement speech, the guest speaker imparted some valuable life lessons to the graduating class.",
       "options": [
         "on",
@@ -310,6 +329,7 @@
     {
       "id": "child-72a85b29",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "She is truly a jewel, _____ her exceptional intelligence and radiant personality.",
       "options": [
         "under",
@@ -326,6 +346,7 @@
     {
       "id": "child-876e8e7c",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Samantha always dresses in a stylish manner, wearing trendy clothes and accessorizing _____ fashionable accessories.",
       "options": [
         "on",
@@ -342,6 +363,7 @@
     {
       "id": "child-8b45cdea",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The underlying cause of their argument was a difference _____ values.",
       "options": [
         "over",
@@ -358,6 +380,7 @@
     {
       "id": "child-424be070",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The oppression of minorities _____ many countries around the world is a significant issue that needs to be addressed and resolved.",
       "options": [
         "about",
@@ -374,6 +397,7 @@
     {
       "id": "child-6bc930e4",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The farmers wanted to reproduce their best crops _____ order to increase their yields and profits.",
       "options": [
         "for",
@@ -390,6 +414,7 @@
     {
       "id": "child-7a7c15c4",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Despite feeling angry, she tried to suppress her emotions and maintain a calm facade _____ the argument.",
       "options": [
         "at",
@@ -406,6 +431,7 @@
     {
       "id": "child-46c5c02b",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The queen attended the state reception _____ her regal attire, representing the royal family.",
       "options": [
         "during",
@@ -422,6 +448,7 @@
     {
       "id": "child-367de1f3",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "She hesitated at the doorway, wondering if she should go _____ or stay out.",
       "options": [
         "from",
@@ -438,6 +465,7 @@
     {
       "id": "child-19236213",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "After starting her own business, Sarah began to prosper and soon became one of the wealthiest entrepreneurs _____ the industry.",
       "options": [
         "in",
@@ -454,6 +482,7 @@
     {
       "id": "child-7e8597aa",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "As the fire spread rapidly _____ the building, the panicked crowd began to flee in all directions.",
       "options": [
         "on",
@@ -470,6 +499,7 @@
     {
       "id": "child-15861682",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "After the earthquake, the relief organization took _____ an orphan and provided them with a safe and caring environment.",
       "options": [
         "over",
@@ -486,6 +516,7 @@
     {
       "id": "child-173ba4bc",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "John drove the car _____ the tunnel.",
       "options": [
         "into",
@@ -502,6 +533,7 @@
     {
       "id": "child-66f57c58",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "After excelling _____ his role as a technician, John was elevated to the position of team leader.",
       "options": [
         "by",
@@ -518,6 +550,7 @@
     {
       "id": "child-66500724",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "John is a mechanical engineer. He has a lot of experience designing and building machines _____ different industries.",
       "options": [
         "during",
@@ -534,6 +567,7 @@
     {
       "id": "child-701a451f",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "He came up _____ a weak excuse for being late, claiming that his alarm clock didn't go off.",
       "options": [
         "by",
@@ -550,6 +584,7 @@
     {
       "id": "child-eb3e4cee",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "After heavy rain, the swamp adjacent to the river filled with water, creating a thriving habitat _____ various aquatic species.",
       "options": [
         "with",
@@ -566,6 +601,7 @@
     {
       "id": "child-24fb3f71",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The winery's vineyard stretches across acres of land, covered _____ rows of meticulously maintained grapevines.",
       "options": [
         "in",
@@ -582,6 +618,7 @@
     {
       "id": "child-aa2555e4",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The students must obey the school's dress code _____ wearing their uniform.",
       "options": [
         "on",
@@ -598,6 +635,7 @@
     {
       "id": "child-17c1574c",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The wedding ceremony was held at a picturesque beach _____ the bride wearing a white gown and the groom in a classic black suit.",
       "options": [
         "through",
@@ -614,6 +652,7 @@
     {
       "id": "child-0e6a89d8",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Make sure you renew your driver’s license _____ it expires or you won’t be able to drive legally.",
       "options": [
         "although",
@@ -630,6 +669,7 @@
     {
       "id": "child-e1e07862",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "In the circus, there was a freak show featuring individuals _____ unique physical characteristics.",
       "options": [
         "from",
@@ -646,6 +686,7 @@
     {
       "id": "child-754e1f61",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "_____ the meeting, John misunderstood Sarah's instructions and ended up doing the opposite of what was intended.",
       "options": [
         "with",
@@ -662,6 +703,7 @@
     {
       "id": "child-df7a57f9",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "_____ painting the walls, it is essential to apply a coat of size to ensure a smooth and even finish.",
       "options": [
         "while",
@@ -678,6 +720,7 @@
     {
       "id": "child-4bb818cf",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The construction company started a new project to build a hospital _____ the remote area.",
       "options": [
         "in",
@@ -694,6 +737,7 @@
     {
       "id": "child-24f91a24",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "I bought a carton of milk _____ the store.",
       "options": [
         "into",
@@ -710,6 +754,7 @@
     {
       "id": "child-bbf8bfa6",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The recipe _____ chocolate cake involves mixing butter, sugar, eggs, and cocoa powder.",
       "options": [
         "by",
@@ -726,6 +771,7 @@
     {
       "id": "child-bf075aaa",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "It is legal to drive only _____ you have a valid license.",
       "options": [
         "when",
@@ -742,6 +788,7 @@
     {
       "id": "child-038a2dcb",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "After working non-stop _____ a year, she finally took a much-needed vacation to Hawaii.",
       "options": [
         "during",
@@ -758,6 +805,7 @@
     {
       "id": "child-7bd5a0fd",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "_____ my sister was younger, she couldn't pronounce my full name properly, so she started calling me 'Lil Sis' as a nickname.",
       "options": [
         "whereas",
@@ -774,6 +822,7 @@
     {
       "id": "child-40478772",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The conference was attended by international delegates _____ over 50 different countries.",
       "options": [
         "in",
@@ -790,6 +839,7 @@
     {
       "id": "child-6c758cb6",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "_____ weeks of non-stop studying, Sarah's energy levels were completely depleted.",
       "options": [
         "after",
@@ -806,6 +856,7 @@
     {
       "id": "child-e771d935",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The longitude of New York City is approximately 74 degrees west of the prime meridian _____ Greenwich, England.",
       "options": [
         "at",
@@ -822,6 +873,7 @@
     {
       "id": "child-72e83ac8",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "_____ purchasing a new car, John had a significant debt to the bank that would take years to repay.",
       "options": [
         "whereas",
@@ -838,6 +890,7 @@
     {
       "id": "child-57247a28",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Attendance _____ the conference was mandatory for all employees.",
       "options": [
         "at",
@@ -854,6 +907,7 @@
     {
       "id": "child-d1dda918",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Due to high demand, the company decided to expand their production capacity _____ building a new factory.",
       "options": [
         "by",
@@ -870,6 +924,7 @@
     {
       "id": "child-2808cef8",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The management team of the company held a meeting to discuss the budget _____ the next quarter.",
       "options": [
         "from",
@@ -886,6 +941,7 @@
     {
       "id": "child-1ab728f0",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "_____ careful consideration, she thought that starting her own business would be a good idea.",
       "options": [
         "before",
@@ -902,6 +958,7 @@
     {
       "id": "child-482b8b06",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "She meticulously paged _____ the manuscript, carefully numbering each page.",
       "options": [
         "by",
@@ -918,6 +975,7 @@
     {
       "id": "child-d51fbcb3",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "She used a famous quote _____ Shakespeare to emphasize her point.",
       "options": [
         "from",
@@ -934,6 +992,7 @@
     {
       "id": "child-02ab7f12",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "I would like to thank my parents _____ their unwavering support throughout my life.",
       "options": [
         "during",
@@ -950,6 +1009,7 @@
     {
       "id": "child-0477d58a",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "I spend my evenings curled up on the couch _____ a good book.",
       "options": [
         "through",
@@ -966,6 +1026,7 @@
     {
       "id": "child-f9ff8864",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The manager had a dubious expression _____ his face as he reviewed the suspect's alibi.",
       "options": [
         "under",
@@ -982,6 +1043,7 @@
     {
       "id": "child-b07ce2de",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "_____ reviewing the application, the university sent a letter of acceptance to the student.",
       "options": [
         "unless",
@@ -998,6 +1060,7 @@
     {
       "id": "child-21fb35c8",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The support group provides a safe space for individuals to connect _____ others who share their gender.",
       "options": [
         "through",
@@ -1014,6 +1077,7 @@
     {
       "id": "child-64bf95cc",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The meteorologist has forecasted heavy rainfall _____ the next two days.",
       "options": [
         "for",
@@ -1030,6 +1094,7 @@
     {
       "id": "child-8f3ebeaa",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "When giving directions, turn left _____ the traffic light.",
       "options": [
         "in",
@@ -1046,6 +1111,7 @@
     {
       "id": "child-ee4c097c",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The main objective of the conference is to promote global cooperation _____ addressing climate change.",
       "options": [
         "in",
@@ -1062,6 +1128,7 @@
     {
       "id": "child-13d9223b",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Our hotel is located just a few miles away _____ the airport.",
       "options": [
         "during",
@@ -1078,6 +1145,7 @@
     {
       "id": "child-5cd59bb5",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "I received a significant addition to my salary _____ the promotion.",
       "options": [
         "since",
@@ -1094,6 +1162,7 @@
     {
       "id": "child-458608c9",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The lioness crept up silently behind its prey before pouncing _____ it with lightning-fast reflexes.",
       "options": [
         "on",
@@ -1110,6 +1179,7 @@
     {
       "id": "child-5f0ac07b",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "During the class, the little boy couldn't resist being naughty and kept throwing paper airplanes _____ his classmates.",
       "options": [
         "at",
@@ -1126,6 +1196,7 @@
     {
       "id": "child-60669acf",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "After the marathon, the runner collapsed straight _____ the arms of the medical team.",
       "options": [
         "over",
@@ -1142,6 +1213,7 @@
     {
       "id": "child-1404cd63",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Ellie stood _____ the dock as the boat slowly rocked and shook in the rough waves.",
       "options": [
         "through",
@@ -1158,6 +1230,7 @@
     {
       "id": "child-76f3e4f6",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "_____ the spider suddenly crawled up her leg, she let out a blood-curdling scream.",
       "options": [
         "before",
@@ -1174,6 +1247,7 @@
     {
       "id": "child-f92f2215",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The organization provides support and resources _____ the blind to help them navigate the world around them.",
       "options": [
         "for",
@@ -1190,6 +1264,7 @@
     {
       "id": "child-2f1fb00f",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The train followed the track _____ the mountains.",
       "options": [
         "for",
@@ -1206,6 +1281,7 @@
     {
       "id": "child-3156779d",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Alex constructed a sentence _____ his trip to New York City, expressing the subject ’he,’ and the predicate ’traveled to New York City’.",
       "options": [
         "through",
@@ -1222,6 +1298,7 @@
     {
       "id": "child-005b52b6",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "During the pandemic, the family decided to rent a private isle _____ their vacation, ensuring complete isolation from others.",
       "options": [
         "into",
@@ -1238,6 +1315,7 @@
     {
       "id": "child-63ba557e",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The normal distribution is often used _____ statistics to describe the norm or average behavior of a population.",
       "options": [
         "in",
@@ -1254,6 +1332,7 @@
     {
       "id": "child-56eec61e",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "_____ starting the exam, she made sure to read all of the instructions carefully.",
       "options": [
         "if",
@@ -1270,6 +1349,7 @@
     {
       "id": "child-2aa949b9",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The students _____ the classroom come from various backgrounds and cultures.",
       "options": [
         "with",
@@ -1286,6 +1366,7 @@
     {
       "id": "child-2a471961",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "_____ I stepped outside, the scorching sun made the temperature rise rapidly.",
       "options": [
         "when",
@@ -1302,6 +1383,7 @@
     {
       "id": "child-d5c82ce3",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "_____ the camping trip, we had to be cautious of ticks and other bugs that could carry diseases.",
       "options": [
         "under",
@@ -1318,6 +1400,7 @@
     {
       "id": "child-512f618f",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Shipping companies play a crucial role _____ the transportation of goods around the world.",
       "options": [
         "from",
@@ -1334,6 +1417,7 @@
     {
       "id": "child-56320bab",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "She joined the company at an early stage of its development and played a significant role _____ shaping its success.",
       "options": [
         "about",
@@ -1350,6 +1434,7 @@
     {
       "id": "child-6b396c23",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "_____ the word 'banana', there are three syllables: ba-na-na.",
       "options": [
         "with",
@@ -1366,6 +1451,7 @@
     {
       "id": "child-05f6bba1",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The plumber replaced the old faucet _____ a brand new one to stop the leak.",
       "options": [
         "about",
@@ -1382,6 +1468,7 @@
     {
       "id": "child-557f4926",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "My husband and I have been doing our best to raise his stepchild as our own son _____ we got married.",
       "options": [
         "if",
@@ -1398,6 +1485,7 @@
     {
       "id": "child-46c786fc",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The Mona Lisa is a famous painting _____ Leonardo da Vinci.",
       "options": [
         "under",
@@ -1414,6 +1502,7 @@
     {
       "id": "child-9b5520dd",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "After the picnic, they left their litter scattered all _____ the park.",
       "options": [
         "into",
@@ -1430,6 +1519,7 @@
     {
       "id": "child-f2a81b3b",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "_____ the car accident, she suffered a fracture in her backbone, but luckily her spinal cord was not damaged.",
       "options": [
         "during",
@@ -1446,6 +1536,7 @@
     {
       "id": "child-7cd20c2e",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "She needed to focus _____ her studies and avoid distractions",
       "options": [
         "in",
@@ -1462,6 +1553,7 @@
     {
       "id": "child-2a48ed21",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "I knew the dog was coming around the corner _____ I could hear its loud bark.",
       "options": [
         "if",
@@ -1478,6 +1570,7 @@
     {
       "id": "child-0537990e",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "_____ the political thriller, the protagonist uncovers an intricate web of intrigue involving corruption and espionage.",
       "options": [
         "for",
@@ -1494,6 +1587,7 @@
     {
       "id": "child-bc28778e",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Eating a well-balanced diet _____ plenty of fruits and vegetables is a healthful habit.",
       "options": [
         "under",
@@ -1510,6 +1604,7 @@
     {
       "id": "child-bea1440e",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The moon is _____ its last phase before a new moon.",
       "options": [
         "for",
@@ -1526,6 +1621,7 @@
     {
       "id": "child-ffddb705",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The documentary provided informative insights _____ the history and culture of the indigenous tribe.",
       "options": [
         "for",
@@ -1542,6 +1638,7 @@
     {
       "id": "child-80ca7e9b",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Let me give you an instance of what I mean. _____ instance, I can show you a picture of my dog to give you a better idea of what a Great Dane looks like.",
       "options": [
         "about",
@@ -1558,6 +1655,7 @@
     {
       "id": "child-a201bd5a",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The detective noticed a small detail _____ the crime scene that everyone else had missed, leading them to solve the case.",
       "options": [
         "about",
@@ -1574,6 +1672,7 @@
     {
       "id": "child-fe494fc4",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The board of directors is responsible _____ the disposal of the company’s assets.",
       "options": [
         "over",
@@ -1590,6 +1689,7 @@
     {
       "id": "child-7b2e8820",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "For dinner, we had roasted pork _____ mashed sweet potatoes.",
       "options": [
         "on",
@@ -1606,6 +1706,7 @@
     {
       "id": "child-32d858da",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The sun began to emerge _____ behind the clouds.",
       "options": [
         "in",
@@ -1622,6 +1723,7 @@
     {
       "id": "child-5e843e25",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "May I ask _____ a favor?",
       "options": [
         "on",
@@ -1638,6 +1740,7 @@
     {
       "id": "child-39ec6873",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The sky was dull and gloomy, _____ thick clouds covering the horizon.",
       "options": [
         "by",
@@ -1654,6 +1757,7 @@
     {
       "id": "child-e72826c0",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "After pulling an all-nighter studying _____ exams, Emily finally got a good night's sleep.",
       "options": [
         "by",
@@ -1670,6 +1774,7 @@
     {
       "id": "child-e2cb5b6f",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Down syndrome is a genetic syndrome caused _____ the presence of an extra chromosome.",
       "options": [
         "during",
@@ -1686,6 +1791,7 @@
     {
       "id": "child-05026c7d",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "She was so thin that people often mistook her _____ a model.",
       "options": [
         "into",
@@ -1702,6 +1808,7 @@
     {
       "id": "child-c5109f10",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "She proudly displayed her bowling trophy _____ the mantelpiece.",
       "options": [
         "on",
@@ -1718,6 +1825,7 @@
     {
       "id": "child-a36bb280",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "During our trip to Rome, we visited the ancient ruins of the Colosseum and marveled _____ its grandeur.",
       "options": [
         "by",
@@ -1734,6 +1842,7 @@
     {
       "id": "child-5e7e6beb",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "It is important to wear a helmet when riding a motorcycle to protect yourself _____ the danger of head injuries.",
       "options": [
         "from",
@@ -1750,6 +1859,7 @@
     {
       "id": "child-58d93b4f",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The Hollywood star walked down the red carpet, exuding glamour _____ every step, capturing the attention of the crowd and the cameras.",
       "options": [
         "during",
@@ -1766,6 +1876,7 @@
     {
       "id": "child-9fb90992",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Alice and Sarah have been friends _____ they were in kindergarten. They have been through thick and thin together, supporting each other in both good times and bad times.",
       "options": [
         "since",
@@ -1782,6 +1893,7 @@
     {
       "id": "child-207d5d30",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "She was sitting between her two friends _____ the cinema.",
       "options": [
         "at",
@@ -1798,6 +1910,7 @@
     {
       "id": "child-1d1c2738",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "At the office, my colleague and I collaborate _____ various projects.",
       "options": [
         "through",
@@ -1814,6 +1927,7 @@
     {
       "id": "child-7a3dc8ff",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The sharp blade of grass cut _____ the air as the lawnmower passed over it.",
       "options": [
         "through",
@@ -1830,6 +1944,7 @@
     {
       "id": "child-63a9ec3e",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "After completing her medical degree, Dr. Smith established a successful practice _____ her hometown.",
       "options": [
         "by",
@@ -1846,6 +1961,7 @@
     {
       "id": "child-281d1618",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Everyone was invited to the party except _____ John.",
       "options": [
         "for",
@@ -1862,6 +1978,7 @@
     {
       "id": "child-0e53500a",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The students performed badly on the exam despite studying _____ weeks.",
       "options": [
         "under",
@@ -1878,6 +1995,7 @@
     {
       "id": "child-6392cf7b",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "He was punished _____ stealing money after breaking into his neighbor’s house.",
       "options": [
         "under",
@@ -1894,6 +2012,7 @@
     {
       "id": "child-9d2dfeb6",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "At the party, he was too shy to approach anyone and spent most of the night standing alone _____ the corner.",
       "options": [
         "at",
@@ -1910,6 +2029,7 @@
     {
       "id": "child-1eecabd3",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "_____ I asked him where he had been all night, he just shrugged his shoulders, leaving me even more suspicious.",
       "options": [
         "whereas",

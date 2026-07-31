@@ -6,6 +6,7 @@
     {
       "id": "child-a9159c4d",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"capable of producing large quantities\"?",
       "options": [
         "cooperative",
@@ -22,6 +23,7 @@
     {
       "id": "child-71f04759",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"a state of commotion, noise, and confusion\"?",
       "options": [
         "politics",
@@ -38,6 +40,7 @@
     {
       "id": "child-ed290878",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"to jump lightly or with small leaps\"?",
       "options": [
         "gum",
@@ -54,6 +57,7 @@
     {
       "id": "child-8fad065e",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"equality of distribution or proportion\"?",
       "options": [
         "buffalo",
@@ -70,6 +74,7 @@
     {
       "id": "child-d4b6ccf9",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"to leave or go away from a place, especially on a journey.\"?",
       "options": [
         "depart",
@@ -86,6 +91,7 @@
     {
       "id": "child-c7bbf4cf",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"neither warm nor very cold; giving relief from heat\"?",
       "options": [
         "every",
@@ -102,6 +108,7 @@
     {
       "id": "child-5a510f6d",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"a person who possesses or holds ownership of something, such as a property, car, or business\"?",
       "options": [
         "capital",
@@ -118,6 +125,7 @@
     {
       "id": "child-2ffed602",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"a piece of furniture that stands at the side of a dining room; has shelves and drawers\"?",
       "options": [
         "buffet",
@@ -134,6 +142,7 @@
     {
       "id": "child-2013e712",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"a type of sausage made from minced beef or pork that is often smoked and served on a roll\"?",
       "options": [
         "tourism",
@@ -150,6 +159,7 @@
     {
       "id": "child-10812d0a",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"relating to the shared knowledge and values of a society\"?",
       "options": [
         "cultural",
@@ -166,6 +176,7 @@
     {
       "id": "child-779ff225",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"an examination at the end of a term, course, or academic year\"?",
       "options": [
         "final",
@@ -182,6 +193,7 @@
     {
       "id": "child-fdf9f81b",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"a container made of woven materials, typically with handles for carrying items such as groceries or laundry.\"?",
       "options": [
         "basket",
@@ -198,6 +210,7 @@
     {
       "id": "child-db77fc05",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"an imprint of the teeth and gums in wax or plaster\"?",
       "options": [
         "laser",
@@ -214,6 +227,7 @@
     {
       "id": "child-31c0c9f3",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"the time of person’s life when they are a child\"?",
       "options": [
         "portrait",
@@ -230,6 +244,7 @@
     {
       "id": "child-b87cd221",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"a politician who is running for public office\"?",
       "options": [
         "candidate",
@@ -246,6 +261,7 @@
     {
       "id": "child-0f537ec7",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"celebrated in fable or legend\"?",
       "options": [
         "decent",
@@ -262,6 +278,7 @@
     {
       "id": "child-13929e1f",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"(biology) the process of decay caused by bacterial or fungal action\"?",
       "options": [
         "funeral",
@@ -278,6 +295,7 @@
     {
       "id": "child-a06ec538",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"the profession concerned with teaching and researching religion\"?",
       "options": [
         "spotlight",
@@ -294,6 +312,7 @@
     {
       "id": "child-c33ff022",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"the act of intervening, especially to mediate a dispute\"?",
       "options": [
         "intervention",
@@ -310,6 +329,7 @@
     {
       "id": "child-083bb99f",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"a particular style or characteristic that makes something easily identifiable\"?",
       "options": [
         "creation",
@@ -326,6 +346,7 @@
     {
       "id": "child-032492fd",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"a workplace for the teaching or practice of an art, such as painting, music, or dance\"?",
       "options": [
         "instructor",
@@ -342,6 +363,7 @@
     {
       "id": "child-b2772000",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"a unit of length equal to 3 feet or approximately 91.44 centimeters. Originally taken to be the average length of a stride.\"?",
       "options": [
         "fleet",
@@ -358,6 +380,7 @@
     {
       "id": "child-26144dd1",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"a person who publicly supports or recommends a particular cause or policy\"?",
       "options": [
         "reef",
@@ -374,6 +397,7 @@
     {
       "id": "child-80fab3c6",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"cases used to carry belongings when traveling\"?",
       "options": [
         "strength",
@@ -390,6 +414,7 @@
     {
       "id": "child-0e9968da",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"to shield someone or something from danger, injury, destruction, or damage\"?",
       "options": [
         "crawl",
@@ -406,6 +431,7 @@
     {
       "id": "child-3e504964",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"an elaborate and systematic plan of action\"?",
       "options": [
         "caretaker",
@@ -422,6 +448,7 @@
     {
       "id": "child-e1945f5d",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"a passageway between seating areas, as in an auditorium or passenger vehicle, or between areas of shelves of goods, as in stores\"?",
       "options": [
         "packet",
@@ -438,6 +465,7 @@
     {
       "id": "child-c65468d5",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"disagreeable to the senses; sharply disagreeable; rigorous\"?",
       "options": [
         "harsh",
@@ -454,6 +482,7 @@
     {
       "id": "child-0db0ee87",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"Handwear that covers the hand and wrist.\"?",
       "options": [
         "fashion",
@@ -470,6 +499,7 @@
     {
       "id": "child-8c34a7ae",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"a thin, flat, rectangular piece made of fired clay, rubber, or linoleum that is commonly used to cover surfaces, such as floors and walls\"?",
       "options": [
         "tile",
@@ -486,6 +516,7 @@
     {
       "id": "child-7c1d2c5b",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"a precious gemstone that has been cut and polished to enhance its brilliance and value\"?",
       "options": [
         "animal",
@@ -502,6 +533,7 @@
     {
       "id": "child-866006c6",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"the institution and conduct of legal proceedings against someone who has been accused of a crime\"?",
       "options": [
         "limitation",
@@ -518,6 +550,7 @@
     {
       "id": "child-663890e9",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"a chance game where players buy or are given tickets and the winners are selected at random\"?",
       "options": [
         "assumption",
@@ -534,6 +567,7 @@
     {
       "id": "child-f6fecf43",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"to express dissatisfaction, annoyance, or unhappiness about something\"?",
       "options": [
         "complain",
@@ -550,6 +584,7 @@
     {
       "id": "child-2148114b",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"having the necessary means, skill, know-how, or authority to do something, and thereby being capable of accomplishing it.\"?",
       "options": [
         "able",
@@ -566,6 +601,7 @@
     {
       "id": "child-6700fddc",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"transversely\"?",
       "options": [
         "simply",
@@ -582,6 +618,7 @@
     {
       "id": "child-7430f4a6",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"Behave or conduct oneself in a particular manner.\"?",
       "options": [
         "act",
@@ -598,6 +635,7 @@
     {
       "id": "child-4bf460f5",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"something done, usually as opposed to something said\"?",
       "options": [
         "number",
@@ -614,6 +652,7 @@
     {
       "id": "child-4e119de7",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"to make something larger or increase in quantity, size, or scope by joining or combining with others\"?",
       "options": [
         "add",
@@ -630,6 +669,7 @@
     {
       "id": "child-f75fc572",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"feeling fear or anxiety\"?",
       "options": [
         "absent",
@@ -646,6 +686,7 @@
     {
       "id": "child-e23a90b7",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"the time of day between noon and evening\"?",
       "options": [
         "afternoon",
@@ -662,6 +703,7 @@
     {
       "id": "child-c7f50dae",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"one more time or anew; in addition\"?",
       "options": [
         "catch",
@@ -678,6 +720,7 @@
     {
       "id": "child-3b60cd16",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"a mixture of gases, including oxygen, that is essential for breathing; the invisible substance that surrounds the Earth and has weight and volume\"?",
       "options": [
         "sir",
@@ -694,6 +737,7 @@
     {
       "id": "child-9095d69f",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"a place where airplanes land and take off, with buildings for passengers and cargo\"?",
       "options": [
         "airport",
@@ -710,6 +754,7 @@
     {
       "id": "child-6c9de2e7",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"to the full extent or completely; wholly\"?",
       "options": [
         "cry",
@@ -726,6 +771,7 @@
     {
       "id": "child-c21c60a1",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"in, toward, or following the length or direction of something\"?",
       "options": [
         "offer",
@@ -742,6 +788,7 @@
     {
       "id": "child-f030a728",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"before a specified or implied time has occurred or passed\"?",
       "options": [
         "survive",
@@ -758,6 +805,7 @@
     {
       "id": "child-0a7cd68d",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"in addition to what has already been mentioned\"?",
       "options": [
         "burn",
@@ -774,6 +822,7 @@
     {
       "id": "child-d9f4fe07",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"despite the fact that or despite being\"?",
       "options": [
         "where",
@@ -790,6 +839,7 @@
     {
       "id": "child-30cdc316",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"Used to join two words, phrases, or parts of sentences, indicating addition or similarity.\"?",
       "options": [
         "as",
@@ -806,6 +856,7 @@
     {
       "id": "child-b2f9f8ca",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"feeling or showing anger\"?",
       "options": [
         "absent",
@@ -822,6 +873,7 @@
     {
       "id": "child-8cd0f11d",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"a living organism that feeds on organic matter, typically having specialized sense organs and nervous system and able to respond rapidly to stimuli.\"?",
       "options": [
         "market",
@@ -838,6 +890,7 @@
     {
       "id": "child-803ae4cb",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"some other; different\"?",
       "options": [
         "under",
@@ -854,6 +907,7 @@
     {
       "id": "child-1e2b0539",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"a statement made in reply to a question, request, criticism or accusation, whether spoken or written.\"?",
       "options": [
         "choice",
@@ -870,6 +924,7 @@
     {
       "id": "child-e9fd57bc",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"a small insect that lives in large organized colonies; the fertile females are the queens and have wings during breeding season, while the wingless, sterile females are the workers\"?",
       "options": [
         "dry",
@@ -886,6 +941,7 @@
     {
       "id": "child-99634faf",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"without limitation or restriction; unconfined\"?",
       "options": [
         "absent",
@@ -902,6 +958,7 @@
     {
       "id": "child-09249e83",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"refers to any event, act, or object, or (especially in negative statements or questions) something\"?",
       "options": [
         "gardener",
@@ -918,6 +975,7 @@
     {
       "id": "child-663b65e5",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"a set of rooms for someone to live in on one level of a building with other similar sets of rooms, often rented\"?",
       "options": [
         "statement",
@@ -934,6 +992,7 @@
     {
       "id": "child-aa989f14",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"come into sight or view\"?",
       "options": [
         "phrase",
@@ -950,6 +1009,7 @@
     {
       "id": "child-ae07b9e5",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"A widely cultivated tree of Eurasian origin, grown in many varieties for its firm, rounded edible fruits.\"?",
       "options": [
         "match",
@@ -966,6 +1026,7 @@
     {
       "id": "child-01cd89e1",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"a part or section of a structure that has a distinct characteristic or function\"?",
       "options": [
         "kite",
@@ -982,6 +1043,7 @@
     {
       "id": "child-00321b05",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"the creation of beautiful or significant things\"?",
       "options": [
         "fry",
@@ -998,6 +1060,7 @@
     {
       "id": "child-5bf377da",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"set to work upon; turn one’s energies vigorously to a task\"?",
       "options": [
         "bother",
@@ -1014,6 +1077,7 @@
     {
       "id": "child-8774e89d",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"the sister of your father or mother; the wife of your mom’s or dad’s sibling\"?",
       "options": [
         "aunt",
@@ -1030,6 +1094,7 @@
     {
       "id": "child-c5e888f0",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"at a distance in space or time\"?",
       "options": [
         "away",
@@ -1046,6 +1111,7 @@
     {
       "id": "child-2aca128f",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"the posterior part of a human or animal body from the neck to the end of the spine\"?",
       "options": [
         "goat",
@@ -1062,6 +1128,7 @@
     {
       "id": "child-4dc3357e",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"an object with a spherical shape, typically used in games or as a plaything.\"?",
       "options": [
         "seat",
@@ -1078,6 +1145,7 @@
     {
       "id": "child-72e9ed82",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"a restraint put around something to hold it together\"?",
       "options": [
         "ship",
@@ -1094,6 +1162,7 @@
     {
       "id": "child-b78b575f",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"a game played by two teams of five players who score points by throwing the ball through a net that hangs from a metal ring\"?",
       "options": [
         "basketball",
@@ -1110,6 +1179,7 @@
     {
       "id": "child-32dd2ea8",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"a club used for hitting a ball in various games, such as baseball and cricket\"?",
       "options": [
         "bat",
@@ -1126,6 +1196,7 @@
     {
       "id": "child-2717e1fb",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"A town in southwestern England, known for its hot springs and Roman history.\"?",
       "options": [
         "rest",
@@ -1142,6 +1213,7 @@
     {
       "id": "child-7f89d89a",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"a room or building equipped with one or more toilets\"?",
       "options": [
         "instance",
@@ -1158,6 +1230,7 @@
     {
       "id": "child-ef346e3b",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"Exist or have a quality of being; (copula, used with an adjective or a predicate noun)\"?",
       "options": [
         "do",
@@ -1174,6 +1247,7 @@
     {
       "id": "child-aaa87a3f",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"a type of plant with edible seeds and pods\"?",
       "options": [
         "fire",
@@ -1190,6 +1264,7 @@
     {
       "id": "child-9d205481",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"be in a certain manner\"?",
       "options": [
         "gain",
@@ -1206,6 +1281,7 @@
     {
       "id": "child-24904338",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"delighting the senses or exciting intellectual or emotional admiration\"?",
       "options": [
         "several",
@@ -1222,6 +1298,7 @@
     {
       "id": "child-73229d84",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"a piece of furniture designed for sleeping or resting upon\"?",
       "options": [
         "bed",
@@ -1238,6 +1315,7 @@
     {
       "id": "child-5caba2b3",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"a room primarily used for sleeping\"?",
       "options": [
         "bedroom",
@@ -1254,6 +1332,7 @@
     {
       "id": "child-34f18731",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"a flying insect with a striped body that makes honey and can sting\"?",
       "options": [
         "net",
@@ -1270,6 +1349,7 @@
     {
       "id": "child-bee16ecf",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"to complain\"?",
       "options": [
         "soon",
@@ -1286,6 +1366,7 @@
     {
       "id": "child-bad46c79",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"toward or in the rear\"?",
       "options": [
         "follow",
@@ -1302,6 +1383,7 @@
     {
       "id": "child-df977760",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"a percussion instrument made of tuned metal bells that are struck with a hammer\"?",
       "options": [
         "mood",
@@ -1318,6 +1400,7 @@
     {
       "id": "child-5351ee6c",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"be rightly classified in a class or category\"?",
       "options": [
         "belong",
@@ -1334,6 +1417,7 @@
     {
       "id": "child-ff86fce9",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"a band worn around the waist to hold clothing in place or for decoration\"?",
       "options": [
         "boil",
@@ -1350,6 +1434,7 @@
     {
       "id": "child-bba6b3f8",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"at the side of; next to\"?",
       "options": [
         "without",
@@ -1366,6 +1451,7 @@
     {
       "id": "child-160e234e",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"Having the most positive qualities; superlative degree of ’good’.\"?",
       "options": [
         "beat",
@@ -1382,6 +1468,7 @@
     {
       "id": "child-b21de591",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"larger than usual in size or quantity; above average in size or number or magnitude or extent\"?",
       "options": [
         "very",
@@ -1398,6 +1485,7 @@
     {
       "id": "child-07f25f50",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"to grip, cut off, or tear with the teeth or jaws\"?",
       "options": [
         "frog",
@@ -1414,6 +1502,7 @@
     {
       "id": "child-aa6da1c4",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"total absence of light\"?",
       "options": [
         "style",
@@ -1430,6 +1519,7 @@
     {
       "id": "child-c4cef664",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"a solid piece of something (usually having flat rectangular sides)\"?",
       "options": [
         "block",
@@ -1446,6 +1536,7 @@
     {
       "id": "child-7c234172",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"the color of the sky on a clear day\"?",
       "options": [
         "mile",
@@ -1462,6 +1553,7 @@
     {
       "id": "child-dc3e53c9",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"a small vessel for travel on water\"?",
       "options": [
         "boat",
@@ -1478,6 +1570,7 @@
     {
       "id": "child-c5c65afe",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"the entire structure of an organism (an animal, plant, or human being)\"?",
       "options": [
         "cold",
@@ -1494,6 +1587,7 @@
     {
       "id": "child-7dc2f63f",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"feeling tired and impatient because you have nothing interesting to do\"?",
       "options": [
         "bored",
@@ -1510,6 +1604,7 @@
     {
       "id": "child-4a283096",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"dull and not interesting; causing tedium\"?",
       "options": [
         "absent",
@@ -1526,6 +1621,7 @@
     {
       "id": "child-e15f133b",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"brought into existence, existing as a result of birth\"?",
       "options": [
         "very",
@@ -1542,6 +1638,7 @@
     {
       "id": "child-c939e469",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"used to refer to two people or things together.\"?",
       "options": [
         "seat",
@@ -1558,6 +1655,7 @@
     {
       "id": "child-e08dd0e6",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"to put liquid into bottles\"?",
       "options": [
         "across",
@@ -1574,6 +1672,7 @@
     {
       "id": "child-fd9fa56e",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"the fleshy part of the human body that you sit on\"?",
       "options": [
         "period",
@@ -1590,6 +1689,7 @@
     {
       "id": "child-9ef6a964",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"a container, usually round and open at the top, used for holding food or liquids\"?",
       "options": [
         "bowl",
@@ -1606,6 +1706,7 @@
     {
       "id": "child-b118af97",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"a container with a typically rectangular shape and may have a lid\"?",
       "options": [
         "lip",
@@ -1622,6 +1723,7 @@
     {
       "id": "child-7c4913ae",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"a male human offspring\"?",
       "options": [
         "can",
@@ -1638,6 +1740,7 @@
     {
       "id": "child-51281f06",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"having or showing courage; able to face and deal with danger or fear without backing down\"?",
       "options": [
         "brave",
@@ -1654,6 +1757,7 @@
     {
       "id": "child-e795d6fb",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"a type of food made from dough of flour or meal which is mixed with yeast or baking powder, and then baked\"?",
       "options": [
         "stamp",
@@ -1670,6 +1774,7 @@
     {
       "id": "child-2ae64e3d",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"cause something to separate into pieces or fragments, usually by force\"?",
       "options": [
         "equal",
@@ -1686,6 +1791,7 @@
     {
       "id": "child-27989b92",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"A meal typically eaten in the morning as the first meal of the day.\"?",
       "options": [
         "breakfast",
@@ -1702,6 +1808,7 @@
     {
       "id": "child-e50641c4",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"a structure that allows people or vehicles to cross an obstacle such as a river, canal, or railway\"?",
       "options": [
         "mother",
@@ -1718,6 +1825,7 @@
     {
       "id": "child-448c7d51",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"emitting or reflecting a lot of light\"?",
       "options": [
         "bright",
@@ -1734,6 +1842,7 @@
     {
       "id": "child-37959338",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"a male sibling\"?",
       "options": [
         "current",
@@ -1750,6 +1859,7 @@
     {
       "id": "child-b19cf3a6",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"make something by combining materials and parts\"?",
       "options": [
         "argue",
@@ -1766,6 +1876,7 @@
     {
       "id": "child-b18fb08b",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"a vehicle used for public transport that carries many passengers.\"?",
       "options": [
         "man",
@@ -1782,6 +1893,7 @@
     {
       "id": "child-bec4f60b",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"the primary activity one engages in to earn a living\"?",
       "options": [
         "raincoat",
@@ -1798,6 +1910,7 @@
     {
       "id": "child-27363616",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"actively or fully engaged in a particular activity\"?",
       "options": [
         "beat",
@@ -1814,6 +1927,7 @@
     {
       "id": "child-f5ed287d",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"an edible emulsion of fat globules made by churning milk or cream and used for cooking or as a spread on bread\"?",
       "options": [
         "entire",
@@ -1830,6 +1944,7 @@
     {
       "id": "child-244771fc",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"a round fastener, typically made of plastic, metal, or shell, sewn to shirts, coats, etc. and pushed through buttonholes to fasten the garment\"?",
       "options": [
         "jacket",
@@ -1846,6 +1961,7 @@
     {
       "id": "child-5fc6a1af",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"a sweet baked good made from a mixture of flour, sugar, eggs, and fat, often with added flavorings and toppings\"?",
       "options": [
         "cake",
@@ -1862,6 +1978,7 @@
     {
       "id": "child-f55b41bf",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"to utter a sudden loud cry\"?",
       "options": [
         "fill",
@@ -1878,6 +1995,7 @@
     {
       "id": "child-7d14a26d",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"a site where care and activities are provided for children during the summer months\"?",
       "options": [
         "pack",
@@ -1894,6 +2012,7 @@
     {
       "id": "child-d76fd923",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"a limit or restriction on something, such as a price or amount\"?",
       "options": [
         "pin",
@@ -1910,6 +2029,7 @@
     {
       "id": "child-ca81f6ce",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which word means: \"a rectangular piece of stiff paper used for writing messages or giving greetings, often decorated with pictures or printed designs\"?",
       "options": [
         "card",

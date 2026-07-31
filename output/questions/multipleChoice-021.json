@@ -6,6 +6,7 @@
     {
       "id": "child-5e81203c",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "The commission was formed to investigate the allegations of fraud in the election.",
       "options": [
         "donor",
@@ -22,6 +23,7 @@
     {
       "id": "child-e9b0d520",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "The luxury sports car was too expensive for the average person to afford.",
       "options": [
         "beat",
@@ -38,6 +40,7 @@
     {
       "id": "child-4d218595",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "I would advise you to bring an umbrella, as it looks like it's going to rain today.",
       "options": [
         "fright",
@@ -54,6 +57,7 @@
     {
       "id": "child-9532d9e1",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "After finishing his work, John decided to leave the office and go home.",
       "options": [
         "exit",
@@ -70,6 +74,7 @@
     {
       "id": "child-a1941854",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Last weekend, I went to the comedy club and saw a hilarious comic who had the crowd laughing non-stop.",
       "options": [
         "audience",
@@ -86,6 +91,7 @@
     {
       "id": "child-886d7ed9",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "The board of directors held a session to discuss the budget for the upcoming project.",
       "options": [
         "meeting",
@@ -102,6 +108,7 @@
     {
       "id": "child-1e97c7b6",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "The condition of the orphanage was ridiculous, with broken furniture and no proper sanitation facilities.",
       "options": [
         "invaluable",
@@ -118,6 +125,7 @@
     {
       "id": "child-2ee5aee5",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "She stood nervously in front of the grand entrance of the palace, waiting to be welcomed inside.",
       "options": [
         "central",
@@ -134,6 +142,7 @@
     {
       "id": "child-181d2b67",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "The hotel staff welcomed the guest and showed them to their room.",
       "options": [
         "visitor",
@@ -150,6 +159,7 @@
     {
       "id": "child-6e3786b9",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "During the group discussion, we decided to explore the topic of climate change and its impact on the economy.",
       "options": [
         "criticize",
@@ -166,6 +176,7 @@
     {
       "id": "child-5ff044ed",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Dealing with a nasty customer complaint can be challenging, especially when there are multiple issues to address.",
       "options": [
         "instinct",
@@ -182,6 +193,7 @@
     {
       "id": "child-ade859a1",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "It is not a viable option to launch a new product without sufficient market research and financial backing.",
       "options": [
         "feasible",
@@ -198,6 +210,7 @@
     {
       "id": "child-abeb5a98",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Sarah decided to organize her closet by sorting her clothes into different categories and arranging them neatly on hangers.",
       "options": [
         "pursue",
@@ -214,6 +227,7 @@
     {
       "id": "child-e7f8ddec",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "While hiking in the mountains, an unexpected thunderstorm posed a serious threat to their safety",
       "options": [
         "autograph",
@@ -230,6 +244,7 @@
     {
       "id": "child-fbfb5dfb",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "After failing the exam, John drowned himself in misery.",
       "options": [
         "friendship",
@@ -246,6 +261,7 @@
     {
       "id": "child-a9e65c71",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "The haunted house was filled with horrible sights and eerie sounds, sending chills down our spines.",
       "options": [
         "intelligent",
@@ -262,6 +278,7 @@
     {
       "id": "child-2862aa17",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "I love spending time with my family on weekends, we always have a great time together.",
       "options": [
         "join",
@@ -278,6 +295,7 @@
     {
       "id": "child-10aa6ead",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "The tight deadline imposed a constraint on the project timeline, forcing the team to work more efficiently.",
       "options": [
         "superiority",
@@ -294,6 +312,7 @@
     {
       "id": "child-6badc126",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "The doctor examined the cut and determined it was only superficial, requiring no stitches.",
       "options": [
         "intact",
@@ -310,6 +329,7 @@
     {
       "id": "child-1c922b17",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "The first edition of the novel contained numerous errors, while the revised edition had been thoroughly proofread.",
       "options": [
         "version",
@@ -326,6 +346,7 @@
     {
       "id": "child-c619119c",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "The gardener decided to cultivate the tomatoes by providing them with the right amount of water and sunlight.",
       "options": [
         "foster",
@@ -342,6 +363,7 @@
     {
       "id": "child-ce9b43fe",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "As the fireworks lit up the night sky, everyone gathered on the beach to gaze in awe and wonder.",
       "options": [
         "mend",
@@ -358,6 +380,7 @@
     {
       "id": "child-c4e27a09",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "The assassin carefully planned his actions and managed to kill his target without being detected.",
       "options": [
         "yet",
@@ -374,6 +397,7 @@
     {
       "id": "child-59db7d86",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "John decided to participate in the marathon to challenge himself and support a charitable cause",
       "options": [
         "mirror",
@@ -390,6 +414,7 @@
     {
       "id": "child-a1dc89c1",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "The drought-tolerant plants in my garden continue to thrive even during extended periods of little rainfall.",
       "options": [
         "ignorant",
@@ -406,6 +431,7 @@
     {
       "id": "child-f21a9eb2",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "The new community center provides a space for the residents to come together and socialize.",
       "options": [
         "neighborhood",
@@ -422,6 +448,7 @@
     {
       "id": "child-9063cdb3",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "The decrease in funding led to a reduction in staff numbers.",
       "options": [
         "reduction",
@@ -438,6 +465,7 @@
     {
       "id": "child-5aeacce1",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "The dentist hit a nerve while drilling my tooth, and it was so painful that I threw up.",
       "options": [
         "sore",
@@ -454,6 +482,7 @@
     {
       "id": "child-239382d1",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "After several rounds of negotiation, an agreement was finally reached between the two parties.",
       "options": [
         "raincoat",
@@ -470,6 +499,7 @@
     {
       "id": "child-e5e65c18",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "A good education is essential for a successful career.",
       "options": [
         "basement",
@@ -486,6 +516,7 @@
     {
       "id": "child-7a9ea871",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "The talented musician composed a beautiful symphony that was performed by a renowned orchestra.",
       "options": [
         "litter",
@@ -502,6 +533,7 @@
     {
       "id": "child-657f7d3e",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Water is a necessity for survival",
       "options": [
         "harm",
@@ -518,6 +550,7 @@
     {
       "id": "child-7b1529c2",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Despite their differences and intense dislike for each other, they managed to work together on the project.",
       "options": [
         "notwithstanding",
@@ -534,6 +567,7 @@
     {
       "id": "child-d52d8fa9",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "There were numerous balloons floating in the sky during the festival.",
       "options": [
         "broke",
@@ -550,6 +584,7 @@
     {
       "id": "child-65a607ba",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "The defendant had no choice but to plead for mercy in front of the judge.",
       "options": [
         "twig",
@@ -566,6 +601,7 @@
     {
       "id": "child-e24a30df",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "My mom cooked fowl for thanksgiving dinner.",
       "options": [
         "bird",
@@ -582,6 +618,7 @@
     {
       "id": "child-cc8c5930",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "I can afford to buy a new car because I received a bonus at work and saved some money previously.",
       "options": [
         "manage",
@@ -598,6 +635,7 @@
     {
       "id": "child-4fc9b1b2",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "I am certain that I locked the front door before leaving the house.",
       "options": [
         "interested",
@@ -614,6 +652,7 @@
     {
       "id": "child-2b4d7274",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "In order to win the championship, the two teams will compete against each other in a thrilling match.",
       "options": [
         "stare",
@@ -630,6 +669,7 @@
     {
       "id": "child-726d9c71",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "John cast his vote for his favorite candidate running for mayor in the local election.",
       "options": [
         "mostly",
@@ -646,6 +686,7 @@
     {
       "id": "child-190e7041",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Maybe we'll go to the beach if the weather is nice.",
       "options": [
         "joke",
@@ -662,6 +703,7 @@
     {
       "id": "child-1a0ed5df",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "We had roasted chicken for dinner last night, the meat was so tender because it was the flesh of a bird.",
       "options": [
         "pattern",
@@ -678,6 +720,7 @@
     {
       "id": "child-935de9b5",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "I can lend you my car for the weekend, but please fill up the gas tank before returning it.",
       "options": [
         "ground",
@@ -694,6 +737,7 @@
     {
       "id": "child-844732eb",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "The CEO decided to delegate the management of the project to her trusted employee while she focused on other important tasks.",
       "options": [
         "digest",
@@ -710,6 +754,7 @@
     {
       "id": "child-3910c5ed",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "As the elected president of the club, it is your duty to chair the meeting.",
       "options": [
         "hear",
@@ -726,6 +771,7 @@
     {
       "id": "child-9c97a417",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "My uncle is a successful merchant who imports goods from China and sells them in his store.",
       "options": [
         "perspective",
@@ -742,6 +788,7 @@
     {
       "id": "child-ac2983ea",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Don’t be an idiot and touch the hot stove without using an oven mitt.",
       "options": [
         "goalkeeper",
@@ -758,6 +805,7 @@
     {
       "id": "child-532d7adb",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "The cupcakes she made for the party were absolutely delightful; everyone loved them.",
       "options": [
         "mere",
@@ -774,6 +822,7 @@
     {
       "id": "child-1a32c665",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "I always keep a rubber on hand to erase any mistakes I make when writing or drawing.",
       "options": [
         "engine",
@@ -790,6 +839,7 @@
     {
       "id": "child-eea84dba",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "After hours of debate, a consensus was reached among the board members on the new company policy.",
       "options": [
         "flunk",
@@ -806,6 +856,7 @@
     {
       "id": "child-fd5f94c0",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Making a mistake while performing a surgery can be disastrous and cost someone their life.",
       "options": [
         "eve",
@@ -822,6 +873,7 @@
     {
       "id": "child-d9bd8f16",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Adding a fresh coat of paint can enhance the appearance of a room.",
       "options": [
         "coffin",
@@ -838,6 +890,7 @@
     {
       "id": "child-37920022",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "The sudden flash of lightning outside the window startled her and illuminated the entire room for a split second.",
       "options": [
         "environment",
@@ -854,6 +907,7 @@
     {
       "id": "child-ed686ad6",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "During the family reunion, all of my kin gathered together to catch up and celebrate our shared heritage.",
       "options": [
         "franchise",
@@ -870,6 +924,7 @@
     {
       "id": "child-e9658462",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which sentence uses the word \"affect\" correctly?",
       "options": [
         "Doctors study the affect of sleep on memory.",
@@ -886,6 +941,7 @@
     {
       "id": "child-a4c1e86d",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which sentence uses the word \"effect\" correctly?",
       "options": [
         "Staying up late can effect your mood the next day.",
@@ -902,6 +958,7 @@
     {
       "id": "child-3561dd11",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which sentence uses the word \"raise\" correctly?",
       "options": [
         "Please raise your hand if you have a question.",
@@ -918,6 +975,7 @@
     {
       "id": "child-4e98e158",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which sentence uses the word \"rise\" correctly?",
       "options": [
         "Could you rise the window a little?",
@@ -934,6 +992,7 @@
     {
       "id": "child-7cd542c4",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which sentence uses the word \"borrow\" correctly?",
       "options": [
         "Could you borrow me your umbrella for a moment?",
@@ -950,6 +1009,7 @@
     {
       "id": "child-7555c329",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which sentence uses the word \"lend\" correctly?",
       "options": [
         "Can you lend a book from the school library?",
@@ -966,6 +1026,7 @@
     {
       "id": "child-f035a3ca",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which sentence uses the word \"advice\" correctly?",
       "options": [
         "Could you advice me on which course to take?",
@@ -982,6 +1043,7 @@
     {
       "id": "child-4875f66a",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which sentence uses the word \"advise\" correctly?",
       "options": [
         "He gave me good advise about saving money.",
@@ -998,6 +1060,7 @@
     {
       "id": "child-cc71035e",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which sentence uses the word \"lie\" correctly?",
       "options": [
         "After the long hike, I just want to lie on the grass.",
@@ -1014,6 +1077,7 @@
     {
       "id": "child-a69c55b2",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which sentence uses the word \"lay\" correctly?",
       "options": [
         "Please lay your coat on the chair by the door.",
@@ -1030,6 +1094,7 @@
     {
       "id": "child-53304d91",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which sentence uses the word \"remind\" correctly?",
       "options": [
         "I can't remind where I put my keys.",
@@ -1046,6 +1111,7 @@
     {
       "id": "child-c0ab9fa6",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which sentence uses the word \"win\" correctly?",
       "options": [
         "They finally won the other school's debate team.",
@@ -1062,6 +1128,7 @@
     {
       "id": "child-d54eb966",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which sentence uses the word \"economic\" correctly?",
       "options": [
         "This small car is very economic on long trips.",
@@ -1078,6 +1145,7 @@
     {
       "id": "child-277bd11c",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which sentence uses the word \"sensible\" correctly?",
       "options": [
         "The new microphone is extremely sensible to sound.",
@@ -1094,6 +1162,7 @@
     {
       "id": "child-cc5d9f94",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which sentence uses the word \"arrive\" correctly?",
       "options": [
         "The train will arrive at the station at noon.",
@@ -1110,6 +1179,7 @@
     {
       "id": "child-f770e5d8",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which sentence uses the word \"discuss\" correctly?",
       "options": [
         "Can we discuss on the new schedule tomorrow?",
@@ -1126,6 +1196,7 @@
     {
       "id": "child-b04d6b16",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which sentence uses the word \"succeed\" correctly?",
       "options": [
         "Hard work helped her succeed in her new business.",
@@ -1142,6 +1213,7 @@
     {
       "id": "child-63806ed5",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which sentence uses the word \"comfortable\" correctly?",
       "options": [
         "This old chair is not very comfort to sit in.",
@@ -1158,6 +1230,7 @@
     {
       "id": "child-5e0e211f",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which sentence uses the word \"remind\" correctly?",
       "options": [
         "Can you remind what time the show starts?",
@@ -1174,6 +1247,7 @@
     {
       "id": "child-6634e174",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which sentence uses the word \"considerate\" correctly?",
       "options": [
         "We saved a considerate amount of money this year.",
@@ -1190,6 +1264,7 @@
     {
       "id": "child-6565be90",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which sentence uses the word \"affect\" correctly?",
       "options": [
         "Cold weather can affect how quickly the plants grow.",
@@ -1206,6 +1281,7 @@
     {
       "id": "child-bff42a45",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which sentence uses the word \"effect\" correctly?",
       "options": [
         "Loud music can effect your ability to concentrate.",
@@ -1222,6 +1298,7 @@
     {
       "id": "child-4196bfc8",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which sentence uses the word \"advice\" correctly?",
       "options": [
         "Could you advice me on how to improve my essay?",
@@ -1238,6 +1315,7 @@
     {
       "id": "child-80915bba",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which sentence uses the word \"advise\" correctly?",
       "options": [
         "My coach advised me to stretch before every practice.",
@@ -1254,6 +1332,7 @@
     {
       "id": "child-b57d08c8",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which sentence uses the word \"accept\" correctly?",
       "options": [
         "Everyone came to the picnic accept my older sister.",
@@ -1270,6 +1349,7 @@
     {
       "id": "child-c110d4aa",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which sentence uses the word \"except\" correctly?",
       "options": [
         "I hope the teacher will except my late homework.",
@@ -1286,6 +1366,7 @@
     {
       "id": "child-808e586c",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which sentence uses the word \"lie\" correctly?",
       "options": [
         "Please lie the towel on the warm sand for me.",
@@ -1302,6 +1383,7 @@
     {
       "id": "child-13205848",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which sentence uses the word \"lay\" correctly?",
       "options": [
         "After the long walk, I just want to lay on the grass.",
@@ -1318,6 +1400,7 @@
     {
       "id": "child-9de48843",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which sentence uses the word \"rise\" correctly?",
       "options": [
         "Could you rise the flag a little higher, please?",
@@ -1334,6 +1417,7 @@
     {
       "id": "child-6e2387f7",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which sentence uses the word \"raise\" correctly?",
       "options": [
         "The full moon will raise over the hills tonight.",
@@ -1350,6 +1434,7 @@
     {
       "id": "child-f37365d1",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which sentence uses the word \"borrow\" correctly?",
       "options": [
         "Could you borrow me a pencil until the end of class?",
@@ -1366,6 +1451,7 @@
     {
       "id": "child-8afd74c0",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which sentence uses the word \"lend\" correctly?",
       "options": [
         "Can I lend your umbrella for a moment, please?",
@@ -1382,6 +1468,7 @@
     {
       "id": "child-9b3ed023",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which sentence uses the word \"less\" correctly?",
       "options": [
         "There were less chairs in the hall than we expected.",
@@ -1398,6 +1485,7 @@
     {
       "id": "child-2e5da846",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which sentence uses the word \"remind\" correctly?",
       "options": [
         "I can't remind where I left my notebook.",
@@ -1414,6 +1502,7 @@
     {
       "id": "child-2f111ae6",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which sentence uses the word \"win\" correctly?",
       "options": [
         "She is sure she can win her cousin at chess.",
@@ -1430,6 +1519,7 @@
     {
       "id": "child-23a64b6d",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which sentence uses the word \"suggest\" correctly?",
       "options": [
         "My teacher suggested that I read more books over the summer.",
@@ -1446,6 +1536,7 @@
     {
       "id": "child-8b91c21d",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which sentence uses the word \"mention\" correctly?",
       "options": [
         "She mentioned to me about the new schedule yesterday.",
@@ -1462,6 +1553,7 @@
     {
       "id": "child-862fbc57",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which sentence uses the word \"discuss\" correctly?",
       "options": [
         "We discussed about the plan for the school festival.",
@@ -1478,6 +1570,7 @@
     {
       "id": "child-8f303743",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which sentence uses the word \"marry\" correctly?",
       "options": [
         "My aunt married with a kind doctor last spring.",
@@ -1494,6 +1587,7 @@
     {
       "id": "child-39d5bfc8",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which sentence uses the word \"reach\" correctly?",
       "options": [
         "We reached at the top of the hill before noon.",
@@ -1510,6 +1604,7 @@
     {
       "id": "child-b44dc311",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which sentence uses the word \"attend\" correctly?",
       "options": [
         "Many students attended the science lecture this morning.",
@@ -1526,6 +1621,7 @@
     {
       "id": "child-b78ec535",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which sentence uses the word \"comprise\" correctly?",
       "options": [
         "The committee is comprised of twelve members.",
@@ -1542,6 +1638,7 @@
     {
       "id": "child-2c14eeb7",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which sentence uses the word \"consist\" correctly?",
       "options": [
         "The team is consisted of five players.",
@@ -1558,6 +1655,7 @@
     {
       "id": "child-dc07c51f",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which sentence uses the word \"lay\" correctly?",
       "options": [
         "Please lay on the sofa if you feel tired.",
@@ -1574,6 +1672,7 @@
     {
       "id": "child-ce9f0b9a",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which sentence uses the word \"lie\" correctly?",
       "options": [
         "The cat likes to lie in the warm sunlight by the window.",
@@ -1590,6 +1689,7 @@
     {
       "id": "child-8553a33f",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which sentence uses the word \"rise\" correctly?",
       "options": [
         "The farmers rise the flag every morning at dawn.",
@@ -1606,6 +1706,7 @@
     {
       "id": "child-6910271d",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which sentence uses the word \"arise\" correctly?",
       "options": [
         "A new problem arose during the group project yesterday.",
@@ -1622,6 +1723,7 @@
     {
       "id": "child-3dc342e2",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which sentence uses the word \"deny\" correctly?",
       "options": [
         "He denied to take the last cookie from the jar.",
@@ -1638,6 +1740,7 @@
     {
       "id": "child-f4b89ef0",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which sentence uses the word \"avoid\" correctly?",
       "options": [
         "You should avoid to eat too much before bedtime.",
@@ -1654,6 +1757,7 @@
     {
       "id": "child-686b4a15",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which sentence uses the word \"prevent\" correctly?",
       "options": [
         "Wearing a coat can prevent you from catching a cold.",
@@ -1670,6 +1774,7 @@
     {
       "id": "child-eee6c460",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which sentence uses the word \"economic\" correctly?",
       "options": [
         "The country's economic growth slowed down last year.",
@@ -1686,6 +1791,7 @@
     {
       "id": "child-e3717043",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which sentence uses the word \"economical\" correctly?",
       "options": [
         "The government announced a new economical policy.",
@@ -1702,6 +1808,7 @@
     {
       "id": "child-aa93e083",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which sentence uses the word \"sensible\" correctly?",
       "options": [
         "My skin is very sensible to sunlight in summer.",
@@ -1718,6 +1825,7 @@
     {
       "id": "child-a9195620",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which sentence uses the word \"sensitive\" correctly?",
       "options": [
         "A good teacher gives sensitive advice that students can follow.",
@@ -1734,6 +1842,7 @@
     {
       "id": "child-fd903e8c",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which sentence uses the word \"considerate\" correctly?",
       "options": [
         "It was considerate of him to carry the heavy bags for his grandmother.",
@@ -1750,6 +1859,7 @@
     {
       "id": "child-2886135e",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which sentence uses the word \"considerable\" correctly?",
       "options": [
         "Thank you for being so considerable to the new students.",
@@ -1766,6 +1876,7 @@
     {
       "id": "child-89e86069",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which sentence uses the word \"respectable\" correctly?",
       "options": [
         "The students were polite and respectable to their teacher.",
@@ -1782,6 +1893,7 @@
     {
       "id": "child-3d38131f",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which sentence uses the word \"respectful\" correctly?",
       "options": [
         "He earns a respectful salary at his new job.",
@@ -1798,6 +1910,7 @@
     {
       "id": "child-0bce2b56",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which sentence uses the word \"successful\" correctly?",
       "options": [
         "The team won three successful games in a row.",
@@ -1814,6 +1927,7 @@
     {
       "id": "child-0e119256",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which sentence uses the word \"successive\" correctly?",
       "options": [
         "She is a successive businesswoman with her own company.",
@@ -1830,6 +1944,7 @@
     {
       "id": "child-009ec1fa",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which sentence uses the word \"historic\" correctly?",
       "options": [
         "The signing of the treaty was a historic moment for the nation.",
@@ -1846,6 +1961,7 @@
     {
       "id": "child-27e24039",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which sentence uses the word \"historical\" correctly?",
       "options": [
         "Winning the gold medal was a historical achievement for her.",
@@ -1862,6 +1978,7 @@
     {
       "id": "child-86196df3",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which sentence uses the word \"childish\" correctly?",
       "options": [
         "Her childish smile made everyone in the room feel warm.",
@@ -1878,6 +1995,7 @@
     {
       "id": "child-4e1a4917",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "Which sentence uses the word \"imaginative\" correctly?",
       "options": [
         "The dragon in the story is only an imaginative creature.",
@@ -1894,6 +2012,7 @@
     {
       "id": "child-3e908222",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "National parks are set up to _____ rare animals from hunters and keep their habitats safe.",
       "options": [
         "protect",
@@ -1910,6 +2029,7 @@
     {
       "id": "child-44bbd196",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Students may _____ up to five books from the school library and return them within two weeks.",
       "options": [
         "borrow",

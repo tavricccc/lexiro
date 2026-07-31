@@ -11,7 +11,7 @@ export function buildQuestionExplainPrompt(
   mode: PracticeMode,
   notAnsweredText: string,
 ) {
-  if (mode === 'quiz') {
+  if (['quiz', 'cloze', 'reading'].includes(mode)) {
     const question = entry.item.question
     if (!question) {
       return prompts.explainSpellingQuestion
@@ -42,7 +42,7 @@ export function buildAllWrongQuestionsPrompt(rows: ResultRow[], mode: PracticeMo
     const record = row.record
     let text = `【第 ${idx + 1} 題】 單字：${entry.item.word}\n`
 
-    if (mode === 'quiz') {
+    if (['quiz', 'cloze', 'reading'].includes(mode)) {
       const q = entry.item.question
       if (!q)
         return text

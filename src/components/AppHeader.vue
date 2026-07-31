@@ -19,25 +19,28 @@ const learningStore = useLearningStore()
 const route = useRoute()
 const { t } = useI18n()
 const { exitCurrentView } = sessionStore
-const { currentSession, currentIndex, totalItems, progressPercent, flashcardIndex } = storeToRefs(sessionStore)
+const { currentSession, currentIndex, totalItems, progressPercent } = storeToRefs(sessionStore)
 const { currentReviewEntry, reviewIndex, reviewTotal, reviewProgress } = storeToRefs(learningStore)
 const { hasSets, sets, totalWordCount, activeSet } = storeToRefs(setsStore)
 const { editActiveSet, deleteActiveSet, openImport } = setsStore
 const { openTransfer } = uiStore
 
 const isHome = computed(() => route.name === 'home')
-const isPractice = computed(() => route.name === 'quiz' || route.name === 'spelling')
-const isFlashcard = computed(() => route.name === 'flashcard')
+const isPractice = computed(() => ['quiz', 'cloze', 'reading', 'spelling'].includes(String(route.name)))
 const isReview = computed(() => route.name === 'review')
-const showSessionProgress = computed(() => ((isPractice.value || isFlashcard.value) && !!currentSession.value) || (isReview.value && !!currentReviewEntry.value))
+const showSessionProgress = computed(() => (isPractice.value && !!currentSession.value) || (isReview.value && !!currentReviewEntry.value))
 
 const practiceLabel = computed(() => {
+  if (currentSession.value?.sourceSetId === 'daily')
+    return t('practice.dailyQuestions')
   if (route.name === 'quiz')
     return t('practice.quiz')
+  if (route.name === 'cloze')
+    return t('practice.fillBlank')
+  if (route.name === 'reading')
+    return t('practice.reading')
   if (route.name === 'spelling')
     return t('practice.spelling')
-  if (route.name === 'flashcard')
-    return t('flashcard.title')
   if (route.name === 'review')
     return t('learning.todayReview')
   return ''
@@ -46,8 +49,6 @@ const practiceLabel = computed(() => {
 const progressIndex = computed(() => {
   if (isReview.value)
     return reviewIndex.value
-  if (isFlashcard.value)
-    return flashcardIndex.value
   return currentIndex.value
 })
 
@@ -84,7 +85,7 @@ const progressValue = computed(() => isReview.value ? reviewProgress.value : pro
             </span>
           </p>
           <p v-else-if="activeSet" class="text-xs text-ink-500 dark:text-ink-400 mt-0.5 truncate font-semibold">
-            {{ activeSet.setName }}<span v-if="isPractice || isFlashcard">{{ $t('appHeader.practiceStats', { label: practiceLabel, count: totalItems }) }}</span>
+            {{ activeSet.setName }}<span v-if="isPractice">{{ $t('appHeader.practiceStats', { label: practiceLabel, count: totalItems }) }}</span>
           </p>
         </div>
       </div>

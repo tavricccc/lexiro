@@ -1,13 +1,11 @@
 <script setup lang="ts">
-import type { VocabSet } from '@/types'
 import { ClipboardPaste, FileQuestion, Plus, Search, Upload } from 'lucide-vue-next'
 import { storeToRefs } from 'pinia'
 import { computed, ref } from 'vue'
+import { useRouter } from 'vue-router'
 import { useLibraryStore } from '@/stores/library'
 import { useSetsStore } from '@/stores/sets'
 import { useUIStore } from '@/stores/ui'
-import SetStudyModal from './dialogs/SetStudyModal.vue'
-import QuestionGenerationPanel from './QuestionGenerationPanel.vue'
 import SetCard from './SetCard.vue'
 import Button from './ui/button/Button.vue'
 import Card from './ui/card/Card.vue'
@@ -17,6 +15,7 @@ import Input from './ui/input/Input.vue'
 const setsStore = useSetsStore()
 const libraryStore = useLibraryStore()
 const uiStore = useUIStore()
+const router = useRouter()
 const { hasSets, sets } = storeToRefs(setsStore)
 const { isSetInProgress, requestDelete, openSetEditor, openImport } = setsStore
 const { openTransfer } = uiStore
@@ -24,8 +23,6 @@ const { openTransfer } = uiStore
 const query = ref('')
 const selectedFolderId = ref<string | null>(null)
 const newFolderName = ref('')
-const studyModalOpen = ref(false)
-const studyModalSet = ref<VocabSet | null>(null)
 
 const filteredSets = computed(() => {
   const q = query.value.trim().toLowerCase()
@@ -44,11 +41,11 @@ function createFolder() {
 }
 
 function handleStudy(setId: string) {
-  const found = sets.value.find(s => s.id === setId)
-  if (found) {
-    studyModalSet.value = found
-    studyModalOpen.value = true
-  }
+  void router.push({ name: 'set-study', params: { setId } })
+}
+
+function moveSet(setId: string, folderId: string) {
+  setsStore.moveSetToFolder(setId, folderId || undefined)
 }
 </script>
 
@@ -120,14 +117,14 @@ function handleStudy(setId: string) {
         </div>
       </Card>
 
-      <QuestionGenerationPanel />
-
       <div v-if="filteredSets.length" class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
         <div v-for="(set, i) in filteredSets" :key="set.id" class="set-card-enter" :style="{ animationDelay: `${Math.min(i, 10) * 40}ms` }">
           <SetCard
             :set="set"
+            :folders="sortedFolders"
             :active="isSetInProgress(set.id)"
             @study="handleStudy"
+            @move="moveSet"
             @delete="requestDelete"
             @edit="openSetEditor('edit', sets.find(item => item.id === $event))"
           />
@@ -137,11 +134,5 @@ function handleStudy(setId: string) {
         {{ $t('home.noSearchResults') }}
       </div>
     </template>
-
-    <SetStudyModal
-      :open="studyModalOpen"
-      :set="studyModalSet"
-      @close="studyModalOpen = false"
-    />
   </section>
 </template>

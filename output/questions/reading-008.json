@@ -13,6 +13,7 @@
         {
           "id": "child-3c454f02",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "When Ana says \"Usually they wear old white shirts, because the colors stain everything,\" who does \"they\" refer to?",
           "options": [
             "The people who throw colored powder to welcome the spring",
@@ -36,6 +37,7 @@
         {
           "id": "child-b61cf580",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the tone of the two friends as they talk about festivals?",
           "options": [
             "Curious and enthusiastic",
@@ -59,6 +61,7 @@
         {
           "id": "child-b19659d7",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"To use most of these services, all you need is a free card,\" what does \"these services\" refer to?",
           "options": [
             "The things a library offers, such as borrowing books, using computers, and joining clubs",
@@ -82,6 +85,7 @@
         {
           "id": "child-d892d48a",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, what can visitors do with the computers that many libraries offer?",
           "options": [
             "Search for jobs or send messages to family",
@@ -105,6 +109,7 @@
         {
           "id": "child-bb3cd72d",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"Farmers use it to help their crops grow,\" what does \"it\" refer to?",
           "options": [
             "The water of the river",
@@ -128,6 +133,7 @@
         {
           "id": "child-2268b946",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, where do most rivers begin?",
           "options": [
             "As tiny streams in the mountains",
@@ -151,6 +157,7 @@
         {
           "id": "child-10ada7f9",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"he was surprised by how big and calm it was,\" what does \"it\" refer to?",
           "options": [
             "The real cow",
@@ -174,6 +181,7 @@
         {
           "id": "child-bfa35a05",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "How does the author portray Kai's experience on the school trip?",
           "options": [
             "Joyful and rewarding",
@@ -197,6 +205,7 @@
         {
           "id": "child-d8e905d2",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"These things can make learning faster and more fun,\" what does \"These things\" refer to?",
           "options": [
             "Looking up a word, watching a lesson again, and sending a quick message to a study partner",
@@ -220,6 +229,7 @@
         {
           "id": "child-0147c9e3",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward smartphones for students?",
           "options": [
             "Balanced and optimistic",
@@ -243,6 +253,7 @@
         {
           "id": "child-1942f5b4",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"However, many of them now say that sorting waste at home is easier than they expected,\" who does \"them\" refer to?",
           "options": [
             "The older people who were worried about the new rules",
@@ -266,6 +277,7 @@
         {
           "id": "child-a062c11e",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, how many colored boxes did the town give to every home?",
           "options": [
             "Three, for paper, glass, and plastic",
@@ -289,6 +301,7 @@
         {
           "id": "child-d58dce33",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "When Nora says \"It makes my heart beat too fast,\" what does \"It\" refer to?",
           "options": [
             "Coffee",
@@ -312,6 +325,7 @@
         {
           "id": "child-a00139ca",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is Nora's attitude toward her brother Sam in the conversation?",
           "options": [
             "Gentle and caring",
@@ -335,6 +349,7 @@
         {
           "id": "child-f7fb1b38",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"These stars look small, but most of them are huge balls of hot, glowing gas,\" what does \"These stars\" refer to?",
           "options": [
             "The thousands of stars we can see on a clear night",
@@ -358,6 +373,7 @@
         {
           "id": "child-ffc82003",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, where does the moon's light really come from?",
           "options": [
             "It is sunlight that bounces off the moon's surface",
@@ -381,6 +397,7 @@
         {
           "id": "child-2840cf68",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"Without these small helpers, many gardens and farms would not grow well,\" what does \"these small helpers\" refer to?",
           "options": [
             "The insects described in the passage",
@@ -404,6 +421,7 @@
         {
           "id": "child-081f122d",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward insects?",
           "options": [
             "Appreciative and positive",
@@ -427,6 +445,7 @@
         {
           "id": "child-c8d3ed1e",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"a friend passed him the baton and shouted his name,\" who does \"him\" refer to?",
           "options": [
             "Kai",
@@ -450,6 +469,7 @@
         {
           "id": "child-c79bcf15",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the overall tone of the story about Kai's sports day?",
           "options": [
             "Encouraging and heartwarming",
@@ -473,6 +493,7 @@
         {
           "id": "child-66bb1e84",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"If every family does a few of these things, the whole town can save a lot,\" what does \"these things\" refer to?",
           "options": [
             "The water-saving actions mentioned, such as taking shorter showers and reusing vegetable water",
@@ -496,6 +517,7 @@
         {
           "id": "child-73ed2e38",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward saving water?",
           "options": [
             "Earnest and encouraging",
@@ -519,6 +541,7 @@
         {
           "id": "child-de9682c8",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"the busy artists\" refer to in the sentence \"A few neighbors helped by bringing water and snacks to the busy artists\"?",
           "options": [
             "The local artists who painted the wall",
@@ -542,6 +565,7 @@
         {
           "id": "child-95046579",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward the wall painting project?",
           "options": [
             "Positive and approving",
@@ -565,6 +589,7 @@
         {
           "id": "child-3f0ee9dc",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In Sam's question \"Is it very expensive to shop there?\", what does \"there\" refer to?",
           "options": [
             "The weekend market",
@@ -588,6 +613,7 @@
         {
           "id": "child-c7f6c657",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to Lin, why should they go to the market early?",
           "options": [
             "Because the best fruit is gone by noon",
@@ -611,6 +637,7 @@
         {
           "id": "child-0a8eac85",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the final sentence, what does \"These four seasons\" refer to?",
           "options": [
             "Spring, summer, autumn, and winter",
@@ -634,6 +661,7 @@
         {
           "id": "child-185b7f32",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, what do farmers do in autumn?",
           "options": [
             "They gather their crops",
@@ -657,6 +685,7 @@
         {
           "id": "child-7954a608",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"this sensor\" refer to in the sentence \"This sensor measures the weak magnetic field that surrounds our planet\"?",
           "options": [
             "A magnetometer",
@@ -680,6 +709,7 @@
         {
           "id": "child-bcaf1112",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward the magnetometer technology?",
           "options": [
             "Appreciative and admiring",
@@ -703,6 +733,7 @@
         {
           "id": "child-0dc34607",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"the route that once exhausted her began to feel easy and even pleasant,\" what does \"the route\" refer to?",
           "options": [
             "The twenty-minute morning walk",
@@ -726,6 +757,7 @@
         {
           "id": "child-2895fe2c",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward Mei's new walking habit?",
           "options": [
             "Encouraging and positive",
@@ -749,6 +781,7 @@
         {
           "id": "child-8b65fef3",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the first sentence, what does \"this habit\" refer to?",
           "options": [
             "Throwing old clothes into the rubbish",
@@ -772,6 +805,7 @@
         {
           "id": "child-ad01496b",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward repairing clothes instead of throwing them away?",
           "options": [
             "Supportive and persuasive",
@@ -795,6 +829,7 @@
         {
           "id": "child-4180ee06",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"the winning sculpture\" refer to?",
           "options": [
             "A giant open book with readable pages",
@@ -818,6 +853,7 @@
         {
           "id": "child-ae0899f1",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward the sand sculpture festival?",
           "options": [
             "Impressed and enthusiastic",
@@ -841,6 +877,7 @@
         {
           "id": "child-25d2e1e2",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"When one of them enters our atmosphere, it heats up and burns brightly,\" what does \"them\" refer to?",
           "options": [
             "Small rocks and dust grains",
@@ -864,6 +901,7 @@
         {
           "id": "child-adca35b8",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, why does patience matter when watching a meteor shower?",
           "options": [
             "Because your eyes need about twenty minutes to adjust to the darkness",
@@ -887,6 +925,7 @@
         {
           "id": "child-408b4e73",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "When Aunt Lin says \"almost every new owner makes that mistake,\" what does \"that mistake\" refer to?",
           "options": [
             "Baking far too much bread",
@@ -910,6 +949,7 @@
         {
           "id": "child-a384332e",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is Aunt Lin's attitude toward Wei as she gives him advice?",
           "options": [
             "Patient and supportive",
@@ -933,6 +973,7 @@
         {
           "id": "child-741b7a49",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"As the blades spin, they turn a machine inside the tower,\" what does \"they\" refer to?",
           "options": [
             "The long blades",
@@ -956,6 +997,7 @@
         {
           "id": "child-3c54c5cb",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, why do some farmers welcome wind turbines?",
           "options": [
             "Because they can rent their land and keep growing crops below the towers",
@@ -979,6 +1021,7 @@
         {
           "id": "child-be7647ea",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "When the instructor reminds Mei \"not to touch the fragile coral,\" what does \"the fragile coral\" refer to?",
           "options": [
             "The coral reef that stretched out before her",
@@ -1002,6 +1045,7 @@
         {
           "id": "child-d0b3a0fd",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward the underwater world Mei sees?",
           "options": [
             "Wonder and admiration",
@@ -1025,6 +1069,7 @@
         {
           "id": "child-b8712ef6",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"Comparing yourself to these perfect images can make you feel worse,\" what does \"these perfect images\" refer to?",
           "options": [
             "The happiest moments of other people's lives shown on social media",
@@ -1048,6 +1093,7 @@
         {
           "id": "child-2530dd89",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's overall attitude toward social media?",
           "options": [
             "Critical but balanced",
@@ -1071,6 +1117,7 @@
         {
           "id": "child-95c28c1c",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"The narrow strip of land\" refer to?",
           "options": [
             "The old railway track",
@@ -1094,6 +1141,7 @@
         {
           "id": "child-96658180",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, why are a few residents not pleased with the plan?",
           "options": [
             "They worry that the construction noise will disturb them for months",
@@ -1117,6 +1165,7 @@
         {
           "id": "child-aa21c89e",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"This is one reason why students who sleep well often remember their lessons better,\" what does \"This\" refer to?",
           "options": [
             "The brain sorting through what you learned and storing useful memories during dream sleep",
@@ -1140,6 +1189,7 @@
         {
           "id": "child-2cceac74",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, how many hours of rest do most teenagers need each night?",
           "options": [
             "Around eight to ten hours",
@@ -1163,6 +1213,7 @@
         {
           "id": "child-828ea2b5",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "When Lily says \"We could really use another pair of hands,\" what does \"another pair of hands\" refer to?",
           "options": [
             "An extra helper such as Ben",
@@ -1186,6 +1237,7 @@
         {
           "id": "child-499e3430",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is Lily's attitude toward Ben as she invites him to volunteer?",
           "options": [
             "Warm and encouraging",
@@ -1209,6 +1261,7 @@
         {
           "id": "child-aef1cfb8",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"a clever trick that costs almost nothing\" refer to?",
           "options": [
             "Planning the journey years in advance",
@@ -1232,6 +1285,7 @@
         {
           "id": "child-5fcbb941",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward space exploration?",
           "options": [
             "Admiring of the effort despite its difficulty",
@@ -1255,6 +1309,7 @@
         {
           "id": "child-f959d9d2",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"A single small act\" in the last sentence refer to?",
           "options": [
             "Mei sitting alone at the back of the classroom",
@@ -1278,6 +1333,7 @@
         {
           "id": "child-a93a6da5",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward Daniel's behavior?",
           "options": [
             "Warmly approving of his kindness",
@@ -1301,6 +1357,7 @@
         {
           "id": "child-d2271c13",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"This view\" in the second sentence refer to?",
           "options": [
             "That a library is a quiet, free space open to everyone",
@@ -1324,6 +1381,7 @@
         {
           "id": "child-e8322bc5",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward public libraries?",
           "options": [
             "Supportive and protective",
@@ -1347,6 +1405,7 @@
         {
           "id": "child-ea0d81f1",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"the change\" in the first sentence refer to?",
           "options": [
             "The opening of the town's first network of protected bicycle lanes",
@@ -1370,6 +1429,7 @@
         {
           "id": "child-7f070af0",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, why do some shop owners worry about the new bicycle lanes?",
           "options": [
             "They think the concrete barriers are ugly",
@@ -1393,6 +1453,7 @@
         {
           "id": "child-3548bd75",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"This rapid expansion\" refer to?",
           "options": [
             "The flash of light reaching our eyes",
@@ -1416,6 +1477,7 @@
         {
           "id": "child-30cd4238",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward understanding how thunder forms?",
           "options": [
             "Reassuring and appreciative of knowledge",
@@ -1439,6 +1501,7 @@
         {
           "id": "child-d4b61298",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "When Mr Owens says \"Every actor feels that fear,\" what does \"that fear\" refer to?",
           "options": [
             "The fear of forgetting one's lines",
@@ -1462,6 +1525,7 @@
         {
           "id": "child-0c39db27",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is Mr Owens's tone toward Lena?",
           "options": [
             "Encouraging and reassuring",
@@ -1485,6 +1549,7 @@
         {
           "id": "child-51b53d1c",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"This kind of light\" refer to?",
           "options": [
             "The natural sunlight outside during the day",
@@ -1508,6 +1573,7 @@
         {
           "id": "child-1e27412f",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, why does blue light make it harder to fall asleep?",
           "options": [
             "It damages the eyes permanently",
@@ -1531,6 +1597,7 @@
         {
           "id": "child-f21fa0fa",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"the green space\" refer to?",
           "options": [
             "The old train station",
@@ -1554,6 +1621,7 @@
         {
           "id": "child-0a427744",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, what was the land used as before it became a park?",
           "options": [
             "A community garden",
@@ -1577,6 +1645,7 @@
         {
           "id": "child-1ccd0821",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"This regular movement from one region to another\" refer to?",
           "options": [
             "The way scientists track animals",
@@ -1600,6 +1669,7 @@
         {
           "id": "child-4944ed8d",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, how do many migrating animals find their way?",
           "options": [
             "By following maps drawn by scientists",
@@ -1623,6 +1693,7 @@
         {
           "id": "child-3f448c0e",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"These materials\" refer to?",
           "options": [
             "Printers and notebooks",
@@ -1646,6 +1717,7 @@
         {
           "id": "child-bc1c2177",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward the invention of paper?",
           "options": [
             "Appreciative of its quiet but profound importance",
@@ -1669,6 +1741,7 @@
         {
           "id": "child-5c765d47",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "When Mei says \"That is exactly the point,\" what does \"That\" refer to?",
           "options": [
             "That Jun has never written a single line of code",
@@ -1692,6 +1765,7 @@
         {
           "id": "child-369e1dd6",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is Mei's attitude toward Jun joining the coding club?",
           "options": [
             "Encouraging and welcoming",
@@ -1715,6 +1789,7 @@
         {
           "id": "child-3f27e828",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"these problems\" refer to?",
           "options": [
             "Crowded roads and harmful gases",
@@ -1738,6 +1813,7 @@
         {
           "id": "child-84216f83",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward investing in public transport?",
           "options": [
             "Strongly in favor",
@@ -1761,6 +1837,7 @@
         {
           "id": "child-bb565555",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In \"that effort helps it stick,\" what does \"that effort\" refer to?",
           "options": [
             "Reading the same page again",
@@ -1784,6 +1861,7 @@
         {
           "id": "child-68214cad",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, why does sleep help with learning?",
           "options": [
             "Because it erases unimportant memories completely",
@@ -1807,6 +1885,7 @@
         {
           "id": "child-ee42b764",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"the animals\" in \"Park workers first noticed the animals at dawn\" refer to?",
           "options": [
             "The dogs kept on a lead by visitors",
@@ -1830,6 +1909,7 @@
         {
           "id": "child-94f73497",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the overall attitude of the city toward the foxes?",
           "options": [
             "Welcoming yet carefully cautious",
@@ -1853,6 +1933,7 @@
         {
           "id": "child-7a35b42b",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"Soraya's quiet lesson\" refer to?",
           "options": [
             "That weaving a blanket is the best way to survive winter",
@@ -1876,6 +1957,7 @@
         {
           "id": "child-df8bd26d",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward Soraya?",
           "options": [
             "Admiring of her patient kindness",
@@ -1899,6 +1981,7 @@
         {
           "id": "child-650d955d",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"both of these problems\" refer to?",
           "options": [
             "High prices and scarce charging points",
@@ -1922,6 +2005,7 @@
         {
           "id": "child-a8eaba9c",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward switching to electric cars?",
           "options": [
             "Supportive and encouraging",
@@ -1945,6 +2029,7 @@
         {
           "id": "child-24bbb178",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In \"Is that why they take easy days?\", who does \"they\" refer to?",
           "options": [
             "The older runners",
@@ -1968,6 +2053,7 @@
         {
           "id": "child-dce67c4c",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to Coach Lin, when do muscles grow stronger?",
           "options": [
             "While you recover",
@@ -1991,6 +2077,7 @@
         {
           "id": "child-01bc8ce2",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"these harsh conditions\" refer to?",
           "options": [
             "The darkness and crushing pressure of the deep sea",
@@ -2014,6 +2101,7 @@
         {
           "id": "child-0a828782",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, why do many deep-sea creatures make their own light?",
           "options": [
             "To attract prey or confuse hunters",
@@ -2037,6 +2125,7 @@
         {
           "id": "child-4b97e885",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"these wanderers\" refer to?",
           "options": [
             "Rogue worlds that drift without orbiting a sun",
@@ -2060,6 +2149,7 @@
         {
           "id": "child-602dfbef",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "How do researchers usually detect rogue planets, according to the passage?",
           "options": [
             "By watching a rogue planet bend a distant star's light like a lens",
@@ -2083,6 +2173,7 @@
         {
           "id": "child-23450979",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"This shift\" refer to?",
           "options": [
             "Schools stopping the teaching of handwriting",
@@ -2106,6 +2197,7 @@
         {
           "id": "child-13e3d78d",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward handwriting in schools?",
           "options": [
             "It is worth preserving as a valuable learning tool",
@@ -2129,6 +2221,7 @@
         {
           "id": "child-59cc1b71",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In \"the message had finally surfaced,\" what does \"the message\" most nearly refer to?",
           "options": [
             "The hidden letters, date, and second signature",
@@ -2152,6 +2245,7 @@
         {
           "id": "child-f2739c61",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "How does the narrator portray Lena's work on the portrait?",
           "options": [
             "As patient, careful, and quietly moving",
@@ -2175,6 +2269,7 @@
         {
           "id": "child-c28837d9",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In \"to halt the trial immediately if problems appear,\" what does \"the trial\" refer to?",
           "options": [
             "The three-month test of medical drone deliveries",
@@ -2198,6 +2293,7 @@
         {
           "id": "child-af72a7d1",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to officials, how long should the river crossing take by air compared with by van?",
           "options": [
             "About six minutes instead of forty minutes",
@@ -2221,6 +2317,7 @@
         {
           "id": "child-1bbd1d74",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"This tendency\" refer to?",
           "options": [
             "A person being less likely to get help when a large crowd is present",
@@ -2244,6 +2341,7 @@
         {
           "id": "child-959a9cd6",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, how can a person break the bystander effect?",
           "options": [
             "By pointing directly at one individual for help",
@@ -2267,6 +2365,7 @@
         {
           "id": "child-1f9b5fc3",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"This pattern\" refer to?",
           "options": [
             "Devices being designed to be replaced rather than repaired",
@@ -2290,6 +2389,7 @@
         {
           "id": "child-9295cef1",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward the throwaway design of devices?",
           "options": [
             "Critical, favoring a stronger culture of repair",
@@ -2313,6 +2413,7 @@
         {
           "id": "child-b2ab14a1",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"this remarkable capacity\" refer to?",
           "options": [
             "The brain distributing and strengthening skill across networks of cells",
@@ -2336,6 +2437,7 @@
         {
           "id": "child-211a7912",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, what role does sleep play in learning?",
           "options": [
             "The brain consolidates fresh memories while you rest",
@@ -2359,6 +2461,7 @@
         {
           "id": "child-fba1e820",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"This patient mental discipline\" refer to?",
           "options": [
             "Holding many ideas in mind at once and weighing them against one another",
@@ -2382,6 +2485,7 @@
         {
           "id": "child-a6f25e8b",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward reading books?",
           "options": [
             "Firmly defending it as valuable and worth protecting",
@@ -2405,6 +2509,7 @@
         {
           "id": "child-19b1e1cb",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In \"He simply trusted the rhythm of work he had done a thousand times,\" who does \"He\" refer to?",
           "options": [
             "The elderly man repairing fishing nets",
@@ -2428,6 +2533,7 @@
         {
           "id": "child-1c404488",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the overall tone of the story's ending?",
           "options": [
             "Hopeful and quietly liberating",
@@ -2451,6 +2557,7 @@
         {
           "id": "child-7e36c3b4",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"these green basins\" refer to?",
           "options": [
             "The network of sunken parks created by engineers",
@@ -2474,6 +2581,7 @@
         {
           "id": "child-2ecbe5c4",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, what do the sunken parks do on ordinary days?",
           "options": [
             "They serve as playgrounds and gardens",
@@ -2497,6 +2605,7 @@
         {
           "id": "child-9b6a006b",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"these predictions\" refer to?",
           "options": [
             "The mind's predictions of what will come next in a melody",
@@ -2520,6 +2629,7 @@
         {
           "id": "child-7b045984",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, what can steady beats do?",
           "options": [
             "Synchronise with our movements and subtly influence heart rate",
@@ -2543,6 +2653,7 @@
         {
           "id": "child-5e118a0b",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In \"this view overlooks something far more fundamental,\" what does \"this view\" refer to?",
           "options": [
             "The belief that strict rules and constant surveillance hold society together",
@@ -2566,6 +2677,7 @@
         {
           "id": "child-5717754b",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward trust in society?",
           "options": [
             "Valuing it as a fundamental and precious shared resource",
@@ -2589,6 +2701,7 @@
         {
           "id": "child-ed3e97f2",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"this uneven supply\" refer to?",
           "options": [
             "The fact that the sun does not always shine and the wind does not always blow",
@@ -2612,6 +2725,7 @@
         {
           "id": "child-0138333e",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's overall attitude toward renewable energy?",
           "options": [
             "Hopeful and supportive while acknowledging difficulties",
@@ -2635,6 +2749,7 @@
         {
           "id": "child-b2b5d179",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What do \"These ordinary moments\" refer to?",
           "options": [
             "Children playing, the elderly sitting in the sun, and performers entertaining passersby in the open ground",
@@ -2658,6 +2773,7 @@
         {
           "id": "child-37c2373b",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward selling public spaces to private developers?",
           "options": [
             "Disapproving and protective of public spaces",
@@ -2681,6 +2797,7 @@
         {
           "id": "child-4a6bdcd7",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"such a powerful invention\" refer to?",
           "options": [
             "Writing",
@@ -2704,6 +2821,7 @@
         {
           "id": "child-be2614d8",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "By the end of the visit, what is Liang's attitude toward writing?",
           "options": [
             "Grateful and newly appreciative",
@@ -2727,6 +2845,7 @@
         {
           "id": "child-4de8063e",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, why are visitors asked to stay on marked paths?",
           "options": [
             "To avoid disturbing nesting animals",
@@ -2750,6 +2869,7 @@
         {
           "id": "child-014adff4",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the last sentence, what does \"the project\" most directly refer to?",
           "options": [
             "The wetland restoration effort at Greenvale Wetland Reserve",

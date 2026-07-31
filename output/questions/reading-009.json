@@ -13,6 +13,7 @@
         {
           "id": "child-ce4e8842",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"This loss\" refer to?",
           "options": [
             "The way artificial glow from streets and buildings hides the faintest stars from city dwellers",
@@ -36,6 +37,7 @@
         {
           "id": "child-902124ba",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward light pollution?",
           "options": [
             "Concerned, yet hopeful that it can be reduced",
@@ -59,6 +61,7 @@
         {
           "id": "child-bb35d1bb",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward clear science communication?",
           "options": [
             "Strongly supportive, treating it as a duty",
@@ -82,6 +85,7 @@
         {
           "id": "child-4427241d",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"this gap\" refer to?",
           "options": [
             "The gap between scientists' findings and the public's ability to understand them",
@@ -105,6 +109,7 @@
         {
           "id": "child-be53e74e",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, why can't controllers steer a distant probe in real time?",
           "options": [
             "Because radio signals take time to cross the vast distances of space",
@@ -128,6 +133,7 @@
         {
           "id": "child-1127f8e6",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"this independence\" refer to?",
           "options": [
             "The probe's ability to make small decisions by itself",
@@ -151,6 +157,7 @@
         {
           "id": "child-74085c63",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward making mistakes in learning?",
           "options": [
             "Positive: mistakes are valuable opportunities to learn",
@@ -174,6 +181,7 @@
         {
           "id": "child-5b8ce04e",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"this attitude\" refer to?",
           "options": [
             "Treating mistakes as something shameful to hide",
@@ -197,6 +205,7 @@
         {
           "id": "child-65322b00",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the narrator's attitude toward the swallow Number Twelve?",
           "options": [
             "Tender and affectionate, full of wonder",
@@ -220,6 +229,7 @@
         {
           "id": "child-0b4b5034",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the last sentence, who does \"her\" most likely refer to?",
           "options": [
             "The swallow Number Twelve",
@@ -243,6 +253,7 @@
         {
           "id": "child-0298e511",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, what did several shopkeepers predict about the lending shelf?",
           "options": [
             "That the items would vanish within days",
@@ -266,6 +277,7 @@
         {
           "id": "child-2420e60e",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"It grows slowly,\" what does \"It\" refer to?",
           "options": [
             "Trust",
@@ -289,6 +301,7 @@
         {
           "id": "child-34daf229",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, why does a wet surface fail to brown at first?",
           "options": [
             "Because much of its water must first escape as steam",
@@ -312,6 +325,7 @@
         {
           "id": "child-0a734212",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"This reaction\" refer to?",
           "options": [
             "Sugars and proteins reacting with one another as the dough's surface grows hot",
@@ -335,6 +349,7 @@
         {
           "id": "child-e09a3176",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward relying on willpower alone to change habits?",
           "options": [
             "Doubtful: it is bound to disappoint",
@@ -358,6 +373,7 @@
         {
           "id": "child-7791eaee",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What do \"These small changes\" refer to?",
           "options": [
             "Leaving a book on your pillow and keeping tempting food out of easy reach",
@@ -381,6 +397,7 @@
         {
           "id": "child-436028dd",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward getting sufficient sleep?",
           "options": [
             "It is essential and deserves to be taken seriously",
@@ -404,6 +421,7 @@
         {
           "id": "child-ee2ee131",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"this nightly maintenance\" refer to?",
           "options": [
             "Sleep flushing out the brain's waste products as fluid flows more freely",
@@ -427,6 +445,7 @@
         {
           "id": "child-5d956b1d",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward companies' constant collection of personal data?",
           "options": [
             "Concerned and critical, urging sensible limits",
@@ -450,6 +469,7 @@
         {
           "id": "child-93246853",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"The same data\" refer to?",
           "options": [
             "The information a firm gathers by tracking where you go, what you read, and whom you talk to",
@@ -473,6 +493,7 @@
         {
           "id": "child-294a9c11",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward Nadia and her response to the audition?",
           "options": [
             "Admiring of her perseverance and resilience",
@@ -496,6 +517,7 @@
         {
           "id": "child-deb54f96",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the last sentence, what does \"it\" refer to?",
           "options": [
             "The letter Nadia pinned above her desk",
@@ -519,6 +541,7 @@
         {
           "id": "child-3c5482e7",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does the phrase \"these young colonies\" refer to?",
           "options": [
             "The grown coral fragments attached to underwater frames",
@@ -542,6 +565,7 @@
         {
           "id": "child-6ff09ac7",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "Which best describes the author's tone toward the restoration project?",
           "options": [
             "Hopeful yet cautious",
@@ -565,6 +589,7 @@
         {
           "id": "child-3d9b1b57",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"this process\" refer to?",
           "options": [
             "The way an idea travels from person to person until it reaches strangers",
@@ -588,6 +613,7 @@
         {
           "id": "child-74ab28b0",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward the rapid spread of ideas through modern communication?",
           "options": [
             "Recognizing its benefits while warning of its dangers",
@@ -611,6 +637,7 @@
         {
           "id": "child-c6d43001",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"This habit\" refer to?",
           "options": [
             "Depending on materials that are dug up, burned, or thrown away after a single use",
@@ -634,6 +661,7 @@
         {
           "id": "child-b77d59a2",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "Which best describes the author's attitude toward renewable materials?",
           "options": [
             "Supportive and encouraging of their wider use",
@@ -657,6 +685,7 @@
         {
           "id": "child-0e1aeaf7",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"That consistency\" refer to?",
           "options": [
             "Algorithms applying the same rule to everyone and never growing tired or moody",
@@ -680,6 +709,7 @@
         {
           "id": "child-86d5e180",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward unaccountable automated decision-making?",
           "options": [
             "Critical and concerned, insisting on accountability",
@@ -703,6 +733,7 @@
         {
           "id": "child-2e6f46ef",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What do \"these anomalies\" refer to?",
           "options": [
             "Awkward observations that do not fit the shared framework",
@@ -726,6 +757,7 @@
         {
           "id": "child-70caffe8",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, why might established scientists resist a scientific revolution?",
           "options": [
             "Partly from habit and partly because their reputations are tied to the older view",
@@ -749,6 +781,7 @@
         {
           "id": "child-4ed552b1",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In \"something in her genuine puzzlement stirred a curiosity he thought he had buried,\" whom does \"he\" refer to?",
           "options": [
             "Mr. Oyelaran",
@@ -772,6 +805,7 @@
         {
           "id": "child-d7082392",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's tone toward Mr. Oyelaran's change?",
           "options": [
             "Warm and quietly hopeful",
@@ -795,6 +829,7 @@
         {
           "id": "child-f5c1d6cc",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What do \"these habits\" refer to?",
           "options": [
             "Noticing one's own preferences, questioning framing, and tolerating suspended judgement",
@@ -818,6 +853,7 @@
         {
           "id": "child-42dd44a1",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward deeper media literacy education?",
           "options": [
             "Earnest advocacy for it as essential",
@@ -841,6 +877,7 @@
         {
           "id": "child-44c43d81",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"this shift\" refer to?",
           "options": [
             "The handing of particular tasks to machines while jobs survive in altered form",
@@ -864,6 +901,7 @@
         {
           "id": "child-d63039a2",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "Which best describes the tone of the report as conveyed by the author?",
           "options": [
             "Measured and cautionary",
@@ -887,6 +925,7 @@
         {
           "id": "child-99b3bab1",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"this extreme version\" refer to?",
           "options": [
             "The claim that speakers of different languages inhabit genuinely different mental worlds",
@@ -910,6 +949,7 @@
         {
           "id": "child-75b22927",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, why do speakers whose language marks precise direction stay well oriented in unfamiliar surroundings?",
           "options": [
             "Because their everyday speech constantly requires them to track direction",
@@ -933,6 +973,7 @@
         {
           "id": "child-62ad2fec",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"This pattern\" refer to?",
           "options": [
             "The way each discovery multiplies the questions it was meant to settle",
@@ -956,6 +997,7 @@
         {
           "id": "child-3bcb87e5",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward intellectual humility about the limits of knowledge?",
           "options": [
             "Admiring and approving",
@@ -979,6 +1021,7 @@
         {
           "id": "child-00f94ea0",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In \"To surrender it carelessly,\" what does \"it\" refer to?",
           "options": [
             "Attention",
@@ -1002,6 +1045,7 @@
         {
           "id": "child-5f59ccc0",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward applications designed to keep users distracted?",
           "options": [
             "Critical and concerned",
@@ -1025,6 +1069,7 @@
         {
           "id": "child-4f0b1c9c",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In \"The flaw, she realised, was not in her ambition,\" what was \"The flaw\"?",
           "options": [
             "A single miscalculated angle she had overlooked",
@@ -1048,6 +1093,7 @@
         {
           "id": "child-95a0a8d1",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward Mei's failure?",
           "options": [
             "Affirming, treating it as valuable instruction",
@@ -1071,6 +1117,7 @@
         {
           "id": "child-0400a670",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What do \"these concerns\" refer to?",
           "options": [
             "Residents' worry that nearby rents might climb beyond their reach",
@@ -1094,6 +1141,7 @@
         {
           "id": "child-d54f1d55",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "Which best describes the author's tone in reporting the project?",
           "options": [
             "Balanced, noting both promise and concerns",
@@ -1117,6 +1165,7 @@
         {
           "id": "child-7ee3ba1c",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What do \"These stories\" refer to?",
           "options": [
             "The tales of journeys, dangers, and ancestors traded around fires",
@@ -1140,6 +1189,7 @@
         {
           "id": "child-12814551",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward storytelling?",
           "options": [
             "Appreciative of its value while alert to its misuse",
@@ -1163,6 +1213,7 @@
         {
           "id": "child-049b4c07",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In \"we are too quick to count only the former,\" what does \"the former\" refer to?",
           "options": [
             "The practical loss",
@@ -1186,6 +1237,7 @@
         {
           "id": "child-4275a519",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward the careless destruction of other species?",
           "options": [
             "Morally indignant and disapproving",

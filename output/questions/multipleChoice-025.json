@@ -6,6 +6,7 @@
     {
       "id": "child-b833a66d",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Her coworkers often ask for her opinion because she always looks so _____.",
       "options": [
         "confident",
@@ -22,6 +23,7 @@
     {
       "id": "child-a2f8db44",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "They usually choose a trunk that sounds _____ when tapped.",
       "options": [
         "dull",
@@ -38,6 +40,7 @@
     {
       "id": "child-e6038fda",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "One flower often chosen for its elegant look and heavy scent is the _____.",
       "options": [
         "daisy",
@@ -54,6 +57,7 @@
     {
       "id": "child-7961c0cc",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "His friends were surprised at how _____ he remained throughout the difficult time.",
       "options": [
         "optimistic",
@@ -70,6 +74,7 @@
     {
       "id": "child-51fe1d11",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Understanding this entire _____ helps factories reduce waste more effectively.",
       "options": [
         "schedule",
@@ -86,6 +91,7 @@
     {
       "id": "child-2d4c7ee8",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "So each morning he stood on the bathroom _____ before breakfast.",
       "options": [
         "towels",
@@ -102,6 +108,7 @@
     {
       "id": "child-70e787bd",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The captain had to decide whether to sail out into the _____ waters.",
       "options": [
         "calm",
@@ -118,6 +125,7 @@
     {
       "id": "child-4d44d186",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The chili oil left a burning sensation right on the tip of his _____.",
       "options": [
         "nose",
@@ -134,6 +142,7 @@
     {
       "id": "child-8ddb2a3c",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "After the first bite, everyone at the table agreed the dish had a surprisingly bold _____.",
       "options": [
         "smell",
@@ -150,6 +159,7 @@
     {
       "id": "child-a5233229",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "It was _____ that she wanted the discussion to end quickly.",
       "options": [
         "apparent",
@@ -166,6 +176,7 @@
     {
       "id": "child-ddf1c2a5",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Using only traditional hand tools, she managed to _____ every detail of the fur.",
       "options": [
         "carve",
@@ -182,6 +193,7 @@
     {
       "id": "child-40b069e4",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The _____ noise made it hard for Mia to concentrate on her homework.",
       "options": [
         "continual",
@@ -198,6 +210,7 @@
     {
       "id": "child-94e57f55",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Everyone praised the way she kept her _____ even after such an awkward moment.",
       "options": [
         "curiosity",
@@ -214,6 +227,7 @@
     {
       "id": "child-d0cd773b",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Last spring, after years of saving, they were finally able to _____ their own small shop.",
       "options": [
         "establish",
@@ -230,6 +244,7 @@
     {
       "id": "child-3629360e",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "This particular _____ gets passed down from parent to offspring.",
       "options": [
         "gene",
@@ -246,6 +261,7 @@
     {
       "id": "child-39c89857",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "As a result, the city decided to _____ a strict speed limit in that area.",
       "options": [
         "cancel",
@@ -262,6 +278,7 @@
     {
       "id": "child-9c0d0e07",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "She eventually decided to major in _____ at university.",
       "options": [
         "mathematics",
@@ -278,6 +295,7 @@
     {
       "id": "child-a864cbe5",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "In the email, she clearly stated her _____ about the new policy.",
       "options": [
         "objection",
@@ -294,6 +312,7 @@
     {
       "id": "child-70742de5",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The local council passed a new law to _____ the century-old buildings downtown.",
       "options": [
         "demolish",
@@ -310,6 +329,7 @@
     {
       "id": "child-0e700467",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Next time, they agreed to make a _____ before showing up at the restaurant.",
       "options": [
         "complaint",
@@ -326,6 +346,7 @@
     {
       "id": "child-edc3afd8",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "She reached into the drawer and pulled out a pair of black _____ to complete her look.",
       "options": [
         "stockings",
@@ -342,6 +363,7 @@
     {
       "id": "child-666c49a4",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "She bought a plastic _____ for her closet at home.",
       "options": [
         "basket",
@@ -358,6 +380,7 @@
     {
       "id": "child-bdbd065c",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The teacher taught them to place a _____ between each item in the list.",
       "options": [
         "comma",
@@ -374,6 +397,7 @@
     {
       "id": "child-a6bc3e76",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The plumber said hair had blocked the _____ under the sink.",
       "options": [
         "gutter",
@@ -390,6 +414,7 @@
     {
       "id": "child-564103ef",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "She picked up a _____ of milk at the checkout counter.",
       "options": [
         "gallon",
@@ -406,6 +431,7 @@
     {
       "id": "child-ef2946a0",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Everyone said he was an unusually _____ student in the class.",
       "options": [
         "friendly",
@@ -422,6 +448,7 @@
     {
       "id": "child-1b8f3143",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Her teacher praised her _____ math skills in front of the whole class.",
       "options": [
         "mental",
@@ -438,6 +465,7 @@
     {
       "id": "child-a94ddec6",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Her little brother found the missing _____ and ate it right away.",
       "options": [
         "grape",
@@ -454,6 +482,7 @@
     {
       "id": "child-c8c63de7",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Officials asked residents to _____ their use of air conditioners during peak hours.",
       "options": [
         "discuss",
@@ -470,6 +499,7 @@
     {
       "id": "child-b8555cd9",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "As the moon rose, the _____ silently spread its wings and left the branch.",
       "options": [
         "crow",
@@ -486,6 +516,7 @@
     {
       "id": "child-d560fe38",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "She takes one _____ with her breakfast to stay healthy.",
       "options": [
         "cookie",
@@ -502,6 +533,7 @@
     {
       "id": "child-e52bcf0f",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Compared to the other questions, this one was especially _____ for most students to answer correctly.",
       "options": [
         "risky",
@@ -518,6 +550,7 @@
     {
       "id": "child-c33285e8",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "They stood in silent _____, unable to speak for several minutes.",
       "options": [
         "anger",
@@ -534,6 +567,7 @@
     {
       "id": "child-228788ff",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Luckily, the _____ from her phone could still be used for the news report.",
       "options": [
         "email",
@@ -550,6 +584,7 @@
     {
       "id": "child-dde99c8f",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Her father says this _____ of flavors is his favorite way to start the day.",
       "options": [
         "combination",
@@ -566,6 +601,7 @@
     {
       "id": "child-4ab89068",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "His _____ was published in a major newspaper the next morning.",
       "options": [
         "criticism",
@@ -582,6 +618,7 @@
     {
       "id": "child-96b0a15c",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "By the time he woke up, the boat had begun to _____ far from the shore.",
       "options": [
         "drift",
@@ -598,6 +635,7 @@
     {
       "id": "child-22c425a3",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Each student then read the teacher's _____ to see what needed changing.",
       "options": [
         "excuse",
@@ -614,6 +652,7 @@
     {
       "id": "child-9d71b2a7",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "You could hear that _____ sound from the next room.",
       "options": [
         "quiet",
@@ -630,6 +669,7 @@
     {
       "id": "child-86813ec6",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The manager paused his speech because of the sudden _____.",
       "options": [
         "applause",
@@ -646,6 +686,7 @@
     {
       "id": "child-5d790a88",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The tired _____ went home after a full shift.",
       "options": [
         "miner",
@@ -662,6 +703,7 @@
     {
       "id": "child-a79761a6",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "She decided to talk to a trusted _____ instead.",
       "options": [
         "manager",
@@ -678,6 +720,7 @@
     {
       "id": "child-6b8cc8ee",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "He arrived at the gate too late, completely filled with _____.",
       "options": [
         "rage",
@@ -694,6 +737,7 @@
     {
       "id": "child-77ba53a2",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The teacher pulled her aside to _____ her for it.",
       "options": [
         "scold",
@@ -710,6 +754,7 @@
     {
       "id": "child-062192ef",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The doctor confirmed that his _____ was sprained, not broken.",
       "options": [
         "wrist",
@@ -726,6 +771,7 @@
     {
       "id": "child-601bd345",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Another team works in the _____ department, managing appointment schedules, medical records, and billing.",
       "options": [
         "security",
@@ -742,6 +788,7 @@
     {
       "id": "child-30859d87",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "So the museum's giant elephant statue was cast in _____.",
       "options": [
         "granite",
@@ -758,6 +805,7 @@
     {
       "id": "child-66ee5eb5",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Researchers plan to _____ the trial over the next six months, collecting data from volunteers.",
       "options": [
         "postpone",
@@ -774,6 +822,7 @@
     {
       "id": "child-ac917d3a",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "News of the leak is likely to _____ public trust in the company's safety record.",
       "options": [
         "restore",
@@ -790,6 +839,7 @@
     {
       "id": "child-c6e34a74",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Everyone agreed the view was absolutely _____.",
       "options": [
         "fabulous",
@@ -806,6 +856,7 @@
     {
       "id": "child-08d1f890",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "A group of students decided to _____ a recycling program to reduce waste on campus.",
       "options": [
         "resume",
@@ -822,6 +873,7 @@
     {
       "id": "child-2827215e",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "As a result, the factory's monthly _____ increased by twenty percent.",
       "options": [
         "output",
@@ -838,6 +890,7 @@
     {
       "id": "child-cbf1dd21",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Reviewers described her writing style as strikingly _____, more like song lyrics than ordinary fiction.",
       "options": [
         "academic",
@@ -854,6 +907,7 @@
     {
       "id": "child-6cdf0c33",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "As a result, it doesn't have a single permanent _____.",
       "options": [
         "guest",
@@ -870,6 +924,7 @@
     {
       "id": "child-152c29df",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Their new house, on the other hand, has a _____ living room where the whole family can relax.",
       "options": [
         "tiny",
@@ -886,6 +941,7 @@
     {
       "id": "child-2565a194",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "He saved up for months to buy a proper _____.",
       "options": [
         "magnifier",
@@ -902,6 +958,7 @@
     {
       "id": "child-33bf11be",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Historians will remember this as a record that is entirely _____ in the league's history.",
       "options": [
         "exceptional",
@@ -918,6 +975,7 @@
     {
       "id": "child-9825e19d",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "It took him nearly a month to _____ his body to the new sleep pattern.",
       "options": [
         "treat",
@@ -934,6 +992,7 @@
     {
       "id": "child-508a8908",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "So they designed a colorful _____ to hand out at the airport information desk.",
       "options": [
         "voucher",
@@ -950,6 +1009,7 @@
     {
       "id": "child-daa2a55a",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Every other letter, such as B, C, and D, belongs to a different group called a _____.",
       "options": [
         "digit",
@@ -966,6 +1026,7 @@
     {
       "id": "child-94e79974",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The next year, he decided to _____ by also selling mangoes, pineapples, and bananas.",
       "options": [
         "monopolize",
@@ -982,6 +1043,7 @@
     {
       "id": "child-29a3cd9f",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Such stories are part of the region's _____, passed down by word of mouth for generations.",
       "options": [
         "mathematics",
@@ -998,6 +1060,7 @@
     {
       "id": "child-224df6d0",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The agreement between them about keeping the kitchen clean was entirely _____.",
       "options": [
         "written",
@@ -1014,6 +1077,7 @@
     {
       "id": "child-b0dcc1fa",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "They knocked on the door of the _____ and asked if they could stay the night.",
       "options": [
         "lodge",
@@ -1030,6 +1094,7 @@
     {
       "id": "child-2eb5f288",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Night-vision cameras finally revealed that the tank's clever _____ had been squeezing through a tiny gap to search for food.",
       "options": [
         "seal",
@@ -1046,6 +1111,7 @@
     {
       "id": "child-35847ed2",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Approving another worker's request now might set a _____ that others could later cite to justify similar requests.",
       "options": [
         "milestone",
@@ -1062,6 +1128,7 @@
     {
       "id": "child-59079259",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Thanks to a new workshop program, the traditional craft is now going through a _____.",
       "options": [
         "relocation",
@@ -1078,6 +1145,7 @@
     {
       "id": "child-d87f8041",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Fish has long been a _____ of the local diet.",
       "options": [
         "seasoning",
@@ -1094,6 +1162,7 @@
     {
       "id": "child-56ca5a13",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The hikers hurried to set up camp before _____ faded completely into darkness.",
       "options": [
         "midnight",
@@ -1110,6 +1179,7 @@
     {
       "id": "child-fd55467b",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The hall filled with thunderous _____ that lasted several minutes.",
       "options": [
         "grumbling",
@@ -1126,6 +1196,7 @@
     {
       "id": "child-80edd1dd",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Visitors often mentioned in reviews how _____ the staff at the front desk were.",
       "options": [
         "impatient",
@@ -1142,6 +1213,7 @@
     {
       "id": "child-159a0b68",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "A real estate developer now plans to _____ the abandoned building.",
       "options": [
         "monitor",
@@ -1158,6 +1230,7 @@
     {
       "id": "child-2418b309",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Farmers across the region said this was the worst _____ in living memory.",
       "options": [
         "flood",
@@ -1174,6 +1247,7 @@
     {
       "id": "child-addc90c1",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "A collective _____ went through the group as everyone froze in place.",
       "options": [
         "sigh",
@@ -1190,6 +1264,7 @@
     {
       "id": "child-2069dfe8",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Now it was time for the team to _____ the plan.",
       "options": [
         "revise",
@@ -1206,6 +1281,7 @@
     {
       "id": "child-3112bd6f",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Workers spent the autumn helping with the ripe _____ harvest, before the fruit was pressed into oil.",
       "options": [
         "walnut",
@@ -1222,6 +1298,7 @@
     {
       "id": "child-d6ecb9c8",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Everyone agreed that his words had left a _____ impression on the whole room.",
       "options": [
         "brief",
@@ -1238,6 +1315,7 @@
     {
       "id": "child-fcf61f0f",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Historians have long praised the ______ for its enduring commitment to research and public education.",
       "options": [
         "corporation",
@@ -1254,6 +1332,7 @@
     {
       "id": "child-d8999e5b",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The teachers reviewed the ______ findings before deciding on any changes to the lunch menu.",
       "options": [
         "geographical",
@@ -1270,6 +1349,7 @@
     {
       "id": "child-4610521e",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "He loved to ______ his kids' feet every morning before they got out of bed.",
       "options": [
         "squeeze",
@@ -1286,6 +1366,7 @@
     {
       "id": "child-5d6e4b5f",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Even now, he still felt like the _____ in his own class.",
       "options": [
         "tourist",
@@ -1302,6 +1383,7 @@
     {
       "id": "child-9dd4375f",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The _____ in the classroom was obvious as everyone kept whispering about the trip and double-checking their packed bags.",
       "options": [
         "nostalgia",
@@ -1318,6 +1400,7 @@
     {
       "id": "child-99bfd914",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "She diced some ______ and added it to the pot of chicken soup.",
       "options": [
         "lettuce",
@@ -1334,6 +1417,7 @@
     {
       "id": "child-4857a81c",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "After several years, the ______ savings added up to a surprisingly large amount in her bank account.",
       "options": [
         "occasional",
@@ -1350,6 +1434,7 @@
     {
       "id": "child-8279fe1a",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The library kept a battered old ______ on a stand, its pages worn from years of student research.",
       "options": [
         "dictionary",
@@ -1366,6 +1451,7 @@
     {
       "id": "child-c89a037e",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Even backstage, staff described the whole night as pure _____ .",
       "options": [
         "simplicity",
@@ -1382,6 +1468,7 @@
     {
       "id": "child-21698c49",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "We pulled into the next station to top up with _____ .",
       "options": [
         "water",
@@ -1398,6 +1485,7 @@
     {
       "id": "child-14dac10b",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "She says this quiet time to _____ helps her let go of the day's stress.",
       "options": [
         "stretch",
@@ -1414,6 +1502,7 @@
     {
       "id": "child-c0226fc8",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "It's located on the _____ , about twenty minutes from downtown by car.",
       "options": [
         "plaza",
@@ -1430,6 +1519,7 @@
     {
       "id": "child-019d124d",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Jewelers prize it for its remarkable _____ .",
       "options": [
         "density",
@@ -1446,6 +1536,7 @@
     {
       "id": "child-56039ed9",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "This _____ story kept readers coming back to the newsstand every week.",
       "options": [
         "biographical",
@@ -1462,6 +1553,7 @@
     {
       "id": "child-71c25007",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Fans cheered wildly for the young _____ after her first major race.",
       "options": [
         "groom",
@@ -1478,6 +1570,7 @@
     {
       "id": "child-342a62a9",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The _____ reviewed each report carefully before approving new fire-safety inspections for the schools.",
       "options": [
         "counselor",

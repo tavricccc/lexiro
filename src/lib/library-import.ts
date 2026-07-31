@@ -100,7 +100,7 @@ function normalizeQuestion(value: unknown, index: number): LibraryQuestion {
   const answerIndex = Number(source.answerIndex)
   if (!text(source.prompt) || options.length !== 4 || !Number.isInteger(answerIndex) || answerIndex < 0 || answerIndex >= options.length)
     throw new Error(`第 ${index + 1} 題選擇題資料不完整`)
-  return { ...base, kind: 'multipleChoice', prompt: text(source.prompt), options, answerIndex, trap: text(source.trap) || undefined, whyWrong: source.whyWrong && typeof source.whyWrong === 'object' ? source.whyWrong as Record<string, string> : undefined } as MultipleChoiceQuestion
+  return { ...base, kind: 'multipleChoice', questionStyle: source.questionStyle === 'fillBlank' || text(source.prompt).includes('_____') ? 'fillBlank' : 'standard', prompt: text(source.prompt), options, answerIndex, trap: text(source.trap) || undefined, whyWrong: source.whyWrong && typeof source.whyWrong === 'object' ? source.whyWrong as Record<string, string> : undefined } as MultipleChoiceQuestion
 }
 
 export type LibraryImportPayload = { kind: 'vocab', words: WordEntry[] } | { kind: 'questions', questions: LibraryQuestion[] }

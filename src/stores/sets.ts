@@ -122,6 +122,16 @@ export const useSetsStore = defineStore('sets', () => {
     saveState()
   }
 
+  function moveSetToFolder(setId: string, folderId?: string) {
+    const target = sets.value.find(set => set.id === setId)
+    if (!target || target.folderId === folderId)
+      return
+    const nextSet = { ...target, folderId: folderId || undefined, updatedAt: new Date().toISOString() }
+    sets.value = sets.value.map(set => set.id === setId ? nextSet : set)
+    saveState()
+    useLibraryStore().linkSet(nextSet)
+  }
+
   function isSetInProgress(setId: string): boolean {
     const sessionStore = useSessionStore()
     return sessionStore.isSetInProgress(setId)
@@ -474,6 +484,7 @@ export const useSetsStore = defineStore('sets', () => {
     saveState,
     loadState,
     ensureActiveSet,
+    moveSetToFolder,
     isSetInProgress,
     openSetEditor,
     closeSetEditor,

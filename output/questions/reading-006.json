@@ -13,6 +13,7 @@
         {
           "id": "child-b361ac91",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"it\" in \"it connects two places\" most likely refer to?",
           "options": [
             "A river",
@@ -36,6 +37,7 @@
         {
           "id": "child-26940b70",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"They\" in \"They wake up early\" most likely refer to?",
           "options": [
             "The vegetables",
@@ -59,6 +61,7 @@
         {
           "id": "child-c0c67774",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"They\" in \"They do this by moving their bodies\" most likely refer to?",
           "options": [
             "the flowers",
@@ -82,6 +85,7 @@
         {
           "id": "child-688cd3da",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"it\" in \"it can be seen from far away\" most likely refer to?",
           "options": [
             "the tall tower",
@@ -105,6 +109,7 @@
         {
           "id": "child-801a9607",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"They\" in \"They follow rivers, mountains\" most likely refer to?",
           "options": [
             "the mountains",
@@ -128,6 +133,7 @@
         {
           "id": "child-9341083c",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"it\" in \"As it bends\" most likely refer to?",
           "options": [
             "the rain drop",
@@ -151,6 +157,7 @@
         {
           "id": "child-08ea45d9",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"They\" in \"They also plan story times\" most likely refer to?",
           "options": [
             "the readers",
@@ -174,6 +181,7 @@
         {
           "id": "child-2261435e",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"them\" in \"scientists watch them carefully\" most likely refer to?",
           "options": [
             "the corals",
@@ -197,6 +205,7 @@
         {
           "id": "child-ee679c60",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"this material\" most likely refer to?",
           "options": [
             "the mountain",
@@ -220,6 +229,7 @@
         {
           "id": "child-7e611923",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"They\" in \"They set up small tables\" most likely refer to?",
           "options": [
             "the shoppers",
@@ -243,6 +253,7 @@
         {
           "id": "child-fea0692a",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"they\" in \"they fall back down as rain or snow\" most likely refer to?",
           "options": [
             "the clouds",
@@ -266,6 +277,7 @@
         {
           "id": "child-60c9c890",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"this scent\" most likely refer to?",
           "options": [
             "the eggs",
@@ -289,6 +301,7 @@
         {
           "id": "child-d531f93c",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"They\" in \"They carry these items\" most likely refer to?",
           "options": [
             "the homes",
@@ -312,6 +325,7 @@
         {
           "id": "child-a22b3bd1",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"it\" in \"pulls it out with its legs\" most likely refer to?",
           "options": [
             "the spider",
@@ -335,6 +349,7 @@
         {
           "id": "child-be353e7f",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"It\" in \"It does not make any light of its own\" most likely refer to?",
           "options": [
             "the night sky",
@@ -358,6 +373,7 @@
         {
           "id": "child-ba3fc50f",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"they\" in \"they put on heavy coats\" most likely refer to?",
           "options": [
             "the firefighters",
@@ -381,6 +397,7 @@
         {
           "id": "child-90098d0b",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"They\" in \"They may land in a fresh field\" most likely refer to?",
           "options": [
             "the parent plants",
@@ -404,6 +421,7 @@
         {
           "id": "child-57e8b023",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"It\" in \"It also shows which direction is north\" most likely refer to?",
           "options": [
             "the good map",
@@ -427,6 +445,7 @@
         {
           "id": "child-9e83d48b",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"they\" in the second sentence most likely refer to?",
           "options": [
             "worker bees",
@@ -450,6 +469,7 @@
         {
           "id": "child-3399805e",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"They\" in the second sentence most likely refer to?",
           "options": [
             "the storms",
@@ -473,6 +493,7 @@
         {
           "id": "child-bbd53acd",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"it\" in the third sentence most likely refer to?",
           "options": [
             "the nest",
@@ -496,6 +517,7 @@
         {
           "id": "child-3f71c162",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"they\" in the last sentence most likely refer to?",
           "options": [
             "the heavy stones",
@@ -519,6 +541,7 @@
         {
           "id": "child-d65e64be",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"They\" in the fourth sentence most likely refer to?",
           "options": [
             "the students",
@@ -542,6 +565,7 @@
         {
           "id": "child-3751f53e",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"them\" in the third sentence most likely refer to?",
           "options": [
             "the engineers",
@@ -565,6 +589,7 @@
         {
           "id": "child-0330cf4d",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"they\" in the second sentence most likely refer to?",
           "options": [
             "the birds",
@@ -588,6 +613,7 @@
         {
           "id": "child-fd214113",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"them\" in the third sentence most likely refer to?",
           "options": [
             "the coaches",
@@ -611,6 +637,7 @@
         {
           "id": "child-8ff2fdc0",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"they\" in the third sentence most likely refer to?",
           "options": [
             "the two companies",
@@ -634,6 +661,7 @@
         {
           "id": "child-090b0b9c",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"they\" in the last sentence most likely refer to?",
           "options": [
             "the scientists",
@@ -657,6 +685,7 @@
         {
           "id": "child-1938740f",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"they\" in the fourth sentence most likely refer to?",
           "options": [
             "the wolves in the pack",
@@ -680,6 +709,7 @@
         {
           "id": "child-df523532",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"it\" in the first sentence most likely refer to?",
           "options": [
             "the school magazine",
@@ -703,6 +733,7 @@
         {
           "id": "child-731d7fff",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"them\" in the fourth sentence most likely refer to?",
           "options": [
             "the villagers",
@@ -726,6 +757,7 @@
         {
           "id": "child-025f8635",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"They\" in the second sentence most likely refer to?",
           "options": [
             "the warmer lands",
@@ -749,6 +781,7 @@
         {
           "id": "child-a9cec87c",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"it\" in the third sentence most likely refer to?",
           "options": [
             "the grain",
@@ -772,6 +805,7 @@
         {
           "id": "child-f2e6cdd1",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"them\" in the fourth sentence most likely refer to?",
           "options": [
             "the ripe vegetables",
@@ -795,6 +829,7 @@
         {
           "id": "child-f51cf64a",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"They\" most likely refer to?",
           "options": [
             "the neighbours on Maple Street",
@@ -818,6 +853,7 @@
         {
           "id": "child-cf98f573",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"them\" in the underlined idea most likely refer to?",
           "options": [
             "the candles",
@@ -841,6 +877,7 @@
         {
           "id": "child-8c1266bc",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"it\" most likely refer to?",
           "options": [
             "the rain",
@@ -864,6 +901,7 @@
         {
           "id": "child-d51b2583",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"it\" in \"depended on it\" most likely refer to?",
           "options": [
             "the sea",
@@ -887,6 +925,7 @@
         {
           "id": "child-3219405b",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"it\" in \"the heart of the school\" most likely refer to?",
           "options": [
             "the hill",
@@ -910,6 +949,7 @@
         {
           "id": "child-d166478a",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"They\" in \"They are tired but happy\" most likely refer to?",
           "options": [
             "the shoppers",
@@ -933,6 +973,7 @@
         {
           "id": "child-b56150ab",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"it\" in \"Long lines form in front of it\" most likely refer to?",
           "options": [
             "the new room",
@@ -956,6 +997,7 @@
         {
           "id": "child-81b6d028",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"they\" in \"they won their first big match\" most likely refer to?",
           "options": [
             "the players",
@@ -979,6 +1021,7 @@
         {
           "id": "child-a5f94d84",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"These\" in \"These give cool shade\" most likely refer to?",
           "options": [
             "the front doors",
@@ -1002,6 +1045,7 @@
         {
           "id": "child-0c816b2e",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"it\" in \"it taught them\" most likely refer to?",
           "options": [
             "the warm food",
@@ -1025,6 +1069,7 @@
         {
           "id": "child-a2ddff86",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"they\" in \"they smell sweet\" most likely refer to?",
           "options": [
             "the neighbours",
@@ -1048,6 +1093,7 @@
         {
           "id": "child-4fda20c9",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"This\" in \"This made the machine safe\" most likely refer to?",
           "options": [
             "the huge front wheel",
@@ -1071,6 +1117,7 @@
         {
           "id": "child-cc58084d",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"He\" in \"He smiles proudly\" most likely refer to?",
           "options": [
             "the mayor",
@@ -1094,6 +1141,7 @@
         {
           "id": "child-4d9c790f",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"it\" in \"swim in it\" most likely refer to?",
           "options": [
             "the clean station",
@@ -1117,6 +1165,7 @@
         {
           "id": "child-ce1db133",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"them\" in \"reading them aloud\" most likely refer to?",
           "options": [
             "the friendly notes",
@@ -1140,6 +1189,7 @@
         {
           "id": "child-a025fa1e",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"them\" in \"buy them as gifts\" most likely refer to?",
           "options": [
             "the small lamps",
@@ -1163,6 +1213,7 @@
         {
           "id": "child-83a404f7",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward rooftop gardens?",
           "options": [
             "Admiring / 讚賞",
@@ -1186,6 +1237,7 @@
         {
           "id": "child-f1e4b3e7",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward fast fashion?",
           "options": [
             "Amused / 覺得有趣",
@@ -1209,6 +1261,7 @@
         {
           "id": "child-13ef29fc",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the tone of the passage?",
           "options": [
             "Cheerful / 愉快",
@@ -1232,6 +1285,7 @@
         {
           "id": "child-a1039ebd",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward the library reopening?",
           "options": [
             "Hopeful / 充滿希望",
@@ -1255,6 +1309,7 @@
         {
           "id": "child-71c5ff74",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the tone of the passage?",
           "options": [
             "Angry / 憤怒",
@@ -1278,6 +1333,7 @@
         {
           "id": "child-fb612585",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the tone of the passage?",
           "options": [
             "Excited / 興奮",
@@ -1301,6 +1357,7 @@
         {
           "id": "child-25e41795",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward phones at the dinner table?",
           "options": [
             "Approving / 贊同",
@@ -1324,6 +1381,7 @@
         {
           "id": "child-c6ae8b35",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward Maya?",
           "options": [
             "Jealous / 嫉妒",
@@ -1347,6 +1405,7 @@
         {
           "id": "child-89336824",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the tone of the passage?",
           "options": [
             "Relaxed / 輕鬆自在",
@@ -1370,6 +1429,7 @@
         {
           "id": "child-d06f6566",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward the volunteers?",
           "options": [
             "Appreciative / 感佩讚許",
@@ -1393,6 +1453,7 @@
         {
           "id": "child-d1fe2137",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward bottled water marketing?",
           "options": [
             "Sincerely admiring / 真心讚賞",
@@ -1416,6 +1477,7 @@
         {
           "id": "child-725742d1",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the tone of the passage?",
           "options": [
             "Carefree / 無憂無慮",
@@ -1439,6 +1501,7 @@
         {
           "id": "child-1b0ce7e5",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the tone of the passage?",
           "options": [
             "Objective and explanatory / 客觀說明",
@@ -1462,6 +1525,7 @@
         {
           "id": "child-95c959cf",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward the loss of dark skies?",
           "options": [
             "Delighted / 欣喜",
@@ -1485,6 +1549,7 @@
         {
           "id": "child-ea2b5e42",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward the library reopening?",
           "options": [
             "Joyful 喜悅的",
@@ -1508,6 +1573,7 @@
         {
           "id": "child-b74060e9",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward ocean plastic pollution?",
           "options": [
             "Amused 覺得好笑的",
@@ -1531,6 +1597,7 @@
         {
           "id": "child-731c0a1b",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward honeybees?",
           "options": [
             "Dismissive 輕視的",
@@ -1554,6 +1621,7 @@
         {
           "id": "child-13790bbe",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's tone toward online reviews?",
           "options": [
             "Sincere 真誠的",
@@ -1577,6 +1645,7 @@
         {
           "id": "child-52b7159a",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward the tigers' situation?",
           "options": [
             "Cheerful 開朗的",
@@ -1600,6 +1669,7 @@
         {
           "id": "child-c228d850",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward self-driving cars?",
           "options": [
             "Enthusiastic 熱情擁護的",
@@ -1623,6 +1693,7 @@
         {
           "id": "child-f94b9bb0",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's tone in describing the snowfall?",
           "options": [
             "Wonder-filled 充滿驚喜讚嘆的",
@@ -1646,6 +1717,7 @@
         {
           "id": "child-7b413ecd",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward phone use at dinner?",
           "options": [
             "Approving 讚許的",
@@ -1669,6 +1741,7 @@
         {
           "id": "child-c1351f47",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward the community garden?",
           "options": [
             "Disappointed 失望的",
@@ -1692,6 +1765,7 @@
         {
           "id": "child-baf83297",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's tone toward fast fashion?",
           "options": [
             "Genuinely excited 真心興奮的",
@@ -1715,6 +1789,7 @@
         {
           "id": "child-e218afd1",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward the telescope images?",
           "options": [
             "Awestruck 敬畏驚嘆的",
@@ -1738,6 +1813,7 @@
         {
           "id": "child-9faf9656",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's tone in this passage?",
           "options": [
             "Bitter 怨懟的",
@@ -1761,6 +1837,7 @@
         {
           "id": "child-930640c9",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's tone toward the city's plan?",
           "options": [
             "Supportive 支持的",
@@ -1784,6 +1861,7 @@
         {
           "id": "child-1940f469",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward the rescue?",
           "options": [
             "Relieved and grateful 寬慰而感激的",
@@ -1807,6 +1885,7 @@
         {
           "id": "child-ff43b235",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward the homework load?",
           "options": [
             "Content 滿足的",
@@ -1830,6 +1909,7 @@
         {
           "id": "child-716d0f79",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What best describes the author's tone toward recycling?",
           "options": [
             "Furious 暴怒的",
@@ -1853,6 +1933,7 @@
         {
           "id": "child-63dfed53",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward the community garden?",
           "options": [
             "Delighted 欣喜的",
@@ -1876,6 +1957,7 @@
         {
           "id": "child-101a8dc6",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's tone in this passage?",
           "options": [
             "Concerned 憂心的",
@@ -1899,6 +1981,7 @@
         {
           "id": "child-4e271db2",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward Mrs. Lin?",
           "options": [
             "Grateful 感激的",
@@ -1922,6 +2005,7 @@
         {
           "id": "child-3289a485",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's tone toward the robot?",
           "options": [
             "Impressed 印象深刻的",
@@ -1945,6 +2029,7 @@
         {
           "id": "child-a9e13a10",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's tone in this passage?",
           "options": [
             "Nostalgic 懷舊的",
@@ -1968,6 +2053,7 @@
         {
           "id": "child-9b4bb485",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward the reader?",
           "options": [
             "Encouraging 鼓勵的",
@@ -1991,6 +2077,7 @@
         {
           "id": "child-975a5365",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward the leaders' announcement?",
           "options": [
             "Skeptical 質疑的",
@@ -2014,6 +2101,7 @@
         {
           "id": "child-b4f50b8d",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's tone about the tree-planting plan?",
           "options": [
             "Hopeful 充滿希望的",
@@ -2037,6 +2125,7 @@
         {
           "id": "child-f505d11e",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward the young inventors?",
           "options": [
             "Admiring 讚賞的",
@@ -2060,6 +2149,7 @@
         {
           "id": "child-bf6bff59",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's tone when Lucky returns?",
           "options": [
             "Relieved 鬆一口氣的",
@@ -2083,6 +2173,7 @@
         {
           "id": "child-8210cbe3",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward throwaway fashion?",
           "options": [
             "Critical 批判的",
@@ -2106,6 +2197,7 @@
         {
           "id": "child-f4b92e67",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's tone in this passage?",
           "options": [
             "Joyful 喜悅的",
@@ -2129,6 +2221,7 @@
         {
           "id": "child-879834c5",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward the new closing time?",
           "options": [
             "Disappointed 失望的",
@@ -2152,6 +2245,7 @@
         {
           "id": "child-5325bf80",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward the volunteers?",
           "options": [
             "Touched 感動的",
@@ -2175,6 +2269,7 @@
         {
           "id": "child-58862a73",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's true tone in this passage?",
           "options": [
             "Sarcastic 諷刺的",
@@ -2198,6 +2293,7 @@
         {
           "id": "child-5d839bee",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward tearing down the bridge?",
           "options": [
             "Opposed 反對的",
@@ -2221,6 +2317,7 @@
         {
           "id": "child-09ebc2ee",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward the library?",
           "options": [
             "admiring 讚賞的",
@@ -2244,6 +2341,7 @@
         {
           "id": "child-3bc34d6c",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's tone in this passage?",
           "options": [
             "excited 興奮的",
@@ -2267,6 +2365,7 @@
         {
           "id": "child-127735dd",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward the penguins?",
           "options": [
             "critical 批評的",
@@ -2290,6 +2389,7 @@
         {
           "id": "child-62a1aee8",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's tone when describing the program?",
           "options": [
             "disappointed 失望的",
@@ -2313,6 +2413,7 @@
         {
           "id": "child-6cc8e184",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's tone in the report?",
           "options": [
             "matter-of-fact 就事論事的",
@@ -2336,6 +2437,7 @@
         {
           "id": "child-c39344d9",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward the garden?",
           "options": [
             "regretful 後悔的",
@@ -2359,6 +2461,7 @@
         {
           "id": "child-cdeb0934",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's tone about future train travel?",
           "options": [
             "pessimistic 悲觀的",
@@ -2382,6 +2485,7 @@
         {
           "id": "child-aa4e2f1f",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward the new app?",
           "options": [
             "enthusiastic 熱情的",
@@ -2405,6 +2509,7 @@
         {
           "id": "child-c5ff3174",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's tone about the old bridge?",
           "options": [
             "cheerful 愉快的",
@@ -2428,6 +2533,7 @@
         {
           "id": "child-fa47f095",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward the swimmer?",
           "options": [
             "admiring 讚賞的",
@@ -2451,6 +2557,7 @@
         {
           "id": "child-af29546e",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's tone in giving this advice?",
           "options": [
             "careless 隨便的",
@@ -2474,6 +2581,7 @@
         {
           "id": "child-7ff7c42d",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's tone toward the cat?",
           "options": [
             "irritated 不耐煩的",
@@ -2497,6 +2605,7 @@
         {
           "id": "child-067e5184",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's tone about the free classes?",
           "options": [
             "resentful 怨恨的",
@@ -2520,6 +2629,7 @@
         {
           "id": "child-a96eea0e",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's tone toward the festival?",
           "options": [
             "delighted 喜悅的",
@@ -2543,6 +2653,7 @@
         {
           "id": "child-db4ad64a",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's tone about learning the piano?",
           "options": [
             "hopeless 絕望的",
@@ -2566,6 +2677,7 @@
         {
           "id": "child-b7a4012b",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's tone in this notice?",
           "options": [
             "matter-of-fact 就事論事的",
@@ -2589,6 +2701,7 @@
         {
           "id": "child-e538b36b",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"They do not break down for hundreds of years,\" what does the word \"They\" refer to?",
           "options": [
             "Many cities",
@@ -2612,6 +2725,7 @@
         {
           "id": "child-b8047293",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward the use of plastic bags?",
           "options": [
             "Concerned and encouraging change",
@@ -2635,6 +2749,7 @@
         {
           "id": "child-2e611624",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"However, these benefits come with a cost,\" what do \"these benefits\" refer to?",
           "options": [
             "The costs of using smartphones",
@@ -2658,6 +2773,7 @@
         {
           "id": "child-274186d4",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward smartphones as study tools?",
           "options": [
             "Balanced and analytical",
@@ -2681,6 +2797,7 @@
         {
           "id": "child-c73aa023",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"Everyone clapped and cheered for her,\" who does \"her\" refer to?",
           "options": [
             "Mia",
@@ -2704,6 +2821,7 @@
         {
           "id": "child-a89ed803",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the overall tone of the passage?",
           "options": [
             "Warm and encouraging",
@@ -2727,6 +2845,7 @@
         {
           "id": "child-89a3c1b7",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"However, this argument confuses being busy with being effective,\" what does \"this argument\" refer to?",
           "options": [
             "The claim that ambitious students simply have too much to do",
@@ -2750,6 +2869,7 @@
         {
           "id": "child-444f1b9c",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward getting enough sleep?",
           "options": [
             "Strongly supportive and persuasive",

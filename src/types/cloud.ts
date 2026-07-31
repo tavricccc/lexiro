@@ -23,6 +23,8 @@ export interface FirestoreDailyStatsDoc {
   date: string
   reviews: number
   correctReviews: number
+  questionReviews?: number
+  correctQuestionReviews?: number
   xpEarned: number
   updatedAt: string
   ownerId: string

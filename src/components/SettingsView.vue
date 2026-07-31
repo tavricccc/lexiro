@@ -3,7 +3,7 @@ import { Check, Cloud, Download, KeyRound, LockKeyhole, LogIn, LogOut, Save, Upl
 import { storeToRefs } from 'pinia'
 import { computed, reactive, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { DAILY_GOAL_OPTIONS } from '@/constants'
+import { DAILY_QUESTION_GOAL_OPTIONS, DAILY_WORD_GOAL_OPTIONS } from '@/constants'
 import { defaultAiSettings, downloadAiSettings, loadAiSettings, parseAiSettingsJson, saveAiSettings } from '@/lib/ai-provider'
 import { useCloudSyncStore } from '@/stores/cloudSync'
 import { useLearningStore } from '@/stores/learning'
@@ -17,17 +17,22 @@ const uiStore = useUIStore()
 const learningStore = useLearningStore()
 const cloudStore = useCloudSyncStore()
 const { t } = useI18n()
-const { configured, isSignedIn, accountLabel, status } = storeToRefs(cloudStore)
+const { configured, isSignedIn, accountLabel, status, error } = storeToRefs(cloudStore)
 const { signIn: signInAccount, signOutAccount } = cloudStore
 const statusLabel = computed(() => t(`sync.${status.value === 'disabled' ? 'notConfigured' : status.value}`))
 const settings = reactive({ ...loadAiSettings() })
 const saved = ref(false)
 const aiImportInput = ref<HTMLInputElement | null>(null)
-const dailyGoal = computed({
-  get: () => String(learningStore.stats.dailyGoal),
-  set: (value: string) => learningStore.setDailyGoal(Number(value)),
+const dailyWordGoal = computed({
+  get: () => String(learningStore.stats.dailyWordGoal),
+  set: (value: string) => learningStore.setDailyWordGoal(Number(value)),
 })
-const dailyGoalOptions = DAILY_GOAL_OPTIONS.map(value => ({ value: String(value), label: `${value} 題` }))
+const dailyQuestionGoal = computed({
+  get: () => String(learningStore.stats.dailyQuestionGoal),
+  set: (value: string) => learningStore.setDailyQuestionGoal(Number(value)),
+})
+const dailyWordGoalOptions = DAILY_WORD_GOAL_OPTIONS.map(value => ({ value: String(value), label: `${value} 個單字` }))
+const dailyQuestionGoalOptions = DAILY_QUESTION_GOAL_OPTIONS.map(value => ({ value: String(value), label: `${value} 題` }))
 
 const providerOptions = [
   { value: 'openai', label: 'OpenAI-compatible' },
@@ -159,10 +164,14 @@ async function signIn() {
           </p>
         </div>
       </div>
-      <div class="mt-6 max-w-xs">
+      <div class="mt-6 grid gap-4 sm:grid-cols-2">
         <label class="text-xs font-black text-ink-500">
-          {{ $t('settings.dailyGoalLabel') }}
-          <Select v-model="dailyGoal" :options="dailyGoalOptions" class="mt-2" @change="uiStore.showToast(t('settings.dailyGoalSaved'))" />
+          {{ $t('settings.dailyWordGoalLabel') }}
+          <Select v-model="dailyWordGoal" :options="dailyWordGoalOptions" class="mt-2" @change="uiStore.showToast(t('settings.dailyGoalSaved'))" />
+        </label>
+        <label class="text-xs font-black text-ink-500">
+          {{ $t('settings.dailyQuestionGoalLabel') }}
+          <Select v-model="dailyQuestionGoal" :options="dailyQuestionGoalOptions" class="mt-2" @change="uiStore.showToast(t('settings.dailyGoalSaved'))" />
         </label>
       </div>
     </Card>
@@ -191,6 +200,9 @@ async function signIn() {
           </p>
         </div>
       </div>
+      <p v-if="error" class="mt-3 rounded-xl bg-red-50 p-3 text-xs font-semibold leading-relaxed text-red-600 dark:bg-red-950/20 dark:text-red-300" role="alert">
+        {{ $t('sync.errorDetail', { message: error }) }}
+      </p>
       <div class="mt-5 flex flex-wrap gap-2">
         <Button variant="outline" class="gap-2" @click="uiStore.openTransfer">
           <Upload class="h-4 w-4" />{{ $t('backup.exportImport') }}

@@ -93,11 +93,14 @@ function startTodayReview() {
               {{ $t('learning.todayGoal') }}
             </p>
             <p class="mt-1 text-xl font-extrabold tabular-nums">
-              {{ stats.todayLearningReviews }}/{{ stats.dailyGoal }}
+              {{ stats.todayLearningReviews }}/{{ stats.dailyWordGoal }}
             </p>
             <div class="mt-2 h-1.5 overflow-hidden rounded-full bg-ink-200 dark:bg-ink-800">
               <div class="h-full rounded-full bg-accent-primary transition-all duration-500" :style="{ width: `${todayProgress}%` }" />
             </div>
+            <p class="mt-2 text-[11px] font-semibold text-ink-400">
+              {{ $t('learning.todayQuestions') }}：{{ stats.todayQuestionReviews }}/{{ stats.dailyQuestionGoal }}
+            </p>
           </div>
           <div class="surface-inset p-3">
             <IconTile size="sm" tone="warning">

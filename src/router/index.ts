@@ -35,11 +35,15 @@ const router = createRouter({
       component: () => import('@/components/SettingsView.vue'),
     },
     {
+      path: '/set/:setId',
+      name: 'set-study',
+      component: () => import('@/components/SetStudyView.vue'),
+      props: true,
+    },
+    {
       path: '/flashcard/:setId',
       name: 'flashcard',
-      component: () => import('@/components/FlashcardsView.vue'),
-      props: true,
-      meta: { requiresSession: true },
+      redirect: to => ({ name: 'set-study', params: { setId: to.params.setId } }),
     },
     {
       path: '/quiz/:setId',
@@ -53,6 +57,20 @@ const router = createRouter({
       name: 'spelling',
       component: () => import('@/components/PracticeView.vue'),
       props: { mode: 'spelling' },
+      meta: { requiresSession: true },
+    },
+    {
+      path: '/cloze/:setId',
+      name: 'cloze',
+      component: () => import('@/components/PracticeView.vue'),
+      props: { mode: 'cloze' },
+      meta: { requiresSession: true },
+    },
+    {
+      path: '/reading/:setId',
+      name: 'reading',
+      component: () => import('@/components/PracticeView.vue'),
+      props: { mode: 'reading' },
       meta: { requiresSession: true },
     },
     {

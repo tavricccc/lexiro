@@ -7,6 +7,7 @@ import { computed, onMounted, onUnmounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRoute, useRouter } from 'vue-router'
 import { useLearningStore } from '@/stores/learning'
+import { useSessionStore } from '@/stores/session'
 import { useSetsStore } from '@/stores/sets'
 import { useUIStore } from '@/stores/ui'
 import SessionUnavailable from './SessionUnavailable.vue'
@@ -17,11 +18,13 @@ import Progress from './ui/progress/Progress.vue'
 const route = useRoute()
 const router = useRouter()
 const learningStore = useLearningStore()
+const sessionStore = useSessionStore()
 const setsStore = useSetsStore()
 const uiStore = useUIStore()
 const { t } = useI18n()
-const { currentReviewEntry, reviewSetId, reviewIndex, reviewTotal, reviewProgress, reviewAnswered } = storeToRefs(learningStore)
+const { currentReviewEntry, reviewSetId, reviewIndex, reviewTotal, reviewProgress, reviewAnswered, reviewContext } = storeToRefs(learningStore)
 const { answerCurrent, nextReview, startReview, startDailyReview, clearReview } = learningStore
+const { startDailyQuestionRound } = sessionStore
 const routeSetId = computed(() => typeof route.params.setId === 'string' ? route.params.setId : null)
 const activeSet = computed(() => {
   const currentSetId = currentReviewEntry.value?.setId ?? routeSetId.value
@@ -46,9 +49,19 @@ function rate(rating: ReviewRating) {
 }
 
 function next() {
+  const wasDaily = reviewContext.value === 'daily'
   if (nextReview())
     return
   clearReview()
+  if (wasDaily) {
+    void startDailyQuestionRound().then((started) => {
+      if (!started) {
+        uiStore.showToast(t('learning.noDailyQuestions'))
+        router.push({ name: 'home' })
+      }
+    })
+    return
+  }
   router.push({ name: 'home' })
 }
 

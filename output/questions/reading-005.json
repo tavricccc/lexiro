@@ -13,6 +13,7 @@
         {
           "id": "child-b1793bc6",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What can be inferred about Mei's character from the passage?",
           "options": [
             "She is resilient and willing to learn from her mistakes.",
@@ -36,6 +37,7 @@
         {
           "id": "child-b798bb2d",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'buckled' is closest in meaning to:",
           "options": [
             "bent and gave way",
@@ -59,6 +61,7 @@
         {
           "id": "child-46c0deb0",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the news report mainly about?",
           "options": [
             "A plan to convert an old railway into an elevated public green space.",
@@ -82,6 +85,7 @@
         {
           "id": "child-4830b665",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What concern do residents and the architect share about the project?",
           "options": [
             "It might raise nearby rents and displace current residents.",
@@ -105,6 +109,7 @@
         {
           "id": "child-b8cd1d33",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'severed' is closest in meaning to:",
           "options": [
             "cut off",
@@ -128,6 +133,7 @@
         {
           "id": "child-2df57688",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the passage primarily about?",
           "options": [
             "Stories powerfully shape knowledge, empathy, and identity across generations.",
@@ -151,6 +157,7 @@
         {
           "id": "child-33786167",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "Why does the author warn that the power of stories can be misused?",
           "options": [
             "Because a persuasive tale can spread falsehood as easily as truth.",
@@ -174,6 +181,7 @@
         {
           "id": "child-b59484e0",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'encode' is closest in meaning to:",
           "options": [
             "store and convey",
@@ -197,6 +205,7 @@
         {
           "id": "child-394b85b3",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author mainly arguing?",
           "options": [
             "Protecting biodiversity is a moral duty, not just a practical calculation.",
@@ -220,6 +229,7 @@
         {
           "id": "child-0d75054b",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does the author imply about purely practical arguments for conservation?",
           "options": [
             "They are valid but treat creatures merely as tools for humans.",
@@ -243,6 +253,7 @@
         {
           "id": "child-bd7412f4",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'unravel' is closest in meaning to:",
           "options": [
             "pull apart",
@@ -266,6 +277,7 @@
         {
           "id": "child-f422b435",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"They\" in the first two sentences of the passage most likely refer to?",
           "options": [
             "The weeds in the lot",
@@ -289,6 +301,7 @@
         {
           "id": "child-78879bc3",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"it\" in the sentence \"Without it, many crops ... would fail to grow\" refer to?",
           "options": [
             "Nectar",
@@ -312,6 +325,7 @@
         {
           "id": "child-4473e513",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"this small act\" in the last sentence refer to?",
           "options": [
             "Lena leaving the notebook on the bus",
@@ -335,6 +349,7 @@
         {
           "id": "child-dcbe5249",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"they\" in \"they provide a calm place to study\" refer to?",
           "options": [
             "Students",
@@ -358,6 +373,7 @@
         {
           "id": "child-cec82d57",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"Such a change\" in the passage refer to?",
           "options": [
             "Throwing bags away after a few minutes",
@@ -381,6 +397,7 @@
         {
           "id": "child-f217b699",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"it\" in \"saying it taught responsibility better than any lecture could\" refer to?",
           "options": [
             "The landfill",
@@ -404,6 +421,7 @@
         {
           "id": "child-ada9d07d",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"it\" in \"she begged to learn it\" refer to?",
           "options": [
             "The kitchen",
@@ -427,6 +445,7 @@
         {
           "id": "child-a6ee9e13",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"this rest\" in \"Skipping this rest can leave memories weak\" refer to?",
           "options": [
             "Staying up late to study",
@@ -450,6 +469,7 @@
         {
           "id": "child-cd87eeb0",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"they\" in \"which helps them save strength and avoid getting lost\" refer to?",
           "options": [
             "The swallows",
@@ -473,6 +493,7 @@
         {
           "id": "child-c67c5c98",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"this success\" in the last sentence refer to?",
           "options": [
             "The rising price of cars",
@@ -496,6 +517,7 @@
         {
           "id": "child-73490084",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"They\" in \"They were impressed by his careful work\" refer to?",
           "options": [
             "The blades",
@@ -519,6 +541,7 @@
         {
           "id": "child-18dd646c",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"the devices\" in \"the devices can be useful tools\" refer to?",
           "options": [
             "Smartphones",
@@ -542,6 +565,7 @@
         {
           "id": "child-fa34eb91",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"them\" in \"some people call them the lungs of the planet\" refer to?",
           "options": [
             "Animals",
@@ -565,6 +589,7 @@
         {
           "id": "child-41888a47",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"them\" in \"only the wealthy could own them\" refer to?",
           "options": [
             "Books",
@@ -588,6 +613,7 @@
         {
           "id": "child-931326e1",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"this kind of guidance\" in the last sentence refer to?",
           "options": [
             "Sofia's nervous feeling on her first day",
@@ -611,6 +637,7 @@
         {
           "id": "child-802e8675",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"this\" in \"if every coastal town did this\" refer to?",
           "options": [
             "Leaving trash on the sand",
@@ -634,6 +661,7 @@
         {
           "id": "child-29b8e8fc",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the overall tone of the passage?",
           "options": [
             "Nostalgic and warm",
@@ -657,6 +685,7 @@
         {
           "id": "child-33393dd7",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward fast fashion?",
           "options": [
             "Enthusiastic and approving",
@@ -680,6 +709,7 @@
         {
           "id": "child-0d65d1e5",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the overall tone of the news report?",
           "options": [
             "Doubtful and cautious",
@@ -703,6 +733,7 @@
         {
           "id": "child-589fa256",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the overall tone of the passage?",
           "options": [
             "Objective and informative",
@@ -726,6 +757,7 @@
         {
           "id": "child-19176feb",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward the overuse of screens?",
           "options": [
             "Completely opposed and furious",
@@ -749,6 +781,7 @@
         {
           "id": "child-488a2a90",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the overall tone of the passage?",
           "options": [
             "Humorous and self-mocking",
@@ -772,6 +805,7 @@
         {
           "id": "child-81f30610",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward artificial intelligence at work?",
           "options": [
             "Strongly enthusiastic",
@@ -795,6 +829,7 @@
         {
           "id": "child-d5b5a883",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the overall tone of the passage?",
           "options": [
             "Joyful and excited",
@@ -818,6 +853,7 @@
         {
           "id": "child-0d6320c8",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward the heavy homework load?",
           "options": [
             "Skeptical and disapproving",
@@ -841,6 +877,7 @@
         {
           "id": "child-ea4df9ce",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the overall tone of the news report?",
           "options": [
             "Hopeful and reassuring",
@@ -864,6 +901,7 @@
         {
           "id": "child-5c01df5a",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the overall tone of the passage?",
           "options": [
             "Alarmed and panicked",
@@ -887,6 +925,7 @@
         {
           "id": "child-a9c7ecc6",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude as described in the passage?",
           "options": [
             "Proud and deeply moved",
@@ -910,6 +949,7 @@
         {
           "id": "child-fac134ae",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward zoos?",
           "options": [
             "Fully convinced and supportive",
@@ -933,6 +973,7 @@
         {
           "id": "child-a2b1b240",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the overall tone of the news report?",
           "options": [
             "Celebratory and warm",
@@ -956,6 +997,7 @@
         {
           "id": "child-1f12bb01",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward the disappearance of bookshops?",
           "options": [
             "Cheerfully approving",
@@ -979,6 +1021,7 @@
         {
           "id": "child-1f22a0aa",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the overall tone of the passage?",
           "options": [
             "Informative and matter-of-fact",
@@ -1002,6 +1045,7 @@
         {
           "id": "child-d6af0d13",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "Who takes care of the eggs?",
           "options": [
             "The mothers",
@@ -1025,6 +1069,7 @@
         {
           "id": "child-13261db5",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "How many books can a student borrow at one time?",
           "options": [
             "Two books",
@@ -1048,6 +1093,7 @@
         {
           "id": "child-4aaca060",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does the queen bee do in the hive?",
           "options": [
             "She cleans the rooms",
@@ -1071,6 +1117,7 @@
         {
           "id": "child-c4465811",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What happens to lava when it cools down?",
           "options": [
             "It turns hard and forms new land",
@@ -1094,6 +1141,7 @@
         {
           "id": "child-85240114",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "Why is the yeast important in making bread?",
           "options": [
             "It gives the bread a golden color",
@@ -1117,6 +1165,7 @@
         {
           "id": "child-89f14b7e",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the best way to reach Riverton?",
           "options": [
             "By boat across the lake",
@@ -1140,6 +1189,7 @@
         {
           "id": "child-ea9291a9",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What makes the ocean water rise into the sky?",
           "options": [
             "The wind blowing the clouds",
@@ -1163,6 +1213,7 @@
         {
           "id": "child-3df17dd3",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "How long does each soccer practice last?",
           "options": [
             "One hour",
@@ -1186,6 +1237,7 @@
         {
           "id": "child-3f7323cb",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "Who tells the robots what to do?",
           "options": [
             "The robots decide by themselves",
@@ -1209,6 +1261,7 @@
         {
           "id": "child-2cbfa300",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "When do farmers collect the sap from the trees?",
           "options": [
             "In early spring",
@@ -1232,6 +1285,7 @@
         {
           "id": "child-4b8c0257",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "Why must dolphins come up to the surface?",
           "options": [
             "To find other fish to eat",
@@ -1255,6 +1309,7 @@
         {
           "id": "child-598949e8",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What did the man mix with water to make the first paper?",
           "options": [
             "Animal skin",
@@ -1278,6 +1333,7 @@
         {
           "id": "child-e608c3d7",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "Which color is on the outside of a rainbow?",
           "options": [
             "Purple",
@@ -1301,6 +1357,7 @@
         {
           "id": "child-b6aaa822",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is inside a camel's hump?",
           "options": [
             "Water",
@@ -1324,6 +1381,7 @@
         {
           "id": "child-8e0de636",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "Why does the moon shine at night?",
           "options": [
             "It makes its own light",
@@ -1347,6 +1405,7 @@
         {
           "id": "child-9ea4bfcb",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, what do worker bees collect from flowers?",
           "options": [
             "Honey",
@@ -1370,6 +1429,7 @@
         {
           "id": "child-80fb9dd0",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "How long does Earth take to travel once around the Sun?",
           "options": [
             "About thirty days",
@@ -1393,6 +1453,7 @@
         {
           "id": "child-28af87b1",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, what keeps penguins warm in cold weather?",
           "options": [
             "Their long feathers",
@@ -1416,6 +1477,7 @@
         {
           "id": "child-de544d2e",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, what happens to an old glass bottle when it is recycled?",
           "options": [
             "It is buried in the ground",
@@ -1439,6 +1501,7 @@
         {
           "id": "child-280ecf9b",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, where must the sun be when you look at a rainbow?",
           "options": [
             "Above your head",
@@ -1462,6 +1525,7 @@
         {
           "id": "child-9c8bb84f",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, why was the Great Wall first built?",
           "options": [
             "To bring in more visitors",
@@ -1485,6 +1549,7 @@
         {
           "id": "child-51b6ffc0",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, what is inside a camel's hump?",
           "options": [
             "Water",
@@ -1508,6 +1573,7 @@
         {
           "id": "child-8fc64b2f",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, what does the key on a map explain?",
           "options": [
             "The name of the mapmaker",
@@ -1531,6 +1597,7 @@
         {
           "id": "child-2acd5957",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, what does the winner of each event receive?",
           "options": [
             "A silver medal",
@@ -1554,6 +1621,7 @@
         {
           "id": "child-e366ad06",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, what is the name for water falling from clouds as rain or snow?",
           "options": [
             "Evaporation",
@@ -1577,6 +1645,7 @@
         {
           "id": "child-d37e93cd",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, what do you need before you can borrow books from the library?",
           "options": [
             "A small fee",
@@ -1600,6 +1669,7 @@
         {
           "id": "child-246f454f",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, what is the melted rock called once it flows out onto the surface?",
           "options": [
             "Magma",
@@ -1623,6 +1693,7 @@
         {
           "id": "child-92438574",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, how do dolphins breathe?",
           "options": [
             "Through gills like fish",
@@ -1646,6 +1717,7 @@
         {
           "id": "child-636f74b0",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, what makes a hot air balloon rise into the sky?",
           "options": [
             "The wind pushing it up",
@@ -1669,6 +1741,7 @@
         {
           "id": "child-4adfff43",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, how many legs does a spider have?",
           "options": [
             "Four",
@@ -1692,6 +1765,7 @@
         {
           "id": "child-e6665265",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, what are green tea and black tea both made from?",
           "options": [
             "Different plants",
@@ -1715,6 +1789,7 @@
         {
           "id": "child-84f444bc",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "Why is the museum closed on Monday?",
           "options": [
             "Workers clean the rooms and fix the machines.",
@@ -1738,6 +1813,7 @@
         {
           "id": "child-f089684d",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What helps boats stay safe when the air is thick with fog?",
           "options": [
             "Bright lights on the front of the boat.",
@@ -1761,6 +1837,7 @@
         {
           "id": "child-2ad76e4f",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What goes in the green box?",
           "options": [
             "Paper and cardboard.",
@@ -1784,6 +1861,7 @@
         {
           "id": "child-dab173af",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What do children win if they guess a riddle correctly?",
           "options": [
             "A paper lantern.",
@@ -1807,6 +1885,7 @@
         {
           "id": "child-316c897e",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What do farmers make from sunflower seeds?",
           "options": [
             "A sweet juice for bees.",
@@ -1830,6 +1909,7 @@
         {
           "id": "child-d54715c0",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "How do other ants find the food that a worker has found?",
           "options": [
             "They follow a trail of smell on the ground.",
@@ -1853,6 +1933,7 @@
         {
           "id": "child-3716f9f0",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "How often does bus number twelve run?",
           "options": [
             "Every half an hour.",
@@ -1876,6 +1957,7 @@
         {
           "id": "child-1a5ab8fd",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "Where do the violins usually sit in an orchestra?",
           "options": [
             "At the back, near the drums.",
@@ -1899,6 +1981,7 @@
         {
           "id": "child-b5d08547",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What makes the dough grow bigger?",
           "options": [
             "The salt.",
@@ -1922,6 +2005,7 @@
         {
           "id": "child-97e11991",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "How many books can a student borrow at one time?",
           "options": [
             "Up to two books.",
@@ -1945,6 +2029,7 @@
         {
           "id": "child-598d2731",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "Which color sits on the top of the rainbow?",
           "options": [
             "Purple.",
@@ -1968,6 +2053,7 @@
         {
           "id": "child-93c4345e",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What kind of plant is bamboo really?",
           "options": [
             "A tall tree.",
@@ -1991,6 +2077,7 @@
         {
           "id": "child-f307723e",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the job of the drummer on the boat?",
           "options": [
             "To steer the boat away from rocks.",
@@ -2014,6 +2101,7 @@
         {
           "id": "child-aa3a377e",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What do worker bees collect from flowers?",
           "options": [
             "Small wax rooms.",
@@ -2037,6 +2125,7 @@
         {
           "id": "child-726a41f4",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What happens if you wait too long before drinking the tea?",
           "options": [
             "The tea turns bitter and dark.",
@@ -2060,6 +2149,7 @@
         {
           "id": "child-cc7373a6",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "How did riders move the very first bicycles?",
           "options": [
             "By turning pedals on the front wheel.",
@@ -2083,6 +2173,7 @@
         {
           "id": "child-5ff80625",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "How much krill can a grown blue whale eat in one day?",
           "options": [
             "About one ton",
@@ -2106,6 +2197,7 @@
         {
           "id": "child-7adabd8a",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "When is the climbing season for Mount Fuji?",
           "options": [
             "From early July to early September",
@@ -2129,6 +2221,7 @@
         {
           "id": "child-811fddc6",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "Where did the marathon get its name?",
           "options": [
             "From a runner in Athens",
@@ -2152,6 +2245,7 @@
         {
           "id": "child-c8630e70",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the center of a pencil really made of?",
           "options": [
             "Lead",
@@ -2175,6 +2269,7 @@
         {
           "id": "child-960ab0de",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "How long is the Keukenhof garden open each year?",
           "options": [
             "All year",
@@ -2198,6 +2293,7 @@
         {
           "id": "child-a6f526dd",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "Why is the sunflower called by that name?",
           "options": [
             "Because it grows very tall",
@@ -2221,6 +2317,7 @@
         {
           "id": "child-f9270fd6",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "How many cups of water do doctors often say people should drink each day?",
           "options": [
             "About two cups",
@@ -2244,6 +2341,7 @@
         {
           "id": "child-d31898d2",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "Who leads the photography club?",
           "options": [
             "A student member",
@@ -2267,6 +2365,7 @@
         {
           "id": "child-ad960db2",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "Why do rabbits need to chew often?",
           "options": [
             "Because they are always hungry",
@@ -2290,6 +2389,7 @@
         {
           "id": "child-10991160",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "Why does the Moon shine?",
           "options": [
             "It makes its own light",
@@ -2313,6 +2413,7 @@
         {
           "id": "child-dd1a18c0",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In what kind of water do coral reefs grow best?",
           "options": [
             "Cold and deep water",
@@ -2336,6 +2437,7 @@
         {
           "id": "child-46fa1fc9",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "How did riders move the very first bicycles?",
           "options": [
             "By turning pedals",
@@ -2359,6 +2461,7 @@
         {
           "id": "child-b4047684",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does a snow leopard use its long tail for?",
           "options": [
             "To catch fish",
@@ -2382,6 +2485,7 @@
         {
           "id": "child-f5a447a0",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "How long does the tomato fight last?",
           "options": [
             "About one hour",
@@ -2405,6 +2509,7 @@
         {
           "id": "child-b20dc3c4",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What do bees carry on their legs from flower to flower?",
           "options": [
             "Water drops",
@@ -2428,6 +2533,7 @@
         {
           "id": "child-8b097831",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is a shooting star really?",
           "options": [
             "A small piece of rock or dust from space",
@@ -2451,6 +2557,7 @@
         {
           "id": "child-7b7b71ff",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"They\" in the passage most likely refer to?",
           "options": [
             "Honeybees",
@@ -2474,6 +2581,7 @@
         {
           "id": "child-559fac82",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"It\" in the passage most likely refer to?",
           "options": [
             "The sea",
@@ -2497,6 +2605,7 @@
         {
           "id": "child-19f51992",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"them\" in the passage most likely refer to?",
           "options": [
             "The chicks",
@@ -2520,6 +2629,7 @@
         {
           "id": "child-f9e9786a",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"it\" in the passage most likely refer to?",
           "options": [
             "The rain",
@@ -2543,6 +2653,7 @@
         {
           "id": "child-2f1d9efa",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"them\" in the passage most likely refer to?",
           "options": [
             "The bags",
@@ -2566,6 +2677,7 @@
         {
           "id": "child-5f9c3561",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"it\" in \"it is almost the only food\" most likely refer to?",
           "options": [
             "A panda",
@@ -2589,6 +2701,7 @@
         {
           "id": "child-f03b9cc0",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"He\" in the passage most likely refer to?",
           "options": [
             "A ship",
@@ -2612,6 +2725,7 @@
         {
           "id": "child-7ae18a4b",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"It\" in the passage most likely refer to?",
           "options": [
             "A public library",
@@ -2635,6 +2749,7 @@
         {
           "id": "child-b40eef77",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"this smell\" in the passage most likely refer to?",
           "options": [
             "The nest under the ground",
@@ -2658,6 +2773,7 @@
         {
           "id": "child-b63a817d",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"it\" in \"it makes the dough rise\" most likely refer to?",
           "options": [
             "The flour",
@@ -2681,6 +2797,7 @@
         {
           "id": "child-d7d3ce6a",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"them\" in \"traders rode them\" most likely refer to?",
           "options": [
             "The camels",
@@ -2704,6 +2821,7 @@
         {
           "id": "child-0de16b4c",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"these materials\" in the passage most likely refer to?",
           "options": [
             "The right bins",
@@ -2727,6 +2845,7 @@
         {
           "id": "child-e416395b",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"them\" in \"land on them\" most likely refer to?",
           "options": [
             "The insects",
@@ -2750,6 +2869,7 @@
         {
           "id": "child-0689a7f2",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does \"It\" in \"It does not make its own light\" most likely refer to?",
           "options": [
             "The night sky",

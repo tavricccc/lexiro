@@ -13,6 +13,7 @@
         {
           "id": "child-1fd03fb6",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What can we infer from the passage about changing your health?",
           "options": [
             "Real change comes slowly through repeated small actions",
@@ -36,6 +37,7 @@
         {
           "id": "child-a795cc5e",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is this story mainly about?",
           "options": [
             "A girl learns that the market is also a place of friendship and kindness",
@@ -59,6 +61,7 @@
         {
           "id": "child-adb5ca4c",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "Why did the old man most likely give Mei a free banana?",
           "options": [
             "He wanted to thank her for helping him",
@@ -82,6 +85,7 @@
         {
           "id": "child-d4c12f73",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What point is the writer mainly trying to make?",
           "options": [
             "Robots should be seen as helpers that work together with people",
@@ -105,6 +109,7 @@
         {
           "id": "child-4c6a42dd",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does the writer suggest people should do as robots become more common?",
           "options": [
             "Learn new skills so they can work well alongside machines",
@@ -128,6 +133,7 @@
         {
           "id": "child-599ad2df",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is this news report mainly about?",
           "options": [
             "Students planting trees to bring a burned hillside back to life",
@@ -151,6 +157,7 @@
         {
           "id": "child-50c40709",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "Why did the students promise to return once a month?",
           "options": [
             "To water and care for the trees so they can grow",
@@ -174,6 +181,7 @@
         {
           "id": "child-ce0adf9f",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What are Ana and Leo mainly talking about?",
           "options": [
             "How different countries celebrate festivals in their own ways",
@@ -197,6 +205,7 @@
         {
           "id": "child-8f086377",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What do Ana and Leo seem to believe about festivals?",
           "options": [
             "Even though they look different, festivals help bring people together",
@@ -220,6 +229,7 @@
         {
           "id": "child-241f59d0",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the main idea of this passage?",
           "options": [
             "Libraries offer many free services that benefit the whole community",
@@ -243,6 +253,7 @@
         {
           "id": "child-047aff15",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What can we infer about why libraries are valuable to a community?",
           "options": [
             "They give everyone, rich or poor, an equal chance to learn",
@@ -266,6 +277,7 @@
         {
           "id": "child-88c60506",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the main idea of this passage?",
           "options": [
             "Rivers form from small streams and are useful to people and nature",
@@ -289,6 +301,7 @@
         {
           "id": "child-e5cf7dbe",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What can we infer about why people should respect rivers?",
           "options": [
             "Rivers can flood and cause harm, not only bring help",
@@ -312,6 +325,7 @@
         {
           "id": "child-78e26850",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is this story mainly about?",
           "options": [
             "A boy visits a farm on a school trip and learns about growing food",
@@ -335,6 +349,7 @@
         {
           "id": "child-b696522d",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "Why did Kai most likely want to grow a plant of his own?",
           "options": [
             "The trip made him interested in growing food himself",
@@ -358,6 +373,7 @@
         {
           "id": "child-5f97e10e",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What point is the writer mainly trying to make?",
           "options": [
             "Smartphones can help students if they are used with good habits",
@@ -381,6 +397,7 @@
         {
           "id": "child-0597cc23",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does the writer believe is the real cause of the problem?",
           "options": [
             "Using phones at the wrong times, not the phones themselves",
@@ -404,6 +421,7 @@
         {
           "id": "child-eab1cdda",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is this news report mainly about?",
           "options": [
             "A town starting a new program to help families recycle more",
@@ -427,6 +445,7 @@
         {
           "id": "child-2d73808b",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What can we infer about how residents now feel about the program?",
           "options": [
             "Most have found the new system easier than they first feared",
@@ -450,6 +469,7 @@
         {
           "id": "child-7ff478ec",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What are Nora and Sam mainly talking about?",
           "options": [
             "Their different choices between tea and coffee and how each affects them",
@@ -473,6 +493,7 @@
         {
           "id": "child-30f353e7",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "Why did Nora pour Sam only half a cup of coffee?",
           "options": [
             "She thought less coffee might help him sleep better",
@@ -496,6 +517,7 @@
         {
           "id": "child-23e58dba",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the main idea of this passage?",
           "options": [
             "The night sky is full of stars and wonders worth looking at",
@@ -519,6 +541,7 @@
         {
           "id": "child-22010d86",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "Why can we see more stars far from a city?",
           "options": [
             "City lights are bright and make faint stars harder to see",
@@ -542,6 +565,7 @@
         {
           "id": "child-f0f6c5e0",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the main idea of this passage?",
           "options": [
             "Although insects are tiny, they do important work for nature",
@@ -565,6 +589,7 @@
         {
           "id": "child-f1af22d5",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What can we infer about gardens and farms from the passage?",
           "options": [
             "They depend on insects to grow well",
@@ -588,6 +613,7 @@
         {
           "id": "child-b9ec5b1a",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is this story mainly about?",
           "options": [
             "A boy who is nervous about a race learns that he belongs on the team",
@@ -611,6 +637,7 @@
         {
           "id": "child-fd98eaeb",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "Why most likely did Kai feel happy on his way home?",
           "options": [
             "He felt accepted by his team and proud that he tried his best",
@@ -634,6 +661,7 @@
         {
           "id": "child-547ee4c3",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What point is the writer mainly trying to make?",
           "options": [
             "People should save water at home through small daily changes",
@@ -657,6 +685,7 @@
         {
           "id": "child-48b32513",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does the writer suggest about saving water?",
           "options": [
             "Even small actions by each family can add up to a big result",
@@ -680,6 +709,7 @@
         {
           "id": "child-f499e936",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is this news report mainly about?",
           "options": [
             "Artists brightening a dull town wall with a colorful painting",
@@ -703,6 +733,7 @@
         {
           "id": "child-654155fc",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What can we infer about how the town feels about the painting?",
           "options": [
             "They are pleased with it and want more walls painted",
@@ -726,6 +757,7 @@
         {
           "id": "child-9855643b",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What are Lin and Sam mainly talking about?",
           "options": [
             "Making a plan to visit the weekend market together",
@@ -749,6 +781,7 @@
         {
           "id": "child-ab7f3189",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "Why does Lin say they should go to the market early?",
           "options": [
             "Because the best fresh fruit is sold out by noon",
@@ -772,6 +805,7 @@
         {
           "id": "child-f7878ec5",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the main idea of this passage?",
           "options": [
             "The four seasons each bring their own weather and changes to the land",
@@ -795,6 +829,7 @@
         {
           "id": "child-1d183fa9",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What can we infer about the seasons from the passage?",
           "options": [
             "They repeat in a regular, predictable order each year",
@@ -818,6 +853,7 @@
         {
           "id": "child-5331a04f",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the passage mainly about?",
           "options": [
             "How a small sensor helps a smartphone know which direction it faces",
@@ -841,6 +877,7 @@
         {
           "id": "child-83d7abc5",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "Why do phones combine the magnetometer with other sensors?",
           "options": [
             "To make the phone lighter and cheaper to build",
@@ -864,6 +901,7 @@
         {
           "id": "child-a6f33423",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'disturb' is closest in meaning to:",
           "options": [
             "interfere with",
@@ -887,6 +925,7 @@
         {
           "id": "child-6c3c3599",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the main message of the story?",
           "options": [
             "Walking alone is more dangerous than walking with others",
@@ -910,6 +949,7 @@
         {
           "id": "child-83e6f4be",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What can we infer about Mei at the start of the story?",
           "options": [
             "She was a professional athlete",
@@ -933,6 +973,7 @@
         {
           "id": "child-c1deedcd",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'sluggish' is closest in meaning to:",
           "options": [
             "slow and lacking energy",
@@ -956,6 +997,7 @@
         {
           "id": "child-394985f9",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the writer mainly arguing?",
           "options": [
             "Schools should stop teaching practical subjects",
@@ -979,6 +1021,7 @@
         {
           "id": "child-62b40707",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "How does the writer respond to the claim that mending takes too much time?",
           "options": [
             "By admitting that repair is indeed impractical",
@@ -1002,6 +1045,7 @@
         {
           "id": "child-6783d110",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'mend' is closest in meaning to:",
           "options": [
             "repair",
@@ -1025,6 +1069,7 @@
         {
           "id": "child-5c2e64e0",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the news report mainly about?",
           "options": [
             "A town's first sand sculpture festival and its success",
@@ -1048,6 +1093,7 @@
         {
           "id": "child-60c72dca",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "Why did photographers work quickly to record the sculptures?",
           "options": [
             "Because the artists asked them to leave early",
@@ -1071,6 +1117,7 @@
         {
           "id": "child-1dd73903",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'fragile' is closest in meaning to:",
           "options": [
             "easily destroyed",
@@ -1094,6 +1141,7 @@
         {
           "id": "child-a7dae4cc",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does the passage mainly explain?",
           "options": [
             "Why stars never move across the sky",
@@ -1117,6 +1165,7 @@
         {
           "id": "child-20933319",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "Why is it best to watch a meteor shower far from city lights?",
           "options": [
             "Because the rocks fall only in the countryside",
@@ -1140,6 +1189,7 @@
         {
           "id": "child-730ef81e",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'streak' is closest in meaning to:",
           "options": [
             "a long thin line",
@@ -1163,6 +1213,7 @@
         {
           "id": "child-6b710b86",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the conversation mainly about?",
           "options": [
             "An experienced relative giving practical advice to a new bakery owner",
@@ -1186,6 +1237,7 @@
         {
           "id": "child-f9709f30",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "Why does Aunt Lin warn against lowering prices too much?",
           "options": [
             "Because cheap prices might make customers doubt the quality",
@@ -1209,6 +1261,7 @@
         {
           "id": "child-2cecca7e",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'stale' is closest in meaning to:",
           "options": [
             "no longer fresh",
@@ -1232,6 +1285,7 @@
         {
           "id": "child-5865901d",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the passage mainly about?",
           "options": [
             "How wind turbines work and their benefits and limits",
@@ -1255,6 +1309,7 @@
         {
           "id": "child-2e493884",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "Why are engineers testing large batteries?",
           "options": [
             "To store power for times when the wind is calm",
@@ -1278,6 +1333,7 @@
         {
           "id": "child-427b048a",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'reliable' is closest in meaning to:",
           "options": [
             "dependable",
@@ -1301,6 +1357,7 @@
         {
           "id": "child-cf418612",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the main idea of the story?",
           "options": [
             "Mei's first dive gives her a wonderful new view of the ocean",
@@ -1324,6 +1381,7 @@
         {
           "id": "child-ef0d8213",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "Why did the instructor shake his head?",
           "options": [
             "He did not want Mei to harm the coral",
@@ -1347,6 +1405,7 @@
         {
           "id": "child-cb3ef6b4",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'fragile' is closest in meaning to:",
           "options": [
             "easily damaged",
@@ -1370,6 +1429,7 @@
         {
           "id": "child-feb6d6f6",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the writer's main argument?",
           "options": [
             "Teenagers should use social media less and more carefully",
@@ -1393,6 +1453,7 @@
         {
           "id": "child-d2ae83bf",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does the writer suggest about social media apps?",
           "options": [
             "They can be helpful if people control their use",
@@ -1416,6 +1477,7 @@
         {
           "id": "child-48d71f6f",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'ordinary' is closest in meaning to:",
           "options": [
             "normal",
@@ -1439,6 +1501,7 @@
         {
           "id": "child-908bbd7e",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the news report mainly about?",
           "options": [
             "A plan to turn an old railway track into a park",
@@ -1462,6 +1525,7 @@
         {
           "id": "child-812c00d2",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "Why did the council promise to work mostly during the day?",
           "options": [
             "To reduce the disturbance from construction noise",
@@ -1485,6 +1549,7 @@
         {
           "id": "child-053086f5",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'transform' is closest in meaning to:",
           "options": [
             "change completely",
@@ -1508,6 +1573,7 @@
         {
           "id": "child-f34bfdf0",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does the passage mainly explain?",
           "options": [
             "Why sleep is important and how the brain works during it",
@@ -1531,6 +1597,7 @@
         {
           "id": "child-6644b79a",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "Why might students who sleep well remember lessons better?",
           "options": [
             "Their brains store useful memories during dream sleep",
@@ -1554,6 +1621,7 @@
         {
           "id": "child-28d3b8f5",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'luxury' is closest in meaning to:",
           "options": [
             "something extra and not necessary",
@@ -1577,6 +1645,7 @@
         {
           "id": "child-e107ed2c",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the conversation mainly about?",
           "options": [
             "Lily inviting Ben to join a volunteer cleanup",
@@ -1600,6 +1669,7 @@
         {
           "id": "child-420784e4",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What can we infer about Ben at first?",
           "options": [
             "He is unsure because the activity is new to him",
@@ -1623,6 +1693,7 @@
         {
           "id": "child-2bbc11fb",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'convinced' is closest in meaning to:",
           "options": [
             "persuaded",
@@ -1646,6 +1717,7 @@
         {
           "id": "child-26663217",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the main idea of this passage?",
           "options": [
             "Planning and patience are essential because space travel is complex and slow to control",
@@ -1669,6 +1741,7 @@
         {
           "id": "child-550cda43",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "Why must a robot in deep space follow instructions written before it lands?",
           "options": [
             "Because signals from Earth take too long to guide it in real time",
@@ -1692,6 +1765,7 @@
         {
           "id": "child-8c9a2d97",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'probe' is closest in meaning to:",
           "options": [
             "an unmanned craft sent to explore space",
@@ -1715,6 +1789,7 @@
         {
           "id": "child-1490276a",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the main idea of this story?",
           "options": [
             "A small act of kindness turned a lonely newcomer into a happy friend",
@@ -1738,6 +1813,7 @@
         {
           "id": "child-006070bf",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What can we infer about how Mei felt by the end of the term?",
           "options": [
             "She no longer wanted to leave the school",
@@ -1761,6 +1837,7 @@
         {
           "id": "child-d236a147",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'dread' is closest in meaning to:",
           "options": [
             "to fear or worry about something",
@@ -1784,6 +1861,7 @@
         {
           "id": "child-939159fb",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the writer mainly trying to argue?",
           "options": [
             "Public libraries remain valuable and deserve to be protected",
@@ -1807,6 +1885,7 @@
         {
           "id": "child-836aa195",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does the writer imply about people with little income?",
           "options": [
             "Libraries make learning affordable for them",
@@ -1830,6 +1909,7 @@
         {
           "id": "child-0d8ad257",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'abandon' is closest in meaning to:",
           "options": [
             "to give up or leave behind",
@@ -1853,6 +1933,7 @@
         {
           "id": "child-cc260711",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is this news report mainly about?",
           "options": [
             "A town has opened new protected bike lanes and is encouraging cycling",
@@ -1876,6 +1957,7 @@
         {
           "id": "child-1f137cf6",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "Why do some shop owners feel worried about the new lanes?",
           "options": [
             "They fear losing customers because of fewer parking spaces",
@@ -1899,6 +1981,7 @@
         {
           "id": "child-543941e4",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'barriers' is closest in meaning to:",
           "options": [
             "structures that block or separate",
@@ -1922,6 +2005,7 @@
         {
           "id": "child-57963b52",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the main idea of this passage?",
           "options": [
             "Thunder is the harmless sound caused by lightning heating the air",
@@ -1945,6 +2029,7 @@
         {
           "id": "child-ccafc546",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "Why do we see the lightning flash before we hear the thunder?",
           "options": [
             "Because light travels faster than sound",
@@ -1968,6 +2053,7 @@
         {
           "id": "child-76adf94a",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'expands' is closest in meaning to:",
           "options": [
             "grows larger in size",
@@ -1991,6 +2077,7 @@
         {
           "id": "child-2f52f379",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is this dialogue mainly about?",
           "options": [
             "A nervous student finds courage to perform on stage",
@@ -2014,6 +2101,7 @@
         {
           "id": "child-857bc7fc",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does Mr Owens want Lena to understand about the audience?",
           "options": [
             "They want her to do well and enjoy the play",
@@ -2037,6 +2125,7 @@
         {
           "id": "child-ea53c881",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'frightening' is closest in meaning to:",
           "options": [
             "causing fear",
@@ -2060,6 +2149,7 @@
         {
           "id": "child-b9402237",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the main idea of the passage?",
           "options": [
             "Bright artificial light in the evening can harm sleep, but simple habits can help.",
@@ -2083,6 +2173,7 @@
         {
           "id": "child-111ff99d",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What can be inferred about a person who uses bright screens right before bed?",
           "options": [
             "They will probably fall asleep faster than usual.",
@@ -2106,6 +2197,7 @@
         {
           "id": "child-0b0a7c32",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'dimming' is closest in meaning to:",
           "options": [
             "making lights less bright",
@@ -2129,6 +2221,7 @@
         {
           "id": "child-18c90f7b",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the article mainly about?",
           "options": [
             "The opening of a new city park built on a former parking lot.",
@@ -2152,6 +2245,7 @@
         {
           "id": "child-7611b79d",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What can be inferred about the town's view of parks?",
           "options": [
             "The town believes parks are a waste of public money.",
@@ -2175,6 +2269,7 @@
         {
           "id": "child-70eb1cfd",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'residents' is closest in meaning to:",
           "options": [
             "people who live in a place",
@@ -2198,6 +2293,7 @@
         {
           "id": "child-60b8c3b2",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the passage mainly explaining?",
           "options": [
             "Why and how many animals migrate over long distances.",
@@ -2221,6 +2317,7 @@
         {
           "id": "child-79875b33",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What can be inferred about migrating animals from the passage?",
           "options": [
             "They always reach their destination without any risk.",
@@ -2244,6 +2341,7 @@
         {
           "id": "child-9fff9f6e",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'exhausting' is closest in meaning to:",
           "options": [
             "very tiring",
@@ -2267,6 +2365,7 @@
         {
           "id": "child-1c43a99a",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the main idea of the passage?",
           "options": [
             "Paper developed from earlier writing materials and changed how people share ideas.",
@@ -2290,6 +2389,7 @@
         {
           "id": "child-6f272c4d",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "Why did written records become more common after paper appeared?",
           "options": [
             "Because paper was cheaper and easier to use than older materials.",
@@ -2313,6 +2413,7 @@
         {
           "id": "child-dcc2b42f",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'costly' is closest in meaning to:",
           "options": [
             "expensive",
@@ -2336,6 +2437,7 @@
         {
           "id": "child-001eaab1",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is mainly happening in this dialogue?",
           "options": [
             "Mei is encouraging Jun to join a beginner-friendly coding club.",
@@ -2359,6 +2461,7 @@
         {
           "id": "child-09429c54",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What can be inferred about Jun by the end of the conversation?",
           "options": [
             "He has decided the club is too difficult for him.",
@@ -2382,6 +2485,7 @@
         {
           "id": "child-28dfd10b",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'curiosity' is closest in meaning to:",
           "options": [
             "a desire to learn and explore",
@@ -2405,6 +2509,7 @@
         {
           "id": "child-216f0c28",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the writer mainly arguing?",
           "options": [
             "Cities should invest more in public transport because of its many benefits.",
@@ -2428,6 +2533,7 @@
         {
           "id": "child-ba927cb5",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "How does the writer respond to people who say buses are slow or uncomfortable?",
           "options": [
             "By agreeing that public transport should be removed.",
@@ -2451,6 +2557,7 @@
         {
           "id": "child-e8fdad19",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'affordable' is closest in meaning to:",
           "options": [
             "not too expensive to pay for",
@@ -2474,6 +2581,7 @@
         {
           "id": "child-6aeb4007",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the main idea of the passage?",
           "options": [
             "Memory is an active process, and smart study habits make recall stronger.",
@@ -2497,6 +2605,7 @@
         {
           "id": "child-aaad4f81",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "Why does testing yourself help more than rereading a page?",
           "options": [
             "Because rereading always damages the brain over time.",
@@ -2520,6 +2629,7 @@
         {
           "id": "child-1f29a2c3",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'recall' is closest in meaning to:",
           "options": [
             "bring back to mind",
@@ -2543,6 +2653,7 @@
         {
           "id": "child-cbee6954",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the news article mainly about?",
           "options": [
             "A family of foxes living in a city park and how the town responded.",
@@ -2566,6 +2677,7 @@
         {
           "id": "child-1353b72a",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "Why do officials ask the public not to feed the foxes?",
           "options": [
             "Because the foxes already eat far too much fruit.",
@@ -2589,6 +2701,7 @@
         {
           "id": "child-d3eda43a",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'thrive' is closest in meaning to:",
           "options": [
             "grow and do well",
@@ -2612,6 +2725,7 @@
         {
           "id": "child-533dd992",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What lesson does the folk tale mainly teach?",
           "options": [
             "Kindness and working together can overcome hardship better than fear.",
@@ -2635,6 +2749,7 @@
         {
           "id": "child-4b7d571e",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What can be inferred about the villagers before Soraya acted?",
           "options": [
             "They were calm and happy to share everything they owned.",
@@ -2658,6 +2773,7 @@
         {
           "id": "child-84f51d58",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'fierce' is closest in meaning to:",
           "options": [
             "very strong and harsh",
@@ -2681,6 +2797,7 @@
         {
           "id": "child-72820fa8",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the writer mainly arguing?",
           "options": [
             "Governments should do more to help drivers switch to electric cars.",
@@ -2704,6 +2821,7 @@
         {
           "id": "child-cc5e5cf5",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "How does the writer respond to the complaint that electric cars are too expensive?",
           "options": [
             "By agreeing that the cars will always be unaffordable.",
@@ -2727,6 +2845,7 @@
         {
           "id": "child-00674245",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'shrinking' is closest in meaning to:",
           "options": [
             "getting smaller",
@@ -2750,6 +2869,7 @@
         {
           "id": "child-d1b9cc2e",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the main point of the conversation?",
           "options": [
             "Rest and recovery are an important part of getting stronger in training.",

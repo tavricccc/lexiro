@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { ResultRow } from '@/types'
-import { BookmarkCheck, BookOpenText, ClipboardCopy, RotateCcw, SpellCheck2 } from 'lucide-vue-next'
+import { BookmarkCheck, BookOpenText, ClipboardCopy, RotateCcw } from 'lucide-vue-next'
 import { storeToRefs } from 'pinia'
 import { computed, nextTick, onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
@@ -18,7 +18,7 @@ const setsStore = useSetsStore()
 const sessionStore = useSessionStore()
 const uiStore = useUIStore()
 const { activeSet } = storeToRefs(setsStore)
-const { resultSummary, resultRows } = storeToRefs(sessionStore)
+const { resultSummary, resultRows, currentSession } = storeToRefs(sessionStore)
 const {
   restartCurrentMode,
   reviewWrongAnswers,
@@ -29,6 +29,20 @@ const { t } = useI18n()
 const { showToast } = uiStore
 
 const wrongRows = computed(() => resultRows.value.filter(row => !row.record?.isCorrect))
+const displaySet = computed(() => activeSet.value ?? setsStore.sets[0] ?? null)
+const isChoiceMode = computed(() => ['quiz', 'cloze', 'reading'].includes(resultSummary.value?.mode ?? ''))
+const modeLabel = computed(() => {
+  if (currentSession.value?.sourceSetId === 'daily')
+    return t('practice.dailyQuestions')
+  const mode = resultSummary.value?.mode
+  if (mode === 'cloze')
+    return t('practice.fillBlank')
+  if (mode === 'reading')
+    return t('practice.reading')
+  if (mode === 'spelling')
+    return t('practice.spelling')
+  return t('practice.quiz')
+})
 
 function questionFor(row: typeof resultRows.value[number]) {
   return row.entry.item.question ?? { prompt: '', opts: ['', '', '', ''], ans: 0 }
@@ -75,7 +89,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <section v-if="activeSet && resultSummary" class="space-y-6">
+  <section v-if="displaySet && resultSummary" class="space-y-6">
     <Card id="completion-panel" class="p-5 sm:p-8 text-left">
       <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6 border-b border-ink-200/50 dark:border-ink-200/10">
         <div class="flex items-start gap-4">
@@ -87,7 +101,7 @@ onMounted(() => {
               {{ resultSummary.review ? $t('result.reviewCompleted') : $t('result.completed') }}
             </h2>
             <p class="text-xs font-bold text-ink-400 dark:text-ink-500 uppercase tracking-widest">
-              {{ $t('result.modeLabel') }}{{ resultSummary.mode === 'quiz' ? $t('result.modeQuiz') : $t('result.modeSpelling') }}
+              {{ $t('result.modeLabel') }}{{ modeLabel }}
             </p>
           </div>
         </div>
@@ -117,7 +131,7 @@ onMounted(() => {
           <span>{{ $t('result.reviewWrong', { count: resultSummary.wrongCount }) }}</span>
         </Button>
         <Button
-          v-if="resultSummary.mode === 'quiz' && resultSummary.markedCount"
+          v-if="isChoiceMode && resultSummary.markedCount"
           variant="outline"
           class="gap-2"
           @click="reviewMarkedQuestions"
@@ -134,9 +148,9 @@ onMounted(() => {
           <ClipboardCopy class="h-4 w-4 text-accent-primary" />
           <span>{{ $t('result.aiExplainAll') }}</span>
         </Button>
-        <Button variant="outline" class="gap-2" @click="switchModeAfterResult">
-          <SpellCheck2 class="h-4 w-4 text-accent-primary" />
-          <span>{{ resultSummary.mode === 'quiz' ? $t('result.switchMode', { next: $t('result.switchSpelling') }) : $t('result.switchMode', { next: $t('result.switchQuiz') }) }}</span>
+        <Button v-if="isChoiceMode" variant="outline" class="gap-2" @click="switchModeAfterResult">
+          <BookOpenText class="h-4 w-4 text-accent-primary" />
+          <span>{{ $t('result.switchMode', { next: resultSummary.mode === 'cloze' ? $t('practice.reading') : $t('practice.fillBlank') }) }}</span>
         </Button>
       </div>
 
@@ -185,7 +199,7 @@ onMounted(() => {
         </div>
 
         <div class="mt-4 space-y-3 text-sm leading-relaxed text-ink-700 dark:text-ink-300">
-          <div v-if="resultSummary.mode === 'quiz'" class="space-y-2">
+          <div v-if="isChoiceMode" class="space-y-2">
             <p class="font-bold text-ink-950 dark:text-ink-50">
               {{ questionFor(row).prompt }}
             </p>

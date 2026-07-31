@@ -6,7 +6,7 @@ import Button from './ui/button/Button.vue'
 import Card from './ui/card/Card.vue'
 
 const props = defineProps<{
-  entry: { item: { word: string, pos: string, meaning: string, example: string, question?: { prompt: string, opts: string[], ans: number } } }
+  entry: { item: { word: string, pos: string, meaning: string, example: string, question?: { prompt: string, opts: string[], ans: number } }, readingPassage?: string }
   index: number
   total: number
   review?: boolean
@@ -121,6 +121,12 @@ onUnmounted(() => window.removeEventListener('keydown', onKeydown))
       </Button>
     </div>
     <div class="rounded-2xl bg-ink-100/80 dark:bg-ink-900 border border-ink-200/70 dark:border-ink-200/25 p-5 text-left">
+      <div v-if="entry.readingPassage" class="mb-5 rounded-xl border border-ink-200/60 bg-white/70 p-4 text-sm leading-relaxed text-ink-700 dark:border-ink-200/15 dark:bg-ink-950/30 dark:text-ink-200">
+        <p class="mb-2 text-xs font-extrabold uppercase tracking-widest text-ink-400">
+          {{ $t('practice.reading') }}
+        </p>
+        <p>{{ entry.readingPassage }}</p>
+      </div>
       <p class="text-xs font-extrabold uppercase tracking-widest text-ink-400 dark:text-ink-500">
         {{ $t('practice.quizPromptLabel') }}
       </p>

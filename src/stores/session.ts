@@ -1,5 +1,7 @@
 import type {
   Draft,
+  LibraryQuestion,
+  MultipleChoiceQuestion,
   PracticeMode,
   PracticeSession,
   QuizRecord,
@@ -18,6 +20,7 @@ import { createDebouncedSaver, loadFromStorage, saveToStorage } from '@/lib/pers
 import { shuffleEntries, shuffleQuizEntry } from '@/lib/shuffle'
 import { isSpellingAnswerCorrect } from '@/lib/spelling'
 import { normalizeSession, toSessionEntries } from '@/lib/validation'
+import { useLearningStore } from './learning'
 import { useLibraryStore } from './library'
 import { useSetsStore } from './sets'
 import { useUIStore } from './ui'
@@ -34,13 +37,13 @@ export function parseSessionKey(key: string): { setId: string, mode: PracticeMod
     return null
   const setId = key.slice(0, sep)
   const mode = key.slice(sep + 2)
-  if (mode !== 'quiz' && mode !== 'spelling' && mode !== 'flashcard')
+  if (!['quiz', 'cloze', 'reading', 'spelling', 'flashcard'].includes(mode))
     return null
-  return { setId, mode }
+  return { setId, mode: mode as PracticeMode }
 }
 
 function prepareEntriesForMode(mode: PracticeMode, entries: SessionEntry[]): SessionEntry[] {
-  if (mode !== 'quiz')
+  if (!['quiz', 'cloze', 'reading'].includes(mode))
     return entries
   return entries.map(shuffleQuizEntry)
 }
@@ -48,6 +51,10 @@ function prepareEntriesForMode(mode: PracticeMode, entries: SessionEntry[]): Ses
 function modeLabel(mode: PracticeMode): string {
   if (mode === 'quiz')
     return t('practice.quiz')
+  if (mode === 'cloze')
+    return t('practice.fillBlank')
+  if (mode === 'reading')
+    return t('practice.reading')
   if (mode === 'spelling')
     return t('practice.spelling')
   return t('flashcard.title')
@@ -125,7 +132,7 @@ export const useSessionStore = defineStore('session', () => {
       total,
       correctCount,
       wrongCount: currentSession.value.wrongEntries.length,
-      markedCount: currentSession.value.mode === 'quiz'
+      markedCount: ['quiz', 'cloze', 'reading'].includes(currentSession.value.mode)
         ? currentSession.value.markedForReview.filter(Boolean).length
         : 0,
       score,
@@ -201,7 +208,7 @@ export const useSessionStore = defineStore('session', () => {
 
   function getInProgressModes(setId: string): PracticeMode[] {
     const modes: PracticeMode[] = []
-    for (const mode of ['flashcard', 'quiz', 'spelling'] as PracticeMode[]) {
+    for (const mode of ['flashcard', 'quiz', 'cloze', 'reading', 'spelling'] as PracticeMode[]) {
       const session = getSession(setId, mode)
       if (isInProgressSession(session) && isResumableSession(setId, mode))
         modes.push(mode)
@@ -237,7 +244,7 @@ export const useSessionStore = defineStore('session', () => {
         return
 
       const setsStore = useSetsStore()
-      const validSetIds = new Set(setsStore.sets.map(s => s.id))
+      const validSetIds = new Set(['daily', ...setsStore.sets.map(s => s.id)])
 
       practiceCounts.value = parsed.practiceCounts && typeof parsed.practiceCounts === 'object' && !Array.isArray(parsed.practiceCounts)
         ? parsed.practiceCounts
@@ -337,29 +344,53 @@ export const useSessionStore = defineStore('session', () => {
     return Math.min(Math.max(storedCount, 1), total)
   }
 
-  function buildPracticeEntries(setId: string, items: SessionEntry[]): SessionEntry[] {
-    const available = items.filter(entry => entry.item.question)
-    const shuffled = shuffleEntries(available)
-    const count = getPracticeCount(setId, shuffled.length)
-    return shuffled.slice(0, count)
+  function toLegacyQuestion(question: MultipleChoiceQuestion) {
+    return { prompt: question.prompt, opts: question.options, ans: question.answerIndex }
+  }
+
+  function isFillBlank(question: MultipleChoiceQuestion) {
+    return question.questionStyle === 'fillBlank' || question.prompt.includes('_____')
+  }
+
+  function buildQuestionEntries(setId: string, items: VocabSet['items'], mode: Extract<PracticeMode, 'quiz' | 'cloze' | 'reading'>): SessionEntry[] {
+    const libraryStore = useLibraryStore()
+    if (mode === 'reading') {
+      const reading = libraryStore.questions.filter((question): question is Extract<LibraryQuestion, { kind: 'reading' }> => question.kind === 'reading')
+      return reading.flatMap((pack) => {
+        const relatedItem = items.find(item => pack.wordKeys.includes(item.word.toLocaleLowerCase())) ?? items[0]
+        if (!relatedItem)
+          return []
+        return pack.questions
+          .filter(child => child.kind === 'multipleChoice' && Array.isArray(child.options) && child.options.length === 4 && Number.isInteger(child.answerIndex))
+          .map(child => ({
+            item: { ...relatedItem, question: { prompt: child.prompt, opts: child.options!, ans: child.answerIndex! } },
+            originalIndex: items.indexOf(relatedItem),
+            readingPassage: pack.passage,
+          }))
+      })
+    }
+
+    const entries = items.flatMap((item, index) => {
+      const choices = libraryStore.getQuestionsFor(setId, item.word, 'multipleChoice')
+        .filter((question): question is MultipleChoiceQuestion => question.kind === 'multipleChoice')
+        .filter(question => mode === 'cloze' ? isFillBlank(question) : !isFillBlank(question))
+      const selected = choices[Math.floor(Math.random() * choices.length)]
+      if (selected)
+        return [{ item: { ...item, question: toLegacyQuestion(selected) }, originalIndex: index }]
+      if (mode === 'quiz' && item.question)
+        return [{ item, originalIndex: index }]
+      return []
+    })
+    return entries
   }
 
   function buildQuizItems(setId: string, items: VocabSet['items']): VocabSet['items'] {
-    const libraryStore = useLibraryStore()
-    return items.map((item) => {
-      const choices = libraryStore.getQuestionsFor(setId, item.word, 'multipleChoice').filter((question): question is Extract<typeof question, { kind: 'multipleChoice' }> => question.kind === 'multipleChoice')
-      const selected = choices[Math.floor(Math.random() * choices.length)]
-      if (!selected)
-        return item
-      return {
-        ...item,
-        question: {
-          prompt: selected.prompt,
-          opts: selected.options,
-          ans: selected.answerIndex,
-        },
-      }
-    }).filter(item => Boolean(item.question))
+    return buildQuestionEntries(setId, items, 'quiz').map(entry => entry.item)
+  }
+
+  function getAvailablePracticeCount(setId: string, mode: Extract<PracticeMode, 'cloze' | 'reading'>): number {
+    const set = useSetsStore().sets.find(item => item.id === setId)
+    return set ? buildQuestionEntries(setId, set.items, mode).length : 0
   }
 
   function createSession(mode: PracticeMode, entries: SessionEntry[], review = false, sourceSetId: string | null = null): PracticeSession {
@@ -422,7 +453,7 @@ export const useSessionStore = defineStore('session', () => {
   }
 
   async function navigateToSession(mode: PracticeMode, setId: string) {
-    const name = mode === 'flashcard' ? 'flashcard' : mode
+    const name = mode
     if (router.currentRoute.value.name !== name || router.currentRoute.value.params.setId !== setId)
       await router.push({ name, params: { setId } })
   }
@@ -479,16 +510,41 @@ export const useSessionStore = defineStore('session', () => {
     }
 
     const items = setsStore.sets.find(s => s.id === setId)?.items ?? setsStore.activeSet?.items ?? []
-    const modeItems = mode === 'quiz' ? buildQuizItems(setId, items) : items
     const entries = reviewEntries
       ? shuffleEntries(reviewEntries.map(entry => ({ ...entry })))
-      : buildPracticeEntries(setId, toSessionEntries(modeItems))
+      : mode === 'spelling'
+        ? shuffleEntries(toSessionEntries(items.filter(item => item.example)))
+        : buildQuestionEntries(setId, items, mode === 'quiz' ? 'quiz' : mode)
+    const limitedEntries = entries.slice(0, getPracticeCount(setId, entries.length))
 
-    putSession(setId, mode, createSession(mode, entries, Boolean(reviewEntries), setId))
+    putSession(setId, mode, createSession(mode, limitedEntries, Boolean(reviewEntries), setId))
     currentView.value = mode
     saveState(true)
     await navigateToSession(mode, setId)
     window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
+  async function startDailyQuestionRound(reviewEntries: SessionEntry[] | null = null) {
+    const setsStore = useSetsStore()
+    const learningStore = useLearningStore()
+    const entries = reviewEntries ?? (() => {
+      const clozeEntries = setsStore.sets.flatMap(set => buildQuestionEntries(set.id, set.items, 'cloze'))
+      const readingEntries = setsStore.sets[0] ? buildQuestionEntries(setsStore.sets[0].id, setsStore.sets[0].items, 'reading') : []
+      const unique = new Map<string, SessionEntry>()
+      for (const entry of [...clozeEntries, ...readingEntries]) {
+        const key = `${entry.item.word}|${entry.item.question?.prompt}|${entry.readingPassage ?? ''}`
+        unique.set(key, entry)
+      }
+      return shuffleEntries(Array.from(unique.values())).slice(0, learningStore.stats.dailyQuestionGoal)
+    })()
+    if (!entries.length)
+      return false
+    putSession('daily', 'quiz', createSession('quiz', entries, true, 'daily'))
+    currentView.value = 'quiz'
+    saveState(true)
+    await navigateToSession('quiz', 'daily')
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+    return true
   }
 
   function handlePracticeCountChange(setId: string, value: string | number, total: number) {
@@ -561,13 +617,13 @@ export const useSessionStore = defineStore('session', () => {
   }
 
   function submitCurrentRound() {
-    if (!currentSession.value || (currentSession.value.mode !== 'quiz' && currentSession.value.mode !== 'spelling'))
+    if (!currentSession.value || (currentSession.value.mode === 'flashcard'))
       return
 
     const mode = currentSession.value.mode
     const records = currentSession.value.entries.map((entry, index) => {
       const draft = currentSession.value!.drafts[index] ?? null
-      return mode === 'quiz'
+      return mode !== 'spelling'
         ? buildQuizRecord(entry, draft)
         : buildSpellingRecord(entry, draft)
     })
@@ -576,6 +632,8 @@ export const useSessionStore = defineStore('session', () => {
     currentSession.value.correctCount = records.filter(r => r.isCorrect).length
     currentSession.value.wrongEntries = currentSession.value.entries.filter((_, index) => !records[index]?.isCorrect)
     currentSession.value.status = 'completed'
+    if (currentSession.value.sourceSetId === 'daily' && mode !== 'spelling')
+      useLearningStore().recordDailyQuestionResults(currentSession.value.correctCount, records.length)
     finishRound()
   }
 
@@ -612,7 +670,7 @@ export const useSessionStore = defineStore('session', () => {
 
   function toggleReviewMark(entryIndex: number): boolean {
     const session = currentSession.value
-    if (!session || session.mode !== 'quiz' || entryIndex < 0 || entryIndex >= session.entries.length)
+    if (!session || !['quiz', 'cloze', 'reading'].includes(session.mode) || entryIndex < 0 || entryIndex >= session.entries.length)
       return false
 
     session.markedForReview[entryIndex] = !session.markedForReview[entryIndex]
@@ -664,39 +722,53 @@ export const useSessionStore = defineStore('session', () => {
 
   function restartCurrentMode() {
     const setsStore = useSetsStore()
-    if (!setsStore.activeSet || !resultSummary.value)
+    const sourceSetId = currentSession.value?.sourceSetId
+    if (!resultSummary.value || (!setsStore.activeSet && sourceSetId !== 'daily'))
       return
     // Drop completed slot before restart
     if (activeKey.value)
       removeSessionKey(activeKey.value)
-    startRound(resultSummary.value.mode, setsStore.activeSet.id)
+    if (resultSummary.value.mode === 'quiz' && sourceSetId === 'daily')
+      void startDailyQuestionRound()
+    else
+      void startRound(resultSummary.value.mode, sourceSetId ?? setsStore.activeSet!.id)
   }
 
   function switchModeAfterResult() {
     const setsStore = useSetsStore()
-    if (!setsStore.activeSet || !resultSummary.value)
+    if (!resultSummary.value || (currentSession.value?.sourceSetId !== 'daily' && !setsStore.activeSet))
       return
-    const nextMode: PracticeMode = resultSummary.value.mode === 'quiz' ? 'spelling' : 'quiz'
-    startRound(nextMode, setsStore.activeSet.id)
+    if (currentSession.value?.sourceSetId === 'daily') {
+      void startDailyQuestionRound()
+      return
+    }
+    const nextMode: PracticeMode = resultSummary.value.mode === 'cloze' ? 'reading' : 'cloze'
+    void startRound(nextMode, setsStore.activeSet!.id)
   }
 
   function reviewWrongAnswers() {
     const setsStore = useSetsStore()
-    if (!setsStore.activeSet || !currentSession.value?.wrongEntries.length)
+    if (!currentSession.value?.wrongEntries.length)
       return
-    startRound(currentSession.value.mode, setsStore.activeSet.id, currentSession.value.wrongEntries)
+    if (currentSession.value.sourceSetId === 'daily')
+      void startDailyQuestionRound(currentSession.value.wrongEntries)
+    else if (setsStore.activeSet)
+      void startRound(currentSession.value.mode, setsStore.activeSet.id, currentSession.value.wrongEntries)
   }
 
   function reviewMarkedQuestions() {
     const session = currentSession.value
-    if (!session || session.mode !== 'quiz')
+    if (!session || !['quiz', 'cloze', 'reading'].includes(session.mode))
       return
 
     const markedEntries = session.entries.filter((_, index) => session.markedForReview[index])
     if (!markedEntries.length)
       return
 
-    startRound('quiz', session.sourceSetId, markedEntries)
+    if (session.sourceSetId === 'daily')
+      void startDailyQuestionRound(markedEntries)
+    else
+      void startRound(session.mode, session.sourceSetId, markedEntries)
   }
 
   function exitCurrentView() {
@@ -724,6 +796,10 @@ export const useSessionStore = defineStore('session', () => {
       return currentSession.value.mode === 'flashcard'
     if (routeName === 'quiz')
       return currentSession.value.mode === 'quiz'
+    if (routeName === 'cloze')
+      return currentSession.value.mode === 'cloze'
+    if (routeName === 'reading')
+      return currentSession.value.mode === 'reading'
     if (routeName === 'spelling')
       return currentSession.value.mode === 'spelling'
     return true
@@ -760,8 +836,10 @@ export const useSessionStore = defineStore('session', () => {
     getInProgressModes,
     getInProgressModesLabel,
     getPracticeCount,
+    getAvailablePracticeCount,
     startFlashcards,
     startRound,
+    startDailyQuestionRound,
     handlePracticeCountChange,
     openPracticeDialog,
     confirmPracticeDialog,

@@ -11,7 +11,7 @@ defineProps<{ compact?: boolean }>()
 const { t } = useI18n()
 const cloudStore = useCloudSyncStore()
 const { configured, status, error, accountLabel, isSignedIn, lastSyncedAt, pendingWrites, conflicts } = storeToRefs(cloudStore)
-const { signIn, signOutAccount, flushLearning, resolveConflict } = cloudStore
+const { signIn, signOutAccount, flushAll, retryConnection, resolveConflict } = cloudStore
 
 const statusText = computed(() => {
   if (!configured.value)
@@ -65,9 +65,14 @@ function formatTime(value: string) {
       <span v-if="pendingWrites" class="text-[11px] font-bold text-ink-400">{{ $t('sync.pending', { count: pendingWrites }) }}</span>
     </div>
 
-    <p v-if="error" class="mt-2 text-xs font-semibold leading-relaxed text-red-600 dark:text-red-400">
-      {{ error }}
-    </p>
+    <div v-if="error" class="mt-2 space-y-2" role="alert">
+      <p class="text-xs font-semibold leading-relaxed text-red-600 dark:text-red-400">
+        {{ $t('sync.errorDetail', { message: error }) }}
+      </p>
+      <Button size="sm" variant="outline" class="h-7 px-2 text-[11px]" @click="retryConnection">
+        {{ $t('sync.retry') }}
+      </Button>
+    </div>
     <p v-else-if="lastSyncedAt && isSignedIn" class="mt-2 text-[11px] font-semibold text-ink-400">
       {{ $t('sync.lastSynced', { time: formatTime(lastSyncedAt) }) }}
     </p>
@@ -100,7 +105,7 @@ function formatTime(value: string) {
         <LogIn class="h-3.5 w-3.5" />
         {{ $t('sync.signIn') }}
       </Button>
-      <Button v-if="isSignedIn" size="sm" variant="outline" class="gap-2" @click="flushLearning">
+      <Button v-if="isSignedIn" size="sm" variant="outline" class="gap-2" @click="flushAll">
         <RefreshCw class="h-3.5 w-3.5" />
         {{ $t('sync.syncNow') }}
       </Button>

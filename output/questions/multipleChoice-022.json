@@ -6,6 +6,7 @@
     {
       "id": "child-e12ca30c",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The soup my grandmother cooks is so _____ that I always ask for a second bowl.",
       "options": [
         "delicious",
@@ -22,6 +23,7 @@
     {
       "id": "child-10813b89",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Reading English news every day can help you _____ your vocabulary and writing skills over time.",
       "options": [
         "improve",
@@ -38,6 +40,7 @@
     {
       "id": "child-ac25f7df",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Texting while crossing the street is extremely _____, because drivers may not be able to stop in time.",
       "options": [
         "dangerous",
@@ -54,6 +57,7 @@
     {
       "id": "child-49597380",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The picnic was cancelled because the _____ suddenly changed and it began to pour with rain.",
       "options": [
         "weather",
@@ -70,6 +74,7 @@
     {
       "id": "child-8c76e545",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Even when the customer was rude, the young waiter stayed _____ and answered every question with a smile.",
       "options": [
         "polite",
@@ -86,6 +91,7 @@
     {
       "id": "child-637821ca",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "My parents always remind me to _____ the truth, even when admitting a mistake feels difficult.",
       "options": [
         "tell",
@@ -102,6 +108,7 @@
     {
       "id": "child-1970be4f",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Remember to wear a warm coat, or you might _____ a cold in this freezing weather.",
       "options": [
         "catch",
@@ -118,6 +125,7 @@
     {
       "id": "child-b72a2746",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "By eating less sugar and exercising daily, my uncle managed to _____ weight before the summer.",
       "options": [
         "lose",
@@ -134,6 +142,7 @@
     {
       "id": "child-64fb9d1d",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "On rainy afternoons, I like to _____ time reading comic books in my cozy bedroom.",
       "options": [
         "spend",
@@ -150,6 +159,7 @@
     {
       "id": "child-81a03a3b",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "If the team keeps practicing this hard, they have a good chance to _____ first prize in the contest.",
       "options": [
         "win",
@@ -166,6 +176,7 @@
     {
       "id": "child-5a64c052",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Switching off the air conditioner when no one is home is an easy way to _____ energy at school.",
       "options": [
         "save",
@@ -182,6 +193,7 @@
     {
       "id": "child-1a22a093",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Scientists warn that throwing batteries into rivers can _____ serious damage to the water and the fish living in it.",
       "options": [
         "cause",
@@ -198,6 +210,7 @@
     {
       "id": "child-039e593d",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "During the summer camp, students will _____ a nearby cave to learn how it was formed.",
       "options": [
         "explore",
@@ -214,6 +227,7 @@
     {
       "id": "child-7d793e0e",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "It took the patient several weeks to fully _____ from the operation before she could return to work.",
       "options": [
         "recover",
@@ -230,6 +244,7 @@
     {
       "id": "child-d113dba0",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Turning off the lights when you leave a room is a simple way to _____ the amount of energy you waste.",
       "options": [
         "reduce",
@@ -246,6 +261,7 @@
     {
       "id": "child-cbf7baa4",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Doctors warn that too much screen time before bed can be _____ to children's sleep and eyesight.",
       "options": [
         "harmful",
@@ -262,6 +278,7 @@
     {
       "id": "child-4f1d5864",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The museum displays tools made by people who lived in this region thousands of years ago, in _____ times.",
       "options": [
         "ancient",
@@ -278,6 +295,7 @@
     {
       "id": "child-1b2840cd",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "After months without rain, the city faced a serious water _____ and had to limit how much each family could use.",
       "options": [
         "shortage",
@@ -294,6 +312,7 @@
     {
       "id": "child-660cc631",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "If you keep practicing every day, you are sure to _____ great progress in your spoken English.",
       "options": [
         "make",
@@ -310,6 +329,7 @@
     {
       "id": "child-7637f7de",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The teacher reminded the class to _____ attention to the road signs during the field trip.",
       "options": [
         "pay",
@@ -326,6 +346,7 @@
     {
       "id": "child-2e003704",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Many young people are now willing to _____ action to protect the environment by joining beach clean-ups.",
       "options": [
         "take",
@@ -342,6 +363,7 @@
     {
       "id": "child-bc835889",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Because of the _____ traffic this morning, the school bus arrived nearly twenty minutes late.",
       "options": [
         "heavy",
@@ -358,6 +380,7 @@
     {
       "id": "child-d8be0e18",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The coach told the players to _____ calm even when they were losing, so they could focus on the next point.",
       "options": [
         "keep",
@@ -374,6 +397,7 @@
     {
       "id": "child-2a35eacb",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Scientists are working hard to find new technologies that can help _____ the problem of plastic pollution in the oceans.",
       "options": [
         "solve",
@@ -390,6 +414,7 @@
     {
       "id": "child-c286f12d",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "To _____ the growing demand for clean energy, the government plans to build more solar power plants.",
       "options": [
         "meet",
@@ -406,6 +431,7 @@
     {
       "id": "child-d55c0e6b",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "By studying past weather records, scientists can now _____ when a typhoon is likely to hit the island.",
       "options": [
         "predict",
@@ -422,6 +448,7 @@
     {
       "id": "child-fdca300d",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Washing your hands often is one of the easiest ways to _____ the spread of germs at school.",
       "options": [
         "prevent",
@@ -438,6 +465,7 @@
     {
       "id": "child-883799a8",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "When the heavy snow made the roads too dangerous, the climbers had to _____ their plan to reach the top.",
       "options": [
         "abandon",
@@ -454,6 +482,7 @@
     {
       "id": "child-2f63e750",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The detective searched the room carefully, hoping to find some _____ that would prove who had broken in.",
       "options": [
         "evidence",
@@ -470,6 +499,7 @@
     {
       "id": "child-a357d870",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Although she had never taken a single lesson, the girl showed a remarkable _____ for playing the piano.",
       "options": [
         "talent",
@@ -486,6 +516,7 @@
     {
       "id": "child-47fe8513",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "When he saw how upset his sister was, the boy offered a _____ apology and promised never to read her diary again.",
       "options": [
         "sincere",
@@ -502,6 +533,7 @@
     {
       "id": "child-33842fbc",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Nurses are trained to be especially _____ when they care for newborn babies in the hospital.",
       "options": [
         "gentle",
@@ -518,6 +550,7 @@
     {
       "id": "child-54ffd506",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "My doctor told me that it is hard to _____ the habit of staying up late, but exercise can really help.",
       "options": [
         "break",
@@ -534,6 +567,7 @@
     {
       "id": "child-f63a5894",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The young swimmer trained for years, hoping one day to _____ a new national record in the 200-meter race.",
       "options": [
         "set",
@@ -550,6 +584,7 @@
     {
       "id": "child-643ae6bd",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "If you share your password with strangers online, you _____ the risk of having your account stolen.",
       "options": [
         "run",
@@ -566,6 +601,7 @@
     {
       "id": "child-d5665a70",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Even though the manager was very busy, she kindly agreed to _____ a few minutes to answer the new intern's questions.",
       "options": [
         "spare",
@@ -582,6 +618,7 @@
     {
       "id": "child-20f2377f",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The weather report warned of _____ winds along the coast, so the ferry service was canceled for the day.",
       "options": [
         "strong",
@@ -598,6 +635,7 @@
     {
       "id": "child-9e344561",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The new library offers such a _____ range of books that students of every interest can find something to enjoy.",
       "options": [
         "broad",
@@ -614,6 +652,7 @@
     {
       "id": "child-292b388d",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "During the trip to Tainan, we decided to _____ a visit to the old temple that our grandmother loved as a child.",
       "options": [
         "pay",
@@ -630,6 +669,7 @@
     {
       "id": "child-321e04ea",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Because almost no rain fell all summer, the town suffered a _____ water shortage.",
       "options": [
         "slight",
@@ -646,6 +686,7 @@
     {
       "id": "child-b48a1638",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "During the safety briefing, the guide asked everyone to pay close _____ to his instructions.",
       "options": [
         "attention",
@@ -662,6 +703,7 @@
     {
       "id": "child-f0a2db1a",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "A powerful telescope can _____ distant stars that are far too faint for the naked eye to see.",
       "options": [
         "cover",
@@ -678,6 +720,7 @@
     {
       "id": "child-0cc1efae",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "If you review a little English every day, you will surely _____ steady progress within a few months.",
       "options": [
         "score",
@@ -694,6 +737,7 @@
     {
       "id": "child-63d47412",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The most useful _____ of this new phone is its camera, which can take clear photos even in the dark.",
       "options": [
         "price",
@@ -710,6 +754,7 @@
     {
       "id": "child-e1bb68d8",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Climbing the mountain in such stormy weather would put the hikers at serious _____.",
       "options": [
         "fate",
@@ -726,6 +771,7 @@
     {
       "id": "child-ca1ed5f6",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The poster campaign was designed to _____ public awareness of plastic pollution in the ocean.",
       "options": [
         "heighten",
@@ -742,6 +788,7 @@
     {
       "id": "child-aa443166",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The museum guide warned us that the ancient pottery was extremely _____, so we had to keep a safe distance from the display.",
       "options": [
         "fragile",
@@ -758,6 +805,7 @@
     {
       "id": "child-80c585e9",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Plants need sunlight because their leaves _____ energy from it to make the food they require for growth.",
       "options": [
         "absorb",
@@ -774,6 +822,7 @@
     {
       "id": "child-9c4d9f4d",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "As the deadline for the science project drew near, the students decided to try a completely new _____ to solve the problem.",
       "options": [
         "approach",
@@ -790,6 +839,7 @@
     {
       "id": "child-9aa2f5e7",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "By riding bicycles to school instead of taking cars, the students hope to _____ the amount of air pollution in their town.",
       "options": [
         "reduce",
@@ -806,6 +856,7 @@
     {
       "id": "child-780807a5",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The little boy was so _____ about how the machine worked that he kept asking the engineer one question after another.",
       "options": [
         "curious",
@@ -822,6 +873,7 @@
     {
       "id": "child-61a6860e",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "After resting in bed for a week and following the doctor's advice, Helen began to _____ from her serious illness.",
       "options": [
         "recover",
@@ -838,6 +890,7 @@
     {
       "id": "child-995009da",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The mistake in the report was so _____ that even a beginner could spot it within seconds of reading the first page.",
       "options": [
         "obvious",
@@ -854,6 +907,7 @@
     {
       "id": "child-41af6b30",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "If we want to finish the group report before Friday, we will have to _____ a decision about the topic today.",
       "options": [
         "make",
@@ -870,6 +924,7 @@
     {
       "id": "child-91b5d995",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The teacher reminded the class to _____ attention to the safety rules before they started the chemistry experiment.",
       "options": [
         "pay",
@@ -886,6 +941,7 @@
     {
       "id": "child-2d37a59b",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The new smartphone failed to _____ the high expectations of customers, and many of them returned it within a week.",
       "options": [
         "meet",
@@ -902,6 +958,7 @@
     {
       "id": "child-2db7e810",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Before the storm arrived, the villagers had to _____ action quickly to protect their homes from the rising flood.",
       "options": [
         "take",
@@ -918,6 +975,7 @@
     {
       "id": "child-e2413832",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The coach told the team to _____ calm during the final minutes of the match, even when the other side was winning.",
       "options": [
         "keep",
@@ -934,6 +992,7 @@
     {
       "id": "child-fe4f51b4",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The charity concert was held to _____ money for families who had lost their houses in the earthquake last month.",
       "options": [
         "raise",
@@ -950,6 +1009,7 @@
     {
       "id": "child-d17207cb",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Regular exercise can _____ an important role in keeping both your body and your mind healthy as you grow older.",
       "options": [
         "play",
@@ -966,6 +1026,7 @@
     {
       "id": "child-c4ecde77",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Before the new medicine was approved, scientists carried out a _____ examination of its possible side effects.",
       "options": [
         "thorough",
@@ -982,6 +1043,7 @@
     {
       "id": "child-ed998fc2",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The city council set up a special task force to _____ the growing problem of plastic waste in local rivers.",
       "options": [
         "tackle",
@@ -998,6 +1060,7 @@
     {
       "id": "child-ae4fdfd5",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Although she had started learning the violin only a year earlier, Maria made _____ progress and won the school contest.",
       "options": [
         "remarkable",
@@ -1014,6 +1077,7 @@
     {
       "id": "child-a4d140a6",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Doctors warn that teenagers who _____ too many sugary drinks every day are more likely to develop health problems.",
       "options": [
         "consume",
@@ -1030,6 +1094,7 @@
     {
       "id": "child-5dd2e923",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The long drought led to a serious _____ of clean water in several farming villages last summer.",
       "options": [
         "shortage",
@@ -1046,6 +1111,7 @@
     {
       "id": "child-d7a816ed",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "After arguing for almost an hour, the two students finally agreed to _____ their dispute by asking the teacher for advice.",
       "options": [
         "settle",
@@ -1062,6 +1128,7 @@
     {
       "id": "child-cda63f4d",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The museum staff handled the ancient pottery with great care because the thin clay was extremely _____.",
       "options": [
         "fragile",
@@ -1078,6 +1145,7 @@
     {
       "id": "child-b5f9747e",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The technology company plans to _____ its newest smartphone at a large event in the capital next month.",
       "options": [
         "launch",
@@ -1094,6 +1162,7 @@
     {
       "id": "child-3a44f2da",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "By becoming a doctor in her hometown, Anna was finally able to _____ her childhood dream of helping others.",
       "options": [
         "fulfill",
@@ -1110,6 +1179,7 @@
     {
       "id": "child-67a183bd",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Many shy students are _____ to speak in front of the whole class, even when they know the right answer.",
       "options": [
         "reluctant",
@@ -1126,6 +1196,7 @@
     {
       "id": "child-2e9d25b1",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Regular morning exercise can _____ your energy levels and help you concentrate better during class.",
       "options": [
         "boost",
@@ -1142,6 +1213,7 @@
     {
       "id": "child-4e8f831d",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The scientist refused to accept the theory until there was enough solid _____ to support it.",
       "options": [
         "evidence",
@@ -1158,6 +1230,7 @@
     {
       "id": "child-f73f9b71",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Young children often struggle with _____ ideas such as justice and freedom because they cannot picture them concretely.",
       "options": [
         "abstract",
@@ -1174,6 +1247,7 @@
     {
       "id": "child-0c9dd21d",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The new mayor promised to _____ the city's traffic problem by expanding the subway network within three years.",
       "options": [
         "scold",
@@ -1190,6 +1264,7 @@
     {
       "id": "child-2af90f10",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Before publishing the study, the scientists carried out a _____ check of all their data to rule out any errors.",
       "options": [
         "shallow",
@@ -1206,6 +1281,7 @@
     {
       "id": "child-d06cb292",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "As the years passed, her memory of that summer began to _____ until only a few blurry images remained.",
       "options": [
         "shrink",
@@ -1222,6 +1298,7 @@
     {
       "id": "child-7e2e1bdf",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Although the salary was generous, Daniel was _____ to move abroad because he did not want to leave his aging parents.",
       "options": [
         "anxious",
@@ -1238,6 +1315,7 @@
     {
       "id": "child-69293425",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Volunteers worked for months to _____ the old theater to its original beauty after the fire damaged its walls.",
       "options": [
         "remind",
@@ -1254,6 +1332,7 @@
     {
       "id": "child-7c5dbea8",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The handwriting on the ancient letter was so faint that the researchers could _____ read a single word.",
       "options": [
         "fairly",
@@ -1270,6 +1349,7 @@
     {
       "id": "child-6caf71d7",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "After weeks without rain, the region faced a serious _____ of clean water, and residents had to line up at public wells.",
       "options": [
         "shortage",
@@ -1286,6 +1366,7 @@
     {
       "id": "child-8c08a936",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The charity concert was held to _____ funds for students who could not afford their tuition fees.",
       "options": [
         "rise",
@@ -1302,6 +1383,7 @@
     {
       "id": "child-02b10c3b",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Based on the survey results, the committee was finally able to _____ a clear conclusion about students' study habits.",
       "options": [
         "pull",
@@ -1318,6 +1400,7 @@
     {
       "id": "child-07c3f3cb",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The factory has hired extra workers so that it can _____ the growing demand for electric cars this year.",
       "options": [
         "meet",
@@ -1334,6 +1417,7 @@
     {
       "id": "child-3d5b0274",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Doctors warn that people who fail to _____ attention to their sleep are more likely to suffer from poor health.",
       "options": [
         "give",
@@ -1350,6 +1434,7 @@
     {
       "id": "child-a28d5431",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "A good detective needs a _____ eye for the tiny details that other people tend to overlook.",
       "options": [
         "bright",
@@ -1366,6 +1451,7 @@
     {
       "id": "child-a56dea44",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The flight was delayed for several hours because of the _____ rain that swept across the airport all afternoon.",
       "options": [
         "heavy",
@@ -1382,6 +1468,7 @@
     {
       "id": "child-453dc621",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Scientists believe that protecting endangered species is a responsibility every nation should be willing to _____.",
       "options": [
         "bring",
@@ -1398,6 +1485,7 @@
     {
       "id": "child-22e6cfbb",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The new fertilizer is said to _____ the growth of the seedlings, so the farmers can harvest their crops several weeks earlier than usual.",
       "options": [
         "accelerate",
@@ -1414,6 +1502,7 @@
     {
       "id": "child-7b27fb46",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Once the glaciers begin to melt at this rate, a rise in sea levels becomes _____, and coastal towns must prepare for it now.",
       "options": [
         "inevitable",
@@ -1430,6 +1519,7 @@
     {
       "id": "child-f8288820",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "A single power failure at the data center was enough to _____ online classes for thousands of students across the whole island.",
       "options": [
         "disrupt",
@@ -1446,6 +1536,7 @@
     {
       "id": "child-95c89397",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Because rainfall in the valley is so _____, the local farmers rarely worry about whether their rice fields will have enough water.",
       "options": [
         "abundant",
@@ -1462,6 +1553,7 @@
     {
       "id": "child-d1d38a48",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "After failing the entrance exam twice, Daniel began to _____ whether college was really the right path for his future.",
       "options": [
         "contemplate",
@@ -1478,6 +1570,7 @@
     {
       "id": "child-9c2155be",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The students' plan to power the school with wind turbines sounded exciting, but the engineer doubted whether it was truly _____ on such a small budget.",
       "options": [
         "feasible",
@@ -1494,6 +1587,7 @@
     {
       "id": "child-3d7f996d",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The difference between the two paintings is so _____ that only a trained expert can tell which one is the original.",
       "options": [
         "subtle",
@@ -1510,6 +1604,7 @@
     {
       "id": "child-f04ef692",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "If the young swimmer keeps improving at this pace, she may well _____ the national record at next year's championships.",
       "options": [
         "break",
@@ -1526,6 +1621,7 @@
     {
       "id": "child-e6c5d04f",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The newly discovered letters may finally _____ light on why the famous author suddenly stopped writing at the height of her career.",
       "options": [
         "shed",
@@ -1542,6 +1638,7 @@
     {
       "id": "child-80c283a0",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Reading for twenty minutes every night before bed can help children _____ a lifelong habit of learning.",
       "options": [
         "develop",
@@ -1558,6 +1655,7 @@
     {
       "id": "child-63ca6445",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "After hours of heated discussion, the committee members were at last able to _____ a consensus on the new recycling policy.",
       "options": [
         "reach",
@@ -1574,6 +1672,7 @@
     {
       "id": "child-5f8ce28e",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Working students often find it hard to _____ a balance between their part-time jobs and the demands of their studies.",
       "options": [
         "strike",
@@ -1590,6 +1689,7 @@
     {
       "id": "child-7f8b7c96",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "To cut down on waste, the city council decided to _____ a new policy that bans single-use plastic bags in all supermarkets.",
       "options": [
         "adopt",
@@ -1606,6 +1706,7 @@
     {
       "id": "child-e476e757",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "By posting the unverified rumor online, the website may _____ the risk of being sued for spreading false information.",
       "options": [
         "run",
@@ -1622,6 +1723,7 @@
     {
       "id": "child-d9965928",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "After three days of heated debate, the jury finally reached a unanimous _____ on the controversial case.",
       "options": [
         "verdict",
@@ -1638,6 +1740,7 @@
     {
       "id": "child-e130ae2d",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The company's accounting practices came under intense _____ after several irregularities were reported in the annual audit.",
       "options": [
         "scrutiny",
@@ -1654,6 +1757,7 @@
     {
       "id": "child-0460e949",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Scientists warn that the rapid melting of polar ice could _____ a serious threat to coastal cities around the world.",
       "options": [
         "pose",
@@ -1670,6 +1774,7 @@
     {
       "id": "child-556c69a8",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The professor reminded us that we should not _____ a hasty conclusion before all the experimental data have been collected.",
       "options": [
         "draw",
@@ -1686,6 +1791,7 @@
     {
       "id": "child-f07bb5ad",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The factory installed advanced filters in order to _____ the strict environmental standards set by the government.",
       "options": [
         "meet",
@@ -1702,6 +1808,7 @@
     {
       "id": "child-642f4d67",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Please _____ in mind that the library will close earlier than usual during the upcoming national holiday.",
       "options": [
         "bear",
@@ -1718,6 +1825,7 @@
     {
       "id": "child-eb4f1f44",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Several parents stood up at the meeting to _____ concerns about the safety of the new playground equipment.",
       "options": [
         "raise",
@@ -1734,6 +1842,7 @@
     {
       "id": "child-85941824",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The witness's contradictory testimony began to _____ doubt on the reliability of the entire investigation.",
       "options": [
         "cast",
@@ -1750,6 +1859,7 @@
     {
       "id": "child-645901ea",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "As a beginner photographer, she has a _____ eye for the subtle changes of light at sunrise and sunset.",
       "options": [
         "keen",
@@ -1766,6 +1876,7 @@
     {
       "id": "child-ab884156",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The city council passed strict laws to _____ air pollution before it reached dangerous levels.",
       "options": [
         "curb",
@@ -1782,6 +1893,7 @@
     {
       "id": "child-732fceda",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "After hours of heated debate, the committee finally reached a _____ on the new policy.",
       "options": [
         "coincidence",
@@ -1798,6 +1910,7 @@
     {
       "id": "child-42dd4677",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The engineers concluded that building a bridge across the canyon was not _____ within the budget.",
       "options": [
         "eligible",
@@ -1814,6 +1927,7 @@
     {
       "id": "child-a9f96317",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Tax rebates gave many households a strong _____ to install solar panels on their roofs.",
       "options": [
         "inclination",
@@ -1830,6 +1944,7 @@
     {
       "id": "child-d3a08e03",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The whole team worked overtime in order to _____ the tight deadline for the project.",
       "options": [
         "reach",
@@ -1846,6 +1961,7 @@
     {
       "id": "child-cad0fa71",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "From the limited data available, we should be careful not to _____ a hasty conclusion.",
       "options": [
         "make",
@@ -1862,6 +1978,7 @@
     {
       "id": "child-3abd761e",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Commuters were stuck for hours because of the _____ traffic caused by the morning storm.",
       "options": [
         "strong",
@@ -1878,6 +1995,7 @@
     {
       "id": "child-43176811",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Scientists warn that rising sea levels _____ a serious threat to low-lying coastal towns.",
       "options": [
         "raise",
@@ -1894,6 +2012,7 @@
     {
       "id": "child-b2745a6a",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "Health officials acted quickly to contain the sudden _____ of flu in the crowded dormitory.",
       "options": [
         "burst",
@@ -1910,6 +2029,7 @@
     {
       "id": "child-07c5ff09",
       "kind": "multipleChoice",
+      "questionStyle": "fillBlank",
       "prompt": "The young swimmer trained for years before she finally managed to _____ a new national record.",
       "options": [
         "make",

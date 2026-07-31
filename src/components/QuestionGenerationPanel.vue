@@ -12,19 +12,20 @@ import Button from './ui/button/Button.vue'
 import Input from './ui/input/Input.vue'
 import StatusMessage from './ui/status-message/StatusMessage.vue'
 
+const props = defineProps<{ setId: string }>()
 const libraryStore = useLibraryStore()
 const uiStore = useUIStore()
 const { t } = useI18n()
 const query = ref('')
 const selectedKeys = ref<string[]>([])
-const kind = ref<GeneratedQuestionKind>('multipleChoice')
+const kind = ref<GeneratedQuestionKind>('fillBlank')
 const preview = ref<LibraryQuestion[]>([])
 const error = ref('')
 const generating = ref(false)
 
 const matches = computed(() => {
   const normalized = query.value.trim().toLocaleLowerCase()
-  return libraryStore.words
+  return libraryStore.getSetWords(props.setId)
     .filter(word => !normalized || word.word.toLocaleLowerCase().includes(normalized) || word.senses.some(sense => sense.meaningZh.includes(normalized)))
     .slice(0, 30)
 })
@@ -92,8 +93,8 @@ function importPreview() {
           <option value="multipleChoice">
             {{ $t('library.questionTypeChoice') }}
           </option>
-          <option value="cloze">
-            {{ $t('library.questionTypeCloze') }}
+          <option value="fillBlank">
+            {{ $t('library.questionTypeFillBlank') }}
           </option>
           <option value="reading">
             {{ $t('library.questionTypeReading') }}

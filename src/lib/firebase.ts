@@ -15,6 +15,7 @@ const config = {
   messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID as string | undefined,
   appId: import.meta.env.VITE_FIREBASE_APP_ID as string | undefined,
   appCheckSiteKey: import.meta.env.VITE_FIREBASE_APPCHECK_SITE_KEY as string | undefined,
+  appCheckEnabled: import.meta.env.VITE_FIREBASE_APPCHECK_ENABLED as string | undefined,
   googleClientId: import.meta.env.VITE_GOOGLE_CLIENT_ID as string | undefined,
 }
 
@@ -31,11 +32,18 @@ export function getFirebaseApp(): FirebaseApp | null {
   if (!isFirebaseConfigured())
     return null
   firebaseApp ??= getApps().length ? getApp() : initializeApp(config)
-  if (config.appCheckSiteKey && !appCheck) {
-    appCheck = initializeAppCheck(firebaseApp, {
-      provider: new ReCaptchaEnterpriseProvider(config.appCheckSiteKey),
-      isTokenAutoRefreshEnabled: true,
-    })
+  const shouldUseAppCheck = Boolean(config.appCheckSiteKey && (import.meta.env.PROD || config.appCheckEnabled === 'true'))
+  if (shouldUseAppCheck && !appCheck) {
+    try {
+      appCheck = initializeAppCheck(firebaseApp, {
+        provider: new ReCaptchaEnterpriseProvider(config.appCheckSiteKey!),
+        isTokenAutoRefreshEnabled: true,
+      })
+    }
+    catch {
+      // App Check is optional for local development; Firestore will still report its own actionable error if enforcement is enabled.
+      appCheck = null
+    }
   }
   return firebaseApp
 }

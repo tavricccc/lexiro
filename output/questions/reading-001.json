@@ -13,6 +13,7 @@
         {
           "id": "child-204a4c28",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "This movement helps the plants make seeds and new fruit.",
@@ -36,6 +37,7 @@
         {
           "id": "child-8c7d4734",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "The teacher gave everyone a long and difficult test.",
@@ -59,6 +61,7 @@
         {
           "id": "child-814d5e48",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "Most rivers in the world flow toward the sea.",
@@ -82,6 +85,7 @@
         {
           "id": "child-3b31a0e7",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "A simple morning meal can keep the brain awake and ready.",
@@ -105,6 +109,7 @@
         {
           "id": "child-db0af877",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "Trees give us shade on hot summer afternoons.",
@@ -128,6 +133,7 @@
         {
           "id": "child-40400a4a",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "Some people prefer to spend the holiday quietly at home.",
@@ -151,6 +157,7 @@
         {
           "id": "child-85ee7362",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "Tom had always wanted to learn how to swim.",
@@ -174,6 +181,7 @@
         {
           "id": "child-131d57ab",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "Instead, it simply reflects the light that comes from the sun.",
@@ -197,6 +205,7 @@
         {
           "id": "child-1d9bdbee",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "Banks are usually open from morning until evening.",
@@ -220,6 +229,7 @@
         {
           "id": "child-44589c26",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "The journey is not just for fun or curiosity.",
@@ -243,6 +253,7 @@
         {
           "id": "child-acc579ce",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "The new computers were bought just last year.",
@@ -266,6 +277,7 @@
         {
           "id": "child-ae001d19",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "Sleeping eight hours a night is good for health.",
@@ -289,6 +301,7 @@
         {
           "id": "child-926c7ec2",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "Coffee shops have become popular in big cities.",
@@ -312,6 +325,7 @@
         {
           "id": "child-f7ecd270",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "Helmets protect your head if you happen to fall.",
@@ -335,6 +349,7 @@
         {
           "id": "child-fcab2bde",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "Sharks are among the largest hunters in the sea.",
@@ -358,6 +373,7 @@
         {
           "id": "child-39aeadcd",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "A smart robot watches the belt with sharp electronic eyes.",
@@ -381,6 +397,7 @@
         {
           "id": "child-a23af637",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "Grandmother once worked as a teacher in a small town.",
@@ -404,6 +421,7 @@
         {
           "id": "child-51a945fb",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "Roots also hold the plant firmly in the ground.",
@@ -427,6 +445,7 @@
         {
           "id": "child-9e6feb6c",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "Pens come in many different colors and sizes.",
@@ -450,6 +469,7 @@
         {
           "id": "child-3ce34815",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "Some spiders are no larger than a grain of rice.",
@@ -473,6 +493,7 @@
         {
           "id": "child-f3107a73",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "Group members may not always agree at the start.",
@@ -496,6 +517,7 @@
         {
           "id": "child-61aed2d8",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "Most solid things sink when placed into a liquid.",
@@ -519,6 +541,7 @@
         {
           "id": "child-b849b6bc",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "Daytime shopping streets are usually much quieter.",
@@ -542,6 +565,7 @@
         {
           "id": "child-2b19673b",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "Buses usually follow fixed routes through the city.",
@@ -565,6 +589,7 @@
         {
           "id": "child-9a077bb6",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "The schoolyard is a good place to play ball.",
@@ -588,6 +613,7 @@
         {
           "id": "child-4b682ca9",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "Loud noises can sometimes hurt our sensitive ears.",
@@ -611,6 +637,7 @@
         {
           "id": "child-e00e648a",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "Snow is made of countless tiny frozen crystals.",
@@ -634,6 +661,7 @@
         {
           "id": "child-ed79b1f9",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "Restaurants offer many dishes from around the world.",
@@ -657,6 +685,7 @@
         {
           "id": "child-aff66fff",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "The sun rises in the east each and every morning.",
@@ -680,6 +709,7 @@
         {
           "id": "child-5281f815",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "The librarians there are always very friendly.",
@@ -703,6 +733,7 @@
         {
           "id": "child-245bcd6b",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "Computers have changed the way we work today.",
@@ -726,6 +757,7 @@
         {
           "id": "child-1ffcd26c",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "I forgot to bring my umbrella this morning.",
@@ -749,6 +781,7 @@
         {
           "id": "child-179ae6c1",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "The library is open until nine on weekdays.",
@@ -772,6 +805,7 @@
         {
           "id": "child-96efa1a5",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "Strange animals live in these deep, dark places.",
@@ -795,6 +829,7 @@
         {
           "id": "child-b6ee599b",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "Many people think the moon makes its own light.",
@@ -818,6 +853,7 @@
         {
           "id": "child-7ba0c17d",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "The price of fruit went up last week.",
@@ -841,6 +877,7 @@
         {
           "id": "child-44ae50d6",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "The store down the street sells fresh flowers.",
@@ -864,6 +901,7 @@
         {
           "id": "child-df05dbcb",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "Every culture has its own customs and habits.",
@@ -887,6 +925,7 @@
         {
           "id": "child-06cfefbf",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "The phone rang three times before she answered.",
@@ -910,6 +949,7 @@
         {
           "id": "child-5f90f78e",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "The painting in the hall is very old.",
@@ -933,6 +973,7 @@
         {
           "id": "child-c6518cd8",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "Cooking dinner can take more than an hour.",
@@ -956,6 +997,7 @@
         {
           "id": "child-86180c81",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "People visit the library for many different reasons.",
@@ -979,6 +1021,7 @@
         {
           "id": "child-f11875bb",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "The clock on the wall stopped at noon.",
@@ -1002,6 +1045,7 @@
         {
           "id": "child-52ebd2a1",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "The boats are shaped like long, fierce dragons.",
@@ -1025,6 +1069,7 @@
         {
           "id": "child-628896fb",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "The garden looks beautiful in the spring.",
@@ -1048,6 +1093,7 @@
         {
           "id": "child-77bc925f",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "The pizza shop offers a free drink today.",
@@ -1071,6 +1117,7 @@
         {
           "id": "child-cd2e6645",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "The library added new chairs last month.",
@@ -1094,6 +1141,7 @@
         {
           "id": "child-7cdbb4cd",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "The train station is far from my home.",
@@ -1117,6 +1165,7 @@
         {
           "id": "child-7870218a",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "The bus arrives at eight every morning.",
@@ -1140,6 +1189,7 @@
         {
           "id": "child-d8fcab61",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "The shop closes early on rainy days.",
@@ -1163,6 +1213,7 @@
         {
           "id": "child-c6de4123",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "The river was too cold for swimming.",
@@ -1186,6 +1237,7 @@
         {
           "id": "child-301742fe",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "The school bell rings at exactly noon.",
@@ -1209,6 +1261,7 @@
         {
           "id": "child-2c3a0041",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "The bakery makes cakes for birthdays.",
@@ -1232,6 +1285,7 @@
         {
           "id": "child-57963e0e",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "A single book could take months to finish.",
@@ -1255,6 +1309,7 @@
         {
           "id": "child-6ba8a20d",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "The cafe near my house serves hot soup.",
@@ -1278,6 +1333,7 @@
         {
           "id": "child-c51f7fea",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "The school choir sang at the spring show.",
@@ -1301,6 +1357,7 @@
         {
           "id": "child-178b388f",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "The store sells umbrellas during the rainy season.",
@@ -1324,6 +1381,7 @@
         {
           "id": "child-8a09687a",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "The early instruments were very basic at first.",
@@ -1347,6 +1405,7 @@
         {
           "id": "child-45d86d43",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "The bus stop is across from the bank.",
@@ -1370,6 +1429,7 @@
         {
           "id": "child-5d641cdb",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "The mall is having a big sale this week.",
@@ -1393,6 +1453,7 @@
         {
           "id": "child-2799dc42",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "One of their most important tasks is finding food for the group.",
@@ -1416,6 +1477,7 @@
         {
           "id": "child-364a3a1d",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "The gym is next to the library on the second floor.",
@@ -1439,6 +1501,7 @@
         {
           "id": "child-f2d595b4",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "Fish breathe through gills instead of lungs underwater.",
@@ -1462,6 +1525,7 @@
         {
           "id": "child-3eecf458",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "These sorted materials can then be used to make new things.",
@@ -1485,6 +1549,7 @@
         {
           "id": "child-aae4b057",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "Eagles can spot a rabbit from high in the sky.",
@@ -1508,6 +1573,7 @@
         {
           "id": "child-0dd1cff1",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "Morning food gives us the energy we need to learn.",
@@ -1531,6 +1597,7 @@
         {
           "id": "child-8f23dcd7",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "Thunder is the loud sound that follows a flash of lightning.",
@@ -1554,6 +1621,7 @@
         {
           "id": "child-64fc8689",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "Each boat is rowed by many people moving as one.",
@@ -1577,6 +1645,7 @@
         {
           "id": "child-1c69c865",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "Some animals sleep through the whole cold season.",
@@ -1600,6 +1669,7 @@
         {
           "id": "child-8d7b04fb",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "She sat alone and looked a little nervous on her first day.",
@@ -1623,6 +1693,7 @@
         {
           "id": "child-e963cb5f",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "Some people enjoy collecting old coins as a hobby.",
@@ -1646,6 +1717,7 @@
         {
           "id": "child-d4ee4e7b",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "The bakery near my house sells fresh bread each morning.",
@@ -1669,6 +1741,7 @@
         {
           "id": "child-c5af7123",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "Sailors once used stars to find their way at sea.",
@@ -1692,6 +1765,7 @@
         {
           "id": "child-f297b5e8",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "Most of these habits are simple and cost nothing at all.",
@@ -1715,6 +1789,7 @@
         {
           "id": "child-36a6898b",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "Today, special machines and satellites help them make better guesses.",
@@ -1738,6 +1813,7 @@
         {
           "id": "child-58842e6e",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "The new museum opens its doors next Saturday afternoon.",
@@ -1761,6 +1837,7 @@
         {
           "id": "child-a2068301",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "Scientists discovered a new kind of fish last year.",
@@ -1784,6 +1861,7 @@
         {
           "id": "child-4187245d",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "Many people travel abroad during the summer vacation.",
@@ -1807,6 +1885,7 @@
         {
           "id": "child-9e682ba7",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "Some birds fly thousands of miles every autumn.",
@@ -1830,6 +1909,7 @@
         {
           "id": "child-3542f270",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "Then a clever machine made copying much faster and easier.",
@@ -1853,6 +1933,7 @@
         {
           "id": "child-5aa6eeb3",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "The new highway will connect the two distant cities.",
@@ -1876,6 +1957,7 @@
         {
           "id": "child-e41ab759",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "The concert hall was full of excited music fans.",
@@ -1899,6 +1981,7 @@
         {
           "id": "child-1744b41a",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "Rainforests are home to millions of different insects.",
@@ -1922,6 +2005,7 @@
         {
           "id": "child-53e3f8b1",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "The school bus arrives at exactly eight o'clock.",
@@ -1945,6 +2029,7 @@
         {
           "id": "child-d3a1b1ac",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "The team practiced hard before the big game.",
@@ -1968,6 +2053,7 @@
         {
           "id": "child-8c66ed6e",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "The bakery on the corner closed for repairs today.",
@@ -1991,6 +2077,7 @@
         {
           "id": "child-bda49196",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "Many famous paintings hang in that quiet old museum.",
@@ -2014,6 +2101,7 @@
         {
           "id": "child-8d77356b",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "The new phone has a bright screen and fast battery.",
@@ -2037,6 +2125,7 @@
         {
           "id": "child-a27f9cef",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "Most people prefer mountains to the seaside in summer.",
@@ -2060,6 +2149,7 @@
         {
           "id": "child-0e585bb1",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "Many students enjoy playing soccer after class.",
@@ -2083,6 +2173,7 @@
         {
           "id": "child-167f33e1",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "A good night's sleep also improves memory and mood.",
@@ -2106,6 +2197,7 @@
         {
           "id": "child-01b70efd",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "The price of fresh fruit rose sharply this year.",
@@ -2129,6 +2221,7 @@
         {
           "id": "child-0145db90",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "However, the club grew quickly once others saw the results.",
@@ -2152,6 +2245,7 @@
         {
           "id": "child-0c80a50b",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "The new shopping mall opens its doors next month.",
@@ -2175,6 +2269,7 @@
         {
           "id": "child-80d1d175",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "Smartphones now let us send messages in seconds.",
@@ -2198,6 +2293,7 @@
         {
           "id": "child-7f786de3",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "The school play will be performed next Friday.",
@@ -2221,6 +2317,7 @@
         {
           "id": "child-5472b23b",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "The price of movie tickets went up again.",
@@ -2244,6 +2341,7 @@
         {
           "id": "child-34beb425",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "City buses run every ten minutes on weekdays.",
@@ -2267,6 +2365,7 @@
         {
           "id": "child-af1b3318",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "Yet steady daily practice slowly turns effort into skill.",
@@ -2290,6 +2389,7 @@
         {
           "id": "child-eb847622",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "The school bell rings at exactly eight o'clock.",
@@ -2313,6 +2413,7 @@
         {
           "id": "child-4e80cdc0",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "All you need is a comfortable pair of shoes.",
@@ -2336,6 +2437,7 @@
         {
           "id": "child-2187c57f",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "",
           "options": [
             "Many gardens look most beautiful in early spring.",
@@ -2359,6 +2461,7 @@
         {
           "id": "child-d3ee0538",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the main idea of this passage?",
           "options": [
             "Plastic bags are cheap and convenient.",
@@ -2382,6 +2485,7 @@
         {
           "id": "child-e2913247",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does the writer most likely believe?",
           "options": [
             "Students should not use smartphones.",
@@ -2405,6 +2509,7 @@
         {
           "id": "child-f7c5d6ff",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'cost' in 'these benefits come with a cost' is closest in meaning to:",
           "options": [
             "price in money",
@@ -2428,6 +2533,7 @@
         {
           "id": "child-b2e703ea",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the passage mainly about?",
           "options": [
             "How to draw a sleeping cat.",
@@ -2451,6 +2557,7 @@
         {
           "id": "child-5014406f",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "How did the older members treat Mia on her first day?",
           "options": [
             "They ignored her completely.",
@@ -2474,6 +2581,7 @@
         {
           "id": "child-97f84170",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the writer's main argument?",
           "options": [
             "Teenagers should study more at night.",
@@ -2497,6 +2605,7 @@
         {
           "id": "child-7b603ddb",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does the writer imply about students who are 'busy' but sleep too little?",
           "options": [
             "They are using their time effectively.",
@@ -2520,6 +2629,7 @@
         {
           "id": "child-75a1e5c1",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In 'a luxury to be traded for an extra hour of studying,' the word 'luxury' suggests that sleep is treated as something ___.",
           "options": [
             "necessary for survival",
@@ -2543,6 +2653,7 @@
         {
           "id": "child-2085b6d1",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the main idea of the passage?",
           "options": [
             "Bees help plants make seeds and food, so protecting bees matters.",
@@ -2566,6 +2677,7 @@
         {
           "id": "child-f6cf7340",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What can we infer from the passage?",
           "options": [
             "If bees disappeared, growing some fruit and vegetables would become harder.",
@@ -2589,6 +2701,7 @@
         {
           "id": "child-92dd9636",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "The word 'spread' is closest in meaning to:",
           "options": [
             "grow and multiply over a wider area",
@@ -2612,6 +2725,7 @@
         {
           "id": "child-481187a1",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the passage mainly about?",
           "options": [
             "Why some birds fly south in winter",
@@ -2635,6 +2749,7 @@
         {
           "id": "child-171411b8",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, why is food hard to find in winter?",
           "options": [
             "Many small bugs die or hide away",
@@ -2658,6 +2773,7 @@
         {
           "id": "child-35dab705",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the report mainly about?",
           "options": [
             "A school club's plan to build a new park by the river",
@@ -2681,6 +2797,7 @@
         {
           "id": "child-58345572",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "How long did the volunteers spend collecting rubbish?",
           "options": [
             "About one hour",
@@ -2704,6 +2821,7 @@
         {
           "id": "child-84741a2d",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What can we infer about the Eco Action Club's attitude toward the river?",
           "options": [
             "They think the river is already clean enough",
@@ -2727,6 +2845,7 @@
         {
           "id": "child-c85d0522",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What are Lisa and Mark mainly writing about?",
           "options": [
             "Planning a weekend bike trip to a lake",
@@ -2750,6 +2869,7 @@
         {
           "id": "child-3032055c",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What does Mark say he will bring?",
           "options": [
             "Sandwiches and some fruit",

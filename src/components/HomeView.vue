@@ -88,10 +88,13 @@ function startReview() {
                 {{ $t('learning.todayGoal') }}
               </p>
               <p class="mt-3 text-4xl font-black tabular-nums">
-                {{ stats.todayLearningReviews }}<span class="text-xl opacity-50">/{{ stats.dailyGoal }}</span>
+                {{ stats.todayLearningReviews }}<span class="text-xl opacity-50">/{{ stats.dailyWordGoal }}</span>
               </p>
               <p class="mt-2 text-sm font-semibold opacity-70">
                 {{ dailyReviewCount ? $t('home.dailyQueueHint', { count: dailyReviewCount }) : $t('learning.noDue') }}
+              </p>
+              <p class="mt-1 text-xs font-semibold opacity-60">
+                {{ $t('learning.todayQuestions') }}：{{ stats.todayQuestionReviews }}/{{ stats.dailyQuestionGoal }}
               </p>
             </div>
             <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10">

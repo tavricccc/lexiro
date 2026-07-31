@@ -48,13 +48,16 @@ export function normalizeItem(item: unknown, itemIndex: number): VocabItem {
   if (!isNonEmptyString(it.meaning)) {
     throw new Error(`第 ${itemIndex + 1} 筆缺少 meaning`)
   }
+  const rawQuestion = it.question as Record<string, unknown> | undefined
+  const hasQuestionPrompt = rawQuestion && isNonEmptyString(rawQuestion.prompt)
+
   return {
     id: isNonEmptyString(it.id) ? (it.id as string).trim() : generateId('item'),
     word: (it.word as string).trim(),
     pos: isNonEmptyString(it.pos) ? (it.pos as string).trim() : '',
     meaning: (it.meaning as string).trim(),
     example: isNonEmptyString(it.example) ? (it.example as string).trim() : '',
-    question: it.question ? normalizeQuestion(it.question, itemIndex) : undefined,
+    question: hasQuestionPrompt ? normalizeQuestion(it.question, itemIndex) : undefined,
     definition: isNonEmptyString(it.definition) ? (it.definition as string).trim() : undefined,
     phonetic: isNonEmptyString(it.phonetic) ? (it.phonetic as string).trim() : undefined,
     audioUrl: isNonEmptyString(it.audioUrl) ? (it.audioUrl as string).trim() : undefined,
@@ -137,7 +140,7 @@ export function normalizeSession(
     return null
   if (!Array.isArray(s.entries) || !s.entries.length)
     return null
-  if (!['quiz', 'spelling', 'flashcard'].includes(s.mode as string))
+  if (!['quiz', 'cloze', 'reading', 'spelling', 'flashcard'].includes(s.mode as string))
     return null
 
   const markedForReview = Array.isArray(s.markedForReview)

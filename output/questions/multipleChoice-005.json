@@ -6,6 +6,7 @@
     {
       "id": "child-96a02924",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，tug 是什麼意思？\n「The captain called in a tug to assist the stranded vessel back to shore.」",
       "options": [
         "拖船",
@@ -22,6 +23,7 @@
     {
       "id": "child-d1fe02c1",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，sad 是什麼意思？\n「It was a sad movie that made most of the audience cry uncontrollably.」",
       "options": [
         "令人傷感的；使人難過的",
@@ -38,6 +40,7 @@
     {
       "id": "child-e627a4fe",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，extension 是什麼意思？\n「The kitchen at the back of the house is an extension added on to the original house to create more living space.」",
       "options": [
         "（期限的）延長；展延",
@@ -54,6 +57,7 @@
     {
       "id": "child-27def41d",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，civilian 是什麼意思？\n「During wartime, the army evacuated the civilians from the conflict zone to keep them safe.」",
       "options": [
         "平民；老百姓",
@@ -70,6 +74,7 @@
     {
       "id": "child-39763d2d",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，bleed 是什麼意思？\n「When the plumber fixed the leak, he used a pump to bleed the excess water from the pipes.」",
       "options": [
         "放掉（液體或氣體）；排放",
@@ -86,6 +91,7 @@
     {
       "id": "child-e05b2c89",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，complete 是什麼意思？\n「He is a complete idiot for ignoring such an obvious warning.」",
       "options": [
         "徹底的；十足的",
@@ -102,6 +108,7 @@
     {
       "id": "child-8cec8426",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，novel 是什麼意思？\n「The chef prepared a novel dish that combined traditional flavors with unique ingredients.」",
       "options": [
         "新奇的；新穎的",
@@ -118,6 +125,7 @@
     {
       "id": "child-25391d91",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，follow 是什麼意思？\n「I'm having trouble following the instructions for this recipe.」",
       "options": [
         "聽懂；理解",
@@ -134,6 +142,7 @@
     {
       "id": "child-ce44fa79",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，shady 是什麼意思？\n「We rested under a shady tree to escape the blazing afternoon sun.」",
       "options": [
         "樹蔭遮蔽的",
@@ -150,6 +159,7 @@
     {
       "id": "child-174bd859",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，factor 是什麼意思？\n「As a factor, Laura successfully negotiated a deal between the supplier and the retailer, earning a generous commission on the sale.」",
       "options": [
         "代理商；經紀人",
@@ -166,6 +176,7 @@
     {
       "id": "child-03bda355",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，stage 是什麼意思？\n「The project is currently in the planning stage.」",
       "options": [
         "階段；時期",
@@ -182,6 +193,7 @@
     {
       "id": "child-630b3535",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，identification 是什麼意思？\n「The security guard asked for my identification before granting me access to the restricted area.」",
       "options": [
         "身分證明文件",
@@ -198,6 +210,7 @@
     {
       "id": "child-0038b8be",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，driver 是什麼意思？\n「You need to install the printer driver on your computer for it to recognize the printer.」",
       "options": [
         "（電腦的）驅動程式",
@@ -214,6 +227,7 @@
     {
       "id": "child-fbbe1f96",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，relax 是什麼意思？\n「The government decided to relax the strict travel restrictions as the number of new cases dropped.」",
       "options": [
         "（使規定等）放寬；鬆綁",
@@ -230,6 +244,7 @@
     {
       "id": "child-9bbe8e8f",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，reflective 是什麼意思？\n「Cyclists should wear a reflective vest so that drivers can see them at night.」",
       "options": [
         "會反光的",
@@ -246,6 +261,7 @@
     {
       "id": "child-fcc2bd32",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，runner 是什麼意思？\n「The hotel lobby was adorned with a beautiful red runner, welcoming guests as they stepped off the elevator.」",
       "options": [
         "（長條）地毯；走道墊",
@@ -262,6 +278,7 @@
     {
       "id": "child-74147b12",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，cook 是什麼意思？\n「The manager was fired for cooking the company's financial records to show higher profits.」",
       "options": [
         "竄改；作假（帳目）",
@@ -278,6 +295,7 @@
     {
       "id": "child-204b337f",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，express 是什麼意思？\n「I always take the express train to the airport because it saves me a lot of time.」",
       "options": [
         "表達；表露（情感、想法）",
@@ -294,6 +312,7 @@
     {
       "id": "child-f1858299",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，pen 是什麼意思？\n「The rancher built a sturdy pen for his cattle to graze in during the winter months.」",
       "options": [
         "（家畜的）圍欄；畜欄",
@@ -310,6 +329,7 @@
     {
       "id": "child-9687a1e4",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，nod 是什麼意思？\n「After a long day at work, John couldn't help but nod off on the couch.」",
       "options": [
         "打瞌睡；不由自主地打盹",
@@ -326,6 +346,7 @@
     {
       "id": "child-3f79866d",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，paint 是什麼意思？\n「Vanessa decided to paint a beautiful landscape of the mountains during her vacation.」",
       "options": [
         "繪（畫）；作畫",
@@ -342,6 +363,7 @@
     {
       "id": "child-62bc17f0",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，arrow 是什麼意思？\n「The arrow on the map pointed us towards the north.」",
       "options": [
         "箭頭（指示方向的符號）",
@@ -358,6 +380,7 @@
     {
       "id": "child-e8d3a7a6",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，fond 是什麼意思？\n「She still has fond memories of the summers she spent at her grandmother's house.」",
       "options": [
         "(回憶等)溫馨的；充滿深情的",
@@ -374,6 +397,7 @@
     {
       "id": "child-adb88a6a",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，glow 是什麼意思？\n「After a good night's sleep, she woke up with a healthy glow on her cheeks.」",
       "options": [
         "（臉上）紅潤；煥發的神采",
@@ -390,6 +414,7 @@
     {
       "id": "child-df481089",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，acquisition 是什麼意思？\n「Second language acquisition is much faster for children than for adults.」",
       "options": [
         "（語言的）習得",
@@ -406,6 +431,7 @@
     {
       "id": "child-ef6ebdd8",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，mend 是什麼意思？\n「After her surgery, it took several weeks for Sarah to mend and regain her strength.」",
       "options": [
         "（傷病）痊癒；康復",
@@ -422,6 +448,7 @@
     {
       "id": "child-05b6962c",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，deny 是什麼意思？\n「He had to deny himself dessert if he wanted to stick to his diet.」",
       "options": [
         "克制；不讓自己享有",
@@ -438,6 +465,7 @@
     {
       "id": "child-81c1d215",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，dial 是什麼意思？\n「He glanced at his watch, checking the time on the dial.」",
       "options": [
         "（鐘錶、儀表的）刻度盤；錶面",
@@ -454,6 +482,7 @@
     {
       "id": "child-5127611c",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，memorial 是什麼意思？\n「They drafted a memorial to protest the government's decision to close the school.」",
       "options": [
         "（向當局呈遞的）陳情書；請願書",
@@ -470,6 +499,7 @@
     {
       "id": "child-da0aa592",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，appear 是什麼意思？\n「The defendant must appear before the court next Monday to testify.」",
       "options": [
         "出庭；正式到場",
@@ -486,6 +516,7 @@
     {
       "id": "child-98a9f971",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，glue 是什麼意思？\n「The children were glued to the TV all afternoon, unable to look away.」",
       "options": [
         "緊貼（不動）；目不轉睛",
@@ -502,6 +533,7 @@
     {
       "id": "child-50acd734",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，weight 是什麼意思？\n「John went to the gym and lifted heavy weights to increase his muscle mass.」",
       "options": [
         "（健身用的）槓鈴、啞鈴",
@@ -518,6 +550,7 @@
     {
       "id": "child-f5bafe6e",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，pose 是什麼意思？\n「The new policy could pose a serious threat to small businesses.」",
       "options": [
         "造成（威脅）",
@@ -534,6 +567,7 @@
     {
       "id": "child-0dcd86fa",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，depth 是什麼意思？\n「Anna explained the research with such depth that everyone was impressed.」",
       "options": [
         "（思想、理解的）深刻；深入",
@@ -550,6 +584,7 @@
     {
       "id": "child-7bf222fc",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，tragedy 是什麼意思？\n「Shakespeare's Romeo and Juliet is a tragedy that ends with the deaths of the two young lovers.」",
       "options": [
         "悲劇（戲劇文類）",
@@ -566,6 +601,7 @@
     {
       "id": "child-e9e9e8b5",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，honor 是什麼意思？\n「In that traditional society, a girl's honor was expected to remain intact until marriage.」",
       "options": [
         "（女子的）貞操；貞節",
@@ -582,6 +618,7 @@
     {
       "id": "child-d7d8cc48",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，cozy 是什麼意思？\n「The two officials had a cozy relationship with the contractor, which raised suspicions of corruption.」",
       "options": [
         "（暗中）友好勾結的",
@@ -598,6 +635,7 @@
     {
       "id": "child-4bcbb219",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，division 是什麼意思？\n「The company will be broken up into three divisions: Sales, HR, and Accounting.」",
       "options": [
         "部門；分部",
@@ -614,6 +652,7 @@
     {
       "id": "child-a2298429",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，perfume 是什麼意思？\n「As she walked into the room, the sweet perfume of the lilies filled the air.」",
       "options": [
         "（宜人的）香味；芬芳",
@@ -630,6 +669,7 @@
     {
       "id": "child-ab6991d6",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，critical 是什麼意思？\n「The teacher is very critical of her students' essays, always pointing out every mistake they make.」",
       "options": [
         "批評的；愛挑毛病的",
@@ -646,6 +686,7 @@
     {
       "id": "child-9b100818",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，divert 是什麼意思？\n「The cashier was caught diverting funds from the register into his own personal account.」",
       "options": [
         "挪用；盜用（款項）",
@@ -662,6 +703,7 @@
     {
       "id": "child-789b33b3",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，vital 是什麼意思？\n「Her warm smile and vital personality made her the most popular teacher in the school.」",
       "options": [
         "充滿活力的；生氣勃勃的",
@@ -678,6 +720,7 @@
     {
       "id": "child-712b0967",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，acquire 是什麼意思？\n「Children acquire their native language naturally just by listening to those around them.」",
       "options": [
         "習得；學會",
@@ -694,6 +737,7 @@
     {
       "id": "child-bb65ddc3",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，day 是什麼意思？\n「We went for a picnic and enjoyed the beautiful weather during the day.」",
       "options": [
         "白天；白晝",
@@ -710,6 +754,7 @@
     {
       "id": "child-642041b3",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，soil 是什麼意思？\n「In the negotiation, the two countries disputed the ownership of the small strip of soil near the border.」",
       "options": [
         "國土；領土",
@@ -726,6 +771,7 @@
     {
       "id": "child-3ce6ea68",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，environment 是什麼意思？\n「Children learn best in a warm and supportive environment.」",
       "options": [
         "周遭環境；氛圍",
@@ -742,6 +788,7 @@
     {
       "id": "child-ac1f509e",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，frontier 是什麼意思？\n「The frontier of neuroscience explores the mysteries of the human brain.」",
       "options": [
         "（學術知識的）尖端領域；待開拓的新境界",
@@ -758,6 +805,7 @@
     {
       "id": "child-92ca7456",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，angry 是什麼意思？\n「The cut on her arm had turned into an angry red wound that throbbed with pain.」",
       "options": [
         "（傷口）發炎紅腫疼痛的",
@@ -774,6 +822,7 @@
     {
       "id": "child-f4ba5680",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，crop 是什麼意思？\n「This year's crop of new students is the most talented the school has ever seen.」",
       "options": [
         "（同時出現的）一群；一批",
@@ -790,6 +839,7 @@
     {
       "id": "child-60f91082",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，premise 是什麼意思？\n「His entire argument rests on the false premise that everyone has equal access to education.」",
       "options": [
         "前提；假設",
@@ -806,6 +856,7 @@
     {
       "id": "child-f924b8c4",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，grip 是什麼意思？\n「After reading the book, she had a firm grip on the subject matter.」",
       "options": [
         "（對事物的）理解；掌握",
@@ -822,6 +873,7 @@
     {
       "id": "child-1ea8695e",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，inspiration 是什麼意思？\n「After the marathon, he took a deep inspiration and felt the fresh air fill his lungs.」",
       "options": [
         "吸氣；吸入",
@@ -838,6 +890,7 @@
     {
       "id": "child-4b495a0f",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，suggest 是什麼意思？\n「Her trembling hands suggested that she was extremely nervous.」",
       "options": [
         "暗示；間接顯示",
@@ -854,6 +907,7 @@
     {
       "id": "child-3f48a8fc",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，version 是什麼意思？\n「The two drivers gave the police very different versions of how the accident happened.」",
       "options": [
         "說法",
@@ -870,6 +924,7 @@
     {
       "id": "child-88a4a56e",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，possess 是什麼意思？\n「The villagers believed an evil spirit had possessed the young boy.」",
       "options": [
         "（鬼魂）附身於",
@@ -886,6 +941,7 @@
     {
       "id": "child-765d915c",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，beauty 是什麼意思？\n「The beauty of this plan is that it costs us nothing at all.」",
       "options": [
         "妙處；好處",
@@ -902,6 +958,7 @@
     {
       "id": "child-7a37a5b0",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，lousy 是什麼意思？\n「The stray dog was thin and lousy, its fur crawling with parasites.」",
       "options": [
         "長滿蝨子的；生蝨的",
@@ -918,6 +975,7 @@
     {
       "id": "child-e6b05f94",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，inch 是什麼意思？\n「The tortoise inched forward, making progress at a snail's pace.」",
       "options": [
         "緩慢地移動；一點一點地挪動",
@@ -934,6 +992,7 @@
     {
       "id": "child-68de0b6f",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，rainbow 是什麼意思？\n「Believing that he will become a millionaire overnight is just a rainbow.」",
       "options": [
         "渺茫的希望；不切實際的幻想",
@@ -950,6 +1009,7 @@
     {
       "id": "child-b83f3fa5",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，cape 是什麼意思？\n「The lighthouse stands tall on the cape, directing ships away from the rocky shore.」",
       "options": [
         "海角；岬",
@@ -966,6 +1026,7 @@
     {
       "id": "child-4e0159c3",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，silent 是什麼意思？\n「The silent understanding between them was that no one would mention the incident from the past.」",
       "options": [
         "心照不宣的；未明說的",
@@ -982,6 +1043,7 @@
     {
       "id": "child-12a1ba1d",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，birth 是什麼意思？\n「The birth of a new idea sparked a revolution in the field of technology.」",
       "options": [
         "（事物的）誕生；興起",
@@ -998,6 +1060,7 @@
     {
       "id": "child-8b4ebff3",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，level 是什麼意思？\n「In the game, you must complete each level before advancing to the next one.」",
       "options": [
         "關卡",
@@ -1014,6 +1077,7 @@
     {
       "id": "child-2e6ca06a",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，critic 是什麼意思？\n「Despite the plan's clear benefits, its critics kept finding fault with every small detail.」",
       "options": [
         "愛挑剔的人；批評者",
@@ -1030,6 +1094,7 @@
     {
       "id": "child-7d164001",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，normal 是什麼意思？\n「The line drawn normal to the surface meets it at a perfect right angle.」",
       "options": [
         "（數學）垂直的；成直角的",
@@ -1046,6 +1111,7 @@
     {
       "id": "child-9f18d394",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，triple 是什麼意思？\n「The chef tripled the recipe to feed the large crowd at the banquet.」",
       "options": [
         "使成三倍；增至三倍",
@@ -1062,6 +1128,7 @@
     {
       "id": "child-ac086ee2",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，quote 是什麼意思？\n「The car dealer quoted a price of $25,000 for the brand-new model.」",
       "options": [
         "開價；報價",
@@ -1078,6 +1145,7 @@
     {
       "id": "child-27885102",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，execution 是什麼意思？\n「The execution of the convicted murderer was scheduled for next week.」",
       "options": [
         "處決；死刑的執行",
@@ -1094,6 +1162,7 @@
     {
       "id": "child-e6cbfc66",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，set 是什麼意思？\n「The Jello started to set in the refrigerator.」",
       "options": [
         "凝固；變硬",
@@ -1110,6 +1179,7 @@
     {
       "id": "child-7a808831",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，nominate 是什麼意思？\n「He was nominated for the Best Actor award for his outstanding performance in the film.」",
       "options": [
         "提名（推薦角逐獎項）",
@@ -1126,6 +1196,7 @@
     {
       "id": "child-90eab46b",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，publisher 是什麼意思？\n「The publisher of the New York Times announced a new initiative to support local journalism.」",
       "options": [
         "（報社的）發行人；社長",
@@ -1142,6 +1213,7 @@
     {
       "id": "child-a6712e17",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，blank 是什麼意思？\n「After hearing the news, she just stared at me with a blank expression.」",
       "options": [
         "面無表情的；茫然的",
@@ -1158,6 +1230,7 @@
     {
       "id": "child-61915322",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，layman 是什麼意思？\n「As a layman in the world of finance, I found it difficult to understand the complexities of the stock market.」",
       "options": [
         "外行人；門外漢（非專家）",
@@ -1174,6 +1247,7 @@
     {
       "id": "child-92344f65",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，resignation 是什麼意思？\n「He accepted the bad news with quiet resignation, knowing nothing could be done.」",
       "options": [
         "（無奈的）順從；認命",
@@ -1190,6 +1264,7 @@
     {
       "id": "child-036be98b",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，potential 是什麼意思？\n「The potential difference between the two ends of a wire is what causes electricity to flow through it.」",
       "options": [
         "電位（差）",
@@ -1206,6 +1281,7 @@
     {
       "id": "child-075afee7",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，strike 是什麼意思？\n「The news of the company's bankruptcy struck fear into the hearts of its employees.」",
       "options": [
         "（情緒）突然襲上心頭；使（人）陷入（某種感受）",
@@ -1222,6 +1298,7 @@
     {
       "id": "child-faa9bc86",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，move 是什麼意思？\n「It's your move. Take your time and strategize your next move.」",
       "options": [
         "（棋類遊戲中）一步；該某人下的一著",
@@ -1238,6 +1315,7 @@
     {
       "id": "child-016a75f9",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，limp 是什麼意思？\n「He had a limp handshake, indicating a lack of confidence.」",
       "options": [
         "軟弱無力的",
@@ -1254,6 +1332,7 @@
     {
       "id": "child-d6b4936f",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，east 是什麼意思？\n「I live on the east side of town, close to the beach.」",
       "options": [
         "東部的；位於東邊的",
@@ -1270,6 +1349,7 @@
     {
       "id": "child-3200cf88",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，assassinate 是什麼意思？\n「Spreading false rumors about a person to ruin their career is a clear attempt to assassinate their character.」",
       "options": [
         "詆毀；中傷（名譽）",
@@ -1286,6 +1366,7 @@
     {
       "id": "child-848c61c1",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，electric 是什麼意思？\n「The atmosphere in the stadium was electric as the two rival teams faced off in the final.」",
       "options": [
         "（氣氛）緊張刺激的；令人興奮的",
@@ -1302,6 +1383,7 @@
     {
       "id": "child-50ca7d93",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，terrific 是什麼意思？\n「The movie was so terrific that it received a standing ovation at the end.」",
       "options": [
         "極好的；了不起的",
@@ -1318,6 +1400,7 @@
     {
       "id": "child-4da6aa8f",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，sock 是什麼意思？\n「During the boxing match, he delivered a powerful sock to his opponent's jaw.」",
       "options": [
         "猛擊；重擊",
@@ -1334,6 +1417,7 @@
     {
       "id": "child-a5b8759a",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，simply 是什麼意思？\n「She didn't want anything elaborate for her birthday, simply some quality time with her family.」",
       "options": [
         "只是；僅僅",
@@ -1350,6 +1434,7 @@
     {
       "id": "child-5fdaac69",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，restore 是什麼意思？\n「After a long and tiring hike, a good night's sleep can restore your energy for the next day's adventure.」",
       "options": [
         "使恢復（體力、精神）",
@@ -1366,6 +1451,7 @@
     {
       "id": "child-741c4c4f",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，exact 是什麼意思？\n「The ruthless landlord exacted heavy rents from the poor tenants every month.」",
       "options": [
         "強索；逼取",
@@ -1382,6 +1468,7 @@
     {
       "id": "child-12c1cb1e",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，communication 是什麼意思？\n「The storm cut off all communication with the island for three days.」",
       "options": [
         "通訊；聯絡（管道）",
@@ -1398,6 +1485,7 @@
     {
       "id": "child-230ff63a",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，hunger 是什麼意思？\n「After finishing his last project, John felt a hunger for adventure and booked a solo trip around the world.」",
       "options": [
         "渴望；強烈的欲求",
@@ -1414,6 +1502,7 @@
     {
       "id": "child-a6ca1165",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，outrageous 是什麼意思？\n「They charged an outrageous price for a simple bowl of noodles.」",
       "options": [
         "（價格）過分的；離譜的",
@@ -1430,6 +1519,7 @@
     {
       "id": "child-b2cbb453",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，can 是什麼意思？\n「After the worker kept arriving late, the boss had no choice but to can him.」",
       "options": [
         "解僱；開除",
@@ -1446,6 +1536,7 @@
     {
       "id": "child-595e9efb",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，back 是什麼意思？\n「She had a tattoo of a dragon on her lower back.」",
       "options": [
         "背部（身體）",
@@ -1462,6 +1553,7 @@
     {
       "id": "child-e945c2c6",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，panel 是什麼意思？\n「The panel of judges tasted each dish and rated them based on presentation and taste.」",
       "options": [
         "（評審的）小組",
@@ -1478,6 +1570,7 @@
     {
       "id": "child-87acc7e4",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，induce 是什麼意思？\n「The advertisement that induced me to purchase the product turned out to be a complete lie.」",
       "options": [
         "誘使；勸誘（某人做某事）",
@@ -1494,6 +1587,7 @@
     {
       "id": "child-2dd12b8a",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，decision 是什麼意思？\n「A good leader must act with decision in a crisis, never hesitating when others panic.」",
       "options": [
         "果斷；決斷力",
@@ -1510,6 +1604,7 @@
     {
       "id": "child-51e78c67",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，chant 是什麼意思？\n「The crowd started to chant the team's name after they won the championship.」",
       "options": [
         "（齊聲）反覆高呼",
@@ -1526,6 +1621,7 @@
     {
       "id": "child-d98a0393",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，nap 是什麼意思？\n「The nap of the velvet upholstery added a luxurious and soft touch to the furniture.」",
       "options": [
         "（布料表面的）絨毛",
@@ -1542,6 +1638,7 @@
     {
       "id": "child-7cf35578",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，ash 是什麼意思？\n「She sat under the shade of a towering ash, enjoying the peaceful surroundings.」",
       "options": [
         "白蠟樹；梣樹",
@@ -1558,6 +1655,7 @@
     {
       "id": "child-3c2d6806",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，passage 是什麼意思？\n「The pianist played a beautiful passage from Beethoven's Sonata during the concert.」",
       "options": [
         "（樂曲的）一段；樂段",
@@ -1574,6 +1672,7 @@
     {
       "id": "child-0c95471b",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，infection 是什麼意思？\n「The sense of panic and fear quickly spread throughout the community, creating an infection of anxiety and distress.」",
       "options": [
         "(情緒、風氣的)蔓延；感染",
@@ -1590,6 +1689,7 @@
     {
       "id": "child-b7647cc4",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，sole 是什麼意思？\n「After her siblings moved out, Sarah had the sole responsibility of taking care of their aging parents.」",
       "options": [
         "唯一的；單獨的",
@@ -1606,6 +1706,7 @@
     {
       "id": "child-1652f6e9",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，aid 是什麼意思？\n「The Red Cross provided aid to the victims of the disaster by distributing food, clothing, and medical supplies.」",
       "options": [
         "援助；救援物資",
@@ -1622,6 +1723,7 @@
     {
       "id": "child-9a5ea4a5",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，squeeze 是什麼意思？\n「He squeezed the lemon to extract the juice.」",
       "options": [
         "擠壓；捏",
@@ -1638,6 +1740,7 @@
     {
       "id": "child-b6edf9d6",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，legacy 是什麼意思？\n「My grandmother's legacy of hard work and perseverance continues to inspire our family.」",
       "options": [
         "（前人留下的）精神傳承",
@@ -1654,6 +1757,7 @@
     {
       "id": "child-a134a823",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，grape 是什麼意思？\n「During the battle, the warship's cannons unleashed grape on the enemy forces.」",
       "options": [
         "葡萄彈（成束霰彈）",
@@ -1670,6 +1774,7 @@
     {
       "id": "child-4fd62428",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，mount 是什麼意思？\n「I watched as the cowboy tried to mount the horse but failed.」",
       "options": [
         "騎上；登上",
@@ -1686,6 +1791,7 @@
     {
       "id": "child-db156a03",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，supreme 是什麼意思？\n「In a monarchy, the king holds supreme power over the entire kingdom.」",
       "options": [
         "至高無上的；最高（權力）的",
@@ -1702,6 +1808,7 @@
     {
       "id": "child-91f2d800",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，list 是什麼意思？\n「The damaged ship began to list to one side as water flooded into its hull.」",
       "options": [
         "（船等）傾斜；側傾",
@@ -1718,6 +1825,7 @@
     {
       "id": "child-5e5eaac8",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，branch 是什麼意思？\n「The company opened several new branches across the country, which helped to increase its customer base.」",
       "options": [
         "（公司、組織的）分支機構；分行",
@@ -1734,6 +1842,7 @@
     {
       "id": "child-2ddb49a0",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，knit 是什麼意思？\n「The shared hardship knit the survivors together into one closely united community.」",
       "options": [
         "（使）緊密結合；團結",
@@ -1750,6 +1859,7 @@
     {
       "id": "child-c789680c",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，overflow 是什麼意思？\n「The heavy rain caused the river to overflow its banks, flooding the nearby fields.」",
       "options": [
         "（液體）溢出；漫出",
@@ -1766,6 +1876,7 @@
     {
       "id": "child-d7467766",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，altitude 是什麼意思？\n「To find the area of the triangle, first measure the altitude from the apex to the base.」",
       "options": [
         "（幾何）高；頂點到底邊的垂直距離",
@@ -1782,6 +1893,7 @@
     {
       "id": "child-b0524f89",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，ever 是什麼意思？\n「Have you ever been to Paris in the spring?」",
       "options": [
         "曾經（用於疑問）",
@@ -1798,6 +1910,7 @@
     {
       "id": "child-591e00f7",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，invitation 是什麼意思？\n「Leaving your car unlocked is an open invitation to thieves.」",
       "options": [
         "誘因；招惹（麻煩）",
@@ -1814,6 +1927,7 @@
     {
       "id": "child-28fdcc2f",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，pace 是什麼意思？\n「The marathon runner maintained a steady pace throughout the entire race.」",
       "options": [
         "步調；速度",
@@ -1830,6 +1944,7 @@
     {
       "id": "child-818dd4aa",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，shabby 是什麼意思？\n「Refusing to return the deposit and inventing false claims was a shabby way to treat his tenants.」",
       "options": [
         "卑鄙的；不厚道的",
@@ -1846,6 +1961,7 @@
     {
       "id": "child-4e13c203",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，cut 是什麼意思？\n「The CEO agreed to give the employees a larger cut of the profits this year.」",
       "options": [
         "（利潤的）分成；一份",
@@ -1862,6 +1978,7 @@
     {
       "id": "child-3c51bf5c",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，dive 是什麼意思？\n「The company's stock price dived sharply after the financial scandal was exposed.」",
       "options": [
         "（價格、數量等）暴跌；驟降",
@@ -1878,6 +1995,7 @@
     {
       "id": "child-e2de9933",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，twist 是什麼意思？\n「The movie's ending had a surprising twist that no one saw coming.」",
       "options": [
         "（情節的）轉折；意外發展",
@@ -1894,6 +2012,7 @@
     {
       "id": "child-9c7a6b05",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，tolerance 是什麼意思？\n「Despite the scorching heat, the cactus showed remarkable tolerance, surviving with minimal water.」",
       "options": [
         "耐受力；耐性（承受不利環境的能力）",
@@ -1910,6 +2029,7 @@
     {
       "id": "child-5ba03a6c",
       "kind": "multipleChoice",
+      "questionStyle": "standard",
       "prompt": "在這個句子裡，whip 是什麼意思？\n「She used a whisk to whip the egg whites until they formed stiff peaks.」",
       "options": [
         "（將蛋白）攪打至發泡",

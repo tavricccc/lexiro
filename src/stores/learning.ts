@@ -1,7 +1,7 @@
 import type { DashboardStats, LearningProgress, ReviewEntry, ReviewRating, VocabSet } from '@/types'
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
-import { DAILY_GOAL_OPTIONS, LEARNING_STORAGE_KEY } from '@/constants'
+import { DAILY_GOAL_OPTIONS, DAILY_QUESTION_GOAL_OPTIONS, DAILY_WORD_GOAL_OPTIONS, LEARNING_STORAGE_KEY } from '@/constants'
 import { isDue, reviewCard } from '@/lib/fsrs'
 import { loadFromStorage, saveToStorage } from '@/lib/persist'
 import { useSetsStore } from './sets'
@@ -23,10 +23,14 @@ function defaultStats(): DashboardStats {
     level: 1,
     lastStudyDate: '',
     dailyGoal: DAILY_GOAL_OPTIONS[0],
+    dailyWordGoal: DAILY_WORD_GOAL_OPTIONS[0],
+    dailyQuestionGoal: DAILY_QUESTION_GOAL_OPTIONS[0],
     todayReviews: 0,
     todayCorrectReviews: 0,
     todayLearningReviews: 0,
     todayLearningCorrectReviews: 0,
+    todayQuestionReviews: 0,
+    todayQuestionCorrectReviews: 0,
     achievements: [],
     updatedAt: new Date().toISOString(),
   }
@@ -45,7 +49,8 @@ export const useLearningStore = defineStore('learning', () => {
   const currentReviewEntry = computed(() => reviewEntries.value[reviewIndex.value] ?? null)
   const reviewTotal = computed(() => reviewEntries.value.length)
   const reviewProgress = computed(() => reviewTotal.value ? Math.round((reviewIndex.value / reviewTotal.value) * 100) : 0)
-  const todayProgress = computed(() => Math.min(100, Math.round((stats.value.todayLearningReviews / stats.value.dailyGoal) * 100)))
+  const todayProgress = computed(() => Math.min(100, Math.round((stats.value.todayLearningReviews / stats.value.dailyWordGoal) * 100)))
+  const todayQuestionProgress = computed(() => Math.min(100, Math.round((stats.value.todayQuestionReviews / stats.value.dailyQuestionGoal) * 100)))
   const accuracy = computed(() => stats.value.totalReviews
     ? Math.round((stats.value.correctReviews / stats.value.totalReviews) * 100)
     : 0)
@@ -108,7 +113,7 @@ export const useLearningStore = defineStore('learning', () => {
     return result
   }
 
-  function getDailyReviewEntries(limit = stats.value.dailyGoal): ReviewEntry[] {
+  function getDailyReviewEntries(limit = stats.value.dailyWordGoal): ReviewEntry[] {
     const setsStore = useSetsStore()
     const dueEntries = setsStore.sets
       .flatMap(set => getDueEntries(set, Number.MAX_SAFE_INTEGER))
@@ -160,8 +165,12 @@ export const useLearningStore = defineStore('learning', () => {
           stats.value = {
             ...defaultStats(),
             ...parsedStats,
+            dailyWordGoal: typeof parsedStats.dailyWordGoal === 'number' ? parsedStats.dailyWordGoal : Number(parsedStats.dailyGoal ?? DAILY_WORD_GOAL_OPTIONS[0]),
+            dailyQuestionGoal: typeof parsedStats.dailyQuestionGoal === 'number' ? parsedStats.dailyQuestionGoal : DAILY_QUESTION_GOAL_OPTIONS[0],
             todayLearningReviews: typeof parsedStats.todayLearningReviews === 'number' ? parsedStats.todayLearningReviews : Number(parsedStats.todayReviews ?? 0),
             todayLearningCorrectReviews: typeof parsedStats.todayLearningCorrectReviews === 'number' ? parsedStats.todayLearningCorrectReviews : Number(parsedStats.todayCorrectReviews ?? 0),
+            todayQuestionReviews: typeof parsedStats.todayQuestionReviews === 'number' ? parsedStats.todayQuestionReviews : 0,
+            todayQuestionCorrectReviews: typeof parsedStats.todayQuestionCorrectReviews === 'number' ? parsedStats.todayQuestionCorrectReviews : 0,
           }
         }
       }
@@ -177,22 +186,55 @@ export const useLearningStore = defineStore('learning', () => {
     if (stats.value.lastStudyDate !== today) {
       stats.value.todayLearningReviews = 0
       stats.value.todayLearningCorrectReviews = 0
+      stats.value.todayQuestionReviews = 0
+      stats.value.todayQuestionCorrectReviews = 0
     }
-    if (!DAILY_GOAL_OPTIONS.includes(stats.value.dailyGoal as typeof DAILY_GOAL_OPTIONS[number])) {
-      stats.value.dailyGoal = DAILY_GOAL_OPTIONS[0]
+    if (!DAILY_WORD_GOAL_OPTIONS.includes(stats.value.dailyWordGoal as typeof DAILY_WORD_GOAL_OPTIONS[number])) {
+      stats.value.dailyWordGoal = DAILY_WORD_GOAL_OPTIONS[0]
+      stats.value.dailyGoal = DAILY_WORD_GOAL_OPTIONS[0]
+      stats.value.updatedAt = new Date().toISOString()
+      saveState()
+    }
+    if (!DAILY_QUESTION_GOAL_OPTIONS.includes(stats.value.dailyQuestionGoal as typeof DAILY_QUESTION_GOAL_OPTIONS[number])) {
+      stats.value.dailyQuestionGoal = DAILY_QUESTION_GOAL_OPTIONS[0]
       stats.value.updatedAt = new Date().toISOString()
       saveState()
     }
     loaded.value = true
   }
 
-  function setDailyGoal(value: number) {
-    const nextGoal = DAILY_GOAL_OPTIONS.includes(value as typeof DAILY_GOAL_OPTIONS[number])
+  function setDailyWordGoal(value: number) {
+    const nextGoal = DAILY_WORD_GOAL_OPTIONS.includes(value as typeof DAILY_WORD_GOAL_OPTIONS[number])
       ? value
-      : DAILY_GOAL_OPTIONS[0]
-    if (stats.value.dailyGoal === nextGoal)
+      : DAILY_WORD_GOAL_OPTIONS[0]
+    if (stats.value.dailyWordGoal === nextGoal)
       return
+    stats.value.dailyWordGoal = nextGoal
     stats.value.dailyGoal = nextGoal
+    stats.value.updatedAt = new Date().toISOString()
+    saveState()
+  }
+
+  function setDailyQuestionGoal(value: number) {
+    const nextGoal = DAILY_QUESTION_GOAL_OPTIONS.includes(value as typeof DAILY_QUESTION_GOAL_OPTIONS[number])
+      ? value
+      : DAILY_QUESTION_GOAL_OPTIONS[0]
+    if (stats.value.dailyQuestionGoal === nextGoal)
+      return
+    stats.value.dailyQuestionGoal = nextGoal
+    stats.value.updatedAt = new Date().toISOString()
+    saveState()
+  }
+
+  function setDailyGoal(value: number) {
+    setDailyWordGoal(value)
+  }
+
+  function recordDailyQuestionResults(correct: number, total: number) {
+    if (!total)
+      return
+    stats.value.todayQuestionReviews += total
+    stats.value.todayQuestionCorrectReviews += Math.max(0, Math.min(correct, total))
     stats.value.updatedAt = new Date().toISOString()
     saveState()
   }
@@ -208,7 +250,7 @@ export const useLearningStore = defineStore('learning', () => {
       { id: 'reviews-100', condition: stats.value.totalReviews >= 100, titleKey: 'learning.achievementReviews100Title', descriptionKey: 'learning.achievementReviews100Description' },
       { id: 'words-100', condition: learnedWords >= 100, titleKey: 'learning.achievementWords100Title', descriptionKey: 'learning.achievementWords100Description' },
       { id: 'perfect-day', condition: stats.value.todayReviews > 0 && stats.value.todayCorrectReviews === stats.value.todayReviews, titleKey: 'learning.achievementPerfectDayTitle', descriptionKey: 'learning.achievementPerfectDayDescription' },
-      { id: 'perfect-goal', condition: stats.value.todayReviews >= stats.value.dailyGoal, titleKey: 'learning.achievementDailyGoalTitle', descriptionKey: 'learning.achievementDailyGoalDescription' },
+      { id: 'perfect-goal', condition: stats.value.todayLearningReviews >= stats.value.dailyWordGoal, titleKey: 'learning.achievementDailyGoalTitle', descriptionKey: 'learning.achievementDailyGoalDescription' },
     ]
     const newlyUnlocked = candidates.filter(item => item.condition && !existing.has(item.id))
     if (!newlyUnlocked.length)
@@ -333,6 +375,7 @@ export const useLearningStore = defineStore('learning', () => {
     reviewTotal,
     reviewProgress,
     todayProgress,
+    todayQuestionProgress,
     accuracy,
     loadState,
     saveState,
@@ -345,6 +388,9 @@ export const useLearningStore = defineStore('learning', () => {
     getDailyReviewEntries,
     getLearnedCount,
     setDailyGoal,
+    setDailyWordGoal,
+    setDailyQuestionGoal,
+    recordDailyQuestionResults,
     startReview,
     startDailyReview,
     answerCurrent,

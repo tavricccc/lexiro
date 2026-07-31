@@ -11,7 +11,7 @@ const props = defineProps<{ collapsed?: boolean, mobile?: boolean }>()
 const { t } = useI18n()
 const cloudStore = useCloudSyncStore()
 const uiStore = useUIStore()
-const { configured, isSignedIn, accountLabel, status, user } = storeToRefs(cloudStore)
+const { configured, isSignedIn, accountLabel, status, user, error } = storeToRefs(cloudStore)
 const { signIn, signOutAccount } = cloudStore
 const menuOpen = ref(false)
 const profilePhoto = computed(() => user.value?.photoURL ?? '')
@@ -24,6 +24,8 @@ const statusText = computed(() => {
     return t('sync.syncing')
   if (status.value === 'offline')
     return t('sync.offline')
+  if (status.value === 'error')
+    return t('sync.error')
   return t('sync.synced')
 })
 
@@ -61,6 +63,9 @@ async function logout() {
           </p>
           <p class="mt-0.5 text-xs font-semibold text-ink-500">
             {{ statusText }}
+          </p>
+          <p v-if="error" class="mt-1 text-[11px] font-semibold leading-relaxed text-red-600 dark:text-red-300">
+            {{ error }}
           </p>
         </div>
       </div>

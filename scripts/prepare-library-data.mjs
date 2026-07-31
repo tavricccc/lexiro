@@ -176,6 +176,7 @@ function normalizeChild(raw, words, sourceId) {
     return {
       id: `child-${stableHash({ sourceId, prompt, options, index })}`,
       kind: 'multipleChoice',
+      questionStyle: prompt.includes('_____') ? 'fillBlank' : 'standard',
       prompt,
       options,
       answerIndex: index,

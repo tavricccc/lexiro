@@ -13,6 +13,7 @@
         {
           "id": "child-2561ba5a",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"This simple act helps the plant make seeds and grow new fruit,\" what does \"This simple act\" refer to?",
           "options": [
             "A bee carrying pollen from one flower to another",
@@ -36,6 +37,7 @@
         {
           "id": "child-047078ea",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward bees and their decline?",
           "options": [
             "Appreciative of bees and concerned about their decline",
@@ -59,6 +61,7 @@
         {
           "id": "child-51392aaf",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"Because of this, many birds fly to a warm place far in the south,\" what does \"this\" mainly refer to?",
           "options": [
             "That food becomes hard to find in cold winter",
@@ -82,6 +85,7 @@
         {
           "id": "child-2c90b482",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, when do the birds fly all the way home again?",
           "options": [
             "When spring comes back",
@@ -105,6 +109,7 @@
         {
           "id": "child-f065a328",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"They spent four hours collecting plastic bottles, broken toys, and other rubbish,\" what does \"They\" refer to?",
           "options": [
             "The volunteers",
@@ -128,6 +133,7 @@
         {
           "id": "child-57178428",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward the clean-up event?",
           "options": [
             "Positive and approving",
@@ -151,6 +157,7 @@
         {
           "id": "child-8b83f0c1",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In Mark's reply, \"that sounds wonderful!\" — what does \"that\" refer to?",
           "options": [
             "Lisa's plan for a short bike trip to Green Lake",
@@ -174,6 +181,7 @@
         {
           "id": "child-69de96d3",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is Mark's tone in his reply to Lisa?",
           "options": [
             "Enthusiastic and eager",
@@ -197,6 +205,7 @@
         {
           "id": "child-dd236184",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"Still, it gives students a steady start,\" what does \"it\" refer to?",
           "options": [
             "Breakfast",
@@ -220,6 +229,7 @@
         {
           "id": "child-e2572925",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward eating breakfast?",
           "options": [
             "Supportive but realistic",
@@ -243,6 +253,7 @@
         {
           "id": "child-17968876",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"Such occasions remind people that they belong to something larger than themselves,\" what do \"Such occasions\" refer to?",
           "options": [
             "Times when neighbours gather to prepare food, decorate spaces, or rehearse music and dance",
@@ -266,6 +277,7 @@
         {
           "id": "child-f14ee70e",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward festivals and shared celebrations?",
           "options": [
             "Appreciative and admiring",
@@ -289,6 +301,7 @@
         {
           "id": "child-bb8950b2",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"Avoid drinking tea or coffee in the evening, since they make it harder to fall asleep,\" what does \"they\" refer to?",
           "options": [
             "Tea or coffee",
@@ -312,6 +325,7 @@
         {
           "id": "child-bbd606be",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, how long before sleep should you put your phone away?",
           "options": [
             "At least half an hour before sleep",
@@ -335,6 +349,7 @@
         {
           "id": "child-8f7dcb45",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"Therefore, for those who lack access to private tutors, such technology can be a remarkable equalizer,\" what does \"such technology\" refer to?",
           "options": [
             "AI tools such as a well-designed chatbot",
@@ -358,6 +373,7 @@
         {
           "id": "child-5a3a551c",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward using AI tools in learning?",
           "options": [
             "Balanced, advocating cautious and measured use",
@@ -381,6 +397,7 @@
         {
           "id": "child-e44d894a",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"These craters were formed when rocks from space crashed into the moon long ago,\" what does \"These craters\" refer to?",
           "options": [
             "The round holes on the moon's surface",
@@ -404,6 +421,7 @@
         {
           "id": "child-70f91949",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, why does the moon shine so brightly at night?",
           "options": [
             "Because it reflects the light of the sun",
@@ -427,6 +445,7 @@
         {
           "id": "child-2e69371a",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"yet the first one stuck to the pan and broke,\" what does \"the first one\" refer to?",
           "options": [
             "The first egg she tried to fry",
@@ -450,6 +469,7 @@
         {
           "id": "child-0eb6244a",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the overall tone of the story?",
           "options": [
             "Light-hearted and encouraging",
@@ -473,6 +493,7 @@
         {
           "id": "child-24a5c21b",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"Each family received a small tree and clear instructions on how to plant it correctly,\" what does \"it\" refer to?",
           "options": [
             "The small tree",
@@ -496,6 +517,7 @@
         {
           "id": "child-2fa4b832",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, how many trees stood in neat rows by the end of the day?",
           "options": [
             "More than three hundred",
@@ -519,6 +541,7 @@
         {
           "id": "child-2865540c",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"Leo nodded and said they should help it before a cat found it,\" what does the word \"it\" refer to?",
           "options": [
             "The tiny bird",
@@ -542,6 +565,7 @@
         {
           "id": "child-40c7b0ad",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, why did Leo say they must not feed the bird bread?",
           "options": [
             "Because their mom says small birds need seeds and water instead",
@@ -565,6 +589,7 @@
         {
           "id": "child-67cfc4c0",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"hobbies can help us make new friends who share the same interest,\" the phrase \"the same interest\" most directly refers to which of the following?",
           "options": [
             "A shared hobby",
@@ -588,6 +613,7 @@
         {
           "id": "child-51ae9136",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward having hobbies?",
           "options": [
             "Supportive and encouraging",
@@ -611,6 +637,7 @@
         {
           "id": "child-5874db27",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"a classmate named Sofia asked him to join hers,\" what does the word \"hers\" refer to?",
           "options": [
             "Sofia's team",
@@ -634,6 +661,7 @@
         {
           "id": "child-bbc3449d",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the overall tone of the narrative toward Daniel's experience?",
           "options": [
             "Warm and encouraging",
@@ -657,6 +685,7 @@
         {
           "id": "child-38747e83",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"These familiar objects give our brains a sense of scale,\" what does \"These familiar objects\" refer to?",
           "options": [
             "Trees, houses, and distant hills",
@@ -680,6 +709,7 @@
         {
           "id": "child-591ad866",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, what did scientists find when they measured the Moon in both positions?",
           "options": [
             "Its width in the sky never truly changes",
@@ -703,6 +733,7 @@
         {
           "id": "child-0a96b38a",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"That small comment gave Mina the courage to keep going,\" what does \"That small comment\" refer to?",
           "options": [
             "Her brother saying it reminded him of their grandmother's house",
@@ -726,6 +757,7 @@
         {
           "id": "child-0b6bab9d",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's tone toward Mina's baking experience?",
           "options": [
             "Warm and heartening",
@@ -749,6 +781,7 @@
         {
           "id": "child-5615b2a6",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"I believe this view is mistaken and even harmful,\" what does \"this view\" refer to?",
           "options": [
             "That young athletes should focus on only one sport",
@@ -772,6 +805,7 @@
         {
           "id": "child-25f359a5",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward forcing young children to specialize in a single sport?",
           "options": [
             "Critical and disapproving",
@@ -795,6 +829,7 @@
         {
           "id": "child-00cd6205",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"The grasses have deep roots that hold the sand in place,\" what does \"The grasses\" refer to?",
           "options": [
             "The thousands of tough grasses planted along the dunes",
@@ -818,6 +853,7 @@
         {
           "id": "child-c0cf18bf",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward the town's grass-planting project?",
           "options": [
             "Approving and hopeful",
@@ -841,6 +877,7 @@
         {
           "id": "child-1a884b8d",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "When Anya says \"Maybe that's the point,\" what does \"that\" refer to?",
           "options": [
             "The painting looking like a mess",
@@ -864,6 +901,7 @@
         {
           "id": "child-400593e0",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is Anya's attitude toward modern art as shown in the dialogue?",
           "options": [
             "Appreciative and patient",
@@ -887,6 +925,7 @@
         {
           "id": "child-74b52d5f",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"These tiny devices rely on a short-range radio signal,\" what does \"These tiny devices\" refer to?",
           "options": [
             "Wireless earphones",
@@ -910,6 +949,7 @@
         {
           "id": "child-bf9207c9",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, why is the short working distance of the radio waves described as helpful?",
           "options": [
             "It saves battery power and reduces interference from other gadgets nearby",
@@ -933,6 +973,7 @@
         {
           "id": "child-07d1e95c",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"These so-called exoplanets are not observed directly,\" what does \"These so-called exoplanets\" refer to?",
           "options": [
             "Worlds orbiting distant stars",
@@ -956,6 +997,7 @@
         {
           "id": "child-2dcbd00e",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward the search for exoplanets?",
           "options": [
             "Admiring and fascinated",
@@ -979,6 +1021,7 @@
         {
           "id": "child-ede6ed07",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"These concerns deserve a fair hearing, but they overlook how thoughtful design can soften urban life,\" what does \"These concerns\" refer to?",
           "options": [
             "That dense cities feel crowded and stressful and bury nature under concrete",
@@ -1002,6 +1045,7 @@
         {
           "id": "child-7127d01a",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward well-planned dense cities?",
           "options": [
             "Favorable and persuasive",
@@ -1025,6 +1069,7 @@
         {
           "id": "child-7a2fb296",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"she could not shake the idea of reviving it,\" what does \"it\" refer to?",
           "options": [
             "The old bakery building",
@@ -1048,6 +1093,7 @@
         {
           "id": "child-57d5d158",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's tone toward the neighborhood's effort to revive the bakery?",
           "options": [
             "Warm and celebratory",
@@ -1071,6 +1117,7 @@
         {
           "id": "child-581ee0f0",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"because the brain treats them as important enough to preserve,\" what does \"them\" refer to?",
           "options": [
             "Events tied to strong feelings",
@@ -1094,6 +1141,7 @@
         {
           "id": "child-467a456e",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward the changeable nature of human memory?",
           "options": [
             "Accepting and appreciative",
@@ -1117,6 +1165,7 @@
         {
           "id": "child-a9061985",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"it runs on a small solar panel and relies on inexpensive parts,\" what does \"it\" refer to?",
           "options": [
             "The low-cost flood sensor",
@@ -1140,6 +1189,7 @@
         {
           "id": "child-c911eba0",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward the students' flood sensor project?",
           "options": [
             "Approving and commending",
@@ -1163,6 +1213,7 @@
         {
           "id": "child-ded0a6ed",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"Some people find this constant drift alarming,\" what does \"this constant drift\" refer to?",
           "options": [
             "The ongoing change in a living language",
@@ -1186,6 +1237,7 @@
         {
           "id": "child-3cdabe3c",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward language change?",
           "options": [
             "Accepting and positive",
@@ -1209,6 +1261,7 @@
         {
           "id": "child-f9f626c4",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"He asked if she needed some help,\" who does \"He\" refer to?",
           "options": [
             "Devon",
@@ -1232,6 +1285,7 @@
         {
           "id": "child-39dbcbe9",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's tone toward Mina's first day at school?",
           "options": [
             "Warm and positive",
@@ -1255,6 +1309,7 @@
         {
           "id": "child-5308b95f",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"They have long ears that can hear sounds from far away,\" what does \"They\" refer to?",
           "options": [
             "Rabbits",
@@ -1278,6 +1333,7 @@
         {
           "id": "child-cc7ef471",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, when do wild rabbits often come out to eat?",
           "options": [
             "In the early morning or at night",
@@ -1301,6 +1357,7 @@
         {
           "id": "child-a360b3e9",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"Theo smiled and said that they could share both dishes,\" who does \"they\" refer to?",
           "options": [
             "Lena and Theo",
@@ -1324,6 +1381,7 @@
         {
           "id": "child-75d126d1",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's tone in describing the siblings' lunch?",
           "options": [
             "Pleasant and good-natured",
@@ -1347,6 +1405,7 @@
         {
           "id": "child-77cc7587",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"She finished the whole race in under thirty minutes,\" who does \"She\" refer to?",
           "options": [
             "Priya",
@@ -1370,6 +1429,7 @@
         {
           "id": "child-66b6c511",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's tone toward the running race?",
           "options": [
             "Cheerful and celebratory",
@@ -1393,6 +1453,7 @@
         {
           "id": "child-2ebdd2f2",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"Together they made a big, round snowman,\" who does \"they\" refer to?",
           "options": [
             "Kofi and his little sister",
@@ -1416,6 +1477,7 @@
         {
           "id": "child-c04cc498",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the overall tone of the passage?",
           "options": [
             "Joyful and heartwarming",
@@ -1439,6 +1501,7 @@
         {
           "id": "child-5c5ba1b4",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"Drawing is a fun and easy hobby that almost anyone can try,\" what does \"Drawing\" refer to?",
           "options": [
             "The activity of making pictures",
@@ -1462,6 +1525,7 @@
         {
           "id": "child-fd6f2dcc",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward drawing as a hobby?",
           "options": [
             "Encouraging and positive",
@@ -1485,6 +1549,7 @@
         {
           "id": "child-288d5778",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the phrase \"his new friend,\" who is \"his new friend\"?",
           "options": [
             "Marco",
@@ -1508,6 +1573,7 @@
         {
           "id": "child-6946d28f",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's tone toward Kenji's experience?",
           "options": [
             "Warm and reassuring",
@@ -1531,6 +1597,7 @@
         {
           "id": "child-cb272996",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"First, they need water almost every day to live,\" what does \"they\" refer to?",
           "options": [
             "Plants",
@@ -1554,6 +1621,7 @@
         {
           "id": "child-8768e80f",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, why do most plants like to sit close to a window?",
           "options": [
             "To get light from the sun",
@@ -1577,6 +1645,7 @@
         {
           "id": "child-999e3260",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"Lucia laughed out loud and waved her hand at it,\" what does \"it\" refer to?",
           "options": [
             "The tiny crab",
@@ -1600,6 +1669,7 @@
         {
           "id": "child-2c058e4d",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the tone of this passage about Lucia's day at the beach?",
           "options": [
             "Relaxed and happy",
@@ -1623,6 +1693,7 @@
         {
           "id": "child-fb4a3a52",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the worker's reply \"they are right over there by the front door,\" what does \"they\" refer to?",
           "options": [
             "The apples",
@@ -1646,6 +1717,7 @@
         {
           "id": "child-f4af4526",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "How would you describe the tone of this shopping scene?",
           "options": [
             "Friendly and pleasant",
@@ -1669,6 +1741,7 @@
         {
           "id": "child-09d3a069",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"put them on a plate,\" what does \"them\" refer to?",
           "options": [
             "Two pieces of bread",
@@ -1692,6 +1765,7 @@
         {
           "id": "child-b603c9c3",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, what do you spread on each piece of bread?",
           "options": [
             "Soft butter",
@@ -1715,6 +1789,7 @@
         {
           "id": "child-2b8086d8",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"Many happy families came on the very first day to see it,\" what does \"it\" refer to?",
           "options": [
             "The new library",
@@ -1738,6 +1813,7 @@
         {
           "id": "child-97d40b5e",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, how many days a week is the library open?",
           "options": [
             "Six days",
@@ -1761,6 +1837,7 @@
         {
           "id": "child-025e12b0",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"Her mother smiles and tells her to open it,\" what does \"it\" refer to?",
           "options": [
             "The big box",
@@ -1784,6 +1861,7 @@
         {
           "id": "child-24b13048",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the tone of this birthday story?",
           "options": [
             "Festive and loving",
@@ -1807,6 +1885,7 @@
         {
           "id": "child-1e6d50c8",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"First, we clean them and keep them dry,\" what does \"them\" refer to?",
           "options": [
             "Paper, glass, and plastic bottles",
@@ -1830,6 +1909,7 @@
         {
           "id": "child-ff7b6061",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward recycling?",
           "options": [
             "Supportive and encouraging",
@@ -1853,6 +1933,7 @@
         {
           "id": "child-eeccd723",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"I can help you fix it,\" what does \"it\" refer to?",
           "options": [
             "Anna's bike with the flat tire",
@@ -1876,6 +1957,7 @@
         {
           "id": "child-3c8bf5ec",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the tone of this story about Leo helping his sister?",
           "options": [
             "Kind and heartwarming",
@@ -1899,6 +1981,7 @@
         {
           "id": "child-66427bb9",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"Everyone hopes the park will be a happy place for years,\" what does \"the park\" refer to?",
           "options": [
             "The new park in Green Hill",
@@ -1922,6 +2005,7 @@
         {
           "id": "child-f4be12f2",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, what does the mayor say the town wants to do soon?",
           "options": [
             "Plant more flowers",
@@ -1945,6 +2029,7 @@
         {
           "id": "child-0c2384d9",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"He was quiet and sat alone near the window,\" who does \"He\" refer to?",
           "options": [
             "Sam, the new student",
@@ -1968,6 +2053,7 @@
         {
           "id": "child-a8a9e705",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the narrator's attitude toward Sam?",
           "options": [
             "Kind and sympathetic",
@@ -1991,6 +2077,7 @@
         {
           "id": "child-bb8e5bd7",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"Carrots can help our eyes, and they taste sweet too,\" what does \"they\" refer to?",
           "options": [
             "Carrots",
@@ -2014,6 +2101,7 @@
         {
           "id": "child-7afa7410",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, what two things do home-grown plants need to grow bigger every day?",
           "options": [
             "Water and sun",
@@ -2037,6 +2125,7 @@
         {
           "id": "child-5d98625a",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"This material gives leaves their bright green color all season long,\" what does \"This material\" refer to?",
           "options": [
             "A special material that helps the tree make food from sunlight",
@@ -2060,6 +2149,7 @@
         {
           "id": "child-dba6e996",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, why does the green color fade away in autumn?",
           "options": [
             "The green material breaks down and disappears",
@@ -2083,6 +2173,7 @@
         {
           "id": "child-7cf381e7",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"Her aunt told her to breathe deeply because the fresh air was good for her,\" who does the second \"her\" refer to?",
           "options": [
             "Sofia",
@@ -2106,6 +2197,7 @@
         {
           "id": "child-50975d61",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the overall tone of the passage toward Sofia's trip?",
           "options": [
             "Joyful and peaceful",
@@ -2129,6 +2221,7 @@
         {
           "id": "child-8cad30a0",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"It runs only on power stored in batteries, so it does not burn any fuel or make smoke,\" what does \"It\" refer to?",
           "options": [
             "The small electric car",
@@ -2152,6 +2245,7 @@
         {
           "id": "child-4dec23ff",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward the students' project?",
           "options": [
             "Admiring and encouraging",
@@ -2175,6 +2269,7 @@
         {
           "id": "child-43cf1fd1",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"I believe this is a mistake that can harm both their health and their grades,\" what does \"this\" refer to?",
           "options": [
             "Thinking that sleep is not very important",
@@ -2198,6 +2293,7 @@
         {
           "id": "child-e649cf5b",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's tone toward getting enough sleep?",
           "options": [
             "Convinced and encouraging",
@@ -2221,6 +2317,7 @@
         {
           "id": "child-a11e74b8",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"She told him that her first paintings were messy,\" who does \"She\" refer to?",
           "options": [
             "Hana",
@@ -2244,6 +2341,7 @@
         {
           "id": "child-e03a2a64",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is Hana's attitude toward Mark as a beginning painter?",
           "options": [
             "Supportive and encouraging",
@@ -2267,6 +2365,7 @@
         {
           "id": "child-0701a89f",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the last sentence, \"Protecting these busy little workers helps protect our own food as well,\" what does \"these busy little workers\" refer to?",
           "options": [
             "Bees",
@@ -2290,6 +2389,7 @@
         {
           "id": "child-34adc341",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's tone when discussing the falling number of bees?",
           "options": [
             "Concerned and cautionary",
@@ -2313,6 +2413,7 @@
         {
           "id": "child-e6f6367f",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"I was so excited that I called my grandmother right away to tell her the news,\" what does \"the news\" refer to?",
           "options": [
             "A thin green shoot had pushed up through the soil",
@@ -2336,6 +2437,7 @@
         {
           "id": "child-c3a810fe",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the narrator's tone by the end of the story?",
           "options": [
             "Excited and delighted",
@@ -2359,6 +2461,7 @@
         {
           "id": "child-8ac9a6f7",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"This change allowed people to stay dry while walking in the rain,\" what does \"This change\" refer to?",
           "options": [
             "Covering the frame with cloth that water could not pass through",
@@ -2382,6 +2485,7 @@
         {
           "id": "child-eed898b1",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, what were the earliest umbrellas originally used for?",
           "options": [
             "To give shade and keep the hot sun off important people",
@@ -2405,6 +2509,7 @@
         {
           "id": "child-4f47e3cd",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"If we sort our trash carefully, we can give these materials a second life,\" what does \"these materials\" refer to?",
           "options": [
             "Paper, glass, and plastic",
@@ -2428,6 +2533,7 @@
         {
           "id": "child-217bea41",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward recycling?",
           "options": [
             "Strongly in favor and persuasive",
@@ -2451,6 +2557,7 @@
         {
           "id": "child-1edecbb9",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the first sentence, \"crowds arrived early to see it,\" what does \"it\" refer to?",
           "options": [
             "The brand new science museum",
@@ -2474,6 +2581,7 @@
         {
           "id": "child-2b4fceae",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, on which day will the museum be closed?",
           "options": [
             "Monday",
@@ -2497,6 +2605,7 @@
         {
           "id": "child-47fd745e",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"Should I cut it into big pieces or small ones?\" what does \"it\" refer to?",
           "options": [
             "A carrot",
@@ -2520,6 +2629,7 @@
         {
           "id": "child-3d67829b",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the tone of the scene between Mia and her father?",
           "options": [
             "Warm and affectionate",
@@ -2543,6 +2653,7 @@
         {
           "id": "child-036f96e5",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"The most important thing to understand is light, because it shapes the whole picture,\" what does \"it\" refer to?",
           "options": [
             "Light",
@@ -2566,6 +2677,7 @@
         {
           "id": "child-f859b7dc",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, why do many beginners' photos come out blurry?",
           "options": [
             "They forget to hold the camera still",
@@ -2589,6 +2701,7 @@
         {
           "id": "child-4ab4fbf2",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"None of these habits will change a life in one day,\" what does \"these habits\" refer to?",
           "options": [
             "The healthy habits described earlier in the passage, such as drinking water and sleeping well",
@@ -2612,6 +2725,7 @@
         {
           "id": "child-496d5aad",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "According to the passage, what does the author say is the \"first step\" in building healthy habits?",
           "options": [
             "To drink enough water during the day",
@@ -2635,6 +2749,7 @@
         {
           "id": "child-210fee03",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"It was also a place where people knew each other,\" what does \"It\" refer to?",
           "options": [
             "The local market",
@@ -2658,6 +2773,7 @@
         {
           "id": "child-b8431626",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's tone toward the local market in this passage?",
           "options": [
             "Warm and affectionate",
@@ -2681,6 +2797,7 @@
         {
           "id": "child-bbe11ed7",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"I believe this fear is too strong,\" what does \"this fear\" refer to?",
           "options": [
             "The worry that robots will take away all of our jobs",
@@ -2704,6 +2821,7 @@
         {
           "id": "child-5593fa4d",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's attitude toward the future of robots?",
           "options": [
             "Hopeful and reassuring",
@@ -2727,6 +2845,7 @@
         {
           "id": "child-a56ce7d1",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "In the sentence \"Each student also promised to return once a month to water the trees and check on them,\" what does \"them\" refer to?",
           "options": [
             "The trees",
@@ -2750,6 +2869,7 @@
         {
           "id": "child-3a63ccc3",
           "kind": "multipleChoice",
+          "questionStyle": "standard",
           "prompt": "What is the author's tone in reporting the students' tree-planting project?",
           "options": [
             "Positive and encouraging",
