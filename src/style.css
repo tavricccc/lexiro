@@ -227,10 +227,17 @@
   outline-color: var(--accent-primary);
 }
 
+html {
+  min-width: 320px;
+  overflow-x: clip;
+  scrollbar-gutter: stable;
+}
+
 body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+  overflow-x: clip;
   background-color: var(--color-background);
   color: var(--color-on-background);
   transition: background-color 0.25s cubic-bezier(0.25, 1, 0.5, 1), color 0.25s ease;
@@ -424,18 +431,18 @@ textarea {
 
 .page-enter-from {
   opacity: 0;
-  transform: translateY(12px) scale(0.99);
+  transform: translateY(10px);
 }
 
 .page-leave-to {
   opacity: 0;
-  transform: translateY(-12px) scale(0.99);
+  transform: translateY(-10px);
 }
 
-/* Premium Dialog animations */
+/* Dialog motion stays on the vertical axis so opening an overlay never reads as a horizontal layout shift. */
 .dialog-fade-enter-active,
 .dialog-fade-leave-active {
-  transition: opacity 0.24s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: opacity 0.2s var(--motion-ease);
 }
 
 .dialog-fade-enter-from,
@@ -444,33 +451,45 @@ textarea {
 }
 
 .dialog-fade-enter-active .dialog-content-panel {
-  animation: dialog-pop-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: dialog-panel-in 0.24s var(--motion-ease) both;
 }
 
 .dialog-fade-leave-active .dialog-content-panel {
-  animation: dialog-pop-out 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: dialog-panel-out 0.16s var(--motion-ease) both;
 }
 
-@keyframes dialog-pop-in {
+@keyframes dialog-panel-in {
   0% {
     opacity: 0;
-    transform: scale(0.94) translateY(20px);
+    transform: translateY(10px);
   }
   100% {
     opacity: 1;
-    transform: scale(1) translateY(0);
+    transform: translateY(0);
   }
 }
 
-@keyframes dialog-pop-out {
+@keyframes dialog-panel-out {
   0% {
     opacity: 1;
-    transform: scale(1) translateY(0);
+    transform: translateY(0);
   }
   100% {
     opacity: 0;
-    transform: scale(0.94) translateY(15px);
+    transform: translateY(8px);
   }
+}
+
+.dialog-overlay {
+  isolation: isolate;
+}
+
+.dialog-content-panel {
+  contain: layout;
+}
+
+.dialog-scroll-region {
+  scrollbar-gutter: stable;
 }
 
 /* Practice card swap */
@@ -481,12 +500,12 @@ textarea {
 
 .practice-card-enter-from {
   opacity: 0;
-  transform: translateX(16px);
+  transform: translateY(8px);
 }
 
 .practice-card-leave-to {
   opacity: 0;
-  transform: translateX(-12px);
+  transform: translateY(-8px);
 }
 
 /* Flashcard flip — dedicated styles (do NOT use .panel: it sets transform) */
@@ -639,7 +658,7 @@ textarea {
 }
 
 .feedback-wrong {
-  animation: feedback-wrong-shake 0.35s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+  animation: feedback-wrong-pulse 0.28s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @keyframes feedback-correct-pop {
@@ -648,12 +667,9 @@ textarea {
   100% { transform: scale(1); }
 }
 
-@keyframes feedback-wrong-shake {
-  0%, 100% { transform: translateX(0); }
-  20% { transform: translateX(-6px); }
-  40% { transform: translateX(6px); }
-  60% { transform: translateX(-4px); }
-  80% { transform: translateX(4px); }
+@keyframes feedback-wrong-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.008); }
 }
 
 /* Score ring */

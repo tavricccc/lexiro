@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { X } from 'lucide-vue-next'
 import { nextTick, onMounted, onUnmounted, ref, watch } from 'vue'
+import { lockDocumentScroll } from '@/lib/scrollLock'
 import Button from '../button/Button.vue'
 
 const props = withDefaults(defineProps<{
@@ -21,8 +22,8 @@ const emit = defineEmits<{
 }>()
 
 const panelRef = ref<HTMLElement | null>(null)
-let previousOverflow = ''
 let previousActive: HTMLElement | null = null
+let releaseScrollLock: (() => void) | null = null
 
 function getFocusable(): HTMLElement[] {
   if (!panelRef.value)
@@ -65,39 +66,45 @@ function onKeydown(e: KeyboardEvent) {
   }
 }
 
-function lockBody() {
-  previousOverflow = document.body.style.overflow
-  document.body.style.overflow = 'hidden'
+function focusWithoutScrolling(element: HTMLElement | undefined) {
+  element?.focus({ preventScroll: true })
 }
 
-function unlockBody() {
-  document.body.style.overflow = previousOverflow
+function openDialog() {
+  previousActive = document.activeElement instanceof HTMLElement ? document.activeElement : null
+  releaseScrollLock?.()
+  releaseScrollLock = lockDocumentScroll()
+
+  nextTick(() => {
+    focusWithoutScrolling(getFocusable()[0])
+  })
 }
 
-watch(() => props.open, async (open) => {
+function closeDialog() {
+  releaseScrollLock?.()
+  releaseScrollLock = null
+  focusWithoutScrolling(previousActive ?? undefined)
+  previousActive = null
+}
+
+watch(() => props.open, (open) => {
   if (open) {
-    previousActive = document.activeElement instanceof HTMLElement ? document.activeElement : null
-    lockBody()
-    await nextTick()
-    const focusable = getFocusable()
-    focusable[0]?.focus()
+    openDialog()
   }
   else {
-    unlockBody()
-    previousActive?.focus?.()
-    previousActive = null
+    closeDialog()
   }
 })
 
 onMounted(() => {
   window.addEventListener('keydown', onKeydown, true)
   if (props.open)
-    lockBody()
+    openDialog()
 })
 
 onUnmounted(() => {
   window.removeEventListener('keydown', onKeydown, true)
-  unlockBody()
+  closeDialog()
 })
 </script>
 
@@ -106,7 +113,7 @@ onUnmounted(() => {
     <Transition name="dialog-fade">
       <div
         v-if="open"
-        class="fixed inset-0 z-50 flex items-end justify-center bg-black/30 p-0 sm:items-center sm:p-6 backdrop-blur-xl"
+        class="dialog-overlay fixed inset-0 z-50 flex items-end justify-center overflow-y-auto overscroll-contain bg-black/35 p-0 backdrop-blur-sm sm:items-center sm:p-6"
         role="presentation"
         @click.self="$emit('close')"
       >
@@ -115,7 +122,7 @@ onUnmounted(() => {
           role="dialog"
           aria-modal="true"
           :aria-label="title || undefined"
-          class="dialog-content-panel flex max-h-[92vh] w-full flex-col rounded-t-[22px] border border-ink-200/60 dark:border-ink-200/10 bg-white dark:bg-ink-800 shadow-2xl overflow-hidden sm:max-h-full sm:rounded-[22px]"
+          class="dialog-content-panel flex max-h-[92dvh] w-full flex-col overflow-hidden rounded-t-[22px] border border-ink-200/60 bg-white shadow-2xl dark:border-ink-200/10 dark:bg-ink-800 sm:max-h-[calc(100dvh-3rem)] sm:rounded-[22px]"
           :class="[widthClass]"
         >
           <div class="w-12 h-1.5 rounded-full bg-ink-200 dark:bg-ink-300 mx-auto mt-3 shrink-0 sm:hidden" aria-hidden="true" />
@@ -141,7 +148,7 @@ onUnmounted(() => {
             </Button>
           </div>
 
-          <div class="overflow-y-auto px-6 pb-6 pt-1 text-left">
+          <div class="dialog-scroll-region overflow-y-auto overscroll-contain px-6 pb-6 pt-1 text-left">
             <slot />
           </div>
         </div>

@@ -34,7 +34,7 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       injectRegister: 'auto',
-      includeAssets: ['icons/lexiro.svg'],
+      includeAssets: ['icons/lexiro.png', 'icons/apple-touch-icon.png'],
       manifest: {
         name: 'lexiro',
         short_name: 'lexiro',
@@ -48,9 +48,9 @@ export default defineConfig({
         orientation: 'portrait-primary',
         icons: [
           {
-            src: `${basePath}icons/lexiro.svg`,
-            sizes: 'any',
-            type: 'image/svg+xml',
+            src: `${basePath}icons/lexiro.png`,
+            sizes: '1254x1254',
+            type: 'image/png',
             purpose: 'any maskable',
           },
         ],

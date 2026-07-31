@@ -1,6 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="lexiro">
-  <rect width="512" height="512" rx="112" fill="#020617"/>
-  <rect x="116" y="108" width="280" height="296" rx="48" fill="#f8fafc"/>
-  <path fill="#020617" d="M161 176h43l21 110 31-110h37l31 110 21-110h43l-43 160h-45l-26-94-26 94h-45l-42-160Z"/>
-  <path fill="#020617" fill-opacity=".18" d="M164 356h184v18H164z"/>
-</svg>
