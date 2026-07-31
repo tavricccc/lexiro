@@ -9,6 +9,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { useLearningStore } from '@/stores/learning'
 import { useSetsStore } from '@/stores/sets'
 import { useUIStore } from '@/stores/ui'
+import SessionUnavailable from './SessionUnavailable.vue'
 import Button from './ui/button/Button.vue'
 import Card from './ui/card/Card.vue'
 import Progress from './ui/progress/Progress.vue'
@@ -141,4 +142,5 @@ onUnmounted(() => window.removeEventListener('keydown', onKeydown))
       </Card>
     </motion.div>
   </section>
+  <SessionUnavailable v-else />
 </template>

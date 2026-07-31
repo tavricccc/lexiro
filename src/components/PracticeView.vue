@@ -5,6 +5,7 @@ import { computed } from 'vue'
 import { useSessionStore } from '@/stores/session'
 import { useSetsStore } from '@/stores/sets'
 import QuizCard from './QuizCard.vue'
+import SessionUnavailable from './SessionUnavailable.vue'
 import SpellingCard from './SpellingCard.vue'
 
 const setsStore = useSetsStore()
@@ -63,4 +64,5 @@ const spellingDraft = computed<{ answer: string } | null>(() => {
       </div>
     </Transition>
   </section>
+  <SessionUnavailable v-else />
 </template>

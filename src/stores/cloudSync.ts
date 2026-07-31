@@ -9,6 +9,7 @@ import { computed, ref, watch } from 'vue'
 import { configureFirebaseAuth, getFirebaseAuth, getFirebaseFirestore, isFirebaseConfigured } from '@/lib/firebase'
 import { requestGoogleAccessToken } from '@/lib/googleIdentity'
 import { estimateJsonBytes, stableHash } from '@/lib/hash'
+import { deduplicateSetsByName, isRemoteSetNewer } from '@/lib/set-utils'
 import { useLearningStore } from './learning'
 import { useSetsStore } from './sets'
 
@@ -83,12 +84,6 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
     status.value = 'error'
   }
 
-  function addConflict(local: FirestoreSetDoc, remote: FirestoreSetDoc) {
-    if (conflicts.value.some(conflict => conflict.setId === local.id))
-      return
-    conflicts.value.push({ setId: local.id, setName: local.setName, local, remote })
-  }
-
   function markSynced() {
     lastSyncedAt.value = new Date().toISOString()
     pendingWrites.value = 0
@@ -120,12 +115,19 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
     const setsStore = useSetsStore()
     const remoteSnapshot = await getDocs(userCollection(uid, 'sets'))
     const remoteSets = remoteSnapshot.docs.map(snapshot => snapshot.data() as FirestoreSetDoc)
-    const remoteById = new Map(remoteSets.map(set => [set.id, set]))
-    const localSets = setsStore.sets
+    const canonicalRemoteSets = deduplicateSetsByName(remoteSets)
+    const canonicalRemoteIds = new Set(canonicalRemoteSets.map(set => set.id))
+    const remoteById = new Map(canonicalRemoteSets.map(set => [set.id, set]))
+    const localSets = deduplicateSetsByName(setsStore.sets)
     const merged = [...localSets]
     const writes: Promise<void>[] = []
 
-    for (const remote of remoteSets) {
+    for (const staleRemote of remoteSets) {
+      if (!canonicalRemoteIds.has(staleRemote.id))
+        writes.push(deleteDoc(userDocument(uid, 'sets', staleRemote.id)).then(() => undefined))
+    }
+
+    for (const remote of canonicalRemoteSets) {
       const local = localSets.find(set => set.id === remote.id)
       if (!local) {
         merged.push(remote)
@@ -134,21 +136,35 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
       }
       const localHash = stableHash({ id: local.id, setName: local.setName, difficulty: local.difficulty, items: local.items })
       if (localHash !== remote.checksum) {
-        addConflict(local as FirestoreSetDoc, remote)
+        if (isRemoteSetNewer(local, remote)) {
+          const index = merged.findIndex(set => set.id === remote.id)
+          if (index >= 0)
+            merged[index] = remote
+          knownSetHashes.set(remote.id, remote.checksum)
+        }
+        else {
+          writes.push(writeSet(uid, local as FirestoreSetDoc))
+        }
         continue
       }
       knownSetHashes.set(remote.id, remote.checksum)
     }
 
-    for (const local of localSets) {
-      if (!remoteById.has(local.id))
-        writes.push(writeSet(uid, local as FirestoreSetDoc))
-    }
-
     applyingRemote = true
     try {
-      if (merged.length !== localSets.length || merged.some((set, index) => set.id !== localSets[index]?.id))
-        setsStore.applyRemoteSets(merged)
+      const canonicalMerged = deduplicateSetsByName(merged)
+      const canonicalMergedIds = new Set(canonicalMerged.map(set => set.id))
+      for (const remote of canonicalRemoteSets) {
+        if (!canonicalMergedIds.has(remote.id))
+          writes.push(deleteDoc(userDocument(uid, 'sets', remote.id)).then(() => undefined))
+      }
+      for (const local of localSets) {
+        const canonical = canonicalMerged.find(set => set.setName.trim().toLocaleLowerCase() === local.setName.trim().toLocaleLowerCase())
+        if (canonical?.id === local.id && !remoteById.has(local.id))
+          writes.push(writeSet(uid, local as FirestoreSetDoc))
+      }
+      if (canonicalMerged.length !== setsStore.sets.length || canonicalMerged.some((set, index) => set.id !== setsStore.sets[index]?.id))
+        setsStore.applyRemoteSets(canonicalMerged)
     }
     finally {
       applyingRemote = false
@@ -230,7 +246,7 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
   function applyRemoteSetChanges(uid: string) {
     setsUnsubscribe = onSnapshot(userCollection(uid, 'sets'), (snapshot) => {
       const setsStore = useSetsStore()
-      const remoteSets = snapshot.docs.map(item => item.data() as FirestoreSetDoc)
+      const remoteSets = deduplicateSetsByName(snapshot.docs.map(item => item.data() as FirestoreSetDoc))
       const remoteMap = new Map(remoteSets.map(set => [set.id, set]))
       const nextSets = setsStore.sets.filter(set => remoteMap.has(set.id) || !knownSetHashes.has(set.id))
       for (const remote of remoteSets) {
@@ -241,13 +257,22 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
           continue
         }
         const localHash = stableHash({ id: local.id, setName: local.setName, difficulty: local.difficulty, items: local.items })
-        if (localHash === remote.checksum || knownSetHashes.get(remote.id) === remote.checksum)
+        if (localHash === remote.checksum || knownSetHashes.get(remote.id) === remote.checksum) {
           knownSetHashes.set(remote.id, remote.checksum)
-        else if (!applyingRemote)
-          addConflict(local as FirestoreSetDoc, remote)
+        }
+        else if (isRemoteSetNewer(local, remote)) {
+          const index = nextSets.findIndex(set => set.id === remote.id)
+          if (index >= 0)
+            nextSets[index] = remote
+          knownSetHashes.set(remote.id, remote.checksum)
+        }
+        else if (!applyingRemote) {
+          void writeSet(uid, local as FirestoreSetDoc).catch(syncError => setError((syncError as Error).message))
+        }
       }
-      if (!applyingRemote && nextSets.length !== setsStore.sets.length)
-        setsStore.applyRemoteSets(nextSets)
+      const canonicalNextSets = deduplicateSetsByName(nextSets)
+      if (!applyingRemote && (canonicalNextSets.length !== setsStore.sets.length || canonicalNextSets.some((set, index) => set.id !== setsStore.sets[index]?.id)))
+        setsStore.applyRemoteSets(canonicalNextSets)
       markSynced()
     }, snapshotError => setError(snapshotError.message))
   }

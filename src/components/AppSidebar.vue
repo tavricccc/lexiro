@@ -20,10 +20,10 @@ function toggle() {
 </script>
 
 <template>
-  <aside class="app-sidebar fixed inset-y-0 left-0 z-40 hidden flex-col border-r border-ink-200/60 bg-white/90 py-4 shadow-soft backdrop-blur-xl dark:border-ink-200/10 dark:bg-ink-950/90 md:flex" :class="expanded ? 'w-64' : 'w-20'">
+  <aside class="app-sidebar fixed inset-y-0 left-0 z-40 hidden flex-col border-r border-ink-200/60 bg-white/90 py-4 shadow-soft backdrop-blur-xl dark:border-ink-200/10 dark:bg-ink-950/90 md:flex" :class="expanded ? 'app-sidebar--expanded w-64' : 'app-sidebar--collapsed w-20'">
     <div class="relative flex h-12 items-center px-3">
       <RouterLink to="/" class="flex h-12 min-w-0 flex-1 items-center gap-3 rounded-2xl px-3 text-ink-950 hover:bg-ink-100 dark:text-ink-50 dark:hover:bg-ink-900" :aria-label="t('app.name')">
-        <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-ink-950 text-sm font-black text-white dark:bg-white dark:text-ink-950">l</span>
+        <img src="/icons/lexiro.png" alt="" class="h-9 w-9 shrink-0 rounded-xl object-cover" aria-hidden="true">
         <span v-if="expanded" class="truncate text-sm font-black tracking-wide">lexiro</span>
       </RouterLink>
       <Button variant="ghost" size="icon" class="absolute -right-3 h-7 w-7 rounded-full border border-ink-200 bg-white shadow-sm dark:border-ink-700 dark:bg-ink-900" :aria-label="expanded ? t('nav.collapseSidebar') : t('nav.expandSidebar')" @click="toggle">
@@ -76,7 +76,7 @@ function toggle() {
   transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 
-.app-sidebar:not(.w-64) .app-sidebar-item {
+.app-sidebar--collapsed .app-sidebar-item {
   justify-content: center;
   padding-inline: 0;
 }
@@ -92,18 +92,18 @@ function toggle() {
 }
 
 @media (min-width: 768px) and (max-width: 1100px) {
-  .app-sidebar.w-64 {
+  .app-sidebar--expanded {
     width: 5rem;
   }
 
-  .app-sidebar.w-64 .app-sidebar-item {
+  .app-sidebar--expanded .app-sidebar-item {
     justify-content: center;
     padding-inline: 0;
   }
 
-  .app-sidebar.w-64 .app-sidebar-item span,
-  .app-sidebar.w-64 a > span,
-  .app-sidebar.w-64 .app-sidebar-item + span {
+  .app-sidebar--expanded .app-sidebar-item span,
+  .app-sidebar--expanded a > span,
+  .app-sidebar--expanded .app-sidebar-item + span {
     display: none;
   }
 }
@@ -128,8 +128,8 @@ function toggle() {
   white-space: nowrap;
 }
 
-.app-sidebar:not(.w-64) .app-sidebar-item:hover::after,
-.app-sidebar:not(.w-64) .app-sidebar-item:focus-visible::after {
+.app-sidebar--collapsed .app-sidebar-item:hover::after,
+.app-sidebar--collapsed .app-sidebar-item:focus-visible::after {
   opacity: 1;
   transform: translate(0, -50%);
 }

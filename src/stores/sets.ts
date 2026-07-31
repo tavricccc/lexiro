@@ -6,6 +6,7 @@ import { buildExportFileName, buildExportZipBlob, downloadBlob } from '@/lib/fil
 import { i18n } from '@/lib/i18n'
 import { applyImportedSets, parseImportJson, refreshImportVersionDiffs, summarizeDuplicateResult } from '@/lib/import'
 import { loadFromStorage, saveToStorage } from '@/lib/persist'
+import { deduplicateSetsByName } from '@/lib/set-utils'
 import { createBlankEditorItem, createEditorItems, normalizeItem, normalizeSet } from '@/lib/validation'
 import { useSessionStore } from './session'
 import { useUIStore } from './ui'
@@ -63,13 +64,14 @@ export const useSetsStore = defineStore('sets', () => {
   }
 
   function applyRemoteSets(remoteSets: VocabSet[]) {
-    sets.value = remoteSets
-    exportSelectedIds.value = remoteSets.map(set => set.id)
-    if (activeSetId.value && remoteSets.some(set => set.id === activeSetId.value)) {
+    const canonicalSets = deduplicateSetsByName(remoteSets)
+    sets.value = canonicalSets
+    exportSelectedIds.value = canonicalSets.map(set => set.id)
+    if (activeSetId.value && canonicalSets.some(set => set.id === activeSetId.value)) {
       saveState()
       return
     }
-    activeSetId.value = remoteSets[0]?.id ?? null
+    activeSetId.value = canonicalSets[0]?.id ?? null
     saveState()
   }
 
@@ -81,7 +83,7 @@ export const useSetsStore = defineStore('sets', () => {
     try {
       const parsed = JSON.parse(loaded.value)
       if (Array.isArray(parsed.sets)) {
-        const sanitizedSets = parsed.sets
+        const sanitizedSets = deduplicateSetsByName<VocabSet>(parsed.sets
           .map((set: unknown, index: number) => {
             try {
               return normalizeSet(set, (set as Record<string, unknown>)?.id as string ?? `saved-${index + 1}`)
@@ -90,7 +92,7 @@ export const useSetsStore = defineStore('sets', () => {
               return null
             }
           })
-          .filter((set: VocabSet | null): set is VocabSet => set !== null)
+          .filter((set: VocabSet | null): set is VocabSet => set !== null))
 
         sets.value = sanitizedSets
         exportSelectedIds.value = sanitizedSets.map((s: VocabSet) => s.id)
@@ -158,10 +160,12 @@ export const useSetsStore = defineStore('sets', () => {
           createdAt: new Date().toISOString(),
           updatedAt: new Date().toISOString(),
         }
-        sets.value = [...sets.value, nextSet]
-        exportSelectedIds.value = [...exportSelectedIds.value, nextSet.id]
-        activeSetId.value = nextSet.id
-        uiStore.showToast(t('editor.created', { name: nextSet.setName, count: nextSet.items.length }))
+        const existing = sets.value.find(set => set.setName.trim().toLocaleLowerCase() === nextSet.setName.toLocaleLowerCase())
+        const savedSet = existing ? { ...nextSet, id: existing.id, createdAt: existing.createdAt } : nextSet
+        sets.value = deduplicateSetsByName([...sets.value.filter(set => set.id !== existing?.id), savedSet])
+        exportSelectedIds.value = sets.value.map(set => set.id)
+        activeSetId.value = savedSet.id
+        uiStore.showToast(t(existing ? 'editor.replaced' : 'editor.created', { name: savedSet.setName, count: savedSet.items.length }))
       }
       else {
         const targetIndex = sets.value.findIndex(s => s.id === setEditorId.value)

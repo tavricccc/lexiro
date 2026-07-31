@@ -168,6 +168,11 @@ export default {
     autoSaved: '作答會即時保存在此裝置，可隨時返回',
     keyboardHint: '鍵盤：A–D 或 1–4 作答，Enter 前往下一題',
   },
+  session: {
+    loadingTitle: '正在準備學習內容',
+    loadingDescription: '資料載入完成後會自動顯示；如果內容已不存在，可以回到首頁重新選擇。',
+    returnHome: '回到首頁',
+  },
   flashcard: {
     title: '單字卡',
     meaning: '字義',
@@ -236,6 +241,7 @@ export default {
     cancel: '取消',
     itemsRequired: 'items 不可為空',
     created: '已新增「{name}」 ({count} 個單字)',
+    replaced: '已用最新版本取代「{name}」 ({count} 個單字)',
     updated: '已更新「{name}」 ({count} 個單字)',
   },
   import: {

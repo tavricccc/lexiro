@@ -6,6 +6,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { useSessionStore } from '@/stores/session'
 import { useSetsStore } from '@/stores/sets'
 import FlashcardView from './FlashcardView.vue'
+import SessionUnavailable from './SessionUnavailable.vue'
 import Button from './ui/button/Button.vue'
 import Progress from './ui/progress/Progress.vue'
 
@@ -140,4 +141,5 @@ onUnmounted(() => window.removeEventListener('keydown', onKeydown))
       {{ $t('flashcard.keyboardHint') }}
     </p>
   </section>
+  <SessionUnavailable v-else />
 </template>

@@ -57,8 +57,8 @@ function startReview() {
       </div>
     </div>
 
-    <div v-if="!hasSets" class="grid gap-4 lg:grid-cols-[1.25fr_1fr]">
-      <Card class="border-0 bg-ink-950 p-6 text-white dark:bg-white dark:text-ink-950 sm:p-8">
+    <div v-if="!hasSets" class="grid min-w-0 gap-4 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)]">
+      <Card class="min-w-0 border-0 bg-ink-950 p-6 text-white dark:bg-white dark:text-ink-950 sm:p-8">
         <Sparkles class="h-6 w-6" />
         <h2 class="mt-10 text-2xl font-black tracking-tight">
           {{ $t('home.emptyTitle') }}
@@ -71,7 +71,7 @@ function startReview() {
           {{ $t('home.addSet') }}
         </Button>
       </Card>
-      <Card class="p-6 sm:p-8">
+      <Card class="min-w-0 p-6 sm:p-8">
         <p class="text-xs font-black uppercase tracking-[0.18em] text-ink-400">
           {{ $t('home.howItWorks') }}
         </p>
@@ -87,8 +87,8 @@ function startReview() {
     </div>
 
     <template v-else>
-      <div class="grid gap-4 lg:grid-cols-[1.4fr_1fr]">
-        <Card class="overflow-hidden border-0 bg-ink-950 p-6 text-white dark:bg-white dark:text-ink-950 sm:p-8">
+      <div class="grid min-w-0 gap-4 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
+        <Card class="min-w-0 overflow-hidden border-0 bg-ink-950 p-6 text-white dark:bg-white dark:text-ink-950 sm:p-8">
           <div class="flex items-start justify-between gap-5">
             <div>
               <p class="text-xs font-black uppercase tracking-[0.18em] opacity-60">
@@ -116,7 +116,7 @@ function startReview() {
           </RouterLink>
         </Card>
 
-        <Card class="p-6 sm:p-8">
+        <Card class="min-w-0 p-6 sm:p-8">
           <div class="flex items-center justify-between">
             <p class="text-xs font-black uppercase tracking-[0.18em] text-ink-400">
               {{ $t('home.snapshot') }}
@@ -190,7 +190,7 @@ function startReview() {
           </RouterLink>
         </div>
         <div class="grid gap-3 md:grid-cols-3">
-          <RouterLink v-for="set in recentSets" :key="set.id" to="/library" class="group rounded-2xl border border-ink-200/60 bg-white/70 p-4 transition hover:-translate-y-0.5 hover:shadow-soft dark:border-ink-800 dark:bg-ink-950/50">
+          <RouterLink v-for="set in recentSets" :key="set.id" to="/library" class="group min-w-0 rounded-2xl border border-ink-200/60 bg-white/70 p-4 transition hover:-translate-y-0.5 hover:shadow-soft dark:border-ink-800 dark:bg-ink-950/50">
             <p class="truncate text-sm font-black group-hover:text-accent-primary">
               {{ set.setName }}
             </p>
