@@ -1,3 +1,4 @@
+export type { AiProvider, AiSettings } from './ai'
 export type {
   BackupPayload,
   ImportMode,
@@ -5,6 +6,7 @@ export type {
   VersionDiff,
 } from './backup'
 export type { FirestoreDailyStatsDoc, FirestoreProgressDoc, FirestoreSetDoc, FirestoreStatsDoc, SetSyncConflict } from './cloud'
+export type { DictionaryDefinition, DictionaryEntry, DictionaryMeaning, DictionaryPhonetic } from './dictionary'
 export type {
   Achievement,
   CardProgress,

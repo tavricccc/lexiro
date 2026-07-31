@@ -349,6 +349,32 @@ body {
   padding-top: calc(var(--app-header-height) + 1rem);
 }
 
+.app-root--workspace .app-main-content {
+  min-height: 100vh;
+  margin-left: 5rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  transition: margin-left 0.42s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (min-width: 768px) {
+  .app-root--sidebar-expanded .app-main-content {
+    margin-left: 16rem;
+  }
+}
+
+.app-root--workspace .route-page-frame {
+  max-width: 78rem;
+}
+
+@media (max-width: 767px) {
+  .app-root--workspace .app-main-content {
+    margin-left: 0;
+    padding-top: 1rem;
+    padding-bottom: 6.5rem;
+  }
+}
+
 .app-header {
   padding-top: env(safe-area-inset-top);
   background-color: color-mix(in srgb, var(--color-surface) 86%, transparent);

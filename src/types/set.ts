@@ -11,6 +11,14 @@ export interface VocabItem {
   meaning: string
   example: string
   question: Question
+  definition?: string
+  phonetic?: string
+  audioUrl?: string
+  origin?: string
+  dictionarySource?: string
+  synonyms?: string[]
+  antonyms?: string[]
+  note?: string
   tags?: string[]
   favorite?: boolean
 }
@@ -30,6 +38,14 @@ export interface EditorItem {
   pos: string
   meaning: string
   example: string
+  definition?: string
+  phonetic?: string
+  audioUrl?: string
+  origin?: string
+  dictionarySource?: string
+  synonyms?: string[]
+  antonyms?: string[]
+  note?: string
   tags?: string[]
   favorite?: boolean
   question: EditorQuestion

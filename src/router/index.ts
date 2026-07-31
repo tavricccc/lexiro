@@ -11,6 +11,31 @@ const router = createRouter({
       component: () => import('@/components/HomeView.vue'),
     },
     {
+      path: '/study',
+      name: 'study',
+      component: () => import('@/components/StudyHub.vue'),
+    },
+    {
+      path: '/library',
+      name: 'library',
+      component: () => import('@/components/LibraryView.vue'),
+    },
+    {
+      path: '/dictionary',
+      name: 'dictionary',
+      component: () => import('@/components/DictionaryView.vue'),
+    },
+    {
+      path: '/stats',
+      name: 'stats',
+      component: () => import('@/components/StatsView.vue'),
+    },
+    {
+      path: '/settings',
+      name: 'settings',
+      component: () => import('@/components/SettingsView.vue'),
+    },
+    {
       path: '/flashcard/:setId',
       name: 'flashcard',
       component: () => import('@/components/FlashcardsView.vue'),

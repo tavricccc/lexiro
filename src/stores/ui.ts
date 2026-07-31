@@ -17,6 +17,7 @@ export const useUIStore = defineStore('ui', () => {
   const versionUpdatePending = ref(false)
   const versionUpdateReady = ref(false)
   const versionUpdateLoading = ref(false)
+  const sidebarExpanded = ref(localStorage.getItem('lexiro_sidebar_expanded') !== 'false')
 
   let confirmResolver: ((value: boolean) => void) | null = null
   let toastTimer: number | null = null
@@ -73,6 +74,11 @@ export const useUIStore = defineStore('ui', () => {
     }
   }
 
+  function toggleSidebar() {
+    sidebarExpanded.value = !sidebarExpanded.value
+    localStorage.setItem('lexiro_sidebar_expanded', String(sidebarExpanded.value))
+  }
+
   function initTheme() {
     const saved = localStorage.getItem(THEME_KEY)
     if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -110,10 +116,12 @@ export const useUIStore = defineStore('ui', () => {
     versionUpdatePending,
     versionUpdateReady,
     versionUpdateLoading,
+    sidebarExpanded,
     showToast,
     showConfirm,
     resolveConfirm,
     toggleTheme,
+    toggleSidebar,
     initTheme,
     openTransfer,
     closeTransfer,

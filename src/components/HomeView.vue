@@ -1,126 +1,131 @@
 <script setup lang="ts">
-import type { PracticeMode } from '@/types'
-import { ClipboardPaste, FileQuestion, Plus, Search, Sparkles, Upload } from 'lucide-vue-next'
+import { ArrowRight, BookOpen, Flame, Library, Plus, RotateCcw, Search, Sparkles, Target } from 'lucide-vue-next'
 import { storeToRefs } from 'pinia'
-import { computed, ref } from 'vue'
+import { computed } from 'vue'
+import { RouterLink, useRouter } from 'vue-router'
+import { useLearningStore } from '@/stores/learning'
 import { useSessionStore } from '@/stores/session'
 import { useSetsStore } from '@/stores/sets'
-import { useUIStore } from '@/stores/ui'
-import HomeOverview from './HomeOverview.vue'
-import SetCard from './SetCard.vue'
 import Button from './ui/button/Button.vue'
-import EmptyState from './ui/empty-state/EmptyState.vue'
-import Input from './ui/input/Input.vue'
+import Card from './ui/card/Card.vue'
+import Progress from './ui/progress/Progress.vue'
 
+const router = useRouter()
 const setsStore = useSetsStore()
 const sessionStore = useSessionStore()
-const uiStore = useUIStore()
-const { hasSets, sets } = storeToRefs(setsStore)
-const { isSetInProgress, requestDelete, openSetEditor, openImport } = setsStore
-const { startFlashcards } = sessionStore
-const { openTransfer } = uiStore
+const learningStore = useLearningStore()
+const { sets, hasSets, totalWordCount } = storeToRefs(setsStore)
+const { stats, todayProgress, accuracy } = storeToRefs(learningStore)
+const { openImport } = setsStore
 
-const query = ref('')
+const dueCount = computed(() => sets.value.reduce((total, set) => total + learningStore.getDueCount(set), 0))
+const activeSessions = computed(() => sets.value.filter(set => sessionStore.isSetInProgress(set.id)).slice(0, 3))
+const recentSets = computed(() => [...sets.value].sort((a, b) => (b.updatedAt ?? '').localeCompare(a.updatedAt ?? '')).slice(0, 3))
 
-const filteredSets = computed(() => {
-  const q = query.value.trim().toLowerCase()
-  if (!q)
-    return sets.value
-  return sets.value.filter(set => set.setName.toLowerCase().includes(q)
-    || set.items.some(item => [item.word, item.meaning, ...(item.tags ?? [])].some(value => value.toLowerCase().includes(q))))
-})
-
-function startPractice(mode: PracticeMode, setId: string) {
-  if (sessionStore.getInProgressModes(setId).includes(mode)) {
-    sessionStore.startRound(mode, setId)
-    return
-  }
-  sessionStore.openPracticeDialog(mode, setId)
+function startReview() {
+  const target = sets.value.find(set => learningStore.getDueCount(set) > 0)
+  if (target && learningStore.startReview(target.id))
+    router.push({ name: 'review', params: { setId: target.id } })
 }
 </script>
 
 <template>
-  <section class="space-y-6">
-    <div v-if="!hasSets" class="py-8">
-      <EmptyState :title="$t('home.title')" :description="$t('home.description')">
-        <template #icon>
-          <FileQuestion class="h-7 w-7" />
-        </template>
-        <template #actions>
-          <Button variant="default" size="lg" class="w-full gap-2 sm:w-auto" @click="openImport">
-            <Plus class="h-4 w-4" />
-            <span>{{ $t('home.addSet') }}</span>
+  <section class="space-y-6 text-left">
+    <div class="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+      <div>
+        <p class="text-xs font-black uppercase tracking-[0.18em] text-ink-400">{{ $t('home.todayEyebrow') }}</p>
+        <h1 class="mt-2 text-3xl font-black tracking-tight text-ink-950 dark:text-ink-50">{{ $t('home.todayTitle') }}</h1>
+        <p class="mt-2 max-w-xl text-sm font-semibold leading-relaxed text-ink-500 dark:text-ink-400">{{ hasSets ? $t('home.todayDescription') : $t('home.description') }}</p>
+      </div>
+      <div class="flex gap-2">
+        <Button variant="outline" class="gap-2" @click="openImport">
+          <Plus class="h-4 w-4" />
+          {{ $t('home.addSet') }}
+        </Button>
+        <RouterLink to="/dictionary">
+          <Button variant="default" class="gap-2">
+            <Search class="h-4 w-4" />
+            {{ $t('nav.lookup') }}
           </Button>
-          <Button variant="outline" size="lg" class="w-full gap-2 sm:w-auto" @click="openTransfer">
-            <Upload class="h-4 w-4 text-accent-primary" />
-            <span>{{ $t('home.backupAndImport') }}</span>
-          </Button>
-        </template>
-        <div class="grid gap-2 rounded-2xl border border-ink-200/60 bg-white/70 p-3 dark:border-ink-200/15 dark:bg-ink-900/70">
-          <div class="flex items-center gap-3 rounded-xl p-2">
-            <Plus class="h-4 w-4 shrink-0 text-accent-primary" />
-            <p class="text-xs font-semibold text-ink-600 dark:text-ink-400">
-              {{ $t('home.emptyStepWords') }}
-            </p>
-          </div>
-          <div class="flex items-center gap-3 rounded-xl p-2">
-            <Sparkles class="h-4 w-4 shrink-0 text-accent-primary" />
-            <p class="text-xs font-semibold text-ink-600 dark:text-ink-400">
-              {{ $t('home.emptyStepAi') }}
-            </p>
-          </div>
-          <div class="flex items-center gap-3 rounded-xl p-2">
-            <ClipboardPaste class="h-4 w-4 shrink-0 text-accent-primary" />
-            <p class="text-xs font-semibold text-ink-600 dark:text-ink-400">
-              {{ $t('home.emptyStepPaste') }}
-            </p>
+        </RouterLink>
+      </div>
+    </div>
+
+    <div v-if="!hasSets" class="grid gap-4 lg:grid-cols-[1.25fr_1fr]">
+      <Card class="border-0 bg-ink-950 p-6 text-white dark:bg-white dark:text-ink-950 sm:p-8">
+        <Sparkles class="h-6 w-6" />
+        <h2 class="mt-10 text-2xl font-black tracking-tight">{{ $t('home.emptyTitle') }}</h2>
+        <p class="mt-3 max-w-md text-sm font-semibold leading-relaxed opacity-70">{{ $t('home.emptyDescription') }}</p>
+        <Button variant="secondary" class="mt-6 gap-2" @click="openImport">
+          <Plus class="h-4 w-4" />
+          {{ $t('home.addSet') }}
+        </Button>
+      </Card>
+      <Card class="p-6 sm:p-8">
+        <p class="text-xs font-black uppercase tracking-[0.18em] text-ink-400">{{ $t('home.howItWorks') }}</p>
+        <div class="mt-6 space-y-5">
+          <div v-for="(step, index) in [$t('home.emptyStepWords'), $t('home.emptyStepAi'), $t('home.emptyStepPaste')]" :key="step" class="flex gap-3">
+            <span class="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-ink-100 text-xs font-black dark:bg-ink-800">{{ index + 1 }}</span>
+            <p class="pt-1 text-sm font-bold text-ink-600 dark:text-ink-300">{{ step }}</p>
           </div>
         </div>
-      </EmptyState>
+      </Card>
     </div>
 
     <template v-else>
-      <HomeOverview />
+      <div class="grid gap-4 lg:grid-cols-[1.4fr_1fr]">
+        <Card class="overflow-hidden border-0 bg-ink-950 p-6 text-white dark:bg-white dark:text-ink-950 sm:p-8">
+          <div class="flex items-start justify-between gap-5">
+            <div>
+              <p class="text-xs font-black uppercase tracking-[0.18em] opacity-60">{{ $t('learning.todayGoal') }}</p>
+              <p class="mt-3 text-4xl font-black tabular-nums">{{ stats.todayReviews }}<span class="text-xl opacity-50">/{{ stats.dailyGoal }}</span></p>
+              <p class="mt-2 text-sm font-semibold opacity-70">{{ dueCount ? $t('home.dueHint', { count: dueCount }) : $t('learning.noDue') }}</p>
+            </div>
+            <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10"><Target class="h-6 w-6" /></div>
+          </div>
+          <Progress :model-value="todayProgress" class="mt-7 bg-white/15 [&>div]:bg-white dark:bg-ink-200/30 dark:[&>div]:bg-ink-950" />
+          <Button v-if="dueCount" variant="secondary" class="mt-6 gap-2" @click="startReview">
+            <RotateCcw class="h-4 w-4" />
+            {{ $t('learning.startToday', { count: dueCount }) }}
+            <ArrowRight class="h-4 w-4" />
+          </Button>
+          <RouterLink v-else to="/study" class="mt-6 inline-flex items-center gap-2 text-sm font-black underline-offset-4 hover:underline">
+            {{ $t('home.exploreStudy') }} <ArrowRight class="h-4 w-4" />
+          </RouterLink>
+        </Card>
 
-      <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-        <div class="text-left space-y-1">
-          <p class="text-xs font-extrabold uppercase tracking-widest text-ink-400 dark:text-ink-500">
-            {{ $t('home.library') }}
-          </p>
-          <h2 class="text-xl sm:text-2xl font-extrabold tracking-tight text-ink-950 dark:text-ink-50">
-            {{ $t('home.readyTitle') }}
-          </h2>
-        </div>
-        <div class="relative w-full sm:max-w-xs">
-          <Search class="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-ink-400" />
-          <Input
-            v-model="query"
-            :placeholder="$t('home.searchPlaceholder')"
-            class="pl-9 rounded-xl"
-          />
+        <Card class="p-6 sm:p-8">
+          <div class="flex items-center justify-between">
+            <p class="text-xs font-black uppercase tracking-[0.18em] text-ink-400">{{ $t('home.snapshot') }}</p>
+            <RouterLink to="/stats" class="text-xs font-black text-ink-500 hover:text-ink-950 dark:hover:text-white">{{ $t('home.viewStats') }}</RouterLink>
+          </div>
+          <div class="mt-6 grid grid-cols-2 gap-3">
+            <div class="rounded-2xl bg-ink-100/70 p-4 dark:bg-ink-900/70"><Library class="h-4 w-4 text-ink-500" /><p class="mt-3 text-2xl font-black">{{ sets.length }}</p><p class="text-xs font-bold text-ink-500">{{ $t('home.metricSets') }}</p></div>
+            <div class="rounded-2xl bg-ink-100/70 p-4 dark:bg-ink-900/70"><BookOpen class="h-4 w-4 text-ink-500" /><p class="mt-3 text-2xl font-black">{{ totalWordCount }}</p><p class="text-xs font-bold text-ink-500">{{ $t('home.metricWords') }}</p></div>
+            <div class="rounded-2xl bg-ink-100/70 p-4 dark:bg-ink-900/70"><Flame class="h-4 w-4 text-ink-500" /><p class="mt-3 text-2xl font-black">{{ stats.streakDays }}</p><p class="text-xs font-bold text-ink-500">{{ $t('learning.streak') }}</p></div>
+            <div class="rounded-2xl bg-ink-100/70 p-4 dark:bg-ink-900/70"><Target class="h-4 w-4 text-ink-500" /><p class="mt-3 text-2xl font-black">{{ accuracy }}%</p><p class="text-xs font-bold text-ink-500">{{ $t('learning.accuracy') }}</p></div>
+          </div>
+        </Card>
+      </div>
+
+      <div v-if="activeSessions.length" class="space-y-3">
+        <div class="flex items-center justify-between"><h2 class="text-lg font-black">{{ $t('home.continueTitle') }}</h2><RouterLink to="/study" class="text-xs font-black text-ink-500">{{ $t('home.viewAll') }}</RouterLink></div>
+        <div class="grid gap-3 md:grid-cols-3">
+          <Card v-for="set in activeSessions" :key="set.id" class="p-4">
+            <p class="truncate text-sm font-black">{{ set.setName }}</p>
+            <p class="mt-1 text-xs font-semibold text-ink-500">{{ $t('home.inProgress') }} · {{ set.items.length }} {{ $t('home.wordUnit') }}</p>
+            <RouterLink to="/study" class="mt-4 inline-flex items-center gap-1 text-xs font-black text-ink-600 dark:text-ink-300">{{ $t('home.continue') }} <ArrowRight class="h-3.5 w-3.5" /></RouterLink>
+          </Card>
         </div>
       </div>
 
-      <div v-if="filteredSets.length === 0" class="py-12 text-center text-sm font-semibold text-ink-400">
-        {{ $t('home.noSearchResults') }}
-      </div>
-
-      <div v-else class="grid gap-4 md:grid-cols-2">
-        <div
-          v-for="(set, i) in filteredSets"
-          :key="set.id"
-          class="set-card-enter"
-          :style="{ animationDelay: `${Math.min(i, 10) * 40}ms` }"
-        >
-          <SetCard
-            :set="set"
-            :active="isSetInProgress(set.id)"
-            @flashcards="startFlashcards"
-            @quiz="startPractice('quiz', $event)"
-            @spelling="startPractice('spelling', $event)"
-            @delete="requestDelete"
-            @edit="openSetEditor('edit', sets.find((item) => item.id === $event))"
-          />
+      <div class="space-y-3">
+        <div class="flex items-center justify-between"><h2 class="text-lg font-black">{{ $t('home.recentTitle') }}</h2><RouterLink to="/library" class="text-xs font-black text-ink-500">{{ $t('home.viewLibrary') }}</RouterLink></div>
+        <div class="grid gap-3 md:grid-cols-3">
+          <RouterLink v-for="set in recentSets" :key="set.id" to="/library" class="group rounded-2xl border border-ink-200/60 bg-white/70 p-4 transition hover:-translate-y-0.5 hover:shadow-soft dark:border-ink-800 dark:bg-ink-950/50">
+            <p class="truncate text-sm font-black group-hover:text-accent-primary">{{ set.setName }}</p>
+            <p class="mt-1 text-xs font-semibold text-ink-500">{{ set.items.length }} {{ $t('home.wordUnit') }} · {{ $t('setCard.difficulty') }} {{ set.difficulty }}</p>
+          </RouterLink>
         </div>
       </div>
     </template>

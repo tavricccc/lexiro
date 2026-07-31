@@ -1,13 +1,16 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted } from 'vue'
-import { useRouter } from 'vue-router'
+import { storeToRefs } from 'pinia'
+import { computed, onMounted, onUnmounted } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 import AppHeader from '@/components/AppHeader.vue'
+import AppSidebar from '@/components/AppSidebar.vue'
 import ConfirmDialog from '@/components/dialogs/ConfirmDialog.vue'
 import ImportDialog from '@/components/dialogs/ImportDialog.vue'
 import PracticeDialog from '@/components/dialogs/PracticeDialog.vue'
 import SetEditorDialog from '@/components/dialogs/SetEditorDialog.vue'
 import TransferDialog from '@/components/dialogs/TransferDialog.vue'
 import VersionUpdateDialog from '@/components/dialogs/VersionUpdateDialog.vue'
+import MobileBottomTabs from '@/components/MobileBottomTabs.vue'
 import Toast from '@/components/ui/toast/Toast.vue'
 import { useSessionStore } from '@/stores/session'
 import { useUIStore } from '@/stores/ui'
@@ -15,6 +18,10 @@ import { useUIStore } from '@/stores/ui'
 const uiStore = useUIStore()
 const sessionStore = useSessionStore()
 const router = useRouter()
+const route = useRoute()
+const { sidebarExpanded } = storeToRefs(uiStore)
+
+const isSessionRoute = computed(() => ['quiz', 'spelling', 'flashcard', 'review', 'result'].includes(String(route.name)))
 
 let versionCheckInterval: ReturnType<typeof setInterval> | null = null
 let controllerChangeListener: (() => void) | null = null
@@ -105,8 +112,10 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="app-root min-h-screen text-ink-950 dark:text-ink-50 transition-colors duration-250 pb-20 relative overflow-x-hidden">
-    <AppHeader />
+  <div class="app-root min-h-screen text-ink-950 dark:text-ink-50 transition-colors duration-250 relative overflow-x-hidden" :class="[isSessionRoute ? 'app-root--session' : 'app-root--workspace', sidebarExpanded ? 'app-root--sidebar-expanded' : '']">
+    <AppSidebar v-if="!isSessionRoute" />
+    <MobileBottomTabs v-if="!isSessionRoute" />
+    <AppHeader v-if="isSessionRoute" />
 
     <main class="app-main-content viewport-frame">
       <div class="route-page-frame">

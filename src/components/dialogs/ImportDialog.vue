@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { Check, ClipboardCopy } from 'lucide-vue-next'
+import { Check, ClipboardCopy, Sparkles } from 'lucide-vue-next'
 import { storeToRefs } from 'pinia'
 import { computed, nextTick, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { extractJsonText, generateWithAi, loadAiSettings } from '@/lib/ai-provider'
 import { copyToClipboard } from '@/lib/clipboard'
 import { parseImportJson } from '@/lib/import'
 import { buildImportPrompt } from '@/lib/importPrompt'
@@ -24,13 +25,17 @@ const { closeImport, nextImportStep, importSet } = setsStore
 const { showToast } = uiStore
 
 const importTextarea = ref<InstanceType<typeof Textarea> | null>(null)
+const aiSettings = ref(loadAiSettings())
+const aiGenerating = ref(false)
 
 const difficultyLevels = ['', t('import.difficulty1'), t('import.difficulty2'), t('import.difficulty3')] as const
 const difficultyLabel = computed(() => difficultyLevels[importDifficulty.value])
 const wordCount = computed(() => importWords.value.split(/[\s,，、;；]+/).filter(Boolean).length)
+const aiReady = computed(() => aiSettings.value.enabled && Boolean(aiSettings.value.apiKey.trim()))
 
 watch([importOpen, importStep], ([open]) => {
   if (open) {
+    aiSettings.value = loadAiSettings()
     nextTick(() => {
       importTextarea.value?.focus()
     })
@@ -67,6 +72,51 @@ async function copyImportPrompt() {
   }
   catch {
     showToast(t('toast.copyFailed'))
+  }
+}
+
+async function generateWithConfiguredAi() {
+  if (!wordCount.value) {
+    setsStore.importError = t('import.wordsRequired')
+    return
+  }
+
+  const settings = loadAiSettings()
+  aiSettings.value = settings
+  if (!settings.enabled || !settings.apiKey.trim()) {
+    setsStore.importError = t('import.aiConfigureHint')
+    return
+  }
+
+  const words = importWords.value.split(/[\s,，、;；]+/).map(word => word.trim()).filter(Boolean)
+  const batchSize = Math.min(Math.max(Number(settings.batchSize) || 10, 5), 20)
+  const batches = Array.from({ length: Math.ceil(words.length / batchSize) }, (_, index) => words.slice(index * batchSize, (index + 1) * batchSize))
+
+  aiGenerating.value = true
+  setsStore.importError = ''
+  try {
+    const items = []
+    let difficulty = importDifficulty.value
+    for (const batch of batches) {
+      const response = await generateWithAi(settings, buildImportPrompt(batch.join(', '), importDifficulty.value))
+      const result = parseImportJson(extractJsonText(response))
+      if (!result.valid)
+        throw new Error(result.error)
+      items.push(...result.data.items)
+      difficulty = result.data.difficulty
+    }
+
+    setsStore.importJson = JSON.stringify({ difficulty, items }, null, 2)
+    setsStore.importPreview = t('import.jsonValid', { count: items.length })
+    setsStore.importError = ''
+    nextImportStep()
+    showToast(t('import.generated', { count: items.length }))
+  }
+  catch (error) {
+    setsStore.importError = (error as Error).message || t('import.aiFailed')
+  }
+  finally {
+    aiGenerating.value = false
   }
 }
 </script>
@@ -137,6 +187,9 @@ async function copyImportPrompt() {
           {{ $t('import.step2Hint') }}
         </p>
       </SectionPanel>
+      <StatusMessage v-if="importError" tone="error">
+        {{ importError }}
+      </StatusMessage>
 
       <DialogFooter>
         <Button variant="outline" @click="closeImport">
@@ -144,6 +197,10 @@ async function copyImportPrompt() {
         </Button>
         <Button variant="outline" @click="nextImportStep">
           {{ $t('import.nextStep') }}
+        </Button>
+        <Button v-if="aiReady" variant="secondary" class="gap-2" :loading="aiGenerating" @click="generateWithConfiguredAi">
+          <Sparkles class="h-4 w-4" />
+          <span>{{ aiGenerating ? $t('import.generating') : $t('import.generateWithAi') }}</span>
         </Button>
         <Button variant="default" class="gap-2" :disabled="!wordCount" @click="copyImportPrompt">
           <ClipboardCopy class="h-4 w-4 text-accent-primary" />

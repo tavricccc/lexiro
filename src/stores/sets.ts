@@ -275,6 +275,36 @@ export const useSetsStore = defineStore('sets', () => {
     openSetEditor('edit', activeSet.value)
   }
 
+  function addItemToSet(setId: string, draft: Pick<EditorItem, 'word' | 'meaning' | 'example' | 'pos'> & Partial<EditorItem>) {
+    const target = sets.value.find(set => set.id === setId)
+    if (!target)
+      return false
+
+    const word = draft.word.trim()
+    const item = normalizeItem({
+      ...draft,
+      id: `item-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+      word,
+      meaning: draft.meaning.trim(),
+      example: draft.example.trim() || `I am learning the word ${word}.`,
+      question: draft.question ?? {
+        prompt: `Choose the word that best completes the sentence: I am learning _____.`,
+        opts: [word, 'another word', 'not sure', 'skip this one'],
+        ans: 0,
+      },
+    }, target.items.length)
+
+    const nextSet = {
+      ...target,
+      items: [...target.items, item],
+      updatedAt: new Date().toISOString(),
+    }
+    sets.value = sets.value.map(set => set.id === setId ? nextSet : set)
+    saveState()
+    useUIStore().showToast(t('dictionary.addedToSet', { word }))
+    return true
+  }
+
   function toggleExportAll() {
     exportSelectedIds.value = exportAllSelected.value ? [] : sets.value.map(s => s.id)
   }
@@ -408,6 +438,7 @@ export const useSetsStore = defineStore('sets', () => {
     requestDelete,
     deleteActiveSet,
     editActiveSet,
+    addItemToSet,
     toggleExportAll,
     exportSelectedSetsToZip,
     refreshDiffs,
