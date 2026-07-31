@@ -29,8 +29,7 @@ Workflow 位於 `.github/workflows/deploy.yml`。
 | `VITE_GOOGLE_CLIENT_ID` | 是 | Google Identity Services Web OAuth Client ID |
 | `FIREBASE_SERVICE_ACCOUNT` | 是 | Firebase deploy 使用的 service-account JSON，不能提交到 repository |
 | `VERCEL_TOKEN` | 是 | Vercel CLI deploy token |
-| `VERCEL_ORG_ID` | 是 | Vercel team/user ID；可從 Vercel project link 設定取得 |
-| `VERCEL_PROJECT_ID` | 是 | Vercel project ID；可從 Vercel project link 設定取得 |
+| `VERCEL_PROJECT_ID` | 是 | Vercel Project Settings > General 的 Project ID |
 
 `VITE_*` 變數會被編譯進瀏覽器，因此不是秘密；Firebase 的真正權限由 Authentication 與 Firestore Rules 保護。`FIREBASE_SERVICE_ACCOUNT` 才是敏感憑證，只能放在 GitHub Actions Secret。
 
@@ -41,7 +40,7 @@ Workflow 位於 `.github/workflows/deploy.yml`。
 3. 若使用 App Check，建立 reCAPTCHA Enterprise provider，將 Site Key 放入 `VITE_FIREBASE_APPCHECK_SITE_KEY`，並把 Vercel 網域加入允許清單。
 4. 在 Google Cloud Console 建立 Web OAuth Client ID，將 Vercel 網域加入 Authorized JavaScript origins，並把 Client ID 放入 `VITE_GOOGLE_CLIENT_ID`。
 5. 建立 Firebase service account JSON，放入 `FIREBASE_SERVICE_ACCOUNT`。它需要能部署 Firestore Rules 與 indexes。
-6. 在 Vercel 建立專案，取得 `VERCEL_ORG_ID` 與 `VERCEL_PROJECT_ID`，並建立 `VERCEL_TOKEN`。
+6. 在 Vercel 建立專案，取得 `VERCEL_PROJECT_ID`，並建立有該專案部署權限的 `VERCEL_TOKEN`。
 7. 關閉 Vercel Git Integration 的自動部署，避免同一次 push 觸發第二次 build；部署入口只保留 GitHub Actions。
 8. 將以上 secrets 全部放在 `Settings > Environments > Production > Environment secrets`。
 9. push 到 `main`，成功後網站會在 Vercel production domain。

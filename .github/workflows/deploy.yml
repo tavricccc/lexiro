@@ -26,7 +26,6 @@ jobs:
       VITE_FIREBASE_APPCHECK_SITE_KEY: ${{ secrets.VITE_FIREBASE_APPCHECK_SITE_KEY }}
       VITE_GOOGLE_CLIENT_ID: ${{ secrets.VITE_GOOGLE_CLIENT_ID }}
       VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
       VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
     permissions:
       contents: read
@@ -72,22 +71,14 @@ jobs:
             echo "::error title=Missing GitHub Secret::Add VERCEL_TOKEN in Settings > Secrets and variables > Actions > Production."
             exit 1
           fi
-          if [ -z "$VERCEL_ORG_ID" ]; then
-            echo "::error title=Missing GitHub Secret::Add VERCEL_ORG_ID in Settings > Secrets and variables > Actions > Production."
-            exit 1
-          fi
           if [ -z "$VERCEL_PROJECT_ID" ]; then
             echo "::error title=Missing GitHub Secret::Add VERCEL_PROJECT_ID in Settings > Secrets and variables > Actions > Production."
             exit 1
           fi
 
-      - name: Link Vercel project
-        if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
-        run: npx vercel link --yes --project "$VERCEL_PROJECT_ID" --scope "$VERCEL_ORG_ID" --token "$VERCEL_TOKEN"
-
       - name: Build Vercel prebuilt output
         if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
-        run: npx vercel build --yes --prod --token "$VERCEL_TOKEN" --scope "$VERCEL_ORG_ID"
+        run: npx vercel build --yes --prod --project "$VERCEL_PROJECT_ID" --token "$VERCEL_TOKEN"
 
       - name: Upload Vercel prebuilt artifact
         if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
@@ -108,7 +99,6 @@ jobs:
       url: ${{ steps.deployment.outputs.url }}
     env:
       VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
       VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
     steps:
       - name: Checkout
@@ -130,15 +120,10 @@ jobs:
           name: vercel-prebuilt
           path: .vercel/output
 
-      - name: Restore Vercel project link
-        run: |
-          mkdir -p .vercel
-          printf '{"orgId":"%s","projectId":"%s"}\n' "$VERCEL_ORG_ID" "$VERCEL_PROJECT_ID" > .vercel/project.json
-
       - name: Deploy prebuilt output to Vercel
         id: deployment
         run: |
-          url=$(npx vercel deploy --yes --prebuilt --prod --token "$VERCEL_TOKEN" --scope "$VERCEL_ORG_ID")
+          url=$(npx vercel deploy --yes --prebuilt --prod --project "$VERCEL_PROJECT_ID" --token "$VERCEL_TOKEN")
           echo "url=$url" >> "$GITHUB_OUTPUT"
           echo "$url"
 
