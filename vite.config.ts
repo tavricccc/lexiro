@@ -18,6 +18,21 @@ export default defineConfig({
       '@': resolve(import.meta.dirname, 'src'),
     },
   },
+  build: {
+    rolldownOptions: {
+      output: {
+        codeSplitting: {
+          groups: [
+            {
+              name: 'firebase',
+              test: /node_modules[\\/](?:firebase|@firebase)[\\/]/,
+              priority: 10,
+            },
+          ],
+        },
+      },
+    },
+  },
   plugins: [
     vue(),
     tailwindcss(),

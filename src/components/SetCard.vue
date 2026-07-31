@@ -34,9 +34,8 @@ const weakCount = computed(() => props.set.items.filter((item) => {
 
 <template>
   <Card
-    class="surface-card--interactive p-5 sm:p-6 text-left cursor-pointer transition-all duration-200 hover:-translate-y-0.5 hover:shadow-soft"
+    class="p-5 text-left sm:p-6"
     :class="active ? 'ring-2 ring-accent-primary/25 border-accent-primary/30' : ''"
-    @click="$emit('study', set.id)"
   >
     <div class="flex items-start justify-between gap-4">
       <div class="space-y-1 text-left min-w-0">

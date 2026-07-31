@@ -1,6 +1,7 @@
 import type { VocabItem, VocabSet } from '@/types'
 import { createPinia, setActivePinia } from 'pinia'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
+import { LEARNING_STORAGE_KEY } from '@/constants'
 import { reviewCard } from '@/lib/fsrs'
 import { useLearningStore } from '@/stores/learning'
 import { useSetsStore } from '@/stores/sets'
@@ -65,5 +66,31 @@ describe('learning daily queue', () => {
 
     learningStore.setDailyGoal(10)
     expect(learningStore.stats.dailyGoal).toBe(15)
+  })
+
+  it('persists daily progress for every queued card and keeps cards in their own set', () => {
+    const firstSet = { ...set, id: 'first-set', items: [set.items[0]] }
+    const secondSet = { ...set, id: 'second-set', items: [set.items[1]] }
+    useSetsStore().sets = [firstSet, secondSet]
+    const learningStore = useLearningStore()
+
+    expect(learningStore.startDailyReview()).toBe(true)
+    const firstEntry = learningStore.currentReviewEntry
+    expect(firstEntry?.setId).toBe('first-set')
+    learningStore.answerCurrent('good')
+    expect(learningStore.stats.todayLearningReviews).toBe(1)
+    expect(learningStore.nextReview()).toBe(true)
+
+    const secondEntry = learningStore.currentReviewEntry
+    expect(secondEntry?.setId).toBe('second-set')
+    learningStore.answerCurrent('hard')
+    expect(learningStore.stats.todayLearningReviews).toBe(2)
+    expect(learningStore.nextReview()).toBe(false)
+
+    expect(learningStore.peekSetProgress('first-set')?.cards[firstSet.items[0].id]).toBeTruthy()
+    expect(learningStore.peekSetProgress('second-set')?.cards[secondSet.items[0].id]).toBeTruthy()
+    const saved = JSON.parse(storage.setItem.mock.calls.at(-1)?.[1] ?? '{}')
+    expect(saved.stats.todayLearningReviews).toBe(2)
+    expect(storage.setItem.mock.calls.at(-1)?.[0]).toBe(LEARNING_STORAGE_KEY)
   })
 })

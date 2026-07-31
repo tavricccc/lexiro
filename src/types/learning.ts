@@ -41,6 +41,8 @@ export interface DashboardStats {
   dailyGoal: number
   todayReviews: number
   todayCorrectReviews: number
+  todayLearningReviews: number
+  todayLearningCorrectReviews: number
   achievements: Achievement[]
   updatedAt: string
 }

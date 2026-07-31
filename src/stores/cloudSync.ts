@@ -219,7 +219,12 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
       }
       const remote = snapshot.data() as FirestoreStatsDoc
       if (new Date(remote.updatedAt).getTime() > new Date(learningStore.stats.updatedAt).getTime()) {
-        learningStore.stats = remote
+        learningStore.stats = {
+          ...learningStore.stats,
+          ...remote,
+          todayLearningReviews: remote.todayLearningReviews ?? remote.todayReviews,
+          todayLearningCorrectReviews: remote.todayLearningCorrectReviews ?? remote.todayCorrectReviews,
+        }
         learningStore.setDailyGoal(remote.dailyGoal)
         knownStatsHash = stableHash(remote)
         learningStore.saveState()

@@ -1,40 +1,46 @@
 <script setup lang="ts">
-import type { DictionaryEntry } from '@/types'
-import { AudioLines, BookOpen, ExternalLink, LoaderCircle, Plus, Search, Volume2 } from 'lucide-vue-next'
+import type { DictionaryEntry, VocabItem } from '@/types'
+import { AudioLines, BookOpen, ExternalLink, LoaderCircle, Search, Volume2 } from 'lucide-vue-next'
 import { storeToRefs } from 'pinia'
 import { computed, ref } from 'vue'
-import { RouterLink } from 'vue-router'
 import { dictionaryAudio, dictionaryDefinitions, lookupDictionary } from '@/lib/dictionary'
 import { useSetsStore } from '@/stores/sets'
 import Badge from './ui/badge/Badge.vue'
 import Button from './ui/button/Button.vue'
 import Card from './ui/card/Card.vue'
 import Input from './ui/input/Input.vue'
-import Select from './ui/select/Select.vue'
 
-import Textarea from './ui/textarea/Textarea.vue'
+interface LocalDictionaryMatch {
+  item: VocabItem
+  setId: string
+  setName: string
+}
 
 const setsStore = useSetsStore()
 const { sets } = storeToRefs(setsStore)
-const { addItemToSet } = setsStore
-
-const setOptions = computed(() => sets.value.map(set => ({ value: set.id, label: set.setName })))
 
 const query = ref('')
 const loading = ref(false)
 const error = ref('')
 const entries = ref<DictionaryEntry[]>([])
-const selectedEntry = ref<DictionaryEntry | null>(null)
-const selectedSetId = ref('')
-const meaning = ref('')
-const example = ref('')
-const saved = ref(false)
+const selectedLocalKey = ref('')
 
-const localMatches = computed(() => {
+const localMatches = computed<LocalDictionaryMatch[]>(() => {
   const q = query.value.trim().toLowerCase()
   if (!q)
     return []
-  return sets.value.flatMap(set => set.items.filter(item => [item.word, item.meaning, item.definition ?? ''].some(value => value.toLowerCase().includes(q))).map(item => ({ ...item, setName: set.setName })))
+  return sets.value.flatMap(set => set.items
+    .filter(item => [item.word, item.meaning, item.definition ?? ''].some(value => value.toLowerCase().includes(q)))
+    .map(item => ({ item, setId: set.id, setName: set.setName })))
+})
+
+const selectedLocalItem = computed<LocalDictionaryMatch | null>(() => {
+  if (!selectedLocalKey.value)
+    return null
+  const [setId, itemId] = selectedLocalKey.value.split(':')
+  const set = sets.value.find(item => item.id === setId)
+  const item = set?.items.find(entry => entry.id === itemId)
+  return set && item ? { item, setId: set.id, setName: set.setName } : null
 })
 
 async function search() {
@@ -43,14 +49,13 @@ async function search() {
     return
   loading.value = true
   error.value = ''
-  saved.value = false
+  const localMatch = localMatches.value.find(item => item.item.word.toLowerCase() === word.toLowerCase())
+  selectedLocalKey.value = localMatch ? `${localMatch.setId}:${localMatch.item.id}` : ''
   try {
     entries.value = await lookupDictionary(word)
-    selectedEntry.value = entries.value[0] ?? null
   }
   catch (err) {
     entries.value = []
-    selectedEntry.value = null
     error.value = (err as Error).message
   }
   finally {
@@ -58,40 +63,16 @@ async function search() {
   }
 }
 
-function chooseDefinition(definition: ReturnType<typeof dictionaryDefinitions>[number]) {
-  example.value = definition.example ?? ''
+function selectLocalItem(match: LocalDictionaryMatch) {
+  query.value = match.item.word
+  selectedLocalKey.value = `${match.setId}:${match.item.id}`
+  void search()
 }
 
 function playAudio(entry: DictionaryEntry) {
   const url = dictionaryAudio(entry)
   if (url)
     new Audio(url).play().catch(() => undefined)
-}
-
-function addToLibrary() {
-  if (!selectedEntry.value || !selectedSetId.value || !meaning.value.trim())
-    return
-  const firstMeaning = selectedEntry.value.meanings[0]
-  const definitions = dictionaryDefinitions(selectedEntry.value)
-  const definition = definitions[0]
-  const audioUrl = dictionaryAudio(selectedEntry.value) ?? undefined
-  const success = addItemToSet(selectedSetId.value, {
-    word: selectedEntry.value.word,
-    pos: firstMeaning?.partOfSpeech ?? '',
-    meaning: meaning.value,
-    example: example.value,
-    definition: definition?.definition,
-    phonetic: selectedEntry.value.phonetic ?? selectedEntry.value.phonetics?.find(item => item.text)?.text,
-    audioUrl,
-    origin: selectedEntry.value.origin,
-    dictionarySource: 'Free Dictionary API',
-    synonyms: definition?.synonyms ?? [],
-    antonyms: definition?.antonyms ?? [],
-  })
-  if (success) {
-    saved.value = true
-    meaning.value = ''
-  }
 }
 </script>
 
@@ -110,8 +91,8 @@ function addToLibrary() {
         </Button>
       </form>
       <div v-if="localMatches.length" class="mt-4 flex flex-wrap gap-2">
-        <button v-for="item in localMatches.slice(0, 6)" :key="item.id" type="button" class="rounded-full bg-ink-100 px-3 py-1.5 text-xs font-bold text-ink-600 hover:bg-ink-200 dark:bg-ink-900 dark:text-ink-300" @click="query = item.word; search()">
-          {{ item.word }} · {{ item.setName }}
+        <button v-for="match in localMatches.slice(0, 6)" :key="`${match.setId}-${match.item.id}`" type="button" class="rounded-full bg-ink-100 px-3 py-1.5 text-xs font-semibold text-ink-600 hover:bg-ink-200 dark:bg-ink-900 dark:text-ink-300" @click="selectLocalItem(match)">
+          {{ match.item.word }} · {{ match.setName }}
         </button>
       </div>
     </Card>
@@ -119,20 +100,69 @@ function addToLibrary() {
     <div v-if="error" class="rounded-2xl border border-red-200 bg-red-50 p-4 text-sm font-bold text-red-700 dark:border-red-900/50 dark:bg-red-950/20 dark:text-red-300">
       {{ error }}
     </div>
+    <Card v-if="selectedLocalItem" class="border border-accent-primary/15 p-5 sm:p-6">
+      <div class="flex items-start justify-between gap-3">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-wider text-accent-primary">
+            {{ $t('dictionary.savedTitle') }}
+          </p>
+          <h2 class="mt-1 text-2xl font-bold tracking-tight">
+            {{ selectedLocalItem.item.word }}
+          </h2>
+        </div>
+        <Badge variant="secondary" class="shrink-0 rounded-lg text-xs">
+          {{ selectedLocalItem.setName }}
+        </Badge>
+      </div>
+      <div class="mt-5 grid gap-4 sm:grid-cols-2">
+        <div class="surface-inset p-4">
+          <p class="text-xs font-semibold text-ink-400">
+            {{ $t('dictionary.savedMeaning') }}
+          </p>
+          <p class="mt-2 text-sm font-semibold leading-relaxed">
+            {{ selectedLocalItem.item.meaning }}
+          </p>
+        </div>
+        <div class="surface-inset p-4">
+          <p class="text-xs font-semibold text-ink-400">
+            {{ $t('dictionary.savedExample') }}
+          </p>
+          <p class="mt-2 text-sm font-medium italic leading-relaxed">
+            {{ selectedLocalItem.item.example }}
+          </p>
+        </div>
+      </div>
+      <div class="surface-inset mt-4 p-4">
+        <p class="text-xs font-semibold text-ink-400">
+          {{ $t('dictionary.savedQuestion') }}
+        </p>
+        <p class="mt-2 text-sm font-semibold leading-relaxed">
+          {{ selectedLocalItem.item.question.prompt }}
+        </p>
+        <div class="mt-3 grid gap-2 sm:grid-cols-2">
+          <div v-for="(option, index) in selectedLocalItem.item.question.opts" :key="`${option}-${index}`" class="flex items-center justify-between gap-3 rounded-xl bg-white/70 px-3 py-2 text-sm dark:bg-ink-900/70" :class="index === selectedLocalItem.item.question.ans ? 'font-semibold text-emerald-700 dark:text-emerald-300' : 'text-ink-600 dark:text-ink-300'">
+            <span>{{ String.fromCharCode(65 + index) }}. {{ option }}</span>
+            <Badge v-if="index === selectedLocalItem.item.question.ans" variant="secondary" class="rounded-md text-[10px]">
+              {{ $t('result.correctAnswer') }}
+            </Badge>
+          </div>
+        </div>
+      </div>
+    </Card>
     <div v-if="!entries.length && !loading && !error" class="grid gap-4 lg:grid-cols-3">
-      <Card class="p-6">
-        <Search class="h-5 w-5 text-ink-400" /><h2 class="mt-6 text-lg font-black">
+      <div class="surface-inset p-4">
+        <Search class="h-5 w-5 text-ink-400" /><h2 class="mt-3 text-sm font-semibold">
           {{ $t('dictionary.featureLookup') }}
         </h2>
-      </Card><Card class="p-6">
-        <AudioLines class="h-5 w-5 text-ink-400" /><h2 class="mt-6 text-lg font-black">
+      </div><div class="surface-inset p-4">
+        <AudioLines class="h-5 w-5 text-ink-400" /><h2 class="mt-3 text-sm font-semibold">
           {{ $t('dictionary.featurePronunciation') }}
         </h2>
-      </Card><Card class="p-6">
-        <BookOpen class="h-5 w-5 text-ink-400" /><h2 class="mt-6 text-lg font-black">
+      </div><div class="surface-inset p-4">
+        <BookOpen class="h-5 w-5 text-ink-400" /><h2 class="mt-3 text-sm font-semibold">
           {{ $t('dictionary.featureSave') }}
         </h2>
-      </Card>
+      </div>
     </div>
 
     <div v-for="entry in entries" :key="`${entry.word}-${entry.phonetic}`" class="grid gap-4 lg:grid-cols-[minmax(0,1fr)_22rem]">
@@ -162,9 +192,9 @@ function addToLibrary() {
                   </Badge><p class="font-bold leading-relaxed">
                     {{ definition.definition }}
                   </p>
-                </div><button v-if="definition.example" type="button" class="mt-3 text-left text-sm font-semibold italic leading-relaxed text-ink-500 hover:text-ink-900 dark:hover:text-white" @click="chooseDefinition(definition)">
+                </div><p v-if="definition.example" class="mt-3 text-left text-sm font-semibold italic leading-relaxed text-ink-500">
                   “{{ definition.example }}”
-                </button><div v-if="definition.synonyms?.length || definition.antonyms?.length" class="mt-3 flex flex-wrap gap-2 text-xs font-semibold text-ink-500">
+                </p><div v-if="definition.synonyms?.length || definition.antonyms?.length" class="mt-3 flex flex-wrap gap-2 text-xs font-semibold text-ink-500">
                   <span v-if="definition.synonyms?.length">{{ $t('dictionary.synonyms') }}：{{ definition.synonyms.join('、') }}</span><span v-if="definition.antonyms?.length">{{ $t('dictionary.antonyms') }}：{{ definition.antonyms.join('、') }}</span>
                 </div>
               </div>
@@ -174,25 +204,6 @@ function addToLibrary() {
         <div class="mt-8 flex items-center justify-between border-t border-ink-200/60 pt-4 text-xs font-semibold text-ink-400 dark:border-ink-800">
           <span>{{ $t('dictionary.source') }}：Free Dictionary API</span><a href="https://dictionaryapi.dev/" target="_blank" rel="noreferrer" class="inline-flex items-center gap-1 hover:text-ink-900 dark:hover:text-white">dictionaryapi.dev <ExternalLink class="h-3 w-3" /></a>
         </div>
-      </Card>
-
-      <Card class="h-fit p-6 sm:p-7">
-        <div class="flex items-center gap-2">
-          <Plus class="h-4 w-4" /><h2 class="font-black">
-            {{ $t('dictionary.addTitle') }}
-          </h2>
-        </div><div v-if="sets.length" class="mt-6 space-y-4">
-          <div class="block text-xs font-black text-ink-500">
-            {{ $t('dictionary.chooseSet') }}
-            <Select v-model="selectedSetId" :options="setOptions" :placeholder="$t('dictionary.chooseSetPlaceholder')" class="mt-2" />
-          </div><label class="block text-xs font-black text-ink-500">{{ $t('dictionary.myMeaning') }}<Input v-model="meaning" class="mt-2" :placeholder="$t('dictionary.myMeaningPlaceholder')" /></label><label class="block text-xs font-black text-ink-500">{{ $t('dictionary.myExample') }}<Textarea v-model="example" :rows="3" class="mt-2" :placeholder="$t('dictionary.myExamplePlaceholder')" /></label><Button class="w-full gap-2" :disabled="!selectedSetId || !meaning.trim()" @click="addToLibrary">
-            <Plus class="h-4 w-4" />{{ $t('dictionary.addButton') }}
-          </Button><p v-if="saved" class="text-center text-xs font-bold text-emerald-600">
-            {{ $t('dictionary.added') }}
-          </p>
-        </div><RouterLink v-else to="/library" class="mt-6 block rounded-2xl bg-ink-100 p-4 text-sm font-bold text-ink-600 dark:bg-ink-900 dark:text-ink-300">
-          {{ $t('dictionary.noSetHint') }}
-        </RouterLink>
       </Card>
     </div>
   </section>

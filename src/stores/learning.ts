@@ -25,6 +25,8 @@ function defaultStats(): DashboardStats {
     dailyGoal: DAILY_GOAL_OPTIONS[0],
     todayReviews: 0,
     todayCorrectReviews: 0,
+    todayLearningReviews: 0,
+    todayLearningCorrectReviews: 0,
     achievements: [],
     updatedAt: new Date().toISOString(),
   }
@@ -37,12 +39,13 @@ export const useLearningStore = defineStore('learning', () => {
   const reviewSetId = ref<string | null>(null)
   const reviewIndex = ref(0)
   const reviewAnswered = ref(false)
+  const reviewContext = ref<'daily' | 'set' | null>(null)
   const loaded = ref(false)
 
   const currentReviewEntry = computed(() => reviewEntries.value[reviewIndex.value] ?? null)
   const reviewTotal = computed(() => reviewEntries.value.length)
   const reviewProgress = computed(() => reviewTotal.value ? Math.round((reviewIndex.value / reviewTotal.value) * 100) : 0)
-  const todayProgress = computed(() => Math.min(100, Math.round((stats.value.todayReviews / stats.value.dailyGoal) * 100)))
+  const todayProgress = computed(() => Math.min(100, Math.round((stats.value.todayLearningReviews / stats.value.dailyGoal) * 100)))
   const accuracy = computed(() => stats.value.totalReviews
     ? Math.round((stats.value.correctReviews / stats.value.totalReviews) * 100)
     : 0)
@@ -152,8 +155,15 @@ export const useLearningStore = defineStore('learning', () => {
         const parsed = JSON.parse(stored.value) as Record<string, unknown>
         if (parsed.progressBySet && typeof parsed.progressBySet === 'object')
           progressBySet.value = parsed.progressBySet as Record<string, LearningProgress>
-        if (parsed.stats && typeof parsed.stats === 'object')
-          stats.value = { ...defaultStats(), ...parsed.stats as Partial<DashboardStats> }
+        if (parsed.stats && typeof parsed.stats === 'object') {
+          const parsedStats = parsed.stats as Partial<DashboardStats>
+          stats.value = {
+            ...defaultStats(),
+            ...parsedStats,
+            todayLearningReviews: typeof parsedStats.todayLearningReviews === 'number' ? parsedStats.todayLearningReviews : Number(parsedStats.todayReviews ?? 0),
+            todayLearningCorrectReviews: typeof parsedStats.todayLearningCorrectReviews === 'number' ? parsedStats.todayLearningCorrectReviews : Number(parsedStats.todayCorrectReviews ?? 0),
+          }
+        }
       }
       catch {
         // Ignore invalid legacy progress and start clean.
@@ -164,6 +174,10 @@ export const useLearningStore = defineStore('learning', () => {
       stats.value.todayReviews = 0
     if (stats.value.lastStudyDate !== today)
       stats.value.todayCorrectReviews = 0
+    if (stats.value.lastStudyDate !== today) {
+      stats.value.todayLearningReviews = 0
+      stats.value.todayLearningCorrectReviews = 0
+    }
     if (!DAILY_GOAL_OPTIONS.includes(stats.value.dailyGoal as typeof DAILY_GOAL_OPTIONS[number])) {
       stats.value.dailyGoal = DAILY_GOAL_OPTIONS[0]
       stats.value.updatedAt = new Date().toISOString()
@@ -234,6 +248,7 @@ export const useLearningStore = defineStore('learning', () => {
     if (!entries.length)
       return false
     reviewSetId.value = setId
+    reviewContext.value = 'set'
     reviewEntries.value = entries
     reviewIndex.value = 0
     reviewAnswered.value = false
@@ -245,6 +260,7 @@ export const useLearningStore = defineStore('learning', () => {
     if (!entries.length)
       return false
     reviewSetId.value = null
+    reviewContext.value = 'daily'
     reviewEntries.value = entries
     reviewIndex.value = 0
     reviewAnswered.value = false
@@ -267,6 +283,10 @@ export const useLearningStore = defineStore('learning', () => {
     stats.value.correctReviews += isCorrect ? 1 : 0
     stats.value.todayReviews += 1
     stats.value.todayCorrectReviews += isCorrect ? 1 : 0
+    if (reviewContext.value === 'daily') {
+      stats.value.todayLearningReviews += 1
+      stats.value.todayLearningCorrectReviews += isCorrect ? 1 : 0
+    }
     stats.value.xp += rating === 'easy' ? 15 : rating === 'good' ? 10 : rating === 'hard' ? 6 : 3
     stats.value.level = Math.floor(stats.value.xp / 100) + 1
     stats.value.updatedAt = new Date().toISOString()
@@ -284,6 +304,7 @@ export const useLearningStore = defineStore('learning', () => {
       reviewSetId.value = null
       reviewIndex.value = 0
       reviewAnswered.value = false
+      reviewContext.value = null
       saveState()
       return false
     }
@@ -297,6 +318,7 @@ export const useLearningStore = defineStore('learning', () => {
     reviewSetId.value = null
     reviewIndex.value = 0
     reviewAnswered.value = false
+    reviewContext.value = null
   }
 
   return {
@@ -306,6 +328,7 @@ export const useLearningStore = defineStore('learning', () => {
     reviewSetId,
     reviewIndex,
     reviewAnswered,
+    reviewContext,
     currentReviewEntry,
     reviewTotal,
     reviewProgress,

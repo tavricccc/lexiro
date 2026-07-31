@@ -1,14 +1,17 @@
 <script setup lang="ts">
+import { Settings } from 'lucide-vue-next'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { RouterLink, useRoute } from 'vue-router'
 import { APP_NAV_ITEMS } from '@/constants/navigation'
-import SidebarAccountMenu from './SidebarAccountMenu.vue'
 
 const route = useRoute()
 const { t } = useI18n()
 const itemCount = APP_NAV_ITEMS.length + 1
-const activeIndex = computed(() => APP_NAV_ITEMS.findIndex(item => route.name === item.key))
+const activeIndex = computed(() => {
+  const primaryIndex = APP_NAV_ITEMS.findIndex(item => route.name === item.key)
+  return primaryIndex >= 0 ? primaryIndex : route.name === 'settings' ? APP_NAV_ITEMS.length : -1
+})
 </script>
 
 <template>
@@ -19,7 +22,10 @@ const activeIndex = computed(() => APP_NAV_ITEMS.findIndex(item => route.name ==
         <component :is="item.icon" class="h-5 w-5" :stroke-width="1.9" />
         <span>{{ t(item.label) }}</span>
       </RouterLink>
-      <SidebarAccountMenu mobile class="min-w-0" />
+      <RouterLink to="/settings" class="mobile-bottom-tab" :class="route.name === 'settings' ? 'mobile-bottom-tab--active' : ''" :aria-label="t('nav.settings')">
+        <Settings class="h-5 w-5" :stroke-width="1.9" />
+        <span>{{ t('nav.settings') }}</span>
+      </RouterLink>
     </div>
   </nav>
 </template>

@@ -88,7 +88,7 @@ function startReview() {
                 {{ $t('learning.todayGoal') }}
               </p>
               <p class="mt-3 text-4xl font-black tabular-nums">
-                {{ stats.todayReviews }}<span class="text-xl opacity-50">/{{ stats.dailyGoal }}</span>
+                {{ stats.todayLearningReviews }}<span class="text-xl opacity-50">/{{ stats.dailyGoal }}</span>
               </p>
               <p class="mt-2 text-sm font-semibold opacity-70">
                 {{ dailyReviewCount ? $t('home.dailyQueueHint', { count: dailyReviewCount }) : $t('learning.noDue') }}

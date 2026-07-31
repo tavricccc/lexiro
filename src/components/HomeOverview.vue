@@ -93,7 +93,7 @@ function startTodayReview() {
               {{ $t('learning.todayGoal') }}
             </p>
             <p class="mt-1 text-xl font-extrabold tabular-nums">
-              {{ stats.todayReviews }}/{{ stats.dailyGoal }}
+              {{ stats.todayLearningReviews }}/{{ stats.dailyGoal }}
             </p>
             <div class="mt-2 h-1.5 overflow-hidden rounded-full bg-ink-200 dark:bg-ink-800">
               <div class="h-full rounded-full bg-accent-primary transition-all duration-500" :style="{ width: `${todayProgress}%` }" />

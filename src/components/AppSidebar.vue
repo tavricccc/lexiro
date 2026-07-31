@@ -5,7 +5,6 @@ import { useI18n } from 'vue-i18n'
 import { RouterLink, useRoute } from 'vue-router'
 import { APP_NAV_ITEMS } from '@/constants/navigation'
 import { useUIStore } from '@/stores/ui'
-import SidebarAccountMenu from './SidebarAccountMenu.vue'
 import Button from './ui/button/Button.vue'
 
 const route = useRoute()
@@ -45,7 +44,6 @@ function toggle() {
         <Settings class="h-5 w-5 shrink-0" :stroke-width="1.9" />
         <span v-if="expanded" class="text-sm font-bold">{{ t('nav.settings') }}</span>
       </RouterLink>
-      <SidebarAccountMenu class="mt-2" :collapsed="!expanded" />
     </div>
   </aside>
 </template>

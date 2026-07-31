@@ -1,9 +1,11 @@
 <script setup lang="ts">
-import { Check, Download, KeyRound, LockKeyhole, Save, Upload } from 'lucide-vue-next'
+import { Check, Cloud, Download, KeyRound, LockKeyhole, LogIn, LogOut, Save, Upload, UserRound } from 'lucide-vue-next'
+import { storeToRefs } from 'pinia'
 import { computed, reactive, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { DAILY_GOAL_OPTIONS } from '@/constants'
 import { defaultAiSettings, downloadAiSettings, loadAiSettings, parseAiSettingsJson, saveAiSettings } from '@/lib/ai-provider'
+import { useCloudSyncStore } from '@/stores/cloudSync'
 import { useLearningStore } from '@/stores/learning'
 import { useUIStore } from '@/stores/ui'
 import Button from './ui/button/Button.vue'
@@ -13,7 +15,11 @@ import Select from './ui/select/Select.vue'
 
 const uiStore = useUIStore()
 const learningStore = useLearningStore()
+const cloudStore = useCloudSyncStore()
 const { t } = useI18n()
+const { configured, isSignedIn, accountLabel, status } = storeToRefs(cloudStore)
+const { signIn: signInAccount, signOutAccount } = cloudStore
+const statusLabel = computed(() => t(`sync.${status.value === 'disabled' ? 'notConfigured' : status.value}`))
 const settings = reactive({ ...loadAiSettings() })
 const saved = ref(false)
 const aiImportInput = ref<HTMLInputElement | null>(null)
@@ -78,6 +84,15 @@ async function importAiSettings(event: Event) {
     uiStore.showToast(t('settings.aiImportFailed'))
   }
   input.value = ''
+}
+
+async function signOut() {
+  await signOutAccount()
+  uiStore.showToast(t('settings.signedOut'))
+}
+
+async function signIn() {
+  await signInAccount()
 }
 </script>
 
@@ -151,18 +166,42 @@ async function importAiSettings(event: Event) {
         </label>
       </div>
     </Card>
-    <div>
-      <Card class="p-6">
-        <div class="flex items-center gap-2">
-          <Upload class="h-5 w-5" /><h2 class="font-black">
-            {{ $t('home.backupAndImport') }}
+    <Card class="p-5 sm:p-6">
+      <div class="flex items-start gap-4">
+        <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-ink-100 dark:bg-ink-900">
+          <UserRound class="h-5 w-5" />
+        </div>
+        <div class="min-w-0">
+          <h2 class="font-black">
+            {{ $t('settings.accountTitle') }}
           </h2>
-        </div><p class="mt-2 text-sm font-semibold text-ink-500">
-          {{ $t('backup.description') }}
-        </p><Button variant="outline" class="mt-5" @click="uiStore.openTransfer">
-          {{ $t('backup.configureExport') }}
+          <p class="mt-1 text-sm font-semibold leading-relaxed text-ink-500">
+            {{ $t('settings.accountDescription') }}
+          </p>
+        </div>
+      </div>
+      <div class="mt-5 flex items-center gap-3 rounded-2xl bg-ink-100/70 p-3.5 dark:bg-ink-900/70">
+        <Cloud class="h-4 w-4 shrink-0 text-ink-500" />
+        <div class="min-w-0 text-sm">
+          <p class="truncate font-semibold text-ink-950 dark:text-ink-50">
+            {{ isSignedIn ? accountLabel : $t('sync.localMode') }}
+          </p>
+          <p class="mt-0.5 text-xs font-medium text-ink-500">
+            {{ isSignedIn ? $t('settings.cloudConnected') : $t('settings.localOnly') }} · {{ statusLabel }}
+          </p>
+        </div>
+      </div>
+      <div class="mt-5 flex flex-wrap gap-2">
+        <Button variant="outline" class="gap-2" @click="uiStore.openTransfer">
+          <Upload class="h-4 w-4" />{{ $t('backup.exportImport') }}
         </Button>
-      </Card>
-    </div>
+        <Button v-if="!isSignedIn && configured" variant="default" class="gap-2" @click="signIn">
+          <LogIn class="h-4 w-4" />{{ $t('sync.signIn') }}
+        </Button>
+        <Button v-if="isSignedIn" variant="outline" class="gap-2" @click="signOut">
+          <LogOut class="h-4 w-4" />{{ $t('sync.signOut') }}
+        </Button>
+      </div>
+    </Card>
   </section>
 </template>
