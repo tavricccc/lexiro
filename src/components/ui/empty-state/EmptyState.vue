@@ -9,7 +9,7 @@ withDefaults(defineProps<{
 
 <template>
   <div class="mx-auto flex max-w-md flex-col items-center justify-center py-10 text-center">
-    <div v-if="$slots.icon" class="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl border border-accent-primary/15 bg-accent-primary/10 text-accent-primary">
+    <div v-if="$slots.icon" class="icon-tile icon-tile--lg mb-5 text-accent-primary">
       <slot name="icon" />
     </div>
     <h2 class="text-2xl font-extrabold tracking-tight text-ink-950 dark:text-ink-50">

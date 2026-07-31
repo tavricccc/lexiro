@@ -13,7 +13,7 @@ withDefaults(defineProps<{
 </script>
 
 <template>
-  <section :class="cn('rounded-2xl border border-ink-200/80 dark:border-ink-200/25 bg-white/80 dark:bg-ink-900/70 p-4 sm:p-5 text-left shadow-sm', $props.class)">
+  <section :class="cn('surface-card p-4 sm:p-5 text-left', $props.class)">
     <div v-if="title || description || $slots.action" class="mb-4 flex items-start justify-between gap-4">
       <div class="min-w-0">
         <p v-if="title" class="text-sm font-extrabold text-ink-950 dark:text-ink-50">

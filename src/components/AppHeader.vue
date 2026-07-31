@@ -59,9 +59,9 @@ const progressValue = computed(() => isReview.value ? reviewProgress.value : pro
 
 <template>
   <header
-    class="fixed inset-x-0 top-0 z-40 border-b border-ink-200/70 bg-white/80 backdrop-blur-xl transition-all duration-200 dark:border-ink-200/15 dark:bg-ink-950/80"
+    class="app-header fixed inset-x-0 top-0 z-40 backdrop-blur-xl transition-all duration-200"
   >
-    <div class="mx-auto flex max-w-5xl items-center justify-between gap-3 px-4 py-3 sm:px-6">
+    <div class="app-header__inner route-page-frame viewport-frame flex items-center justify-between gap-3 py-3">
       <div class="flex items-center gap-3 min-w-0">
         <Button
           v-if="!isHome"

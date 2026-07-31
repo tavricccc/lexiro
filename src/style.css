@@ -69,6 +69,21 @@
   --vp-font-family-base: "Inter", "HarmonyOS Sans TC", "HarmonyOS Sans SC", system-ui, sans-serif;
   --vp-font-family-mono: "JetBrains Mono", monospace;
 
+  /* Novae-inspired surface, motion and layout tokens. */
+  --surface-gap: 0.25rem;
+  --radius-inner: 1rem;
+  --radius-outer: calc(var(--radius-inner) + var(--surface-gap));
+  --panel-padding: 1.5rem;
+  --control-height: 2.75rem;
+  --tap-target: 2.75rem;
+  --app-header-height: 4.5rem;
+  --app-content-max-width: 80rem;
+  --app-viewport-gutter: 1rem;
+  --motion-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --motion-duration-fast: 0.18s;
+  --motion-duration: 0.28s;
+  --motion-duration-panel: 0.42s;
+
   --theme-primary: #000000;
   --theme-on-primary: #ffffff;
   --theme-primary-container: #f2f2f2;
@@ -114,6 +129,9 @@
   --theme-shadow-popover: 0 12px 32px rgb(0 0 0 / 0.12);
   --theme-shadow-modal: 0 16px 48px rgb(0 0 0 / 0.14);
   --theme-shadow-cta: 0 4px 16px rgb(0 0 0 / 0.12);
+  --shadow-control: 0 0 5px rgb(28 28 30 / 0.14), 0 2px 4px rgb(28 28 30 / 0.08);
+  --shadow-card: 0 0 10px rgb(28 28 30 / 0.18), 0 3px 6px rgb(28 28 30 / 0.10);
+  --shadow-floating: 0 0 14px rgb(28 28 30 / 0.23), 0 4px 9px rgb(28 28 30 / 0.13);
 
   --ink-50: var(--color-background);
   --ink-100: var(--color-surface-container);
@@ -137,20 +155,20 @@
 
 :root[data-theme="dark"],
 .dark {
-  --theme-primary: #ffffff;
-  --theme-on-primary: #000000;
-  --theme-primary-container: #1f1f1f;
-  --theme-on-primary-container: #ffffff;
+  --theme-primary: #f6f0e7;
+  --theme-on-primary: #2c2925;
+  --theme-primary-container: #4a4640;
+  --theme-on-primary-container: #f5f1ea;
 
-  --theme-secondary: #a3a3a3;
-  --theme-on-secondary: #000000;
-  --theme-secondary-container: #171717;
-  --theme-on-secondary-container: #d4d4d4;
+  --theme-secondary: #beb6ab;
+  --theme-on-secondary: #2c2925;
+  --theme-secondary-container: #3a3631;
+  --theme-on-secondary-container: #ded8cf;
 
-  --theme-tertiary: #d4d4d4;
-  --theme-on-tertiary: #000000;
-  --theme-tertiary-container: #262626;
-  --theme-on-tertiary-container: #fafafa;
+  --theme-tertiary: #eae4da;
+  --theme-on-tertiary: #2c2925;
+  --theme-tertiary-container: #4a4640;
+  --theme-on-tertiary-container: #f5f1ea;
 
   --theme-error: #ff6369;
   --theme-on-error: #ffffff;
@@ -160,37 +178,40 @@
   --theme-warning: #f59e0b;
   --theme-warning-container: #1f1605;
 
-  --theme-background: #000000;
-  --theme-on-background: #ededed;
+  --theme-background: #1c1b19;
+  --theme-on-background: #f5f1ea;
 
-  --theme-surface: #0a0a0a;
-  --theme-on-surface: #ededed;
-  --theme-surface-variant: #171717;
-  --theme-on-surface-variant: #a3a3a3;
+  --theme-surface: #25231f;
+  --theme-on-surface: #f5f1ea;
+  --theme-surface-variant: #3a3631;
+  --theme-on-surface-variant: #beb6ab;
 
-  --theme-surface-container-lowest: #050505;
-  --theme-surface-container-low: #0a0a0a;
-  --theme-surface-container: #111111;
-  --theme-surface-container-high: #1f1f1f;
-  --theme-surface-container-highest: #2a2a2a;
+  --theme-surface-container-lowest: #1c1b19;
+  --theme-surface-container-low: #25231f;
+  --theme-surface-container: #3a3631;
+  --theme-surface-container-high: #4a4640;
+  --theme-surface-container-highest: #58524a;
 
-  --theme-outline: #737373;
-  --theme-outline-variant: #2a2a2a;
+  --theme-outline: #938b82;
+  --theme-outline-variant: #3a3631;
 
   --theme-shadow-soft: 0 2px 16px rgb(0 0 0 / 0.35);
   --theme-shadow-elevated: 0 8px 32px rgb(0 0 0 / 0.45);
   --theme-shadow-popover: 0 12px 32px rgb(0 0 0 / 0.48);
   --theme-shadow-modal: 0 16px 48px rgb(0 0 0 / 0.55);
   --theme-shadow-cta: 0 4px 16px rgb(255 255 255 / 0.10);
+  --shadow-control: 0 0 5px rgb(0 0 0 / 0.28), 0 2px 4px rgb(0 0 0 / 0.18);
+  --shadow-card: 0 0 10px rgb(0 0 0 / 0.38), 0 3px 6px rgb(0 0 0 / 0.24);
+  --shadow-floating: 0 0 14px rgb(0 0 0 / 0.48), 0 4px 9px rgb(0 0 0 / 0.32);
 
   --ink-50: var(--color-on-background);
-  --ink-100: #d4d4d4;
+  --ink-100: #ded8cf;
   --ink-200: var(--color-outline-variant);
-  --ink-300: #bdbdbd;
+  --ink-300: #bdb5aa;
   --ink-400: var(--color-on-surface-variant);
   --ink-500: var(--color-outline);
-  --ink-600: #525252;
-  --ink-700: #404040;
+  --ink-600: #6f6860;
+  --ink-700: #514c46;
   --ink-800: var(--color-surface-container-high);
   --ink-850: var(--color-surface-variant);
   --ink-900: var(--color-surface);
@@ -223,22 +244,120 @@ body {
 .panel {
   position: relative;
   background-color: var(--color-surface);
-  border: 1px solid var(--color-outline-variant);
-  border-radius: 1.15rem; /* 18px rounded elegant native feel */
-  box-shadow: var(--shadow-soft);
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  border: 0;
+  border-radius: var(--radius-outer);
+  box-shadow: var(--shadow-card);
+  transition: transform var(--motion-duration) var(--motion-ease), background-color var(--motion-duration) ease, box-shadow var(--motion-duration) ease;
   will-change: transform;
   transform: translateZ(0);
 }
 
 .dark .panel {
   background-color: var(--color-surface);
-  border: 1px solid var(--color-outline-variant);
-  box-shadow: var(--shadow-soft);
+  border: 0;
+  box-shadow: var(--shadow-card);
+}
+
+.surface-control,
+.surface-card,
+.surface-floating {
+  background-color: var(--color-surface);
+  color: var(--color-on-surface);
+}
+
+.surface-control {
+  border: 0;
+  border-radius: var(--radius-inner);
+  box-shadow: var(--shadow-control);
+}
+
+.surface-card {
+  border: 0;
+  border-radius: var(--radius-outer);
+  box-shadow: var(--shadow-card);
+  transition: transform var(--motion-duration) var(--motion-ease), box-shadow var(--motion-duration) var(--motion-ease), background-color var(--motion-duration) ease;
+}
+
+.surface-card--interactive:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-floating);
+}
+
+.surface-floating {
+  border: 0;
+  border-radius: var(--radius-outer);
+  box-shadow: var(--shadow-floating);
+}
+
+.surface-inset {
+  border-radius: var(--radius-inner);
+  background-color: color-mix(in srgb, var(--color-secondary-container) 42%, transparent);
+  box-shadow: inset 0 1px 2px rgb(0 0 0 / 0.04);
+}
+
+.surface-pad-sm { padding: 0.75rem; }
+.surface-pad-md { padding: 1rem; }
+.surface-pad-lg { padding: var(--panel-padding); }
+
+.icon-tile {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-inner);
+  background-color: var(--color-primary-container);
+  color: var(--color-on-primary-container);
+}
+
+.icon-tile--sm { width: 2rem; height: 2rem; }
+.icon-tile--md { width: 2.5rem; height: 2.5rem; }
+.icon-tile--lg { width: 3.5rem; height: 3.5rem; }
+.icon-tile--info { background-color: color-mix(in srgb, #707e8c 16%, transparent); color: #536778; }
+.icon-tile--success { background-color: color-mix(in srgb, #718875 16%, transparent); color: #526957; }
+.icon-tile--warning { background-color: color-mix(in srgb, #7e7066 16%, transparent); color: #6f5d50; }
+.icon-tile--danger { background-color: color-mix(in srgb, #9a7477 16%, transparent); color: #865b60; }
+.dark .icon-tile--info { color: #b5c4d0; }
+.dark .icon-tile--success { color: #b8cbb9; }
+.dark .icon-tile--warning { color: #d5bca9; }
+.dark .icon-tile--danger { color: #d8afb4; }
+
+.viewport-frame {
+  width: 100%;
+  padding-inline: max(var(--app-viewport-gutter), env(safe-area-inset-left)) max(var(--app-viewport-gutter), env(safe-area-inset-right));
+}
+
+.route-page-frame {
+  width: 100%;
+  max-width: var(--app-content-max-width);
+  margin-inline: auto;
+}
+
+.app-root {
+  min-height: 100vh;
+  background: var(--color-background);
+}
+
+.app-main-content {
+  position: relative;
+  padding-top: calc(var(--app-header-height) + 1rem);
+}
+
+.app-header {
+  padding-top: env(safe-area-inset-top);
+  background-color: color-mix(in srgb, var(--color-surface) 86%, transparent);
+  box-shadow: 0 1px 0 color-mix(in srgb, var(--color-on-surface) 5%, transparent);
+}
+
+.app-header__inner {
+  min-height: var(--app-header-height);
+}
+
+@media (min-width: 640px) {
+  :root { --app-viewport-gutter: 1.5rem; }
 }
 
 .panel-pad {
-  padding: 1.25rem;
+  padding: var(--panel-padding);
 }
 
 @media (min-width: 640px) {

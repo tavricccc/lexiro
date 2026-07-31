@@ -44,7 +44,7 @@ function modeActive(mode: 'flashcard' | 'quiz' | 'spelling') {
 
 <template>
   <Card
-    class="p-5 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg sm:p-6"
+    class="surface-card--interactive p-5 sm:p-6"
     :class="active ? 'ring-2 ring-accent-primary/25 border-accent-primary/30' : ''"
   >
     <div class="flex items-start justify-between gap-4">

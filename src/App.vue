@@ -105,15 +105,17 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="min-h-screen text-ink-950 dark:text-ink-50 transition-colors duration-250 pb-20 relative overflow-x-hidden">
+  <div class="app-root min-h-screen text-ink-950 dark:text-ink-50 transition-colors duration-250 pb-20 relative overflow-x-hidden">
     <AppHeader />
 
-    <main class="mx-auto max-w-5xl px-4 pt-20 sm:px-6 sm:pt-24 relative">
-      <router-view v-slot="{ Component }">
-        <Transition name="page" mode="out-in">
-          <component :is="Component" />
-        </Transition>
-      </router-view>
+    <main class="app-main-content viewport-frame">
+      <div class="route-page-frame">
+        <router-view v-slot="{ Component }">
+          <Transition name="page" mode="out-in">
+            <component :is="Component" />
+          </Transition>
+        </router-view>
+      </div>
     </main>
 
     <ImportDialog />

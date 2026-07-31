@@ -10,6 +10,7 @@ import { useUIStore } from '@/stores/ui'
 import SyncProgressPanel from './SyncProgressPanel.vue'
 import Button from './ui/button/Button.vue'
 import Card from './ui/card/Card.vue'
+import IconTile from './ui/icon-tile/IconTile.vue'
 
 const setsStore = useSetsStore()
 const sessionStore = useSessionStore()
@@ -53,8 +54,10 @@ function startTodayReview() {
         </div>
 
         <dl class="mt-5 grid grid-cols-3 gap-2">
-          <div class="rounded-2xl bg-ink-100/80 p-3 dark:bg-ink-900">
-            <Layers3 class="h-4 w-4 text-ink-400" />
+          <div class="surface-inset p-3">
+            <IconTile size="sm">
+              <Layers3 class="h-4 w-4" />
+            </IconTile>
             <dd class="mt-2 text-xl font-extrabold tabular-nums">
               {{ sets.length }}
             </dd>
@@ -62,8 +65,10 @@ function startTodayReview() {
               {{ $t('home.metricSets') }}
             </dt>
           </div>
-          <div class="rounded-2xl bg-ink-100/80 p-3 dark:bg-ink-900">
-            <BookOpenCheck class="h-4 w-4 text-ink-400" />
+          <div class="surface-inset p-3">
+            <IconTile size="sm">
+              <BookOpenCheck class="h-4 w-4" />
+            </IconTile>
             <dd class="mt-2 text-xl font-extrabold tabular-nums">
               {{ totalWordCount }}
             </dd>
@@ -71,8 +76,10 @@ function startTodayReview() {
               {{ $t('home.metricWords') }}
             </dt>
           </div>
-          <div class="rounded-2xl bg-ink-100/80 p-3 dark:bg-ink-900">
-            <PlayCircle class="h-4 w-4 text-ink-400" />
+          <div class="surface-inset p-3">
+            <IconTile size="sm">
+              <PlayCircle class="h-4 w-4" />
+            </IconTile>
             <dd class="mt-2 text-xl font-extrabold tabular-nums">
               {{ inProgressCount }}
             </dd>
@@ -83,7 +90,7 @@ function startTodayReview() {
         </dl>
 
         <div class="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-4">
-          <div class="rounded-2xl bg-accent-primary/5 p-3 dark:bg-accent-primary/10">
+          <div class="surface-inset p-3">
             <p class="text-[11px] font-bold text-ink-400">
               {{ $t('learning.todayGoal') }}
             </p>
@@ -94,8 +101,10 @@ function startTodayReview() {
               <div class="h-full rounded-full bg-accent-primary transition-all duration-500" :style="{ width: `${todayProgress}%` }" />
             </div>
           </div>
-          <div class="rounded-2xl bg-ink-100/80 p-3 dark:bg-ink-900">
-            <Flame class="h-4 w-4 text-orange-500" />
+          <div class="surface-inset p-3">
+            <IconTile size="sm" tone="warning">
+              <Flame class="h-4 w-4" />
+            </IconTile>
             <p class="mt-2 text-xl font-extrabold tabular-nums">
               {{ stats.streakDays }}
             </p>
@@ -103,7 +112,7 @@ function startTodayReview() {
               {{ $t('learning.streak') }}
             </p>
           </div>
-          <div class="rounded-2xl bg-ink-100/80 p-3 dark:bg-ink-900">
+          <div class="surface-inset p-3">
             <p class="text-[11px] font-bold text-ink-400">
               {{ $t('learning.accuracy') }}
             </p>
@@ -114,8 +123,10 @@ function startTodayReview() {
               {{ $t('learning.totalReviews', { count: stats.totalReviews }) }}
             </p>
           </div>
-          <div class="rounded-2xl bg-ink-100/80 p-3 dark:bg-ink-900">
-            <Sparkles class="h-4 w-4 text-accent-primary" />
+          <div class="surface-inset p-3">
+            <IconTile size="sm" tone="info">
+              <Sparkles class="h-4 w-4" />
+            </IconTile>
             <p class="mt-2 text-xl font-extrabold tabular-nums">
               Lv. {{ stats.level }}
             </p>
@@ -125,7 +136,7 @@ function startTodayReview() {
           </div>
         </div>
 
-        <div v-if="stats.achievements.length" class="mt-4 rounded-2xl border border-accent-primary/15 bg-accent-primary/5 p-4 dark:bg-accent-primary/10">
+        <div v-if="stats.achievements.length" class="surface-inset mt-4 p-4">
           <div class="flex items-center gap-2">
             <Trophy class="h-4 w-4 text-accent-primary" />
             <p class="text-xs font-extrabold text-ink-950 dark:text-ink-50">
@@ -133,7 +144,7 @@ function startTodayReview() {
             </p>
           </div>
           <div class="mt-3 grid gap-2 sm:grid-cols-3">
-            <div v-for="achievement in stats.achievements.slice(-3).reverse()" :key="achievement.id" class="rounded-xl bg-white/70 p-3 dark:bg-ink-900/70">
+            <div v-for="achievement in stats.achievements.slice(-3).reverse()" :key="achievement.id" class="rounded-[var(--radius-inner)] bg-white/70 p-3 dark:bg-ink-900/70">
               <p class="text-xs font-extrabold text-accent-primary">
                 {{ $t(achievement.titleKey) }}
               </p>
@@ -145,7 +156,7 @@ function startTodayReview() {
         </div>
       </div>
 
-      <div class="border-t border-ink-200/60 bg-ink-100/40 p-5 dark:border-ink-200/10 dark:bg-ink-900/50 lg:border-l lg:border-t-0">
+      <div class="surface-inset rounded-none p-5 lg:rounded-l-none lg:rounded-r-[var(--radius-outer)]">
         <p class="mb-3 text-xs font-extrabold uppercase tracking-widest text-ink-400 dark:text-ink-500">
           {{ $t('home.dataSafety') }}
         </p>

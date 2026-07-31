@@ -7,7 +7,7 @@ defineProps<{
 </script>
 
 <template>
-  <div :class="cn('panel relative overflow-hidden', $props.class)">
+  <div :class="cn('surface-card relative overflow-hidden', $props.class)">
     <slot />
   </div>
 </template>
