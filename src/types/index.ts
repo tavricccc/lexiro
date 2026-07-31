@@ -44,4 +44,4 @@ export type {
   SpellingDraft,
   SpellingRecord,
 } from './session'
-export type { EditorItem, EditorQuestion, Question, VocabItem, VocabSet } from './set'
+export type { EditorItem, Question, VocabItem, VocabSet } from './set'

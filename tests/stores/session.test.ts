@@ -8,11 +8,6 @@ const validItem: VocabItem = {
   pos: 'n.',
   meaning: '蘋果',
   example: 'I eat an apple.',
-  question: {
-    prompt: '蘋果的英文是？',
-    opts: ['apple', 'banana', 'cherry', 'date'],
-    ans: 0,
-  },
 }
 
 describe('toSessionEntries', () => {
@@ -136,11 +131,6 @@ describe('normalizeSession', () => {
     const { correctCount: _, ...noCount } = baseSession
     expect(normalizeSession(noCount, validSetIds)!.correctCount).toBe(0)
     expect(normalizeSession({ ...baseSession, correctCount: -1 }, validSetIds)!.correctCount).toBe(0)
-  })
-
-  it('supports flashcard mode', () => {
-    const result = normalizeSession({ ...baseSession, mode: 'flashcard' }, validSetIds)
-    expect(result!.mode).toBe('flashcard')
   })
 
   it('supports spelling mode', () => {

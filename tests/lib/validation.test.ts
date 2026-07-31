@@ -3,101 +3,18 @@ import {
   createBlankEditorItem,
   createEditorItem,
   createEditorItems,
-  createEditorQuestion,
   normalizeExportPayload,
   normalizeItem,
-  normalizeQuestion,
   normalizeSession,
   normalizeSet,
   toSessionEntries,
 } from '@/lib/validation'
-
-describe('normalizeQuestion', () => {
-  const validQuestion = {
-    prompt: 'What is the meaning of apple?',
-    opts: ['蘋果', '香蕉', '橘子', '葡萄'],
-    ans: 0,
-  }
-
-  it('returns a normalized question for valid input', () => {
-    const result = normalizeQuestion(validQuestion, 0)
-    expect(result).toEqual({
-      prompt: 'What is the meaning of apple?',
-      opts: ['蘋果', '香蕉', '橘子', '葡萄'],
-      ans: 0,
-    })
-  })
-
-  it('trims whitespace from prompt and opts', () => {
-    const input = {
-      prompt: '  What is this?  ',
-      opts: [' A ', 'B', '  C  ', 'D'],
-      ans: 1,
-    }
-    const result = normalizeQuestion(input, 0)
-    expect(result.prompt).toBe('What is this?')
-    expect(result.opts).toEqual(['A', 'B', 'C', 'D'])
-  })
-
-  it('throws when input is not an object', () => {
-    expect(() => normalizeQuestion(null, 0)).toThrow('question 格式錯誤')
-    expect(() => normalizeQuestion('string', 0)).toThrow('question 格式錯誤')
-    expect(() => normalizeQuestion(123, 0)).toThrow('question 格式錯誤')
-    expect(() => normalizeQuestion([], 0)).toThrow('question 格式錯誤')
-  })
-
-  it('throws when prompt is missing', () => {
-    const { prompt: _, ...noPrompt } = validQuestion
-    expect(() => normalizeQuestion(noPrompt, 0)).toThrow('缺少 question.prompt')
-  })
-
-  it('throws when prompt is empty string', () => {
-    expect(() => normalizeQuestion({ ...validQuestion, prompt: '' }, 0)).toThrow('缺少 question.prompt')
-  })
-
-  it('throws when prompt is only whitespace', () => {
-    expect(() => normalizeQuestion({ ...validQuestion, prompt: '   ' }, 0)).toThrow('缺少 question.prompt')
-  })
-
-  it('throws when opts is not an array', () => {
-    expect(() => normalizeQuestion({ ...validQuestion, opts: 'not array' }, 0)).toThrow('必須剛好有 4 個選項')
-  })
-
-  it('throws when opts does not have exactly 4 items', () => {
-    expect(() => normalizeQuestion({ ...validQuestion, opts: ['a', 'b'] }, 0)).toThrow('必須剛好有 4 個選項')
-    expect(() => normalizeQuestion({ ...validQuestion, opts: ['a', 'b', 'c', 'd', 'e'] }, 0)).toThrow('必須剛好有 4 個選項')
-  })
-
-  it('throws when an option is not a non-empty string', () => {
-    expect(() => normalizeQuestion({ ...validQuestion, opts: ['a', '', 'c', 'd'] }, 0)).toThrow('需全部為非空字串')
-    expect(() => normalizeQuestion({ ...validQuestion, opts: ['a', 'b', 'c', 123] as any }, 0)).toThrow('需全部為非空字串')
-  })
-
-  it('throws when ans is not an integer', () => {
-    expect(() => normalizeQuestion({ ...validQuestion, ans: '0' }, 0)).toThrow('需為 0 到 3')
-    expect(() => normalizeQuestion({ ...validQuestion, ans: 1.5 }, 0)).toThrow('需為 0 到 3')
-  })
-
-  it('throws when ans is out of range', () => {
-    expect(() => normalizeQuestion({ ...validQuestion, ans: -1 }, 0)).toThrow('需為 0 到 3')
-    expect(() => normalizeQuestion({ ...validQuestion, ans: 4 }, 0)).toThrow('需為 0 到 3')
-  })
-
-  it('includes the correct item index in error messages', () => {
-    expect(() => normalizeQuestion(null, 5)).toThrow('第 6 筆')
-  })
-})
 
 describe('normalizeItem', () => {
   const validItem = {
     word: 'apple',
     meaning: '蘋果',
     example: 'I eat an apple.',
-    question: {
-      prompt: 'What is the meaning of apple?',
-      opts: ['蘋果', '香蕉', '橘子', '葡萄'],
-      ans: 0,
-    },
   }
 
   it('returns a normalized item for valid input', () => {
@@ -105,7 +22,6 @@ describe('normalizeItem', () => {
     expect(result.word).toBe('apple')
     expect(result.meaning).toBe('蘋果')
     expect(result.example).toBe('I eat an apple.')
-    expect(result.question).toBeDefined()
     expect(result.id).toBeTruthy()
   })
 
@@ -152,21 +68,6 @@ describe('normalizeItem', () => {
     const { example: _, ...rest } = validItem
     expect(normalizeItem(rest, 0).example).toBe('')
   })
-
-  it('allows question to be added later', () => {
-    const { question: _, ...rest } = validItem
-    expect(normalizeItem(rest, 0).question).toBeUndefined()
-  })
-
-  it('allows a null question', () => {
-    expect(normalizeItem({ ...validItem, question: null }, 0).question).toBeUndefined()
-  })
-
-  it('validates a non-empty question through normalizeQuestion', () => {
-    expect(() =>
-      normalizeItem({ ...validItem, question: { prompt: 'Choose one', opts: ['a', 'b', 'c'], ans: 0 } }, 0),
-    ).toThrow('question.opts 必須剛好有 4 個選項')
-  })
 })
 
 describe('normalizeSet', () => {
@@ -177,7 +78,6 @@ describe('normalizeSet', () => {
         word: 'apple',
         meaning: '蘋果',
         example: 'I eat an apple.',
-        question: { prompt: 'Q?', opts: ['a', 'b', 'c', 'd'], ans: 0 },
       },
     ],
   }
@@ -402,58 +302,11 @@ describe('normalizeSession', () => {
     expect(result!.status).toBe('in-progress')
   })
 
-  it('passes through mode quiz/spelling/flashcard', () => {
+  it('passes through supported practice modes', () => {
     const quizResult = normalizeSession({ ...validSession, mode: 'quiz' }, validSetIds)
     expect(quizResult!.mode).toBe('quiz')
     const spellingResult = normalizeSession({ ...validSession, mode: 'spelling' }, validSetIds)
     expect(spellingResult!.mode).toBe('spelling')
-    const flashcardResult = normalizeSession({ ...validSession, mode: 'flashcard' }, validSetIds)
-    expect(flashcardResult!.mode).toBe('flashcard')
-  })
-})
-
-describe('createEditorQuestion', () => {
-  it('returns empty editor question when input is null', () => {
-    const result = createEditorQuestion(null)
-    expect(result).toEqual({ prompt: '', opts: ['', '', '', ''], ans: 0 })
-  })
-
-  it('returns empty editor question when input is undefined', () => {
-    const result = createEditorQuestion(undefined)
-    expect(result).toEqual({ prompt: '', opts: ['', '', '', ''], ans: 0 })
-  })
-
-  it('copies prompt and ans from valid question', () => {
-    const q = { prompt: 'Test?', opts: ['a', 'b', 'c', 'd'], ans: 2 }
-    const result = createEditorQuestion(q)
-    expect(result.prompt).toBe('Test?')
-    expect(result.ans).toBe(2)
-  })
-
-  it('copies all 4 opts from valid question', () => {
-    const q = { prompt: 'Test?', opts: ['A', 'B', 'C', 'D'], ans: 0 }
-    const result = createEditorQuestion(q)
-    expect(result.opts).toEqual(['A', 'B', 'C', 'D'])
-  })
-
-  it('resets opts to defaults when opts is not exactly length 4', () => {
-    const q = { prompt: 'Test?', opts: ['A', 'B'], ans: 0 }
-    const result = createEditorQuestion(q as any)
-    expect(result.opts).toEqual(['', '', '', ''])
-  })
-
-  it('resets ans to 0 when ans is not an integer', () => {
-    const q = { prompt: 'Test?', opts: ['a', 'b', 'c', 'd'], ans: 'abc' as any }
-    const result = createEditorQuestion(q)
-    expect(result.ans).toBe(0)
-  })
-
-  it('creates a copy of opts array (not the same reference)', () => {
-    const opts = ['a', 'b', 'c', 'd']
-    const q = { prompt: 'Test?', opts, ans: 0 }
-    const result = createEditorQuestion(q)
-    expect(result.opts).toEqual(opts)
-    expect(result.opts).not.toBe(opts)
   })
 })
 
@@ -464,7 +317,6 @@ describe('createEditorItem', () => {
     expect(result.pos).toBe('')
     expect(result.meaning).toBe('')
     expect(result.example).toBe('')
-    expect(result.question).toEqual({ prompt: '', opts: ['', '', '', ''], ans: 0 })
   })
 
   it('returns a blank editor item when item is null', () => {
@@ -479,14 +331,12 @@ describe('createEditorItem', () => {
       pos: 'n.',
       meaning: '蘋果',
       example: 'I eat an apple.',
-      question: { prompt: 'Q?', opts: ['a', 'b', 'c', 'd'], ans: 1 },
     }
     const result = createEditorItem(item, 0)
     expect(result.word).toBe('apple')
     expect(result.pos).toBe('n.')
     expect(result.meaning).toBe('蘋果')
     expect(result.example).toBe('I eat an apple.')
-    expect(result.question.prompt).toBe('Q?')
   })
 
   it('generates a fallback id when item has no id', () => {
@@ -496,7 +346,6 @@ describe('createEditorItem', () => {
       pos: 'n.',
       meaning: '蘋果',
       example: 'Ex',
-      question: { prompt: 'Q?', opts: ['a', 'b', 'c', 'd'], ans: 0 },
     }
     const result = createEditorItem(item, 3)
     expect(result.id).toBeTruthy()
@@ -509,7 +358,6 @@ describe('createEditorItem', () => {
       pos: '',
       meaning: '蘋果',
       example: 'Ex',
-      question: { prompt: 'Q?', opts: ['a', 'b', 'c', 'd'], ans: 0 },
     }
     const result = createEditorItem(item, 0)
     expect(result.id).toBe('abc')
@@ -545,7 +393,6 @@ describe('createEditorItems', () => {
         pos: 'n.',
         meaning: '蘋果',
         example: 'Ex',
-        question: { prompt: 'Q?', opts: ['a', 'b', 'c', 'd'], ans: 0 },
       },
     ]
     const result = createEditorItems(items)
@@ -563,9 +410,9 @@ describe('toSessionEntries', () => {
 
   it('creates session entries with the correct originalIndex', () => {
     const items = [
-      { id: 'a', word: 'apple', pos: '', meaning: '蘋果', example: 'Ex', question: { prompt: 'Q?', opts: ['a', 'b', 'c', 'd'], ans: 0 } },
-      { id: 'b', word: 'banana', pos: '', meaning: '香蕉', example: 'Ex', question: { prompt: 'Q?', opts: ['a', 'b', 'c', 'd'], ans: 0 } },
-      { id: 'c', word: 'cat', pos: '', meaning: '貓', example: 'Ex', question: { prompt: 'Q?', opts: ['a', 'b', 'c', 'd'], ans: 0 } },
+      { id: 'a', word: 'apple', pos: '', meaning: '蘋果', example: 'Ex' },
+      { id: 'b', word: 'banana', pos: '', meaning: '香蕉', example: 'Ex' },
+      { id: 'c', word: 'cat', pos: '', meaning: '貓', example: 'Ex' },
     ]
     const entries = toSessionEntries(items)
     expect(entries).toHaveLength(3)

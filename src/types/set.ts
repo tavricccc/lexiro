@@ -10,7 +10,6 @@ export interface VocabItem {
   pos: string
   meaning: string
   example: string
-  question?: Question
   definition?: string
   phonetic?: string
   audioUrl?: string
@@ -49,11 +48,4 @@ export interface EditorItem {
   note?: string
   tags?: string[]
   favorite?: boolean
-  question: EditorQuestion
-}
-
-export interface EditorQuestion {
-  prompt: string
-  opts: string[]
-  ans: number
 }

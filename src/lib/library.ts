@@ -107,24 +107,3 @@ export function itemToMembership(item: VocabSet['items'][number]): VocabSetMembe
     favorite: item.favorite,
   }
 }
-
-export function questionFromLegacyItem(item: VocabSet['items'][number]): LibraryQuestion | null {
-  if (!item.question)
-    return null
-  const wordKey = normalizeWordKey(item.word)
-  const senseId = buildSenseId(wordKey, item.pos, item.meaning)
-  const now = new Date().toISOString()
-  return {
-    id: `legacy-question-${item.id}`,
-    kind: 'multipleChoice',
-    wordKey,
-    senseId,
-    prompt: item.question.prompt,
-    options: item.question.opts,
-    answerIndex: item.question.ans,
-    source: 'import',
-    sourceType: 'legacy',
-    createdAt: now,
-    updatedAt: now,
-  }
-}

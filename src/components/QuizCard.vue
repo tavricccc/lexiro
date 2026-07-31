@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { SessionEntry } from '@/types'
 import { ArrowRight, Bookmark, BookmarkCheck } from 'lucide-vue-next'
 import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
 import { cn } from '@/lib/cn'
@@ -6,7 +7,7 @@ import Button from './ui/button/Button.vue'
 import Card from './ui/card/Card.vue'
 
 const props = defineProps<{
-  entry: { item: { word: string, pos: string, meaning: string, example: string, question?: { prompt: string, opts: string[], ans: number } }, readingPassage?: string }
+  entry: SessionEntry
   index: number
   total: number
   review?: boolean
@@ -24,7 +25,7 @@ const labels = ['A', 'B', 'C', 'D']
 const selectedIndex = ref<number | null>(null)
 const answered = ref(false)
 const feedbackClass = ref('')
-const question = computed(() => props.entry.item.question ?? { prompt: '', opts: ['', '', '', ''], ans: 0 })
+const question = computed(() => props.entry.question!)
 
 const answerText = computed(() => question.value.opts[question.value.ans])
 const promptParts = computed(() => question.value.prompt.split('_____'))
@@ -105,7 +106,7 @@ onUnmounted(() => window.removeEventListener('keydown', onKeydown))
 </script>
 
 <template>
-  <Card :class="cn('p-5 sm:p-8', feedbackClass)">
+  <Card v-if="question" :class="cn('p-5 sm:p-8', feedbackClass)">
     <div class="mb-4 flex justify-end">
       <Button
         variant="outline"

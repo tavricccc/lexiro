@@ -18,16 +18,6 @@ const emit = defineEmits<{
 function updateItem(item: EditorItem, patch: Partial<EditorItem>) {
   emit('update:item', { ...item, ...patch })
 }
-
-function updateQuestion(item: EditorItem, patch: Partial<EditorItem['question']>) {
-  updateItem(item, { question: { ...item.question, ...patch } })
-}
-
-function updateOption(item: EditorItem, optionIndex: number, value: string) {
-  const opts = [...item.question.opts]
-  opts[optionIndex] = value
-  updateQuestion(item, { opts })
-}
 </script>
 
 <template>
@@ -76,34 +66,5 @@ function updateOption(item: EditorItem, optionIndex: number, value: string) {
         </div>
       </details>
     </div>
-
-    <details class="mt-4 rounded-xl border border-ink-200/60 bg-ink-50/50 p-3 dark:border-ink-200/15 dark:bg-ink-950/20">
-      <summary class="cursor-pointer text-xs font-bold text-ink-500 dark:text-ink-400">
-        {{ $t('editor.questionDetails') }}
-      </summary>
-      <div class="mt-3 flex flex-col gap-1.5">
-        <label class="text-xs font-semibold uppercase tracking-wider text-ink-500 dark:text-ink-400">{{ $t('editor.questionPrompt') }}</label>
-        <Textarea :model-value="item.question.prompt" :rows="2" :placeholder="$t('editor.questionPrompt')" @update:model-value="updateQuestion(item, { prompt: $event })" />
-      </div>
-      <div class="mt-4 grid gap-3 sm:grid-cols-2">
-        <div v-for="(_, optionIndex) in item.question.opts" :key="`${item.id}-option-${optionIndex}`" class="flex flex-col gap-1.5">
-          <label class="text-[10px] font-bold uppercase tracking-wider text-ink-400 dark:text-ink-500">{{ $t('editor.option', { index: optionIndex + 1 }) }}</label>
-          <Input :model-value="item.question.opts[optionIndex]" :placeholder="$t('editor.option', { index: optionIndex + 1 })" @update:model-value="updateOption(item, optionIndex, $event)" />
-        </div>
-      </div>
-      <div class="mt-4 flex flex-wrap items-center gap-2">
-        <span class="mr-2 text-xs font-semibold text-ink-500 dark:text-ink-400">{{ $t('editor.correctOption') }}</span>
-        <button
-          v-for="answerIndex in 4"
-          :key="`${item.id}-answer-${answerIndex}`"
-          type="button"
-          class="rounded-xl border px-4 py-2 text-xs font-bold transition-all duration-200"
-          :class="item.question.ans === answerIndex - 1 ? 'button-primary shadow-md' : 'border-ink-200/80 bg-white text-ink-700 hover:bg-ink-50 dark:border-ink-200/30 dark:bg-ink-850 dark:text-ink-300 dark:hover:bg-ink-800'"
-          @click="updateQuestion(item, { ans: answerIndex - 1 })"
-        >
-          {{ $t('editor.option', { index: answerIndex }) }}
-        </button>
-      </div>
-    </details>
   </div>
 </template>

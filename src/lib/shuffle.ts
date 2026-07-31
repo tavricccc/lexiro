@@ -11,21 +11,18 @@ function shuffleArray<T>(items: T[]): T[] {
 
 /** Session-local option shuffle; does not mutate the source set. */
 export function shuffleQuizEntry(entry: SessionEntry): SessionEntry {
-  if (!entry.item.question)
+  if (!entry.question)
     return entry
-  const opts = entry.item.question.opts
-  const correct = opts[entry.item.question.ans]
+  const opts = entry.question.opts
+  const correct = opts[entry.question.ans]
   const shuffled = shuffleArray(opts)
   const ans = Math.max(0, shuffled.indexOf(correct))
   return {
     ...entry,
-    item: {
-      ...entry.item,
-      question: {
-        ...entry.item.question,
-        opts: shuffled,
-        ans,
-      },
+    question: {
+      ...entry.question,
+      opts: shuffled,
+      ans,
     },
   }
 }

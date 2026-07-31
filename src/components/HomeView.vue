@@ -26,6 +26,14 @@ function startReview() {
   if (learningStore.startDailyReview())
     router.push({ name: 'review' })
 }
+
+async function continueSet(setId: string) {
+  const mode = sessionStore.getInProgressModes(setId)[0]
+  if (mode && await sessionStore.resumeSession(setId, mode))
+    return
+
+  await router.push({ name: 'set-study', params: { setId } })
+}
 </script>
 
 <template>
@@ -170,9 +178,9 @@ function startReview() {
             <p class="mt-1 text-xs font-semibold text-ink-500">
               {{ $t('home.inProgress') }} · {{ set.items.length }} {{ $t('home.wordUnit') }}
             </p>
-            <RouterLink to="/library" class="mt-4 inline-flex items-center gap-1 text-xs font-black text-ink-600 dark:text-ink-300">
+            <button type="button" class="mt-4 inline-flex items-center gap-1 text-xs font-black text-ink-600 dark:text-ink-300" @click="continueSet(set.id)">
               {{ $t('home.continue') }} <ArrowRight class="h-3.5 w-3.5" />
-            </RouterLink>
+            </button>
           </Card>
         </div>
       </div>
@@ -186,7 +194,7 @@ function startReview() {
           </RouterLink>
         </div>
         <div class="grid gap-3 md:grid-cols-3">
-          <RouterLink v-for="set in recentSets" :key="set.id" to="/library" class="group min-w-0 rounded-2xl border border-ink-200/60 bg-white/70 p-4 transition hover:-translate-y-0.5 hover:shadow-soft dark:border-ink-800 dark:bg-ink-950/50">
+          <RouterLink v-for="set in recentSets" :key="set.id" :to="{ name: 'set-study', params: { setId: set.id } }" class="group min-w-0 rounded-2xl border border-ink-200/60 bg-white/70 p-4 transition hover:-translate-y-0.5 hover:shadow-soft dark:border-ink-800 dark:bg-ink-950/50">
             <p class="truncate text-sm font-black group-hover:text-accent-primary">
               {{ set.setName }}
             </p>

@@ -41,11 +41,6 @@ const router = createRouter({
       props: true,
     },
     {
-      path: '/flashcard/:setId',
-      name: 'flashcard',
-      redirect: to => ({ name: 'set-study', params: { setId: to.params.setId } }),
-    },
-    {
       path: '/quiz/:setId',
       name: 'quiz',
       component: () => import('@/components/PracticeView.vue'),

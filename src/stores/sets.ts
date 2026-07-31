@@ -1,7 +1,7 @@
 import type { EditorItem, ImportMode, ImportResult, VersionDiff, VocabSet, WordEntry } from '@/types'
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
-import { LEGACY_STORAGE_KEY, SETS_STORAGE_KEY } from '@/constants'
+import { SETS_STORAGE_KEY } from '@/constants'
 import { buildExportFileName, buildExportZipBlob, downloadBlob } from '@/lib/file'
 import { i18n } from '@/lib/i18n'
 import { applyImportedSets, parseImportJson, refreshImportVersionDiffs, summarizeDuplicateResult } from '@/lib/import'
@@ -80,7 +80,7 @@ export const useSetsStore = defineStore('sets', () => {
   }
 
   async function loadState() {
-    const loaded = await loadFromStorage(SETS_STORAGE_KEY, [LEGACY_STORAGE_KEY])
+    const loaded = await loadFromStorage(SETS_STORAGE_KEY)
     if (!loaded.value)
       return
 
@@ -107,9 +107,6 @@ export const useSetsStore = defineStore('sets', () => {
         else if (sanitizedSets.length > 0) {
           activeSetId.value = sanitizedSets[0].id
         }
-
-        if (loaded.sourceKey !== SETS_STORAGE_KEY)
-          saveState()
       }
     }
     catch {
@@ -313,11 +310,6 @@ export const useSetsStore = defineStore('sets', () => {
       word,
       meaning: draft.meaning.trim(),
       example: draft.example.trim() || `I am learning the word ${word}.`,
-      question: draft.question ?? {
-        prompt: `Choose the word that best completes the sentence: I am learning _____.`,
-        opts: [word, 'another word', 'not sure', 'skip this one'],
-        ans: 0,
-      },
     }, target.items.length)
 
     const nextSet = {

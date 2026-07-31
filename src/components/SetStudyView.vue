@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { PracticeMode } from '@/types'
-import { ArrowLeft, ArrowRight, BookOpenText, CheckCircle2, FileText, Folder } from 'lucide-vue-next'
+import { ArrowLeft, ArrowRight, BookOpenText, CheckCircle2, ChevronLeft, ChevronRight, FileText, Folder, PanelLeftClose, PanelLeftOpen } from 'lucide-vue-next'
 import { storeToRefs } from 'pinia'
 import { computed, onMounted, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
@@ -26,8 +26,11 @@ const words = computed(() => activeSet.value ? libraryStore.getSetWords(activeSe
 const selectedIndex = ref(0)
 const selectedMode = ref<Extract<PracticeMode, 'cloze' | 'reading'>>('cloze')
 const selectedCount = ref(5)
+const wordListOpen = ref(true)
 
 const selectedWord = computed(() => words.value[selectedIndex.value] ?? words.value[0] ?? null)
+const isFirstWord = computed(() => selectedIndex.value <= 0)
+const isLastWord = computed(() => selectedIndex.value >= words.value.length - 1)
 const availableCount = computed(() => activeSet.value ? sessionStore.getAvailablePracticeCount(activeSet.value.id, selectedMode.value) : 0)
 const countOptions = computed(() => {
   const total = availableCount.value
@@ -55,6 +58,21 @@ watch(selectedMode, () => {
 
 function updateSelectedCount(event: Event) {
   selectedCount.value = countOptions.value[Number((event.target as HTMLInputElement).value)] ?? 1
+}
+
+function selectWord(index: number) {
+  if (index < 0 || index >= words.value.length)
+    return
+  selectedIndex.value = index
+  window.scrollTo({ top: 0, behavior: 'smooth' })
+}
+
+function selectPreviousWord() {
+  selectWord(selectedIndex.value - 1)
+}
+
+function selectNextWord() {
+  selectWord(selectedIndex.value + 1)
 }
 
 function startPractice() {
@@ -92,20 +110,39 @@ onMounted(enterSet)
       </div>
     </div>
 
-    <div v-if="words.length" class="grid gap-5 lg:grid-cols-[minmax(12rem,16rem)_minmax(0,1fr)]">
-      <Card class="p-3 lg:max-h-[35rem] lg:overflow-y-auto">
-        <p class="px-2 pb-2 text-xs font-black uppercase tracking-wider text-ink-400">
-          {{ $t('study.wordList') }}
-        </p>
-        <div class="space-y-1">
-          <button v-for="(word, index) in words" :key="word.wordKey" type="button" class="flex w-full items-center justify-between gap-2 rounded-xl px-3 py-2.5 text-left transition-colors" :class="selectedIndex === index ? 'bg-accent-primary/10 text-accent-primary' : 'text-ink-700 hover:bg-ink-100 dark:text-ink-200 dark:hover:bg-ink-800'" @click="selectedIndex = index">
+    <div v-if="words.length" class="grid gap-6 lg:grid-cols-[minmax(12rem,16rem)_minmax(0,1fr)]">
+      <aside v-if="wordListOpen" class="min-w-0 border-b border-ink-200/60 pb-4 dark:border-ink-200/10 lg:border-b-0 lg:border-r lg:pr-4">
+        <div class="flex items-center justify-between gap-3">
+          <p class="text-xs font-black uppercase tracking-wider text-ink-400">
+            {{ $t('study.wordList') }} · {{ words.length }}
+          </p>
+          <Button variant="ghost" size="icon" class="h-8 w-8 shrink-0" :aria-label="$t('study.collapseWordList')" @click="wordListOpen = false">
+            <PanelLeftClose class="h-4 w-4" />
+          </Button>
+        </div>
+        <div class="mt-2 max-h-[35rem] space-y-1 overflow-y-auto pr-1">
+          <button v-for="(word, index) in words" :key="word.wordKey" type="button" class="flex w-full items-center justify-between gap-2 rounded-xl px-3 py-2.5 text-left transition-colors" :class="selectedIndex === index ? 'bg-accent-primary/10 text-accent-primary' : 'text-ink-700 hover:bg-ink-100 dark:text-ink-200 dark:hover:bg-ink-800'" @click="selectWord(index)">
             <span class="truncate text-sm font-bold">{{ word.word }}</span>
             <CheckCircle2 v-if="selectedIndex === index" class="h-4 w-4 shrink-0" />
           </button>
         </div>
-      </Card>
+      </aside>
 
-      <WordDetailCard :word="selectedWord" />
+      <div class="min-w-0">
+        <Button v-if="!wordListOpen" variant="ghost" class="mb-3 -ml-3 gap-2" @click="wordListOpen = true">
+          <PanelLeftOpen class="h-4 w-4" />{{ $t('study.showWordList') }}
+        </Button>
+        <WordDetailCard :word="selectedWord" />
+        <div class="mt-4 flex items-center justify-between gap-3">
+          <Button variant="outline" class="gap-2" :disabled="isFirstWord" @click="selectPreviousWord">
+            <ChevronLeft class="h-4 w-4" />{{ $t('study.previousWord') }}
+          </Button>
+          <span class="text-xs font-bold tabular-nums text-ink-400">{{ selectedIndex + 1 }} / {{ words.length }}</span>
+          <Button variant="outline" class="gap-2" :disabled="isLastWord" @click="selectNextWord">
+            {{ $t('study.nextWord') }}<ChevronRight class="h-4 w-4" />
+          </Button>
+        </div>
+      </div>
     </div>
     <Card v-else class="p-8 text-center text-sm font-semibold text-ink-400">
       {{ $t('study.noWords') }}

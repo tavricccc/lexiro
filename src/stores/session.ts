@@ -14,7 +14,7 @@ import type {
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { LEGACY_STORAGE_KEY, SESSION_STORAGE_KEY } from '@/constants'
+import { SESSION_STORAGE_KEY } from '@/constants'
 import { i18n } from '@/lib/i18n'
 import { createDebouncedSaver, loadFromStorage, saveToStorage } from '@/lib/persist'
 import { shuffleEntries, shuffleQuizEntry } from '@/lib/shuffle'
@@ -26,6 +26,7 @@ import { useSetsStore } from './sets'
 import { useUIStore } from './ui'
 
 const t = i18n.global.t
+const SESSION_STATE_VERSION = 3
 
 export function makeSessionKey(setId: string, mode: PracticeMode): string {
   return `${setId}::${mode}`
@@ -37,7 +38,7 @@ export function parseSessionKey(key: string): { setId: string, mode: PracticeMod
     return null
   const setId = key.slice(0, sep)
   const mode = key.slice(sep + 2)
-  if (!['quiz', 'cloze', 'reading', 'spelling', 'flashcard'].includes(mode))
+  if (!['quiz', 'cloze', 'reading', 'spelling'].includes(mode))
     return null
   return { setId, mode: mode as PracticeMode }
 }
@@ -57,7 +58,7 @@ function modeLabel(mode: PracticeMode): string {
     return t('practice.reading')
   if (mode === 'spelling')
     return t('practice.spelling')
-  return t('flashcard.title')
+  return t('practice.quiz')
 }
 
 function isInProgressSession(session: PracticeSession | null | undefined): session is PracticeSession {
@@ -87,24 +88,14 @@ export const useSessionStore = defineStore('session', () => {
     return sessionsByKey.value[activeKey.value] ?? null
   })
 
-  /** Alias of session.index — flashcard uses the same field as quiz/spelling. */
-  const flashcardIndex = computed(() => {
-    if (currentSession.value?.mode === 'flashcard')
-      return currentSession.value.index
-    return 0
-  })
-
   const sessionEntries = computed(() => currentSession.value?.entries ?? [])
   const totalItems = computed(() => sessionEntries.value.length)
   const currentIndex = computed(() => currentSession.value?.index ?? 0)
   const currentEntry = computed(() => sessionEntries.value[currentIndex.value] ?? null)
-  const flashcardEntry = computed(() => sessionEntries.value[flashcardIndex.value] ?? null)
 
   const progressCount = computed(() => {
     if (!currentSession.value)
       return 0
-    if (currentSession.value.mode === 'flashcard')
-      return Math.min(currentSession.value.index + 1, totalItems.value)
     const drafts = currentSession.value.drafts
     const currentDraft = drafts[currentIndex.value]
     const answered = currentDraft && (
@@ -151,14 +142,11 @@ export const useSessionStore = defineStore('session', () => {
 
   function snapshot() {
     return {
-      version: 2,
+      version: SESSION_STATE_VERSION,
       currentView: currentView.value,
       activeKey: activeKey.value,
       sessionsByKey: sessionsByKey.value,
       practiceCounts: practiceCounts.value,
-      // legacy single-session fields kept empty for older readers
-      currentSession: currentSession.value,
-      flashcardIndex: flashcardIndex.value,
     }
   }
 
@@ -208,7 +196,7 @@ export const useSessionStore = defineStore('session', () => {
 
   function getInProgressModes(setId: string): PracticeMode[] {
     const modes: PracticeMode[] = []
-    for (const mode of ['flashcard', 'quiz', 'cloze', 'reading', 'spelling'] as PracticeMode[]) {
+    for (const mode of ['quiz', 'cloze', 'reading', 'spelling'] as PracticeMode[]) {
       const session = getSession(setId, mode)
       if (isInProgressSession(session) && isResumableSession(setId, mode))
         modes.push(mode)
@@ -225,7 +213,7 @@ export const useSessionStore = defineStore('session', () => {
   }
 
   async function loadState() {
-    const loaded = await loadFromStorage(SESSION_STORAGE_KEY, [LEGACY_STORAGE_KEY])
+    const loaded = await loadFromStorage(SESSION_STORAGE_KEY)
     if (!loaded.value)
       return
 
@@ -233,10 +221,10 @@ export const useSessionStore = defineStore('session', () => {
       const parsed = JSON.parse(loaded.value)
       if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed))
         return
+      if (parsed.version !== SESSION_STATE_VERSION)
+        return
 
       const hasSessionPayload = 'currentView' in parsed
-        || 'currentSession' in parsed
-        || 'flashcardIndex' in parsed
         || 'practiceCounts' in parsed
         || 'sessionsByKey' in parsed
         || 'activeKey' in parsed
@@ -264,23 +252,7 @@ export const useSessionStore = defineStore('session', () => {
           // Prefer key mode if session mode drifted
           if (session.mode !== parsedKey.mode)
             session.mode = parsedKey.mode
-          if (session.mode === 'flashcard' && session.index >= session.entries.length)
-            session.index = Math.max(0, session.entries.length - 1)
           nextMap[key] = session
-        }
-      }
-      else if (parsed.currentSession) {
-        // v1 single session migration
-        const savedView = typeof parsed.currentView === 'string' ? parsed.currentView : 'home'
-        const session = normalizeSession(parsed.currentSession, validSetIds, savedView)
-        if (session) {
-          if (session.mode === 'flashcard' && Number.isInteger(parsed.flashcardIndex)) {
-            session.index = Math.min(
-              Math.max(0, parsed.flashcardIndex as number),
-              Math.max(0, session.entries.length - 1),
-            )
-          }
-          nextMap[makeSessionKey(session.sourceSetId, session.mode)] = session
         }
       }
 
@@ -291,11 +263,6 @@ export const useSessionStore = defineStore('session', () => {
 
       if (typeof parsed.activeKey === 'string' && nextMap[parsed.activeKey]) {
         activeKey.value = parsed.activeKey
-      }
-      else if (parsed.currentSession && typeof parsed.currentSession === 'object') {
-        const s = parsed.currentSession as PracticeSession
-        const key = makeSessionKey(s.sourceSetId, s.mode)
-        activeKey.value = nextMap[key] ? key : null
       }
       else {
         activeKey.value = null
@@ -311,9 +278,6 @@ export const useSessionStore = defineStore('session', () => {
         if (savedView !== 'home' && savedView !== 'result')
           currentView.value = 'home'
       }
-
-      if (loaded.sourceKey !== SESSION_STORAGE_KEY || parsed.version !== 2)
-        saveState(true)
     }
     catch {
       // Ignore
@@ -344,7 +308,7 @@ export const useSessionStore = defineStore('session', () => {
     return Math.min(Math.max(storedCount, 1), total)
   }
 
-  function toLegacyQuestion(question: MultipleChoiceQuestion) {
+  function toPracticeQuestion(question: MultipleChoiceQuestion) {
     return { prompt: question.prompt, opts: question.options, ans: question.answerIndex }
   }
 
@@ -363,7 +327,8 @@ export const useSessionStore = defineStore('session', () => {
         return pack.questions
           .filter(child => child.kind === 'multipleChoice' && Array.isArray(child.options) && child.options.length === 4 && Number.isInteger(child.answerIndex))
           .map(child => ({
-            item: { ...relatedItem, question: { prompt: child.prompt, opts: child.options!, ans: child.answerIndex! } },
+            item: relatedItem,
+            question: { prompt: child.prompt, opts: child.options!, ans: child.answerIndex! },
             originalIndex: items.indexOf(relatedItem),
             readingPassage: pack.passage,
           }))
@@ -376,9 +341,7 @@ export const useSessionStore = defineStore('session', () => {
         .filter(question => mode === 'cloze' ? isFillBlank(question) : !isFillBlank(question))
       const selected = choices[Math.floor(Math.random() * choices.length)]
       if (selected)
-        return [{ item: { ...item, question: toLegacyQuestion(selected) }, originalIndex: index }]
-      if (mode === 'quiz' && item.question)
-        return [{ item, originalIndex: index }]
+        return [{ item, question: toPracticeQuestion(selected), originalIndex: index }]
       return []
     })
     return entries
@@ -458,44 +421,22 @@ export const useSessionStore = defineStore('session', () => {
       await router.push({ name, params: { setId } })
   }
 
-  async function startFlashcards(setId: string) {
+  async function resumeSession(setId: string, mode: PracticeMode): Promise<boolean> {
+    if (!isResumableSession(setId, mode))
+      return false
+
     ensureActiveSet(setId)
-    const setsStore = useSetsStore()
-    const uiStore = useUIStore()
-    const items = setsStore.sets.find(s => s.id === setId)?.items ?? []
-
-    if (!items.length) {
-      uiStore.showToast(t('editor.itemsRequired'))
-      return
-    }
-
-    if (isResumableSession(setId, 'flashcard')) {
-      const confirmed = await confirmResume(setId, 'flashcard')
-      if (confirmed) {
-        activeKey.value = makeSessionKey(setId, 'flashcard')
-        currentView.value = 'flashcard'
-        saveState(true)
-        await navigateToSession('flashcard', setId)
-        window.scrollTo({ top: 0, behavior: 'smooth' })
-        return
-      }
-    }
-
-    putSession(setId, 'flashcard', createSession('flashcard', toSessionEntries(items), false, setId))
-    currentView.value = 'flashcard'
+    activeKey.value = makeSessionKey(setId, mode)
+    currentView.value = mode
     saveState(true)
-    await navigateToSession('flashcard', setId)
+    await navigateToSession(mode, setId)
     window.scrollTo({ top: 0, behavior: 'smooth' })
+    return true
   }
 
   async function startRound(mode: PracticeMode, setId: string, reviewEntries: SessionEntry[] | null = null) {
     const setsStore = useSetsStore()
     ensureActiveSet(setId)
-
-    if (mode === 'flashcard') {
-      await startFlashcards(setId)
-      return
-    }
 
     if (isResumableSession(setId, mode) && !reviewEntries) {
       const confirmed = await confirmResume(setId, mode)
@@ -532,7 +473,7 @@ export const useSessionStore = defineStore('session', () => {
       const readingEntries = setsStore.sets[0] ? buildQuestionEntries(setsStore.sets[0].id, setsStore.sets[0].items, 'reading') : []
       const unique = new Map<string, SessionEntry>()
       for (const entry of [...clozeEntries, ...readingEntries]) {
-        const key = `${entry.item.word}|${entry.item.question?.prompt}|${entry.readingPassage ?? ''}`
+        const key = `${entry.item.word}|${entry.question?.prompt}|${entry.readingPassage ?? ''}`
         unique.set(key, entry)
       }
       return shuffleEntries(Array.from(unique.values())).slice(0, learningStore.stats.dailyQuestionGoal)
@@ -583,14 +524,14 @@ export const useSessionStore = defineStore('session', () => {
   function getQuizUserAnswerText(entry: SessionEntry, selectedIndex: number | null | undefined): string {
     if (selectedIndex === null || selectedIndex === undefined)
       return t('result.notAnswered')
-    return entry.item.question?.opts[selectedIndex] ?? t('result.notAnswered')
+    return entry.question?.opts[selectedIndex] ?? t('result.notAnswered')
   }
 
   function buildQuizRecord(entry: SessionEntry, draft: Draft): QuizRecord {
     const selectedIndex = (draft && 'selectedIndex' in draft)
       ? draft.selectedIndex
       : null
-    const question = entry.item.question
+    const question = entry.question
     const isCorrect = Boolean(question && selectedIndex === question.ans)
 
     return {
@@ -617,7 +558,7 @@ export const useSessionStore = defineStore('session', () => {
   }
 
   function submitCurrentRound() {
-    if (!currentSession.value || (currentSession.value.mode === 'flashcard'))
+    if (!currentSession.value)
       return
 
     const mode = currentSession.value.mode
@@ -686,38 +627,6 @@ export const useSessionStore = defineStore('session', () => {
       submitted: true,
     }
     saveState()
-  }
-
-  function advanceFlashcard() {
-    if (!currentSession.value || currentSession.value.mode !== 'flashcard')
-      return false
-    if (currentSession.value.index >= currentSession.value.entries.length - 1)
-      return false
-    currentSession.value.index += 1
-    saveState(true)
-    return true
-  }
-
-  function prevFlashcard() {
-    if (!currentSession.value || currentSession.value.mode !== 'flashcard')
-      return false
-    if (currentSession.value.index <= 0)
-      return false
-    currentSession.value.index -= 1
-    saveState(true)
-    return true
-  }
-
-  function completeFlashcards() {
-    if (currentSession.value && currentSession.value.mode === 'flashcard') {
-      currentSession.value.status = 'completed'
-      currentSession.value.index = Math.max(0, currentSession.value.entries.length - 1)
-      // Keep completed flashcard session only briefly — remove so set can restart clean
-      if (activeKey.value)
-        removeSessionKey(activeKey.value)
-    }
-    saveState(true)
-    returnHome()
   }
 
   function restartCurrentMode() {
@@ -792,8 +701,6 @@ export const useSessionStore = defineStore('session', () => {
       return false
     if (routeName === 'result')
       return currentSession.value.status === 'completed' || currentView.value === 'result'
-    if (routeName === 'flashcard')
-      return currentSession.value.mode === 'flashcard'
     if (routeName === 'quiz')
       return currentSession.value.mode === 'quiz'
     if (routeName === 'cloze')
@@ -809,7 +716,6 @@ export const useSessionStore = defineStore('session', () => {
     sessionsByKey,
     activeKey,
     currentSession,
-    flashcardIndex,
     currentView,
     practiceCounts,
     practiceDialogOpen,
@@ -820,7 +726,6 @@ export const useSessionStore = defineStore('session', () => {
     totalItems,
     currentIndex,
     currentEntry,
-    flashcardEntry,
     progressCount,
     progressPercent,
     resultSummary,
@@ -832,12 +737,12 @@ export const useSessionStore = defineStore('session', () => {
     resetStudyView,
     returnHome,
     isResumableSession,
+    resumeSession,
     isSetInProgress,
     getInProgressModes,
     getInProgressModesLabel,
     getPracticeCount,
     getAvailablePracticeCount,
-    startFlashcards,
     startRound,
     startDailyQuestionRound,
     handlePracticeCountChange,
@@ -850,9 +755,6 @@ export const useSessionStore = defineStore('session', () => {
     handleQuizDraftChange,
     toggleReviewMark,
     handleSpellingDraftChange,
-    advanceFlashcard,
-    prevFlashcard,
-    completeFlashcards,
     restartCurrentMode,
     switchModeAfterResult,
     reviewWrongAnswers,

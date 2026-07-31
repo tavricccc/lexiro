@@ -8,7 +8,6 @@ function getSetContentSignature(set: VocabSet): string {
       pos: item.pos,
       meaning: item.meaning,
       example: item.example,
-      question: item.question,
     })),
   )
 }
@@ -19,7 +18,6 @@ function getItemContentSignature(item: VocabSet['items'][number]): string {
     pos: item.pos,
     meaning: item.meaning,
     example: item.example,
-    question: item.question,
   })
 }
 

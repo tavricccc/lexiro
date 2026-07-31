@@ -1,4 +1,4 @@
-import type { EditorItem, EditorQuestion, PracticeSession, Question, VocabItem, VocabSet } from '@/types'
+import type { EditorItem, PracticeSession, VocabItem, VocabSet } from '@/types'
 
 function isNonEmptyString(value: unknown): value is string {
   return typeof value === 'string' && value.trim().length > 0
@@ -12,31 +12,6 @@ function generateId(prefix?: string): string {
   return prefix ? `${prefix}-${Date.now()}-${suffix}` : `${Date.now()}`
 }
 
-export function normalizeQuestion(question: unknown, itemIndex: number): Question {
-  if (!question || typeof question !== 'object' || Array.isArray(question)) {
-    throw new Error(`第 ${itemIndex + 1} 筆的 question 格式錯誤`)
-  }
-  const q = question as Record<string, unknown>
-  if (!isNonEmptyString(q.prompt)) {
-    throw new Error(`第 ${itemIndex + 1} 筆缺少 question.prompt`)
-  }
-  if (!Array.isArray(q.opts) || q.opts.length !== 4) {
-    throw new Error(`第 ${itemIndex + 1} 筆的 question.opts 必須剛好有 4 個選項`)
-  }
-  if (q.opts.some((option: unknown) => !isNonEmptyString(option))) {
-    throw new Error(`第 ${itemIndex + 1} 筆的 question.opts 需全部為非空字串`)
-  }
-  if (!Number.isInteger(q.ans) || (q.ans as number) < 0 || (q.ans as number) > 3) {
-    throw new Error(`第 ${itemIndex + 1} 筆的 question.ans 需為 0 到 3`)
-  }
-
-  return {
-    prompt: (q.prompt as string).trim(),
-    opts: (q.opts as string[]).map((option: string) => option.trim()),
-    ans: q.ans as number,
-  }
-}
-
 export function normalizeItem(item: unknown, itemIndex: number): VocabItem {
   if (!item || typeof item !== 'object' || Array.isArray(item)) {
     throw new Error(`第 ${itemIndex + 1} 筆資料格式錯誤`)
@@ -48,16 +23,12 @@ export function normalizeItem(item: unknown, itemIndex: number): VocabItem {
   if (!isNonEmptyString(it.meaning)) {
     throw new Error(`第 ${itemIndex + 1} 筆缺少 meaning`)
   }
-  const rawQuestion = it.question as Record<string, unknown> | undefined
-  const hasQuestionPrompt = rawQuestion && isNonEmptyString(rawQuestion.prompt)
-
   return {
     id: isNonEmptyString(it.id) ? (it.id as string).trim() : generateId('item'),
     word: (it.word as string).trim(),
     pos: isNonEmptyString(it.pos) ? (it.pos as string).trim() : '',
     meaning: (it.meaning as string).trim(),
     example: isNonEmptyString(it.example) ? (it.example as string).trim() : '',
-    question: hasQuestionPrompt ? normalizeQuestion(it.question, itemIndex) : undefined,
     definition: isNonEmptyString(it.definition) ? (it.definition as string).trim() : undefined,
     phonetic: isNonEmptyString(it.phonetic) ? (it.phonetic as string).trim() : undefined,
     audioUrl: isNonEmptyString(it.audioUrl) ? (it.audioUrl as string).trim() : undefined,
@@ -140,7 +111,7 @@ export function normalizeSession(
     return null
   if (!Array.isArray(s.entries) || !s.entries.length)
     return null
-  if (!['quiz', 'cloze', 'reading', 'spelling', 'flashcard'].includes(s.mode as string))
+  if (!['quiz', 'cloze', 'reading', 'spelling'].includes(s.mode as string))
     return null
 
   const markedForReview = Array.isArray(s.markedForReview)
@@ -164,15 +135,6 @@ export function normalizeSession(
   }
 }
 
-export function createEditorQuestion(question: Question | null | undefined): EditorQuestion {
-  const opts = question?.opts
-  return {
-    prompt: question?.prompt ?? '',
-    opts: Array.isArray(opts) && opts.length === 4 ? [...opts] : ['', '', '', ''],
-    ans: Number.isInteger(question?.ans) ? (question?.ans ?? 0) : 0,
-  }
-}
-
 export function createEditorItem(item?: VocabItem | null, index = 0): EditorItem {
   return {
     id: isNonEmptyString(item?.id) ? (item.id as string).trim() : generateId(`editor-${index}`),
@@ -190,7 +152,6 @@ export function createEditorItem(item?: VocabItem | null, index = 0): EditorItem
     note: item?.note,
     tags: item?.tags ?? [],
     favorite: item?.favorite ?? false,
-    question: createEditorQuestion(item?.question),
   }
 }
 

@@ -40,18 +40,18 @@ describe('shuffleQuizEntry', () => {
         pos: 'n.',
         meaning: '蘋果',
         example: 'I eat an apple.',
-        question: {
-          prompt: '_____ is a fruit.',
-          opts: ['apple', 'banana', 'cherry', 'date'],
-          ans: 0,
-        },
+      },
+      question: {
+        prompt: '_____ is a fruit.',
+        opts: ['apple', 'banana', 'cherry', 'date'],
+        ans: 0,
       },
     }
 
     const shuffled = shuffleQuizEntry(entry)
-    const correct = entry.item.question!.opts[entry.item.question!.ans]
-    expect(shuffled.item.question!.opts[shuffled.item.question!.ans]).toBe(correct)
-    expect(shuffled.item.question!.opts).toHaveLength(4)
-    expect(new Set(shuffled.item.question!.opts)).toEqual(new Set(entry.item.question!.opts))
+    const correct = entry.question!.opts[entry.question!.ans]
+    expect(shuffled.question!.opts[shuffled.question!.ans]).toBe(correct)
+    expect(shuffled.question!.opts).toHaveLength(4)
+    expect(new Set(shuffled.question!.opts)).toEqual(new Set(entry.question!.opts))
   })
 })

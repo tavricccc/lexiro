@@ -1,4 +1,3 @@
-export const LEGACY_STORAGE_KEY = 'vocab_study_data'
 export const SETS_STORAGE_KEY = 'lexiro_sets_data'
 export const SESSION_STORAGE_KEY = 'lexiro_session_data'
 export const LEARNING_STORAGE_KEY = 'lexiro_learning_data'

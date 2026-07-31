@@ -45,7 +45,7 @@ const modeLabel = computed(() => {
 })
 
 function questionFor(row: typeof resultRows.value[number]) {
-  return row.entry.item.question ?? { prompt: '', opts: ['', '', '', ''], ans: 0 }
+  return row.entry.question
 }
 const isPerfect = computed(() => resultSummary.value != null && resultSummary.value.wrongCount === 0)
 
@@ -176,7 +176,7 @@ onMounted(() => {
               {{ $t('result.question', { index: row.index + 1 }) }} ｜ <span class="font-extrabold tracking-tight text-accent-primary">{{ row.entry.item.word }}</span>
             </p>
             <p class="text-xs text-ink-400 dark:text-ink-500 font-semibold">
-              {{ $t('flashcard.pos') }}：{{ row.entry.item.pos || 'n./v./adj.' }}
+              {{ $t('study.pos') }}：{{ row.entry.item.pos || 'n./v./adj.' }}
             </p>
           </div>
           <div class="flex items-center gap-2 shrink-0">
@@ -199,13 +199,13 @@ onMounted(() => {
         </div>
 
         <div class="mt-4 space-y-3 text-sm leading-relaxed text-ink-700 dark:text-ink-300">
-          <div v-if="isChoiceMode" class="space-y-2">
+          <div v-if="isChoiceMode && questionFor(row)" class="space-y-2">
             <p class="font-bold text-ink-950 dark:text-ink-50">
-              {{ questionFor(row).prompt }}
+              {{ questionFor(row)?.prompt }}
             </p>
             <div class="grid gap-1.5 p-3 rounded-xl bg-ink-100 dark:bg-ink-100/30 text-xs text-ink-500 dark:text-ink-400 border border-ink-200/30 dark:border-ink-200/5 font-semibold">
               <p>{{ $t('result.yourAnswer') }}：<span class="font-bold text-red-500">{{ row.record?.userAnswer ?? $t('result.notAnswered') }}</span></p>
-              <p>{{ $t('result.correctAnswer') }}：<span class="font-bold text-emerald-600 dark:text-emerald-400">{{ row.record?.correctAnswer ?? questionFor(row).opts[questionFor(row).ans] }}</span></p>
+              <p>{{ $t('result.correctAnswer') }}：<span class="font-bold text-emerald-600 dark:text-emerald-400">{{ row.record?.correctAnswer ?? questionFor(row)?.opts[questionFor(row)?.ans ?? 0] }}</span></p>
             </div>
           </div>
           <div v-else class="space-y-2">
@@ -213,7 +213,7 @@ onMounted(() => {
               {{ row.entry.item.example }}
             </p>
             <div class="grid gap-1.5 p-3 rounded-xl bg-ink-100 dark:bg-ink-100/30 text-xs text-ink-500 dark:text-ink-400 border border-ink-200/30 dark:border-ink-200/5 font-semibold">
-              <p>{{ $t('flashcard.meaning') }}：<span class="font-bold text-ink-850 dark:text-ink-200">{{ row.entry.item.meaning }}</span></p>
+              <p>{{ $t('study.meaning') }}：<span class="font-bold text-ink-850 dark:text-ink-200">{{ row.entry.item.meaning }}</span></p>
               <p>{{ $t('result.yourAnswer') }}：<span class="font-bold text-red-500">{{ row.record?.userAnswer ?? $t('result.notAnswered') }}</span></p>
               <p>{{ $t('result.correctAnswer') }}：<span class="font-bold text-emerald-600 dark:text-emerald-400">{{ row.record?.correctAnswer ?? row.entry.item.word }}</span></p>
             </div>

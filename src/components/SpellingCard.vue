@@ -108,7 +108,7 @@ onUnmounted(() => window.removeEventListener('keydown', onKeydown))
 
     <div class="rounded-2xl bg-ink-100/80 dark:bg-ink-900 border border-ink-200/70 dark:border-ink-200/25 p-5 text-left">
       <p class="text-xs font-extrabold uppercase tracking-widest text-ink-400 dark:text-ink-500">
-        {{ $t('flashcard.example') }}
+        {{ $t('study.example') }}
       </p>
       <p class="mt-3 text-[15px] leading-relaxed text-ink-950 dark:text-ink-50 font-bold sm:text-base">
         {{ blankedExample }}

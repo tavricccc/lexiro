@@ -2,7 +2,7 @@ import type { LibraryQuestion, LibraryState, VocabFolder, VocabSet, VocabSetMemb
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
 import { LIBRARY_STORAGE_KEY } from '@/constants'
-import { itemToMembership, itemToWordEntry, mergeWord, normalizeWordKey, questionFromLegacyItem } from '@/lib/library'
+import { itemToMembership, itemToWordEntry, mergeWord, normalizeWordKey } from '@/lib/library'
 import { loadFromStorage, saveToStorage } from '@/lib/persist'
 
 const CURRENT_VERSION = 1
@@ -98,9 +98,6 @@ export const useLibraryStore = defineStore('library', () => {
         memberships.push({ ...membership, senseIds: word.senses.map(sense => sense.id).filter(id => membership.senseIds.includes(id)) })
       }
       seen.add(membership.wordKey)
-      const question = questionFromLegacyItem(item)
-      if (question && !state.value.questions.some(existingQuestion => existingQuestion.id === question.id))
-        state.value.questions = [...state.value.questions, question]
     }
     state.value.memberships = { ...state.value.memberships, [set.id]: memberships.filter(member => seen.has(member.wordKey)) }
     pruneOrphans()

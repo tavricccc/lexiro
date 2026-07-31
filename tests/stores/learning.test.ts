@@ -18,11 +18,6 @@ function makeItem(id: string): VocabItem {
     pos: 'n.',
     meaning: `${id} meaning`,
     example: `${id} example`,
-    question: {
-      prompt: `What is ${id}?`,
-      opts: [id, 'other-a', 'other-b', 'other-c'],
-      ans: 0,
-    },
   }
 }
 

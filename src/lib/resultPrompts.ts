@@ -12,14 +12,9 @@ export function buildQuestionExplainPrompt(
   notAnsweredText: string,
 ) {
   if (['quiz', 'cloze', 'reading'].includes(mode)) {
-    const question = entry.item.question
-    if (!question) {
-      return prompts.explainSpellingQuestion
-        .replace('{{MEANING}}', entry.item.meaning)
-        .replace('{{EXAMPLE}}', entry.item.example)
-        .replace('{{USER_ANSWER}}', record?.userAnswer ?? notAnsweredText)
-        .replace('{{CORRECT_ANSWER}}', entry.item.word)
-    }
+    const question = entry.question
+    if (!question)
+      return ''
     return prompts.explainQuestion
       .replace('{{QUESTION}}', question.prompt)
       .replace('{{OPTIONS}}', formatQuestionOptions(question))
@@ -43,7 +38,7 @@ export function buildAllWrongQuestionsPrompt(rows: ResultRow[], mode: PracticeMo
     let text = `【第 ${idx + 1} 題】 單字：${entry.item.word}\n`
 
     if (['quiz', 'cloze', 'reading'].includes(mode)) {
-      const q = entry.item.question
+      const q = entry.question
       if (!q)
         return text
       text += `題目：${q.prompt}\n`

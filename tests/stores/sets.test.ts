@@ -88,22 +88,6 @@ describe('normalizeSet', () => {
     expect(() => normalizeSet({ ...validSetData, items: [noMeaning] }, 'f-1')).toThrow('缺少 meaning')
   })
 
-  it('throws when question has less than 4 opts', () => {
-    const badItem = {
-      ...validItem,
-      question: { prompt: 'X', opts: ['a', 'b', 'c'], ans: 0 },
-    }
-    expect(() => normalizeSet({ ...validSetData, items: [badItem] }, 'f-1')).toThrow('question.opts 必須剛好有 4 個選項')
-  })
-
-  it('throws when ans is out of range', () => {
-    const badItem = {
-      ...validItem,
-      question: { prompt: 'X', opts: ['a', 'b', 'c', 'd'], ans: 4 },
-    }
-    expect(() => normalizeSet({ ...validSetData, items: [badItem] }, 'f-1')).toThrow('question.ans 需為 0 到 3')
-  })
-
   it('assigns auto-generated item ids', () => {
     const result = normalizeSet(validSetData, 'f-1')
     expect(result.items[0].id).toBeTruthy()
