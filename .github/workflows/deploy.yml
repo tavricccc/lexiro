@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 concurrency:
-  group: pages-${{ github.workflow }}-${{ github.ref }}
+  group: vercel-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -25,6 +25,9 @@ jobs:
       VITE_FIREBASE_APP_ID: ${{ secrets.VITE_FIREBASE_APP_ID }}
       VITE_FIREBASE_APPCHECK_SITE_KEY: ${{ secrets.VITE_FIREBASE_APPCHECK_SITE_KEY }}
       VITE_GOOGLE_CLIENT_ID: ${{ secrets.VITE_GOOGLE_CLIENT_ID }}
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
     permissions:
       contents: read
     steps:
@@ -59,41 +62,85 @@ jobs:
       - name: Firestore Rules tests
         run: npm run test:rules
 
-      - name: Configure GitHub Pages
-        if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
-        id: pages
-        uses: actions/configure-pages@v6
-
       - name: Build
         run: npm run build
-        env:
-          VITE_BASE_PATH: ${{ steps.pages.outputs.base_path || '/lexiro/' }}
 
-      - name: Add GitHub Pages SPA fallback
+      - name: Validate Vercel deploy credentials
         if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
-        run: cp dist/index.html dist/404.html
+        run: |
+          if [ -z "$VERCEL_TOKEN" ]; then
+            echo "::error title=Missing GitHub Secret::Add VERCEL_TOKEN in Settings > Secrets and variables > Actions > Production."
+            exit 1
+          fi
+          if [ -z "$VERCEL_ORG_ID" ]; then
+            echo "::error title=Missing GitHub Secret::Add VERCEL_ORG_ID in Settings > Secrets and variables > Actions > Production."
+            exit 1
+          fi
+          if [ -z "$VERCEL_PROJECT_ID" ]; then
+            echo "::error title=Missing GitHub Secret::Add VERCEL_PROJECT_ID in Settings > Secrets and variables > Actions > Production."
+            exit 1
+          fi
 
-      - name: Upload Pages artifact
+      - name: Link Vercel project
         if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
-        uses: actions/upload-pages-artifact@v5
+        run: npx vercel link --yes --project "$VERCEL_PROJECT_ID" --scope "$VERCEL_ORG_ID" --token "$VERCEL_TOKEN"
+
+      - name: Build Vercel prebuilt output
+        if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+        run: npx vercel build --yes --prod --token "$VERCEL_TOKEN" --scope "$VERCEL_ORG_ID"
+
+      - name: Upload Vercel prebuilt artifact
+        if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+        uses: actions/upload-artifact@v7
         with:
-          path: dist
+          name: vercel-prebuilt
+          path: .vercel/output
+          include-hidden-files: true
 
-  deploy-pages:
+  deploy-vercel:
     if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
     needs: verify
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      pages: write
-      id-token: write
     environment:
       name: Production
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deployment.outputs.url }}
+    env:
+      VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
     steps:
-      - name: Deploy to GitHub Pages
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Download Vercel prebuilt artifact
+        uses: actions/download-artifact@v8
+        with:
+          name: vercel-prebuilt
+          path: .vercel/output
+
+      - name: Restore Vercel project link
+        run: |
+          mkdir -p .vercel
+          printf '{"orgId":"%s","projectId":"%s"}\n' "$VERCEL_ORG_ID" "$VERCEL_PROJECT_ID" > .vercel/project.json
+
+      - name: Deploy prebuilt output to Vercel
         id: deployment
-        uses: actions/deploy-pages@v5
+        run: |
+          url=$(npx vercel deploy --yes --prebuilt --prod --token "$VERCEL_TOKEN" --scope "$VERCEL_ORG_ID")
+          echo "url=$url" >> "$GITHUB_OUTPUT"
+          echo "$url"
 
   deploy-firebase-rules:
     if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
