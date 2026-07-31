@@ -1,0 +1,1379 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 192,
+  "words": [
+    {
+      "wordKey": "reap",
+      "word": "reap",
+      "senses": [
+        {
+          "id": "sense-84e79b58",
+          "pos": "verb",
+          "meaningZh": "收穫（成果）；得到（報酬）",
+          "definitionEn": "receive as a consequence of actions",
+          "examples": [
+            "If you study hard, you will reap the benefits of good grades."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-787120ea",
+          "pos": "verb",
+          "meaningZh": "收割；收穫（農作物）",
+          "definitionEn": "gather, as of natural products",
+          "examples": [
+            "After months of hard work in the fields, the farmers were able to reap the rewards of their labor with a bountiful harvest."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "reckless",
+      "word": "reckless",
+      "senses": [
+        {
+          "id": "sense-c60c1375",
+          "pos": "adjective",
+          "meaningZh": "粗心大意的；漫不經心的",
+          "definitionEn": "characterized by careless unconcern",
+          "examples": [
+            "The reckless driver weaved in and out of traffic, causing multiple accidents along the way."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-55f21c43",
+          "pos": "adjective",
+          "meaningZh": "魯莽的；不顧後果的",
+          "definitionEn": "marked by defiant disregard for danger or consequences",
+          "examples": [
+            "Speeding through red lights and weaving in and out of traffic, the reckless driver put the lives of everyone on the road at risk."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "reckon",
+      "word": "reckon",
+      "senses": [
+        {
+          "id": "sense-92e2f0c5",
+          "pos": "verb",
+          "meaningZh": "認為；猜想",
+          "definitionEn": "believe or suppose something to be true or possible",
+          "examples": [
+            "I reckon we’ll be able to make it to the concert if we leave by 6 pm."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-59345e01",
+          "pos": "verb",
+          "meaningZh": "視為；看待",
+          "definitionEn": "consider or regard something in a specified way",
+          "examples": [
+            "I reckon it’s going to rain today, so I’ll bring my umbrella to work."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "reconcile",
+      "word": "reconcile",
+      "senses": [
+        {
+          "id": "sense-366be155",
+          "pos": "verb",
+          "meaningZh": "和好；調解（爭端）",
+          "definitionEn": "to come to an agreement after a disagreement",
+          "examples": [
+            "After months of arguing, the couple finally reconciled their differences and decided to work on their relationship."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-d2c95c14",
+          "pos": "verb",
+          "meaningZh": "接受；甘心（於不如意的事）",
+          "definitionEn": "to accept something that was previously unacceptable or unlikely",
+          "examples": [
+            "After their argument, they were able to reconcile and become friends again."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "recreational",
+      "word": "recreational",
+      "senses": [
+        {
+          "id": "sense-503dc8d2",
+          "pos": "adjective",
+          "meaningZh": "休閒的；娛樂的",
+          "definitionEn": "of or relating to recreation",
+          "examples": [
+            "The city park has a variety of recreational activities such as basketball, tennis, and hiking trails."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-0137eb3f",
+          "pos": "adjective",
+          "meaningZh": "業餘消遣的；非競技性的",
+          "definitionEn": "engaged in as a pastime",
+          "examples": [
+            "Many people participate in recreational sports on the weekends to relieve stress and stay active."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "redundancy",
+      "word": "redundancy",
+      "senses": [
+        {
+          "id": "sense-a4ab9d48",
+          "pos": "noun",
+          "meaningZh": "多餘；贅餘",
+          "definitionEn": "the state of being unnecessary or extra",
+          "examples": [
+            "Using the phrase 'I am going to return back' is a redundancy since the word 'return' implies going back already."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-f1af7351",
+          "pos": "noun",
+          "meaningZh": "重複（表達）；囉嗦",
+          "definitionEn": "repetition of an action or message that is not needed",
+          "examples": [
+            "During the presentation, the speaker kept reiterating the same points, displaying a clear case of redundancy."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "reef",
+      "word": "reef",
+      "senses": [
+        {
+          "id": "sense-e973d851",
+          "pos": "noun",
+          "meaningZh": "礁石；珊瑚礁",
+          "definitionEn": "a ridge of rock or coral under or near the surface of the sea",
+          "examples": [
+            "The Caribbean is known for its beautiful reefs, where tourists can go snorkeling and scuba diving."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-695b98bb",
+          "pos": "noun",
+          "meaningZh": "（帆的）縮帆布",
+          "definitionEn": "a strip of sail that can be rolled up to make the sail smaller",
+          "examples": [
+            "We had to reef the sail because of the strong wind."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "referee",
+      "word": "referee",
+      "senses": [
+        {
+          "id": "sense-acac24a7",
+          "pos": "noun",
+          "meaningZh": "裁判；主裁",
+          "definitionEn": "the chief official in sports such as boxing or American football, who ensures fair play",
+          "examples": [
+            "The referee blew the whistle to signal the end of the game."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-4ab71ed0",
+          "pos": "verb",
+          "meaningZh": "審查（同儕作品）；評審",
+          "definitionEn": "to evaluate a colleague’s work in a professional setting",
+          "examples": [
+            "In a scientific research conference, a group of experts were selected to referee the presentations and provide constructive feedback to the presenters."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "referendum",
+      "word": "referendum",
+      "senses": [
+        {
+          "id": "sense-780ae830",
+          "pos": "noun",
+          "meaningZh": "公民投票；公投",
+          "definitionEn": "a vote by the people of a country or region in which they express their opinion about a political or social issue, especially one that is important or controversial.",
+          "examples": [
+            "The government decided to hold a referendum on whether to legalize same-sex marriage, allowing the citizens to directly influence the decision-making process."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "refine",
+      "word": "refine",
+      "senses": [
+        {
+          "id": "sense-06cd722f",
+          "pos": "verb",
+          "meaningZh": "提煉；精製（原料）",
+          "definitionEn": "to remove impurities or unwanted elements from a substance to purify it or make it more concentrated",
+          "examples": [
+            "In the laboratory, scientists use various techniques to refine crude oil into usable petroleum products such as gasoline, diesel, and lubricants."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-9c69d29f",
+          "pos": "verb",
+          "meaningZh": "改良；精進（細節）",
+          "definitionEn": "to improve something by making small changes, polishing or pruning it",
+          "examples": [
+            "After receiving feedback from beta testers, the software developers refined the user interface to make it more intuitive and user-friendly."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "refinement",
+      "word": "refinement",
+      "senses": [
+        {
+          "id": "sense-de318963",
+          "pos": "noun",
+          "meaningZh": "提煉；精製（過程）",
+          "definitionEn": "the process of removing impurities, such as from oil, metals, or sugar",
+          "examples": [
+            "The refinery uses various techniques for the refinement of crude oil, such as distillation and cracking, to produce high-quality petroleum products."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-550385fc",
+          "pos": "noun",
+          "meaningZh": "細微差異；精妙之處",
+          "definitionEn": "a subtle distinction in meaning, opinion, or attitude",
+          "examples": [
+            "She showed great refinement in the way she answered the tricky question during the job interview."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "reflective",
+      "word": "reflective",
+      "senses": [
+        {
+          "id": "sense-924c4f12",
+          "pos": "adjective",
+          "meaningZh": "反光的；能反射的",
+          "definitionEn": "capable of physically reflecting light or sound",
+          "examples": [
+            "The reflective surface of the mirror magnified the small details of his face."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-61c8babc",
+          "pos": "adjective",
+          "meaningZh": "沉思的；善於反省的",
+          "definitionEn": "deeply or seriously thoughtful",
+          "examples": [
+            "After the death of his father, John became more reflective and spent hours lost in thought."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "refresh",
+      "word": "refresh",
+      "senses": [
+        {
+          "id": "sense-b34c73eb",
+          "pos": "verb",
+          "meaningZh": "清爽提振；使煥然一新",
+          "definitionEn": "to make something feel new or cool again",
+          "examples": [
+            "After a long day at work, Jane took a shower to refresh herself before heading out to dinner."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-59b0569e",
+          "pos": "verb",
+          "meaningZh": "休息恢復；養精蓄銳",
+          "definitionEn": "to rest and regain energy",
+          "examples": [
+            "After a long day at work, I like to take a nap to refresh myself and recharge my batteries."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L2",
+        "textbookTitle": "龍騰 B1·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "refreshment",
+      "word": "refreshment",
+      "senses": [
+        {
+          "id": "sense-f340c5bb",
+          "pos": "noun",
+          "meaningZh": "點心飲料；茶點",
+          "definitionEn": "snacks and drinks served as a light meal",
+          "examples": [
+            "After a long day of hiking, we stopped for some refreshments at the picnic area, enjoying sandwiches, fruit, and cold drinks."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-9b28cc3c",
+          "pos": "noun",
+          "meaningZh": "消遣休養；身心舒緩",
+          "definitionEn": "activity that refreshes and renews your health and spirits by enjoyment and relaxation",
+          "examples": [
+            "After a long day of work, John decided to take a refreshing swim in the pool as a form of refreshment."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "refreshments",
+      "word": "refreshments",
+      "senses": [
+        {
+          "id": "sense-ae4dd506",
+          "pos": "noun",
+          "meaningZh": "（複數）茶點；點心飲料",
+          "definitionEn": "snacks and drinks served as a light meal",
+          "examples": [
+            "After a long day of hiking, we stopped for some refreshments at the picnic area, enjoying sandwiches, fruit, and cold drinks."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-03231db1",
+          "pos": "noun",
+          "meaningZh": "（複數）消遣；休憩活動",
+          "definitionEn": "activity that refreshes and renews your health and spirits by enjoyment and relaxation",
+          "examples": [
+            "After a long day of work, John decided to take a refreshing swim in the pool as a form of refreshment."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "refute",
+      "word": "refute",
+      "senses": [
+        {
+          "id": "sense-90c44c85",
+          "pos": "verb",
+          "meaningZh": "駁倒；證偽",
+          "definitionEn": "prove to be false or incorrect",
+          "examples": [
+            "The scientist was able to refute the hypothesis that the Earth is flat by showing evidence of its spherical shape."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-a15aa26e",
+          "pos": "verb",
+          "meaningZh": "反駁；推翻（論點）",
+          "definitionEn": "overthrow by argument, evidence, or proof",
+          "examples": [
+            "He tried to refute the evidence presented in court, but it was too strong to deny."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "rehabilitate",
+      "word": "rehabilitate",
+      "senses": [
+        {
+          "id": "sense-72d7bc57",
+          "pos": "verb",
+          "meaningZh": "復健；協助回歸社會",
+          "definitionEn": "to help someone to return to a healthy or respected way of life",
+          "examples": [
+            "After serving his sentence, the prison provided a program to rehabilitate the inmate and ensure a successful reintegration into society."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-fe7b505e",
+          "pos": "verb",
+          "meaningZh": "復原；恢復功能",
+          "definitionEn": "to restore something to its previous condition of goodness or functionality",
+          "examples": [
+            "After months of physical therapy, the patient was able to rehabilitate their injured knee and return to playing sports."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 翰林 B1·L4",
+        "textbookTitle": "翰林 B1·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "rehearse",
+      "word": "rehearse",
+      "senses": [
+        {
+          "id": "sense-f55656dc",
+          "pos": "verb",
+          "meaningZh": "排練；排演",
+          "definitionEn": "practice a performance of (a play, piece of music, etc.)",
+          "examples": [
+            "The theater group met every evening to rehearse their upcoming play."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-6963fbdd",
+          "pos": "verb",
+          "meaningZh": "反覆演練；背熟（台詞）",
+          "definitionEn": "repeat (a sequence of events)",
+          "examples": [
+            "The actor rehearsed his lines to ensure a flawless performance on opening night."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "reign",
+      "word": "reign",
+      "senses": [
+        {
+          "id": "sense-fc0ba006",
+          "pos": "noun",
+          "meaningZh": "統治權；王權",
+          "definitionEn": "The power or rule of a monarch or royal family.",
+          "examples": [
+            "Queen Elizabeth II has been in reign over the United Kingdom since 1952."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-fd9cad86",
+          "pos": "noun",
+          "meaningZh": "在位期；統治時期",
+          "definitionEn": "The time period in which a monarch holds power.",
+          "examples": [
+            "Queen Elizabeth II’s reign began on February 6, 1952, and has now surpassed 69 years, making her the longest-reigning monarch in British history."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "rejoice",
+      "word": "rejoice",
+      "senses": [
+        {
+          "id": "sense-e8ab6008",
+          "pos": "verb",
+          "meaningZh": "歡欣；慶賀",
+          "definitionEn": "to express joy or delight",
+          "examples": [
+            "After a long and challenging journey, the family finally reached their destination and started to rejoice, hugging and jumping with happiness."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-3248197f",
+          "pos": "verb",
+          "meaningZh": "喜悅；欣喜若狂",
+          "definitionEn": "to be extremely happy",
+          "examples": [
+            "After months of hard work, she finally received the promotion she had been working towards and was filled with rejoice."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "relay",
+      "word": "relay",
+      "senses": [
+        {
+          "id": "sense-6f1b2b8c",
+          "pos": "noun",
+          "meaningZh": "（接力）傳遞；轉交",
+          "definitionEn": "the act of passing something along from one person or group to another",
+          "examples": [
+            "In a relay race, each runner passes the baton to the next runner until it reaches the finish line."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-bbd9e22a",
+          "pos": "noun",
+          "meaningZh": "（電氣）繼電器",
+          "definitionEn": "an electrical device that controls the flow of electricity, typically between circuits with different voltages or functions",
+          "examples": [
+            "The relay in the circuit automatically switches off the power supply when it detects a surge in voltage."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "relentless",
+      "word": "relentless",
+      "senses": [
+        {
+          "id": "sense-ad902eec",
+          "pos": "adjective",
+          "meaningZh": "冷酷無情；毫不留情",
+          "definitionEn": "not to be placated, appeased or moved by entreaty",
+          "examples": [
+            "Despite numerous pleas for mercy, the relentless prosecutor continued to pursue the maximum punishment."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-05a7cc2f",
+          "pos": "adjective",
+          "meaningZh": "不間斷的；持續不懈的",
+          "definitionEn": "never-ceasing",
+          "examples": [
+            "Despite the pouring rain, the team's relentless determination to win persisted throughout the entire game."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "reliance",
+      "word": "reliance",
+      "senses": [
+        {
+          "id": "sense-949d96bc",
+          "pos": "noun",
+          "meaningZh": "依賴；倚靠",
+          "definitionEn": "the state of relying on something",
+          "examples": [
+            "My reliance on Google Maps increased when I moved to a new city."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-e26b5bc3",
+          "pos": "noun",
+          "meaningZh": "依存關係；依賴對象",
+          "definitionEn": "a company or group that provides a particular product or service",
+          "examples": [
+            "Our company has a reliance on reliable internet access to conduct video conferencing with clients."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "reliant",
+      "word": "reliant",
+      "senses": [
+        {
+          "id": "sense-7f863aff",
+          "pos": "adjective",
+          "meaningZh": "依賴的；仰賴的",
+          "definitionEn": "needing someone or something for support or help",
+          "examples": [
+            "She was reliant on her parents for financial assistance throughout college."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "relic",
+      "word": "relic",
+      "senses": [
+        {
+          "id": "sense-0fd4c0dc",
+          "pos": "noun",
+          "meaningZh": "古物；遺跡；文物",
+          "definitionEn": "an object surviving from an earlier time, especially one of historical or sentimental interest",
+          "examples": [
+            "The museum had an impressive collection of ancient relics such as pottery, coins, and sculptures that were dug up from the ruins of the civilization."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-c3b9ae04",
+          "pos": "noun",
+          "meaningZh": "聖人遺物；聖骨",
+          "definitionEn": "an object or part of a person’s body that is considered holy and is kept after their death",
+          "examples": [
+            "In the museum, visitors can view a relic of Saint Francis which is a piece of his robe that he wore when he traveled around Italy."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "remainder",
+      "word": "remainder",
+      "senses": [
+        {
+          "id": "sense-b6238e3d",
+          "pos": "noun",
+          "meaningZh": "剩餘部分；餘下",
+          "definitionEn": "something that is left over after taking away the other parts",
+          "examples": [
+            "After finishing the puzzle, there were a few pieces of the puzzle remaining that didn't fit anywhere."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-508e1947",
+          "pos": "noun",
+          "meaningZh": "零頭布料；殘布",
+          "definitionEn": "a piece of cloth left over after the rest has been used or sold",
+          "examples": [
+            "After finishing the sewing project, she had a small remainder of fabric that she used for a patchwork quilt."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "reminiscent",
+      "word": "reminiscent",
+      "senses": [
+        {
+          "id": "sense-5ee12e5a",
+          "pos": "adjective",
+          "meaningZh": "令人懷舊的；使人聯想到",
+          "definitionEn": "bringing to mind something from the past; suggestive of an earlier time or place",
+          "examples": [
+            "Walking through my grandmother's garden was reminiscent of my childhood summers spent there."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "renowned",
+      "word": "renowned",
+      "senses": [
+        {
+          "id": "sense-c742c143",
+          "pos": "adjective",
+          "meaningZh": "著名的；聞名遐邇的",
+          "definitionEn": "having a widespread reputation, especially for excellence or achievement",
+          "examples": [
+            "The renowned author received numerous awards for her compelling novels and captivating storytelling."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "reproduce",
+      "word": "reproduce",
+      "senses": [
+        {
+          "id": "sense-e5a77a54",
+          "pos": "verb",
+          "meaningZh": "繁殖；生育",
+          "definitionEn": "to produce more individuals of a given animal or plant through sexual or asexual reproduction",
+          "examples": [
+            "The farmers wanted to reproduce their best crops in order to increase their yields and profits."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-4f1a17c8",
+          "pos": "verb",
+          "meaningZh": "複製；仿製",
+          "definitionEn": "to make a copy or equivalent of something",
+          "examples": [
+            "The artist was able to reproduce the original painting with such accuracy that it was hard to tell the two apart."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·R2 +1",
+        "textbookTitle": "龍騰 B3·R2、三民 B4·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "reptile",
+      "word": "reptile",
+      "senses": [
+        {
+          "id": "sense-e48da7f9",
+          "pos": "noun",
+          "meaningZh": "爬蟲類；爬行動物",
+          "definitionEn": "Any of various cold-blooded, usually egg-laying vertebrates that include turtles, snakes, lizards, crocodiles, and alligators, having an external covering of scales or horny plates and breathing by means of lungs or gills.",
+          "examples": [
+            "While hiking, I came across a sunbathing reptile, which turned out to be a harmless snake."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    }
+  ]
+}

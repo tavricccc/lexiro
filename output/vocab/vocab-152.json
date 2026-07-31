@@ -1,0 +1,1420 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 152,
+  "words": [
+    {
+      "wordKey": "pastry",
+      "word": "pastry",
+      "senses": [
+        {
+          "id": "sense-933ee238",
+          "pos": "noun",
+          "meaningZh": "糕點；烘焙點心",
+          "definitionEn": "any of various baked foods made of dough or batter",
+          "examples": [
+            "I picked up a flaky pastry from the bakery for breakfast."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-d0846843",
+          "pos": "noun",
+          "meaningZh": "酥皮麵團；糕餅皮",
+          "definitionEn": "a dough of flour and water and shortening",
+          "examples": [
+            "She made delicious pastries filled with fruit and whipped cream."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "patch",
+      "word": "patch",
+      "senses": [
+        {
+          "id": "sense-0243b7a0",
+          "pos": "noun",
+          "meaningZh": "補丁；小塊（土地）",
+          "definitionEn": "a small piece of material used to cover a hole, or a small area of ground",
+          "examples": [
+            "She sewed a patch over the hole in his jeans."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-e6604ad4",
+          "pos": "noun",
+          "meaningZh": "一段時間；短暫期間",
+          "definitionEn": "a period of indeterminate length, usually short, marked by some action or condition",
+          "examples": [
+            "During the patch of heavy rain, we decided to stay indoors and play board games."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "patent",
+      "word": "patent",
+      "senses": [
+        {
+          "id": "sense-64c5ef87",
+          "pos": "noun",
+          "meaningZh": "專利；專利證書",
+          "definitionEn": "an official document granting a right or privilege",
+          "examples": [
+            "Inventors can apply for a patent to protect their idea or invention from being copied or stolen by others."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "pathetic",
+      "word": "pathetic",
+      "senses": [
+        {
+          "id": "sense-6f1ff955",
+          "pos": "adjective",
+          "meaningZh": "可悲的；令人憐憫的",
+          "definitionEn": "inspiring scornful pity",
+          "examples": [
+            "The pathetic sight of a grown man crying over spilt milk was quite embarrassing for everyone in the room."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-97277d53",
+          "pos": "adjective",
+          "meaningZh": "可憐又可鄙的；窩囊的",
+          "definitionEn": "inspiring mixed contempt and pity",
+          "examples": [
+            "The once majestic lion in the zoo looked pathetic with its matted fur and sunken eyes, causing visitors to feel both contempt and pity for the once-great animal."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "patrol",
+      "word": "patrol",
+      "senses": [
+        {
+          "id": "sense-86e0039b",
+          "pos": "noun",
+          "meaningZh": "巡邏；巡視",
+          "definitionEn": "the act of regularly moving around an area to ensure it is secure",
+          "examples": [
+            "The security guard went on a patrol around the building to check for any signs of trespassing or suspicious activity."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-ef639951",
+          "pos": "noun",
+          "meaningZh": "巡邏隊；哨兵組",
+          "definitionEn": "a group or detachment that moves through an area at regular intervals to provide security or reconnaissance",
+          "examples": [
+            "The police set up a patrol to ensure the safety of the neighborhood during the night."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "patron",
+      "word": "patron",
+      "senses": [
+        {
+          "id": "sense-4af2f676",
+          "pos": "noun",
+          "meaningZh": "贊助人；支持者",
+          "definitionEn": "someone who supports or champions something",
+          "examples": [
+            "The patron of the art museum donated a large amount of money to support the conservation and exhibition of artworks."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-810f5eb6",
+          "pos": "noun",
+          "meaningZh": "老顧客；常客",
+          "definitionEn": "a regular customer",
+          "examples": [
+            "Our restaurant has been visited by many patrons every week, many of whom are regulars."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "peasant",
+      "word": "peasant",
+      "senses": [
+        {
+          "id": "sense-058ce136",
+          "pos": "noun",
+          "meaningZh": "農民；佃農",
+          "definitionEn": "one of a class of agricultural laborers, particularly in Europe",
+          "examples": [
+            "The peasants in the village often toiled in the fields from dawn till dusk, growing crops and tending to the livestock."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-f1ae9b49",
+          "pos": "noun",
+          "meaningZh": "鄉下人；農村居民",
+          "definitionEn": "a country person",
+          "examples": [
+            "The peasants were busy harvesting the wheat from the fields."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "pedal",
+      "word": "pedal",
+      "senses": [
+        {
+          "id": "sense-c8602228",
+          "pos": "noun",
+          "meaningZh": "踏板；腳踏",
+          "definitionEn": "a lever that is operated with the foot",
+          "examples": [
+            "I love riding my bike and using the pedals to move forward."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-5c472b17",
+          "pos": "verb",
+          "meaningZh": "踩踏板；踩（管風琴）腳鍵",
+          "definitionEn": "to operate the pedals on a keyboard instrument",
+          "examples": [
+            "She had to pedal the organ to produce music for the church service."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "pedestrian",
+      "word": "pedestrian",
+      "senses": [
+        {
+          "id": "sense-5a054123",
+          "pos": "noun",
+          "meaningZh": "行人；步行者",
+          "definitionEn": "a person who travels on foot",
+          "examples": [
+            "The city council decided to install more sidewalks and crosswalks to ensure the safety of pedestrians."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-b429e6ce",
+          "pos": "adjective",
+          "meaningZh": "平淡無奇的；乏味的",
+          "definitionEn": "unimaginative; dull; ordinary",
+          "examples": [
+            "The movie plot was too pedestrian for my taste; there was nothing new or exciting about it."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "penetrate",
+      "word": "penetrate",
+      "senses": [
+        {
+          "id": "sense-4bca4b40",
+          "pos": "verb",
+          "meaningZh": "穿透；刺穿",
+          "definitionEn": "to pass into or through something, especially by overcoming resistance",
+          "examples": [
+            "The drill was unable to penetrate the thick layer of concrete."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-2b4cfde9",
+          "pos": "verb",
+          "meaningZh": "滲透；瀰漫",
+          "definitionEn": "to spread or diffuse through something",
+          "examples": [
+            "The smell of freshly baked cookies penetrated the entire house."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L3",
+        "textbookTitle": "龍騰 B5·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "pension",
+      "word": "pension",
+      "senses": [
+        {
+          "id": "sense-f9fa0a92",
+          "pos": "noun",
+          "meaningZh": "退休金；養老金",
+          "definitionEn": "a payment made by the government or company to someone who has retired from work",
+          "examples": [
+            "After working for the company for 25 years, John was eligible for a pension that would provide him a comfortable income during his retirement years."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-9a8040bf",
+          "pos": "verb",
+          "meaningZh": "發給退休金；讓…退休",
+          "definitionEn": "to give someone a pension or regular payment to support them during their retirement",
+          "examples": [
+            "After working for 25 years, the company decided to pension the senior employees, including Jane."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "perceive",
+      "word": "perceive",
+      "senses": [
+        {
+          "id": "sense-e1d1f331",
+          "pos": "verb",
+          "meaningZh": "察覺；感知",
+          "definitionEn": "to become aware of something through one’s senses",
+          "examples": [
+            "She could perceive the faint smell of freshly baked cookies wafting through the kitchen."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-a8684e2a",
+          "pos": "verb",
+          "meaningZh": "認識到；意識到",
+          "definitionEn": "to become conscious of something or realize its existence",
+          "examples": [
+            "The detective carefully examined the clues, trying to perceive the hidden pattern."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "perception",
+      "word": "perception",
+      "senses": [
+        {
+          "id": "sense-662fdf7c",
+          "pos": "noun",
+          "meaningZh": "感知；知覺",
+          "definitionEn": "the process of perceiving or becoming aware of something via the senses",
+          "examples": [
+            "Walking barefoot on the sandy beach, she could feel the coolness beneath her feet, and the sound of seagulls and crashing waves enhanced her perception of the serene coastal scene."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-ebacb3a9",
+          "pos": "noun",
+          "meaningZh": "認知；看法",
+          "definitionEn": "knowledge or a way of conceiving something, gained through perception",
+          "examples": [
+            "Her perception of the movie changed after she watched it for a second time and noticed all the subtle details she had missed before."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "performer",
+      "word": "performer",
+      "senses": [
+        {
+          "id": "sense-aca2159c",
+          "pos": "noun",
+          "meaningZh": "表演者；演員",
+          "definitionEn": "a person who entertains an audience by performing a dramatic or musical work",
+          "examples": [
+            "The performer captivated the audience with her stunning rendition of the famous aria."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "persist",
+      "word": "persist",
+      "senses": [
+        {
+          "id": "sense-fa299100",
+          "pos": "verb",
+          "meaningZh": "持續存在；延續",
+          "definitionEn": "continue to exist",
+          "examples": [
+            "Despite the company facing financial difficulties, it managed to persist through hard work and determination."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-7733033a",
+          "pos": "verb",
+          "meaningZh": "堅持；不放棄",
+          "definitionEn": "be persistent or refuse to stop",
+          "examples": [
+            "Despite facing various obstacles, the young athlete persisted with her rigorous training schedule, eventually securing a gold medal at the Olympics."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "personnel",
+      "word": "personnel",
+      "senses": [
+        {
+          "id": "sense-7144289d",
+          "pos": "noun",
+          "meaningZh": "人員；員工",
+          "definitionEn": "a group of people employed in an organization or engaged in an organized undertaking such as military service",
+          "examples": [
+            "The company’s personnel department is responsible for hiring and managing employees."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-7127fb3e",
+          "pos": "noun",
+          "meaningZh": "人事部門",
+          "definitionEn": "the department responsible for hiring and training and placing employees and for setting policies for personnel management",
+          "examples": [
+            "The personnel department is responsible for recruiting, hiring, and training new employees in the company."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "perspective",
+      "word": "perspective",
+      "senses": [
+        {
+          "id": "sense-8561a068",
+          "pos": "noun",
+          "meaningZh": "觀點；角度",
+          "definitionEn": "a way of regarding situations or topics",
+          "examples": [
+            "In order to understand the conflict, we need to look at it from a different perspective."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-278bd9c7",
+          "pos": "noun",
+          "meaningZh": "透視法；遠近關係",
+          "definitionEn": "the appearance of things relative to one another as determined by their distance from the viewer",
+          "examples": [
+            "When sketching a landscape, it is important to understand perspective in order to accurately depict the varying sizes and placement of objects."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "pessimism",
+      "word": "pessimism",
+      "senses": [
+        {
+          "id": "sense-fc6fd21e",
+          "pos": "noun",
+          "meaningZh": "悲觀；悲觀主義",
+          "definitionEn": "a tendency to see the worst aspect of things or to believe that the worst will happen",
+          "examples": [
+            "Her constant pessimism made it difficult for her to enjoy anything in life."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-75cfe69a",
+          "pos": "noun",
+          "meaningZh": "缺乏希望；消極態度",
+          "definitionEn": "the lack of hope or confidence in the future",
+          "examples": [
+            "Despite their best efforts, the team’s performance remained poor due to the manager’s pessimism about their abilities."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "petition",
+      "word": "petition",
+      "senses": [
+        {
+          "id": "sense-91cdb15c",
+          "pos": "noun",
+          "meaningZh": "請願書；連署書",
+          "definitionEn": "a formal request made to an authority, often containing multiple signatures",
+          "examples": [
+            "The group of tenants created a petition to address their concerns about the maintenance issues in the apartment complex."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-43cfa281",
+          "pos": "noun",
+          "meaningZh": "祈求；祈禱",
+          "definitionEn": "a solemn request to a higher power, such as a deity",
+          "examples": [
+            "In times of crisis, people often come together to hold a candlelight vigil and collectively petition for strength and guidance from a higher power."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "petty",
+      "word": "petty",
+      "senses": [
+        {
+          "id": "sense-3943f09c",
+          "pos": "adjective",
+          "meaningZh": "瑣碎的；無足輕重的",
+          "definitionEn": "relatively unimportant; minor",
+          "examples": [
+            "It’s just a petty issue, so don’t worry too much about it."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-278b2f35",
+          "pos": "noun",
+          "meaningZh": "小額竊盜；輕微竊案",
+          "definitionEn": "theft of something of relatively little value",
+          "examples": [
+            "The thief was arrested for petty theft after stealing a pack of gum from the convenience store."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "phase",
+      "word": "phase",
+      "senses": [
+        {
+          "id": "sense-d488a5b5",
+          "pos": "noun",
+          "meaningZh": "階段；時期",
+          "definitionEn": "a distinct stage in a process of change or development",
+          "examples": [
+            "The project is now entering its final phase."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-2ac3503f",
+          "pos": "noun",
+          "meaningZh": "（天體的）相；月相",
+          "definitionEn": "(astronomy) a particular appearance of the illuminated part of a celestial body, especially one of the recurring shapes of the moon as seen from the Earth",
+          "examples": [
+            "The moon was in its first quarter phase, meaning that one-half of its visible surface was illuminated."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "photographic",
+      "word": "photographic",
+      "senses": [
+        {
+          "id": "sense-933422f2",
+          "pos": "adjective",
+          "meaningZh": "攝影的；照相的",
+          "definitionEn": "obtained by using photography or relating to photography",
+          "examples": [
+            "The art gallery had a stunning collection of photographic prints showcasing the beauty of nature."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-9ffb6f23",
+          "pos": "adjective",
+          "meaningZh": "精確如照片的；如實的",
+          "definitionEn": "with the exactness and fidelity of a photograph, representing people or nature",
+          "examples": [
+            "The photographic evidence presented in court was crucial in proving the defendant’s guilt."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "pickup",
+      "word": "pickup",
+      "senses": [
+        {
+          "id": "sense-950d082f",
+          "pos": "noun",
+          "meaningZh": "小貨卡；皮卡車",
+          "definitionEn": "a light truck with an open body and low sides and a tailboard",
+          "examples": [
+            "He rented a pickup truck to move his furniture to the new apartment."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "pier",
+      "word": "pier",
+      "senses": [
+        {
+          "id": "sense-2afda725",
+          "pos": "noun",
+          "meaningZh": "碼頭；棧橋",
+          "definitionEn": "a platform supported by piles that extends from the shore into the water, used for boarding ships and boats.",
+          "examples": [
+            "The fishermen docked their boats at the pier to unload their catch."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-13353995",
+          "pos": "noun",
+          "meaningZh": "牆墩；橋墩",
+          "definitionEn": "a vertical supporting structure, such as a section of wall between two doors or windows.",
+          "examples": [
+            "The architect designed the house with piers positioned between each set of windows to provide additional structural support."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "pillar",
+      "word": "pillar",
+      "senses": [
+        {
+          "id": "sense-3c469f99",
+          "pos": "noun",
+          "meaningZh": "柱子；支柱",
+          "definitionEn": "a tall, vertical cylindrical structure used to support a building or other structure (architecture)",
+          "examples": [
+            "The majestic marble pillars lined the entrance of the grand palace, creating a sense of awe and grandeur."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-7a2deb94",
+          "pos": "noun",
+          "meaningZh": "紀念柱；石柱",
+          "definitionEn": "a freestanding, vertical cylindrical monument or structure",
+          "examples": [
+            "The ancient temple is adorned with beautiful marble pillars."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "pipeline",
+      "word": "pipeline",
+      "senses": [
+        {
+          "id": "sense-15ef188d",
+          "pos": "noun",
+          "meaningZh": "輸油管；管線",
+          "definitionEn": "a pipe used to transport liquids or gases",
+          "examples": [
+            "The pipeline was damaged during the storm causing a major oil spill."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-7812fa4d",
+          "pos": "noun",
+          "meaningZh": "小道消息；謠言",
+          "definitionEn": "gossip or rumors circulating through a group of people",
+          "examples": [
+            "The pipeline of rumors from the office of the CEO flooded the entire company and created unnecessary panic among the employees."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "pirate",
+      "word": "pirate",
+      "senses": [
+        {
+          "id": "sense-0e497671",
+          "pos": "noun",
+          "meaningZh": "海盜",
+          "definitionEn": "a person who attacks and robs ships at sea",
+          "examples": [
+            "The pirates seized the ship and stole its cargo."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-8f56c32c",
+          "pos": "noun",
+          "meaningZh": "剽竊者；抄襲者",
+          "definitionEn": "a person who uses someone else’s words or ideas without permission and pretends that they are their own",
+          "examples": [
+            "In the academic world, it is highly unethical to pirate someone else's work by plagiarizing an essay or copying ideas without giving proper credit."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-beed82ea",
+          "pos": "verb",
+          "meaningZh": "海盜搶劫；掠奪",
+          "definitionEn": "to attack and steal from a ship at sea",
+          "examples": [
+            "In the dark of night, the pirates stealthily approached the merchant ship, overpowering the crew and plundering its valuable cargo."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "pitcher",
+      "word": "pitcher",
+      "senses": [
+        {
+          "id": "sense-73e54729",
+          "pos": "noun",
+          "meaningZh": "水壺；水罐",
+          "definitionEn": "an open container with a handle and spout used for pouring liquids",
+          "examples": [
+            "The waiter brought a pitcher of water to our table."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-1b78e718",
+          "pos": "noun",
+          "meaningZh": "投手",
+          "definitionEn": "a baseball player who pitches the ball to the batter during the game",
+          "examples": [
+            "The pitcher threw a curveball, striking out the batter."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "placement",
+      "word": "placement",
+      "senses": [
+        {
+          "id": "sense-59d45bde",
+          "pos": "noun",
+          "meaningZh": "放置；安置",
+          "definitionEn": "the act of putting something in a certain place",
+          "examples": [
+            "The placement of the furniture in the room was carefully planned in order to maximize space and functionality."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-d8e86281",
+          "pos": "noun",
+          "meaningZh": "位置安排；擺放方式",
+          "definitionEn": "the spatial property of the way in which something is placed",
+          "examples": [
+            "The placement of furniture plays a crucial role in determining the overall ambiance of a room."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "plea",
+      "word": "plea",
+      "senses": [
+        {
+          "id": "sense-f128c59e",
+          "pos": "noun",
+          "meaningZh": "懇求；請求",
+          "definitionEn": "a humble request for help, especially from someone in authority",
+          "examples": [
+            "The desperate mother made a plea to the school principal to reconsider her child's expulsion."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-fe649115",
+          "pos": "noun",
+          "meaningZh": "（法律）答辯；認罪聲明",
+          "definitionEn": "(law) a defendant’s answer to a charge or accusation",
+          "examples": [
+            "During the trial, the defense attorney advised his client to enter a plea of not guilty."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    }
+  ]
+}

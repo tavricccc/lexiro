@@ -1,0 +1,1393 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 148,
+  "words": [
+    {
+      "wordKey": "interval",
+      "word": "interval",
+      "senses": [
+        {
+          "id": "sense-949d264f",
+          "pos": "noun",
+          "meaningZh": "時間間隔；空檔",
+          "definitionEn": "a definite length of time between two events or moments",
+          "examples": [
+            "There is a fifteen-minute interval between classes."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-2849f804",
+          "pos": "noun",
+          "meaningZh": "距離；間距",
+          "definitionEn": "the distance between two objects or points",
+          "examples": [
+            "She set her alarm clock to ring at 15-minute intervals throughout the day."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "intervention",
+      "word": "intervention",
+      "senses": [
+        {
+          "id": "sense-d87241fb",
+          "pos": "noun",
+          "meaningZh": "介入；干預",
+          "definitionEn": "the act of intervening, especially to mediate a dispute",
+          "examples": [
+            "The teacher’s intervention helped the two students resolve their disagreement and avoid a fight."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-9a2f4c75",
+          "pos": "noun",
+          "meaningZh": "插入；居中協調",
+          "definitionEn": "the act or fact of interposing one thing between or among others",
+          "examples": [
+            "The coach’s intervention during the game helped the team rally and go on to win the championship."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "investigator",
+      "word": "investigator",
+      "senses": [
+        {
+          "id": "sense-664e80dd",
+          "pos": "noun",
+          "meaningZh": "調查員；審查者",
+          "definitionEn": "someone who investigates or examines something",
+          "examples": [
+            "The investigator was able to solve the crime by carefully examining the evidence and interviewing witnesses."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-74369b83",
+          "pos": "noun",
+          "meaningZh": "偵查員；刑事警察",
+          "definitionEn": "a police officer who investigates crimes",
+          "examples": [
+            "The investigator examined the crime scene and collected evidence to solve the murder case."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "irony",
+      "word": "irony",
+      "senses": [
+        {
+          "id": "sense-3412ef0a",
+          "pos": "noun",
+          "meaningZh": "諷刺；意外巧合",
+          "definitionEn": "incongruity between what is expected and what actually happens",
+          "examples": [
+            "The irony of a fire station burning down is not lost on anyone."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-64a6fe16",
+          "pos": "noun",
+          "meaningZh": "反諷；諷刺手法",
+          "definitionEn": "a literary device in which there is an incongruity between what is expected and what actually occurs",
+          "examples": [],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "journalism",
+      "word": "journalism",
+      "senses": [
+        {
+          "id": "sense-6ec5b98c",
+          "pos": "noun",
+          "meaningZh": "新聞業；新聞工作",
+          "definitionEn": "the profession of reporting, photographing, or editing news stories for one of the media",
+          "examples": [
+            "After graduating from university, she pursued a career in journalism and landed a job as a reporter with a local newspaper."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-0befc14e",
+          "pos": "noun",
+          "meaningZh": "新聞採編事業",
+          "definitionEn": "the activity or occupation of reporting, writing, editing, photographing, or broadcasting news or of conducting any news organization as a business",
+          "examples": [
+            "The journalism students worked tirelessly to produce an accurate and compelling news story about the city council meeting."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L2",
+        "textbookTitle": "龍騰 B5·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "journalist",
+      "word": "journalist",
+      "senses": [
+        {
+          "id": "sense-09af041c",
+          "pos": "noun",
+          "meaningZh": "記者；新聞工作者",
+          "definitionEn": "someone who writes news articles for newspapers and magazines",
+          "examples": [
+            "The journalist reported on the latest political scandal, gathering information from various sources and presenting a well-researched article."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-abaaaf68",
+          "pos": "noun",
+          "meaningZh": "新聞報導者",
+          "definitionEn": "a person who reports news and information for media outlets",
+          "examples": [
+            "The journalist was sent to cover the political rally."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L2",
+        "textbookTitle": "龍騰 B5·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "judicial",
+      "word": "judicial",
+      "senses": [
+        {
+          "id": "sense-8efe4b04",
+          "pos": "adjective",
+          "meaningZh": "司法的；審判的",
+          "definitionEn": "relating to the administration of justice or the function of a judge",
+          "examples": [
+            "The judicial system plays a crucial role in upholding the law and protecting the rights of citizens."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-f2e6d87e",
+          "pos": "adjective",
+          "meaningZh": "法官職務的",
+          "definitionEn": "belonging or appropriate to the office of a judge",
+          "examples": [
+            "The judge was required to make a judicial ruling and deliver a fair and impartial decision."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "jug",
+      "word": "jug",
+      "senses": [
+        {
+          "id": "sense-a2965f30",
+          "pos": "noun",
+          "meaningZh": "壺；水罐",
+          "definitionEn": "a container with a handle and a spout for holding and pouring liquids",
+          "examples": [
+            "She filled the jug with fresh orange juice."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-91e68e35",
+          "pos": "verb",
+          "meaningZh": "收押；監禁",
+          "definitionEn": "imprison (someone), especially for debt",
+          "examples": [
+            "During the Victorian era, individuals could be jugged for owing even small amounts of money."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "jury",
+      "word": "jury",
+      "senses": [
+        {
+          "id": "sense-8e76ac80",
+          "pos": "noun",
+          "meaningZh": "陪審團",
+          "definitionEn": "a body of citizens sworn to give a true verdict in a court of law based on evidence presented",
+          "examples": [
+            "During the trial, the jury carefully reviewed all the evidence and deliberated before delivering their final verdict."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-c1c00fd9",
+          "pos": "noun",
+          "meaningZh": "評審團；評審委員",
+          "definitionEn": "a group of people selected to judge a competition or award prizes",
+          "examples": [
+            "The jury deliberated for hours before announcing the winner of the dance competition."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L9",
+        "textbookTitle": "龍騰 B4·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "justify",
+      "word": "justify",
+      "senses": [
+        {
+          "id": "sense-a824f3db",
+          "pos": "verb",
+          "meaningZh": "證明正當；為……辯護",
+          "definitionEn": "to prove, by evidence or sound reasoning, that (something) is right or justifiable",
+          "examples": [
+            "In order to justify their decision to increase prices, the company presented a detailed report showing rising production costs and market trends."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-114c6cea",
+          "pos": "verb",
+          "meaningZh": "提供理由；使合理化",
+          "definitionEn": "to provide a good reason for (something), to make it seem reasonable or necessary",
+          "examples": [
+            "She tried to justify her actions by explaining the extenuating circumstances."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "juvenile",
+      "word": "juvenile",
+      "senses": [
+        {
+          "id": "sense-ddc91c2b",
+          "pos": "noun",
+          "meaningZh": "少年；未成年人",
+          "definitionEn": "a young person, not fully developed",
+          "examples": [
+            "The juvenile played in the park, his youthful energy evident as he ran around with his friends."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-ceaf4a8c",
+          "pos": "adjective",
+          "meaningZh": "青少年的；未成年的",
+          "definitionEn": "of or relating to children or young people, typically teenagers",
+          "examples": [
+            "In the juvenile detention center, she works with troubled teenagers to help them turn their lives around."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "kidnap",
+      "word": "kidnap",
+      "senses": [
+        {
+          "id": "sense-58185017",
+          "pos": "verb",
+          "meaningZh": "綁架；劫持",
+          "definitionEn": "to take someone away and hold them prisoner, often in order to demand money for their safe return",
+          "examples": [
+            "The wealthy businessman's daughter was kidnapped by a group of criminals who demanded a ransom for her safe release."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "landlord",
+      "word": "landlord",
+      "senses": [
+        {
+          "id": "sense-feca38d1",
+          "pos": "noun",
+          "meaningZh": "房東；地主",
+          "definitionEn": "a person who owns land or buildings and rents them to other people.",
+          "examples": [
+            "John is a landlord who owns several apartment buildings in the city and collects monthly rent from his tenants."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L8",
+        "textbookTitle": "龍騰 B4·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "laser",
+      "word": "laser",
+      "senses": [
+        {
+          "id": "sense-d3540338",
+          "pos": "noun",
+          "meaningZh": "雷射；雷射裝置",
+          "definitionEn": "a device that produces an intense beam of light, often used in medical procedures or to read or play music discs",
+          "examples": [
+            "The dentist used a laser to remove the decayed part of the tooth without causing any pain."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "lawmaker",
+      "word": "lawmaker",
+      "senses": [
+        {
+          "id": "sense-289ac57c",
+          "pos": "noun",
+          "meaningZh": "立法者；議員",
+          "definitionEn": "someone who makes laws",
+          "examples": [
+            "The lawmaker introduced a bill in parliament to enhance the rights of workers."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "lawsuit",
+      "word": "lawsuit",
+      "senses": [
+        {
+          "id": "sense-0fd73a44",
+          "pos": "noun",
+          "meaningZh": "訴訟；官司",
+          "definitionEn": "a legal case in which a person or group sues another person or group, or in which a criminal case is tried in a court of law",
+          "examples": [
+            "After being injured in a car accident, Jane decided to file a lawsuit against the negligent driver to seek compensation for her medical expenses and pain and suffering."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "layer",
+      "word": "layer",
+      "senses": [
+        {
+          "id": "sense-2e9c4aba",
+          "pos": "noun",
+          "meaningZh": "層；層次",
+          "definitionEn": "a sheet of material lying over or under another",
+          "examples": [
+            "The baker added a layer of frosting to the cake."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-a0b037d5",
+          "pos": "verb",
+          "meaningZh": "分層鋪疊",
+          "definitionEn": "to arrange or form into layers",
+          "examples": [
+            "The baker layered sheets of phyllo dough with a mixture of spinach and cheese to make a delicious spanakopita."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·R1",
+        "textbookTitle": "龍騰 B3·R1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "league",
+      "word": "league",
+      "senses": [
+        {
+          "id": "sense-a0d5d017",
+          "pos": "noun",
+          "meaningZh": "聯盟；聯賽",
+          "definitionEn": "a group of sports teams or organizations that compete against each other",
+          "examples": [
+            "His team finished at the top of the league this season."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-b653a3e4",
+          "pos": "verb",
+          "meaningZh": "結盟；聯合",
+          "definitionEn": "to form an alliance or partnership with others for a common purpose or goal.",
+          "examples": [
+            "The pharmaceutical companies formed a league to find a cure for the deadly virus."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-a3970833",
+          "pos": "noun",
+          "meaningZh": "里格（舊距離單位，約三英里）",
+          "definitionEn": "an outdated unit of measurement, typically equivalent to about three miles.",
+          "examples": [
+            "In the novel ’Twenty Thousand Leagues Under the Sea,’ the author Jules Verne describes the submarine traveling leagues below the surface of the ocean."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "legacy",
+      "word": "legacy",
+      "senses": [
+        {
+          "id": "sense-7c87d931",
+          "pos": "noun",
+          "meaningZh": "遺產；傳承",
+          "definitionEn": "practices or values passed down from one generation to another",
+          "examples": [
+            "My grandmother's legacy of hard work and perseverance continues to inspire our family."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-e36f8f3f",
+          "pos": "noun",
+          "meaningZh": "遺贈；遺物（法律）",
+          "definitionEn": "(law) a gift of personal property by will",
+          "examples": [
+            "In his will, John left a legacy of his antique collection to his daughter."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "legendary",
+      "word": "legendary",
+      "senses": [
+        {
+          "id": "sense-f22fd929",
+          "pos": "adjective",
+          "meaningZh": "傳說中的；神話般的",
+          "definitionEn": "celebrated in fable or legend",
+          "examples": [
+            "The legendary hero, Hercules, vanquished the fearsome Hydra."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-6bbea61e",
+          "pos": "adjective",
+          "meaningZh": "聲名遠播的；傳奇的",
+          "definitionEn": "so famous and well-known as to have become a legend",
+          "examples": [
+            "The musician's performance was so extraordinary that it quickly became legendary, with people talking about it for years to come."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "legislation",
+      "word": "legislation",
+      "senses": [
+        {
+          "id": "sense-ce7b1edb",
+          "pos": "noun",
+          "meaningZh": "法規；法律條文",
+          "definitionEn": "rules or laws made by a government relating to a particular activity",
+          "examples": [
+            "The government introduced new legislation to regulate the use of drones."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-b3b9b857",
+          "pos": "noun",
+          "meaningZh": "立法；制定法律",
+          "definitionEn": "the process of making rules or laws",
+          "examples": [
+            "The government is currently working on new legislation to regulate online privacy."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "legislative",
+      "word": "legislative",
+      "senses": [
+        {
+          "id": "sense-d63aad60",
+          "pos": "adjective",
+          "meaningZh": "立法機構的；立法院的",
+          "definitionEn": "composed of members of a legislature or relating to a legislature",
+          "examples": [
+            "The legislative branch of government is responsible for making and enacting laws."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-9a166e4c",
+          "pos": "adjective",
+          "meaningZh": "立法的；依法制定的",
+          "definitionEn": "created by legislation or relating to legislation",
+          "examples": [
+            "The legislative branch of government is responsible for creating and passing laws."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "legitimate",
+      "word": "legitimate",
+      "senses": [
+        {
+          "id": "sense-ba1380a7",
+          "pos": "adjective",
+          "meaningZh": "合法的；依法的",
+          "definitionEn": "authorized, sanctioned by, or in accordance with law",
+          "examples": [
+            "The court declared that the will was legitimate and should be upheld."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-fb8318b0",
+          "pos": "adjective",
+          "meaningZh": "正當的；符合規範的",
+          "definitionEn": "in accordance with recognized or accepted standards or principles",
+          "examples": [
+            "The company's financial transactions were completely legitimate, and all the expenses were properly documented."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "lest",
+      "word": "lest",
+      "senses": [
+        {
+          "id": "sense-62bb4d3d",
+          "pos": "conjunction",
+          "meaningZh": "唯恐；免得",
+          "definitionEn": "for fear that",
+          "examples": [
+            "I packed an umbrella lest it rains during the trip."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-0d2f438d",
+          "pos": "conjunction",
+          "meaningZh": "以防；避免",
+          "definitionEn": "to avoid the risk of something undesirable happening",
+          "examples": [
+            "He wore a raincoat lest he get wet in the unexpected downpour."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "liability",
+      "word": "liability",
+      "senses": [
+        {
+          "id": "sense-8d4a9fe2",
+          "pos": "noun",
+          "meaningZh": "法律責任；賠償責任",
+          "definitionEn": "the state of being legally responsible and obligated",
+          "examples": [
+            "The company faced a severe financial liability after the court declared them responsible for the environmental damage caused by their industrial activities."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-8e9f61c6",
+          "pos": "noun",
+          "meaningZh": "債務；負債義務",
+          "definitionEn": "an obligation to pay money or do something for another party",
+          "examples": [
+            "The company faced a legal liability after one of their employees caused damage to the customer’s property while on the job."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "likelihood",
+      "word": "likelihood",
+      "senses": [
+        {
+          "id": "sense-c0318ed5",
+          "pos": "noun",
+          "meaningZh": "可能性；機率",
+          "definitionEn": "the chances of something happening or being true, expressed as a probability",
+          "examples": [
+            "The likelihood of rain tomorrow is high, so you should bring an umbrella."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L5",
+        "textbookTitle": "龍騰 B5·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "likewise",
+      "word": "likewise",
+      "senses": [
+        {
+          "id": "sense-7cb84dd3",
+          "pos": "adverb",
+          "meaningZh": "也；同樣",
+          "definitionEn": "also",
+          "examples": [
+            "Jack enjoys swimming, and likewise, his brother Paul is also a big fan of water sports."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-babc1fd4",
+          "pos": "adverb",
+          "meaningZh": "同樣地；類似地",
+          "definitionEn": "in the same way or manner; similarly",
+          "examples": [
+            "When discussing the benefits of exercise, Sarah explained that eating a balanced diet is likewise important for maintaining a healthy lifestyle."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "loop",
+      "word": "loop",
+      "senses": [
+        {
+          "id": "sense-cca2ef3d",
+          "pos": "noun",
+          "meaningZh": "環；圈；迴圈",
+          "definitionEn": "a shape made by a curve that crosses itself; a circular ring",
+          "examples": [
+            "Make a loop in the rope and tie it tightly."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-1254b1e4",
+          "pos": "noun",
+          "meaningZh": "環狀拓撲網路；迴路架構",
+          "definitionEn": "the topology of a network where the components are connected in a circuit",
+          "examples": [
+            "The network’s loop topology allowed for data to flow continuously through the connected components."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "lounge",
+      "word": "lounge",
+      "senses": [
+        {
+          "id": "sense-1b354010",
+          "pos": "noun",
+          "meaningZh": "大廳；休息室",
+          "definitionEn": "a comfortable room for sitting and relaxing, as in a hotel or airport",
+          "examples": [
+            "Passengers waited in the airport lounge before boarding."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-361ea980",
+          "pos": "verb",
+          "meaningZh": "懶散地坐或躺；悠閒倚靠",
+          "definitionEn": "sit, lie, or stand in a relaxed or lazy way.",
+          "examples": [
+            "After a long day at work, I like to lounge on the comfortable sofa with a good book and a cup of tea."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-7e8e7973",
+          "pos": "verb",
+          "meaningZh": "閒晃；消磨時間",
+          "definitionEn": "spend time in a lazy, relaxed way.",
+          "examples": [
+            "After a long day of work, she lounged on the couch and watched her favorite TV show."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "lump",
+      "word": "lump",
+      "senses": [
+        {
+          "id": "sense-6c5beea1",
+          "pos": "noun",
+          "meaningZh": "一團；一堆（糾結在一起的物體）",
+          "definitionEn": "a group of things or people that are massed or stuck together in a clump",
+          "examples": [
+            "As I was cleaning out the attic, I discovered a dusty old box filled with a lump of tangled Christmas lights."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-070ecb9d",
+          "pos": "noun",
+          "meaningZh": "一次付清的金額；整筆款項",
+          "definitionEn": "a sum of money that is paid or received all at once, rather than in installments",
+          "examples": [
+            "After years of saving, she finally received a lump sum of $50,000 as an inheritance from her grandmother."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L3",
+        "textbookTitle": "三民 B4·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    }
+  ]
+}

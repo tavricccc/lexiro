@@ -1,0 +1,1343 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 82,
+  "words": [
+    {
+      "wordKey": "neat",
+      "word": "neat",
+      "senses": [
+        {
+          "id": "sense-4753612d",
+          "pos": "adjective",
+          "meaningZh": "整齊的；乾淨有序的",
+          "definitionEn": "clean and well-organized, with everything in its proper place.",
+          "examples": [
+            "She walked into her friend's apartment and was impressed by how neat and tidy it was. The furniture was arranged neatly, there was no clutter, and everything had its designated spot."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-4864148d",
+          "pos": "adjective",
+          "meaningZh": "工整的；細心的",
+          "definitionEn": "done with care, showing great attention to detail.",
+          "examples": [
+            "Emily's handwritten notes were so neat that they could easily be mistaken for printed text."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "necessity",
+      "word": "necessity",
+      "senses": [
+        {
+          "id": "sense-f882d6e3",
+          "pos": "noun",
+          "meaningZh": "必需品；必要之物",
+          "definitionEn": "something that is necessary or required",
+          "examples": [
+            "Water is a necessity for survival."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-2615e444",
+          "pos": "noun",
+          "meaningZh": "必要性；不可或缺",
+          "definitionEn": "the condition of being essential or indispensable",
+          "examples": [
+            "Water is a necessity for life."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B1·L5",
+        "textbookTitle": "三民 B1·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "necktie",
+      "word": "necktie",
+      "senses": [
+        {
+          "id": "sense-4cbe54c0",
+          "pos": "noun",
+          "meaningZh": "領帶",
+          "definitionEn": "A type of neckwear worn by men, consisting of a long, narrow piece of material that is tied in a knot at the front and worn under a collar.",
+          "examples": [
+            "Jack wore a navy blue necktie to the job interview to make a good impression."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "neighborhood",
+      "word": "neighborhood",
+      "senses": [
+        {
+          "id": "sense-8bdc95ad",
+          "pos": "noun",
+          "meaningZh": "附近地區；周邊",
+          "definitionEn": "the surrounding area or region nearby",
+          "examples": [
+            "Sarah lives in a friendly neighborhood, where everyone knows and helps each other."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-a35f65e9",
+          "pos": "noun",
+          "meaningZh": "社區；街坊",
+          "definitionEn": "a community or area with distinct features within a city or town",
+          "examples": [
+            "In our neighborhood, there is a park where the children regularly gather to play and families often have picnics."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L8",
+        "textbookTitle": "龍騰 B2·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "nest",
+      "word": "nest",
+      "senses": [
+        {
+          "id": "sense-41cb0797",
+          "pos": "noun",
+          "meaningZh": "巢；窩",
+          "definitionEn": "a structure made by birds, insects, or animals in which they lay eggs or give birth to their young",
+          "examples": [
+            "The mother bird built a cozy nest high up in the tree to protect her eggs from predators."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-7307df45",
+          "pos": "verb",
+          "meaningZh": "築巢；住巢",
+          "definitionEn": "to build or live in a nest",
+          "examples": [
+            "The bird carefully wove twigs together to nest and raise its chicks."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "nickname",
+      "word": "nickname",
+      "senses": [
+        {
+          "id": "sense-5292bddf",
+          "pos": "noun",
+          "meaningZh": "暱稱；外號",
+          "definitionEn": "a name given to someone, usually as a term of endearment, that is based on their real name or a characteristic of that person",
+          "examples": [
+            "When my sister was younger, she couldn't pronounce my full name properly, so she started calling me 'Lil Sis' as a nickname."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "normal",
+      "word": "normal",
+      "senses": [
+        {
+          "id": "sense-287afeeb",
+          "pos": "adjective",
+          "meaningZh": "正常的；一般的",
+          "definitionEn": "being approximately average or within certain limits in areas such as intelligence and development",
+          "examples": [
+            "Despite her exceptional talent, she wanted a normal life like everyone else."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-0cdb36b3",
+          "pos": "adjective",
+          "meaningZh": "符合規律的；標準的",
+          "definitionEn": "in accordance with established or scientific laws",
+          "examples": [
+            "The experiment yielded normal results that followed the expected pattern according to established scientific laws."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L2 +2",
+        "textbookTitle": "龍騰 B2·L2、三民 B1·L3、翰林 B1·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "novelist",
+      "word": "novelist",
+      "senses": [
+        {
+          "id": "sense-9ce8442c",
+          "pos": "noun",
+          "meaningZh": "小說家",
+          "definitionEn": "a person who writes novels, works of fiction that typically have a complex plot, well-developed characters, and explore numerous themes and ideas",
+          "examples": [
+            "After years of perfecting her writing skills and honing her craft, Sara finally became a successful novelist, publishing her first novel which captivated readers with its intricate plot, compelling characters, and thought-provoking themes."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "nun",
+      "word": "nun",
+      "senses": [
+        {
+          "id": "sense-a56e7da9",
+          "pos": "noun",
+          "meaningZh": "修女；尼姑",
+          "definitionEn": "a woman who belongs to a religious order",
+          "examples": [
+            "Sister Mary became a nun after completing her religious training."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "oak",
+      "word": "oak",
+      "senses": [
+        {
+          "id": "sense-68000149",
+          "pos": "noun",
+          "meaningZh": "橡樹；橡木樹",
+          "definitionEn": "a type of tree that loses its leaves in the winter and produces acorns",
+          "examples": [
+            "Dad cut down the old oak in our backyard because it was diseased and a safety hazard."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-467b0c01",
+          "pos": "noun",
+          "meaningZh": "橡木；橡木材",
+          "definitionEn": "the hard, strong wood of the oak tree, used for making furniture and flooring",
+          "examples": [
+            "The new dining table was crafted from solid oak, giving it a timeless and sturdy appeal."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "observe",
+      "word": "observe",
+      "senses": [
+        {
+          "id": "sense-3ef30bd8",
+          "pos": "verb",
+          "meaningZh": "仔細觀察；注視",
+          "definitionEn": "watch carefully or closely",
+          "examples": [
+            "Scientists observe the stars carefully through a telescope every night."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L7 +1",
+        "textbookTitle": "龍騰 B3·L7、三民 B2·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "occasion",
+      "word": "occasion",
+      "senses": [
+        {
+          "id": "sense-7b5f7cc6",
+          "pos": "noun",
+          "meaningZh": "場合；重要時刻",
+          "definitionEn": "an event that occurs at a critical time",
+          "examples": [
+            "His retirement party was a joyous occasion that was attended by his colleagues and friends."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-45583e9c",
+          "pos": "verb",
+          "meaningZh": "引起；導致",
+          "definitionEn": "give rise to; cause",
+          "examples": [
+            "Her promotion to a higher position in the company has occasioned celebration among her colleagues."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L4 +1",
+        "textbookTitle": "龍騰 B3·L4、三民 B2·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "odd",
+      "word": "odd",
+      "senses": [
+        {
+          "id": "sense-36476dc9",
+          "pos": "adjective",
+          "meaningZh": "奇怪的；不尋常的",
+          "definitionEn": "beyond or deviating from the usual or expected",
+          "examples": [
+            "In the midst of the summer heat, it was odd to see someone wearing a heavy winter coat."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-bbe53c23",
+          "pos": "adjective",
+          "meaningZh": "落單的；不成對的",
+          "definitionEn": "(of something that should be in a pair or set) separated from its pair or set",
+          "examples": [
+            "She found an odd sock in the laundry, without its matching pair."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L7",
+        "textbookTitle": "三民 B4·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "omit",
+      "word": "omit",
+      "senses": [
+        {
+          "id": "sense-2c7b35a5",
+          "pos": "verb",
+          "meaningZh": "省略；遺漏",
+          "definitionEn": "leave out; fail to include or mention",
+          "examples": [
+            "He deliberately omitted any reference to her contribution in his speech."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-61900fe8",
+          "pos": "verb",
+          "meaningZh": "忘記做；未能執行",
+          "definitionEn": "fail to do or perform; leave undone",
+          "examples": [
+            "He omitted to mention his financial problems during the job interview."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L2",
+        "textbookTitle": "三民 B4·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "ongoing",
+      "word": "ongoing",
+      "senses": [
+        {
+          "id": "sense-cd235628",
+          "pos": "adjective",
+          "meaningZh": "持續進行的；進行中的",
+          "definitionEn": "happening or continuing without interruption",
+          "examples": [
+            "The ongoing construction of the building is causing a lot of noise pollution in the area."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "onion",
+      "word": "onion",
+      "senses": [
+        {
+          "id": "sense-16961dd8",
+          "pos": "noun",
+          "meaningZh": "洋蔥",
+          "definitionEn": "the rounded edible bulb of a bulbous plant that has hollow leaves and is cultivated worldwide",
+          "examples": [
+            "Mary sautéed some diced onions in olive oil before adding them to her spaghetti sauce for extra flavor."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "onto",
+      "word": "onto",
+      "senses": [
+        {
+          "id": "sense-161cd3cc",
+          "pos": "preposition",
+          "meaningZh": "到……上面；移至",
+          "definitionEn": "moving or extending into a position on",
+          "examples": [
+            "I carefully placed the book onto the shelf."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-082c8a98",
+          "pos": "preposition",
+          "meaningZh": "察覺；意識到",
+          "definitionEn": "becoming aware of or realizing something",
+          "examples": [
+            "As she read the last page of the mystery novel, she suddenly felt a wave of realization wash over her, and she was onto the true identity of the culprit."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "operation",
+      "word": "operation",
+      "senses": [
+        {
+          "id": "sense-4d99e7b2",
+          "pos": "noun",
+          "meaningZh": "手術",
+          "definitionEn": "the process of cutting into someone's body to repair or remove a part of it",
+          "examples": [
+            "The doctor said she needed an operation on her knee."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-64d38f51",
+          "pos": "noun",
+          "meaningZh": "行動；作業",
+          "definitionEn": "a planned activity involving many people performing various actions",
+          "examples": [
+            "The military planned a secret operation to capture the terrorist leader."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-e42ff6bb",
+          "pos": "noun",
+          "meaningZh": "（電腦）運算；操作指令",
+          "definitionEn": "data processing in computer science that follows a specific rule resulting from a single instruction",
+          "examples": [
+            "The operation of this algorithm can be clearly seen in the step-by-step execution of code."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L8 +1",
+        "textbookTitle": "龍騰 B3·L8、翰林 B1·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "opportunity",
+      "word": "opportunity",
+      "senses": [
+        {
+          "id": "sense-869cf043",
+          "pos": "noun",
+          "meaningZh": "機會；良機",
+          "definitionEn": "a favorable occasion or chance for advancement, progress, or profit",
+          "examples": [
+            "After years of hard work, he finally had the opportunity to showcase his skills in front of the CEO, which led to a promotion."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L2 +1",
+        "textbookTitle": "龍騰 B4·L2、三民 B2·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "opposite",
+      "word": "opposite",
+      "senses": [
+        {
+          "id": "sense-ced091dd",
+          "pos": "adjective",
+          "meaningZh": "對面的；正對的",
+          "definitionEn": "being directly across from each other; facing",
+          "examples": [
+            "The hotel stands opposite to the train station."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-5a3d209b",
+          "pos": "adjective",
+          "meaningZh": "相反方向的；背道而馳的",
+          "definitionEn": "moving or facing away from each other",
+          "examples": [
+            "The two teams were on opposite sides of the field, each trying to score a goal."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L1",
+        "textbookTitle": "龍騰 B4·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "optimistic",
+      "word": "optimistic",
+      "senses": [
+        {
+          "id": "sense-802cf3b1",
+          "pos": "adjective",
+          "meaningZh": "樂觀的；充滿希望的",
+          "definitionEn": "having hope or confidence in the future",
+          "examples": [
+            "Despite facing failures in his career, he remained optimistic and believed that things would eventually work out."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-f281c6e3",
+          "pos": "adjective",
+          "meaningZh": "積極向上的；看好的",
+          "definitionEn": "tending to take a favourable or hopeful view of things",
+          "examples": [
+            "Despite facing numerous challenges, Sarah remained optimistic and believed that she would ultimately achieve her goals."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B2·L5 +1",
+        "textbookTitle": "三民 B2·L5、翰林 B1·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "oral",
+      "word": "oral",
+      "senses": [
+        {
+          "id": "sense-12bc9b8e",
+          "pos": "adjective",
+          "meaningZh": "口頭的；口語的",
+          "definitionEn": "related to speech rather than writing",
+          "examples": [
+            "The professor preferred oral presentations in class over written reports."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-96c6b670",
+          "pos": "adjective",
+          "meaningZh": "口腔的；口服的",
+          "definitionEn": "relating to or made for the mouth",
+          "examples": [
+            "The dentist recommended an oral rinse to treat the infection in the patient’s mouth."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "organic",
+      "word": "organic",
+      "senses": [
+        {
+          "id": "sense-1cf683fc",
+          "pos": "adjective",
+          "meaningZh": "有機的；生物體的",
+          "definitionEn": "relating to, derived from, or characteristic of living organisms",
+          "examples": [
+            "The tomatoes I bought from the farmer’s market are organic, meaning they were grown without the use of synthetic fertilizers or pesticides."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-6857813b",
+          "pos": "adjective",
+          "meaningZh": "有機栽培的；天然無農藥的",
+          "definitionEn": "of a food: produced by organic farming; simple, healthful, and close to nature",
+          "examples": [
+            "The farmer’s market sells only organic produce that is grown without the use of synthetic fertilizers or pesticides."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B1·L7",
+        "textbookTitle": "三民 B1·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "organize",
+      "word": "organize",
+      "senses": [
+        {
+          "id": "sense-7844d7eb",
+          "pos": "verb",
+          "meaningZh": "整理；整頓",
+          "definitionEn": "bring order and structure to something",
+          "examples": [
+            "Sarah decided to organize her closet by sorting her clothes into different categories and arranging them neatly on hangers."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-794aa077",
+          "pos": "verb",
+          "meaningZh": "籌辦；統籌",
+          "definitionEn": "plan and oversee a complex undertaking",
+          "examples": [
+            "Sarah was tasked to organize the company's annual conference, coordinating with various departments and ensuring smooth logistics."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L7 +2",
+        "textbookTitle": "龍騰 B2·L7、三民 B1·L6、翰林 B1·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "original",
+      "word": "original",
+      "senses": [
+        {
+          "id": "sense-8e77bab5",
+          "pos": "adjective",
+          "meaningZh": "原始的；最初的",
+          "definitionEn": "preceding all others in time or being as first made or performed",
+          "examples": [
+            "The original manuscript, handwritten by the author, is kept in a secure vault."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-21c3f4e5",
+          "pos": "adjective",
+          "meaningZh": "獨創的；新穎的",
+          "definitionEn": "being or productive of something fresh and unusual; or being as first made or thought of",
+          "examples": [
+            "The artist's original paintings always stood out due to their vibrant colors and unique style."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L8 +2",
+        "textbookTitle": "龍騰 B2·L8、三民 B2·L1、翰林 B1·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "outdoor",
+      "word": "outdoor",
+      "senses": [
+        {
+          "id": "sense-957985c0",
+          "pos": "adjective",
+          "meaningZh": "戶外的；露天的",
+          "definitionEn": "related to or involving outdoor activities or the open air",
+          "examples": [
+            "The family enjoyed various outdoor activities during their camping trip, including hiking, fishing, and roasting marshmallows over the campfire."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-f5ed3c00",
+          "pos": "adjective",
+          "meaningZh": "室外用的；適合戶外的",
+          "definitionEn": "located or suitable for use outside",
+          "examples": [
+            "The family enjoyed cooking and eating their meals outdoor on the sunny terrace during the summer."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "outdoors",
+      "word": "outdoors",
+      "senses": [
+        {
+          "id": "sense-fe375f21",
+          "pos": "adverb",
+          "meaningZh": "在戶外；到室外",
+          "definitionEn": "in or into the open air; outside a building",
+          "examples": [
+            "It’s a beautiful day outside, let’s go outdoors and have a picnic!"
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "outer",
+      "word": "outer",
+      "senses": [
+        {
+          "id": "sense-a7c0034d",
+          "pos": "adjective",
+          "meaningZh": "外部的；外圍的",
+          "definitionEn": "being on the outside or further from a center",
+          "examples": [
+            "The hiker ventured into the outer reaches of the forest, where the trees grew taller and the wildlife was more abundant."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-d0432054",
+          "pos": "adjective",
+          "meaningZh": "外層的；外側的",
+          "definitionEn": "located outside",
+          "examples": [
+            "The outer layer of the cake was beautifully decorated."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "outline",
+      "word": "outline",
+      "senses": [
+        {
+          "id": "sense-05103cdd",
+          "pos": "noun",
+          "meaningZh": "輪廓；外形線",
+          "definitionEn": "a line that shows or represents the outer edge or shape of something",
+          "examples": [
+            "She drew an outline of the apple on the paper."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-9fe06a79",
+          "pos": "noun",
+          "meaningZh": "大綱；摘要",
+          "definitionEn": "a brief summary or plan of something",
+          "examples": [
+            "Before starting to write his report, he created an outline to organize his thoughts and ideas."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L6 +1",
+        "textbookTitle": "龍騰 B5·L6、三民 B4·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "oven",
+      "word": "oven",
+      "senses": [
+        {
+          "id": "sense-7edff8a5",
+          "pos": "noun",
+          "meaningZh": "烤箱；烤爐",
+          "definitionEn": "a kitchen appliance used for baking or roasting food.",
+          "examples": [
+            "She preheated the oven and baked a delicious cake for the party."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-64e2c57a",
+          "pos": "noun",
+          "meaningZh": "窯；加熱爐",
+          "definitionEn": "a heated chamber used in industrial processes.",
+          "examples": [
+            "The metal parts are placed in the oven to be heated and shaped."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    }
+  ]
+}

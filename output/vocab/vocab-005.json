@@ -1,0 +1,1432 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 5,
+  "words": [
+    {
+      "wordKey": "bus",
+      "word": "bus",
+      "senses": [
+        {
+          "id": "sense-65cde2b1",
+          "pos": "noun",
+          "meaningZh": "公車；巴士",
+          "definitionEn": "a vehicle used for public transport that carries many passengers.",
+          "examples": [
+            "I took the bus to work this morning and it was packed with people."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-320ddd39",
+          "pos": "noun",
+          "meaningZh": "破車；老爺車",
+          "definitionEn": "an old and unreliable car.",
+          "examples": [
+            "John's car broke down again, it's a real bus."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "business",
+      "word": "business",
+      "senses": [
+        {
+          "id": "sense-1805a392",
+          "pos": "noun",
+          "meaningZh": "職業；行業；謀生工作",
+          "definitionEn": "the primary activity one engages in to earn a living",
+          "examples": [
+            "She opened a flower shop to start her own business."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-0dde045a",
+          "pos": "noun",
+          "meaningZh": "企業；公司",
+          "definitionEn": "an organization or company and the individuals who make it up",
+          "examples": [
+            "The business was struggling to make profits due to the pandemic."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "busy",
+      "word": "busy",
+      "senses": [
+        {
+          "id": "sense-4a908ee1",
+          "pos": "adjective",
+          "meaningZh": "忙碌的；繁忙的",
+          "definitionEn": "actively or fully engaged in a particular activity",
+          "examples": [
+            "She was too busy juggling work and family commitments to take a vacation."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-3d6b9fc7",
+          "pos": "adjective",
+          "meaningZh": "熱鬧的；擁擠的",
+          "definitionEn": "crowded with or characterized by much activity",
+          "examples": [
+            "The city streets were busy with bustling commuters rushing to work."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "but",
+      "word": "but",
+      "senses": [
+        {
+          "id": "sense-8ed3aa16",
+          "pos": "conjunction",
+          "meaningZh": "但是；可是",
+          "definitionEn": "used to introduce something that contrasts with or contradicts what has just been said",
+          "examples": [
+            "I wanted to go, but I was too tired."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-b7988161",
+          "pos": "preposition",
+          "meaningZh": "除了……以外",
+          "definitionEn": "except; other than",
+          "examples": [
+            "Everyone but Tom came to the party."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "butter",
+      "word": "butter",
+      "senses": [
+        {
+          "id": "sense-d35de1fb",
+          "pos": "noun",
+          "meaningZh": "奶油；黃油",
+          "definitionEn": "an edible emulsion of fat globules made by churning milk or cream and used for cooking or as a spread on bread",
+          "examples": [
+            "She spread a generous amount of butter on her toast and enjoyed the creamy, rich flavor."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-6fa55e17",
+          "pos": "verb",
+          "meaningZh": "塗抹奶油",
+          "definitionEn": "to spread butter on something",
+          "examples": [
+            "She buttered her toast and sprinkled cinnamon on top."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "butterfly",
+      "word": "butterfly",
+      "senses": [
+        {
+          "id": "sense-c10b249c",
+          "pos": "noun",
+          "meaningZh": "蝴蝶",
+          "definitionEn": "a flying insect with large, often colorful wings",
+          "examples": [
+            "A butterfly landed on the flower."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-bca49d28",
+          "pos": "noun",
+          "meaningZh": "蝶式；蝴蝶式游泳",
+          "definitionEn": "a swimming stroke performed face down, with both arms lifted out of the water and brought forwards together while the legs simultaneously kick up and down.",
+          "examples": [
+            "She won the race by swimming the butterfly stroke with perfect form."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "button",
+      "word": "button",
+      "senses": [
+        {
+          "id": "sense-606df9ed",
+          "pos": "noun",
+          "meaningZh": "鈕扣；扣子",
+          "definitionEn": "a round fastener, typically made of plastic, metal, or shell, sewn to shirts, coats, etc. and pushed through buttonholes to fasten the garment",
+          "examples": [
+            "She carefully buttoned up her coat to protect herself from the cold wind."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-e41b98f3",
+          "pos": "noun",
+          "meaningZh": "徽章；別針",
+          "definitionEn": "a small, circular badge or insignia that can be pinned to clothing to signify an affiliation or convey information",
+          "examples": [
+            "At the conference, everyone wore buttons with their company logos to show their affiliation."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "buy",
+      "word": "buy",
+      "senses": [
+        {
+          "id": "sense-2fccb521",
+          "pos": "verb",
+          "meaningZh": "購買；買",
+          "definitionEn": "to obtain something by paying money for it",
+          "examples": [
+            "I went to the store to buy groceries."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-5463f560",
+          "pos": "verb",
+          "meaningZh": "負擔得起；買得起",
+          "definitionEn": "to have enough money to purchase something",
+          "examples": [
+            "After saving up for months, Emily was finally able to buy a new car."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "by",
+      "word": "by",
+      "senses": [
+        {
+          "id": "sense-dd16399d",
+          "pos": "preposition",
+          "meaningZh": "在⋯旁；靠近；越過",
+          "definitionEn": "in the vicinity of, next to, or (in distance or time) beyond",
+          "examples": [
+            "She lives by the park, so she can easily go for a jog every morning."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-155cc467",
+          "pos": "preposition",
+          "meaningZh": "藉由；透過；經由",
+          "definitionEn": "through the means or agency of",
+          "examples": [
+            "The letter was delivered by courier."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "cake",
+      "word": "cake",
+      "senses": [
+        {
+          "id": "sense-6ca4f865",
+          "pos": "noun",
+          "meaningZh": "蛋糕；糕點",
+          "definitionEn": "a sweet baked good made from a mixture of flour, sugar, eggs, and fat, often with added flavorings and toppings",
+          "examples": [
+            "I baked a chocolate cake for my sister's birthday and decorated it with frosting and sprinkles."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-de488f32",
+          "pos": "noun",
+          "meaningZh": "塊狀物（如肥皂塊）",
+          "definitionEn": "a solid block or piece shaped like a cake, made from substances such as soap or wax",
+          "examples": [
+            "The artisan crafted a beautiful and realistic cake-shaped soap that looked almost good enough to eat."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "call",
+      "word": "call",
+      "senses": [
+        {
+          "id": "sense-80ad2dbf",
+          "pos": "verb",
+          "meaningZh": "打電話；呼叫",
+          "definitionEn": "to telephone someone",
+          "examples": [
+            "I'll call you when I get home."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-c611df74",
+          "pos": "verb",
+          "meaningZh": "鳴叫；啼叫（動物）",
+          "definitionEn": "to utter a characteristic note or cry",
+          "examples": [
+            "The bird perched on a branch and let out a loud, piercing call to its mate."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "camera",
+      "word": "camera",
+      "senses": [
+        {
+          "id": "sense-f90ff406",
+          "pos": "noun",
+          "meaningZh": "相機；照相機",
+          "definitionEn": "Equipment used for taking photographs. A camera usually consists of a lightproof box with a lens at one end and either film or an image sensor at the other.",
+          "examples": [
+            "She took out her camera to capture the stunning sunset over the beach."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-b9384cf8",
+          "pos": "noun",
+          "meaningZh": "攝影機；電視攝像機",
+          "definitionEn": "Television equipment that captures light and converts it into electrical signals. This electronic device is used in broadcasting and filming to focus an image on a photosensitive mosaic that is scanned by an electron beam.",
+          "examples": [],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "camp",
+      "word": "camp",
+      "senses": [
+        {
+          "id": "sense-68e69ca4",
+          "pos": "noun",
+          "meaningZh": "夏令營；活動營地",
+          "definitionEn": "a site where care and activities are provided for children during the summer months",
+          "examples": [
+            "When school is out for summer, many parents enroll their children in a camp where they can engage in outdoor activities, make new friends, and gain valuable life skills."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-45e691bd",
+          "pos": "noun",
+          "meaningZh": "難民營；收容所",
+          "definitionEn": "shelter for persons displaced by war, political oppression, or religious beliefs",
+          "examples": [
+            "The refugee camp provided temporary shelter for those fleeing their war-torn homeland."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "can",
+      "word": "can",
+      "senses": [
+        {
+          "id": "sense-009337b8",
+          "pos": "auxiliary verb",
+          "meaningZh": "能；能夠；可以",
+          "definitionEn": "to be able to do something, or to be allowed to do something",
+          "examples": [
+            "She can speak three languages fluently."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-caf716c4",
+          "pos": "noun",
+          "meaningZh": "罐頭；金屬罐",
+          "definitionEn": "a container made of metal, plastic, or glass, typically cylindrical in shape and with a lid, used for storing food, drinks, and other goods",
+          "examples": [
+            "I opened a can of soup for lunch."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-848f1b1e",
+          "pos": "verb",
+          "meaningZh": "裝罐；罐裝保存",
+          "definitionEn": "put (food or drink) into a can or cans, typically using a sealing machine and preserving it",
+          "examples": [
+            "The food processing company can the vegetables to ensure their freshness and prolong their shelf life."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "cap",
+      "word": "cap",
+      "senses": [
+        {
+          "id": "sense-9a67644a",
+          "pos": "noun",
+          "meaningZh": "瓶蓋；蓋子",
+          "definitionEn": "a covering for the top of a bottle or container",
+          "examples": [
+            "Please make sure to put the cap back on the bottle after use to prevent any spills."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-5e2f4db5",
+          "pos": "noun",
+          "meaningZh": "上限；限額",
+          "definitionEn": "a limit or restriction on something, such as a price or amount",
+          "examples": [
+            "The company set a cap on the amount of money employees could claim for travel expenses."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "car",
+      "word": "car",
+      "senses": [
+        {
+          "id": "sense-7dbe636b",
+          "pos": "noun",
+          "meaningZh": "汽車；轎車",
+          "definitionEn": "a motor vehicle with four wheels powered by an internal combustion engine",
+          "examples": [
+            "I drove my new car to the beach last weekend."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-7bb1ce19",
+          "pos": "noun",
+          "meaningZh": "車廂；軌道車",
+          "definitionEn": "a vehicle designed to run on rails, used for transporting goods or passengers",
+          "examples": [
+            "The commuter train is a popular and efficient car that helps people travel to work."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "card",
+      "word": "card",
+      "senses": [
+        {
+          "id": "sense-4a3636d3",
+          "pos": "noun",
+          "meaningZh": "卡片；賀卡",
+          "definitionEn": "a rectangular piece of stiff paper used for writing messages or giving greetings, often decorated with pictures or printed designs",
+          "examples": [
+            "For her birthday, I picked out a beautiful floral card and wrote a heartfelt message inside."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-ed519187",
+          "pos": "noun",
+          "meaningZh": "證件；識別卡",
+          "definitionEn": "a thin rectangular piece of cardboard or plastic that certifies one’s identity or membership to a group or organization",
+          "examples": [
+            "I had to show my employee card to enter the restricted area."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "care",
+      "word": "care",
+      "senses": [
+        {
+          "id": "sense-a5860b7e",
+          "pos": "noun",
+          "meaningZh": "照顧；護理",
+          "definitionEn": "the work of providing treatment or attending to someone or something",
+          "examples": [
+            "The nurse showed exceptional care while tending to the injured patients in the emergency room."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-3e11b34c",
+          "pos": "noun",
+          "meaningZh": "保養；維護",
+          "definitionEn": "the activity involved in maintaining something in good working order",
+          "examples": [
+            "Regular oil changes and inspections are essential for the care of your car."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "careful",
+      "word": "careful",
+      "senses": [
+        {
+          "id": "sense-1b347fd0",
+          "pos": "adjective",
+          "meaningZh": "小心的；謹慎的",
+          "definitionEn": "giving or showing attention to avoid harm or mistakes",
+          "examples": [
+            "Be careful while handling the glass plates, they are delicate."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-ccb619f7",
+          "pos": "adjective",
+          "meaningZh": "仔細的；慢條斯理的",
+          "definitionEn": "slow and steady in action; not rushed or sudden",
+          "examples": [
+            "He carefully assembled the fragile vase, taking his time to ensure none of the pieces broke."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "carrot",
+      "word": "carrot",
+      "senses": [
+        {
+          "id": "sense-e22bc1b3",
+          "pos": "noun",
+          "meaningZh": "胡蘿蔔（植物）",
+          "definitionEn": "A widely cultivated plant often grown as an annual, having long, conical, orange-edible roots. It is grown in temperate and tropical regions.",
+          "examples": [
+            "I pulled a fresh carrot from the garden and used it to make a delicious carrot cake."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "carry",
+      "word": "carry",
+      "senses": [
+        {
+          "id": "sense-02731bbd",
+          "pos": "verb",
+          "meaningZh": "搬運；攜帶",
+          "definitionEn": "move while supporting, either in a vehicle or in one’s hands or on one’s body",
+          "examples": [
+            "I have to carry these heavy boxes from one room to another."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-82cc0a3e",
+          "pos": "verb",
+          "meaningZh": "容納；承載",
+          "definitionEn": "contain or hold; have within",
+          "examples": [
+            "The backpack can carry up to 20 kilograms of weight."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "case",
+      "word": "case",
+      "senses": [
+        {
+          "id": "sense-8c637f61",
+          "pos": "noun",
+          "meaningZh": "事例；案例",
+          "definitionEn": "an occurrence of something",
+          "examples": [
+            "In this particular case, the suspect was found guilty of the crime and sentenced to 10 years in prison."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "cat",
+      "word": "cat",
+      "senses": [
+        {
+          "id": "sense-8bd7e2b8",
+          "pos": "noun",
+          "meaningZh": "貓；家貓",
+          "definitionEn": "a small domesticated carnivorous mammal with soft fur, a short snout, and retractable claws",
+          "examples": [
+            "I adopted a little black cat from the animal shelter."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-c2684b03",
+          "pos": "noun",
+          "meaningZh": "大型貓科動物（獅、虎等）",
+          "definitionEn": "a larger carnivorous mammal that belongs to the genus Panthera, such as lions, tigers, leopards, or jaguars and is typically found in the wild",
+          "examples": [
+            "During our safari, we saw a majestic cat, a leopard, up close."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "catch",
+      "word": "catch",
+      "senses": [
+        {
+          "id": "sense-24a39e7b",
+          "pos": "verb",
+          "meaningZh": "抓住；接住；捕捉",
+          "definitionEn": "to take hold of something, especially something moving through the air",
+          "examples": [
+            "He ran fast and managed to catch the ball before it hit the ground."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-58a127b9",
+          "pos": "verb",
+          "meaningZh": "染上（病）；感染",
+          "definitionEn": "contract an illness or disease",
+          "examples": [
+            "After being exposed to the cold rain, she caught a bad cold."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-11e6cb45",
+          "pos": "noun",
+          "meaningZh": "隱患；潛在難題",
+          "definitionEn": "a difficulty or obstacle that is not immediately apparent",
+          "examples": [
+            "Although the project seemed simple at first, there were many catches along the way that made it much more challenging than expected."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "celebrate",
+      "word": "celebrate",
+      "senses": [
+        {
+          "id": "sense-db06b095",
+          "pos": "verb",
+          "meaningZh": "慶祝；表彰",
+          "definitionEn": "to recognize and give importance to a significant event, person or achievement",
+          "examples": [
+            "We gathered together to celebrate the bride and groom's wedding."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-ed5bcadf",
+          "pos": "verb",
+          "meaningZh": "慶典；歡慶",
+          "definitionEn": "to mark a special occasion with festivities or joyous events",
+          "examples": [
+            "We will celebrate our anniversary by throwing a big party and inviting all of our friends and family."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L6",
+        "textbookTitle": "龍騰 B1·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "cellphone",
+      "word": "cellphone",
+      "senses": [
+        {
+          "id": "sense-a2186125",
+          "pos": "noun",
+          "meaningZh": "手機；行動電話",
+          "definitionEn": "a phone that you can carry with you and use anywhere; a mobile phone",
+          "examples": [
+            "Please turn off your cellphone before the movie starts."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "cent",
+      "word": "cent",
+      "senses": [
+        {
+          "id": "sense-e6f5c26c",
+          "pos": "noun",
+          "meaningZh": "分（貨幣單位）",
+          "definitionEn": "a fractional monetary unit of several countries",
+          "examples": [
+            "She gave me twenty-five cents for the gumball machine."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-1b3e4234",
+          "pos": "noun",
+          "meaningZh": "一分錢硬幣",
+          "definitionEn": "a coin worth one-hundredth of the value of the basic unit",
+          "examples": [
+            "Liam found a cent on the pavement and happily added it to his collection of coins."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "center",
+      "word": "center",
+      "senses": [
+        {
+          "id": "sense-1ee5416c",
+          "pos": "noun",
+          "meaningZh": "中心；中央地帶",
+          "definitionEn": "an area located in the middle or approximately central within a larger region",
+          "examples": [
+            "The city center is a busy commercial district with many shops and restaurants."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-ca6b420b",
+          "pos": "noun",
+          "meaningZh": "（陣列）中央位置",
+          "definitionEn": "the middle position of a military or naval formation",
+          "examples": [
+            "The soldiers marched in unison towards the center, where the commanding officer was waiting."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "certain",
+      "word": "certain",
+      "senses": [
+        {
+          "id": "sense-790f30ed",
+          "pos": "adjective",
+          "meaningZh": "確定的；毫無疑問的",
+          "definitionEn": "known for sure, without any doubt",
+          "examples": [
+            "I am certain that I locked the front door before leaving the house."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-a1c3e9ea",
+          "pos": "adjective",
+          "meaningZh": "有把握的；確信的",
+          "definitionEn": "having no doubt about something; confident and assured",
+          "examples": [
+            "Sarah was certain she would win the race because she had trained diligently for months."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "chair",
+      "word": "chair",
+      "senses": [
+        {
+          "id": "sense-bb650d75",
+          "pos": "noun",
+          "meaningZh": "椅子",
+          "definitionEn": "a piece of furniture designed for one person to sit on, with a support for the back",
+          "examples": [
+            "I’m looking for a comfortable chair to place in my living room."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-6eb853a1",
+          "pos": "verb",
+          "meaningZh": "主持（會議）；擔任主席",
+          "definitionEn": "to act as the person in charge of a meeting or organization",
+          "examples": [
+            "As the elected president of the club, it is your duty to chair the meeting."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    }
+  ]
+}

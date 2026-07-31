@@ -1,0 +1,1927 @@
+{
+  "schemaVersion": 1,
+  "kind": "questions",
+  "questionKind": "multipleChoice",
+  "questions": [
+    {
+      "id": "child-562d43f5",
+      "kind": "multipleChoice",
+      "prompt": "I drove my new _____ to the beach last weekend.",
+      "options": [
+        "car",
+        "door",
+        "tennis",
+        "driver"
+      ],
+      "answerIndex": 0,
+      "wordKey": "car",
+      "senseId": "sense-7dbe636b",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-5502da41",
+      "kind": "multipleChoice",
+      "prompt": "A mother nurses her baby to _____ her with essential nutrients for her growth and good health.",
+      "options": [
+        "nourish",
+        "elaborate",
+        "premise",
+        "sponsor"
+      ],
+      "answerIndex": 0,
+      "wordKey": "nourish",
+      "senseId": "sense-48734195",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-9552f677",
+      "kind": "multipleChoice",
+      "prompt": "After losing his job, John's best _____ offered him a place to stay and helped him find a new job.",
+      "options": [
+        "friend",
+        "meaning",
+        "folk",
+        "balloon"
+      ],
+      "answerIndex": 0,
+      "wordKey": "friend",
+      "senseId": "sense-6e34b580",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-bcdaf00f",
+      "kind": "multipleChoice",
+      "prompt": "After studying _____ for four years, Sarah developed a new perspective on life and the universe.",
+      "options": [
+        "flesh",
+        "philosophy",
+        "propaganda",
+        "gossip"
+      ],
+      "answerIndex": 1,
+      "wordKey": "philosophy",
+      "senseId": "sense-73ed8d7a",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-0d747d96",
+      "kind": "multipleChoice",
+      "prompt": "The recent _____ in the country was caused by the widespread corruption of the government officials.",
+      "options": [
+        "resident",
+        "uprising",
+        "journalist",
+        "discrimination"
+      ],
+      "answerIndex": 1,
+      "wordKey": "uprising",
+      "senseId": "sense-bfe35db8",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-5ccb6b90",
+      "kind": "multipleChoice",
+      "prompt": "Mozart was a musical _____, composing his first symphony at the age of five.",
+      "options": [
+        "bonus",
+        "bull",
+        "genius",
+        "drain"
+      ],
+      "answerIndex": 2,
+      "wordKey": "genius",
+      "senseId": "sense-5441878f",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-e9665136",
+      "kind": "multipleChoice",
+      "prompt": "After stealing the money, he couldn't escape the overwhelming _____ that consumed him.",
+      "options": [
+        "guilt",
+        "suggestion",
+        "preservation",
+        "nutrient"
+      ],
+      "answerIndex": 0,
+      "wordKey": "guilt",
+      "senseId": "sense-25c38b69",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-39f8aa3b",
+      "kind": "multipleChoice",
+      "prompt": "The government’s _____ of traffic laws ensures that all drivers follow the rules of the road, preventing accidents and keeping everyone safe.",
+      "options": [
+        "foundation",
+        "lightning",
+        "enforcement",
+        "enthusiasm"
+      ],
+      "answerIndex": 2,
+      "wordKey": "enforcement",
+      "senseId": "sense-35d8e82b",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-f4014494",
+      "kind": "multipleChoice",
+      "prompt": "During the meeting, Mark kept interrupting and making silly faces, which was really _____ behavior.",
+      "options": [
+        "childish",
+        "very",
+        "under",
+        "several"
+      ],
+      "answerIndex": 0,
+      "wordKey": "childish",
+      "senseId": "sense-cbd6c148",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-21f91835",
+      "kind": "multipleChoice",
+      "prompt": "The crowd cheered as the striker made a powerful kick, sending the ball soaring into the top corner of the net, scoring a goal for his team in the _____ match.",
+      "options": [
+        "soccer",
+        "tie",
+        "violin",
+        "chess"
+      ],
+      "answerIndex": 0,
+      "wordKey": "soccer",
+      "senseId": "sense-7b8507e1",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-31179e2f",
+      "kind": "multipleChoice",
+      "prompt": "The _____ man struggled to walk up the steep hill.",
+      "options": [
+        "very",
+        "old",
+        "absent",
+        "under"
+      ],
+      "answerIndex": 1,
+      "wordKey": "old",
+      "senseId": "sense-79b2167a",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-e80f1904",
+      "kind": "multipleChoice",
+      "prompt": "The couple strolled hand in hand through the picturesque park, basking in the _____ atmosphere created by the soft glow of the setting sun.",
+      "options": [
+        "ignorant",
+        "cooperative",
+        "fierce",
+        "romantic"
+      ],
+      "answerIndex": 3,
+      "wordKey": "romantic",
+      "senseId": "sense-51cf4283",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-eb7f2258",
+      "kind": "multipleChoice",
+      "prompt": "The _____ called a meeting to discuss the new project deadlines with the team.",
+      "options": [
+        "boat",
+        "boss",
+        "gate",
+        "elephant"
+      ],
+      "answerIndex": 1,
+      "wordKey": "boss",
+      "senseId": "sense-3a671a59",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-41d8c903",
+      "kind": "multipleChoice",
+      "prompt": "On the weekend, my family and I decided to have a picnic at the _____. We played frisbee, enjoyed the sunshine, and had a great time!",
+      "options": [
+        "metro",
+        "earrings",
+        "park",
+        "bench"
+      ],
+      "answerIndex": 2,
+      "wordKey": "park",
+      "senseId": "sense-ed035523",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-60206335",
+      "kind": "multipleChoice",
+      "prompt": "The political party’s _____ strongly advocates for individual liberties and limited government intervention.",
+      "options": [
+        "ideology",
+        "code",
+        "motto",
+        "referendum"
+      ],
+      "answerIndex": 0,
+      "wordKey": "ideology",
+      "senseId": "sense-ccb7c29b",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-bc02df0e",
+      "kind": "multipleChoice",
+      "prompt": "After the funeral, the family would often gather and _____ together.",
+      "options": [
+        "heal",
+        "lick",
+        "weep",
+        "construct"
+      ],
+      "answerIndex": 2,
+      "wordKey": "weep",
+      "senseId": "sense-5e38ec57",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-693afc98",
+      "kind": "multipleChoice",
+      "prompt": "She takes _____ every day to control her high blood pressure.",
+      "options": [
+        "discipline",
+        "medication",
+        "audio",
+        "explosion"
+      ],
+      "answerIndex": 1,
+      "wordKey": "medication",
+      "senseId": "sense-de60d553",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-22c61083",
+      "kind": "multipleChoice",
+      "prompt": "The band members played their instruments with skill and precision, resulting in a magnificent performance that showcased their ability to create a beautiful sound through _____ playing.",
+      "options": [
+        "decent",
+        "prone",
+        "simultaneous",
+        "irritable"
+      ],
+      "answerIndex": 2,
+      "wordKey": "simultaneous",
+      "senseId": "sense-8abd7388",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-51dd6581",
+      "kind": "multipleChoice",
+      "prompt": "The _____ section of the library offers a wide variety of books for children and teenagers.",
+      "options": [
+        "beat",
+        "absent",
+        "junior",
+        "cooperative"
+      ],
+      "answerIndex": 2,
+      "wordKey": "junior",
+      "senseId": "sense-3864804c",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-aae0dde3",
+      "kind": "multipleChoice",
+      "prompt": "When I traveled to Japan, I hired a professional _____ to help me communicate with the locals.",
+      "options": [
+        "accessory",
+        "radish",
+        "loudspeaker",
+        "translator"
+      ],
+      "answerIndex": 3,
+      "wordKey": "translator",
+      "senseId": "sense-c9ed1113",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-9e2caf9c",
+      "kind": "multipleChoice",
+      "prompt": "The veterinarian examined the dog’s _____ to make sure it was not injured.",
+      "options": [
+        "elbow",
+        "camel",
+        "sacrifice",
+        "wagon"
+      ],
+      "answerIndex": 0,
+      "wordKey": "elbow",
+      "senseId": "sense-46ea6c15",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-7bd889eb",
+      "kind": "multipleChoice",
+      "prompt": "The protagonist of the novel was a timid _____ who had never been in a romantic relationship.",
+      "options": [
+        "veteran",
+        "outlaw",
+        "specialty",
+        "virgin"
+      ],
+      "answerIndex": 3,
+      "wordKey": "virgin",
+      "senseId": "sense-1e076970",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-f5fedb77",
+      "kind": "multipleChoice",
+      "prompt": "The _____ meticulously applied vibrant colors to the canvas, bringing the landscape to life.",
+      "options": [
+        "creature",
+        "childhood",
+        "painter",
+        "effect"
+      ],
+      "answerIndex": 2,
+      "wordKey": "painter",
+      "senseId": "sense-f60c3bc6",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-d1d94438",
+      "kind": "multipleChoice",
+      "prompt": "I wore my _____ jacket during the storm, and it kept me completely dry.",
+      "options": [
+        "revolt",
+        "waterproof",
+        "shield",
+        "toll"
+      ],
+      "answerIndex": 1,
+      "wordKey": "waterproof",
+      "senseId": "sense-141a6479",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-7a98a9e0",
+      "kind": "multipleChoice",
+      "prompt": "The doctor examined the cut and determined it was only _____, requiring no stitches.",
+      "options": [
+        "relentless",
+        "superficial",
+        "intact",
+        "invaluable"
+      ],
+      "answerIndex": 1,
+      "wordKey": "superficial",
+      "senseId": "sense-a641a3e1",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-630115f7",
+      "kind": "multipleChoice",
+      "prompt": "I called a plumber to provide _____ with fixing the leaky pipe in my house.",
+      "options": [
+        "reverse",
+        "restriction",
+        "assistance",
+        "technician"
+      ],
+      "answerIndex": 2,
+      "wordKey": "assistance",
+      "senseId": "sense-8806caa7",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-af770b9e",
+      "kind": "multipleChoice",
+      "prompt": "The _____ roar of the lion was enough to scare away the intruders.",
+      "options": [
+        "insane",
+        "relentless",
+        "formidable",
+        "prone"
+      ],
+      "answerIndex": 2,
+      "wordKey": "formidable",
+      "senseId": "sense-ade7dc7e",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-5eb51260",
+      "kind": "multipleChoice",
+      "prompt": "After reviewing all the _____ candidates, the hiring committee decided to offer the position to Jane.",
+      "options": [
+        "luck",
+        "possible",
+        "mountain",
+        "exercise"
+      ],
+      "answerIndex": 1,
+      "wordKey": "possible",
+      "senseId": "sense-9b995827",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-0d267a19",
+      "kind": "multipleChoice",
+      "prompt": "I haven't seen her in _____ months.",
+      "options": [
+        "interested",
+        "recent",
+        "intelligent",
+        "absent"
+      ],
+      "answerIndex": 1,
+      "wordKey": "recent",
+      "senseId": "sense-549e8582",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-228f1cd0",
+      "kind": "multipleChoice",
+      "prompt": "The _____ with the new computer software was that it kept crashing and was not at all user-friendly.",
+      "options": [
+        "trouble",
+        "keeper",
+        "race",
+        "favorite"
+      ],
+      "answerIndex": 0,
+      "wordKey": "trouble",
+      "senseId": "sense-dd1192e8",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-9e3e1bde",
+      "kind": "multipleChoice",
+      "prompt": "Despite the increased security measures, the company's financial records were compromised by a skilled _____ who gained access to sensitive information.",
+      "options": [
+        "hijack",
+        "sponge",
+        "crutch",
+        "hacker"
+      ],
+      "answerIndex": 3,
+      "wordKey": "hacker",
+      "senseId": "sense-ce9e029f",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-ba6fa087",
+      "kind": "multipleChoice",
+      "prompt": "The _____ players glided across the field, skillfully maneuvering the ball with their curved sticks in an attempt to score a goal.",
+      "options": [
+        "motivation",
+        "hockey",
+        "violation",
+        "pirate"
+      ],
+      "answerIndex": 1,
+      "wordKey": "hockey",
+      "senseId": "sense-4786f36c",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-0a59a908",
+      "kind": "multipleChoice",
+      "prompt": "The flavors of the soup _____ depending on the region it is made in.",
+      "options": [
+        "vary",
+        "digest",
+        "shore",
+        "decrease"
+      ],
+      "answerIndex": 0,
+      "wordKey": "vary",
+      "senseId": "sense-86349ecf",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-c5e1c85f",
+      "kind": "multipleChoice",
+      "prompt": "After living in different cities for many years, Mary decided to return to her _____ to be closer to her family and childhood friends.",
+      "options": [
+        "self",
+        "servant",
+        "rebel",
+        "hometown"
+      ],
+      "answerIndex": 3,
+      "wordKey": "hometown",
+      "senseId": "sense-7e013260",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-b16b5917",
+      "kind": "multipleChoice",
+      "prompt": "The new advertisement strategy proved to be highly _____ in increasing sales by 50%.",
+      "options": [
+        "effective",
+        "interested",
+        "iron",
+        "handsome"
+      ],
+      "answerIndex": 0,
+      "wordKey": "effective",
+      "senseId": "sense-b0ecac78",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-ed7b4995",
+      "kind": "multipleChoice",
+      "prompt": "Before the game, the coach made sure all the players had _____ opportunity to play.  He ensured that all team members received the same number of minutes on the court.",
+      "options": [
+        "win",
+        "equal",
+        "mine",
+        "tomorrow"
+      ],
+      "answerIndex": 1,
+      "wordKey": "equal",
+      "senseId": "sense-01e77ff3",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-f1f5b60d",
+      "kind": "multipleChoice",
+      "prompt": "During the trial, the witness was called to _____ about what they saw on the night of the incident.",
+      "options": [
+        "overlap",
+        "testify",
+        "exert",
+        "forge"
+      ],
+      "answerIndex": 1,
+      "wordKey": "testify",
+      "senseId": "sense-4b4c935c",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-f89c91d9",
+      "kind": "multipleChoice",
+      "prompt": "The musician's performance was truly _____, leaving the audience in awe.",
+      "options": [
+        "intense",
+        "cooperative",
+        "remarkable",
+        "intermediate"
+      ],
+      "answerIndex": 2,
+      "wordKey": "remarkable",
+      "senseId": "sense-cb42d5a9",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-e42468d5",
+      "kind": "multipleChoice",
+      "prompt": "After hearing about the difficulties of starting a small business, the bank manager tried to _____ them from taking out a loan.",
+      "options": [
+        "script",
+        "undermine",
+        "commit",
+        "discourage"
+      ],
+      "answerIndex": 3,
+      "wordKey": "discourage",
+      "senseId": "sense-48770333",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-93bdc259",
+      "kind": "multipleChoice",
+      "prompt": "The police officer proudly displayed his _____ on his uniform.",
+      "options": [
+        "badge",
+        "calligraphy",
+        "mermaid",
+        "iceberg"
+      ],
+      "answerIndex": 0,
+      "wordKey": "badge",
+      "senseId": "sense-517eefa1",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-ff29c001",
+      "kind": "multipleChoice",
+      "prompt": "The concrete pillars serve as the _____ for the skyscraper, providing stability and support.",
+      "options": [
+        "base",
+        "foundation",
+        "barrier",
+        "facility"
+      ],
+      "answerIndex": 1,
+      "wordKey": "foundation",
+      "senseId": "sense-0c291c6e",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-59cbf2ec",
+      "kind": "multipleChoice",
+      "prompt": "When it comes to choosing a restaurant for dinner, I am _____ and will eat anywhere.",
+      "options": [
+        "ignorant",
+        "indifferent",
+        "insane",
+        "intense"
+      ],
+      "answerIndex": 1,
+      "wordKey": "indifferent",
+      "senseId": "sense-79dbb27e",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-62b79751",
+      "kind": "multipleChoice",
+      "prompt": "He managed to catch a quick _____ of the conversation as he passed by.",
+      "options": [
+        "youngster",
+        "rack",
+        "janitor",
+        "snatch"
+      ],
+      "answerIndex": 3,
+      "wordKey": "snatch",
+      "senseId": "sense-a07772b2",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-4fa33711",
+      "kind": "multipleChoice",
+      "prompt": "Walking barefoot on the sandy beach, she could feel the coolness beneath her feet, and the sound of seagulls and crashing waves enhanced her _____ of the serene coastal scene.",
+      "options": [
+        "adjustment",
+        "perception",
+        "acceptance",
+        "revival"
+      ],
+      "answerIndex": 1,
+      "wordKey": "perception",
+      "senseId": "sense-662fdf7c",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-5621f188",
+      "kind": "multipleChoice",
+      "prompt": "As he worked on his painting, he would _____ a soothing melody under his breath.",
+      "options": [
+        "jam",
+        "reject",
+        "hum",
+        "snail"
+      ],
+      "answerIndex": 2,
+      "wordKey": "hum",
+      "senseId": "sense-758a716b",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-e02c3657",
+      "kind": "multipleChoice",
+      "prompt": "The _____ in the contract allowed for multiple interpretations, leading to a legal dispute between the two parties.",
+      "options": [
+        "legislator",
+        "tile",
+        "ambiguity",
+        "setback"
+      ],
+      "answerIndex": 2,
+      "wordKey": "ambiguity",
+      "senseId": "sense-83a85ce2",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-ffb50fd1",
+      "kind": "multipleChoice",
+      "prompt": "The detective was able to _____ the suspect based on the fingerprints found at the crime scene.",
+      "options": [
+        "enable",
+        "identify",
+        "allocate",
+        "recite"
+      ],
+      "answerIndex": 1,
+      "wordKey": "identify",
+      "senseId": "sense-90abfb8c",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-4916a53b",
+      "kind": "multipleChoice",
+      "prompt": "In the marathon, John was an enthusiastic _____, running alongside thousands of other runners.",
+      "options": [
+        "bin",
+        "participant",
+        "faction",
+        "particle"
+      ],
+      "answerIndex": 1,
+      "wordKey": "participant",
+      "senseId": "sense-531b3bae",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-16ae945d",
+      "kind": "multipleChoice",
+      "prompt": "The _____ organs of the human body include the heart, lungs, and stomach.",
+      "options": [
+        "beat",
+        "several",
+        "some",
+        "internal"
+      ],
+      "answerIndex": 3,
+      "wordKey": "internal",
+      "senseId": "sense-66d16a02",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-3831064e",
+      "kind": "multipleChoice",
+      "prompt": "The intense heat made him _____ profusely.",
+      "options": [
+        "flame",
+        "sweat",
+        "watermelon",
+        "analysis"
+      ],
+      "answerIndex": 1,
+      "wordKey": "sweat",
+      "senseId": "sense-82d35e3c",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-e6d7e13a",
+      "kind": "multipleChoice",
+      "prompt": "The carpenter selected a piece of _____ for the project because of its durability and beautiful grain pattern.",
+      "options": [
+        "gum",
+        "gradual",
+        "shark",
+        "audio"
+      ],
+      "answerIndex": 0,
+      "wordKey": "gum",
+      "senseId": "sense-2d8dbe06",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-bf712457",
+      "kind": "multipleChoice",
+      "prompt": "She expressed her _____ about the safety of the children crossing the busy road.",
+      "options": [
+        "bean",
+        "sausage",
+        "concern",
+        "pocket"
+      ],
+      "answerIndex": 2,
+      "wordKey": "concern",
+      "senseId": "sense-b5347761",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-ff047e96",
+      "kind": "multipleChoice",
+      "prompt": "The children were feeling _____ as they ran through the park, laughing and chasing each other.",
+      "options": [
+        "mere",
+        "handsome",
+        "fierce",
+        "playful"
+      ],
+      "answerIndex": 3,
+      "wordKey": "playful",
+      "senseId": "sense-b13ce33b",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-455f935f",
+      "kind": "multipleChoice",
+      "prompt": "While he had gotten used to the _____ culture, he still missed home.",
+      "options": [
+        "beat",
+        "foreign",
+        "interesting",
+        "very"
+      ],
+      "answerIndex": 1,
+      "wordKey": "foreign",
+      "senseId": "sense-5018c4d3",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-076c6e26",
+      "kind": "multipleChoice",
+      "prompt": "I bought the latest _____ of my favorite band and listened to it on repeat all weekend.",
+      "options": [
+        "tour",
+        "expression",
+        "album",
+        "reply"
+      ],
+      "answerIndex": 2,
+      "wordKey": "album",
+      "senseId": "sense-6a3a0552",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-fccc50ae",
+      "kind": "multipleChoice",
+      "prompt": "The cargo _____ was filled with various goods from different countries and was heading to the port of Los Angeles.",
+      "options": [
+        "ship",
+        "gradual",
+        "mountain",
+        "encouragement"
+      ],
+      "answerIndex": 0,
+      "wordKey": "ship",
+      "senseId": "sense-db93b0a0",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-02c6b70d",
+      "kind": "multipleChoice",
+      "prompt": "The judge will _____ the evidence admissible based on its relevance to the case.",
+      "options": [
+        "unfold",
+        "donate",
+        "deem",
+        "revolt"
+      ],
+      "answerIndex": 2,
+      "wordKey": "deem",
+      "senseId": "sense-3e919a6d",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-b9523517",
+      "kind": "multipleChoice",
+      "prompt": "John's collection of rare _____ of postage stamps includes a complete set depicting famous scientists throughout history.",
+      "options": [
+        "series",
+        "algebra",
+        "captivity",
+        "poke"
+      ],
+      "answerIndex": 0,
+      "wordKey": "series",
+      "senseId": "sense-8a82e30c",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-103ce72c",
+      "kind": "multipleChoice",
+      "prompt": "Playing board games with friends is always a lot of _____.",
+      "options": [
+        "role",
+        "theater",
+        "fun",
+        "experience"
+      ],
+      "answerIndex": 2,
+      "wordKey": "fun",
+      "senseId": "sense-fd0a6e93",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-318d0852",
+      "kind": "multipleChoice",
+      "prompt": "When faced with danger, the _____ mouse hid in its hole instead of confronting the threat.",
+      "options": [
+        "intact",
+        "prone",
+        "cowardly",
+        "irritable"
+      ],
+      "answerIndex": 2,
+      "wordKey": "cowardly",
+      "senseId": "sense-8383fc59",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-ebc58b10",
+      "kind": "multipleChoice",
+      "prompt": "To meet the growing demand, the factory decided to _____ its production facilities.",
+      "options": [
+        "betray",
+        "inspect",
+        "expand",
+        "haste"
+      ],
+      "answerIndex": 2,
+      "wordKey": "expand",
+      "senseId": "sense-b6352493",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-413860a5",
+      "kind": "multipleChoice",
+      "prompt": "The homeless man was wearing a shirt with _____ sleeves and frayed hems.",
+      "options": [
+        "mere",
+        "intense",
+        "prone",
+        "ragged"
+      ],
+      "answerIndex": 3,
+      "wordKey": "ragged",
+      "senseId": "sense-adc1f49b",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-84605ab7",
+      "kind": "multipleChoice",
+      "prompt": "She switched on the _____ and the room was instantly filled with a warm, soft glow.",
+      "options": [
+        "necessary",
+        "baseball",
+        "lamp",
+        "sailor"
+      ],
+      "answerIndex": 2,
+      "wordKey": "lamp",
+      "senseId": "sense-326cd3ec",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-54367caa",
+      "kind": "multipleChoice",
+      "prompt": "Her _____ was enough to pay for her living expenses.",
+      "options": [
+        "pan",
+        "salary",
+        "drunk",
+        "voice"
+      ],
+      "answerIndex": 1,
+      "wordKey": "salary",
+      "senseId": "sense-0bfbe5e1",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-a71f2053",
+      "kind": "multipleChoice",
+      "prompt": "She made a significant _____ to the charity, donating $10,000 towards their cause.",
+      "options": [
+        "rally",
+        "acquisition",
+        "giggle",
+        "contribution"
+      ],
+      "answerIndex": 3,
+      "wordKey": "contribution",
+      "senseId": "sense-da993360",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-06820af8",
+      "kind": "multipleChoice",
+      "prompt": "The sudden _____ that her long-lost sister was actually living next door left her speechless.",
+      "options": [
+        "skull",
+        "revelation",
+        "diplomacy",
+        "distress"
+      ],
+      "answerIndex": 1,
+      "wordKey": "revelation",
+      "senseId": "sense-6a704820",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-79cc858f",
+      "kind": "multipleChoice",
+      "prompt": "After being in close contact with a sick coworker who had the flu, Sarah unfortunately contracted the _____ and became ill.",
+      "options": [
+        "follower",
+        "infection",
+        "fraud",
+        "custody"
+      ],
+      "answerIndex": 1,
+      "wordKey": "infection",
+      "senseId": "sense-a02f2c82",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-60fde91d",
+      "kind": "multipleChoice",
+      "prompt": "John had to _____ to the rules of the company even though he disagreed with them.",
+      "options": [
+        "submit",
+        "appropriate",
+        "stereotype",
+        "recycle"
+      ],
+      "answerIndex": 0,
+      "wordKey": "submit",
+      "senseId": "sense-f87b5815",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-a21edd98",
+      "kind": "multipleChoice",
+      "prompt": "The _____ carefully crafted the blueprints for the new office building, taking into consideration both functionality and aesthetics.",
+      "options": [
+        "evidence",
+        "association",
+        "architect",
+        "veto"
+      ],
+      "answerIndex": 2,
+      "wordKey": "architect",
+      "senseId": "sense-65d8ea46",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-c77c8811",
+      "kind": "multipleChoice",
+      "prompt": "In a geometry class, the teacher used two triangles to demonstrate _____ shapes. Although they were not identical in size or position, they had the exact same angles and proportions.",
+      "options": [
+        "every",
+        "under",
+        "very",
+        "similar"
+      ],
+      "answerIndex": 3,
+      "wordKey": "similar",
+      "senseId": "sense-3ce33c9c",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-35c94fe5",
+      "kind": "multipleChoice",
+      "prompt": "The doctor explained that my red hair is _____, as it runs in my family.",
+      "options": [
+        "relentless",
+        "genetic",
+        "intense",
+        "mere"
+      ],
+      "answerIndex": 1,
+      "wordKey": "genetic",
+      "senseId": "sense-f0c4f901",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-7ab837f8",
+      "kind": "multipleChoice",
+      "prompt": "He _____ goes to the cinema, preferring to watch movies at home.",
+      "options": [
+        "fox",
+        "seldom",
+        "may",
+        "greet"
+      ],
+      "answerIndex": 1,
+      "wordKey": "seldom",
+      "senseId": "sense-4a0d8601",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-4837c0e1",
+      "kind": "multipleChoice",
+      "prompt": "The living room walls were painted a soft shade of _____, giving the space a modern and elegant feel.",
+      "options": [
+        "absence",
+        "classmate",
+        "truck",
+        "gray"
+      ],
+      "answerIndex": 3,
+      "wordKey": "gray",
+      "senseId": "sense-b2925876",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-45753869",
+      "kind": "multipleChoice",
+      "prompt": "The _____ outside the courthouse was becoming increasingly violent as the trial progressed.",
+      "options": [
+        "mob",
+        "cancer",
+        "accident",
+        "merit"
+      ],
+      "answerIndex": 0,
+      "wordKey": "mob",
+      "senseId": "sense-33eba53b",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-6d1986e0",
+      "kind": "multipleChoice",
+      "prompt": "In the _____, technology plays a crucial role in our daily lives.",
+      "options": [
+        "raise",
+        "door",
+        "present",
+        "goal"
+      ],
+      "answerIndex": 2,
+      "wordKey": "present",
+      "senseId": "sense-6e023947",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-55883cc1",
+      "kind": "multipleChoice",
+      "prompt": "The _____ of New York City is over 8 million people.",
+      "options": [
+        "population",
+        "shepherd",
+        "expression",
+        "outdoors"
+      ],
+      "answerIndex": 0,
+      "wordKey": "population",
+      "senseId": "sense-de684564",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-84f82b38",
+      "kind": "multipleChoice",
+      "prompt": "I grilled a juicy steak for dinner last night, it was the most tender _____ I've ever tasted!",
+      "options": [
+        "meat",
+        "pleasure",
+        "bone",
+        "shell"
+      ],
+      "answerIndex": 0,
+      "wordKey": "meat",
+      "senseId": "sense-aee056fb",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-69c41c8e",
+      "kind": "multipleChoice",
+      "prompt": "The security guard was hired to _____ off potential thieves from the museum during night hours.",
+      "options": [
+        "surrender",
+        "discriminate",
+        "ward",
+        "shuffle"
+      ],
+      "answerIndex": 2,
+      "wordKey": "ward",
+      "senseId": "sense-481530a1",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-21bd4cea",
+      "kind": "multipleChoice",
+      "prompt": "When I pressed the gas pedal, I could hear the smooth hum of the _____ as it shifted gears.",
+      "options": [
+        "spiral",
+        "creek",
+        "warehouse",
+        "transmission"
+      ],
+      "answerIndex": 3,
+      "wordKey": "transmission",
+      "senseId": "sense-7c1f547d",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-f00a4d92",
+      "kind": "multipleChoice",
+      "prompt": "Be careful while handling antique vases, they are _____.",
+      "options": [
+        "fierce",
+        "intelligent",
+        "broke",
+        "delicate"
+      ],
+      "answerIndex": 3,
+      "wordKey": "delicate",
+      "senseId": "sense-85debe66",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-80402224",
+      "kind": "multipleChoice",
+      "prompt": "The hurricane was so _____ that it destroyed homes, buildings, and caused severe flooding.",
+      "options": [
+        "destructive",
+        "cooperative",
+        "invaluable",
+        "irritable"
+      ],
+      "answerIndex": 0,
+      "wordKey": "destructive",
+      "senseId": "sense-cb41c3aa",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-b8fdff6a",
+      "kind": "multipleChoice",
+      "prompt": "Hank grew up on a ranch and learned to ride horses and handle cattle, he was a true _____ in every sense of the word.",
+      "options": [
+        "servant",
+        "guy",
+        "cowboy",
+        "cookie"
+      ],
+      "answerIndex": 2,
+      "wordKey": "cowboy",
+      "senseId": "sense-aabaa741",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-078301ba",
+      "kind": "multipleChoice",
+      "prompt": "She has been my best friend _____ since we were kids.",
+      "options": [
+        "socks",
+        "finish",
+        "moon",
+        "ever"
+      ],
+      "answerIndex": 3,
+      "wordKey": "ever",
+      "senseId": "sense-670c9a26",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-aaf2c67a",
+      "kind": "multipleChoice",
+      "prompt": "The professor was _____ about the subject and could answer any question asked by the students.",
+      "options": [
+        "prone",
+        "knowledgeable",
+        "decent",
+        "irritable"
+      ],
+      "answerIndex": 1,
+      "wordKey": "knowledgeable",
+      "senseId": "sense-c28f3669",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-2ea6e8b6",
+      "kind": "multipleChoice",
+      "prompt": "The _____ cooed and giggled as her mother played peek-a-boo.",
+      "options": [
+        "parents",
+        "mother",
+        "baby",
+        "parent"
+      ],
+      "answerIndex": 2,
+      "wordKey": "baby",
+      "senseId": "sense-62890998",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-ba36a268",
+      "kind": "multipleChoice",
+      "prompt": "The artist’s work was so _____ that it caught everyone’s attention at the art gallery opening.",
+      "options": [
+        "cooperative",
+        "striking",
+        "mere",
+        "dull"
+      ],
+      "answerIndex": 1,
+      "wordKey": "queer",
+      "senseId": "sense-db9d4c9e",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-08a3eb04",
+      "kind": "multipleChoice",
+      "prompt": "The _____ bridge withstood the heavy storm and remained intact.",
+      "options": [
+        "invaluable",
+        "irritable",
+        "robust",
+        "prone"
+      ],
+      "answerIndex": 2,
+      "wordKey": "robust",
+      "senseId": "sense-bd783e35",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-d93699ea",
+      "kind": "multipleChoice",
+      "prompt": "The control _____ of the machine was damaged in the accident.",
+      "options": [
+        "ass",
+        "orchard",
+        "wage",
+        "panel"
+      ],
+      "answerIndex": 3,
+      "wordKey": "panel",
+      "senseId": "sense-f7f36caa",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-b533a44b",
+      "kind": "multipleChoice",
+      "prompt": "Thomas Edison is known as the _____ of the light bulb.",
+      "options": [
+        "substance",
+        "confidence",
+        "honeymoon",
+        "inventor"
+      ],
+      "answerIndex": 3,
+      "wordKey": "inventor",
+      "senseId": "sense-bc7cb698",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-8f8df8f2",
+      "kind": "multipleChoice",
+      "prompt": "I searched everywhere for my keys, but they were _____ to be found.",
+      "options": [
+        "nowhere",
+        "exaggerate",
+        "wax",
+        "scold"
+      ],
+      "answerIndex": 0,
+      "wordKey": "nowhere",
+      "senseId": "sense-0ef7fa37",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-a42e157d",
+      "kind": "multipleChoice",
+      "prompt": "The _____ leader gave a speech about the importance of democracy.",
+      "options": [
+        "political",
+        "mere",
+        "beat",
+        "ignorant"
+      ],
+      "answerIndex": 0,
+      "wordKey": "political",
+      "senseId": "sense-a0beb599",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-c08d782d",
+      "kind": "multipleChoice",
+      "prompt": "After months of searching, John finally found _____ as a software developer at a reputable company.",
+      "options": [
+        "employment",
+        "silence",
+        "kingdom",
+        "guess"
+      ],
+      "answerIndex": 0,
+      "wordKey": "employment",
+      "senseId": "sense-e89ccb1f",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-5f4fb284",
+      "kind": "multipleChoice",
+      "prompt": "He blew on the _____ to alert everyone that it was time to start the race.",
+      "options": [
+        "trumpet",
+        "whistle",
+        "generation",
+        "county"
+      ],
+      "answerIndex": 1,
+      "wordKey": "whistle",
+      "senseId": "sense-28dcfcce",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-da2552d0",
+      "kind": "multipleChoice",
+      "prompt": "Despite the fear of heights, she had the _____ to bungee jump from the highest point in the city.",
+      "options": [
+        "courage",
+        "operator",
+        "stick",
+        "deposit"
+      ],
+      "answerIndex": 0,
+      "wordKey": "courage",
+      "senseId": "sense-f8d74d6e",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-78e45a30",
+      "kind": "multipleChoice",
+      "prompt": "The _____ between the two neighbors lasted for two hours and ended with the police being called.",
+      "options": [
+        "intervention",
+        "patience",
+        "quarrel",
+        "slot"
+      ],
+      "answerIndex": 2,
+      "wordKey": "quarrel",
+      "senseId": "sense-d87d03db",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-ea40a96d",
+      "kind": "multipleChoice",
+      "prompt": "Planning for the _____, she decided to enroll in college and pursue her dream career",
+      "options": [
+        "author",
+        "shirt",
+        "future",
+        "keeper"
+      ],
+      "answerIndex": 2,
+      "wordKey": "future",
+      "senseId": "sense-5bbea97a",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-63038808",
+      "kind": "multipleChoice",
+      "prompt": "The _____ of the swimming pool was 50,000 gallons.",
+      "options": [
+        "volume",
+        "missile",
+        "density",
+        "stuff"
+      ],
+      "answerIndex": 0,
+      "wordKey": "volume",
+      "senseId": "sense-4c39ae03",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-e42d6830",
+      "kind": "multipleChoice",
+      "prompt": "I think there were _____ 50 people at the party.",
+      "options": [
+        "forth",
+        "about",
+        "indicate",
+        "really"
+      ],
+      "answerIndex": 1,
+      "wordKey": "about",
+      "senseId": "sense-e272d4cc",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-9dfc2653",
+      "kind": "multipleChoice",
+      "prompt": "I _____ tea over coffee because it has a milder flavor.",
+      "options": [
+        "expect",
+        "prefer",
+        "peel",
+        "worst"
+      ],
+      "answerIndex": 1,
+      "wordKey": "prefer",
+      "senseId": "sense-a42d3617",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-7f99531c",
+      "kind": "multipleChoice",
+      "prompt": "She colored in the picture with different shades of _____.",
+      "options": [
+        "crayon",
+        "wall",
+        "kilometer",
+        "rust"
+      ],
+      "answerIndex": 0,
+      "wordKey": "crayon",
+      "senseId": "sense-b7f251b5",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-7e3411a3",
+      "kind": "multipleChoice",
+      "prompt": "The mechanic applied _____ to the gears in order to ensure smooth operation.",
+      "options": [
+        "reminder",
+        "grease",
+        "accommodation",
+        "consultation"
+      ],
+      "answerIndex": 1,
+      "wordKey": "grease",
+      "senseId": "sense-7e97d6c7",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-03520e0c",
+      "kind": "multipleChoice",
+      "prompt": "The new CEO of the company is incredibly _____, owning multiple luxury cars and vacation homes around the world.",
+      "options": [
+        "prone",
+        "intact",
+        "wealthy",
+        "fierce"
+      ],
+      "answerIndex": 2,
+      "wordKey": "wealthy",
+      "senseId": "sense-9b1b6553",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-b51fe77a",
+      "kind": "multipleChoice",
+      "prompt": "Despite his parents' pleas, the _____ toddler refused to eat his vegetables.",
+      "options": [
+        "relentless",
+        "prone",
+        "obstinate",
+        "intact"
+      ],
+      "answerIndex": 2,
+      "wordKey": "obstinate",
+      "senseId": "sense-62ccb82c",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-a7300149",
+      "kind": "multipleChoice",
+      "prompt": "When the news of her father’s death reached her, she couldn’t help but _____.",
+      "options": [
+        "rise",
+        "slip",
+        "blow",
+        "cry"
+      ],
+      "answerIndex": 3,
+      "wordKey": "cry",
+      "senseId": "sense-912bfef6",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-8604dbb3",
+      "kind": "multipleChoice",
+      "prompt": "The metal frame of the building was so _____ that it withstood the force of the earthquake without collapsing.",
+      "options": [
+        "decent",
+        "invaluable",
+        "rigid",
+        "fierce"
+      ],
+      "answerIndex": 2,
+      "wordKey": "rigid",
+      "senseId": "sense-3e18c22b",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-54fb6477",
+      "kind": "multipleChoice",
+      "prompt": "The comfortable _____ in the movie theater made the film even more enjoyable.",
+      "options": [
+        "seat",
+        "toy",
+        "desk",
+        "bed"
+      ],
+      "answerIndex": 0,
+      "wordKey": "seat",
+      "senseId": "sense-7c5f3e70",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-f25026de",
+      "kind": "multipleChoice",
+      "prompt": "After indulging in the buffet, he felt the _____ of food weighing him down.",
+      "options": [
+        "excess",
+        "layer",
+        "torture",
+        "referee"
+      ],
+      "answerIndex": 0,
+      "wordKey": "excess",
+      "senseId": "sense-6b9c530b",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-9b07b475",
+      "kind": "multipleChoice",
+      "prompt": "She placed the _____ on the pot to let the soup simmer.",
+      "options": [
+        "fire",
+        "cloth",
+        "lid",
+        "editor"
+      ],
+      "answerIndex": 2,
+      "wordKey": "lid",
+      "senseId": "sense-57f8f318",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-404be2c4",
+      "kind": "multipleChoice",
+      "prompt": "The government is planning to _____ a large area of land to combat deforestation.",
+      "options": [
+        "kick",
+        "exact",
+        "mend",
+        "reforest"
+      ],
+      "answerIndex": 3,
+      "wordKey": "forest",
+      "senseId": "sense-f74ea247",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-52b88310",
+      "kind": "multipleChoice",
+      "prompt": "In the harsh desert climate, only _____ vegetation can survive.",
+      "options": [
+        "hall",
+        "scrub",
+        "swan",
+        "legend"
+      ],
+      "answerIndex": 1,
+      "wordKey": "scrub",
+      "senseId": "sense-b0b1fa69",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-89e206ff",
+      "kind": "multipleChoice",
+      "prompt": "He was sentenced to 10 years in _____ for his crimes.",
+      "options": [
+        "postage",
+        "wear",
+        "jail",
+        "producer"
+      ],
+      "answerIndex": 2,
+      "wordKey": "jail",
+      "senseId": "sense-39976564",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-f411b877",
+      "kind": "multipleChoice",
+      "prompt": "The convenience store near my house is open _____, so I can buy snacks even in the late hours.",
+      "options": [
+        "intact",
+        "overnight",
+        "fierce",
+        "intermediate"
+      ],
+      "answerIndex": 1,
+      "wordKey": "overnight",
+      "senseId": "sense-d86dc230",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-3efcb91b",
+      "kind": "multipleChoice",
+      "prompt": "As I stood on the mountaintop, I couldn't help but marvel at the breathtaking _____ before me, with rolling hills, vibrant green forests, and a shimmering lake in the distance.",
+      "options": [
+        "physics",
+        "waterfall",
+        "landscape",
+        "pollution"
+      ],
+      "answerIndex": 2,
+      "wordKey": "landscape",
+      "senseId": "sense-c7cba6c9",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-95714bcb",
+      "kind": "multipleChoice",
+      "prompt": "To evenly cook the chicken, you need to _____ it on the grill.",
+      "options": [
+        "ornament",
+        "withdraw",
+        "rotate",
+        "beautify"
+      ],
+      "answerIndex": 2,
+      "wordKey": "rotate",
+      "senseId": "sense-cc314453",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-d4f528d9",
+      "kind": "multipleChoice",
+      "prompt": "The political protest erupted into a state of _____, with clashes between the demonstrators and the police.",
+      "options": [
+        "turmoil",
+        "layout",
+        "disbelief",
+        "framework"
+      ],
+      "answerIndex": 0,
+      "wordKey": "turmoil",
+      "senseId": "sense-4c222d93",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-8dabd774",
+      "kind": "multipleChoice",
+      "prompt": "The _____ of losing her job caused her to fall into debt.",
+      "options": [
+        "mall",
+        "career",
+        "misfortune",
+        "intuition"
+      ],
+      "answerIndex": 2,
+      "wordKey": "misfortune",
+      "senseId": "sense-9ef66908",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-73d7dd7c",
+      "kind": "multipleChoice",
+      "prompt": "During the severe drought, the once lush garden began to _____ and the plants turned brown.",
+      "options": [
+        "fume",
+        "violate",
+        "refer",
+        "wither"
+      ],
+      "answerIndex": 3,
+      "wordKey": "wither",
+      "senseId": "sense-38fdbac9",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-bba47e6a",
+      "kind": "multipleChoice",
+      "prompt": "I wrote a heartfelt _____ to my best friend, expressing my gratitude and love for our lifelong friendship.",
+      "options": [
+        "high",
+        "human",
+        "cool",
+        "letter"
+      ],
+      "answerIndex": 3,
+      "wordKey": "letter",
+      "senseId": "sense-f59c2a68",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-7fbfecde",
+      "kind": "multipleChoice",
+      "prompt": "The _____ attendant handed out snacks to the passengers before takeoff.",
+      "options": [
+        "flight",
+        "pair",
+        "river",
+        "blanket"
+      ],
+      "answerIndex": 0,
+      "wordKey": "flight",
+      "senseId": "sense-2b9a049d",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-8edc4cc4",
+      "kind": "multipleChoice",
+      "prompt": "I was initially going to watch a movie, but I decided to _____ for a walk in the park instead.",
+      "options": [
+        "discourage",
+        "opt",
+        "strap",
+        "deceive"
+      ],
+      "answerIndex": 1,
+      "wordKey": "opt",
+      "senseId": "sense-b60e1f4c",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    }
+  ]
+}

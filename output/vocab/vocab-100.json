@@ -1,0 +1,1404 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 100,
+  "words": [
+    {
+      "wordKey": "adopt",
+      "word": "adopt",
+      "senses": [
+        {
+          "id": "sense-feffb9e2",
+          "pos": "verb",
+          "meaningZh": "採用；採納",
+          "definitionEn": "choose and follow a particular course of action, such as a theory, idea, policy, strategy, or plan",
+          "examples": [
+            "After careful consideration, the company decided to adopt a new marketing strategy to reach a wider audience."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-ce286920",
+          "pos": "verb",
+          "meaningZh": "收養（孩子或寵物）",
+          "definitionEn": "take into one’s family, such as a child or pet",
+          "examples": [
+            "After a long and careful process, John and Mary decided to adopt a newborn baby from an orphanage."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L4",
+        "textbookTitle": "龍騰 B2·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "agency",
+      "word": "agency",
+      "senses": [
+        {
+          "id": "sense-d5cca4d1",
+          "pos": "noun",
+          "meaningZh": "機構；代辦處",
+          "definitionEn": "the state of being in action or exerting power, or the means by which something is achieved or brought about",
+          "examples": [
+            "The investigative agency worked diligently to uncover the truth behind the mysterious disappearance."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-8199e14a",
+          "pos": "noun",
+          "meaningZh": "自主性；行動能力",
+          "definitionEn": "the capacity of an individual or group to act independently and make their own choices",
+          "examples": [
+            "When she turned 18, Sarah gained agency over her own life and was able to make decisions about where to go to college and what career to pursue."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L5",
+        "textbookTitle": "龍騰 B4·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "agent",
+      "word": "agent",
+      "senses": [
+        {
+          "id": "sense-7c7da009",
+          "pos": "noun",
+          "meaningZh": "代理人；仲介",
+          "definitionEn": "a person or company that acts on behalf of another person or organization, especially in business",
+          "examples": [],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-315eea77",
+          "pos": "noun",
+          "meaningZh": "試劑；作用物質",
+          "definitionEn": "a substance that has a particular effect or influence",
+          "examples": [
+            "The cleaning agent removed the stubborn stain from the carpet."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L5",
+        "textbookTitle": "龍騰 B4·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "aggressive",
+      "word": "aggressive",
+      "senses": [
+        {
+          "id": "sense-3694aa60",
+          "pos": "adjective",
+          "meaningZh": "具攻擊性的；好鬥的",
+          "definitionEn": "having or showing a strong or exaggerated sense of hostility or readiness to attack or confront",
+          "examples": [
+            "In a heated argument, Jake became aggressive and started yelling at his opponent."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-e7e29240",
+          "pos": "adjective",
+          "meaningZh": "積極進取的；強勢的",
+          "definitionEn": "assertive, bold, and energetic in pursuing one’s goals or aims",
+          "examples": [
+            "During the negotiations, Sarah took an aggressive approach, clearly stating her demands and not backing down until they were met."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "agreeable",
+      "word": "agreeable",
+      "senses": [
+        {
+          "id": "sense-32e2b49b",
+          "pos": "adjective",
+          "meaningZh": "令人愉快的；宜人的",
+          "definitionEn": "pleasant and enjoyable",
+          "examples": [
+            "We spent an agreeable afternoon walking in the park."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-65695dca",
+          "pos": "adjective",
+          "meaningZh": "樂意的；好說話的",
+          "definitionEn": "prepared to agree or consent",
+          "examples": [
+            "The team found John to be a very agreeable person, always willing to listen and compromise in order to reach a solution."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "alcohol",
+      "word": "alcohol",
+      "senses": [
+        {
+          "id": "sense-8a0ff376",
+          "pos": "noun",
+          "meaningZh": "酒精；乙醇",
+          "definitionEn": "any of a series of volatile hydroxyl compounds that are made from hydrocarbons by distillation",
+          "examples": [
+            "After a long week at work, I decided to unwind with a glass of red wine, enjoying the smooth taste of alcohol."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-9465fb26",
+          "pos": "noun",
+          "meaningZh": "含酒精飲料；酒",
+          "definitionEn": "a liquor or brew containing alcohol as the active agent",
+          "examples": [
+            "After a long day at work, Sarah enjoyed unwinding with a glass of red wine, savoring the smooth taste of the alcohol."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L9 +1",
+        "textbookTitle": "龍騰 B4·L9、翰林 B1·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "alert",
+      "word": "alert",
+      "senses": [
+        {
+          "id": "sense-127a111b",
+          "pos": "noun",
+          "meaningZh": "警報；預警",
+          "definitionEn": "a warning to people to get ready to deal with something dangerous",
+          "examples": [
+            "The government issued an alert to the residents living near the volcano, advising them to evacuate immediately."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-19ab9f83",
+          "pos": "adjective",
+          "meaningZh": "警覺的；機敏的",
+          "definitionEn": "quick to notice, perceive, or understand; being attentive",
+          "examples": [
+            "As a security guard, it is important to be alert and constantly observe the surroundings for any suspicious activity."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L4 +1",
+        "textbookTitle": "龍騰 B1·L4、三民 B4·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "allowance",
+      "word": "allowance",
+      "senses": [
+        {
+          "id": "sense-adb0bbe7",
+          "pos": "noun",
+          "meaningZh": "零用錢；生活費",
+          "definitionEn": "an amount of money given regularly as a share of a parent’s income to a child, spouse, or former spouse",
+          "examples": [
+            "My parents give me a weekly allowance of $20 for completing my household chores."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-4696b9fb",
+          "pos": "noun",
+          "meaningZh": "補貼；津貼；折扣",
+          "definitionEn": "an amount added or deducted based on certain qualifying circumstances",
+          "examples": [
+            "Employees can claim a travel allowance if they have to cover transportation expenses for work-related travel."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "alternative",
+      "word": "alternative",
+      "senses": [
+        {
+          "id": "sense-1c511c84",
+          "pos": "adjective",
+          "meaningZh": "替代的；二選一的",
+          "definitionEn": "involving a choice between two or more possibilities",
+          "examples": [
+            "After multiple failed attempts, they decided to explore alternative solutions to the problem."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-3bc5e35e",
+          "pos": "adjective",
+          "meaningZh": "備用的；可替換的",
+          "definitionEn": "used or serving in place of another",
+          "examples": [
+            "When the restaurant ran out of chicken, they offered an alternative option of fish for the main course."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L9",
+        "textbookTitle": "龍騰 B2·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "amateur",
+      "word": "amateur",
+      "senses": [
+        {
+          "id": "sense-3b71e0ca",
+          "pos": "noun",
+          "meaningZh": "業餘愛好者；非職業選手",
+          "definitionEn": "a person who takes part in a sport or other activity for enjoyment, not as a job",
+          "examples": [
+            "Sarah has been playing tennis for fun with her friends on weekends. She is an amateur player and loves the game purely for the joy of it."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-9caa406d",
+          "pos": "noun",
+          "meaningZh": "生手；外行人",
+          "definitionEn": "a person who is not skilled",
+          "examples": [
+            "Don't ask Jack to fix your computer, he's just an amateur when it comes to technology."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "ambiguous",
+      "word": "ambiguous",
+      "senses": [
+        {
+          "id": "sense-685c6b47",
+          "pos": "adjective",
+          "meaningZh": "模稜兩可的；含糊的",
+          "definitionEn": "having more than one possible meaning or interpretation",
+          "examples": [
+            "The politician’s speech was so ambiguous that no one was sure what he meant."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-e0f5b9c1",
+          "pos": "adjective",
+          "meaningZh": "意義不明確的；曖昧的",
+          "definitionEn": "unclear or vague in meaning; open to multiple interpretations; deliberately vague or evasive",
+          "examples": [
+            "The politician’s ambiguous response to the journalist’s question only added more confusion to the already complex issue at hand."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "ambitious",
+      "word": "ambitious",
+      "senses": [
+        {
+          "id": "sense-f14ba4bf",
+          "pos": "adjective",
+          "meaningZh": "有野心的；雄心壯志的",
+          "definitionEn": "having a strong desire for success or achievement",
+          "examples": [
+            "He is an ambitious student who dreams of becoming a doctor."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L6",
+        "textbookTitle": "龍騰 B3·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "amuse",
+      "word": "amuse",
+      "senses": [
+        {
+          "id": "sense-8a1692c3",
+          "pos": "verb",
+          "meaningZh": "娛樂；使歡樂",
+          "definitionEn": "to provide someone with enjoyment or entertainment",
+          "examples": [
+            "The clown at the birthday party was hired to amuse the children by performing magic tricks and telling funny jokes."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-5cf907fa",
+          "pos": "verb",
+          "meaningZh": "逗笑；引人發笑",
+          "definitionEn": "to make someone laugh or smile",
+          "examples": [
+            "The comedian’s jokes never fail to amuse the audience."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "amusement",
+      "word": "amusement",
+      "senses": [
+        {
+          "id": "sense-4f05eef1",
+          "pos": "noun",
+          "meaningZh": "歡樂；快感；愉悅",
+          "definitionEn": "a feeling of delight at being entertained",
+          "examples": [
+            "The children screamed with amusement, their laughter echoing through the amusement park as they spun in teacups and rode roller coasters."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-0e3ea7e1",
+          "pos": "noun",
+          "meaningZh": "娛樂活動；消遣",
+          "definitionEn": "an activity that is entertaining and holds the attention",
+          "examples": [
+            "Visiting an amusement park with thrilling rides and games is a popular form of amusement for families during the summer."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "analysis",
+      "word": "analysis",
+      "senses": [
+        {
+          "id": "sense-0d295fb9",
+          "pos": "noun",
+          "meaningZh": "分析；解析",
+          "definitionEn": "the process of breaking something down into smaller parts and examining their relationships",
+          "examples": [
+            "In order to understand the causes of the economic downturn, a thorough analysis of various financial factors such as inflation, interest rates, and government policies is required."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-e1d2cb85",
+          "pos": "noun",
+          "meaningZh": "分析方法；分析過程",
+          "definitionEn": "a method of examining the components of a whole and their relationships to each other",
+          "examples": [
+            "In order to improve the efficiency of their manufacturing process, the company conducted a detailed analysis of every step from raw material acquisition to product distribution."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B2·L10",
+        "textbookTitle": "三民 B2·L10"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "analyze",
+      "word": "analyze",
+      "senses": [
+        {
+          "id": "sense-29abbad1",
+          "pos": "verb",
+          "meaningZh": "分析；研究",
+          "definitionEn": "To examine something in great detail in order to understand or explain it",
+          "examples": [
+            "The forensic team needed to analyze the evidence found at the crime scene in order to solve the case."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-8bf597a5",
+          "pos": "verb",
+          "meaningZh": "剖析；解構",
+          "definitionEn": "To break down a substance or concept into its components or essential features",
+          "examples": [
+            "To prepare for the presentation, Rose had to analyze the data and draw the key insights."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B2·L10",
+        "textbookTitle": "三民 B2·L10"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "ancestor",
+      "word": "ancestor",
+      "senses": [
+        {
+          "id": "sense-c152f915",
+          "pos": "noun",
+          "meaningZh": "祖先；先人",
+          "definitionEn": "a person, typically more remote than a grandparent, from whom one is descended.",
+          "examples": [
+            "In order to trace our family history, my sister and I visited our ancestral village where our great-grandparents were born."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-7ab55394",
+          "pos": "noun",
+          "meaningZh": "傳世珍品；古物（具歷史價值者）",
+          "definitionEn": "a thing, usually an old object or custom, that has been around for a long time and is considered valuable.",
+          "examples": [
+            "The family heirloom, passed down through generations, is a cherished ancestor that holds great sentimental and historical value."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "anniversary",
+      "word": "anniversary",
+      "senses": [
+        {
+          "id": "sense-c68b2f1a",
+          "pos": "noun",
+          "meaningZh": "週年紀念日",
+          "definitionEn": "the yearly recurrence of the date of a past event, or the celebration or commemoration of such a date",
+          "examples": [
+            "Last month, my wife and I celebrated our 10th wedding anniversary with a romantic trip to Paris."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L7",
+        "textbookTitle": "龍騰 B4·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "annoy",
+      "word": "annoy",
+      "senses": [
+        {
+          "id": "sense-14c369f5",
+          "pos": "verb",
+          "meaningZh": "打擾；惹惱",
+          "definitionEn": "to disturb or bother someone, often repeatedly or continuously",
+          "examples": [
+            "My little brother likes to annoy me by tapping on my shoulder and humming in my ear."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-30498f99",
+          "pos": "verb",
+          "meaningZh": "使不耐煩；令人厭煩",
+          "definitionEn": "to make someone slightly angry or impatient, usually over a long period of time",
+          "examples": [
+            "The constant buzzing of the fly in the room began to annoy the students during their exam."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L4 +1",
+        "textbookTitle": "龍騰 B2·L4、三民 B2·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "annual",
+      "word": "annual",
+      "senses": [
+        {
+          "id": "sense-4960acc5",
+          "pos": "adjective",
+          "meaningZh": "每年的；年度的",
+          "definitionEn": "happening once a year or every year",
+          "examples": [
+            "The company’s annual meeting is scheduled for next month."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-dcd85856",
+          "pos": "noun",
+          "meaningZh": "年刊；年鑑",
+          "definitionEn": "a book or magazine that is published once a year",
+          "examples": [
+            "The company’s annual report contained details of their financial performance over the previous year."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L7 +1",
+        "textbookTitle": "龍騰 B1·L7、三民 B2·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "anxiety",
+      "word": "anxiety",
+      "senses": [
+        {
+          "id": "sense-b50907c1",
+          "pos": "noun",
+          "meaningZh": "焦慮；不安；憂慮",
+          "definitionEn": "a vague feeling of unease or apprehension often accompanied by physical sensations such as sweating and increased heart rate",
+          "examples": [
+            "She couldn’t sleep because of her anxiety over the upcoming exam."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-4cfdeb04",
+          "pos": "noun",
+          "meaningZh": "焦慮症；焦慮障礙",
+          "definitionEn": "(psychiatry) a mental health condition characterized by persistent feelings of worry, nervousness, or fear, often accompanied by compulsive behaviors or panic attacks",
+          "examples": [
+            "She experienced a lot of anxiety before her exams, which made it difficult for her to concentrate on her studies."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L1",
+        "textbookTitle": "龍騰 B4·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "apology",
+      "word": "apology",
+      "senses": [
+        {
+          "id": "sense-c22992ee",
+          "pos": "noun",
+          "meaningZh": "道歉；致歉",
+          "definitionEn": "an expression of regret or remorse for doing something wrong or causing trouble",
+          "examples": [],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-da2427f9",
+          "pos": "noun",
+          "meaningZh": "正式道歉；書面說明",
+          "definitionEn": "a formal written or spoken statement, especially one given in order to explain a mistake or to show regret",
+          "examples": [
+            "After missing the meeting with his boss, John wrote an apology email explaining his absence."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L6 +1",
+        "textbookTitle": "龍騰 B2·L6、三民 B2·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "apparent",
+      "word": "apparent",
+      "senses": [
+        {
+          "id": "sense-670e147e",
+          "pos": "adjective",
+          "meaningZh": "明顯的；顯而易見的",
+          "definitionEn": "easily seen, understood, or recognized",
+          "examples": [
+            "It was apparent that she didn’t want to attend the meeting as she kept looking at her watch."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-c92ff0e5",
+          "pos": "adjective",
+          "meaningZh": "表面上的；看似的",
+          "definitionEn": "appearing to be true, but may not be",
+          "examples": [
+            "The candidate’s apparent confidence on stage did not match with her growing nervousness backstage."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B2·L1",
+        "textbookTitle": "三民 B2·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "applicant",
+      "word": "applicant",
+      "senses": [
+        {
+          "id": "sense-efa23825",
+          "pos": "noun",
+          "meaningZh": "申請人；應徵者",
+          "definitionEn": "a person who applies for something, such as a job or admission to a school or program",
+          "examples": [
+            "The applicant submitted a well-written resume and strong references when applying for the job."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "application",
+      "word": "application",
+      "senses": [
+        {
+          "id": "sense-85f1adc4",
+          "pos": "noun",
+          "meaningZh": "申請；申請書",
+          "definitionEn": "a formal request, usually in writing, for a job, place, or permission",
+          "examples": [
+            "She sent in her application for the scholarship."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-443df62a",
+          "pos": "noun",
+          "meaningZh": "外用藥；塗抹劑",
+          "definitionEn": "a liquid preparation with a soothing, medicinal, or antiseptic action applied to the skin",
+          "examples": [
+            "After getting a minor burn, she applied a soothing application to alleviate the pain and promote healing."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B1·L4",
+        "textbookTitle": "三民 B1·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "appoint",
+      "word": "appoint",
+      "senses": [
+        {
+          "id": "sense-55c25c37",
+          "pos": "verb",
+          "meaningZh": "任命；指定",
+          "definitionEn": "furnish",
+          "examples": [
+            "The company will appoint a new CEO next month."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-e7a23b89",
+          "pos": "verb",
+          "meaningZh": "委派；指派",
+          "definitionEn": "assign a duty, responsibility, or obligation to",
+          "examples": [
+            "The boss decided to appoint Sarah as the project manager for the new initiative."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L9",
+        "textbookTitle": "龍騰 B4·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "appointment",
+      "word": "appointment",
+      "senses": [
+        {
+          "id": "sense-8bcfa629",
+          "pos": "noun",
+          "meaningZh": "預約；約診；約會",
+          "definitionEn": "a pre-arranged meeting",
+          "examples": [
+            "I have an appointment with my doctor tomorrow at 9:00 AM."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-812c9d4b",
+          "pos": "noun",
+          "meaningZh": "職位；任命",
+          "definitionEn": "the specific job or position that someone has been assigned to",
+          "examples": [
+            "She eagerly accepted the appointment as CEO of the company."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L9",
+        "textbookTitle": "龍騰 B4·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "appreciation",
+      "word": "appreciation",
+      "senses": [
+        {
+          "id": "sense-b49d36c4",
+          "pos": "noun",
+          "meaningZh": "感謝；感激",
+          "definitionEn": "an expression of gratitude",
+          "examples": [
+            "After receiving the scholarship, Jill showed her appreciation by writing a heartfelt thank-you letter to the donor."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-06a0f375",
+          "pos": "noun",
+          "meaningZh": "鑑賞力；品味",
+          "definitionEn": "delicate perception or recognition, especially of aesthetic qualities",
+          "examples": [
+            "As an art curator, Mary had a keen appreciation for the subtle brushstrokes and exquisite color palette of the masterpiece painting."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L6 +2",
+        "textbookTitle": "龍騰 B3·L6、三民 B2·L1、翰林 B1·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "appropriate",
+      "word": "appropriate",
+      "senses": [
+        {
+          "id": "sense-4648bead",
+          "pos": "adjective",
+          "meaningZh": "適當的；合宜的",
+          "definitionEn": "Suitable or fitting for a particular person, place, or condition.",
+          "examples": [
+            "It is not appropriate to wear shorts to a job interview."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-2137d88a",
+          "pos": "verb",
+          "meaningZh": "擅自取用；挪用；據為己有",
+          "definitionEn": "To take something for one’s own use, often without permission.",
+          "examples": [
+            "It is never appropriate to appropriate someone else’s belongings without their consent."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L2",
+        "textbookTitle": "龍騰 B4·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "approval",
+      "word": "approval",
+      "senses": [
+        {
+          "id": "sense-89d91d13",
+          "pos": "noun",
+          "meaningZh": "批准；核准；許可",
+          "definitionEn": "the formal act of approving or agreeing to something, often officially",
+          "examples": [
+            "The board of directors gave their approval for the new project to proceed."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-a53f728a",
+          "pos": "noun",
+          "meaningZh": "認可；讚許",
+          "definitionEn": "the state of being accepted or considered satisfactory",
+          "examples": [
+            "After months of hard work, she finally received the approval of her colleagues for the new project proposal."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L8",
+        "textbookTitle": "三民 B4·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    }
+  ]
+}

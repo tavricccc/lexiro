@@ -1,0 +1,1394 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 195,
+  "words": [
+    {
+      "wordKey": "slang",
+      "word": "slang",
+      "senses": [
+        {
+          "id": "sense-dd7e66bc",
+          "pos": "noun",
+          "meaningZh": "俚語；行話",
+          "definitionEn": "a type of informal language consisting of words and expressions that are not considered appropriate for formal occasions, often using vulgar or offensive words or phrases",
+          "examples": [
+            "Using too much slang during a job interview can give a bad impression of your professionalism."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-09fed5a1",
+          "pos": "verb",
+          "meaningZh": "使用俚語；說粗話",
+          "definitionEn": "to use slang or vulgar language",
+          "examples": [
+            "Even though he was giving a presentation at work, he couldn’t resist the urge to slang and it was unprofessional."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "slash",
+      "word": "slash",
+      "senses": [
+        {
+          "id": "sense-ff4d5976",
+          "pos": "verb",
+          "meaningZh": "揮砍；劈砍",
+          "definitionEn": "cut with sweeping strokes; as with an ax or machete",
+          "examples": [
+            "The farmer slashed the tall grass with his machete before planting the crops."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-2fd66b2d",
+          "pos": "verb",
+          "meaningZh": "大砍；大幅削減",
+          "definitionEn": "cut drastically",
+          "examples": [
+            "The chef used a sharp knife to slash through the meat."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "slaughter",
+      "word": "slaughter",
+      "senses": [
+        {
+          "id": "sense-e1e8f2a5",
+          "pos": "noun",
+          "meaningZh": "屠宰（牲畜）",
+          "definitionEn": "the killing of animals (as for food)",
+          "examples": [
+            "The farmer took his livestock to the slaughterhouse to provide meat for the community."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L3 +1",
+        "textbookTitle": "龍騰 B3·L3、三民 B4·L10"
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "slay",
+      "word": "slay",
+      "senses": [
+        {
+          "id": "sense-557e7f86",
+          "pos": "verb",
+          "meaningZh": "殺死；誅殺",
+          "definitionEn": "to kill intentionally and with premeditation",
+          "examples": [
+            "The hitman was hired to slay the rival gang leader."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-8fd58c7c",
+          "pos": "verb",
+          "meaningZh": "令人驚艷；征服（觀眾）",
+          "definitionEn": "to amaze or impress someone",
+          "examples": [
+            "She slayed the audience with her singing."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "sloppy",
+      "word": "sloppy",
+      "senses": [
+        {
+          "id": "sense-ae6f5e17",
+          "pos": "adjective",
+          "meaningZh": "凌亂的；邋遢的",
+          "definitionEn": "lacking neatness or order, not tidy",
+          "examples": [
+            "Janice’s room was so sloppy, clothes were strewn across the floor and empty food containers were piled up on her desk."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-c6a77910",
+          "pos": "adjective",
+          "meaningZh": "馬虎的；草率的",
+          "definitionEn": "marked by great carelessness or excessive laziness, negligent",
+          "examples": [
+            "After a night of heavy drinking, John was feeling sloppy and couldn’t even stand straight."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "slum",
+      "word": "slum",
+      "senses": [
+        {
+          "id": "sense-5a0560d6",
+          "pos": "noun",
+          "meaningZh": "貧民窟；棚戶區",
+          "definitionEn": "an area within a city or town that is characterized by poor living conditions and inadequate facilities",
+          "examples": [
+            "Many families in the city were forced to live in the slum due to their limited financial resources."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-ac786083",
+          "pos": "verb",
+          "meaningZh": "體驗貧民區生活；到貧民窟遊覽",
+          "definitionEn": "to visit or inhabit a slum area, often for the purpose of experiencing the culture or gaining perspective, but can be considered insensitive and offensive",
+          "examples": [
+            "As a responsible tourist, it is important to avoid slumming and instead engage with the local community in a respectful and meaningful way."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "slump",
+      "word": "slump",
+      "senses": [
+        {
+          "id": "sense-61cdaba4",
+          "pos": "verb",
+          "meaningZh": "（價格）暴跌；下滑",
+          "definitionEn": "to decrease in value",
+          "examples": [
+            "During the economic recession, the housing market experienced a slump, causing prices to plummet."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-c63807f1",
+          "pos": "verb",
+          "meaningZh": "倒塌；癱倒",
+          "definitionEn": "to fall or sink heavily",
+          "examples": [
+            "The exhausted athlete slumped onto the ground after finishing the marathon."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "sly",
+      "word": "sly",
+      "senses": [
+        {
+          "id": "sense-b8fbe878",
+          "pos": "adjective",
+          "meaningZh": "狡猾的；奸詐的",
+          "definitionEn": "cunning and deceitful in nature",
+          "examples": [
+            "The sly cat pretended to be sick to get out of going to the vet."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "smuggle",
+      "word": "smuggle",
+      "senses": [
+        {
+          "id": "sense-389998a9",
+          "pos": "verb",
+          "meaningZh": "秘密攜帶；偷偷夾帶",
+          "definitionEn": "put, bring, or take in a secretive or furtive manner",
+          "examples": [
+            "The spy managed to smuggle the classified documents out of the country by hiding them inside a hollowed-out book."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-deb5deb9",
+          "pos": "verb",
+          "meaningZh": "走私；非法偷運",
+          "definitionEn": "import or export goods illegally or without paying the necessary taxes",
+          "examples": [
+            "The suspect attempted to smuggle illegal drugs across the border by hiding them inside a stuffed toy."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L5",
+        "textbookTitle": "龍騰 B4·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "sneaker",
+      "word": "sneaker",
+      "senses": [
+        {
+          "id": "sense-0b20fc36",
+          "pos": "noun",
+          "meaningZh": "運動鞋；球鞋",
+          "definitionEn": "a canvas shoe with a pliable rubber sole commonly used for athletic activities",
+          "examples": [
+            "She laced up her sneakers and went for a jog in the park."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-fee108b5",
+          "pos": "noun",
+          "meaningZh": "鬼鬼祟祟者；悄悄行動的人",
+          "definitionEn": "a person who moves around quietly in order to avoid being seen or heard",
+          "examples": [
+            "The spy, disguised as a maintenance worker, skillfully maneuvered through the building like a sneaker, ensuring not a single sound or footprint gave away his presence."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "sneakers",
+      "word": "sneakers",
+      "senses": [
+        {
+          "id": "sense-1a119e43",
+          "pos": "noun",
+          "meaningZh": "運動鞋；球鞋",
+          "definitionEn": "a canvas shoe with a pliable rubber sole commonly used for athletic activities",
+          "examples": [
+            "She laced up her sneakers and went for a jog in the park."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-47a13b84",
+          "pos": "noun",
+          "meaningZh": "鬼鬼祟祟者；悄悄行動的人",
+          "definitionEn": "a person who moves around quietly in order to avoid being seen or heard",
+          "examples": [
+            "The spy, disguised as a maintenance worker, skillfully maneuvered through the building like a sneaker, ensuring not a single sound or footprint gave away his presence."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "sneaky",
+      "word": "sneaky",
+      "senses": [
+        {
+          "id": "sense-28dee4d2",
+          "pos": "adjective",
+          "meaningZh": "鬼鬼祟祟的；偷偷摸摸的",
+          "definitionEn": "characterized by quietness, cautiousness, and secrecy in order to avoid being observed",
+          "examples": [
+            "The detective noticed a sneaky figure lurking in the shadows."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-0842e62c",
+          "pos": "adjective",
+          "meaningZh": "狡詐的；暗中謀利的",
+          "definitionEn": "marked by deception, typically for one’s own gain or advantage",
+          "examples": [
+            "The sneaky salesperson convinced the customer to buy a faulty product by concealing its defects."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "sneeze",
+      "word": "sneeze",
+      "senses": [
+        {
+          "id": "sense-76ab1837",
+          "pos": "noun",
+          "meaningZh": "噴嚏；打噴嚏",
+          "definitionEn": "an involuntary expulsion of air from the nose and mouth often caused by irritation or infection of the nasal passages",
+          "examples": [
+            "I couldn’t stop sneezing after inhaling the pepper."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-00954e82",
+          "pos": "verb",
+          "meaningZh": "打噴嚏；噴嚏",
+          "definitionEn": "to suddenly and involuntarily blow air out of the nose and mouth in response to irritation in the nasal passage",
+          "examples": [
+            "I couldn’t stop sneezing after inhaling too much dust while cleaning my room."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "snore",
+      "word": "snore",
+      "senses": [
+        {
+          "id": "sense-72d693ba",
+          "pos": "verb",
+          "meaningZh": "打鼾；睡覺時發出鼾聲",
+          "definitionEn": "to breathe loudly and roughly through your nose and mouth while sleeping",
+          "examples": [
+            "The gentle rhythm of his snore filled the room, lulling everyone into a deep sleep."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-ab244641",
+          "pos": "noun",
+          "meaningZh": "鼾聲；打鼾的聲音",
+          "definitionEn": "the sound of breathing noisily while sleeping",
+          "examples": [
+            "As soon as I fell asleep, my roommate began to snore loudly, keeping me awake all night."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "sociable",
+      "word": "sociable",
+      "senses": [
+        {
+          "id": "sense-ac107321",
+          "pos": "adjective",
+          "meaningZh": "愛交際的；合群的",
+          "definitionEn": "liking to be with people; friendly",
+          "examples": [
+            "Sarah is incredibly sociable. She always enjoys attending parties and socializing with new people."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-d237b984",
+          "pos": "noun",
+          "meaningZh": "外向的人；愛社交的人",
+          "definitionEn": "a person who enjoys spending time with others; an outgoing individual",
+          "examples": [
+            "Sarah is very sociable and always has a wide circle of friends."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "socialism",
+      "word": "socialism",
+      "senses": [
+        {
+          "id": "sense-7c7cf159",
+          "pos": "noun",
+          "meaningZh": "社會主義（政治理論）",
+          "definitionEn": "a political theory advocating such a system",
+          "examples": [
+            "In an ideal socialist society, the means of production are owned and controlled by the community as a whole."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-c36b5d90",
+          "pos": "noun",
+          "meaningZh": "社會主義制度；資源共有體制",
+          "definitionEn": "a social system characterized by equal access to resources and the means of production, regardless of social or economic status",
+          "examples": [
+            "In a socialist society, healthcare and education are provided to all citizens free of charge."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "socialist",
+      "word": "socialist",
+      "senses": [
+        {
+          "id": "sense-75069ead",
+          "pos": "noun",
+          "meaningZh": "社會主義者；社會主義支持者",
+          "definitionEn": "a person who believes in or supports socialism, an economic and political system that advocates for collective ownership and control of the means of production",
+          "examples": [
+            "Sarah, a socialist, believes that healthcare should be provided free of charge to all citizens."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "socialize",
+      "word": "socialize",
+      "senses": [
+        {
+          "id": "sense-d92f305c",
+          "pos": "verb",
+          "meaningZh": "交際；與人來往",
+          "definitionEn": "to spend time with other people in a friendly way",
+          "examples": [
+            "He enjoys socializing with his coworkers after work."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-d4661f11",
+          "pos": "verb",
+          "meaningZh": "使社會化；培養社交能力",
+          "definitionEn": "prepare (someone) for a social environment",
+          "examples": [
+            "As a parent, it’s important to socialize your child early on by exposing them to different people and places, so they can learn how to interact with others."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-9d4116e2",
+          "pos": "verb",
+          "meaningZh": "訓練融入社會；教導守規範",
+          "definitionEn": "train or adapt (someone) to behave in a way that is acceptable to society",
+          "examples": [
+            "As a parent, it is your responsibility to socialize your child to respect others’ personal space."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "sociology",
+      "word": "sociology",
+      "senses": [
+        {
+          "id": "sense-9e09d9ba",
+          "pos": "noun",
+          "meaningZh": "社會學",
+          "definitionEn": "The scientific study of human social behavior, including the origins, development, organization, and institutions of human society.",
+          "examples": [
+            "In order to understand the societal changes taking place in a particular region, it is necessary to conduct thorough research using the principles of sociology."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "solemn",
+      "word": "solemn",
+      "senses": [
+        {
+          "id": "sense-8827e1a0",
+          "pos": "adjective",
+          "meaningZh": "莊嚴的；嚴肅的",
+          "definitionEn": "serious and formal in manner or behavior, and dedicated to fulfilling responsibilities and keeping promises",
+          "examples": [
+            "At the funeral, everyone in the room was solemn and respectful, truly emphasizing their dedication to honoring the memory of the deceased."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-34e24fca",
+          "pos": "adjective",
+          "meaningZh": "鄭重的；誠摯的",
+          "definitionEn": "having or showing sincere and earnest conviction; not lighthearted or humorous",
+          "examples": [
+            "The atmosphere in the courtroom was solemn as the judge announced the sentencing."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "solidarity",
+      "word": "solidarity",
+      "senses": [
+        {
+          "id": "sense-34deb42f",
+          "pos": "noun",
+          "meaningZh": "團結；共同體",
+          "definitionEn": "agreement and support among the members of a group",
+          "examples": [
+            "During the strike, the workers stood together in solidarity, demanding fair wages and better working conditions."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-636ba033",
+          "pos": "noun",
+          "meaningZh": "團結工聯（波蘭工會組織）",
+          "definitionEn": "the name of a trade union in Poland, established in 1980, which played a crucial role in the 1989 free elections",
+          "examples": [
+            "During the oppressive regime in Poland, Solidarity successfully mobilized workers across the country to demand better working conditions and political reforms."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "solitary",
+      "word": "solitary",
+      "senses": [
+        {
+          "id": "sense-83c1a41d",
+          "pos": "adjective",
+          "meaningZh": "孤單的；獨處的",
+          "definitionEn": "being the only one; single and isolated from others",
+          "examples": [
+            "After a long day of socializing, she enjoyed a solitary walk on the beach, finding peace in her own company."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-ef552232",
+          "pos": "adjective",
+          "meaningZh": "孤僻的；無伴的",
+          "definitionEn": "lacking companions or companionship",
+          "examples": [
+            "After her friends moved away, she spent most evenings in solitary reflection."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "solitude",
+      "word": "solitude",
+      "senses": [
+        {
+          "id": "sense-4d25e588",
+          "pos": "noun",
+          "meaningZh": "獨處；孤獨",
+          "definitionEn": "the state or situation of being alone",
+          "examples": [
+            "After a long day of work, Sarah craved solitude and spent the evening reading alone in her bedroom."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-7a0448ad",
+          "pos": "noun",
+          "meaningZh": "隔絕；與世隔絕的狀態",
+          "definitionEn": "a state of social isolation",
+          "examples": [
+            "After living in a noisy city for years, she craved the solitude of a remote mountain cabin."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "soothe",
+      "word": "soothe",
+      "senses": [
+        {
+          "id": "sense-f61cc127",
+          "pos": "verb",
+          "meaningZh": "安撫；撫慰；使平靜",
+          "definitionEn": "to make someone feel calmer or less anxious, upset, or angry, especially after a difficult or upsetting experience.",
+          "examples": [
+            "After a long day at work, Sarah's husband drew her a warm bath and prepared a cup of herbal tea to soothe her frazzled nerves."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-8cfc6766",
+          "pos": "verb",
+          "meaningZh": "緩和；舒緩；減輕（疼痛）",
+          "definitionEn": "to give comfort or relief to; to calm or tranquillize; to alleviate (pain, grief, etc.).",
+          "examples": [
+            "After a long and tiring day at work, I took a hot bath to soothe my aching muscles."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "sorrowful",
+      "word": "sorrowful",
+      "senses": [
+        {
+          "id": "sense-60769cce",
+          "pos": "adjective",
+          "meaningZh": "悲痛的；哀傷的",
+          "definitionEn": "feeling or showing sadness, especially as a result of something that has happened and cannot be changed",
+          "examples": [
+            "Sara appeared sorrowful at her friend’s funeral."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L4",
+        "textbookTitle": "龍騰 B3·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "sovereign",
+      "word": "sovereign",
+      "senses": [
+        {
+          "id": "sense-deed0f6b",
+          "pos": "noun",
+          "meaningZh": "君主；最高統治者",
+          "definitionEn": "a supreme ruler, especially a monarch",
+          "examples": [
+            "The sovereign reigns over the entire kingdom, making important decisions that impact the lives of all its citizens."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-d2d140d7",
+          "pos": "noun",
+          "meaningZh": "英鎊金幣（英國一鎊金幣）",
+          "definitionEn": "a gold coin of the United Kingdom, having a face value of one pound sterling",
+          "examples": [
+            "I purchased a beautiful sovereign as a collector's item."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "span",
+      "word": "span",
+      "senses": [
+        {
+          "id": "sense-ca118423",
+          "pos": "verb",
+          "meaningZh": "橫跨；延伸（時空）",
+          "definitionEn": "to cover or extend over an area or time period",
+          "examples": [
+            "The Golden Gate Bridge spans over a mile across the San Francisco Bay."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-1c121a65",
+          "pos": "noun",
+          "meaningZh": "橋梁；跨越結構",
+          "definitionEn": "a structure that allows people or vehicles to cross an obstacle such as a river, canal, or railway",
+          "examples": [
+            "The suspension bridge is an excellent example of a span over a wide river."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L4",
+        "textbookTitle": "龍騰 B4·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "sparrow",
+      "word": "sparrow",
+      "senses": [
+        {
+          "id": "sense-46d56696",
+          "pos": "noun",
+          "meaningZh": "麻雀；雀鳥",
+          "definitionEn": "any of several small dull-colored singing birds feeding on seeds or insects",
+          "examples": [
+            "Yesterday, I saw a sparrow hopping on the ground and pecking at some seeds."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-b1a55c2a",
+          "pos": "noun",
+          "meaningZh": "歐洲家麻雀",
+          "definitionEn": "small brownish European songbird",
+          "examples": [
+            "The little girl was delighted to spot a sparrow perched on the fence near her garden, the chirping sound of the sparrow filled the air with it’s delightfull song."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "spectacle",
+      "word": "spectacle",
+      "senses": [
+        {
+          "id": "sense-f8e9b59e",
+          "pos": "noun",
+          "meaningZh": "壯觀景象；引人注目之物",
+          "definitionEn": "something or someone that is very impressive or interesting to look at",
+          "examples": [
+            "The fireworks display was a breathtaking spectacle, with vibrant colors lighting up the night sky."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-aeadf1a2",
+          "pos": "noun",
+          "meaningZh": "盛大展示；精彩場面",
+          "definitionEn": "an impressive or grand display; an event or scene that is amazing or spectacular",
+          "examples": [
+            "The fireworks show on New Year's Eve was a breathtaking spectacle, lighting up the sky with vibrant colors and patterns."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "spiral",
+      "word": "spiral",
+      "senses": [
+        {
+          "id": "sense-5b5f8cdc",
+          "pos": "noun",
+          "meaningZh": "螺旋；螺旋形結構",
+          "definitionEn": "a structure consisting of something wound in a continuous series of loops",
+          "examples": [
+            "The staircase in the tower had a beautiful spiral design, with each step winding around a central axis."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-0157293b",
+          "pos": "noun",
+          "meaningZh": "螺旋曲線；旋渦形",
+          "definitionEn": "a plane curve traced by a point circling about a center at an increasing distance from the center",
+          "examples": [
+            "The winding staircase curled like a spiral, leading us up to the top of the tower."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    }
+  ]
+}

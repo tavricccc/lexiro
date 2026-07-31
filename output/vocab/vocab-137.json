@@ -1,0 +1,1368 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 137,
+  "words": [
+    {
+      "wordKey": "columnist",
+      "word": "columnist",
+      "senses": [
+        {
+          "id": "sense-a4425ae3",
+          "pos": "noun",
+          "meaningZh": "專欄作家；專欄記者",
+          "definitionEn": "a journalist who writes regular articles for a newspaper or magazine",
+          "examples": [
+            "After working as a freelance writer for years, Sarah finally landed a job as a columnist for the city newspaper."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "combat",
+      "word": "combat",
+      "senses": [
+        {
+          "id": "sense-3e43304b",
+          "pos": "noun",
+          "meaningZh": "戰鬥；搏鬥",
+          "definitionEn": "the act of fighting or engaging in any contest or struggle",
+          "examples": [
+            "The soldiers were trained in combat and were ready to engage in any battle."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-35b84f83",
+          "pos": "noun",
+          "meaningZh": "（軍隊）交戰；戰役",
+          "definitionEn": "an engagement fought between two military forces",
+          "examples": [
+            "The small town was in shambles after the intense combat between the opposing armies."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "comedian",
+      "word": "comedian",
+      "senses": [
+        {
+          "id": "sense-73150469",
+          "pos": "noun",
+          "meaningZh": "喜劇演員；笑匠",
+          "definitionEn": "a professional performer who tells jokes and performs comical acts",
+          "examples": [
+            "The comedian had the audience in stitches with his hilarious impersonations and witty one-liners."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-4762fe67",
+          "pos": "noun",
+          "meaningZh": "搞笑的人；幽默者",
+          "definitionEn": "a person who uses humor to entertain others",
+          "examples": [
+            "The comedian had the audience in tears with his hilarious jokes."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "commentary",
+      "word": "commentary",
+      "senses": [
+        {
+          "id": "sense-dc2c1e9f",
+          "pos": "noun",
+          "meaningZh": "（廣播電視）現場解說；評論",
+          "definitionEn": "a series of remarks that describes an event, especially on radio or television, or a set of written notes that explains or expresses an opinion on a text or subject.",
+          "examples": [
+            "During the live football game, the sports commentator provided insightful commentary on the players' strategies and highlighted key moments of the match."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-8cf6928f",
+          "pos": "noun",
+          "meaningZh": "詳細分析；評述",
+          "definitionEn": "a detailed analysis or explanation of something, often provided by an expert or knowledgeable person.",
+          "examples": [
+            "During the football game, the sports commentator provided insightful commentary on the players' strategies and performance."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "commentator",
+      "word": "commentator",
+      "senses": [
+        {
+          "id": "sense-d024bc95",
+          "pos": "noun",
+          "meaningZh": "評論員；時事評論家",
+          "definitionEn": "a writer who reports and analyzes events of the day",
+          "examples": [
+            "The political commentator provided insightful analysis of the latest election results."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-83eaacef",
+          "pos": "noun",
+          "meaningZh": "（體育）解說員；播報員",
+          "definitionEn": "an expert who observes and comments on something",
+          "examples": [
+            "During the football match, the commentator provided insightful analysis and commentary on the teams' strategies and player performances."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "commission",
+      "word": "commission",
+      "senses": [
+        {
+          "id": "sense-5b91645a",
+          "pos": "noun",
+          "meaningZh": "委任；委託；佣金",
+          "definitionEn": "a task or duty given to a person, or a fee paid for selling something",
+          "examples": [
+            "The salesman earns a commission on every car he sells."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-da6f4f98",
+          "pos": "noun",
+          "meaningZh": "（裝備）可運作狀態；服役狀態",
+          "definitionEn": "the state of being in good working order and ready for operation",
+          "examples": [
+            "Before the launch of the spacecraft, the engineers ensured that all the systems were in commission and functioning properly."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "commitment",
+      "word": "commitment",
+      "senses": [
+        {
+          "id": "sense-51a18ae8",
+          "pos": "noun",
+          "meaningZh": "承諾；保證",
+          "definitionEn": "a promise or agreement to do something in the future",
+          "examples": [
+            "John made a commitment to his boss to complete the project by Friday."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-b118d88f",
+          "pos": "noun",
+          "meaningZh": "投入；奉獻精神",
+          "definitionEn": "the trait of being sincere and having a strong determination to do something",
+          "examples": [
+            "Sarah's commitment to her fitness goals is evident in her daily workouts and healthy eating habits."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "commodity",
+      "word": "commodity",
+      "senses": [
+        {
+          "id": "sense-ca2de864",
+          "pos": "noun",
+          "meaningZh": "（大宗）商品；原物料",
+          "definitionEn": "a raw material or primary agricultural product that can be bought and sold, such as copper or coffee.",
+          "examples": [
+            "The price of the commodity, cotton, has increased by 25 percent in the last six months due to a rise in demand from textile industries."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-9b13fc5f",
+          "pos": "noun",
+          "meaningZh": "有價值的東西；珍貴資源",
+          "definitionEn": "a useful or valuable thing, such as water or time.",
+          "examples": [
+            "Water is a crucial commodity in arid regions where access to clean water is limited."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "communism",
+      "word": "communism",
+      "senses": [
+        {
+          "id": "sense-16e1af04",
+          "pos": "noun",
+          "meaningZh": "共產主義；共產制度",
+          "definitionEn": "a form of socialism that abolishes private ownership",
+          "examples": [
+            "In theory, communism is a socioeconomic system where all property is publicly owned and each person works and is paid according to their abilities and needs."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-1380fc6f",
+          "pos": "noun",
+          "meaningZh": "共產主義理論；無階級社會主義",
+          "definitionEn": "a political theory favoring collectivism in a classless society",
+          "examples": [
+            "In a communist society, the means of production are owned and controlled collectively by the community."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "communist",
+      "word": "communist",
+      "senses": [
+        {
+          "id": "sense-a6e7b4b8",
+          "pos": "adjective",
+          "meaningZh": "共產主義的；共產黨的",
+          "definitionEn": "relating to or marked by communism",
+          "examples": [
+            "The government of China is officially a communist government."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-232b0dd3",
+          "pos": "noun",
+          "meaningZh": "共產主義者；共產黨員",
+          "definitionEn": "a socialist who advocates communism",
+          "examples": [
+            "Many people believe that Karl Marx was one of the most prominent communist advocates of the modern era."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "commute",
+      "word": "commute",
+      "senses": [
+        {
+          "id": "sense-5efe08c5",
+          "pos": "verb",
+          "meaningZh": "通勤；往返（工作地點）",
+          "definitionEn": "to travel regularly, typically between home and work:",
+          "examples": [
+            "Every morning, Sarah commutes to the city on her bike."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L6",
+        "textbookTitle": "龍騰 B4·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "commuter",
+      "word": "commuter",
+      "senses": [
+        {
+          "id": "sense-4095736c",
+          "pos": "noun",
+          "meaningZh": "通勤者；每日往返的旅客",
+          "definitionEn": "a person who travels regularly between two places, especially the place where they work and the place where they live.",
+          "examples": [
+            "The commuter takes the train to work every morning."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-adb55231",
+          "pos": "noun",
+          "meaningZh": "長途通勤者；遠距上班族",
+          "definitionEn": "a person who travels regularly from their home to work or vice versa, typically over a considerable distance.",
+          "examples": [
+            "Susan is a commuter who takes the train every day from her home in the suburbs to her job in the city center."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L6",
+        "textbookTitle": "龍騰 B4·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "compact",
+      "word": "compact",
+      "senses": [
+        {
+          "id": "sense-8642eb8a",
+          "pos": "adjective",
+          "meaningZh": "緊密的；紮實的",
+          "definitionEn": "closely and firmly packed together",
+          "examples": [
+            "The items in her suitcase were so compact that she was able to fit everything she needed for a week-long trip."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-38c6bf6b",
+          "pos": "adjective",
+          "meaningZh": "小巧的；短小精悍的",
+          "definitionEn": "short and solid",
+          "examples": [
+            "The compact car easily maneuvered through the narrow city streets."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "comparable",
+      "word": "comparable",
+      "senses": [
+        {
+          "id": "sense-83b478e5",
+          "pos": "adjective",
+          "meaningZh": "可比較的；相當的",
+          "definitionEn": "worthy of comparison or able to be compared",
+          "examples": [
+            "The performance of the two athletes was comparable, as both finished the race in almost identical times."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-d9217bd2",
+          "pos": "adjective",
+          "meaningZh": "類似的；相近的",
+          "definitionEn": "similar in a way that makes comparison possible",
+          "examples": [
+            "The performance of the two athletes was comparable, as they both finished the race in the same amount of time."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "compassion",
+      "word": "compassion",
+      "senses": [
+        {
+          "id": "sense-490cb1f1",
+          "pos": "noun",
+          "meaningZh": "同情心；憐憫",
+          "definitionEn": "the humane quality of understanding the suffering of others and wanting to do something about it",
+          "examples": [
+            "After hearing about the devastating earthquake in Haiti, Sarah felt a deep sense of compassion and decided to donate money to help the victims."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-33560ba7",
+          "pos": "noun",
+          "meaningZh": "悲憫；惻隱之心",
+          "definitionEn": "a deep awareness of and sympathy for another’s suffering",
+          "examples": [
+            "When my friend lost her job, I felt great compassion for her and helped her find a new one."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L5",
+        "textbookTitle": "龍騰 B4·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "compassionate",
+      "word": "compassionate",
+      "senses": [
+        {
+          "id": "sense-0faf9bbf",
+          "pos": "adjective",
+          "meaningZh": "富有同情心的；憐憫的",
+          "definitionEn": "feeling or showing sympathy and concern for others",
+          "examples": [
+            "When her friend was going through a tough time, she was compassionate and listened actively to offer support and understanding."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-00e33a77",
+          "pos": "verb",
+          "meaningZh": "同情；憐憫",
+          "definitionEn": "to share in the suffering of others",
+          "examples": [
+            "After the earthquake, the compassionate volunteers distributed food and water to the affected people and listened to their accounts of the disaster."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L5",
+        "textbookTitle": "龍騰 B4·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "compatible",
+      "word": "compatible",
+      "senses": [
+        {
+          "id": "sense-939605bd",
+          "pos": "adjective",
+          "meaningZh": "相容的；協調的",
+          "definitionEn": "able to exist and work together in a way that produces successful results or does not cause problems",
+          "examples": [
+            "The new software update is compatible with older operating systems, ensuring smooth and efficient performance for all users."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-d1e7d480",
+          "pos": "adjective",
+          "meaningZh": "兼容的；可配合的",
+          "definitionEn": "able to be used together with another device or piece of software without any special equipment or modifications",
+          "examples": [
+            "The new printer is compatible with both Mac and PC operating systems, so you can easily connect it to any computer in the office."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "compel",
+      "word": "compel",
+      "senses": [
+        {
+          "id": "sense-3c69188d",
+          "pos": "verb",
+          "meaningZh": "強迫；迫使",
+          "definitionEn": "to force or make somebody do something",
+          "examples": [
+            "The detective had compelling evidence, which compelled the suspect to confess to the crime."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-1a39ecb4",
+          "pos": "verb",
+          "meaningZh": "促使；驅策",
+          "definitionEn": "to require or oblige somebody to do something",
+          "examples": [
+            "The teacher's passionate speech compelled the students to stay after school and volunteer for the community service project."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L10",
+        "textbookTitle": "三民 B4·L10"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "compensate",
+      "word": "compensate",
+      "senses": [
+        {
+          "id": "sense-bf9bb2a1",
+          "pos": "verb",
+          "meaningZh": "補償；彌補",
+          "definitionEn": "to make up for something or to repay for losses or damages caused",
+          "examples": [
+            "The company offered to compensate the customers for the delay in shipment by giving them a discount on their next order."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-e6146187",
+          "pos": "verb",
+          "meaningZh": "賠償；酬勞",
+          "definitionEn": "to give something, often money, to make someone feel better after a loss or injury",
+          "examples": [
+            "The company compensated its employees for the overtime work by giving them additional payment."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "compensation",
+      "word": "compensation",
+      "senses": [
+        {
+          "id": "sense-799ac883",
+          "pos": "noun",
+          "meaningZh": "賠償；補償金",
+          "definitionEn": "the act of giving someone something, typically money, in recognition or recompense for loss, suffering, or injury",
+          "examples": [
+            "After the car accident, the insurance company provided financial compensation to cover the cost of the damaged vehicle and the medical expenses."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-05b35fc3",
+          "pos": "noun",
+          "meaningZh": "薪酬；報酬",
+          "definitionEn": "money or other benefits received by an employee for their work",
+          "examples": [
+            "After working overtime for several weeks, John received a generous compensation package that included a bonus, additional vacation days, and a salary raise."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "competence",
+      "word": "competence",
+      "senses": [
+        {
+          "id": "sense-ea032b96",
+          "pos": "noun",
+          "meaningZh": "能力；才幹；稱職",
+          "definitionEn": "the ability to do something successfully or efficiently; skilled or proficient",
+          "examples": [
+            "When hiring employees, many companies look for candidates with high levels of competence in their respective fields."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "competent",
+      "word": "competent",
+      "senses": [
+        {
+          "id": "sense-82f5e203",
+          "pos": "adjective",
+          "meaningZh": "稱職的；有能力的",
+          "definitionEn": "Having the necessary ability, knowledge, or skill to do something properly or effectively",
+          "examples": [
+            "The job applicant's resume showcased her extensive experience and qualifications, demonstrating that she is competent in the field of finance."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-5d262ea7",
+          "pos": "adjective",
+          "meaningZh": "有資格的；合法授權的",
+          "definitionEn": "Legally authorized or qualified to perform an action or task.",
+          "examples": [
+            "The attorney proved to be a competent professional as she confidently defended her client in the court."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "complexity",
+      "word": "complexity",
+      "senses": [
+        {
+          "id": "sense-db24d062",
+          "pos": "noun",
+          "meaningZh": "複雜性；錯綜複雜",
+          "definitionEn": "the condition or quality of being complicated or intricate; complexity often involves many interconnected parts",
+          "examples": [
+            "The complexity of the human brain makes it difficult for doctors to fully understand and treat certain neurological disorders."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "compliance",
+      "word": "compliance",
+      "senses": [
+        {
+          "id": "sense-0d3bd997",
+          "pos": "noun",
+          "meaningZh": "合規；遵從法規",
+          "definitionEn": "the act of conforming or adhering to laws, regulations, or standards set by an external group or organization.",
+          "examples": [
+            "In order to maintain compliance with workplace safety regulations, all employees must complete mandatory training sessions."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-7d1e8ef3",
+          "pos": "noun",
+          "meaningZh": "服從；遵照指示",
+          "definitionEn": "the act of following rules or requests made by people in positions of authority.",
+          "examples": [
+            "The employees demonstrated their compliance by completing the mandatory training sessions."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "complication",
+      "word": "complication",
+      "senses": [
+        {
+          "id": "sense-87fdf638",
+          "pos": "noun",
+          "meaningZh": "複雜情況；障礙",
+          "definitionEn": "something that makes a situation more difficult",
+          "examples": [
+            "Planning a wedding can be stressful enough, but adding a global pandemic as a complication made it even more challenging."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-1906f883",
+          "pos": "noun",
+          "meaningZh": "併發症；病情惡化",
+          "definitionEn": "a problem that develops from an existing illness, making treatment more difficult",
+          "examples": [
+            "After the surgery, a severe infection set in, which added to the patient's complications and prolonged their recovery."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "compliment",
+      "word": "compliment",
+      "senses": [
+        {
+          "id": "sense-ae1383c4",
+          "pos": "noun",
+          "meaningZh": "讚美；恭維",
+          "definitionEn": "an expression of praise, admiration, or congratulation",
+          "examples": [
+            "She offered him a sincere compliment for his excellent performance in the play."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-50586eb5",
+          "pos": "verb",
+          "meaningZh": "稱讚；道賀",
+          "definitionEn": "politely congratulate or praise (someone) for something",
+          "examples": [
+            "She received many compliments on her artwork from the gallery visitors."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "comply",
+      "word": "comply",
+      "senses": [
+        {
+          "id": "sense-07d387b1",
+          "pos": "verb",
+          "meaningZh": "遵從；遵守；服從",
+          "definitionEn": "to act according to an order, set of rules, or request",
+          "examples": [
+            "All the employees were required to comply with the new company policies."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "component",
+      "word": "component",
+      "senses": [
+        {
+          "id": "sense-3e28cd94",
+          "pos": "noun",
+          "meaningZh": "零件；元件",
+          "definitionEn": "one of the individual parts, which can be separated or attached, that make up a whole system or object",
+          "examples": [
+            "The motherboard is a crucial component of a computer system."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-33342f4a",
+          "pos": "noun",
+          "meaningZh": "組成部分；要素",
+          "definitionEn": "a fundamental part or element of a larger whole, whether physical or abstract",
+          "examples": [
+            "The motherboard, CPU and RAM are important components for building a computer."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "compound",
+      "word": "compound",
+      "senses": [
+        {
+          "id": "sense-4e3507cc",
+          "pos": "noun",
+          "meaningZh": "化合物；複合物",
+          "definitionEn": "A whole made up of two or more parts or elements that are combined",
+          "examples": [
+            "The chemist created a new compound by mixing various chemicals together."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-f01b6c56",
+          "pos": "adjective",
+          "meaningZh": "複合的；多重組成的",
+          "definitionEn": "Made up of multiple parts or elements",
+          "examples": [
+            "The recipe for this cake requires the use of several compound ingredients, including flour, sugar, and butter."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "comprehend",
+      "word": "comprehend",
+      "senses": [
+        {
+          "id": "sense-965dbfde",
+          "pos": "verb",
+          "meaningZh": "理解；領悟",
+          "definitionEn": "To understand or grasp completely the meaning of something",
+          "examples": [
+            "After studying the textbook thoroughly, she was able to comprehend the complex concepts."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    }
+  ]
+}

@@ -1,0 +1,1419 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 56,
+  "words": [
+    {
+      "wordKey": "role",
+      "word": "role",
+      "senses": [
+        {
+          "id": "sense-3e375063",
+          "pos": "noun",
+          "meaningZh": "職責；角色任務",
+          "definitionEn": "the actions and activities assigned to a person or group, or what is required or expected of them",
+          "examples": [
+            "As a teacher, my role is to educate students and help them reach their potential."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-7a91f44e",
+          "pos": "noun",
+          "meaningZh": "社會角色；身分功能",
+          "definitionEn": "the customary behavior or actions of a person in a particular social setting",
+          "examples": [
+            "In a team, everyone has a specific role to play in order to achieve the project goals."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B2·L4",
+        "textbookTitle": "三民 B2·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "roof",
+      "word": "roof",
+      "senses": [
+        {
+          "id": "sense-b626668d",
+          "pos": "noun",
+          "meaningZh": "頂部；內部頂面",
+          "definitionEn": "the upper surface inside a covered area or hollow space",
+          "examples": [
+            "During the rainstorm, we huddled under the roof of the gazebo to stay dry."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-38361b96",
+          "pos": "noun",
+          "meaningZh": "車頂；遮蔽頂蓋",
+          "definitionEn": "a protective covering on the top of a motor vehicle",
+          "examples": [
+            "During heavy rain, the roof of my car kept me dry and protected from getting wet."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "rooster",
+      "word": "rooster",
+      "senses": [
+        {
+          "id": "sense-8c175d53",
+          "pos": "noun",
+          "meaningZh": "公雞",
+          "definitionEn": "a male chicken, especially an adult one that crows in the morning",
+          "examples": [
+            "The rooster woke up the farm with its loud crowing early in the morning."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "royal",
+      "word": "royal",
+      "senses": [
+        {
+          "id": "sense-36c6f04a",
+          "pos": "adjective",
+          "meaningZh": "王室的；皇家的",
+          "definitionEn": "having royal power as symbolized by a crown",
+          "examples": [
+            "During the coronation ceremony, the new king was adorned with a magnificent crown, a clear symbol of his royal status."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-db417364",
+          "pos": "adjective",
+          "meaningZh": "皇族的；屬於君王的",
+          "definitionEn": "belonging or relating to a monarch’s rank",
+          "examples": [
+            "The royal family waved to the crowd as they rode in their golden carriage."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L1",
+        "textbookTitle": "龍騰 B4·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "rub",
+      "word": "rub",
+      "senses": [
+        {
+          "id": "sense-14990cd8",
+          "pos": "verb",
+          "meaningZh": "揉；摩擦",
+          "definitionEn": "to apply pressure with one’s hand or a cloth to something and move it back and forth or from side to side",
+          "examples": [
+            "After a long day at work, I like to rub my temples to relieve the tension."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-df9bebf2",
+          "pos": "verb",
+          "meaningZh": "搓揉；輕抓止癢",
+          "definitionEn": "to scratch or gently apply friction to a part of the body to relieve an itch",
+          "examples": [
+            "After hiking all day, Sarah sat down to rub her sore feet."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "rubber",
+      "word": "rubber",
+      "senses": [
+        {
+          "id": "sense-847f2248",
+          "pos": "noun",
+          "meaningZh": "橡膠；橡皮擦",
+          "definitionEn": "an elastic material made from rubber tree sap or made artificially; (British) an eraser",
+          "examples": [
+            "Car tires are made of tough rubber."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-11425bcb",
+          "pos": "adjective",
+          "meaningZh": "（支票）跳票的；空頭的",
+          "definitionEn": "relating to a bounced check or insufficient funds",
+          "examples": [
+            "The landlord was irate when he received another rubber check from his tenant."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "rude",
+      "word": "rude",
+      "senses": [
+        {
+          "id": "sense-d42bf19c",
+          "pos": "adjective",
+          "meaningZh": "無禮的；粗魯的",
+          "definitionEn": "lacking civility or good manners",
+          "examples": [
+            "When the elderly woman dropped her bags, the young man walked by without offering to help, demonstrating his rude behavior."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-7d1f5ab6",
+          "pos": "adjective",
+          "meaningZh": "未加工的；粗製的",
+          "definitionEn": "(used especially of commodities) being unprocessed or manufactured using only simple or minimal processes",
+          "examples": [
+            "The farmer sold fresh, rude honey that was straight from the beehive, without any additives or processing."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L6 +1",
+        "textbookTitle": "龍騰 B2·L6、三民 B2·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "runner",
+      "word": "runner",
+      "senses": [
+        {
+          "id": "sense-478a8b61",
+          "pos": "noun",
+          "meaningZh": "跑者；賽跑選手",
+          "definitionEn": "a person who runs, especially in a race or for exercise",
+          "examples": [
+            "The runner crossed the finish line first."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-467b1d70",
+          "pos": "noun",
+          "meaningZh": "藍跑魚；大西洋鯖科魚",
+          "definitionEn": "a type of fish found in the western Atlantic, from Cape Cod to Brazil",
+          "examples": [
+            "The runner is known for its sharp teeth and great speed while swimming in the Atlantic."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "safety",
+      "word": "safety",
+      "senses": [
+        {
+          "id": "sense-43026d83",
+          "pos": "noun",
+          "meaningZh": "安全；平安",
+          "definitionEn": "the state of being protected from danger, harm, or injury",
+          "examples": [
+            "The teacher made sure of every child's safety before the bus left."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-dda9a283",
+          "pos": "noun",
+          "meaningZh": "安全地點；避難所",
+          "definitionEn": "a safe place",
+          "examples": [
+            "The bunker provided safety for the residents during the storm."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-4797ca33",
+          "pos": "noun",
+          "meaningZh": "安全裝置；防護設備",
+          "definitionEn": "a device designed to prevent injury or accidents",
+          "examples": [
+            "Wearing a seatbelt is a crucial safety measure while driving."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "sail",
+      "word": "sail",
+      "senses": [
+        {
+          "id": "sense-c0fcab19",
+          "pos": "noun",
+          "meaningZh": "乘船旅遊；航海觀光",
+          "definitionEn": "a journey undertaken on a boat or ship for pleasure or as a tourist attraction",
+          "examples": [
+            "During their vacation, the couple decided to take a sail around the Greek Islands, enjoying the scenic views and the calming ocean breeze."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-08b60695",
+          "pos": "verb",
+          "meaningZh": "（輕盈地）滑行；飄行",
+          "definitionEn": "to move with a sweeping or gliding motion, as if sailing through the air",
+          "examples": [
+            "The kite soared high in the sky, its colorful tail sailing gracefully in the breeze."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L3",
+        "textbookTitle": "龍騰 B5·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "sailor",
+      "word": "sailor",
+      "senses": [
+        {
+          "id": "sense-d6b318c7",
+          "pos": "noun",
+          "meaningZh": "水手；船員",
+          "definitionEn": "a member of a ship’s crew",
+          "examples": [
+            "The sailor climbed up the mast to adjust the sails."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-0a6b3c0a",
+          "pos": "noun",
+          "meaningZh": "草帽；水手帽",
+          "definitionEn": "a type of stiff, flat-crowned hat made of straw",
+          "examples": [
+            "The sailor pulled his hat lower on his forehead to shield his eyes from the bright sun."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L3",
+        "textbookTitle": "龍騰 B5·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "saleswoman",
+      "word": "saleswoman",
+      "senses": [
+        {
+          "id": "sense-702b9d99",
+          "pos": "noun",
+          "meaningZh": "女業務員；女銷售員",
+          "definitionEn": "a woman who sells goods or services",
+          "examples": [
+            "The saleswoman at the car dealership helped me find the perfect vehicle."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "salty",
+      "word": "salty",
+      "senses": [
+        {
+          "id": "sense-8357f655",
+          "pos": "adjective",
+          "meaningZh": "鹹的；含鹽的",
+          "definitionEn": "containing or filled with salt",
+          "examples": [
+            "I couldn’t eat the chips because they were too salty."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-c2d84eec",
+          "pos": "adjective",
+          "meaningZh": "鹹味的；帶鹹味的",
+          "definitionEn": "having the taste or flavor characteristic of salt",
+          "examples": [
+            "I don’t like to eat too many salty foods because they make me thirsty."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "sample",
+      "word": "sample",
+      "senses": [
+        {
+          "id": "sense-b31ed9e6",
+          "pos": "noun",
+          "meaningZh": "樣本；試樣",
+          "definitionEn": "a portion of a whole, especially a part that is representative of the whole",
+          "examples": [
+            "Before buying a large quantity, I think it’s best to take a sample first to ensure it’s of good quality."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-1fad54e5",
+          "pos": "verb",
+          "meaningZh": "試用；取樣品嚐",
+          "definitionEn": "to take a small amount of something, often in order to test or examine it",
+          "examples": [
+            "In order to determine the quality of the new coffee blend, the barista will have to sample it and see how well it sells."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L4 +1",
+        "textbookTitle": "龍騰 B4·L4、三民 B4·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "sand",
+      "word": "sand",
+      "senses": [
+        {
+          "id": "sense-d00ad25a",
+          "pos": "noun",
+          "meaningZh": "沙；沙粒",
+          "definitionEn": "a loose material consisting of grains of rock or coral",
+          "examples": [
+            "As the children built sandcastles on the beach, the warm grains of sand slipped through their fingers."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-fd4bcea4",
+          "pos": "noun",
+          "meaningZh": "膽識；意志力",
+          "definitionEn": "fortitude and determination",
+          "examples": [
+            "Despite facing multiple setbacks and criticism, she showed the sand to continue pursuing her dreams."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "sandwich",
+      "word": "sandwich",
+      "senses": [
+        {
+          "id": "sense-f7384474",
+          "pos": "noun",
+          "meaningZh": "三明治",
+          "definitionEn": "two slices of bread with a filling such as meat, cheese, or vegetables between them",
+          "examples": [
+            "I made a ham and cheese sandwich for lunch."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-94e17e63",
+          "pos": "verb",
+          "meaningZh": "夾入；擠在中間",
+          "definitionEn": "to place something or someone in a narrow space between two larger things or people.",
+          "examples": [
+            "The waiter skillfully sandwiched the delicate soufflé between two sturdy plates to prevent it from collapsing."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "satisfy",
+      "word": "satisfy",
+      "senses": [
+        {
+          "id": "sense-8dc60322",
+          "pos": "verb",
+          "meaningZh": "使滿意；使高興",
+          "definitionEn": "make happy or satisfied",
+          "examples": [
+            "After a long day of work, a warm bowl of soup can satisfy your hunger and make you feel content."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-f4556288",
+          "pos": "verb",
+          "meaningZh": "滿足；符合需求",
+          "definitionEn": "fill or meet a want or need",
+          "examples": [
+            "Eating a hearty meal will satisfy your hunger."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L2 +1",
+        "textbookTitle": "龍騰 B1·L2、三民 B2·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "saw",
+      "word": "saw",
+      "senses": [
+        {
+          "id": "sense-ad06cfc7",
+          "pos": "noun",
+          "meaningZh": "鋸子；鋸",
+          "definitionEn": "a hand tool with a toothed blade used for cutting through wood or other materials",
+          "examples": [
+            "John used a saw to cut a piece of wood in half."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-efbba183",
+          "pos": "verb",
+          "meaningZh": "鋸；鋸切",
+          "definitionEn": "to cut through wood or other materials using a saw",
+          "examples": [
+            "He sawed the wooden board into small pieces to make a birdhouse."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "scare",
+      "word": "scare",
+      "senses": [
+        {
+          "id": "sense-f1cd4453",
+          "pos": "verb",
+          "meaningZh": "驚嚇；使害怕",
+          "definitionEn": "to make someone feel frightened",
+          "examples": [
+            "The loud thunder scared the little boy."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-5c52335a",
+          "pos": "noun",
+          "meaningZh": "驚嚇；突然恐慌",
+          "definitionEn": "a sudden attack of fear",
+          "examples": [
+            "The loud explosion in the middle of the night had scared the children and caused them to hide under their beds."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-4de8be13",
+          "pos": "noun",
+          "meaningZh": "恐慌；大規模驚惶",
+          "definitionEn": "sudden mass fear and anxiety over anticipated events",
+          "examples": [
+            "The rumors about an upcoming earthquake caused a scare among the residents, leading to a chaotic evacuation."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L6",
+        "textbookTitle": "龍騰 B2·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "scared",
+      "word": "scared",
+      "senses": [
+        {
+          "id": "sense-56efef7f",
+          "pos": "noun",
+          "meaningZh": "受驚嚇的；感到害怕的",
+          "definitionEn": "a sudden attack of fear",
+          "examples": [
+            "The loud explosion in the middle of the night had scared the children and caused them to hide under their beds."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-a99fcc96",
+          "pos": "noun",
+          "meaningZh": "恐慌的；惶恐的",
+          "definitionEn": "sudden mass fear and anxiety over anticipated events",
+          "examples": [
+            "The rumors about an upcoming earthquake caused a scare among the residents, leading to a chaotic evacuation."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "scene",
+      "word": "scene",
+      "senses": [
+        {
+          "id": "sense-22d230bb",
+          "pos": "noun",
+          "meaningZh": "場景；景象",
+          "definitionEn": "the visual percept of a region",
+          "examples": [
+            "The artists carefully set up the scene for their photography shoot, ensuring that every element in the frame contributed to the overall visual impact."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-a7c5ff63",
+          "pos": "noun",
+          "meaningZh": "背景；情境",
+          "definitionEn": "the context and environment in which something is set",
+          "examples": [
+            "The colorful scene of the bustling market made me feel like I was in a different world."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "schedule",
+      "word": "schedule",
+      "senses": [
+        {
+          "id": "sense-5fa63fa5",
+          "pos": "noun",
+          "meaningZh": "時間表；行程表",
+          "definitionEn": "a list of times when specific events or tasks are intended to occur, often including their location and other details",
+          "examples": [
+            "I have a busy schedule next week, with meetings and appointments every day."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-ba8320fc",
+          "pos": "noun",
+          "meaningZh": "計畫表；工作排程",
+          "definitionEn": "a plan that lists all the work that you have to do and when you must do each thing",
+          "examples": [
+            "I created a detailed schedule for my week, outlining all my appointments, deadlines, and tasks."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B1·L1",
+        "textbookTitle": "三民 B1·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "scooter",
+      "word": "scooter",
+      "senses": [
+        {
+          "id": "sense-d3a8d08a",
+          "pos": "noun",
+          "meaningZh": "機車；速克達",
+          "definitionEn": "a motor vehicle with two wheels, similar to a motorcycle but smaller in size",
+          "examples": [
+            "I rode my scooter to work every day, zipping through traffic and easily finding parking."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-02e885f6",
+          "pos": "noun",
+          "meaningZh": "滑板車；兒童踏板車",
+          "definitionEn": "a child’s vehicle with two or three small wheels attached to a narrow board and a long vertical handle fixed to the front wheel. The rider stands with one foot on the board and pushes against the ground with the other foot, while using the handle to steer and control movement.",
+          "examples": [
+            "Lucy rode her scooter to the park, swiftly weaving through the trees as she enjoyed the sunny afternoon."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "score",
+      "word": "score",
+      "senses": [
+        {
+          "id": "sense-133f9efe",
+          "pos": "noun",
+          "meaningZh": "得分；進球",
+          "definitionEn": "the act of getting a point or winning a goal",
+          "examples": [
+            "In the final minutes of the game, the striker managed to score the winning goal, securing their team's victory."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-ecb4395b",
+          "pos": "noun",
+          "meaningZh": "二十；二十個一組",
+          "definitionEn": "a group of twenty",
+          "examples": [
+            "In cricket, a score of 100 runs is considered a milestone for a batsman."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L4",
+        "textbookTitle": "龍騰 B4·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "screen",
+      "word": "screen",
+      "senses": [
+        {
+          "id": "sense-2bb25b7a",
+          "pos": "noun",
+          "meaningZh": "螢幕；銀幕",
+          "definitionEn": "a white or silvered surface used for projecting images for viewing",
+          "examples": [
+            "The presenter set up a large screen at the front of the auditorium to display the slides."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-7f1f49a7",
+          "pos": "noun",
+          "meaningZh": "紗網；遮擋物",
+          "definitionEn": "a protective covering that keeps things out or hinders sight",
+          "examples": [
+            "I installed a screen on my windows to keep bugs out while still allowing fresh air inside."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "seafood",
+      "word": "seafood",
+      "senses": [
+        {
+          "id": "sense-86d9398b",
+          "pos": "noun",
+          "meaningZh": "海鮮；海產",
+          "definitionEn": "fish and other sea creatures that people eat",
+          "examples": [
+            "Kaohsiung's night markets serve all kinds of fresh seafood."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "search",
+      "word": "search",
+      "senses": [
+        {
+          "id": "sense-1871716f",
+          "pos": "noun",
+          "meaningZh": "搜查；調查",
+          "definitionEn": "an investigation seeking answers",
+          "examples": [
+            "After hours of searching, they finally found the missing key under the couch."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "secondary",
+      "word": "secondary",
+      "senses": [
+        {
+          "id": "sense-30293f36",
+          "pos": "adjective",
+          "meaningZh": "次要的；次級的",
+          "definitionEn": "not of primary importance; of lesser rank or importance than something else",
+          "examples": [
+            "While studying for her final exams, Sarah considered joining a club at school, but decided it would be better to prioritize her academics and treat extracurricular activities as secondary."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-b779318d",
+          "pos": "adjective",
+          "meaningZh": "次要的；較低層次的",
+          "definitionEn": "belonging to a lower or less important class, rank, or category",
+          "examples": [
+            "While the primary protagonist made all the important decisions, the secondary characters provided support and comic relief."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "secret",
+      "word": "secret",
+      "senses": [
+        {
+          "id": "sense-e0e3a111",
+          "pos": "noun",
+          "meaningZh": "秘密；機密",
+          "definitionEn": "something that should remain hidden from others, especially information that is not meant to be passed on",
+          "examples": [
+            "Keeping the password to your email account a secret is important for your privacy."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-c66775ad",
+          "pos": "noun",
+          "meaningZh": "不傳之秘；內部資訊",
+          "definitionEn": "information known only to a special group",
+          "examples": [
+            "The secret recipe of the family’s famous BBQ sauce is only known by two people in my family."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B1·L7",
+        "textbookTitle": "三民 B1·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "section",
+      "word": "section",
+      "senses": [
+        {
+          "id": "sense-ae6e8d07",
+          "pos": "noun",
+          "meaningZh": "部分；零件",
+          "definitionEn": "a part or piece that fits with others to make a whole object",
+          "examples": [
+            "In order to build the bookshelf, you need to assemble each section of the unit before putting it all together."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-83fd4db4",
+          "pos": "noun",
+          "meaningZh": "區域；分區",
+          "definitionEn": "a smaller area or group that is a part of a larger territory, political area, community, or group of people",
+          "examples": [
+            "In the airport, there is a designated section for international flights."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    }
+  ]
+}

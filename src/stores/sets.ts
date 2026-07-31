@@ -1,4 +1,4 @@
-import type { EditorItem, ImportMode, ImportResult, VersionDiff, VocabSet } from '@/types'
+import type { EditorItem, ImportMode, ImportResult, VersionDiff, VocabSet, WordEntry } from '@/types'
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
 import { LEGACY_STORAGE_KEY, SETS_STORAGE_KEY } from '@/constants'
@@ -8,6 +8,7 @@ import { applyImportedSets, parseImportJson, refreshImportVersionDiffs, summariz
 import { loadFromStorage, saveToStorage } from '@/lib/persist'
 import { deduplicateSetsByName } from '@/lib/set-utils'
 import { createBlankEditorItem, createEditorItems, normalizeItem, normalizeSet } from '@/lib/validation'
+import { useLibraryStore } from './library'
 import { useSessionStore } from './session'
 import { useUIStore } from './ui'
 
@@ -21,6 +22,7 @@ export const useSetsStore = defineStore('sets', () => {
   const setEditorMode = ref<'create' | 'edit'>('create')
   const setEditorId = ref<string | null>(null)
   const setEditorName = ref('')
+  const setEditorFolderId = ref<string | undefined>(undefined)
   const setEditorError = ref('')
   const setEditorDraftItems = ref<EditorItem[]>([])
   const pendingSetItems = ref<EditorItem[]>([])
@@ -73,6 +75,8 @@ export const useSetsStore = defineStore('sets', () => {
     }
     activeSetId.value = canonicalSets[0]?.id ?? null
     saveState()
+    for (const set of canonicalSets)
+      useLibraryStore().linkSet(set)
   }
 
   async function loadState() {
@@ -127,6 +131,7 @@ export const useSetsStore = defineStore('sets', () => {
     setEditorMode.value = mode
     setEditorId.value = set?.id ?? null
     setEditorName.value = set?.setName ?? ''
+    setEditorFolderId.value = set?.folderId
     setEditorDraftItems.value = mode === 'edit' && set ? createEditorItems(set.items) : []
     pendingSetItems.value = mode === 'create' ? [...pendingSetItems.value] : []
     setEditorError.value = ''
@@ -157,6 +162,7 @@ export const useSetsStore = defineStore('sets', () => {
           setName: setEditorName.value.trim(),
           difficulty: importDifficulty.value,
           items,
+          folderId: setEditorFolderId.value || undefined,
           createdAt: new Date().toISOString(),
           updatedAt: new Date().toISOString(),
         }
@@ -176,6 +182,7 @@ export const useSetsStore = defineStore('sets', () => {
           ...sets.value[targetIndex],
           setName: setEditorName.value.trim(),
           items,
+          folderId: setEditorFolderId.value || undefined,
           updatedAt: new Date().toISOString(),
         }
         sets.value = sets.value.map(s => (s.id === setEditorId.value ? nextSet : s))
@@ -188,6 +195,9 @@ export const useSetsStore = defineStore('sets', () => {
       }
 
       saveState()
+      useLibraryStore().linkSet(setEditorMode.value === 'create'
+        ? sets.value.find(set => set.id === activeSetId.value)!
+        : sets.value.find(set => set.id === setEditorId.value)!)
       setEditorOpen.value = false
       importOpen.value = false
     }
@@ -253,10 +263,12 @@ export const useSetsStore = defineStore('sets', () => {
     if (lastSet) {
       sets.value = []
       activeSetId.value = null
+      useLibraryStore().unlinkSet(pendingDeleteId.value!)
       sessionStore.resetStudyView()
     }
     else {
       sets.value = sets.value.filter(s => s.id !== pendingDeleteId.value)
+      useLibraryStore().unlinkSet(pendingDeleteId.value!)
       sessionStore.clearSessionsForSet(pendingDeleteId.value!)
       if (activeSetId.value === pendingDeleteId.value) {
         activeSetId.value = sets.value[0]?.id ?? null
@@ -305,8 +317,38 @@ export const useSetsStore = defineStore('sets', () => {
     }
     sets.value = sets.value.map(set => set.id === setId ? nextSet : set)
     saveState()
+    useLibraryStore().linkSet(nextSet)
     useUIStore().showToast(t('dictionary.addedToSet', { word }))
     return true
+  }
+
+  function importLibraryWords(words: WordEntry[], setName: string) {
+    if (!words.length)
+      return null
+    const items = words.map((word, index) => {
+      const sense = word.senses[0]
+      return normalizeItem({
+        id: `library-${word.wordKey}-${index}`,
+        word: word.word,
+        pos: sense?.pos ?? '',
+        meaning: sense?.meaningZh ?? '',
+        example: sense?.examples[0] ?? '',
+        definition: sense?.definitionEn,
+        phonetic: word.phonetic,
+        audioUrl: word.audioUrl,
+        origin: word.origin,
+        dictionarySource: word.dictionarySource,
+        synonyms: word.synonyms,
+        antonyms: word.antonyms,
+      }, index)
+    })
+    const set = normalizeSet({ id: `import-${Date.now()}`, setName: setName.trim() || `匯入單字 ${new Date().toLocaleDateString()}`, difficulty: 2, items })
+    sets.value = deduplicateSetsByName([...sets.value, set])
+    exportSelectedIds.value = sets.value.map(item => item.id)
+    activeSetId.value = set.id
+    saveState()
+    useLibraryStore().linkSet(set)
+    return set
   }
 
   function toggleExportAll() {
@@ -388,6 +430,8 @@ export const useSetsStore = defineStore('sets', () => {
     }
 
     saveState()
+    for (const set of sets.value)
+      useLibraryStore().linkSet(set)
     duplicateSummary.value = result
     const text = summarizeDuplicateResult(result)
     uiStore.showToast(text ? `${t('backup.importSuccess', { count: result.imported.length })}；${text}` : t('backup.importSuccess', { count: result.imported.length }))
@@ -405,6 +449,7 @@ export const useSetsStore = defineStore('sets', () => {
     setEditorMode,
     setEditorId,
     setEditorName,
+    setEditorFolderId,
     setEditorError,
     setEditorDraftItems,
     pendingSetItems,
@@ -443,6 +488,7 @@ export const useSetsStore = defineStore('sets', () => {
     deleteActiveSet,
     editActiveSet,
     addItemToSet,
+    importLibraryWords,
     toggleExportAll,
     exportSelectedSetsToZip,
     refreshDiffs,

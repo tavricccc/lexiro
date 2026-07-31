@@ -1,0 +1,1405 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 73,
+  "words": [
+    {
+      "wordKey": "erase",
+      "word": "erase",
+      "senses": [
+        {
+          "id": "sense-a33d251f",
+          "pos": "verb",
+          "meaningZh": "擦去；抹除",
+          "definitionEn": "to remove something by rubbing or wiping it with a tool or material",
+          "examples": [
+            "She used an eraser to erase the mistakes on her homework."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-43ac97ac",
+          "pos": "verb",
+          "meaningZh": "刪除（電子資料）",
+          "definitionEn": "to remove recorded information digitally or magnetically by wiping or deleting it",
+          "examples": [
+            "Before selling or giving away your old smartphone, make sure to erase all personal data from it."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "excellence",
+      "word": "excellence",
+      "senses": [
+        {
+          "id": "sense-b30c6ac1",
+          "pos": "noun",
+          "meaningZh": "卓越；優秀",
+          "definitionEn": "the state or quality of excelling; superiority or eminence in any activity, behavior, or quality",
+          "examples": [
+            "Sarah's dedication and hard work led her to achieve excellence in her chosen field."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-a10749fc",
+          "pos": "noun",
+          "meaningZh": "出色之處；過人之處",
+          "definitionEn": "a quality or feature that is exceptionally good and out of the ordinary; a distinguishing trait",
+          "examples": [
+            "The chef's culinary excellence was evident in every dish she prepared."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L6",
+        "textbookTitle": "龍騰 B4·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "exchange",
+      "word": "exchange",
+      "senses": [
+        {
+          "id": "sense-dade0cb0",
+          "pos": "verb",
+          "meaningZh": "交換；互換",
+          "definitionEn": "change over to a new order or sequence",
+          "examples": [
+            "In an attempt to excite the taste buds of the customers, the restaurant decided to exchange the order of courses served."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-6d02826b",
+          "pos": "noun",
+          "meaningZh": "交易所；交換中心",
+          "definitionEn": "a workplace for buying and selling, open only to members",
+          "examples": [
+            "I am unable to purchase goods from the exchange as I am not a member."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L8 +1",
+        "textbookTitle": "龍騰 B2·L8、三民 B1·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "exhibition",
+      "word": "exhibition",
+      "senses": [
+        {
+          "id": "sense-02ccfb88",
+          "pos": "noun",
+          "meaningZh": "展覽會；展覽",
+          "definitionEn": "a collection of things (goods or works of art etc.) for public display",
+          "examples": [
+            "The art gallery is hosting an exhibition of contemporary paintings and sculptures that are open to the public."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-6825065a",
+          "pos": "noun",
+          "meaningZh": "展示；陳列",
+          "definitionEn": "the act of exhibiting or displaying something for others to see and appreciate",
+          "examples": [
+            "The art gallery is hosting an exhibition featuring the works of a famous painter."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L7",
+        "textbookTitle": "龍騰 B3·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "expectation",
+      "word": "expectation",
+      "senses": [
+        {
+          "id": "sense-c60e7a83",
+          "pos": "noun",
+          "meaningZh": "預期；期望",
+          "definitionEn": "the belief or idea of what will happen in the future",
+          "examples": [
+            "My boss has high expectations for this project, so we need to work hard to meet them."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-20e24f5f",
+          "pos": "noun",
+          "meaningZh": "期待；預感",
+          "definitionEn": "the sense or feeling that something is likely to happen or occur",
+          "examples": [],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L8 +1",
+        "textbookTitle": "龍騰 B2·L8、三民 B1·L10"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "experiment",
+      "word": "experiment",
+      "senses": [
+        {
+          "id": "sense-01705729",
+          "pos": "noun",
+          "meaningZh": "實驗；試驗",
+          "definitionEn": "the act of conducting a controlled test or investigation",
+          "examples": [
+            "The scientist conducted an experiment to determine the effects of the new drug on the rats."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-b9a043e1",
+          "pos": "noun",
+          "meaningZh": "測試；驗證",
+          "definitionEn": "the testing of an idea",
+          "examples": [
+            "In order to determine the effectiveness of the new medication, the company conducted an experiment with a control group and a test group."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B1·L10",
+        "textbookTitle": "三民 B1·L10"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "explode",
+      "word": "explode",
+      "senses": [
+        {
+          "id": "sense-198625e6",
+          "pos": "verb",
+          "meaningZh": "爆炸；爆發",
+          "definitionEn": "burst and release energy, often violently, as in a chemical or physical reaction; for example, \"the bomb detonated at noon\"",
+          "examples": [
+            "The fireworks exploded in a dazzling display of colors and sparks."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-5dd2e0d7",
+          "pos": "verb",
+          "meaningZh": "爆破；使爆裂",
+          "definitionEn": "cause something to burst as a result of air pressure, such as when pronouncing certain stop consonants like /p/, /t/, and /k/",
+          "examples": [
+            "When Billy pronounced the 'p' in 'pop', he made the balloon explode with a loud bang."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L9",
+        "textbookTitle": "龍騰 B3·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "explore",
+      "word": "explore",
+      "senses": [
+        {
+          "id": "sense-e36963d6",
+          "pos": "verb",
+          "meaningZh": "探索；考察",
+          "definitionEn": "travel to or penetrate into, especially as part of a scientific expedition or in order to discover or record information about a place or region.",
+          "examples": [
+            "The adventurous team of archaeologists set out to explore the ancient ruins in search of hidden artifacts."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-20a2776a",
+          "pos": "verb",
+          "meaningZh": "探討；研究",
+          "definitionEn": "inquire into or discuss (a subject) in detail.",
+          "examples": [
+            "During the group discussion, we decided to explore the topic of climate change and its impact on the economy."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L2 +2",
+        "textbookTitle": "龍騰 B3·L2、三民 B1·L9、翰林 B1·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "export",
+      "word": "export",
+      "senses": [
+        {
+          "id": "sense-6cecf9da",
+          "pos": "verb",
+          "meaningZh": "出口；輸出",
+          "definitionEn": "sell or transfer abroad",
+          "examples": [
+            "The company exports their products to over 50 countries."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-55d49f55",
+          "pos": "noun",
+          "meaningZh": "出口商品；輸出品",
+          "definitionEn": "commodities (goods or services) sold to a foreign country",
+          "examples": [
+            "The company became successful by exporting its products to various markets around the world."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "expressive",
+      "word": "expressive",
+      "senses": [
+        {
+          "id": "sense-35adb640",
+          "pos": "adjective",
+          "meaningZh": "富表情的；善於表達的",
+          "definitionEn": "capable of displaying one’s emotions through vocal tone, actions, or appearance",
+          "examples": [
+            "During her passionate speech, her expressive gestures and animated facial expressions captivated the audience."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "extreme",
+      "word": "extreme",
+      "senses": [
+        {
+          "id": "sense-232284a1",
+          "pos": "adjective",
+          "meaningZh": "極端的；過激的",
+          "definitionEn": "beyond a norm in views or actions",
+          "examples": [
+            "John’s extreme ideas on politics made him unpopular among his colleagues."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-7b057101",
+          "pos": "noun",
+          "meaningZh": "極端；極限",
+          "definitionEn": "the furthest or highest degree of something",
+          "examples": [
+            "The mountaineer reached the extreme peak of the mountain after months of training and preparation."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L5 +1",
+        "textbookTitle": "龍騰 B2·L5、三民 B2·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "fade",
+      "word": "fade",
+      "senses": [
+        {
+          "id": "sense-700387f1",
+          "pos": "verb",
+          "meaningZh": "消退；褪色",
+          "definitionEn": "Gradually disappear or become less visible",
+          "examples": [
+            "As the sun set, the colors in the sky began to fade away."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-46802e2c",
+          "pos": "verb",
+          "meaningZh": "凋謝；枯萎",
+          "definitionEn": "Lose freshness, vigor, or vitality",
+          "examples": [
+            "The flowers in the vase began to fade after a week without water."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L9",
+        "textbookTitle": "龍騰 B3·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "faint",
+      "word": "faint",
+      "senses": [
+        {
+          "id": "sense-15abbf2a",
+          "pos": "adjective",
+          "meaningZh": "微弱的；模糊的；不清楚的",
+          "definitionEn": "not strong or clear; difficult to see, hear, or smell",
+          "examples": [
+            "There was a faint smell of smoke in the room."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-fd5e4ccc",
+          "pos": "noun",
+          "meaningZh": "昏厥；暈倒",
+          "definitionEn": "a spontaneous loss of consciousness caused by insufficient blood to the brain",
+          "examples": [
+            "After standing in the hot sun for hours without drinking enough water, Jane began to feel faint and eventually fainted."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-6f231d5f",
+          "pos": "verb",
+          "meaningZh": "昏倒；失去知覺",
+          "definitionEn": "to pass out from weakness, physical or emotional distress due to a loss of blood supply to the brain",
+          "examples": [
+            "Sarah hadn't eaten all day and suddenly felt lightheaded. She started to sway and then slowly fainted, collapsing onto the floor."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "fairly",
+      "word": "fairly",
+      "senses": [
+        {
+          "id": "sense-3117068c",
+          "pos": "adverb",
+          "meaningZh": "相當地；頗",
+          "definitionEn": "to some degree but not very; quite",
+          "examples": [
+            "The test was fairly easy, so most students passed."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-1eb9455a",
+          "pos": "adverb",
+          "meaningZh": "依法地；合規地",
+          "definitionEn": "in accordance with rules or laws, and without any dishonest or unethical behavior",
+          "examples": [
+            "The judge fairly evaluated the evidence and made an unbiased decision."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "fairy",
+      "word": "fairy",
+      "senses": [
+        {
+          "id": "sense-511157e1",
+          "pos": "noun",
+          "meaningZh": "仙子；小精靈",
+          "definitionEn": "A mythical creature that possesses magical abilities and resembles a small person with wings.",
+          "examples": [
+            "In the enchanted forest, a fairy fluttered by, sprinkling pixie dust wherever she went."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "faith",
+      "word": "faith",
+      "senses": [
+        {
+          "id": "sense-445df05a",
+          "pos": "noun",
+          "meaningZh": "信念；信任",
+          "definitionEn": "a strong belief or trust in someone or something",
+          "examples": [
+            "Even though he faced many challenges, he never lost faith in his abilities."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-d8a60996",
+          "pos": "noun",
+          "meaningZh": "忠誠；信義",
+          "definitionEn": "loyalty or allegiance to a cause or a person",
+          "examples": [
+            "Despite facing numerous challenges, Sarah's faith in her team never wavered, and she continued to support and believe in their abilities."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L5 +1",
+        "textbookTitle": "龍騰 B2·L5、三民 B2·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "fake",
+      "word": "fake",
+      "senses": [
+        {
+          "id": "sense-a432d5bc",
+          "pos": "adjective",
+          "meaningZh": "假的；仿冒的",
+          "definitionEn": "not genuine or real; being an imitation of the genuine article",
+          "examples": [
+            "He was caught selling counterfeit watches, claiming they were real Rolex watches, but they were all fake."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-86bbb29f",
+          "pos": "verb",
+          "meaningZh": "偽造；假裝",
+          "definitionEn": "alter or manipulate something, often with the intent to deceive or mislead",
+          "examples": [
+            "He tried to fake his way into the concert by showing a counterfeit ticket."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L5 +1",
+        "textbookTitle": "龍騰 B4·L5、三民 B4·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "familiar",
+      "word": "familiar",
+      "senses": [
+        {
+          "id": "sense-5d327c25",
+          "pos": "adjective",
+          "meaningZh": "熟悉的；通曉的",
+          "definitionEn": "(usually followed by `with’) well informed about or knowing thoroughly",
+          "examples": [
+            "After years of living in the city, I became familiar with all the neighborhoods and their unique characteristics."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-aed69cf0",
+          "pos": "adjective",
+          "meaningZh": "常見的；熟識的",
+          "definitionEn": "well known or easily recognized",
+          "examples": [
+            "Maria's voice sounded familiar, but I couldn't quite place where I had heard it before."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L8 +1",
+        "textbookTitle": "龍騰 B1·L8、三民 B1·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "fancy",
+      "word": "fancy",
+      "senses": [
+        {
+          "id": "sense-d2df0352",
+          "pos": "adjective",
+          "meaningZh": "華麗的；裝飾性的",
+          "definitionEn": "decorative or ornamental, not plain",
+          "examples": [
+            "She wore a fancy dress to the gala, with intricate beadwork and sparkling sequins."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-67290d22",
+          "pos": "noun",
+          "meaningZh": "喜好；愛好",
+          "definitionEn": "a preference or liking towards something",
+          "examples": [
+            "Sara has a fancy for fine art and often visits galleries and exhibitions."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "fare",
+      "word": "fare",
+      "senses": [
+        {
+          "id": "sense-596c642c",
+          "pos": "noun",
+          "meaningZh": "票價；交通費",
+          "definitionEn": "the price that you pay for a journey on a bus, train, plane, etc.",
+          "examples": [
+            "I paid the fare for a round-trip ticket from New York to Los Angeles."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-20141b5e",
+          "pos": "noun",
+          "meaningZh": "（乘車）費用；運費",
+          "definitionEn": "the amount of money charged for transportation",
+          "examples": [
+            "I paid the fare for a taxi ride to the airport."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "farther",
+      "word": "farther",
+      "senses": [
+        {
+          "id": "sense-1a78d76c",
+          "pos": "adjective",
+          "meaningZh": "更遠的；更疏遠的",
+          "definitionEn": "more remote in degree or quality",
+          "examples": [
+            "The campsite was farther from civilization than they had expected, requiring a long hike through the dense forest."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-5bc18e0f",
+          "pos": "adjective",
+          "meaningZh": "更遠的（距離或時間）",
+          "definitionEn": "more distant in space or time",
+          "examples": [
+            "The cabin is located farther up the mountain, offering stunning views of the valley."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "fashionable",
+      "word": "fashionable",
+      "senses": [
+        {
+          "id": "sense-41ff9ea0",
+          "pos": "adjective",
+          "meaningZh": "流行的；時髦的",
+          "definitionEn": "following current popular trends",
+          "examples": [
+            "Maria always wears the latest clothes and accessories, which is why everyone considers her the most fashionable person in the office."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-09b40a18",
+          "pos": "adjective",
+          "meaningZh": "有品味的；時尚的",
+          "definitionEn": "having good style or taste in manner or dress",
+          "examples": [
+            "She wore the latest designer dress to the party and looked quite fashionable."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·R3",
+        "textbookTitle": "龍騰 B3·R3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "faucet",
+      "word": "faucet",
+      "senses": [
+        {
+          "id": "sense-31763dd9",
+          "pos": "noun",
+          "meaningZh": "水龍頭；水栓",
+          "definitionEn": "a device that controls the flow of water from a pipe",
+          "examples": [
+            "The plumber replaced the old faucet with a brand new one to stop the leak."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "fearful",
+      "word": "fearful",
+      "senses": [
+        {
+          "id": "sense-18d7dd31",
+          "pos": "adjective",
+          "meaningZh": "可怕的；令人畏懼的",
+          "definitionEn": "causing fear or terror",
+          "examples": [
+            "The sound of thunder during a storm can be fearful for young children."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-1a8691c9",
+          "pos": "adjective",
+          "meaningZh": "膽怯的；懦弱的",
+          "definitionEn": "lacking courage; ignobly timid and faint-hearted",
+          "examples": [
+            "The fearful dog cowered in the corner, trembling at the sound of the thunderstorm."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "feather",
+      "word": "feather",
+      "senses": [
+        {
+          "id": "sense-0330aaea",
+          "pos": "noun",
+          "meaningZh": "羽毛；翎毛",
+          "definitionEn": "the light, horny, waterproof structure that forms the external covering of birds; one of the distinctive epidermal growths that characterizes birds; a plume or fringe of feathers, especially on the head or tail of a bird",
+          "examples": [
+            "The vibrant peacock fanned out its beautiful feathers in a graceful display."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-aec99b23",
+          "pos": "verb",
+          "meaningZh": "裝飾羽毛；使呈羽狀",
+          "definitionEn": "to cover or adorn with feathers; to grow feathers; to provide or mark with feathers; to turn the blade of an oar to be perpendicular to the water",
+          "examples": [
+            "The costume designer carefully feathered the edges of the extravagant headdress, adding a touch of elegance and grandeur."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "fence",
+      "word": "fence",
+      "senses": [
+        {
+          "id": "sense-9b1dc519",
+          "pos": "noun",
+          "meaningZh": "圍欄；柵欄",
+          "definitionEn": "a barrier that surrounds or encloses an area",
+          "examples": [
+            "The farmer installed a sturdy fence around his field to keep the animals out."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-4dfea45e",
+          "pos": "verb",
+          "meaningZh": "爭論；口角",
+          "definitionEn": "have an argument about something",
+          "examples": [
+            "The couple fenced over which movie to watch, each pushing for their favorite genre."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "fighter",
+      "word": "fighter",
+      "senses": [
+        {
+          "id": "sense-b2fb4e08",
+          "pos": "noun",
+          "meaningZh": "戰士；格鬥者",
+          "definitionEn": "someone who fights (or is currently fighting)",
+          "examples": [
+            "The boxer entered the ring, ready to unleash his skills as a fierce fighter."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-e0b92c25",
+          "pos": "noun",
+          "meaningZh": "鬥士；倡導者",
+          "definitionEn": "someone who fights for a cause (e.g. political fighter)",
+          "examples": [
+            "John is a tireless fighter for human rights, always advocating for justice and equality."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "firework",
+      "word": "firework",
+      "senses": [
+        {
+          "id": "sense-a3f71aad",
+          "pos": "noun",
+          "meaningZh": "煙火；煙火彈",
+          "definitionEn": "A device containing gunpowder and other combustible chemicals that explodes spectacularly when ignited, used for display or in celebrations.",
+          "examples": [
+            "As the clock struck midnight, the sky lit up with a brilliant display of firework, capturing everyone's attention and filling the night with awe and wonder."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-4ce41482",
+          "pos": "noun",
+          "meaningZh": "煙火表演",
+          "definitionEn": "A display of fireworks.",
+          "examples": [
+            "The crowd gathered on the beach to watch the spectacular firework display lighting up the night sky."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "fist",
+      "word": "fist",
+      "senses": [
+        {
+          "id": "sense-efd5405c",
+          "pos": "noun",
+          "meaningZh": "拳頭；握拳",
+          "definitionEn": "a closed hand with the fingers bent into the palm, used for hitting or gripping",
+          "examples": [
+            "The bully punched him with a tight fist on the nose."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "flame",
+      "word": "flame",
+      "senses": [
+        {
+          "id": "sense-528b15c6",
+          "pos": "noun",
+          "meaningZh": "火焰；火苗",
+          "definitionEn": "the process of burning something with a fire that produces heat and light and (often) smoke",
+          "examples": [
+            "The flame danced atop the candle, casting a warm and flickering glow around the room."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-57e44731",
+          "pos": "verb",
+          "meaningZh": "燃燒；起火",
+          "definitionEn": "to be burning with flames or on fire",
+          "examples": [
+            "The building was engulfed in flames, sending plumes of smoke into the air."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L6 +1",
+        "textbookTitle": "龍騰 B5·L6、三民 B4·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    }
+  ]
+}

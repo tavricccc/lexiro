@@ -1,0 +1,1327 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 175,
+  "words": [
+    {
+      "wordKey": "deafen",
+      "word": "deafen",
+      "senses": [
+        {
+          "id": "sense-c2bf9438",
+          "pos": "verb",
+          "meaningZh": "使聾；震聾",
+          "definitionEn": "render someone deaf",
+          "examples": [
+            "The explosion was so loud that it temporarily deafened everyone in the vicinity."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-d4ce9fb0",
+          "pos": "verb",
+          "meaningZh": "隔音；使隔絕噪音",
+          "definitionEn": "make something soundproof",
+          "examples": [
+            "The construction workers used thick insulation materials to deafen the noise from the nearby highway."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "decisive",
+      "word": "decisive",
+      "senses": [
+        {
+          "id": "sense-5a56e81a",
+          "pos": "adjective",
+          "meaningZh": "果決的；果斷的",
+          "definitionEn": "having or showing the ability to make decisions quickly and effectively",
+          "examples": [
+            "The CEO’s decisive action saved the company from bankruptcy."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-f462386f",
+          "pos": "adjective",
+          "meaningZh": "決定性的；關鍵的",
+          "definitionEn": "having the power to determine an outcome or settle an issue",
+          "examples": [
+            "The lawyer’s decisive argument won the case for his client."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L6",
+        "textbookTitle": "龍騰 B5·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "dedication",
+      "word": "dedication",
+      "senses": [
+        {
+          "id": "sense-ef02048a",
+          "pos": "noun",
+          "meaningZh": "投入；奉獻精神",
+          "definitionEn": "the act of binding yourself (intellectually or emotionally) to a course of action",
+          "examples": [
+            "After years of hard work and dedication, she finally earned her college degree."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-c566e82b",
+          "pos": "noun",
+          "meaningZh": "忠誠；全心付出",
+          "definitionEn": "complete and wholehearted fidelity",
+          "examples": [
+            "Susan’s dedication to her job was evident in the countless hours she spent staying late to finish projects."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L1",
+        "textbookTitle": "龍騰 B2·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "deduct",
+      "word": "deduct",
+      "senses": [
+        {
+          "id": "sense-1b64f559",
+          "pos": "verb",
+          "meaningZh": "扣除；減去",
+          "definitionEn": "make a subtraction",
+          "examples": [
+            "The company will deduct taxes directly from each employee's monthly salary."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "deem",
+      "word": "deem",
+      "senses": [
+        {
+          "id": "sense-3e919a6d",
+          "pos": "verb",
+          "meaningZh": "認為；視為",
+          "definitionEn": "to have an opinion or belief about something",
+          "examples": [
+            "The judge will deem the evidence admissible based on its relevance to the case."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "default",
+      "word": "default",
+      "senses": [
+        {
+          "id": "sense-03eff254",
+          "pos": "noun",
+          "meaningZh": "預設值；內定選項",
+          "definitionEn": "an option that is automatically chosen when no alternative is specified",
+          "examples": [
+            "In the absence of a specific font selection, the website's default font will be used."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-bb469826",
+          "pos": "noun",
+          "meaningZh": "違約；拖欠",
+          "definitionEn": "failure to fulfill a financial obligation, particularly in paying a debt",
+          "examples": [
+            "After several missed mortgage payments, the homeowner faced default and had to give up their house."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "defect",
+      "word": "defect",
+      "senses": [
+        {
+          "id": "sense-aa140d6e",
+          "pos": "noun",
+          "meaningZh": "缺陷；瑕疵",
+          "definitionEn": "a deficiency or imperfection",
+          "examples": [
+            "The defect in the car's engine caused it to break down on the side of the road."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-24286e57",
+          "pos": "noun",
+          "meaningZh": "（身體機能）障礙；缺損",
+          "definitionEn": "an abnormality or malfunction in a bodily system",
+          "examples": [
+            "After the accident, he developed a hearing defect and struggled to hear conversations clearly."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "defiance",
+      "word": "defiance",
+      "senses": [
+        {
+          "id": "sense-16a80b1e",
+          "pos": "noun",
+          "meaningZh": "蔑視；公然違抗",
+          "definitionEn": "intentionally contemptuous behavior or attitude",
+          "examples": [
+            "Despite multiple warnings, the teenager showed defiance by refusing to follow the rules and openly challenging the authority figure."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-ef1261c3",
+          "pos": "noun",
+          "meaningZh": "挑釁；對抗",
+          "definitionEn": "a hostile challenge",
+          "examples": [
+            "The protester shouted in defiance as he refused to comply with the police orders."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "definitive",
+      "word": "definitive",
+      "senses": [
+        {
+          "id": "sense-64773449",
+          "pos": "adjective",
+          "meaningZh": "明確的；確定性的",
+          "definitionEn": "clearly and precisely defined or formulated",
+          "examples": [
+            "The Supreme Court’s ruling was the definitive decision on the constitutionality of the law."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-ea82b26f",
+          "pos": "adjective",
+          "meaningZh": "最終的；決定性的",
+          "definitionEn": "providing a conclusive answer or result; decisive",
+          "examples": [
+            "The DNA test proved to be the definitive evidence in the murder case."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "dental",
+      "word": "dental",
+      "senses": [
+        {
+          "id": "sense-113d4c2e",
+          "pos": "adjective",
+          "meaningZh": "牙齒的；牙科的",
+          "definitionEn": "relating to the teeth or dentistry",
+          "examples": [
+            "My cousin is studying to become a dental hygienist and will soon start working at a dental clinic."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-92f64186",
+          "pos": "noun",
+          "meaningZh": "（語音）齒音",
+          "definitionEn": "a consonant articulated with the tip of the tongue near the gum ridge",
+          "examples": [
+            "During the pronunciation of the word 'tooth,' the 'th' sound is dental."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "deplete",
+      "word": "deplete",
+      "senses": [
+        {
+          "id": "sense-855943e1",
+          "pos": "verb",
+          "meaningZh": "耗盡；大量消耗",
+          "definitionEn": "to greatly reduce the amount of something by using it up",
+          "examples": [
+            "After weeks of non-stop studying, Sarah's energy levels were completely depleted."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "deprive",
+      "word": "deprive",
+      "senses": [
+        {
+          "id": "sense-006f8192",
+          "pos": "verb",
+          "meaningZh": "剝奪；使失去",
+          "definitionEn": "keep from having, keeping, or obtaining",
+          "examples": [
+            "The pandemic has deprived many businesses of their profits."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-bddc61be",
+          "pos": "verb",
+          "meaningZh": "奪走；取走",
+          "definitionEn": "take away",
+          "examples": [
+            "The school principal punished the students by depriving them of their recess."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "descent",
+      "word": "descent",
+      "senses": [
+        {
+          "id": "sense-b6be12c0",
+          "pos": "noun",
+          "meaningZh": "血統；出身",
+          "definitionEn": "the origin or ancestry of people in your family background",
+          "examples": [
+            "While researching her family tree, Sarah discovered that she had Irish and Italian descent."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-e750f896",
+          "pos": "noun",
+          "meaningZh": "下降；下坡",
+          "definitionEn": "the act of coming down, such as a path or movement towards a lower position",
+          "examples": [
+            "The hiker began the steep descent down the mountain trail, carefully placing each foot to maintain balance."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "despise",
+      "word": "despise",
+      "senses": [
+        {
+          "id": "sense-492e35ca",
+          "pos": "verb",
+          "meaningZh": "鄙視；蔑視",
+          "definitionEn": "to feel contempt or scorn toward and consider unworthy of respect",
+          "examples": [
+            "He despises his ex-wife so much that he cannot even stand to be in the same room as her."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L9",
+        "textbookTitle": "龍騰 B4·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "destined",
+      "word": "destined",
+      "senses": [
+        {
+          "id": "sense-005ff61b",
+          "pos": "verb",
+          "meaningZh": "注定；命中注定",
+          "definitionEn": "designate beforehand; preordain",
+          "examples": [],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-ff519048",
+          "pos": "verb",
+          "meaningZh": "命定；天生用於",
+          "definitionEn": "design for a specific purpose or destiny",
+          "examples": [
+            "She was destined to become a great musician from a young age, practicing diligently every day."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "detach",
+      "word": "detach",
+      "senses": [
+        {
+          "id": "sense-ea4619df",
+          "pos": "verb",
+          "meaningZh": "拆下；分離",
+          "definitionEn": "to separate or disconnect something, especially from something larger",
+          "examples": [
+            "She carefully detached the delicate butterfly from the net and released it back into the wild."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-7827322a",
+          "pos": "verb",
+          "meaningZh": "脫離；鬆開",
+          "definitionEn": "to become separated or disconnected from something",
+          "examples": [
+            "She detached the old necklace from her neck and placed it in the jewelry box."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "detain",
+      "word": "detain",
+      "senses": [
+        {
+          "id": "sense-a65b5098",
+          "pos": "verb",
+          "meaningZh": "拘留；扣押",
+          "definitionEn": "deprive of freedom; take into confinement",
+          "examples": [
+            "The police officer decided to detain the suspect for further questioning."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-6f01ad80",
+          "pos": "verb",
+          "meaningZh": "攔住；耽誤",
+          "definitionEn": "stop or halt",
+          "examples": [
+            "The police officer had to detain the suspect for further questioning."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "detention",
+      "word": "detention",
+      "senses": [
+        {
+          "id": "sense-8f881317",
+          "pos": "noun",
+          "meaningZh": "課後留校；（學生）罰留",
+          "definitionEn": "a punishment in which a student must stay at school after others have gone home",
+          "examples": [
+            "When Joe was caught cheating on the test, he received detention and had to stay at school for an extra hour."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-ec75f313",
+          "pos": "noun",
+          "meaningZh": "拘禁；禁閉",
+          "definitionEn": "a state of being confined, especially as a result of disobedience or unruly behavior",
+          "examples": [
+            "After repeatedly disrupting the class, Tim was given a detention and had to stay after school."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "deter",
+      "word": "deter",
+      "senses": [
+        {
+          "id": "sense-a16fdefe",
+          "pos": "verb",
+          "meaningZh": "阻止；嚇阻",
+          "definitionEn": "to prevent or stop someone from doing something or to make someone less interested or eager to do something",
+          "examples": [
+            "The heavy rain and thunderstorms deterred us from going on our outdoor picnic."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "detergent",
+      "word": "detergent",
+      "senses": [
+        {
+          "id": "sense-080053db",
+          "pos": "noun",
+          "meaningZh": "清潔劑；洗衣粉",
+          "definitionEn": "a cleansing agent that can remove dirt and oil from surfaces, often used in laundry and household cleaning products",
+          "examples": [
+            "I need to buy more detergent for the laundry. The detergent should be added to the water before placing the clothes in the washing machine."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-b30edf46",
+          "pos": "noun",
+          "meaningZh": "界面活性劑；去污劑",
+          "definitionEn": "a type of surfactant, or surface-active agent, used to remove dirt and stains from fabric and other materials",
+          "examples": [
+            "She added a scoop of detergent to the washing machine before starting the cycle."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "devour",
+      "word": "devour",
+      "senses": [
+        {
+          "id": "sense-4d949d3c",
+          "pos": "verb",
+          "meaningZh": "狼吞虎嚥；大口吃",
+          "definitionEn": "eat greedily",
+          "examples": [
+            "After running the marathon, John devoured an entire pizza to satisfy his hunger."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-e0007464",
+          "pos": "verb",
+          "meaningZh": "貪婪地吃；暴食",
+          "definitionEn": "eat immoderately",
+          "examples": [
+            "After a long day of hiking, John devoured an entire pizza by himself."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "diabetes",
+      "word": "diabetes",
+      "senses": [
+        {
+          "id": "sense-842e7f32",
+          "pos": "noun",
+          "meaningZh": "糖尿病",
+          "definitionEn": "A disease in which the body’s ability to produce or respond to the hormone insulin is impaired, resulting in abnormal metabolism of carbohydrates and elevated levels of glucose in the blood; any of several metabolic disorders marked by excessive urination and persistent thirst.",
+          "examples": [
+            "Eating too much sugar over time can increase the risk of diabetes."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "dictate",
+      "word": "dictate",
+      "senses": [
+        {
+          "id": "sense-4768680a",
+          "pos": "verb",
+          "meaningZh": "命令；支配；口述",
+          "definitionEn": "to give orders, or to say words aloud for someone to write down",
+          "examples": [
+            "He dictated a letter to his secretary."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-6646597a",
+          "pos": "noun",
+          "meaningZh": "準則；指導原則",
+          "definitionEn": "a guiding principle or rule",
+          "examples": [
+            "In our company, punctuality is a dictate that all employees must adhere to."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "dictation",
+      "word": "dictation",
+      "senses": [
+        {
+          "id": "sense-845ddb96",
+          "pos": "noun",
+          "meaningZh": "口述；聽寫",
+          "definitionEn": "the act or process of saying words for someone else to write down",
+          "examples": [
+            "The professor gave a dictation to the student to improve their transcription skills."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "dictator",
+      "word": "dictator",
+      "senses": [
+        {
+          "id": "sense-81cb2ca7",
+          "pos": "noun",
+          "meaningZh": "獨裁者；專制者",
+          "definitionEn": "a ruler with total power and authority, who often comes to power through undemocratic means",
+          "examples": [
+            "In the fictional country of Zarakistan, General Ramirez seized control and became the dictator, ruling with an iron fist and suppressing any opposition."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "dictatorship",
+      "word": "dictatorship",
+      "senses": [
+        {
+          "id": "sense-8225acae",
+          "pos": "noun",
+          "meaningZh": "獨裁政治；獨裁體制",
+          "definitionEn": "a form of government in which the ruler is an absolute dictator not restricted by a constitution or laws or opposition etc.",
+          "examples": [
+            "Under the dictatorship, the ruler held complete control and made decisions without any regard for the rights or opinions of the citizens."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-1d8c2ebd",
+          "pos": "noun",
+          "meaningZh": "獨裁者職位；獨裁統治",
+          "definitionEn": "the office or position held by a dictator",
+          "examples": [
+            "Under the dictatorship of General Ramirez, political opposition was suppressed and the media was heavily censored."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "diesel",
+      "word": "diesel",
+      "senses": [
+        {
+          "id": "sense-60a9688a",
+          "pos": "noun",
+          "meaningZh": "柴油；柴油燃料",
+          "definitionEn": "a type of fuel made from crude oil and used in some internal-combustion engines, such as those found in trucks and cars",
+          "examples": [
+            "The heavy-duty truck roared to life as the driver turned the key, the diesel engine emitting a low rumble."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "differentiate",
+      "word": "differentiate",
+      "senses": [
+        {
+          "id": "sense-a8f23fa8",
+          "pos": "verb",
+          "meaningZh": "區分；辨別",
+          "definitionEn": "to identify or discover a distinction between people or things.",
+          "examples": [
+            "In a crowded room, the teacher was able to differentiate between the twins by noticing their different hairstyles."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-421b7de7",
+          "pos": "verb",
+          "meaningZh": "使差異化；突顯特色",
+          "definitionEn": "to show how a product or company is different from others and highlight its advantages, especially to attract a specific group of consumers.",
+          "examples": [
+            "When launching their new smartphone, the company made sure to differentiate it by emphasizing its cutting-edge technology and unique design features in their advertising campaigns, targeting tech-savvy individuals."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L3",
+        "textbookTitle": "龍騰 B5·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "diplomacy",
+      "word": "diplomacy",
+      "senses": [
+        {
+          "id": "sense-c1b26db2",
+          "pos": "noun",
+          "meaningZh": "外交；外交手段",
+          "definitionEn": "the profession, activity, or skill of managing international relations, typically by a country’s representatives abroad",
+          "examples": [
+            "The minister of foreign affairs used diplomacy to negotiate a peaceful resolution to the conflict between the two countries."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-da7cc3f2",
+          "pos": "noun",
+          "meaningZh": "交涉手腕；圓融技巧",
+          "definitionEn": "the art of dealing with people in a sensitive and effective way",
+          "examples": [
+            "In order to resolve the conflict between the two countries, skilled diplomacy was necessary to navigate the delicate negotiations and reach a peaceful resolution."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "directive",
+      "word": "directive",
+      "senses": [
+        {
+          "id": "sense-3ac7c81b",
+          "pos": "noun",
+          "meaningZh": "指令；命令",
+          "definitionEn": "an official instruction or order given by an authority; a pronouncement encouraging or banning some activity",
+          "examples": [
+            "The company issued a directive that all employees must wear masks and practice social distancing in the office due to the COVID-19 outbreak."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-1258965c",
+          "pos": "adjective",
+          "meaningZh": "指導的；引領方向的",
+          "definitionEn": "providing direction; showing the way by conducting or leading; imposing direction on",
+          "examples": [
+            "The management issued a directive to all employees regarding the new safety protocols."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    }
+  ]
+}

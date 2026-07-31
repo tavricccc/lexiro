@@ -1,0 +1,1408 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 121,
+  "words": [
+    {
+      "wordKey": "ministry",
+      "word": "ministry",
+      "senses": [
+        {
+          "id": "sense-e5d562d8",
+          "pos": "noun",
+          "meaningZh": "（政府的）部；部會",
+          "definitionEn": "a government department responsible for a particular area of activity",
+          "examples": [
+            "The Ministry of Education announced a new policy for schools."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-78db7c6b",
+          "pos": "noun",
+          "meaningZh": "宗教事業；牧師職務",
+          "definitionEn": "the work of a minister of religion",
+          "examples": [
+            "The ministry of the local church involves leading worship services, performing sacraments, and providing spiritual guidance to the congregation."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-528c3fe7",
+          "pos": "noun",
+          "meaningZh": "教牧團體；神職人員",
+          "definitionEn": "religious ministers together, particularly in Presbyterian churches",
+          "examples": [
+            "The ministry of the Presbyterian church gathered for weekly meetings to discuss community outreach projects and provide spiritual support to their congregation."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "mischief",
+      "word": "mischief",
+      "senses": [
+        {
+          "id": "sense-53e7a85b",
+          "pos": "noun",
+          "meaningZh": "惡作劇；調皮搗蛋",
+          "definitionEn": "harmful or evil behavior that causes discomfort or annoyance in others",
+          "examples": [
+            "The children created mischief in the classroom by throwing pencils, spilling paint and shouting loudly."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-21e3d325",
+          "pos": "noun",
+          "meaningZh": "危害性；惡意",
+          "definitionEn": "the quality or nature of being harmful or evil",
+          "examples": [
+            "The little boy got into mischief when he broke the vase with his baseball, causing his parents to be upset and angry."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "miserable",
+      "word": "miserable",
+      "senses": [
+        {
+          "id": "sense-f3932c46",
+          "pos": "adjective",
+          "meaningZh": "悲慘的；痛苦的",
+          "definitionEn": "feeling very unhappy or troubled; full of misery",
+          "examples": [
+            "After losing his job and going through a difficult breakup, he felt utterly miserable."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-0c3f4079",
+          "pos": "adjective",
+          "meaningZh": "可憐的；令人同情的",
+          "definitionEn": "bringing or deserving of pity, sympathy, or compassion",
+          "examples": [
+            "After losing his job and going through a messy divorce, John found himself living on the streets, his miserable state drawing the compassion of passersby."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L3 +1",
+        "textbookTitle": "龍騰 B3·L3、三民 B1·L10"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "misfortune",
+      "word": "misfortune",
+      "senses": [
+        {
+          "id": "sense-9ef66908",
+          "pos": "noun",
+          "meaningZh": "不幸；厄運",
+          "definitionEn": "unnecessary and unforeseen trouble resulting from an unfortunate event",
+          "examples": [
+            "After losing his job, John suffered a series of misfortunes; his car broke down, he got robbed, and even his beloved dog passed away."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-aaa8c400",
+          "pos": "noun",
+          "meaningZh": "倒楣；逆境",
+          "definitionEn": "an unfortunate state resulting from unfavorable outcomes",
+          "examples": [
+            "The misfortune of losing her job caused her to fall into debt."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B1·L10",
+        "textbookTitle": "三民 B1·L10"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "mislead",
+      "word": "mislead",
+      "senses": [
+        {
+          "id": "sense-687ce80d",
+          "pos": "verb",
+          "meaningZh": "誤導；欺騙",
+          "definitionEn": "to cause someone to believe something that is not true",
+          "examples": [
+            "The con artist used his charm and smooth talking to mislead unsuspecting victims into investing in a fake business."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-e9cc3ec9",
+          "pos": "verb",
+          "meaningZh": "給予錯誤訊息；使產生誤解",
+          "definitionEn": "to give someone incorrect information or impressions",
+          "examples": [
+            "The salesman intentionally mislead the customer by promising a warranty that didn't actually exist."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L2",
+        "textbookTitle": "龍騰 B5·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "misunderstand",
+      "word": "misunderstand",
+      "senses": [
+        {
+          "id": "sense-d71081fd",
+          "pos": "verb",
+          "meaningZh": "誤解；理解錯誤",
+          "definitionEn": "to fail to understand properly",
+          "examples": [
+            "During the meeting, John misunderstood Sarah's instructions and ended up doing the opposite of what was intended."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-9635bb28",
+          "pos": "verb",
+          "meaningZh": "曲解；搞錯意思",
+          "definitionEn": "to interpret or take in a wrong way",
+          "examples": [
+            "John and Sarah had a miscommunication over text, leading them to misunderstand each other's intentions."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 翰林 B1·L9",
+        "textbookTitle": "翰林 B1·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "moderate",
+      "word": "moderate",
+      "senses": [
+        {
+          "id": "sense-732f3543",
+          "pos": "adjective",
+          "meaningZh": "適量的；不過度的",
+          "definitionEn": "Being within reasonable or average limits; not excessive or extreme.",
+          "examples": [
+            "Sarah enjoys eating dessert in moderate amounts to maintain a healthy lifestyle."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-05f29692",
+          "pos": "adjective",
+          "meaningZh": "溫和的；中庸的",
+          "definitionEn": "Marked by avoidance of extravagance or extremes.",
+          "examples": [
+            "To create a balanced and healthy lifestyle, it's important to have a moderate approach to both exercise and eating."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "modest",
+      "word": "modest",
+      "senses": [
+        {
+          "id": "sense-e29abd28",
+          "pos": "adjective",
+          "meaningZh": "謙遜的；不自誇的",
+          "definitionEn": "having or showing a moderate or humble estimate of one’s abilities",
+          "examples": [
+            "She possessed the talent to take the lead role, but instead, she chose a more modest role in the play to let the others shine."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-78a43905",
+          "pos": "adjective",
+          "meaningZh": "樸素的；不奢華的",
+          "definitionEn": "not large, expensive, or flashy; limited in size or amount",
+          "examples": [
+            "She lived in a modest apartment with no fancy furniture."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L1",
+        "textbookTitle": "龍騰 B5·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "modesty",
+      "word": "modesty",
+      "senses": [
+        {
+          "id": "sense-a62af5be",
+          "pos": "noun",
+          "meaningZh": "謙遜；不虛榮",
+          "definitionEn": "freedom from vanity or conceit",
+          "examples": [
+            "Despite winning the gold medal, the athlete displayed great modesty in her victory speech and credited her teammates and coach for their support."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-028c5df6",
+          "pos": "noun",
+          "meaningZh": "謙虛；低調",
+          "definitionEn": "the quality or attribute of being unassuming or moderate in the estimation of one’s abilities",
+          "examples": [
+            "Despite his remarkable achievements, John always maintains his modesty and never boasts about his successes."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L1",
+        "textbookTitle": "龍騰 B5·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "monitor",
+      "word": "monitor",
+      "senses": [
+        {
+          "id": "sense-0d3a7986",
+          "pos": "verb",
+          "meaningZh": "監控；監測",
+          "definitionEn": "to watch and check something carefully over a period of time",
+          "examples": [
+            "Nurses monitor the patient's heart rate all night."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-552836a9",
+          "pos": "noun",
+          "meaningZh": "顯示器；監聽設備",
+          "definitionEn": "electronic equipment that is used to check the quality or content of electronic transmissions",
+          "examples": [
+            "The network administrator used the monitor to keep track of the data transfer speed."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "monument",
+      "word": "monument",
+      "senses": [
+        {
+          "id": "sense-698ae793",
+          "pos": "noun",
+          "meaningZh": "紀念碑；紀念建築",
+          "definitionEn": "a structure, such as a statue or building, that is built to honor and remember a person or event",
+          "examples": [
+            "The Washington Monument is a towering structure erected in honor of the first US president, George Washington."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-89ba71a1",
+          "pos": "noun",
+          "meaningZh": "陵墓；墓碑",
+          "definitionEn": "a tomb or burial place, often for famous or important individuals",
+          "examples": [
+            "The Taj Mahal is a magnificent monument built as a tomb by the Mughal emperor Shah Jahan for his beloved wife Mumtaz Mahal in Agra, India."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L6",
+        "textbookTitle": "龍騰 B1·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "moreover",
+      "word": "moreover",
+      "senses": [
+        {
+          "id": "sense-ea38ce91",
+          "pos": "adverb",
+          "meaningZh": "此外；而且",
+          "definitionEn": "in addition; besides",
+          "examples": [
+            "I already have a full-time job, moreover, I am also taking night classes at the university."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-eb019380",
+          "pos": "adverb",
+          "meaningZh": "再者；況且",
+          "definitionEn": "furthermore; additionally",
+          "examples": [
+            "I already completed my homework, and moreover, I studied for the upcoming test."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L7 +1",
+        "textbookTitle": "龍騰 B3·L7、三民 B1·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "motivate",
+      "word": "motivate",
+      "senses": [
+        {
+          "id": "sense-5ea6292b",
+          "pos": "verb",
+          "meaningZh": "激勵；促使；鼓舞",
+          "definitionEn": "To provide someone an incentive or reason to do something; to inspire with a motive or purpose.",
+          "examples": [
+            "After the team lost their first game of the season, the coach gave an inspiring speech to motivate them to work harder and strive for success."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B2·L2",
+        "textbookTitle": "三民 B2·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "motivation",
+      "word": "motivation",
+      "senses": [
+        {
+          "id": "sense-945d796b",
+          "pos": "noun",
+          "meaningZh": "動力；驅動力",
+          "definitionEn": "the reason or psychological drive that makes a person want to achieve something or take action",
+          "examples": [
+            "After months of training and preparation, her motivation to win the race propelled her across the finish line."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-d825c23a",
+          "pos": "noun",
+          "meaningZh": "積極性；上進心",
+          "definitionEn": "the state of being motivated to do something",
+          "examples": [
+            "Even though the project was challenging, his motivation to succeed pushed him to work harder and achieve his goals."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B2·L2 +1",
+        "textbookTitle": "三民 B2·L2、翰林 B1·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "mountainous",
+      "word": "mountainous",
+      "senses": [
+        {
+          "id": "sense-e4b934a7",
+          "pos": "adjective",
+          "meaningZh": "多山的；山地的",
+          "definitionEn": "full of hills and crags",
+          "examples": [
+            "The mountainous terrain made it difficult for the hikers to reach the summit before dark."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-8fbdd750",
+          "pos": "adjective",
+          "meaningZh": "如山般龐大的；巨大的",
+          "definitionEn": "resembling a mountain in size or grandeur",
+          "examples": [
+            "Her mountainous piles of homework seemed never-ending."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L3",
+        "textbookTitle": "龍騰 B5·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "muddy",
+      "word": "muddy",
+      "senses": [
+        {
+          "id": "sense-0fb00be7",
+          "pos": "adjective",
+          "meaningZh": "泥濘的；鬆軟潮濕的",
+          "definitionEn": "Soft and watery, as of soil.",
+          "examples": [
+            "After the heavy rain, the field became muddy, making it difficult for the farmers to plow."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-c6eb1dd3",
+          "pos": "adjective",
+          "meaningZh": "沾滿泥的；骯髒的",
+          "definitionEn": "Dirty and messy; covered with mud or muck.",
+          "examples": [
+            "After the rainstorm, the once pristine hiking trail became muddy and difficult to walk on."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L2",
+        "textbookTitle": "龍騰 B4·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "mule",
+      "word": "mule",
+      "senses": [
+        {
+          "id": "sense-851288b2",
+          "pos": "noun",
+          "meaningZh": "騾子（公驢與母馬的後代）",
+          "definitionEn": "a hybrid animal that is the offspring of a male donkey and a female horse. They are usually sterile, which means they cannot have babies of their own.",
+          "examples": [
+            "At the farm, the mule named Jack was used to carry heavy loads because of its strength inherited from both its donkey father and horse mother."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-d893a7a3",
+          "pos": "noun",
+          "meaningZh": "穆勒鞋；無後跟拖鞋",
+          "definitionEn": "a kind of shoe that has no back or strap around the heel, and is easy to put on and take off.",
+          "examples": [
+            "She slipped on her comfortable mules before heading out for a casual stroll."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "multiple",
+      "word": "multiple",
+      "senses": [
+        {
+          "id": "sense-abaec9eb",
+          "pos": "adjective",
+          "meaningZh": "多個的；多重的",
+          "definitionEn": "having more than one part, entity, or individual; consisting of multiple elements or units",
+          "examples": [
+            "The project required the collaboration of multiple teams to ensure its success."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L4",
+        "textbookTitle": "龍騰 B4·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "murderer",
+      "word": "murderer",
+      "senses": [
+        {
+          "id": "sense-c8cb90df",
+          "pos": "noun",
+          "meaningZh": "殺人犯；兇手",
+          "definitionEn": "a person who commits murder",
+          "examples": [
+            "The murderer was sentenced to life in prison."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B1·L10",
+        "textbookTitle": "三民 B1·L10"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "murmur",
+      "word": "murmur",
+      "senses": [
+        {
+          "id": "sense-3ddd26ce",
+          "pos": "verb",
+          "meaningZh": "低聲說話；喃喃低語",
+          "definitionEn": "to speak in a low, quiet voice that is difficult to hear or understand",
+          "examples": [
+            "In the library, patrons are expected to murmur rather than talk loudly."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-98773db8",
+          "pos": "noun",
+          "meaningZh": "輕聲抱怨；私下不滿",
+          "definitionEn": "a quiet complaint",
+          "examples": [
+            "She couldn't help but murmur her dissatisfaction under her breath."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "mutual",
+      "word": "mutual",
+      "senses": [
+        {
+          "id": "sense-1480b977",
+          "pos": "adjective",
+          "meaningZh": "相互的；彼此的",
+          "definitionEn": "relating to both of two or more people or things; given or done in return",
+          "examples": [
+            "After months of negotiation, they finally reached a mutual agreement. She and her friend had a mutual respect for each other’s beliefs."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-1ae32c68",
+          "pos": "adjective",
+          "meaningZh": "共同的；共有的",
+          "definitionEn": "shared by two or more parties",
+          "examples": [
+            "The two partners had a mutual agreement to split the profits equally."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "mysterious",
+      "word": "mysterious",
+      "senses": [
+        {
+          "id": "sense-6955ab77",
+          "pos": "adjective",
+          "meaningZh": "神秘的；難以解釋的",
+          "definitionEn": "difficult or impossible to understand, explain, or identify",
+          "examples": [
+            "The old abandoned mansion on top of the hill has a mysterious aura surrounding it, making people curious about its history and what lies inside."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-f9521ff6",
+          "pos": "adjective",
+          "meaningZh": "神秘的；玄奧的",
+          "definitionEn": "having an air of secrecy or enigma",
+          "examples": [
+            "As the old mansion stood alone on the hill, surrounded by mist, it had a mysterious aura that intrigued the townspeople."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·R2 +2",
+        "textbookTitle": "龍騰 B3·R2、三民 B2·L10、翰林 B1·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "namely",
+      "word": "namely",
+      "senses": [
+        {
+          "id": "sense-76e63f0a",
+          "pos": "adverb",
+          "meaningZh": "亦即；也就是說",
+          "definitionEn": "that is to say; specifically",
+          "examples": [
+            "She has three favorite hobbies, namely painting, reading, and hiking."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "nationality",
+      "word": "nationality",
+      "senses": [
+        {
+          "id": "sense-aae653ff",
+          "pos": "noun",
+          "meaningZh": "國籍",
+          "definitionEn": "the status of belonging to a particular nation by birth or naturalization",
+          "examples": [
+            "After immigrating to Canada and going through the naturalization process, she obtained Canadian nationality."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-d348a2e1",
+          "pos": "noun",
+          "meaningZh": "民族；族裔",
+          "definitionEn": "a group of people sharing common origins or traditions and often comprising a nation",
+          "examples": [
+            "The parade showcased the diversity of the city, with people from various nationalities coming together to celebrate their heritage."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "needy",
+      "word": "needy",
+      "senses": [
+        {
+          "id": "sense-90d06956",
+          "pos": "adjective",
+          "meaningZh": "貧困的；需要救助的",
+          "definitionEn": "poor and in need of assistance from others",
+          "examples": [
+            "The local food bank provides support to the needy in our community, ensuring they have enough to eat."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-fada30a4",
+          "pos": "adjective",
+          "meaningZh": "過度依賴的；黏人的",
+          "definitionEn": "requiring more care or help than is considered necessary",
+          "examples": [
+            "She constantly calls and texts him for attention, appearing needy and dependent."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "neglect",
+      "word": "neglect",
+      "senses": [
+        {
+          "id": "sense-e4a0e521",
+          "pos": "verb",
+          "meaningZh": "疏忽；忘做",
+          "definitionEn": "fail to do something, leave something undone, or fail to attend to",
+          "examples": [
+            "The gardener neglected to water the plants, causing them to wither and die."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-4c219860",
+          "pos": "verb",
+          "meaningZh": "忽視；漠視",
+          "definitionEn": "give little or no attention to",
+          "examples": [
+            "The parents neglected their child, failing to provide proper care and support."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L8",
+        "textbookTitle": "三民 B4·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "negotiate",
+      "word": "negotiate",
+      "senses": [
+        {
+          "id": "sense-5419f5a0",
+          "pos": "verb",
+          "meaningZh": "協商；談判",
+          "definitionEn": "to discuss something formally in order to agree on it or to solve a problem or dispute; to bargain",
+          "examples": [
+            "During the labor strike, the union representatives and the company's management negotiated the workers' demands for better wages and improved working conditions."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-4268051e",
+          "pos": "verb",
+          "meaningZh": "順利通過；克服",
+          "definitionEn": "to succeed in going over, coping with, or accomplishing",
+          "examples": [
+            "The two countries were able to negotiate a peace treaty after months of diplomatic discussions."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L8",
+        "textbookTitle": "三民 B4·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "nevertheless",
+      "word": "nevertheless",
+      "senses": [
+        {
+          "id": "sense-b40735ff",
+          "pos": "adverb",
+          "meaningZh": "儘管如此；然而",
+          "definitionEn": "Regardless; in spite of the previous statement.",
+          "examples": [
+            "She had a terrible day at work, with one mishap after another. Nevertheless, she managed to keep a positive attitude."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-e33afaf8",
+          "pos": "adverb",
+          "meaningZh": "仍然；不過",
+          "definitionEn": "Despite anything to the contrary (usually following a concession).",
+          "examples": [
+            "Despite the heavy rain, John decided to go for a run nevertheless."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L9 +1",
+        "textbookTitle": "龍騰 B4·L9、三民 B1·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "nightmare",
+      "word": "nightmare",
+      "senses": [
+        {
+          "id": "sense-ff5e74d9",
+          "pos": "noun",
+          "meaningZh": "噩夢；惡夢",
+          "definitionEn": "a bad dream that causes a person to wake up feeling afraid or anxious",
+          "examples": [
+            "After watching a horror movie right before bed, I had a nightmare about being chased by a ghost."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-eb7a35d3",
+          "pos": "noun",
+          "meaningZh": "噩夢般的經歷；惡夢處境",
+          "definitionEn": "an unpleasant or difficult experience that is frightening or upsetting",
+          "examples": [
+            "After getting lost in the woods at night, Jenny experienced a nightmare of being chased by wild animals."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L3",
+        "textbookTitle": "三民 B4·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "noble",
+      "word": "noble",
+      "senses": [
+        {
+          "id": "sense-8175f180",
+          "pos": "adjective",
+          "meaningZh": "高尚的；崇高的",
+          "definitionEn": "showing high moral qualities, such as honesty, courage, kindness",
+          "examples": [
+            "In the face of adversity, the noble knight chose to protect the innocent rather than seek personal gain."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-7977e015",
+          "pos": "adjective",
+          "meaningZh": "貴族的；高貴出身的",
+          "definitionEn": "belonging to the aristocracy, especially in feudal times",
+          "examples": [
+            "In medieval Europe, the noble families owned vast lands and castles."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    }
+  ]
+}

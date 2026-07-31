@@ -1,0 +1,1395 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 49,
+  "words": [
+    {
+      "wordKey": "manner",
+      "word": "manner",
+      "senses": [
+        {
+          "id": "sense-f9b79fd2",
+          "pos": "noun",
+          "meaningZh": "舉止；行為方式",
+          "definitionEn": "a way of acting or behaving",
+          "examples": [
+            "She handled the situation in a calm and professional manner."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-fa5c91d4",
+          "pos": "noun",
+          "meaningZh": "方式；做法",
+          "definitionEn": "how something is done or how it happens",
+          "examples": [
+            "She completed the project in a timely and efficient manner."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "marriage",
+      "word": "marriage",
+      "senses": [
+        {
+          "id": "sense-3179904d",
+          "pos": "noun",
+          "meaningZh": "婚姻；結婚",
+          "definitionEn": "the act or process of entering into the legal, social, and economic union of a man and a woman to create a family unit",
+          "examples": [
+            "After dating for several years, Sarah and John decided it was time to take their relationship to the next level and have a marriage ceremony, pledging their love and commitment to each other in front of family and friends."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-ee33df32",
+          "pos": "noun",
+          "meaningZh": "婚禮；結婚典禮",
+          "definitionEn": "the ceremony or celebration recognizing the union of two people in marriage",
+          "examples": [
+            "The couple exchanged vows and rings during their beautiful beachside marriage ceremony."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "marry",
+      "word": "marry",
+      "senses": [
+        {
+          "id": "sense-6282a364",
+          "pos": "verb",
+          "meaningZh": "與……結婚；嫁娶",
+          "definitionEn": "take someone as a spouse",
+          "examples": [
+            "At the end of the ceremony, the priest pronounced them husband and wife, and they exchanged vows to marry each other forever."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-d3f93c85",
+          "pos": "verb",
+          "meaningZh": "主持婚禮；為……證婚",
+          "definitionEn": "perform a wedding ceremony",
+          "examples": [
+            "The priest will marry the couple in a beautiful church ceremony."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "mask",
+      "word": "mask",
+      "senses": [
+        {
+          "id": "sense-28f862c8",
+          "pos": "noun",
+          "meaningZh": "口罩；防護面罩",
+          "definitionEn": "a protective covering worn over the face",
+          "examples": [
+            "During the current pandemic, it is recommended to wear a mask when going out in public to prevent the spread of the virus."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-675b28c6",
+          "pos": "noun",
+          "meaningZh": "面具；假面",
+          "definitionEn": "a covering used to disguise or conceal the face",
+          "examples": [
+            "During the Mardi Gras parade, people wear colorful masks to create a sense of mystery and excitement."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "mass",
+      "word": "mass",
+      "senses": [
+        {
+          "id": "sense-81ee3622",
+          "pos": "noun",
+          "meaningZh": "民眾；大眾",
+          "definitionEn": "the ordinary people in general",
+          "examples": [
+            "The mass protested against the government’s decision to increase taxes."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-237bd156",
+          "pos": "noun",
+          "meaningZh": "質量（物理）",
+          "definitionEn": "the property of a body that causes it to have weight in a gravitational field",
+          "examples": [
+            "The mass of an object is usually measured in kilograms or pounds."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 翰林 B1·L3",
+        "textbookTitle": "翰林 B1·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "master",
+      "word": "master",
+      "senses": [
+        {
+          "id": "sense-04fca182",
+          "pos": "verb",
+          "meaningZh": "精通；掌握",
+          "definitionEn": "to learn or understand something thoroughly",
+          "examples": [
+            "It took her years to master the violin."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-a7b43080",
+          "pos": "noun",
+          "meaningZh": "主管；負責人",
+          "definitionEn": "directs the work of others",
+          "examples": [
+            "The project manager was the master of the team, coordinating everyone's tasks and ensuring that everything ran smoothly."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "mat",
+      "word": "mat",
+      "senses": [
+        {
+          "id": "sense-167c267d",
+          "pos": "noun",
+          "meaningZh": "墊子；小地墊",
+          "definitionEn": "a small pad of material used to protect a surface from an object placed on it",
+          "examples": [
+            "I placed a mat under the hot casserole dish to protect the wooden table from getting damaged."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "match",
+      "word": "match",
+      "senses": [
+        {
+          "id": "sense-ecd0c741",
+          "pos": "noun",
+          "meaningZh": "比賽；火柴",
+          "definitionEn": "a sports contest between two teams or players; a small stick used to light a fire",
+          "examples": [
+            "We watched an exciting tennis match."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-3f270dad",
+          "pos": "noun",
+          "meaningZh": "相配之物；對應物",
+          "definitionEn": "something that is similar or corresponds with another",
+          "examples": [
+            "The socks that I'm wearing are a perfect match for my outfit."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L7 +1",
+        "textbookTitle": "龍騰 B1·L7、翰林 B1·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "mate",
+      "word": "mate",
+      "senses": [
+        {
+          "id": "sense-10fd5385",
+          "pos": "noun",
+          "meaningZh": "夥伴；好朋友",
+          "definitionEn": "an informal term for a friend of the same sex",
+          "examples": [
+            "Ben and Tom have been best mates since they were in kindergarten."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "material",
+      "word": "material",
+      "senses": [
+        {
+          "id": "sense-c322a58b",
+          "pos": "noun",
+          "meaningZh": "材料；物質",
+          "definitionEn": "the tangible substance that goes into the makeup of a physical object",
+          "examples": [
+            "The construction workers used a sturdy material like concrete to build the foundation of the skyscraper."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-ac68acb4",
+          "pos": "noun",
+          "meaningZh": "用料；素材",
+          "definitionEn": "things needed for doing or making something",
+          "examples": [
+            "The designer purchased the required material for making the dress."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L2 +1",
+        "textbookTitle": "龍騰 B3·L2、三民 B2·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "mature",
+      "word": "mature",
+      "senses": [
+        {
+          "id": "sense-48b417dc",
+          "pos": "adjective",
+          "meaningZh": "成熟的；發育完全的",
+          "definitionEn": "fully developed and grown",
+          "examples": [
+            "After years of studying and gaining experience, she was finally mature enough to start her own business."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-49791796",
+          "pos": "adjective",
+          "meaningZh": "熟透的；成熟可食的",
+          "definitionEn": "ready to be used or eaten",
+          "examples": [
+            "The bananas are not yet mature, so they are still green and not sweet to eat."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "meaning",
+      "word": "meaning",
+      "senses": [
+        {
+          "id": "sense-34d67a19",
+          "pos": "noun",
+          "meaningZh": "意思；含義",
+          "definitionEn": "the idea that is intended or expressed or signified",
+          "examples": [
+            "In order to convey the meaning of the poem, the poet used rich metaphors and vivid imagery."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-2f725ef2",
+          "pos": "noun",
+          "meaningZh": "意義；重要性",
+          "definitionEn": "the message or significance behind words or actions",
+          "examples": [
+            "The meaning behind her smile was one of pure joy."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B1·L4",
+        "textbookTitle": "三民 B1·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "means",
+      "word": "means",
+      "senses": [
+        {
+          "id": "sense-a8123a10",
+          "pos": "noun",
+          "meaningZh": "方法；手段",
+          "definitionEn": "a method or way of achieving something",
+          "examples": [
+            "The internet is a powerful means of communication."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-2e73b2b0",
+          "pos": "verb",
+          "meaningZh": "打算；意圖",
+          "definitionEn": "have in mind as a purpose",
+          "examples": [
+            "I don’t mean to offend you, but your actions are irresponsible."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "measure",
+      "word": "measure",
+      "senses": [
+        {
+          "id": "sense-852b55de",
+          "pos": "verb",
+          "meaningZh": "測量；衡量",
+          "definitionEn": "to find the size, amount, or degree of something",
+          "examples": [
+            "Use a ruler to measure the length of the table."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-f503081b",
+          "pos": "noun",
+          "meaningZh": "計量單位；標準尺度",
+          "definitionEn": "a standard or unit used for measuring",
+          "examples": [
+            "In order to determine the length of the room, the carpenter used a tape measure."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L8",
+        "textbookTitle": "龍騰 B4·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "measurement",
+      "word": "measurement",
+      "senses": [
+        {
+          "id": "sense-01a76e98",
+          "pos": "noun",
+          "meaningZh": "測量；量測",
+          "definitionEn": "the act or process of assigning numbers to a phenomenon according to a rule in order to obtain a quantitative expression or comparison of the phenomenon",
+          "examples": [
+            "The scientist used precise measurement techniques to obtain accurate readings of the temperature inside the volcano."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L8",
+        "textbookTitle": "龍騰 B4·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "medical",
+      "word": "medical",
+      "senses": [
+        {
+          "id": "sense-4f368df6",
+          "pos": "adjective",
+          "meaningZh": "醫學的；醫療的",
+          "definitionEn": "relating to the study or practice of medicine",
+          "examples": [
+            "After completing her medical degree, Dr. Smith established a successful practice in her hometown."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-d4b452a7",
+          "pos": "adjective",
+          "meaningZh": "內科的；非外科的",
+          "definitionEn": "needing or suitable for treatment by medicine, rather than surgery",
+          "examples": [
+            "After suffering from flu-like symptoms for several days, Sarah decided to visit a medical clinic to seek medication and guidance on her recovery."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L1 +1",
+        "textbookTitle": "龍騰 B2·L1、三民 B1·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "melody",
+      "word": "melody",
+      "senses": [
+        {
+          "id": "sense-2535301b",
+          "pos": "noun",
+          "meaningZh": "旋律；曲調",
+          "definitionEn": "a distinctive sequence of musical notes",
+          "examples": [
+            "She hummed a beautiful melody as she walked along the beach."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-1c346151",
+          "pos": "noun",
+          "meaningZh": "悅耳的樂音；優美旋律",
+          "definitionEn": "the pleasing arrangement of musical notes",
+          "examples": [
+            "The melody of the song was so beautiful that I couldn’t get it out of my head all day."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "membership",
+      "word": "membership",
+      "senses": [
+        {
+          "id": "sense-4e2bdccb",
+          "pos": "noun",
+          "meaningZh": "會員資格；會籍",
+          "definitionEn": "the state of being a member",
+          "examples": [
+            "John's membership in the club provided him with exclusive access to special events and discounts."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-66be8233",
+          "pos": "noun",
+          "meaningZh": "全體成員；會員群體",
+          "definitionEn": "the body of members of an organization or group",
+          "examples": [
+            "The membership of the book club has grown steadily over the past year."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "memory",
+      "word": "memory",
+      "senses": [
+        {
+          "id": "sense-90bdfda2",
+          "pos": "noun",
+          "meaningZh": "記憶力；記憶能力",
+          "definitionEn": "the power of retaining and recalling past experience",
+          "examples": [
+            "His excellent memory allowed him to remember every detail of the conversation."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-1d9cf17a",
+          "pos": "noun",
+          "meaningZh": "記憶；認知記憶過程",
+          "definitionEn": "the cognitive processes that allow a person to retain and remember information",
+          "examples": [
+            "After studying for hours, her memory was sharp enough to recall all the important facts during the exam."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L1 +1",
+        "textbookTitle": "龍騰 B1·L1、三民 B2·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "mention",
+      "word": "mention",
+      "senses": [
+        {
+          "id": "sense-903b46b9",
+          "pos": "verb",
+          "meaningZh": "提及；提到",
+          "definitionEn": "to refer to someone or something",
+          "examples": [
+            "During the meeting, John mentioned that we need to follow up on the client's request."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-83fa958c",
+          "pos": "noun",
+          "meaningZh": "提及；一提",
+          "definitionEn": "a remark or comment",
+          "examples": [
+            "During the meeting, she made sure to mention her colleagues' hard work."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L2 +2",
+        "textbookTitle": "龍騰 B3·L2、三民 B4·L3、翰林 B1·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "message",
+      "word": "message",
+      "senses": [
+        {
+          "id": "sense-4d8e1df9",
+          "pos": "noun",
+          "meaningZh": "訊息；消息",
+          "definitionEn": "a brief written, spoken, or signaled communication",
+          "examples": [
+            "I received a message from my boss asking me to complete the report by tomorrow."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-9bb130ff",
+          "pos": "noun",
+          "meaningZh": "主旨；傳達的意涵",
+          "definitionEn": "the topic or subject of a communication",
+          "examples": [
+            "The message of his speech was about the importance of environmental conservation."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L2",
+        "textbookTitle": "龍騰 B1·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "metal",
+      "word": "metal",
+      "senses": [
+        {
+          "id": "sense-aae73dc7",
+          "pos": "noun",
+          "meaningZh": "金屬",
+          "definitionEn": "a shiny, solid, usually hard substance that conducts heat and electricity, and can be melted or hammered into different shapes",
+          "examples": [
+            "The blacksmiths in the olden days used fire and hammers to shape metal into swords and armor."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-2c1b8ecf",
+          "pos": "noun",
+          "meaningZh": "合金；金屬混合物",
+          "definitionEn": "a combination of two or more metallic elements, or metallic and nonmetallic elements, that are usually fused together or dissolved into each other when melted",
+          "examples": [
+            "The jeweler combined silver and nickel to create a new metal with unique properties."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "meter",
+      "word": "meter",
+      "senses": [
+        {
+          "id": "sense-c392d75c",
+          "pos": "noun",
+          "meaningZh": "公尺；米",
+          "definitionEn": "the fundamental unit of length in the International System of Units (approximately equal to 1.094 yards)",
+          "examples": [
+            "The sprinter completed the 100-meter race in just under 10 seconds."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-4547aeb1",
+          "pos": "noun",
+          "meaningZh": "韻律；詩的格律",
+          "definitionEn": "the rhythmic structure of verse or lines in a poem",
+          "examples": [
+            "The music of the spoken word relies heavily on the meter of the poem."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "method",
+      "word": "method",
+      "senses": [
+        {
+          "id": "sense-848a3cb3",
+          "pos": "noun",
+          "meaningZh": "方法；方式",
+          "definitionEn": "a systematic way of doing something; implies an orderly logical arrangement, often in steps",
+          "examples": [
+            "When studying for exams, it's important to have a method. I like to start by reviewing my notes, then creating flashcards, and finally practicing with past exams."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-f1b6f3ac",
+          "pos": "noun",
+          "meaningZh": "方法派表演（史坦尼斯拉夫斯基體系）",
+          "definitionEn": "an acting technique introduced by Stanislavsky in which the actor uses personal experiences to portray the emotions and reactions of the character",
+          "examples": [
+            "During the rehearsal, the actor used the method to tap into their own memories, allowing them to deliver a powerful and authentic performance."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L7 +1",
+        "textbookTitle": "龍騰 B2·L7、三民 B1·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "metro",
+      "word": "metro",
+      "senses": [
+        {
+          "id": "sense-35d4c38d",
+          "pos": "noun",
+          "meaningZh": "捷運；地下鐵",
+          "definitionEn": "an underground railway system that carries passengers around a city",
+          "examples": [
+            "We took the metro across Paris instead of sitting in traffic."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-a0e582c7",
+          "pos": "adjective",
+          "meaningZh": "都會區的；大城市的",
+          "definitionEn": "relating to a large city and the towns and suburbs around it",
+          "examples": [
+            "Housing prices keep rising across the entire metro area."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "midnight",
+      "word": "midnight",
+      "senses": [
+        {
+          "id": "sense-0909a3a2",
+          "pos": "noun",
+          "meaningZh": "午夜；子夜",
+          "definitionEn": "The middle of the night, usually referring to 12 o’clock at night",
+          "examples": [
+            "Maria stayed up until midnight to finish her project."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "mile",
+      "word": "mile",
+      "senses": [
+        {
+          "id": "sense-0b4936e0",
+          "pos": "noun",
+          "meaningZh": "英里；里",
+          "definitionEn": "a large distance",
+          "examples": [
+            "Our hotel is located just a few miles away from the airport."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-38cdc227",
+          "pos": "noun",
+          "meaningZh": "羅馬里（古代長度單位）",
+          "definitionEn": "an ancient Roman unit of length equivalent to 1620 yards",
+          "examples": [
+            "The ancient Colosseum in Rome is about a half-mile away from the Roman Forum."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "military",
+      "word": "military",
+      "senses": [
+        {
+          "id": "sense-2c26da8b",
+          "pos": "adjective",
+          "meaningZh": "軍事的；軍隊的",
+          "definitionEn": "typical of or associated with soldiers or the armed forces",
+          "examples": [
+            "The military conducted a training exercise to simulate combat scenarios."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-e84abb94",
+          "pos": "adjective",
+          "meaningZh": "戰略的；戰術的",
+          "definitionEn": "relating to the science or study of warfare",
+          "examples": [
+            "The military conducted a series of tactical exercises to test their strategies."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "minor",
+      "word": "minor",
+      "senses": [
+        {
+          "id": "sense-8a511baa",
+          "pos": "adjective",
+          "meaningZh": "未成年的；未達法定年齡的",
+          "definitionEn": "relating to a person under the age of legal majority",
+          "examples": [
+            "The club only admits individuals above 18 years, so they had to turn away the minor who tried to enter."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-b6edc057",
+          "pos": "adjective",
+          "meaningZh": "輔修的；次要科目的",
+          "definitionEn": "relating to a field of study that is not the main subject",
+          "examples": [
+            "She continued her major in computer science and added a minor in philosophy."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B2·L8",
+        "textbookTitle": "三民 B2·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "minority",
+      "word": "minority",
+      "senses": [
+        {
+          "id": "sense-1eb651a4",
+          "pos": "noun",
+          "meaningZh": "少數族群；少數民族",
+          "definitionEn": "a group of people who differ in some way from the larger group of which they are a part, especially because of a different race or culture",
+          "examples": [
+            "The company’s workforce is predominantly male, but efforts are being made to hire a more diverse group that includes women and members of minorities."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-ffd1b2af",
+          "pos": "noun",
+          "meaningZh": "未成年期；法定未成年",
+          "definitionEn": "a period of life before a person reaches legal age",
+          "examples": [
+            "In some countries, individuals under the age of 18 are considered to be in a state of legal minority and are not allowed to vote or join the military."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    }
+  ]
+}

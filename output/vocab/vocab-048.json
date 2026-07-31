@@ -1,0 +1,1417 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 48,
+  "words": [
+    {
+      "wordKey": "lay",
+      "word": "lay",
+      "senses": [
+        {
+          "id": "sense-148164a5",
+          "pos": "verb",
+          "meaningZh": "擺放；佈置",
+          "definitionEn": "prepare or position for action or operation",
+          "examples": [
+            "Before starting the race, the athletes laid their running shoes beside the track."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-5c91d9eb",
+          "pos": "verb",
+          "meaningZh": "施加；強加",
+          "definitionEn": "impose as a duty, burden, or punishment",
+          "examples": [
+            "He was laid with the task of finishing the project by tomorrow."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "leadership",
+      "word": "leadership",
+      "senses": [
+        {
+          "id": "sense-afaeef3e",
+          "pos": "noun",
+          "meaningZh": "領導能力",
+          "definitionEn": "the ability to lead",
+          "examples": [
+            "During the crisis, her strong leadership guided the team towards success."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-0f03ad20",
+          "pos": "noun",
+          "meaningZh": "領導行為；領導工作",
+          "definitionEn": "the activity of leading",
+          "examples": [
+            "During the crisis, her effective leadership helped the team stay focused and motivated."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "leaf",
+      "word": "leaf",
+      "senses": [
+        {
+          "id": "sense-62ba0e0d",
+          "pos": "noun",
+          "meaningZh": "葉子；葉片",
+          "definitionEn": "the main organ of photosynthesis and transpiration in higher plants",
+          "examples": [
+            "In the fall, the leaves on the trees change color and eventually fall off."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-7ed3fbd0",
+          "pos": "noun",
+          "meaningZh": "活頁；折葉（桌或門）",
+          "definitionEn": "a hinged or detachable flat section (as of a table or door)",
+          "examples": [
+            "I accidentally closed the door, trapping my finger in the leaf."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "legal",
+      "word": "legal",
+      "senses": [
+        {
+          "id": "sense-5d74c2bf",
+          "pos": "adjective",
+          "meaningZh": "合法的；法律許可的",
+          "definitionEn": "established by law or accepted rules",
+          "examples": [
+            "It is legal to drive only when you have a valid license."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-546d3c43",
+          "pos": "adjective",
+          "meaningZh": "法律的；司法的",
+          "definitionEn": "relating to laws and the administration of justice",
+          "examples": [],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L8 +2",
+        "textbookTitle": "龍騰 B3·L8、三民 B1·L3、翰林 B1·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "lend",
+      "word": "lend",
+      "senses": [
+        {
+          "id": "sense-2848caa6",
+          "pos": "verb",
+          "meaningZh": "借出；借給",
+          "definitionEn": "to give someone something temporarily and expect it to be returned",
+          "examples": [
+            "I can lend you my car for the weekend, but please fill up the gas tank before returning it."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-a8bd9727",
+          "pos": "verb",
+          "meaningZh": "提供支援；給予協助",
+          "definitionEn": "to provide help or support to someone or something, especially by making it possible or easier for something to happen",
+          "examples": [
+            "I will lend you some money so you can buy a new laptop."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "length",
+      "word": "length",
+      "senses": [
+        {
+          "id": "sense-675bd132",
+          "pos": "noun",
+          "meaningZh": "長度；距離",
+          "definitionEn": "the measurement or distance from one end to the other, typically the longest dimension of an object",
+          "examples": [
+            "I need to know the length of this table before I buy a tablecloth."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-38d02dcf",
+          "pos": "noun",
+          "meaningZh": "一段；一截（細長部分）",
+          "definitionEn": "a long and narrow part or section of something",
+          "examples": [
+            "The length of the hallway seemed endless as I walked towards my destination."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L7",
+        "textbookTitle": "龍騰 B3·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "lens",
+      "word": "lens",
+      "senses": [
+        {
+          "id": "sense-6ab322a4",
+          "pos": "noun",
+          "meaningZh": "鏡頭；透鏡",
+          "definitionEn": "a transparent device that refracts light and forms images",
+          "examples": [
+            "The photographer attached a wide-angle lens to his camera in order to capture more scenery in a single shot."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-6b612943",
+          "pos": "noun",
+          "meaningZh": "電磁透鏡（電子顯微鏡）",
+          "definitionEn": "a piece of electronic equipment that focuses electrons using magnetic or electric fields",
+          "examples": [
+            "The electron microscope uses a lens to focus a beam of electrons onto a small spot on a specimen, which can be used to study and magnify microorganisms and particles at the nanoscale."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "liberal",
+      "word": "liberal",
+      "senses": [
+        {
+          "id": "sense-c10183ba",
+          "pos": "adjective",
+          "meaningZh": "思想開明的；開放的",
+          "definitionEn": "showing or characterized by broad-mindedness",
+          "examples": [
+            "Kayla’s liberal attitude towards immigration allowed her to welcome refugees with open arms."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "lid",
+      "word": "lid",
+      "senses": [
+        {
+          "id": "sense-57f8f318",
+          "pos": "noun",
+          "meaningZh": "蓋子；鍋蓋",
+          "definitionEn": "a movable top or cover for closing the opening at the top of a container such as a box, chest, jar, or pan, either hinged or separate.",
+          "examples": [
+            "She placed the lid on the pot to let the soup simmer."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-e190f1bd",
+          "pos": "noun",
+          "meaningZh": "眼皮；眼瞼",
+          "definitionEn": "either of two folds of skin that can be moved to cover or uncover the eyeball.",
+          "examples": [
+            "She closed her eyes, her lids covering her sparkling blue irises."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "lift",
+      "word": "lift",
+      "senses": [
+        {
+          "id": "sense-0c100f8c",
+          "pos": "verb",
+          "meaningZh": "舉起；抬高",
+          "definitionEn": "raise from a lower to a higher position",
+          "examples": [
+            "She used a pulley to lift the heavy box onto the shelf."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-e90a6f33",
+          "pos": "verb",
+          "meaningZh": "上升；升起",
+          "definitionEn": "move upwards",
+          "examples": [
+            "She pressed the button in the elevator and watched it lift to the top floor."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "likely",
+      "word": "likely",
+      "senses": [
+        {
+          "id": "sense-3f1f82c6",
+          "pos": "adjective",
+          "meaningZh": "可能的；很可能發生的",
+          "definitionEn": "probably true or probably going to happen; expected",
+          "examples": [
+            "With dark clouds and strong winds, it is likely that it will rain soon."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-0b08cc29",
+          "pos": "adjective",
+          "meaningZh": "（用於表示懷疑）當然囉（反諷）",
+          "definitionEn": "used to show skepticism towards someone’s statement",
+          "examples": [
+            "Jill claimed she could run a marathon in her sleep, but that's likely!"
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "limit",
+      "word": "limit",
+      "senses": [
+        {
+          "id": "sense-73b50550",
+          "pos": "noun",
+          "meaningZh": "上限；限制量",
+          "definitionEn": "the greatest amount of something that is possible or allowed",
+          "examples": [
+            "The speed limit on this road is 65 miles per hour."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-c98aab48",
+          "pos": "noun",
+          "meaningZh": "極限；邊界",
+          "definitionEn": "as far as something can go",
+          "examples": [],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B1·L5",
+        "textbookTitle": "三民 B1·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "link",
+      "word": "link",
+      "senses": [
+        {
+          "id": "sense-958a6f0a",
+          "pos": "noun",
+          "meaningZh": "環節；連接件",
+          "definitionEn": "a fastener that joins or connects two or more pieces together",
+          "examples": [
+            "I need to buy some additional links to expand the length of my chain bracelet."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-ae2422b5",
+          "pos": "noun",
+          "meaningZh": "連結；紐帶",
+          "definitionEn": "the means of connection between things that are linked in a series",
+          "examples": [
+            "The link between the two buildings was a footbridge."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "liquid",
+      "word": "liquid",
+      "senses": [
+        {
+          "id": "sense-c31fbf71",
+          "pos": "noun",
+          "meaningZh": "液體",
+          "definitionEn": "a substance that flows freely, like water, being neither solid nor gas",
+          "examples": [
+            "Water is a liquid at room temperature."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-f2548cac",
+          "pos": "adjective",
+          "meaningZh": "含淚的；盈淚的",
+          "definitionEn": "full of tears; teary-eyed",
+          "examples": [
+            "After hearing the heartbreaking news, Sarah's eyes were liquid with sorrow."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "listener",
+      "word": "listener",
+      "senses": [
+        {
+          "id": "sense-27914f30",
+          "pos": "noun",
+          "meaningZh": "傾聽者；聆聽者",
+          "definitionEn": "a person who actively listens to others with attention and care, often to offer support or help",
+          "examples": [
+            "During the therapy session, the listener sat quietly and attentively, providing a safe space for the client to express their emotions and thoughts."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "liver",
+      "word": "liver",
+      "senses": [
+        {
+          "id": "sense-5bc03bb1",
+          "pos": "noun",
+          "meaningZh": "肝臟",
+          "definitionEn": "a large and complex reddish-brown glandular organ located in the upper right portion of the abdomen, which secretes bile, metabolizes proteins, carbohydrates, and fats, synthesizes substances involved in blood clotting, synthesizes vitamin A, detoxifies poisonous substances, and breaks down worn-out red blood cells",
+          "examples": [
+            "Excessive consumption of alcohol over a long period of time can damage the liver."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-9af8cbcc",
+          "pos": "noun",
+          "meaningZh": "肝（食用）",
+          "definitionEn": "the liver of an animal, used for meat",
+          "examples": [
+            "The restaurant served roasted liver with a balsamic glaze and caramelized onions."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "load",
+      "word": "load",
+      "senses": [
+        {
+          "id": "sense-7ef2aed1",
+          "pos": "verb",
+          "meaningZh": "裝載；填入",
+          "definitionEn": "provide (a device) with something that is necessary or useful",
+          "examples": [
+            "The battery needs to be loaded with power before it can be used."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-b0c7f463",
+          "pos": "noun",
+          "meaningZh": "負荷；載重",
+          "definitionEn": "weight that is carried or transported",
+          "examples": [
+            "The truck is carrying a heavy load of furniture."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L6 +1",
+        "textbookTitle": "龍騰 B4·L6、翰林 B1·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "local",
+      "word": "local",
+      "senses": [
+        {
+          "id": "sense-0ee1f901",
+          "pos": "adjective",
+          "meaningZh": "地方性的；市政的",
+          "definitionEn": "relating to the administration of a city or town rather than a larger area",
+          "examples": [
+            "The local government passed a new ordinance to improve traffic safety within city limits."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-5691a7dd",
+          "pos": "noun",
+          "meaningZh": "各站皆停的交通工具",
+          "definitionEn": "public transportation that stops at all stations or stops",
+          "examples": [
+            "I always take the local bus to work because it stops right in front of my office."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 翰林 B1·L4",
+        "textbookTitle": "翰林 B1·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "lone",
+      "word": "lone",
+      "senses": [
+        {
+          "id": "sense-45cd5ad9",
+          "pos": "adjective",
+          "meaningZh": "獨自的；孤單的",
+          "definitionEn": "being the only one; single and isolated from others",
+          "examples": [
+            "The lone tree on the top of the hill stood tall and proud, surrounded by vast stretches of barren land."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-0a3c626f",
+          "pos": "adjective",
+          "meaningZh": "喜獨處的；離群索居的",
+          "definitionEn": "characterized by or preferring solitude",
+          "examples": [
+            "After my divorce, I prefer a lone walk in the park rather than being around people."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "loss",
+      "word": "loss",
+      "senses": [
+        {
+          "id": "sense-44cbd76d",
+          "pos": "noun",
+          "meaningZh": "失去之物；損失",
+          "definitionEn": "an item or person that cannot be found or retrieved",
+          "examples": [
+            "I experienced a great loss when my laptop went missing."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-88443056",
+          "pos": "noun",
+          "meaningZh": "喪親之痛；悲慟",
+          "definitionEn": "the state or feeling of grief when losing a loved one",
+          "examples": [
+            "After the sudden loss of her father, Maria experienced deep feelings of loss and struggled to cope with her grief."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B2·L9",
+        "textbookTitle": "三民 B2·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "lower",
+      "word": "lower",
+      "senses": [
+        {
+          "id": "sense-de7d3209",
+          "pos": "verb",
+          "meaningZh": "降低（音量、強度）",
+          "definitionEn": "to decrease the volume or intensity of something",
+          "examples": [
+            "Please lower the volume of the TV, it’s too loud and disturbing the neighbors."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-f2e8dd68",
+          "pos": "verb",
+          "meaningZh": "放低；移往低處",
+          "definitionEn": "to move something or somebody to a lower position",
+          "examples": [
+            "The teacher asked the students to lower their voices during the exam so that everyone could concentrate better."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "luck",
+      "word": "luck",
+      "senses": [
+        {
+          "id": "sense-7bac75f7",
+          "pos": "noun",
+          "meaningZh": "運氣；命運",
+          "definitionEn": "your overall circumstances or condition in life (including everything that happens to you)",
+          "examples": [
+            "Despite facing a few setbacks, John's luck finally turned around when he won the lottery and got a promotion at work."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-e64772a7",
+          "pos": "noun",
+          "meaningZh": "機緣；偶然因素",
+          "definitionEn": "an unknown and unpredictable phenomenon that causes an event to result one way rather than another",
+          "examples": [
+            "She relied on luck to win the lottery, never expecting to actually win."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "magazine",
+      "word": "magazine",
+      "senses": [
+        {
+          "id": "sense-a6a854dd",
+          "pos": "noun",
+          "meaningZh": "雜誌；期刊",
+          "definitionEn": "a periodic publication containing articles, pictures, and stories of interest to subscribers or purchasers",
+          "examples": [
+            "I buy a new magazine every month because I love reading fashion articles and seeing the latest trends."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-9a0387f7",
+          "pos": "noun",
+          "meaningZh": "雜誌（實體出版品）",
+          "definitionEn": "a physical object, typically a paperback publication, sold periodically",
+          "examples": [
+            "I like to read fashion magazines during my free time."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "maintain",
+      "word": "maintain",
+      "senses": [
+        {
+          "id": "sense-3971fe3e",
+          "pos": "verb",
+          "meaningZh": "維持；保持（某狀態）",
+          "definitionEn": "to keep something in a certain state, position, or activity; for example, \"keep something clean\"",
+          "examples": [
+            "She hired a professional cleaner to maintain the cleanliness of her house."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-17ad1cc6",
+          "pos": "verb",
+          "meaningZh": "聲稱；堅持（某論點）",
+          "definitionEn": "to state or assert something",
+          "examples": [
+            "The lawyer tried to maintain his client’s innocence throughout the trial."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B2·L9",
+        "textbookTitle": "三民 B2·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "major",
+      "word": "major",
+      "senses": [
+        {
+          "id": "sense-56586cfa",
+          "pos": "adjective",
+          "meaningZh": "重大的；主要的",
+          "definitionEn": "pertaining to something that is greater in scope, effect, number, size or amount",
+          "examples": [
+            "The discovery of oil reserves resulted in a major shift in the country’s economy."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-aeaacc1d",
+          "pos": "adjective",
+          "meaningZh": "嚴重的；危急的",
+          "definitionEn": "having greater seriousness or danger",
+          "examples": [
+            "The patient’s condition took a major turn for the worse, and he had to be rushed to the ICU."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B2·L4",
+        "textbookTitle": "三民 B2·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "male",
+      "word": "male",
+      "senses": [
+        {
+          "id": "sense-2bd6a07e",
+          "pos": "noun",
+          "meaningZh": "男性；男人",
+          "definitionEn": "a person of the sex that is typically characterized as having a penis, testes, and facial hair, and that is generally stronger and taller than a person of the opposite sex",
+          "examples": [
+            "James was unable to lift the heavy box, but John, being a male, easily picked it up."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-4893be3d",
+          "pos": "noun",
+          "meaningZh": "雄性動物",
+          "definitionEn": "an animal of the sex that is typically characterized as having a penis and testes, or in some species, an organ that is used for reproduction",
+          "examples": [
+            "The zookeeper separates the male and female lions during mating season to prevent unwanted cubs."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "manage",
+      "word": "manage",
+      "senses": [
+        {
+          "id": "sense-dc6f2379",
+          "pos": "verb",
+          "meaningZh": "管理；監督",
+          "definitionEn": "watch and direct",
+          "examples": [
+            "As the project manager, Sarah was able to effectively manage the team and ensure tasks were completed on time."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-c39d2af7",
+          "pos": "verb",
+          "meaningZh": "應付；設法完成",
+          "definitionEn": "carry on or function",
+          "examples": [
+            "She was able to manage her workload and still have time for her hobbies."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L4 +1",
+        "textbookTitle": "龍騰 B1·L4、三民 B2·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "management",
+      "word": "management",
+      "senses": [
+        {
+          "id": "sense-3bad18b8",
+          "pos": "noun",
+          "meaningZh": "管理；經營能力",
+          "definitionEn": "the act or skill of dealing with people or situations in a successful way",
+          "examples": [
+            "The hotel’s efficient management ensured that all guests were happy and satisfied throughout their stay."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-be94e84b",
+          "pos": "noun",
+          "meaningZh": "管理階層；經營者",
+          "definitionEn": "the group of people responsible for running an organization or business",
+          "examples": [
+            "The management team of the company held a meeting to discuss the budget for the next quarter."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L4 +1",
+        "textbookTitle": "龍騰 B1·L4、三民 B2·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "manager",
+      "word": "manager",
+      "senses": [
+        {
+          "id": "sense-26daf552",
+          "pos": "noun",
+          "meaningZh": "經理；主管",
+          "definitionEn": "a person in charge of a business or organization, responsible for strategic planning and decision making",
+          "examples": [
+            "Our company hired a new manager to oversee the production and sales departments, and improve overall efficiency."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-d30d6851",
+          "pos": "noun",
+          "meaningZh": "教練；隊務管理人（體育）",
+          "definitionEn": "(sports) someone in charge of training an athlete or a team",
+          "examples": [
+            "The manager was responsible for organizing the training schedule, preparing the team for competitions and making strategic decisions during games."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B2·L9",
+        "textbookTitle": "三民 B2·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "mango",
+      "word": "mango",
+      "senses": [
+        {
+          "id": "sense-464770b8",
+          "pos": "noun",
+          "meaningZh": "芒果（果實）",
+          "definitionEn": "A large juicy tropical fruit with smooth skin, aromatic pulp, and a large hairy seed",
+          "examples": [
+            "After a long day at the beach, I sat under a palm tree and enjoyed a refreshing mango, its sweet juices dripping down my chin."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-41613172",
+          "pos": "noun",
+          "meaningZh": "芒果樹",
+          "definitionEn": "A large evergreen tropical tree that is grown for its oval fruit",
+          "examples": [
+            "During the hot summer days, we enjoyed the sweet and juicy mangoes picked fresh from the tree in our backyard."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    }
+  ]
+}

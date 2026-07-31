@@ -3,6 +3,7 @@ import { ArrowLeft, ArrowRight, Check, RotateCcw } from 'lucide-vue-next'
 import { storeToRefs } from 'pinia'
 import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import { useLibraryStore } from '@/stores/library'
 import { useSessionStore } from '@/stores/session'
 import { useSetsStore } from '@/stores/sets'
 import FlashcardView from './FlashcardView.vue'
@@ -12,6 +13,7 @@ import Progress from './ui/progress/Progress.vue'
 
 const setsStore = useSetsStore()
 const sessionStore = useSessionStore()
+const libraryStore = useLibraryStore()
 const route = useRoute()
 const router = useRouter()
 const { activeSet } = storeToRefs(setsStore)
@@ -34,6 +36,15 @@ const isLast = computed(() => totalItems.value > 0 && flashcardIndex.value >= to
 const isFirst = computed(() => flashcardIndex.value <= 0)
 
 const currentItem = computed(() => flashcardEntry.value?.item ?? null)
+const currentWord = computed(() => currentItem.value ? libraryStore.getWord(currentItem.value.word) : null)
+const flashcardData = computed(() => currentItem.value
+  ? {
+      ...currentItem.value,
+      phonetic: currentWord.value?.phonetic,
+      audioUrl: currentWord.value?.audioUrl,
+      senses: currentWord.value?.senses,
+    }
+  : null)
 
 watch(flashcardIndex, () => {
   flipped.value = false
@@ -117,7 +128,7 @@ onUnmounted(() => window.removeEventListener('keydown', onKeydown))
     <FlashcardView
       :key="`${currentItem.id}-${flashcardIndex}`"
       v-model:flipped="flipped"
-      :item="currentItem"
+      :item="flashcardData"
       :index="flashcardIndex"
     />
 

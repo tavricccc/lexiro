@@ -1,0 +1,1395 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 124,
+  "words": [
+    {
+      "wordKey": "philosopher",
+      "word": "philosopher",
+      "senses": [
+        {
+          "id": "sense-3e35ac68",
+          "pos": "noun",
+          "meaningZh": "哲學家；哲學研究者",
+          "definitionEn": "a specialist in philosophy",
+          "examples": [
+            "The philosopher spent hours pondering the nature of existence and discussing the meaning of life with fellow intellectuals."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-ce39ed9a",
+          "pos": "noun",
+          "meaningZh": "冷靜智慧之人；哲人",
+          "definitionEn": "a wise person who is calm and rational; someone who lives a life of reason with equanimity",
+          "examples": [
+            "In the midst of a heated discussion, John remained the philosopher, calmly presenting his logical arguments without being swayed by emotions."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "philosophical",
+      "word": "philosophical",
+      "senses": [
+        {
+          "id": "sense-4e3794ca",
+          "pos": "adjective",
+          "meaningZh": "哲學的；哲學上的",
+          "definitionEn": "relating to the study of the fundamental nature of knowledge, reality, and existence, especially when considered as an academic discipline.",
+          "examples": [
+            "The professor led a philosophical discussion on the existence of free will and determinism."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-d7925288",
+          "pos": "adjective",
+          "meaningZh": "豁達的；理性沉著的",
+          "definitionEn": "calmly and wisely engaging in deep thought and contemplation, often in response to a difficult situation",
+          "examples": [
+            "After losing his job, John took a philosophical approach, spending weeks reflecting on his career trajectory and reassessing his values."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "philosophy",
+      "word": "philosophy",
+      "senses": [
+        {
+          "id": "sense-73ed8d7a",
+          "pos": "noun",
+          "meaningZh": "哲學",
+          "definitionEn": "the study of the fundamental nature of knowledge, reality, and existence, especially when considered as an academic discipline.",
+          "examples": [
+            "After studying philosophy for four years, Sarah developed a new perspective on life and the universe."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-b8f11dbe",
+          "pos": "noun",
+          "meaningZh": "哲學體系；思想主張",
+          "definitionEn": "a particular system of philosophical thought.",
+          "examples": [
+            "The professor's philosophy on ethics emphasizes the importance of moral duty and social responsibility."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L7",
+        "textbookTitle": "龍騰 B2·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "photography",
+      "word": "photography",
+      "senses": [
+        {
+          "id": "sense-09f560b3",
+          "pos": "noun",
+          "meaningZh": "攝影；照相術",
+          "definitionEn": "the process of producing images of objects using cameras and light",
+          "examples": [
+            "Photography can be used as a means to capture memories and moments that last a lifetime."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-7f2343aa",
+          "pos": "noun",
+          "meaningZh": "攝影業；攝影藝術",
+          "definitionEn": "the profession or business of taking and printing photographs or making movies",
+          "examples": [
+            "I have been interested in photography since I was a child, and now it has become my profession."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B2·L2",
+        "textbookTitle": "三民 B2·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "physical",
+      "word": "physical",
+      "senses": [
+        {
+          "id": "sense-7611b0fa",
+          "pos": "adjective",
+          "meaningZh": "身體的；肉體的",
+          "definitionEn": "involving the body as distinguished from the mind or spirit",
+          "examples": [
+            "After months of studying, she needed a physical activity to refresh her mind and energize her body, so she decided to go for a long run."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-d6b96eb8",
+          "pos": "adjective",
+          "meaningZh": "物理的；物質的",
+          "definitionEn": "relating to the sciences dealing with matter and energy; especially physics",
+          "examples": [
+            "In the physics laboratory, students conducted various experiments to study physical phenomena."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B2·L7",
+        "textbookTitle": "三民 B2·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "physician",
+      "word": "physician",
+      "senses": [
+        {
+          "id": "sense-5d88cc48",
+          "pos": "noun",
+          "meaningZh": "內科醫師；醫生",
+          "definitionEn": "a medical doctor who has received training and is licensed to practice medicine",
+          "examples": [
+            "She decided to see a physician after experiencing symptoms of a persistent cough and fever."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "physicist",
+      "word": "physicist",
+      "senses": [
+        {
+          "id": "sense-9c7bc1ac",
+          "pos": "noun",
+          "meaningZh": "物理學家",
+          "definitionEn": "a person who studies or practices physics",
+          "examples": [
+            "The physicist conducted experiments in the lab to study the behavior of subatomic particles."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "physics",
+      "word": "physics",
+      "senses": [
+        {
+          "id": "sense-d5afe15f",
+          "pos": "noun",
+          "meaningZh": "物理學",
+          "definitionEn": "the science that deals with matter, energy, and their relationship with each other and with the physical world",
+          "examples": [
+            "In my physics class, we conducted an experiment to measure the velocity of a falling object."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-83504b48",
+          "pos": "noun",
+          "meaningZh": "物理特性；物理現象",
+          "definitionEn": "the physical properties and phenomena of something, especially in relation to the laws of nature and the natural world",
+          "examples": [
+            "In order to understand how the human body moves, one must study the principles of physics and how they apply to biomechanics."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B2·L7",
+        "textbookTitle": "三民 B2·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "pickle",
+      "word": "pickle",
+      "senses": [
+        {
+          "id": "sense-e0acf941",
+          "pos": "noun",
+          "meaningZh": "醃黃瓜；醃菜",
+          "definitionEn": "a vegetable, typically a cucumber, that has been preserved in a solution of vinegar, water, and spices",
+          "examples": [
+            "I love to add a few pickle slices to my sandwich for some extra flavor."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-08755e3f",
+          "pos": "verb",
+          "meaningZh": "醃製；用醋醃漬",
+          "definitionEn": "to preserve food, typically vegetables, in a solution of vinegar, water, and spices",
+          "examples": [
+            "I love to pickle cucumbers in the summer so that I can enjoy them in the winter."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "pioneer",
+      "word": "pioneer",
+      "senses": [
+        {
+          "id": "sense-c48c9dcd",
+          "pos": "noun",
+          "meaningZh": "先驅者；開創者",
+          "definitionEn": "a person who helps to develop a new field of research, technology, or art",
+          "examples": [
+            "Marie Curie is considered a pioneer in the field of radioactivity, as her discoveries paved the way for future advancements in nuclear physics."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-6eaf6ae9",
+          "pos": "noun",
+          "meaningZh": "拓荒者；先驅移民",
+          "definitionEn": "a person who is one of the first colonists or settlers in a new territory",
+          "examples": [
+            "In the 19th century, many pioneers traveled westward in covered wagons to settle in the unexplored regions of the United States."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "plentiful",
+      "word": "plentiful",
+      "senses": [
+        {
+          "id": "sense-f4cb4a9e",
+          "pos": "adjective",
+          "meaningZh": "豐富的；大量的",
+          "definitionEn": "existing in great number or quantity",
+          "examples": [
+            "During the harvest season, the fields were filled with plentiful crops of corn and wheat."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-90f3bcfa",
+          "pos": "adjective",
+          "meaningZh": "充裕的；充足的",
+          "definitionEn": "affording an abundant supply",
+          "examples": [
+            "The cornucopia was overflowing with a plentiful assortment of fruits and vegetables."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L4",
+        "textbookTitle": "龍騰 B4·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "plot",
+      "word": "plot",
+      "senses": [
+        {
+          "id": "sense-0a10b0a4",
+          "pos": "noun",
+          "meaningZh": "情節；故事大綱",
+          "definitionEn": "the series of events that make up the story of a novel, film, or play",
+          "examples": [
+            "The movie has an exciting plot full of twists."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-68be6b5a",
+          "pos": "noun",
+          "meaningZh": "圖表；分布圖",
+          "definitionEn": "a chart, map, or graphic representation showing progress, distribution, etc.",
+          "examples": [
+            "The plot displayed the data trends over the course of the year, highlighting the fluctuations in sales for each quarter."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "plum",
+      "word": "plum",
+      "senses": [
+        {
+          "id": "sense-f5abb37f",
+          "pos": "noun",
+          "meaningZh": "李子；梅子",
+          "definitionEn": "the fruit of certain types of trees which is small to medium-sized, round or oval, and has a smooth skin and a hard seed inside",
+          "examples": [
+            "She ate a juicy plum for breakfast."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-b614f111",
+          "pos": "noun",
+          "meaningZh": "李樹；梅樹",
+          "definitionEn": "a type of tree that produces oval-shaped fruit with a smooth skin and a hard seed inside (*often used to refer to the fruit itself*)",
+          "examples": [
+            "The children climbed the plum tree in the backyard and picked fresh plums for their grandmother's pie."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "plumber",
+      "word": "plumber",
+      "senses": [
+        {
+          "id": "sense-8c7f5aae",
+          "pos": "noun",
+          "meaningZh": "水管工；管道工",
+          "definitionEn": "a skilled worker who installs and fixes pipes, fittings, and appliances",
+          "examples": [
+            "When my kitchen sink got backed up, I had to call a plumber to fix the clog."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "poisonous",
+      "word": "poisonous",
+      "senses": [
+        {
+          "id": "sense-5b2e7d02",
+          "pos": "adjective",
+          "meaningZh": "有毒的；致命的",
+          "definitionEn": "having qualities or effects of a poisonous substance, potentially causing harm or death",
+          "examples": [
+            "Beware of the bright red berries on that plant, as they are poisonous and can be fatal if ingested."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-9ede2c3b",
+          "pos": "adjective",
+          "meaningZh": "惡意的；毒害的",
+          "definitionEn": "intentionally harmful or malicious in nature",
+          "examples": [
+            "The contract they offered him turned out to be a poisonous trap, designed to ruin his career."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L5",
+        "textbookTitle": "龍騰 B1·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "polish",
+      "word": "polish",
+      "senses": [
+        {
+          "id": "sense-ca1b6d20",
+          "pos": "verb",
+          "meaningZh": "拋光；擦亮",
+          "definitionEn": "to make a surface smooth and shiny, typically by rubbing it with a cloth",
+          "examples": [
+            "After dinner, she polished the silverware until it gleamed."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-aaafb54e",
+          "pos": "noun",
+          "meaningZh": "光澤；亮度",
+          "definitionEn": "the quality of being smooth and shiny",
+          "examples": [
+            "I spent hours polishing my grandmother’s antique silver teapot until it shone like a mirror."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "popularity",
+      "word": "popularity",
+      "senses": [
+        {
+          "id": "sense-5180f71c",
+          "pos": "noun",
+          "meaningZh": "受歡迎程度；名氣",
+          "definitionEn": "the state of being popular or well-liked by many people",
+          "examples": [
+            "The new restaurant gained popularity quickly due to its innovative menu and excellent customer service."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-5204bfba",
+          "pos": "noun",
+          "meaningZh": "流行；廣受追捧",
+          "definitionEn": "the quality of being widely admired or sought after",
+          "examples": [
+            "The new video game gained popularity quickly and became the best-selling game of the year."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "portable",
+      "word": "portable",
+      "senses": [
+        {
+          "id": "sense-e71a20d7",
+          "pos": "adjective",
+          "meaningZh": "可攜式的；便攜的",
+          "definitionEn": "able to be easily carried or moved, especially because of being a lighter and smaller version than usual",
+          "examples": [
+            "The compact and lightweight laptop is incredibly portable, making it perfect for travelers."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-f6f267d2",
+          "pos": "noun",
+          "meaningZh": "手提電腦；輕便打字機",
+          "definitionEn": "a small computer, typically with a screen that folds down onto the keyboard; a small, light typewriter that can be easily carried",
+          "examples": [
+            "On my business trips, I always bring my portable laptop so that I can work on the go."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "portray",
+      "word": "portray",
+      "senses": [
+        {
+          "id": "sense-1983edb4",
+          "pos": "verb",
+          "meaningZh": "描繪；描寫；刻畫",
+          "definitionEn": "to create a visual representation of someone or something, typically through a painting, drawing, or photograph",
+          "examples": [
+            "The artist was able to portray the emotion of joy on the subject's face through a vibrant and colorful painting."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-812753be",
+          "pos": "verb",
+          "meaningZh": "描繪（抽象概念）；以藝術表現",
+          "definitionEn": "to represent something abstract, such as a concept or feeling, through art (e.g. painting, drawing, or sculpture)",
+          "examples": [
+            "The artist used vibrant colors and bold brushstrokes to portray the intensity of love in her abstract painting."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L8",
+        "textbookTitle": "三民 B4·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "possess",
+      "word": "possess",
+      "senses": [
+        {
+          "id": "sense-e8f55f29",
+          "pos": "verb",
+          "meaningZh": "具備；擁有（特質）",
+          "definitionEn": "be under the influence of (a powerful emotion) or have (a particular quality)",
+          "examples": [
+            "She possessed an unwavering determination to succeed in her career."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-91229b13",
+          "pos": "verb",
+          "meaningZh": "控制；支配（某人）",
+          "definitionEn": "control (someone) in the manner specified",
+          "examples": [
+            "The hypnotist had the power to possess the minds of his audience, making them believe they were different people."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L1 +1",
+        "textbookTitle": "龍騰 B5·L1、三民 B2·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "possession",
+      "word": "possession",
+      "senses": [
+        {
+          "id": "sense-69579000",
+          "pos": "noun",
+          "meaningZh": "所有物；財物",
+          "definitionEn": "something that someone owns or has",
+          "examples": [
+            "I cherish my grandmother's vintage clock; it's one of my most prized possessions."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-5d434e08",
+          "pos": "noun",
+          "meaningZh": "附身；著魔",
+          "definitionEn": "the state of being under the influence of a strong feeling or supernatural power",
+          "examples": [
+            "During the exorcism, she exhibited signs of possession, speaking in a deep voice and contorting her body."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L1 +1",
+        "textbookTitle": "龍騰 B5·L1、三民 B2·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "postage",
+      "word": "postage",
+      "senses": [
+        {
+          "id": "sense-44178433",
+          "pos": "noun",
+          "meaningZh": "郵費；郵資",
+          "definitionEn": "the charge for mailing something",
+          "examples": [
+            "The postage for sending a letter within the country is $1."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-dcc52bfd",
+          "pos": "noun",
+          "meaningZh": "郵票",
+          "definitionEn": "a small adhesive token stuck on a letter or package to indicate that postal fees have been paid",
+          "examples": [
+            "Please make sure to include enough postage on the envelope before sending the invitation."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "potential",
+      "word": "potential",
+      "senses": [
+        {
+          "id": "sense-d06e39e8",
+          "pos": "adjective",
+          "meaningZh": "潛在的；可能的",
+          "definitionEn": "likely to become or be; possible",
+          "examples": [
+            "The new employee has a lot of potential to become a great leader in the company."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-011d8198",
+          "pos": "noun",
+          "meaningZh": "電位；電壓差",
+          "definitionEn": "the difference in electrical charge between two points in a circuit expressed in volts",
+          "examples": [
+            "The potential difference between the two ends of a wire is what causes electricity to flow through it."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L7 +1",
+        "textbookTitle": "龍騰 B1·L7、三民 B4·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "precise",
+      "word": "precise",
+      "senses": [
+        {
+          "id": "sense-c6956a92",
+          "pos": "adjective",
+          "meaningZh": "精確的；準確的",
+          "definitionEn": "characterized by being sharply exact, accurate or delimited",
+          "examples": [
+            "The surgeon made a precise incision, ensuring minimal damage to surrounding tissues."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-5155a247",
+          "pos": "adjective",
+          "meaningZh": "嚴謹的；確實的",
+          "definitionEn": "characterized by strict conformity to factual or truthful representations, expressions, or ideas",
+          "examples": [
+            "In a scientific experiment, it is crucial to be precise with measurements to ensure accurate results."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "predict",
+      "word": "predict",
+      "senses": [
+        {
+          "id": "sense-0b9e0ab6",
+          "pos": "verb",
+          "meaningZh": "預測；預言",
+          "definitionEn": "to say what will happen before it occurs",
+          "examples": [
+            "The weather forecast predicted heavy rain for tomorrow."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-5fcec3b5",
+          "pos": "verb",
+          "meaningZh": "預報；預示",
+          "definitionEn": "to indicate the likelihood or certainty of (a future event) with foresight or insight",
+          "examples": [
+            "Based on her extensive research and analysis, the weather forecaster predicted that there would be heavy rain showers in the afternoon."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L4",
+        "textbookTitle": "龍騰 B1·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "prediction",
+      "word": "prediction",
+      "senses": [
+        {
+          "id": "sense-9b99ee91",
+          "pos": "noun",
+          "meaningZh": "預測；推測",
+          "definitionEn": "the act of predicting (as by reasoning about the future)",
+          "examples": [
+            "After analyzing the weather patterns, the meteorologist made a prediction that it would rain tomorrow."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-7c01ea69",
+          "pos": "noun",
+          "meaningZh": "預測結果；預言",
+          "definitionEn": "a statement made about the future",
+          "examples": [
+            "Based on the weather forecast, the meteorologist made a prediction that it would rain tomorrow."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "pregnancy",
+      "word": "pregnancy",
+      "senses": [
+        {
+          "id": "sense-4aff9e4e",
+          "pos": "noun",
+          "meaningZh": "懷孕；妊娠期",
+          "definitionEn": "The state of being pregnant; the period during which a woman carries a developing fetus in her uterus from conception to birth.",
+          "examples": [
+            "After several months of pregnancy, Sarah finally gave birth to a healthy baby boy."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "pregnant",
+      "word": "pregnant",
+      "senses": [
+        {
+          "id": "sense-db35e025",
+          "pos": "adjective",
+          "meaningZh": "懷孕的；妊娠中的",
+          "definitionEn": "carrying developing offspring within the body",
+          "examples": [
+            "She felt an overwhelming sense of joy when she found out she was pregnant with twins."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-0ab63b43",
+          "pos": "adjective",
+          "meaningZh": "（動物）懷胎的",
+          "definitionEn": "about to produce new life",
+          "examples": [
+            "The veterinarian confirmed that the cat was pregnant and due to give birth in a few weeks."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "presentation",
+      "word": "presentation",
+      "senses": [
+        {
+          "id": "sense-dbf99c84",
+          "pos": "noun",
+          "meaningZh": "簡報；發表",
+          "definitionEn": "a display or show of something; the act of showing or presenting something for others to view",
+          "examples": [
+            "John gave an impressive presentation on the new marketing strategy during the company's annual conference."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-0d70e533",
+          "pos": "noun",
+          "meaningZh": "頒獎；正式贈送",
+          "definitionEn": "the activity of formally presenting something, such as a prize or reward, to an audience",
+          "examples": [
+            "The CEO gave a presentation at the annual conference, showcasing the company's achievements and future goals."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L6 +1",
+        "textbookTitle": "龍騰 B1·L6、三民 B4·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "preservation",
+      "word": "preservation",
+      "senses": [
+        {
+          "id": "sense-6fa48d97",
+          "pos": "noun",
+          "meaningZh": "保存；維護",
+          "definitionEn": "the activity or process of protecting something from harm, loss, decay, or damage.",
+          "examples": [
+            "The preservation of historical artifacts is important for maintaining the cultural heritage of a society."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-f406df31",
+          "pos": "noun",
+          "meaningZh": "保全；受保護的狀態",
+          "definitionEn": "the state or condition of being kept safe or protected.",
+          "examples": [
+            "The national park ensures the preservation of the natural habitat for the endangered species."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L3",
+        "textbookTitle": "龍騰 B4·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    }
+  ]
+}

@@ -1,0 +1,1367 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 92,
+  "words": [
+    {
+      "wordKey": "suck",
+      "word": "suck",
+      "senses": [
+        {
+          "id": "sense-fb42e775",
+          "pos": "verb",
+          "meaningZh": "用嘴吸；吸取",
+          "definitionEn": "draw into the mouth by creating a vacuum",
+          "examples": [
+            "He used a straw to suck up the juice from his drink."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-181bd87d",
+          "pos": "verb",
+          "meaningZh": "吸入；抽吸",
+          "definitionEn": "draw in by or as if by a vacuum",
+          "examples": [
+            "She used a straw to suck up the juice from the bottom of the glass."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "suffer",
+      "word": "suffer",
+      "senses": [
+        {
+          "id": "sense-2b2cebb8",
+          "pos": "verb",
+          "meaningZh": "受苦；遭受（痛苦、損失）",
+          "definitionEn": "to experience pain, difficulty, or something unpleasant",
+          "examples": [
+            "Many people suffered greatly during the war."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-8045723a",
+          "pos": "verb",
+          "meaningZh": "患有；罹患",
+          "definitionEn": "be given to",
+          "examples": [
+            "She seems to suffer from a rare medical condition."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L1 +1",
+        "textbookTitle": "龍騰 B3·L1、翰林 B1·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "sufficient",
+      "word": "sufficient",
+      "senses": [
+        {
+          "id": "sense-ef9ec39d",
+          "pos": "adjective",
+          "meaningZh": "足夠的；充分的",
+          "definitionEn": "adequate; enough",
+          "examples": [
+            "Make sure you have a sufficient amount of money to cover your expenses on this trip."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L2 +1",
+        "textbookTitle": "龍騰 B4·L2、三民 B1·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "suicide",
+      "word": "suicide",
+      "senses": [
+        {
+          "id": "sense-7f2e0c90",
+          "pos": "noun",
+          "meaningZh": "自殺；輕生",
+          "definitionEn": "the act of intentionally causing one's own death",
+          "examples": [
+            "The charity works to prevent suicide among young people."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "sum",
+      "word": "sum",
+      "senses": [
+        {
+          "id": "sense-cf91be36",
+          "pos": "noun",
+          "meaningZh": "總和；合計",
+          "definitionEn": "a quantity obtained by adding numbers together",
+          "examples": [
+            "The sum of 5 and 10 is 15."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-71156e5b",
+          "pos": "noun",
+          "meaningZh": "精華；要點",
+          "definitionEn": "the most important or valuable part of something",
+          "examples": [
+            "The sum of the project is to increase sales by 20% in the next quarter."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "summary",
+      "word": "summary",
+      "senses": [
+        {
+          "id": "sense-aff69cfe",
+          "pos": "noun",
+          "meaningZh": "摘要；總結；概要",
+          "definitionEn": "a short statement giving the main points of something",
+          "examples": [
+            "Please write a brief summary of the article."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-2d65da14",
+          "pos": "adjective",
+          "meaningZh": "簡短的；扼要的",
+          "definitionEn": "brief and performed quickly, without unnecessary formality",
+          "examples": [
+            "After the meeting, the project manager provided a summary of the key points discussed."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "summit",
+      "word": "summit",
+      "senses": [
+        {
+          "id": "sense-62248a38",
+          "pos": "noun",
+          "meaningZh": "山頂；頂峰",
+          "definitionEn": "the top or highest point of something, especially a mountain or hill",
+          "examples": [
+            "After hours of climbing, we finally reached the summit of Mount Everest and enjoyed the breathtaking view from the top."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-e204b4b7",
+          "pos": "noun",
+          "meaningZh": "最高點；頂點",
+          "definitionEn": "the highest level or degree that can be achieved; the pinnacle of something",
+          "examples": [
+            "After years of hard work and dedication, John finally reached the summit of his career when he was promoted to CEO of the company."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "superior",
+      "word": "superior",
+      "senses": [
+        {
+          "id": "sense-c941c401",
+          "pos": "adjective",
+          "meaningZh": "優質的；卓越的",
+          "definitionEn": "of high quality or performance; excellent",
+          "examples": [
+            "The superior craftsmanship of the handmade jewelry was evident in its intricate detail and flawless design."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-c61d8fae",
+          "pos": "adjective",
+          "meaningZh": "地位較高的；上級的",
+          "definitionEn": "of high rank or importance; superior to others",
+          "examples": [
+            "The CEO's years of experience and exceptional leadership skills made her the superior candidate for the position."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "surround",
+      "word": "surround",
+      "senses": [
+        {
+          "id": "sense-4a27fb68",
+          "pos": "verb",
+          "meaningZh": "包圍；圍繞",
+          "definitionEn": "completely enclose or cover",
+          "examples": [
+            "The fort was surrounded by a high stone wall and a moat."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-e05c0169",
+          "pos": "verb",
+          "meaningZh": "以城牆或防禦工事圍住",
+          "definitionEn": "enclose with a wall or other fortification",
+          "examples": [
+            "The castle was surrounded by a high stone wall to protect it from invaders."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L5",
+        "textbookTitle": "龍騰 B1·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "survey",
+      "word": "survey",
+      "senses": [
+        {
+          "id": "sense-6a821872",
+          "pos": "noun",
+          "meaningZh": "問卷調查；民意調查",
+          "definitionEn": "an inquiry that involves asking questions from a random sample of people to collect information about their opinions",
+          "examples": [
+            "The company conducted a survey to gather feedback from customers on their satisfaction with the new product."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-266e1bc8",
+          "pos": "noun",
+          "meaningZh": "勘察；詳細調查",
+          "definitionEn": "a detailed examination or inspection of something",
+          "examples": [
+            "Before starting a new construction project, it is important to conduct a survey of the land to assess its suitability and identify any potential obstacles."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B2·L5",
+        "textbookTitle": "三民 B2·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "survivor",
+      "word": "survivor",
+      "senses": [
+        {
+          "id": "sense-afb43fed",
+          "pos": "noun",
+          "meaningZh": "倖存者；生還者",
+          "definitionEn": "a person who remains alive after the death of another",
+          "examples": [
+            "After the avalanche, she was the sole survivor."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-9f319156",
+          "pos": "noun",
+          "meaningZh": "存活的動植物；頑強存活者",
+          "definitionEn": "an animal or plant that is able to live through difficult conditions",
+          "examples": [
+            "In the drought-stricken desert, the cactus proved to be a survivor, thriving despite the lack of water."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "suspect",
+      "word": "suspect",
+      "senses": [
+        {
+          "id": "sense-72b6b0f3",
+          "pos": "verb",
+          "meaningZh": "懷疑；質疑",
+          "definitionEn": "regard with suspicion; have doubts about",
+          "examples": [
+            "The detective had reason to suspect the butler, as he was the last person to see the victim alive and had a motive to commit the crime."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-aaacc031",
+          "pos": "verb",
+          "meaningZh": "懷疑涉案；認為有罪",
+          "definitionEn": "believe to be guilty or involved in criminal activity",
+          "examples": [
+            "The detective had a strong suspicion that the suspect was involved in the robbery because his fingerprints were found at the scene."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L1",
+        "textbookTitle": "龍騰 B4·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "suspicion",
+      "word": "suspicion",
+      "senses": [
+        {
+          "id": "sense-24d4df44",
+          "pos": "noun",
+          "meaningZh": "疑心；懷疑的感覺",
+          "definitionEn": "an impression or feeling that something might be the case",
+          "examples": [
+            "After seeing John sneak out of the office with a bag, Lisa couldn't help but have a suspicion that he was stealing company property."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-c623d649",
+          "pos": "noun",
+          "meaningZh": "不信任；猜疑",
+          "definitionEn": "doubt or mistrust of someone’s honesty, sincerity, or intention",
+          "examples": [
+            "After catching her partner in several lies, Sarah couldn't help but feel a growing suspicion about his true motives."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L4",
+        "textbookTitle": "三民 B4·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "swan",
+      "word": "swan",
+      "senses": [
+        {
+          "id": "sense-c19fec48",
+          "pos": "noun",
+          "meaningZh": "天鵝",
+          "definitionEn": "a large, graceful, heavy-bodied aquatic bird with a very long neck, webbed feet, and usually white plumage as an adult.",
+          "examples": [
+            "The beautiful swan glided across the serene lake, its long neck elegantly arched."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-a4c593c0",
+          "pos": "verb",
+          "meaningZh": "鄭重宣誓；發誓（古語）",
+          "definitionEn": "to declare or affirm solemnly and formally as true.",
+          "examples": [
+            "The witness took the stand and swan that he had seen the defendant at the crime scene."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "swear",
+      "word": "swear",
+      "senses": [
+        {
+          "id": "sense-b650c290",
+          "pos": "verb",
+          "meaningZh": "鄭重承諾；立誓",
+          "definitionEn": "promise solemnly; take an oath",
+          "examples": [
+            "The witness will swear on the Bible before giving testimony in court."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "sweat",
+      "word": "sweat",
+      "senses": [
+        {
+          "id": "sense-82d35e3c",
+          "pos": "noun",
+          "meaningZh": "汗水；汗液",
+          "definitionEn": "a salty fluid excreted by sweat glands",
+          "examples": [
+            "The intense heat made him sweat profusely."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-cdd37efe",
+          "pos": "verb",
+          "meaningZh": "流汗；排汗",
+          "definitionEn": "to excrete perspiration through the pores in the skin",
+          "examples": [],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "swell",
+      "word": "swell",
+      "senses": [
+        {
+          "id": "sense-b9d4db69",
+          "pos": "verb",
+          "meaningZh": "腫脹；膨脹",
+          "definitionEn": "to expand abnormally",
+          "examples": [
+            "After being stung by a bee, my finger swelled up to twice its normal size."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-1b624cca",
+          "pos": "noun",
+          "meaningZh": "（海底）隆起；湧浪",
+          "definitionEn": "a raised area, especially on the ocean floor",
+          "examples": [
+            "The researchers found a swell on the ocean floor where marine life thrived."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "swift",
+      "word": "swift",
+      "senses": [
+        {
+          "id": "sense-dd5ad5dc",
+          "pos": "adjective",
+          "meaningZh": "快速的；敏捷的",
+          "definitionEn": "moving or capable of moving with great speed",
+          "examples": [
+            "The cheetah is the fastest land animal, able to run at a  swift speed of up to 70 miles per hour."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L6",
+        "textbookTitle": "龍騰 B4·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "sword",
+      "word": "sword",
+      "senses": [
+        {
+          "id": "sense-87270b92",
+          "pos": "noun",
+          "meaningZh": "劍；刀",
+          "definitionEn": "a weapon having a long, sharp-edged blade, which is used for cutting or thrusting",
+          "examples": [
+            "The knight drew his sword and charged towards the enemy."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "tablet",
+      "word": "tablet",
+      "senses": [
+        {
+          "id": "sense-511b587b",
+          "pos": "noun",
+          "meaningZh": "藥片；藥錠",
+          "definitionEn": "a dose of medicine in the form of a small pellet",
+          "examples": [
+            "I need to take one tablet of this medicine every day."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-5076b2db",
+          "pos": "noun",
+          "meaningZh": "便條本；記事本",
+          "definitionEn": "a number of sheets of paper fastened together along one edge",
+          "examples": [
+            "I always carry a tablet and pen with me in case I need to jot down any notes."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "tag",
+      "word": "tag",
+      "senses": [
+        {
+          "id": "sense-43589bf2",
+          "pos": "noun",
+          "meaningZh": "標籤；名牌",
+          "definitionEn": "a small piece of cloth or paper used for identification or marking",
+          "examples": [
+            "Please attach a tag with your name and contact information to your luggage before checking it in at the airport."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-778e4097",
+          "pos": "noun",
+          "meaningZh": "鬼抓人（遊戲）",
+          "definitionEn": "a game in which one child chases the others; the one who is caught becomes the next chaser",
+          "examples": [
+            "The children were playing tag in the park, and the youngest child was running around trying to avoid getting caught by the older kids."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "tailor",
+      "word": "tailor",
+      "senses": [
+        {
+          "id": "sense-31791ad7",
+          "pos": "noun",
+          "meaningZh": "裁縫師",
+          "definitionEn": "a person whose job is to make or repair clothes, especially suits",
+          "examples": [
+            "The tailor measured him for a new suit."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-0db58c6b",
+          "pos": "verb",
+          "meaningZh": "針對…調整；使合乎特定情境",
+          "definitionEn": "make (something) fit a particular situation or purpose",
+          "examples": [
+            "The presentation was tailored to suit the preferences of the target audience."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "talent",
+      "word": "talent",
+      "senses": [
+        {
+          "id": "sense-43f1f2c9",
+          "pos": "noun",
+          "meaningZh": "天賦；才華",
+          "definitionEn": "natural abilities or qualities that someone is born with",
+          "examples": [
+            "He discovered his talent for music at a young age, and went on to become a world-renowned pianist."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-0036fb98",
+          "pos": "noun",
+          "meaningZh": "塔連特（古代重量與貨幣單位）",
+          "definitionEn": "an ancient unit of weight and currency",
+          "examples": [
+            "In ancient times, one talent of gold could buy a luxurious house."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L6",
+        "textbookTitle": "龍騰 B3·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "talkative",
+      "word": "talkative",
+      "senses": [
+        {
+          "id": "sense-43c5d06d",
+          "pos": "adjective",
+          "meaningZh": "話多的；健談的",
+          "definitionEn": "tending to talk a lot; fond of talking excessively",
+          "examples": [
+            "My neighbor is so talkative that every time I bump into her, she can keep me for hours chatting about her day and her cat."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-8f5aff10",
+          "pos": "adjective",
+          "meaningZh": "嘮叨的；多嘴的",
+          "definitionEn": "engaging in or characterized by excessive and trivial conversation",
+          "examples": [
+            "The talkative passenger on the train wouldn’t stop talking about her cat’s eating habits even when nobody showed interest."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "tame",
+      "word": "tame",
+      "senses": [
+        {
+          "id": "sense-de9e2416",
+          "pos": "adjective",
+          "meaningZh": "馴服的；溫順的",
+          "definitionEn": "not wild or dangerous; brought from a state of natural wildness into a domesticated or obedient state",
+          "examples": [
+            "The wild horse was difficult to handle, but after being trained, it became quite tame and could be ridden with ease."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-d90b89ec",
+          "pos": "verb",
+          "meaningZh": "馴服；制服",
+          "definitionEn": "make less powerful and easier to control; domesticate or train (an animal or person)",
+          "examples": [
+            "After months of training, Jane was able to tame the wild stallion and ride him across the open fields."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L8 +1",
+        "textbookTitle": "龍騰 B3·L8、翰林 B1·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "tangerine",
+      "word": "tangerine",
+      "senses": [
+        {
+          "id": "sense-ee5f1389",
+          "pos": "noun",
+          "meaningZh": "橘子；小柑橘",
+          "definitionEn": "a type of small, sweet, citrus fruit that is similar to an orange",
+          "examples": [
+            "He peeled a tangerine and ate the segments for a midday snack."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-eed9e3eb",
+          "pos": "noun",
+          "meaningZh": "橘紅色",
+          "definitionEn": "a reddish orange color",
+          "examples": [
+            "Her dress was a stunning tangerine color that complemented her skin tone perfectly."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "tank",
+      "word": "tank",
+      "senses": [
+        {
+          "id": "sense-3ba60ce1",
+          "pos": "noun",
+          "meaningZh": "（儲液、儲氣）槽；箱",
+          "definitionEn": "a large container for holding liquid or gas",
+          "examples": [
+            "The fish tank holds about fifty litres of water."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-3f20c89f",
+          "pos": "noun",
+          "meaningZh": "坦克（車）",
+          "definitionEn": "a heavy armoured military vehicle that moves on metal tracks and carries guns",
+          "examples": [
+            "Tanks rolled into the city at dawn."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "tap",
+      "word": "tap",
+      "senses": [
+        {
+          "id": "sense-e19b4639",
+          "pos": "verb",
+          "meaningZh": "輕敲；輕拍",
+          "definitionEn": "strike lightly",
+          "examples": [
+            "She gently tapped her fingers on the table while waiting for her friend to arrive."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "tasty",
+      "word": "tasty",
+      "senses": [
+        {
+          "id": "sense-9aae1b79",
+          "pos": "adjective",
+          "meaningZh": "美味的；好吃的",
+          "definitionEn": "Having a pleasant flavor or taste",
+          "examples": [
+            "The homemade chocolate chip cookies were warm, gooey, and incredibly tasty."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "tear",
+      "word": "tear",
+      "senses": [
+        {
+          "id": "sense-335821ba",
+          "pos": "noun",
+          "meaningZh": "眼淚；淚水",
+          "definitionEn": "a drop of salty liquid that comes from the eye when you cry",
+          "examples": [
+            "Tears rolled down her cheeks as she said goodbye."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-71f65c13",
+          "pos": "verb",
+          "meaningZh": "扯掉；撕下",
+          "definitionEn": "to remove or take away (something) quickly or easily",
+          "examples": [
+            "She tore the bandage off quickly."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-8c295871",
+          "pos": "verb",
+          "meaningZh": "撕裂；扯破",
+          "definitionEn": "to separate or be separated abruptly by force",
+          "examples": [
+            "I accidentally tore my shirt when it got caught on a nail."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L3",
+        "textbookTitle": "三民 B4·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    }
+  ]
+}

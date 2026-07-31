@@ -1,0 +1,1369 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 199,
+  "words": [
+    {
+      "wordKey": "unanimous",
+      "word": "unanimous",
+      "senses": [
+        {
+          "id": "sense-434a3c5a",
+          "pos": "adjective",
+          "meaningZh": "一致同意的；無異議的",
+          "definitionEn": "being of one mind; agreeing completely",
+          "examples": [
+            "The jury reached a unanimous decision to acquit the defendant."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-d4ddbc5a",
+          "pos": "adjective",
+          "meaningZh": "全體一致的；意見相同的",
+          "definitionEn": "in complete agreement or showing complete agreement",
+          "examples": [
+            "The jury reached a unanimous decision to convict the defendant of all charges."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "unconditional",
+      "word": "unconditional",
+      "senses": [
+        {
+          "id": "sense-ccb870e8",
+          "pos": "adjective",
+          "meaningZh": "無條件的；絕對的",
+          "definitionEn": "without conditions or limits; absolute",
+          "examples": [
+            "Their love for each other was unconditional, and they supported each other through thick and thin."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-f82b3f51",
+          "pos": "adjective",
+          "meaningZh": "不附條件的；無保留的",
+          "definitionEn": "not modified or limited by reservations",
+          "examples": [
+            "The dog's love for its owner is unconditional, always showing affection and loyalty regardless of the circumstances."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "underestimate",
+      "word": "underestimate",
+      "senses": [
+        {
+          "id": "sense-b82096ba",
+          "pos": "verb",
+          "meaningZh": "低估；輕估",
+          "definitionEn": "to guess or calculate that something is worth less than its actual value.",
+          "examples": [
+            "I underestimated the difficulty of the exam and didn’t study enough, so I performed poorly."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-8842e040",
+          "pos": "noun",
+          "meaningZh": "低估值；過低的估計",
+          "definitionEn": "an estimation or guess that is lower than the true or actual value.",
+          "examples": [
+            "John underestimated the amount of time it would take to complete the project and ended up missing the deadline."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L4",
+        "textbookTitle": "龍騰 B5·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "underpass",
+      "word": "underpass",
+      "senses": [
+        {
+          "id": "sense-c282ffd2",
+          "pos": "noun",
+          "meaningZh": "地下道；穿越隧道",
+          "definitionEn": "a tunnel or passage below a road or railroad, created to allow pedestrians to safely cross",
+          "examples": [
+            "The city government constructed an underpass for the safety of the school children who have to cross the busy highway to get to their school."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "underway",
+      "word": "underway",
+      "senses": [
+        {
+          "id": "sense-9befbc4d",
+          "pos": "adjective",
+          "meaningZh": "進行中的；已啟動的",
+          "definitionEn": "currently in progress",
+          "examples": [
+            "The construction of the new building is well underway and is expected to be completed by the end of the year."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "unification",
+      "word": "unification",
+      "senses": [
+        {
+          "id": "sense-c66bc435",
+          "pos": "noun",
+          "meaningZh": "統一；合併；聯合",
+          "definitionEn": "the state of being combined or joined together into a single entity",
+          "examples": [
+            "The unification of the two rival political parties led to a stronger and more effective opposition."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-e9b41dd1",
+          "pos": "noun",
+          "meaningZh": "整合；統合；結合",
+          "definitionEn": "an instance of bringing things together to form a single entity or to create harmony or agreement",
+          "examples": [
+            "The unification of the two rival companies resulted in increased productivity and profits."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "unify",
+      "word": "unify",
+      "senses": [
+        {
+          "id": "sense-e9f36d40",
+          "pos": "verb",
+          "meaningZh": "統一；整合；合而為一",
+          "definitionEn": "to join or combine things together, especially in order to make them stronger or more effective",
+          "examples": [
+            "The team worked together to unify their efforts and achieve their common goal."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-1eb44cf3",
+          "pos": "verb",
+          "meaningZh": "結合；凝聚；融合",
+          "definitionEn": "to bring or combine things together, either physically or in terms of ideas",
+          "examples": [
+            "The conference aimed to unify various communities by promoting dialogue and understanding."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L9",
+        "textbookTitle": "龍騰 B3·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "unveil",
+      "word": "unveil",
+      "senses": [
+        {
+          "id": "sense-c5736f84",
+          "pos": "verb",
+          "meaningZh": "揭幕；去除遮蓋",
+          "definitionEn": "remove the cover from",
+          "examples": [
+            "The artist was excited to unveil her latest masterpiece at the gallery opening."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-fa06e631",
+          "pos": "verb",
+          "meaningZh": "揭開面紗；公開展示",
+          "definitionEn": "remove the veil from",
+          "examples": [
+            "The artist unveiled her new sculpture at the gallery opening last night."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "upright",
+      "word": "upright",
+      "senses": [
+        {
+          "id": "sense-0999695b",
+          "pos": "adjective",
+          "meaningZh": "垂直的；直立的",
+          "definitionEn": "in a vertical position; not sloping",
+          "examples": [
+            "The bookcase was too heavy to lean, so they kept it upright against the wall."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-e49098ae",
+          "pos": "adjective",
+          "meaningZh": "挺直的；端正的",
+          "definitionEn": "upright in position or posture",
+          "examples": [
+            "Stand upright and hold your head high."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L3",
+        "textbookTitle": "龍騰 B3·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "uprising",
+      "word": "uprising",
+      "senses": [
+        {
+          "id": "sense-bfe35db8",
+          "pos": "noun",
+          "meaningZh": "起義；暴動；民變",
+          "definitionEn": "an act of resistance against an established government or authority",
+          "examples": [
+            "The recent uprising in the country was caused by the widespread corruption of the government officials."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "upward",
+      "word": "upward",
+      "senses": [
+        {
+          "id": "sense-53d3b005",
+          "pos": "adverb",
+          "meaningZh": "向上；往高處；上升",
+          "definitionEn": "moving from a lower position to a higher one, either literally or figuratively",
+          "examples": [
+            "After months of hard work and dedication, his grades started to trend upward, showing significant improvement."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "urgency",
+      "word": "urgency",
+      "senses": [
+        {
+          "id": "sense-b41419b9",
+          "pos": "noun",
+          "meaningZh": "緊急；急迫性",
+          "definitionEn": "a state of requiring immediate attention or action",
+          "examples": [
+            "The urgency of the situation required the ambulance to arrive as soon as possible."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-980bd8dd",
+          "pos": "noun",
+          "meaningZh": "迫切感；重要且須立即處理",
+          "definitionEn": "the quality of being important and needing fast action or attention",
+          "examples": [
+            "There is an urgency to finish the building before the rainy season starts."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "usher",
+      "word": "usher",
+      "senses": [
+        {
+          "id": "sense-f5c24749",
+          "pos": "noun",
+          "meaningZh": "引導員；帶位人員",
+          "definitionEn": "a person whose job is to show people to their seats, especially at a theater or during a wedding",
+          "examples": [
+            "The usher showed us to our seats at the wedding ceremony."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-9d0f96e6",
+          "pos": "noun",
+          "meaningZh": "婚禮招待員；招待引座",
+          "definitionEn": "a person who greets guests at a wedding and escorts them to their seats",
+          "examples": [
+            "The ushers are responsible for showing the guests to their seats at the wedding ceremony."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "utensil",
+      "word": "utensil",
+      "senses": [
+        {
+          "id": "sense-2a3a3bd2",
+          "pos": "noun",
+          "meaningZh": "器具；廚房用具；工具",
+          "definitionEn": "a tool or object that is used for a specific purpose, especially in a household",
+          "examples": [
+            "As she prepared the meal, she reached for her favorite cooking utensil, a sturdy wooden spoon."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "utter",
+      "word": "utter",
+      "senses": [
+        {
+          "id": "sense-588a4c71",
+          "pos": "adjective",
+          "meaningZh": "完全的；徹底的",
+          "definitionEn": "complete; used to emphasize how great or extreme something is",
+          "examples": [
+            "The whole plan was utter nonsense."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-be5c97a5",
+          "pos": "verb",
+          "meaningZh": "說出；發出（話語）",
+          "definitionEn": "express in speech",
+          "examples": [
+            "She was so shocked that all she could utter was a gasp."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-4e59cf55",
+          "pos": "verb",
+          "meaningZh": "發出（聲音）；出聲",
+          "definitionEn": "express audibly; utter sounds (not necessarily words)",
+          "examples": [
+            "The child was so excited that he couldn't help but utter squeals of delight."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "vaccine",
+      "word": "vaccine",
+      "senses": [
+        {
+          "id": "sense-9efa5f74",
+          "pos": "noun",
+          "meaningZh": "疫苗；預防接種藥劑",
+          "definitionEn": "a substance that is injected into the body to help protect against disease by stimulating the production of antibodies",
+          "examples": [
+            "It is important to get vaccinated against common diseases like measles, mumps, and rubella."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "vanilla",
+      "word": "vanilla",
+      "senses": [
+        {
+          "id": "sense-dfc336a6",
+          "pos": "noun",
+          "meaningZh": "香草（香料）；香草精",
+          "definitionEn": "a substance obtained from the vanilla plant, used as a flavoring in ice cream, confectionery, and cosmetics",
+          "examples": [
+            "The ice cream parlor offered a variety of flavors, but the classic vanilla was always the most popular and best-selling."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-75b8ca3c",
+          "pos": "noun",
+          "meaningZh": "香草蘭；香草植物",
+          "definitionEn": "a climbing plant of the orchid family, with fleshy leaves and fragrant white or greenish flowers",
+          "examples": [
+            "The tropical rainforest was filled with a sweet aroma, thanks to the vanilla orchids that grew there."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "vanity",
+      "word": "vanity",
+      "senses": [
+        {
+          "id": "sense-10c38259",
+          "pos": "noun",
+          "meaningZh": "虛榮心；自負；愛慕虛榮",
+          "definitionEn": "excessive pride or admiration in oneself, one’s appearance, or achievements",
+          "examples": [
+            "Sarah's vanity was evident as she spent hours every day admiring herself in the mirror and constantly seeking validation from others about her physical appearance."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-ab3ba76e",
+          "pos": "noun",
+          "meaningZh": "虛榮；空虛（哲學意涵）",
+          "definitionEn": "the quality or state of being vain, conceited, or excessively prideful",
+          "examples": [
+            "Despite her many accomplishments, Jane's vanity prevented her from forming meaningful relationships."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "vapor",
+      "word": "vapor",
+      "senses": [
+        {
+          "id": "sense-9edb84ab",
+          "pos": "noun",
+          "meaningZh": "水蒸氣；霧氣；蒸氣",
+          "definitionEn": "a visible suspension in the air of particles of some substance",
+          "examples": [
+            "The vapor rising from the lake early in the morning created a serene and picturesque scene."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-b6c2bae6",
+          "pos": "noun",
+          "meaningZh": "氣化；蒸發過程",
+          "definitionEn": "the process of becoming a vapor",
+          "examples": [
+            "The water in the pot began to vaporize, turning into steam and rising into the air."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "veil",
+      "word": "veil",
+      "senses": [
+        {
+          "id": "sense-358d5787",
+          "pos": "noun",
+          "meaningZh": "面紗；頭紗",
+          "definitionEn": "a piece of thin material worn to protect or hide the face or head",
+          "examples": [
+            "The bride wore a beautiful lace veil that covered her face as she walked down the aisle."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-7014d047",
+          "pos": "noun",
+          "meaningZh": "遮布；遮蔽物",
+          "definitionEn": "a piece of fabric that is used to cover or conceal something",
+          "examples": [
+            "The bride wore a delicate lace veil over her face as she walked down the aisle."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "velvet",
+      "word": "velvet",
+      "senses": [
+        {
+          "id": "sense-28c7fba7",
+          "pos": "noun",
+          "meaningZh": "天鵝絨；絨布",
+          "definitionEn": "a type of fabric with a dense and silky pile on one side and a plain back",
+          "examples": [
+            "She wore a luxurious velvet gown to the gala, the soft and lustrous fabric catching the light beautifully."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-896234a4",
+          "pos": "adjective",
+          "meaningZh": "天鵝絨般的；柔滑的",
+          "definitionEn": "having a smooth and soft surface similar to velvet",
+          "examples": [
+            "The luxurious red velvet curtains added an elegant touch to the theatre."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "versatile",
+      "word": "versatile",
+      "senses": [
+        {
+          "id": "sense-9b8db926",
+          "pos": "adjective",
+          "meaningZh": "多才多藝的；適應力強的",
+          "definitionEn": "competent in many areas and able to turn with ease from one thing to another, multifaceted",
+          "examples": [
+            "As a versatile athlete, she excelled in both swimming and track."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-339990e4",
+          "pos": "adjective",
+          "meaningZh": "靈活的；可轉換多種角色",
+          "definitionEn": "able to move freely in all directions, agile",
+          "examples": [
+            "As an experienced actor, he was versatile and could play a variety of roles with ease. His versatility made him a valuable asset to any theatre production."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "veto",
+      "word": "veto",
+      "senses": [
+        {
+          "id": "sense-947e899d",
+          "pos": "noun",
+          "meaningZh": "否決權；行政否決",
+          "definitionEn": "the power or right to prohibit or reject a proposed or intended act (especially the power of a chief executive to reject a bill passed by the legislature)",
+          "examples": [
+            "The president exercised his veto power by rejecting the bill passed by the Congress."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-b3c012fe",
+          "pos": "noun",
+          "meaningZh": "否決票；否決",
+          "definitionEn": "a vote that blocks a decision",
+          "examples": [
+            "The president has the power to veto a bill passed by Congress, which means the bill cannot become law unless two-thirds of both the Senate and House vote to override the veto."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "vibrate",
+      "word": "vibrate",
+      "senses": [
+        {
+          "id": "sense-40f3788c",
+          "pos": "verb",
+          "meaningZh": "震動；振動",
+          "definitionEn": "shake or quiver",
+          "examples": [
+            "The phone was set to silent mode, but it still vibrated on the table when a call came in."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-6bc809c0",
+          "pos": "verb",
+          "meaningZh": "劇烈震動；顫抖",
+          "definitionEn": "move back and forth rapidly, usually in an uncontrolled manner",
+          "examples": [
+            "The washing machine started to vibrate violently, causing the whole house to shake."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "vibration",
+      "word": "vibration",
+      "senses": [
+        {
+          "id": "sense-60838d38",
+          "pos": "noun",
+          "meaningZh": "振動；震動（物理）",
+          "definitionEn": "(physics) a regular periodic variation in the value of a physical quantity about a mean value",
+          "examples": [
+            "The violinist created beautiful vibrations as she played her instrument."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-d0b5dac4",
+          "pos": "noun",
+          "meaningZh": "氛圍；感應的能量",
+          "definitionEn": "a distinctive emotional atmosphere that is instinctively sensed",
+          "examples": [
+            "As the orchestra played their final notes, a wave of excitement and anticipation filled the concert hall, creating a powerful vibration of energy among the audience."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "vice",
+      "word": "vice",
+      "senses": [
+        {
+          "id": "sense-d1929fc9",
+          "pos": "noun",
+          "meaningZh": "道德缺陷；惡習",
+          "definitionEn": "moral weakness",
+          "examples": [
+            "His addiction to gambling became his greatest vice, leading to financial ruin."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-05de47ff",
+          "pos": "noun",
+          "meaningZh": "惡行；不當行為",
+          "definitionEn": "a particular form of wrongdoing",
+          "examples": [
+            "Gambling can quickly become a vice, leading to financial ruin and strained relationships."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "victor",
+      "word": "victor",
+      "senses": [
+        {
+          "id": "sense-af3ac38c",
+          "pos": "noun",
+          "meaningZh": "勝利者；優勝者",
+          "definitionEn": "the contestant who wins the contest",
+          "examples": [
+            "The victor of the marathon crossed the finish line with a triumphant smile."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-47934aca",
+          "pos": "noun",
+          "meaningZh": "征服者；戰勝方",
+          "definitionEn": "a combatant who is able to defeat rivals",
+          "examples": [
+            "The brave knight emerged as the victor in the epic battle against the mighty dragon."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "vigor",
+      "word": "vigor",
+      "senses": [
+        {
+          "id": "sense-09819020",
+          "pos": "noun",
+          "meaningZh": "活力；精力",
+          "definitionEn": "active strength of body or mind",
+          "examples": [
+            "After months of hard training, her body was filled with vigor and she easily completed the marathon."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-db161185",
+          "pos": "noun",
+          "meaningZh": "力量；幹勁",
+          "definitionEn": "forceful exertion",
+          "examples": [
+            "With great vigor, the student raised her hand and asked an insightful question."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "vigorous",
+      "word": "vigorous",
+      "senses": [
+        {
+          "id": "sense-82783aec",
+          "pos": "adjective",
+          "meaningZh": "精力充沛的；強健的",
+          "definitionEn": "strong and active physically or mentally",
+          "examples": [
+            "After recovering from her illness, she resumed her vigorous exercise routine."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-be00a8bb",
+          "pos": "adjective",
+          "meaningZh": "有力的；積極的",
+          "definitionEn": "characterized by forceful and energetic action or activity",
+          "examples": [
+            "She gave a vigorous shake to the bottle before using it, to ensure that all the ingredients were properly mixed."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "villa",
+      "word": "villa",
+      "senses": [
+        {
+          "id": "sense-eb9dd8e9",
+          "pos": "noun",
+          "meaningZh": "豪華別墅；渡假別墅",
+          "definitionEn": "a luxurious country residence with extensive grounds, often used as a vacation home",
+          "examples": [
+            "My boss plans to rent a villa in Tuscany for her summer vacation."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    }
+  ]
+}

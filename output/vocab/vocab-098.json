@@ -1,0 +1,1381 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 98,
+  "words": [
+    {
+      "wordKey": "weight",
+      "word": "weight",
+      "senses": [
+        {
+          "id": "sense-7d8de9f5",
+          "pos": "noun",
+          "meaningZh": "重量；分量",
+          "definitionEn": "a unit of measurement for how heavy something is",
+          "examples": [
+            "I need to check the weight of my suitcase before going to the airport."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-baea43bf",
+          "pos": "noun",
+          "meaningZh": "體重；重力",
+          "definitionEn": "the force of gravity on an object",
+          "examples": [
+            "When you step on a scale, it measures your weight in pounds or kilograms."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "western",
+      "word": "western",
+      "senses": [
+        {
+          "id": "sense-e977d408",
+          "pos": "adjective",
+          "meaningZh": "西部的；西方的",
+          "definitionEn": "relating to the west or located in the west",
+          "examples": [
+            "She moved to a small town in the western part of the country."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-eb24bed5",
+          "pos": "adjective",
+          "meaningZh": "朝西的；來自西方的",
+          "definitionEn": "lying toward, facing, or coming from the west",
+          "examples": [
+            "As the sun set, painting the sky with shades of orange and purple, we enjoyed a breathtaking view of the western horizon."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B1·L8",
+        "textbookTitle": "三民 B1·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "whale",
+      "word": "whale",
+      "senses": [
+        {
+          "id": "sense-93bc2565",
+          "pos": "noun",
+          "meaningZh": "鯨魚；鯨類動物",
+          "definitionEn": "(1) Any of the larger mammals that live in the sea and breathe air through a blowhole on the top of their head. (2) A very big creature that is impressive in size.",
+          "examples": [
+            "During the whale watching tour, we saw a humpback whale breach out of the water, which was an incredible sight."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-2998592c",
+          "pos": "verb",
+          "meaningZh": "捕鯨；獵鯨",
+          "definitionEn": "To hunt and kill whales for their oil, meat, or bones, especially on an industrial scale.",
+          "examples": [
+            "Whale hunting has been banned in many countries due to concerns over the rapid decline of certain whale species."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "whatever",
+      "word": "whatever",
+      "senses": [
+        {
+          "id": "sense-330b632c",
+          "pos": "interjection",
+          "meaningZh": "隨便；無所謂",
+          "definitionEn": "used to indicate a lack of interest in what someone has said",
+          "examples": [
+            "When asked about his opinion on the movie, John simply shrugged and replied, 'Whatever.'"
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-96ae1a50",
+          "pos": "adjective",
+          "meaningZh": "任何的；無論什麼",
+          "definitionEn": "not particular about what one chooses",
+          "examples": [
+            "I'm happy to eat whatever you cook for dinner."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L1",
+        "textbookTitle": "三民 B4·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "wheel",
+      "word": "wheel",
+      "senses": [
+        {
+          "id": "sense-8375d6d2",
+          "pos": "noun",
+          "meaningZh": "輪子；車輪；方向盤",
+          "definitionEn": "a circular object that rotates on an axle and is used to aid movement or transportation, or for steering",
+          "examples": [
+            "The bicycle moved smoothly thanks to its well-oiled wheels."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "whenever",
+      "word": "whenever",
+      "senses": [
+        {
+          "id": "sense-a8438d57",
+          "pos": "conjunction",
+          "meaningZh": "每當；無論何時",
+          "definitionEn": "used to say that the time something is done is not important or makes no difference",
+          "examples": [
+            "You can call me whenever you're available."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-21ee6a37",
+          "pos": "adverb",
+          "meaningZh": "任何時候；隨時",
+          "definitionEn": "at any time; regardless of when",
+          "examples": [
+            "You can always rely on Susan to help you whenever you need it."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B2·L7",
+        "textbookTitle": "三民 B2·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "wherever",
+      "word": "wherever",
+      "senses": [
+        {
+          "id": "sense-a63a9271",
+          "pos": "conjunction",
+          "meaningZh": "無論哪裡；到處",
+          "definitionEn": "in any or every place",
+          "examples": [
+            "She carried her phone wherever she went, always ready to answer a call."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-7507926f",
+          "pos": "conjunction",
+          "meaningZh": "在任何需要的地方",
+          "definitionEn": "in all types of situations",
+          "examples": [
+            "She was always ready to help out wherever she was needed."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "whisper",
+      "word": "whisper",
+      "senses": [
+        {
+          "id": "sense-7aa3b0b9",
+          "pos": "noun",
+          "meaningZh": "低語；耳語聲",
+          "definitionEn": "a soft spoken utterance that can barely be heard; inaudible",
+          "examples": [
+            "She leaned over to whisper the answer to her friend so that the other teams wouldn’t hear."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-af664751",
+          "pos": "noun",
+          "meaningZh": "沙沙聲；輕柔細語",
+          "definitionEn": "a light noise, like the noise of silk clothing or leaves blowing in the wind",
+          "examples": [
+            "The two friends whispered to each other during the class so that the teacher couldn’t hear their conversation."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L6",
+        "textbookTitle": "龍騰 B2·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "whoever",
+      "word": "whoever",
+      "senses": [
+        {
+          "id": "sense-d24d301d",
+          "pos": "pronoun",
+          "meaningZh": "凡是……的人；任何人",
+          "definitionEn": "the person who:",
+          "examples": [
+            "Whoever stole my wallet better return it immediately."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-8ca2d798",
+          "pos": "pronoun",
+          "meaningZh": "究竟是誰；不管是誰",
+          "definitionEn": "used instead of ’who’ to emphasize the question of what person or persons:",
+          "examples": [
+            "Whoever left their car parked in front of my driveway needs to move it immediately."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "whole",
+      "word": "whole",
+      "senses": [
+        {
+          "id": "sense-7593e2cd",
+          "pos": "noun",
+          "meaningZh": "整體；全部",
+          "definitionEn": "all of something including all its parts; an assemblage of parts regarded as a single entity",
+          "examples": [
+            "After the earthquake, the whole building was declared unsafe and had to be demolished."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-71f1f0f0",
+          "pos": "adjective",
+          "meaningZh": "完整的；全部的",
+          "definitionEn": "complete; including all components without exception",
+          "examples": [
+            "I ate the whole pizza by myself."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "whom",
+      "word": "whom",
+      "senses": [
+        {
+          "id": "sense-6b154cc3",
+          "pos": "pronoun",
+          "meaningZh": "誰（賓格）；哪個人",
+          "definitionEn": "used especially in questions as the object of a verb or after a preposition, when asking which person or people, or when asking someone’s name",
+          "examples": [
+            "Whom did you invite to the party?"
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-8e7aee80",
+          "pos": "pronoun",
+          "meaningZh": "（指人的）關係代名詞賓格",
+          "definitionEn": "used as the object of a verb or after a preposition when referring to a particular person or when providing additional information about a person just mentioned",
+          "examples": [
+            "To whom did you give the book?"
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "width",
+      "word": "width",
+      "senses": [
+        {
+          "id": "sense-6318467c",
+          "pos": "noun",
+          "meaningZh": "寬度；橫向尺寸",
+          "definitionEn": "the measurement or extent of something from side to side",
+          "examples": [
+            "To fit the couch through the narrow doorway, we measured the width of the couch and the width of the doorway."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-df99145b",
+          "pos": "noun",
+          "meaningZh": "寬闊；廣度",
+          "definitionEn": "the quality of being wide",
+          "examples": [
+            "The width of the river was too far to jump across."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "wild",
+      "word": "wild",
+      "senses": [
+        {
+          "id": "sense-0192af3a",
+          "pos": "adjective",
+          "meaningZh": "野生的；未馴化的",
+          "definitionEn": "in a natural state, not tamed or domesticated or cultivated",
+          "examples": [
+            "The hikers saw a pack of wild wolves in the forest."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-1156e782",
+          "pos": "adjective",
+          "meaningZh": "原始的；未開化的",
+          "definitionEn": "without civilizing influences",
+          "examples": [
+            "The wild animals prey on smaller animals for survival."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "willing",
+      "word": "willing",
+      "senses": [
+        {
+          "id": "sense-3bf7c2d8",
+          "pos": "adjective",
+          "meaningZh": "樂意的；自願的",
+          "definitionEn": "done or given freely and without being forced or asked for",
+          "examples": [
+            "She was willing to help her friend move furniture without being asked."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B2·L5",
+        "textbookTitle": "三民 B2·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "windy",
+      "word": "windy",
+      "senses": [
+        {
+          "id": "sense-27477d7c",
+          "pos": "adjective",
+          "meaningZh": "多風的；颳大風的",
+          "definitionEn": "exposed to the wind; characterized by or abounding in wind or breezes",
+          "examples": [
+            "We decided to cancel our picnic plan as it was too windy outside. The wind was so strong that it knocked over a few trees on our street."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "wine",
+      "word": "wine",
+      "senses": [
+        {
+          "id": "sense-ff3fe3c8",
+          "pos": "noun",
+          "meaningZh": "葡萄酒；水果酒",
+          "definitionEn": "A type of alcoholic drink made from fermented grapes or other fruits",
+          "examples": [
+            "My husband and I enjoyed a bottle of red wine with our steak dinner last night."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-0fbfd3bf",
+          "pos": "noun",
+          "meaningZh": "紅酒；白酒",
+          "definitionEn": "A red or white alcoholic drink made from grapes",
+          "examples": [
+            "I love to drink a glass of red wine with dinner."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "wing",
+      "word": "wing",
+      "senses": [
+        {
+          "id": "sense-b731c773",
+          "pos": "noun",
+          "meaningZh": "翅膀；機翼",
+          "definitionEn": "one of the parts of a bird, insect, or aircraft used for flying",
+          "examples": [
+            "The bird spread its wings and flew away."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-a25a36db",
+          "pos": "noun",
+          "meaningZh": "（車輛）擋泥板；翼子板",
+          "definitionEn": "a hinged plate on a vehicle surrounding the wheel and blocking splashing water or mud",
+          "examples": [
+            "The truck’s wing prevented the mud from splashing onto the windshield during the rainy drive."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "wire",
+      "word": "wire",
+      "senses": [
+        {
+          "id": "sense-b35bebd6",
+          "pos": "noun",
+          "meaningZh": "電線；導線",
+          "definitionEn": "A thin, flexible, and typically insulated conductor for electricity or data signals.",
+          "examples": [
+            "The electrician ran a wire through the wall to connect the light switch to the socket."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-34836cec",
+          "pos": "verb",
+          "meaningZh": "接線；布設電線",
+          "definitionEn": "To provide something with electrical circuits or wires.",
+          "examples": [
+            "The electrical engineer will wire the circuit board to ensure that the electronic device functions properly."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "within",
+      "word": "within",
+      "senses": [
+        {
+          "id": "sense-7691365d",
+          "pos": "adverb",
+          "meaningZh": "在內部；在裡面",
+          "definitionEn": "inside something",
+          "examples": [
+            "The hidden treasure is within the hollow tree."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "wolf",
+      "word": "wolf",
+      "senses": [
+        {
+          "id": "sense-551768db",
+          "pos": "noun",
+          "meaningZh": "狼",
+          "definitionEn": "a wild animal of the dog family that lives and hunts in groups",
+          "examples": [
+            "A lone wolf howled in the distance."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-e05d77f5",
+          "pos": "verb",
+          "meaningZh": "狼吞虎嚥；急速吃完",
+          "definitionEn": "to eat something quickly and greedily",
+          "examples": [
+            "After not eating breakfast, he wolfed down a burger and fries for lunch."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "wonder",
+      "word": "wonder",
+      "senses": [
+        {
+          "id": "sense-7f5b6c37",
+          "pos": "noun",
+          "meaningZh": "驚嘆；驚奇感",
+          "definitionEn": "a feeling of amazement or admiration caused by seeing or experiencing something new, unexpected, or inexplicable",
+          "examples": [
+            "As they stood on the edge of the Grand Canyon, they were filled with wonder at the breathtaking view before them."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-469c50a0",
+          "pos": "noun",
+          "meaningZh": "奇觀；令人稱奇之物",
+          "definitionEn": "a person or thing that is very surprising, beautiful, admirable, or interesting",
+          "examples": [
+            "As the sun set over the ocean, the sky was filled with a wonder of colors."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L3 +2",
+        "textbookTitle": "龍騰 B1·L3、三民 B2·L10、翰林 B1·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "wood",
+      "word": "wood",
+      "senses": [
+        {
+          "id": "sense-5a882e36",
+          "pos": "noun",
+          "meaningZh": "木材；木頭",
+          "definitionEn": "the hard material that forms the trunk and branches of trees and shrubs",
+          "examples": [
+            "The carpenter used a piece of wood to build the cabinet."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-6a5fef6f",
+          "pos": "noun",
+          "meaningZh": "樹林；小樹叢",
+          "definitionEn": "an area covered with trees and underbrush; a forest or grove",
+          "examples": [
+            "After a tiring hike, we found a beautiful wood where we could rest under the shade of the trees."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "wooden",
+      "word": "wooden",
+      "senses": [
+        {
+          "id": "sense-2931489d",
+          "pos": "adjective",
+          "meaningZh": "木製的；木頭做的",
+          "definitionEn": "made of or consisting of wood (entirely or in part)",
+          "examples": [
+            "The old farmhouse had a rustic charm with its wooden beams and floors."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-adbf0f35",
+          "pos": "adjective",
+          "meaningZh": "呆板的；僵硬無表情的",
+          "definitionEn": "lacking elegance or grace; awkward",
+          "examples": [
+            "His performance was so wooden that it was hard to watch him act."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "woods",
+      "word": "woods",
+      "senses": [
+        {
+          "id": "sense-d35a19d5",
+          "pos": "noun",
+          "meaningZh": "樹林；森林",
+          "definitionEn": "an area covered with trees and underbrush; a forest or grove",
+          "examples": [
+            "After a tiring hike, we found a beautiful wood where we could rest under the shade of the trees."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-f583e144",
+          "pos": "noun",
+          "meaningZh": "木材；樹木材料",
+          "definitionEn": "the hard material that forms the trunk and branches of trees and shrubs",
+          "examples": [
+            "The carpenter used a piece of wood to build the cabinet."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "wool",
+      "word": "wool",
+      "senses": [
+        {
+          "id": "sense-da489f29",
+          "pos": "noun",
+          "meaningZh": "羊毛；獸毛",
+          "definitionEn": "the outer coat of certain animals, such as sheep and yaks, consisting of a thick growth of hair that gives protection from the cold",
+          "examples": [
+            "The wool on these sheep kept them warm through the winter months."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-21c8c2b3",
+          "pos": "noun",
+          "meaningZh": "毛線；紡毛纖維",
+          "definitionEn": "the fiber obtained from the shearing of animals, such as sheep, and twisted into yarn for weaving",
+          "examples": [
+            "The weaver used wool to knit a cozy sweater for the winter."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "workbook",
+      "word": "workbook",
+      "senses": [
+        {
+          "id": "sense-183a892d",
+          "pos": "noun",
+          "meaningZh": "練習冊；作業本",
+          "definitionEn": "a book used by students to practice and apply newly acquired knowledge or skills through exercises and problems",
+          "examples": [
+            "I always purchase a new workbook for my daughter at the beginning of the school year so she can study and practice at home."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "worm",
+      "word": "worm",
+      "senses": [
+        {
+          "id": "sense-3b5f87c6",
+          "pos": "noun",
+          "meaningZh": "蚯蚓；蠕蟲",
+          "definitionEn": "a long, slender, soft-bodied invertebrate animal with no limbs or backbone, commonly found in soil or water",
+          "examples": [
+            "After a heavy rain, I saw a worm wriggling its way through the damp soil."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-9e3ae687",
+          "pos": "noun",
+          "meaningZh": "電腦蠕蟲；惡意程式",
+          "definitionEn": "a computer program that can replicate itself and spread to other computers, causing disruptions to their normal operations",
+          "examples": [
+            "The company's network was infiltrated by a malicious worm, which resulted in a complete shutdown of their systems."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "worse",
+      "word": "worse",
+      "senses": [
+        {
+          "id": "sense-024c3042",
+          "pos": "adjective",
+          "meaningZh": "更差的；更糟的",
+          "definitionEn": "Lower in quality, condition, or desirability than something else considered to be bad.",
+          "examples": [
+            "I thought the movie was bad, but the sequel was even worse."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-1151d8ca",
+          "pos": "adjective",
+          "meaningZh": "病情惡化的；更不舒服的",
+          "definitionEn": "Affected negatively in terms of health or fitness.",
+          "examples": [
+            "After eating that spoiled food, I felt worse than I had ever felt before."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "worst",
+      "word": "worst",
+      "senses": [
+        {
+          "id": "sense-64038414",
+          "pos": "adjective",
+          "meaningZh": "最差的；最糟糕的",
+          "definitionEn": "Of the lowest quality, least desirable, or least satisfactory",
+          "examples": [
+            "The restaurant I ate at last night had the worst service imaginable. Not only did they forget our order, but the staff was rude and unapologetic."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-83d5eca3",
+          "pos": "adverb",
+          "meaningZh": "最嚴重地；最壞的程度",
+          "definitionEn": "To the highest degree when comparing levels of badness, inferiority, or error",
+          "examples": [
+            "The worst storm in recorded history devastated the coastal town, causing extensive damage and displacing thousands of residents."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "worth",
+      "word": "worth",
+      "senses": [
+        {
+          "id": "sense-2ae2a1ce",
+          "pos": "noun",
+          "meaningZh": "價值；相當的分量",
+          "definitionEn": "an unspecified amount of something having a certain value",
+          "examples": [
+            "She found a vase at the flea market that was worth much more than the price tag."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-a12a1f24",
+          "pos": "noun",
+          "meaningZh": "可貴之處；值得之處",
+          "definitionEn": "the quality that makes something desirable, valuable, or useful",
+          "examples": [
+            "Her advice is always worth listening to."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L7 +1",
+        "textbookTitle": "龍騰 B2·L7、翰林 B1·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    }
+  ]
+}

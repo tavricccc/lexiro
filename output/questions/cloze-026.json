@@ -1,0 +1,1811 @@
+{
+  "schemaVersion": 1,
+  "kind": "questions",
+  "questionKind": "cloze",
+  "questions": [
+    {
+      "id": "child-47fe8513",
+      "kind": "multipleChoice",
+      "prompt": "When he saw how upset his sister was, the boy offered a _____ apology and promised never to read her diary again.",
+      "options": [
+        "sincere",
+        "curious",
+        "stubborn",
+        "jealous"
+      ],
+      "answerIndex": 0,
+      "wordKey": "sincere",
+      "senseId": "sense-f0e57efb",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-33842fbc",
+      "kind": "multipleChoice",
+      "prompt": "Nurses are trained to be especially _____ when they care for newborn babies in the hospital.",
+      "options": [
+        "gentle",
+        "violent",
+        "anxious",
+        "selfish"
+      ],
+      "answerIndex": 0,
+      "wordKey": "gentle",
+      "senseId": "sense-eb0936ed",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-54ffd506",
+      "kind": "multipleChoice",
+      "prompt": "My doctor told me that it is hard to _____ the habit of staying up late, but exercise can really help.",
+      "options": [
+        "break",
+        "cut",
+        "stop",
+        "lose"
+      ],
+      "answerIndex": 0,
+      "wordKey": "break",
+      "senseId": "sense-27e2b0af",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-f63a5894",
+      "kind": "multipleChoice",
+      "prompt": "The young swimmer trained for years, hoping one day to _____ a new national record in the 200-meter race.",
+      "options": [
+        "set",
+        "build",
+        "make",
+        "fix"
+      ],
+      "answerIndex": 0,
+      "wordKey": "set",
+      "senseId": "sense-aa714481",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-643ae6bd",
+      "kind": "multipleChoice",
+      "prompt": "If you share your password with strangers online, you _____ the risk of having your account stolen.",
+      "options": [
+        "run",
+        "do",
+        "take",
+        "play"
+      ],
+      "answerIndex": 0,
+      "wordKey": "run",
+      "senseId": "sense-f032408b",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-d5665a70",
+      "kind": "multipleChoice",
+      "prompt": "Even though the manager was very busy, she kindly agreed to _____ a few minutes to answer the new intern's questions.",
+      "options": [
+        "spare",
+        "save",
+        "spend",
+        "waste"
+      ],
+      "answerIndex": 0,
+      "wordKey": "spare",
+      "senseId": "sense-325998eb",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-20f2377f",
+      "kind": "multipleChoice",
+      "prompt": "The weather report warned of _____ winds along the coast, so the ferry service was canceled for the day.",
+      "options": [
+        "strong",
+        "heavy",
+        "big",
+        "tall"
+      ],
+      "answerIndex": 0,
+      "wordKey": "strong",
+      "senseId": "sense-b4cf0276",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-9e344561",
+      "kind": "multipleChoice",
+      "prompt": "The new library offers such a _____ range of books that students of every interest can find something to enjoy.",
+      "options": [
+        "broad",
+        "long",
+        "thick",
+        "tall"
+      ],
+      "answerIndex": 0,
+      "wordKey": "broad",
+      "senseId": "sense-f5e4d0aa",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-292b388d",
+      "kind": "multipleChoice",
+      "prompt": "During the trip to Tainan, we decided to _____ a visit to the old temple that our grandmother loved as a child.",
+      "options": [
+        "pay",
+        "make",
+        "give",
+        "do"
+      ],
+      "answerIndex": 0,
+      "wordKey": "pay",
+      "senseId": "sense-182a4672",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-321e04ea",
+      "kind": "multipleChoice",
+      "prompt": "Because almost no rain fell all summer, the town suffered a _____ water shortage.",
+      "options": [
+        "slight",
+        "gentle",
+        "severe",
+        "minor"
+      ],
+      "answerIndex": 2,
+      "wordKey": "severe",
+      "senseId": "sense-bcc3118d",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-b48a1638",
+      "kind": "multipleChoice",
+      "prompt": "During the safety briefing, the guide asked everyone to pay close _____ to his instructions.",
+      "options": [
+        "attention",
+        "notice",
+        "regard",
+        "concern"
+      ],
+      "answerIndex": 0,
+      "wordKey": "attention",
+      "senseId": "sense-0ab7584c",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-f0a2db1a",
+      "kind": "multipleChoice",
+      "prompt": "A powerful telescope can _____ distant stars that are far too faint for the naked eye to see.",
+      "options": [
+        "cover",
+        "conceal",
+        "reveal",
+        "hide"
+      ],
+      "answerIndex": 2,
+      "wordKey": "reveal",
+      "senseId": "sense-71839b9e",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-0cc1efae",
+      "kind": "multipleChoice",
+      "prompt": "If you review a little English every day, you will surely _____ steady progress within a few months.",
+      "options": [
+        "score",
+        "win",
+        "earn",
+        "achieve"
+      ],
+      "answerIndex": 3,
+      "wordKey": "achieve",
+      "senseId": "sense-2d13f7e3",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-63d47412",
+      "kind": "multipleChoice",
+      "prompt": "The most useful _____ of this new phone is its camera, which can take clear photos even in the dark.",
+      "options": [
+        "price",
+        "shape",
+        "feature",
+        "brand"
+      ],
+      "answerIndex": 2,
+      "wordKey": "feature",
+      "senseId": "sense-65c5aac4",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-e1bb68d8",
+      "kind": "multipleChoice",
+      "prompt": "Climbing the mountain in such stormy weather would put the hikers at serious _____.",
+      "options": [
+        "fate",
+        "chance",
+        "risk",
+        "luck"
+      ],
+      "answerIndex": 2,
+      "wordKey": "risk",
+      "senseId": "sense-26d826a2",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-ca1ed5f6",
+      "kind": "multipleChoice",
+      "prompt": "The poster campaign was designed to _____ public awareness of plastic pollution in the ocean.",
+      "options": [
+        "heighten",
+        "expand",
+        "enlarge",
+        "widen"
+      ],
+      "answerIndex": 0,
+      "wordKey": "heighten",
+      "senseId": "sense-932c947c",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-aa443166",
+      "kind": "multipleChoice",
+      "prompt": "The museum guide warned us that the ancient pottery was extremely _____, so we had to keep a safe distance from the display.",
+      "options": [
+        "fragile",
+        "flexible",
+        "fluent",
+        "furious"
+      ],
+      "answerIndex": 0,
+      "wordKey": "fragile",
+      "senseId": "sense-ded111d5",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-80c585e9",
+      "kind": "multipleChoice",
+      "prompt": "Plants need sunlight because their leaves _____ energy from it to make the food they require for growth.",
+      "options": [
+        "absorb",
+        "release",
+        "reflect",
+        "resist"
+      ],
+      "answerIndex": 0,
+      "wordKey": "absorb",
+      "senseId": "sense-ef359631",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-9c4d9f4d",
+      "kind": "multipleChoice",
+      "prompt": "As the deadline for the science project drew near, the students decided to try a completely new _____ to solve the problem.",
+      "options": [
+        "approach",
+        "approval",
+        "appearance",
+        "agreement"
+      ],
+      "answerIndex": 0,
+      "wordKey": "approach",
+      "senseId": "sense-d35a3f1e",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-9aa2f5e7",
+      "kind": "multipleChoice",
+      "prompt": "By riding bicycles to school instead of taking cars, the students hope to _____ the amount of air pollution in their town.",
+      "options": [
+        "reduce",
+        "repeat",
+        "remind",
+        "reward"
+      ],
+      "answerIndex": 0,
+      "wordKey": "reduce",
+      "senseId": "sense-6bd2afaa",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-780807a5",
+      "kind": "multipleChoice",
+      "prompt": "The little boy was so _____ about how the machine worked that he kept asking the engineer one question after another.",
+      "options": [
+        "curious",
+        "careless",
+        "generous",
+        "nervous"
+      ],
+      "answerIndex": 0,
+      "wordKey": "curious",
+      "senseId": "sense-b3252909",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-61a6860e",
+      "kind": "multipleChoice",
+      "prompt": "After resting in bed for a week and following the doctor's advice, Helen began to _____ from her serious illness.",
+      "options": [
+        "recover",
+        "remove",
+        "review",
+        "replace"
+      ],
+      "answerIndex": 0,
+      "wordKey": "recover",
+      "senseId": "sense-4943eb25",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-995009da",
+      "kind": "multipleChoice",
+      "prompt": "The mistake in the report was so _____ that even a beginner could spot it within seconds of reading the first page.",
+      "options": [
+        "obvious",
+        "private",
+        "honest",
+        "ancient"
+      ],
+      "answerIndex": 0,
+      "wordKey": "obvious",
+      "senseId": "sense-0cac7820",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-41af6b30",
+      "kind": "multipleChoice",
+      "prompt": "If we want to finish the group report before Friday, we will have to _____ a decision about the topic today.",
+      "options": [
+        "make",
+        "do",
+        "take",
+        "give"
+      ],
+      "answerIndex": 0,
+      "wordKey": "make",
+      "senseId": "sense-a4045382",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-91b5d995",
+      "kind": "multipleChoice",
+      "prompt": "The teacher reminded the class to _____ attention to the safety rules before they started the chemistry experiment.",
+      "options": [
+        "pay",
+        "give",
+        "make",
+        "put"
+      ],
+      "answerIndex": 0,
+      "wordKey": "pay",
+      "senseId": "sense-182a4672",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-2d37a59b",
+      "kind": "multipleChoice",
+      "prompt": "The new smartphone failed to _____ the high expectations of customers, and many of them returned it within a week.",
+      "options": [
+        "meet",
+        "reach",
+        "arrive",
+        "catch"
+      ],
+      "answerIndex": 0,
+      "wordKey": "meet",
+      "senseId": "sense-89a3e6fc",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-2db7e810",
+      "kind": "multipleChoice",
+      "prompt": "Before the storm arrived, the villagers had to _____ action quickly to protect their homes from the rising flood.",
+      "options": [
+        "take",
+        "do",
+        "bring",
+        "give"
+      ],
+      "answerIndex": 0,
+      "wordKey": "take",
+      "senseId": "sense-e8a590ea",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-e2413832",
+      "kind": "multipleChoice",
+      "prompt": "The coach told the team to _____ calm during the final minutes of the match, even when the other side was winning.",
+      "options": [
+        "keep",
+        "hold",
+        "save",
+        "last"
+      ],
+      "answerIndex": 0,
+      "wordKey": "keep",
+      "senseId": "sense-3864815f",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-fe4f51b4",
+      "kind": "multipleChoice",
+      "prompt": "The charity concert was held to _____ money for families who had lost their houses in the earthquake last month.",
+      "options": [
+        "raise",
+        "rise",
+        "grow",
+        "lift"
+      ],
+      "answerIndex": 0,
+      "wordKey": "raise",
+      "senseId": "sense-1c85f411",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-d17207cb",
+      "kind": "multipleChoice",
+      "prompt": "Regular exercise can _____ an important role in keeping both your body and your mind healthy as you grow older.",
+      "options": [
+        "play",
+        "act",
+        "take",
+        "do"
+      ],
+      "answerIndex": 0,
+      "wordKey": "play",
+      "senseId": "sense-edd5674f",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-c4ecde77",
+      "kind": "multipleChoice",
+      "prompt": "Before the new medicine was approved, scientists carried out a _____ examination of its possible side effects.",
+      "options": [
+        "thorough",
+        "broad",
+        "wide",
+        "spacious"
+      ],
+      "answerIndex": 0,
+      "wordKey": "thorough",
+      "senseId": "sense-5b5f4da3",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-ed998fc2",
+      "kind": "multipleChoice",
+      "prompt": "The city council set up a special task force to _____ the growing problem of plastic waste in local rivers.",
+      "options": [
+        "tackle",
+        "attach",
+        "attend",
+        "fasten"
+      ],
+      "answerIndex": 0,
+      "wordKey": "tackle",
+      "senseId": "sense-f89c56b7",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-ae4fdfd5",
+      "kind": "multipleChoice",
+      "prompt": "Although she had started learning the violin only a year earlier, Maria made _____ progress and won the school contest.",
+      "options": [
+        "remarkable",
+        "noticeable",
+        "visible",
+        "obvious"
+      ],
+      "answerIndex": 0,
+      "wordKey": "remarkable",
+      "senseId": "sense-cb42d5a9",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-a4d140a6",
+      "kind": "multipleChoice",
+      "prompt": "Doctors warn that teenagers who _____ too many sugary drinks every day are more likely to develop health problems.",
+      "options": [
+        "consume",
+        "spend",
+        "exhaust",
+        "waste"
+      ],
+      "answerIndex": 0,
+      "wordKey": "consume",
+      "senseId": "sense-065d179f",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-5dd2e923",
+      "kind": "multipleChoice",
+      "prompt": "The long drought led to a serious _____ of clean water in several farming villages last summer.",
+      "options": [
+        "shortage",
+        "absence",
+        "surplus",
+        "decline"
+      ],
+      "answerIndex": 0,
+      "wordKey": "shortage",
+      "senseId": "sense-71044de8",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-d7a816ed",
+      "kind": "multipleChoice",
+      "prompt": "After arguing for almost an hour, the two students finally agreed to _____ their dispute by asking the teacher for advice.",
+      "options": [
+        "settle",
+        "calm",
+        "answer",
+        "repair"
+      ],
+      "answerIndex": 0,
+      "wordKey": "settle",
+      "senseId": "sense-6919b8e8",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-cda63f4d",
+      "kind": "multipleChoice",
+      "prompt": "The museum staff handled the ancient pottery with great care because the thin clay was extremely _____.",
+      "options": [
+        "fragile",
+        "feeble",
+        "tender",
+        "faint"
+      ],
+      "answerIndex": 0,
+      "wordKey": "fragile",
+      "senseId": "sense-ded111d5",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-b5f9747e",
+      "kind": "multipleChoice",
+      "prompt": "The technology company plans to _____ its newest smartphone at a large event in the capital next month.",
+      "options": [
+        "launch",
+        "begin",
+        "open",
+        "rise"
+      ],
+      "answerIndex": 0,
+      "wordKey": "launch",
+      "senseId": "sense-a7cc9dcf",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-3a44f2da",
+      "kind": "multipleChoice",
+      "prompt": "By becoming a doctor in her hometown, Anna was finally able to _____ her childhood dream of helping others.",
+      "options": [
+        "fulfill",
+        "complete",
+        "finish",
+        "satisfy"
+      ],
+      "answerIndex": 0,
+      "wordKey": "fulfill",
+      "senseId": "sense-37b190c4",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-67a183bd",
+      "kind": "multipleChoice",
+      "prompt": "Many shy students are _____ to speak in front of the whole class, even when they know the right answer.",
+      "options": [
+        "reluctant",
+        "uneasy",
+        "doubtful",
+        "uncertain"
+      ],
+      "answerIndex": 0,
+      "wordKey": "reluctant",
+      "senseId": "sense-6545c789",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-2e9d25b1",
+      "kind": "multipleChoice",
+      "prompt": "Regular morning exercise can _____ your energy levels and help you concentrate better during class.",
+      "options": [
+        "boost",
+        "lift",
+        "raise",
+        "grow"
+      ],
+      "answerIndex": 0,
+      "wordKey": "boost",
+      "senseId": "sense-dcf33219",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-4e8f831d",
+      "kind": "multipleChoice",
+      "prompt": "The scientist refused to accept the theory until there was enough solid _____ to support it.",
+      "options": [
+        "evidence",
+        "result",
+        "reason",
+        "fact"
+      ],
+      "answerIndex": 0,
+      "wordKey": "evidence",
+      "senseId": "sense-def84fd3",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-f73f9b71",
+      "kind": "multipleChoice",
+      "prompt": "Young children often struggle with _____ ideas such as justice and freedom because they cannot picture them concretely.",
+      "options": [
+        "abstract",
+        "vacant",
+        "hollow",
+        "obscure"
+      ],
+      "answerIndex": 0,
+      "wordKey": "abstract",
+      "senseId": "sense-447c5836",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-0c9dd21d",
+      "kind": "multipleChoice",
+      "prompt": "The new mayor promised to _____ the city's traffic problem by expanding the subway network within three years.",
+      "options": [
+        "scold",
+        "tackle",
+        "deserve",
+        "betray"
+      ],
+      "answerIndex": 1,
+      "wordKey": "tackle",
+      "senseId": "sense-f89c56b7",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-2af90f10",
+      "kind": "multipleChoice",
+      "prompt": "Before publishing the study, the scientists carried out a _____ check of all their data to rule out any errors.",
+      "options": [
+        "shallow",
+        "narrow",
+        "thorough",
+        "modest"
+      ],
+      "answerIndex": 2,
+      "wordKey": "thorough",
+      "senseId": "sense-5b5f4da3",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-d06cb292",
+      "kind": "multipleChoice",
+      "prompt": "As the years passed, her memory of that summer began to _____ until only a few blurry images remained.",
+      "options": [
+        "shrink",
+        "freeze",
+        "leak",
+        "fade"
+      ],
+      "answerIndex": 3,
+      "wordKey": "fade",
+      "senseId": "sense-700387f1",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-7e2e1bdf",
+      "kind": "multipleChoice",
+      "prompt": "Although the salary was generous, Daniel was _____ to move abroad because he did not want to leave his aging parents.",
+      "options": [
+        "anxious",
+        "reluctant",
+        "curious",
+        "eager"
+      ],
+      "answerIndex": 1,
+      "wordKey": "reluctant",
+      "senseId": "sense-6545c789",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-69293425",
+      "kind": "multipleChoice",
+      "prompt": "Volunteers worked for months to _____ the old theater to its original beauty after the fire damaged its walls.",
+      "options": [
+        "remind",
+        "release",
+        "restore",
+        "reverse"
+      ],
+      "answerIndex": 2,
+      "wordKey": "restore",
+      "senseId": "sense-44740f8d",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-7c5dbea8",
+      "kind": "multipleChoice",
+      "prompt": "The handwriting on the ancient letter was so faint that the researchers could _____ read a single word.",
+      "options": [
+        "fairly",
+        "merely",
+        "nearly",
+        "barely"
+      ],
+      "answerIndex": 3,
+      "wordKey": "barely",
+      "senseId": "sense-c893e59e",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-6caf71d7",
+      "kind": "multipleChoice",
+      "prompt": "After weeks without rain, the region faced a serious _____ of clean water, and residents had to line up at public wells.",
+      "options": [
+        "shortage",
+        "failure",
+        "absence",
+        "lack"
+      ],
+      "answerIndex": 0,
+      "wordKey": "shortage",
+      "senseId": "sense-71044de8",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-8c08a936",
+      "kind": "multipleChoice",
+      "prompt": "The charity concert was held to _____ funds for students who could not afford their tuition fees.",
+      "options": [
+        "rise",
+        "lift",
+        "raise",
+        "grow"
+      ],
+      "answerIndex": 2,
+      "wordKey": "raise",
+      "senseId": "sense-1c85f411",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-02b10c3b",
+      "kind": "multipleChoice",
+      "prompt": "Based on the survey results, the committee was finally able to _____ a clear conclusion about students' study habits.",
+      "options": [
+        "pull",
+        "make",
+        "give",
+        "draw"
+      ],
+      "answerIndex": 3,
+      "wordKey": "draw",
+      "senseId": "sense-e6ce0d4d",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-07c3f3cb",
+      "kind": "multipleChoice",
+      "prompt": "The factory has hired extra workers so that it can _____ the growing demand for electric cars this year.",
+      "options": [
+        "meet",
+        "reach",
+        "fit",
+        "answer"
+      ],
+      "answerIndex": 0,
+      "wordKey": "meet",
+      "senseId": "sense-89a3e6fc",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-3d5b0274",
+      "kind": "multipleChoice",
+      "prompt": "Doctors warn that people who fail to _____ attention to their sleep are more likely to suffer from poor health.",
+      "options": [
+        "give",
+        "pay",
+        "take",
+        "draw"
+      ],
+      "answerIndex": 1,
+      "wordKey": "pay",
+      "senseId": "sense-182a4672",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-a28d5431",
+      "kind": "multipleChoice",
+      "prompt": "A good detective needs a _____ eye for the tiny details that other people tend to overlook.",
+      "options": [
+        "bright",
+        "deep",
+        "wise",
+        "keen"
+      ],
+      "answerIndex": 3,
+      "wordKey": "keen",
+      "senseId": "sense-60875949",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-a56dea44",
+      "kind": "multipleChoice",
+      "prompt": "The flight was delayed for several hours because of the _____ rain that swept across the airport all afternoon.",
+      "options": [
+        "heavy",
+        "strong",
+        "thick",
+        "deep"
+      ],
+      "answerIndex": 0,
+      "wordKey": "heavy",
+      "senseId": "sense-6f083217",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-453dc621",
+      "kind": "multipleChoice",
+      "prompt": "Scientists believe that protecting endangered species is a responsibility every nation should be willing to _____.",
+      "options": [
+        "bring",
+        "hold",
+        "take",
+        "carry"
+      ],
+      "answerIndex": 2,
+      "wordKey": "take",
+      "senseId": "sense-e8a590ea",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-22e6cfbb",
+      "kind": "multipleChoice",
+      "prompt": "The new fertilizer is said to _____ the growth of the seedlings, so the farmers can harvest their crops several weeks earlier than usual.",
+      "options": [
+        "accelerate",
+        "accumulate",
+        "accompany",
+        "accomplish"
+      ],
+      "answerIndex": 0,
+      "wordKey": "accelerate",
+      "senseId": "sense-41d429cc",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-7b27fb46",
+      "kind": "multipleChoice",
+      "prompt": "Once the glaciers begin to melt at this rate, a rise in sea levels becomes _____, and coastal towns must prepare for it now.",
+      "options": [
+        "inevitable",
+        "invisible",
+        "incredible",
+        "irritable"
+      ],
+      "answerIndex": 0,
+      "wordKey": "inevitable",
+      "senseId": "sense-f353d665",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-f8288820",
+      "kind": "multipleChoice",
+      "prompt": "A single power failure at the data center was enough to _____ online classes for thousands of students across the whole island.",
+      "options": [
+        "disrupt",
+        "dismiss",
+        "distribute",
+        "distract"
+      ],
+      "answerIndex": 0,
+      "wordKey": "disrupt",
+      "senseId": "sense-9d6a9900",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-95c89397",
+      "kind": "multipleChoice",
+      "prompt": "Because rainfall in the valley is so _____, the local farmers rarely worry about whether their rice fields will have enough water.",
+      "options": [
+        "abundant",
+        "absolute",
+        "accurate",
+        "awkward"
+      ],
+      "answerIndex": 0,
+      "wordKey": "abundant",
+      "senseId": "sense-7fa124a2",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-d1d38a48",
+      "kind": "multipleChoice",
+      "prompt": "After failing the entrance exam twice, Daniel began to _____ whether college was really the right path for his future.",
+      "options": [
+        "contemplate",
+        "compliment",
+        "complicate",
+        "compensate"
+      ],
+      "answerIndex": 0,
+      "wordKey": "contemplate",
+      "senseId": "sense-e2f59ded",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-9c2155be",
+      "kind": "multipleChoice",
+      "prompt": "The students' plan to power the school with wind turbines sounded exciting, but the engineer doubted whether it was truly _____ on such a small budget.",
+      "options": [
+        "feasible",
+        "flexible",
+        "favorable",
+        "fashionable"
+      ],
+      "answerIndex": 0,
+      "wordKey": "feasible",
+      "senseId": "sense-d2fbbede",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-3d7f996d",
+      "kind": "multipleChoice",
+      "prompt": "The difference between the two paintings is so _____ that only a trained expert can tell which one is the original.",
+      "options": [
+        "subtle",
+        "stubborn",
+        "sincere",
+        "sensible"
+      ],
+      "answerIndex": 0,
+      "wordKey": "subtle",
+      "senseId": "sense-8892067a",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-f04ef692",
+      "kind": "multipleChoice",
+      "prompt": "If the young swimmer keeps improving at this pace, she may well _____ the national record at next year's championships.",
+      "options": [
+        "break",
+        "smash",
+        "crack",
+        "snap"
+      ],
+      "answerIndex": 0,
+      "wordKey": "break",
+      "senseId": "sense-27e2b0af",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-e6c5d04f",
+      "kind": "multipleChoice",
+      "prompt": "The newly discovered letters may finally _____ light on why the famous author suddenly stopped writing at the height of her career.",
+      "options": [
+        "shed",
+        "throw",
+        "pour",
+        "spread"
+      ],
+      "answerIndex": 0,
+      "wordKey": "shed",
+      "senseId": "sense-377fc3e3",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-80c283a0",
+      "kind": "multipleChoice",
+      "prompt": "Reading for twenty minutes every night before bed can help children _____ a lifelong habit of learning.",
+      "options": [
+        "develop",
+        "grow",
+        "raise",
+        "breed"
+      ],
+      "answerIndex": 0,
+      "wordKey": "develop",
+      "senseId": "sense-4a4922f4",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-63ca6445",
+      "kind": "multipleChoice",
+      "prompt": "After hours of heated discussion, the committee members were at last able to _____ a consensus on the new recycling policy.",
+      "options": [
+        "reach",
+        "arrive",
+        "achieve",
+        "gain"
+      ],
+      "answerIndex": 0,
+      "wordKey": "reach",
+      "senseId": "sense-f2d9d939",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-5f8ce28e",
+      "kind": "multipleChoice",
+      "prompt": "Working students often find it hard to _____ a balance between their part-time jobs and the demands of their studies.",
+      "options": [
+        "strike",
+        "hit",
+        "beat",
+        "knock"
+      ],
+      "answerIndex": 0,
+      "wordKey": "strike",
+      "senseId": "sense-dcdfe596",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-7f8b7c96",
+      "kind": "multipleChoice",
+      "prompt": "To cut down on waste, the city council decided to _____ a new policy that bans single-use plastic bags in all supermarkets.",
+      "options": [
+        "adopt",
+        "accept",
+        "receive",
+        "obtain"
+      ],
+      "answerIndex": 0,
+      "wordKey": "adopt",
+      "senseId": "sense-feffb9e2",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-e476e757",
+      "kind": "multipleChoice",
+      "prompt": "By posting the unverified rumor online, the website may _____ the risk of being sued for spreading false information.",
+      "options": [
+        "run",
+        "carry",
+        "hold",
+        "bring"
+      ],
+      "answerIndex": 0,
+      "wordKey": "run",
+      "senseId": "sense-f032408b",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-d9965928",
+      "kind": "multipleChoice",
+      "prompt": "After three days of heated debate, the jury finally reached a unanimous _____ on the controversial case.",
+      "options": [
+        "verdict",
+        "rumor",
+        "gesture",
+        "habit"
+      ],
+      "answerIndex": 0,
+      "wordKey": "verdict",
+      "senseId": "sense-59bacab5",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-e130ae2d",
+      "kind": "multipleChoice",
+      "prompt": "The company's accounting practices came under intense _____ after several irregularities were reported in the annual audit.",
+      "options": [
+        "scrutiny",
+        "applause",
+        "comfort",
+        "leisure"
+      ],
+      "answerIndex": 0,
+      "wordKey": "scrutiny",
+      "senseId": "sense-8ae88d10",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-0460e949",
+      "kind": "multipleChoice",
+      "prompt": "Scientists warn that the rapid melting of polar ice could _____ a serious threat to coastal cities around the world.",
+      "options": [
+        "pose",
+        "fetch",
+        "grant",
+        "mend"
+      ],
+      "answerIndex": 0,
+      "wordKey": "pose",
+      "senseId": "sense-9970b4d0",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-556c69a8",
+      "kind": "multipleChoice",
+      "prompt": "The professor reminded us that we should not _____ a hasty conclusion before all the experimental data have been collected.",
+      "options": [
+        "draw",
+        "pull",
+        "drag",
+        "tow"
+      ],
+      "answerIndex": 0,
+      "wordKey": "draw",
+      "senseId": "sense-e6ce0d4d",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-f07bb5ad",
+      "kind": "multipleChoice",
+      "prompt": "The factory installed advanced filters in order to _____ the strict environmental standards set by the government.",
+      "options": [
+        "meet",
+        "reach",
+        "arrive",
+        "gather"
+      ],
+      "answerIndex": 0,
+      "wordKey": "meet",
+      "senseId": "sense-89a3e6fc",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-642f4d67",
+      "kind": "multipleChoice",
+      "prompt": "Please _____ in mind that the library will close earlier than usual during the upcoming national holiday.",
+      "options": [
+        "bear",
+        "take",
+        "hold",
+        "carry"
+      ],
+      "answerIndex": 0,
+      "wordKey": "bear",
+      "senseId": "sense-97e88e77",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-eb4f1f44",
+      "kind": "multipleChoice",
+      "prompt": "Several parents stood up at the meeting to _____ concerns about the safety of the new playground equipment.",
+      "options": [
+        "raise",
+        "lift",
+        "rise",
+        "elevate"
+      ],
+      "answerIndex": 0,
+      "wordKey": "raise",
+      "senseId": "sense-1c85f411",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-85941824",
+      "kind": "multipleChoice",
+      "prompt": "The witness's contradictory testimony began to _____ doubt on the reliability of the entire investigation.",
+      "options": [
+        "cast",
+        "throw",
+        "fling",
+        "hurl"
+      ],
+      "answerIndex": 0,
+      "wordKey": "cast",
+      "senseId": "sense-952aaf4f",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-645901ea",
+      "kind": "multipleChoice",
+      "prompt": "As a beginner photographer, she has a _____ eye for the subtle changes of light at sunrise and sunset.",
+      "options": [
+        "keen",
+        "sharp",
+        "bright",
+        "clever"
+      ],
+      "answerIndex": 0,
+      "wordKey": "keen",
+      "senseId": "sense-60875949",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-ab884156",
+      "kind": "multipleChoice",
+      "prompt": "The city council passed strict laws to _____ air pollution before it reached dangerous levels.",
+      "options": [
+        "curb",
+        "restrain",
+        "hinder",
+        "suppress"
+      ],
+      "answerIndex": 0,
+      "wordKey": "curb",
+      "senseId": "sense-d64b716f",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-732fceda",
+      "kind": "multipleChoice",
+      "prompt": "After hours of heated debate, the committee finally reached a _____ on the new policy.",
+      "options": [
+        "coincidence",
+        "conformity",
+        "consensus",
+        "compromise"
+      ],
+      "answerIndex": 2,
+      "wordKey": "consensus",
+      "senseId": "sense-71a4d53c",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-42dd4677",
+      "kind": "multipleChoice",
+      "prompt": "The engineers concluded that building a bridge across the canyon was not _____ within the budget.",
+      "options": [
+        "eligible",
+        "probable",
+        "feasible",
+        "sensible"
+      ],
+      "answerIndex": 2,
+      "wordKey": "feasible",
+      "senseId": "sense-d2fbbede",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-a9f96317",
+      "kind": "multipleChoice",
+      "prompt": "Tax rebates gave many households a strong _____ to install solar panels on their roofs.",
+      "options": [
+        "inclination",
+        "initiative",
+        "incentive",
+        "intention"
+      ],
+      "answerIndex": 2,
+      "wordKey": "incentive",
+      "senseId": "sense-9f7230a8",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-d3a08e03",
+      "kind": "multipleChoice",
+      "prompt": "The whole team worked overtime in order to _____ the tight deadline for the project.",
+      "options": [
+        "reach",
+        "meet",
+        "keep",
+        "finish"
+      ],
+      "answerIndex": 1,
+      "wordKey": "meet",
+      "senseId": "sense-89a3e6fc",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-cad0fa71",
+      "kind": "multipleChoice",
+      "prompt": "From the limited data available, we should be careful not to _____ a hasty conclusion.",
+      "options": [
+        "make",
+        "pull",
+        "draw",
+        "take"
+      ],
+      "answerIndex": 2,
+      "wordKey": "draw",
+      "senseId": "sense-e6ce0d4d",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-3abd761e",
+      "kind": "multipleChoice",
+      "prompt": "Commuters were stuck for hours because of the _____ traffic caused by the morning storm.",
+      "options": [
+        "strong",
+        "thick",
+        "heavy",
+        "hard"
+      ],
+      "answerIndex": 2,
+      "wordKey": "heavy",
+      "senseId": "sense-6f083217",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-43176811",
+      "kind": "multipleChoice",
+      "prompt": "Scientists warn that rising sea levels _____ a serious threat to low-lying coastal towns.",
+      "options": [
+        "raise",
+        "pose",
+        "give",
+        "bring"
+      ],
+      "answerIndex": 1,
+      "wordKey": "pose",
+      "senseId": "sense-9970b4d0",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-b2745a6a",
+      "kind": "multipleChoice",
+      "prompt": "Health officials acted quickly to contain the sudden _____ of flu in the crowded dormitory.",
+      "options": [
+        "burst",
+        "outbreak",
+        "eruption",
+        "breakout"
+      ],
+      "answerIndex": 1,
+      "wordKey": "outbreak",
+      "senseId": "sense-3624dc14",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-07c5ff09",
+      "kind": "multipleChoice",
+      "prompt": "The young swimmer trained for years before she finally managed to _____ a new national record.",
+      "options": [
+        "make",
+        "build",
+        "set",
+        "lay"
+      ],
+      "answerIndex": 2,
+      "wordKey": "set",
+      "senseId": "sense-aa714481",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-7a43239f",
+      "kind": "multipleChoice",
+      "prompt": "The novelist is praised for her _____ imagination, which brings even ordinary scenes to life.",
+      "options": [
+        "lively",
+        "bright",
+        "vivid",
+        "vibrant"
+      ],
+      "answerIndex": 2,
+      "wordKey": "vivid",
+      "senseId": "sense-09ea45a3",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-da94bea9",
+      "kind": "cloze",
+      "prompt": "If I had known you were sick, I would have come to _____ in person.",
+      "answers": [
+        "apologize"
+      ],
+      "wordKey": "apologize",
+      "senseId": "sense-44525c34",
+      "source": "import",
+      "sourceType": "translate_blank"
+    },
+    {
+      "id": "child-7e687454",
+      "kind": "cloze",
+      "prompt": "The teacher whom all the students trust is known for being _____.",
+      "answers": [
+        "honest"
+      ],
+      "wordKey": "honest",
+      "senseId": "sense-c40f574f",
+      "source": "import",
+      "sourceType": "translate_blank"
+    },
+    {
+      "id": "child-fa05b0fd",
+      "kind": "cloze",
+      "prompt": "Living near the station is far more _____ than I had expected.",
+      "answers": [
+        "convenient"
+      ],
+      "wordKey": "convenient",
+      "senseId": "sense-e1e66414",
+      "source": "import",
+      "sourceType": "translate_blank"
+    },
+    {
+      "id": "child-ee9245e9",
+      "kind": "cloze",
+      "prompt": "My parents always _____ me to pursue my own dreams.",
+      "answers": [
+        "encourage"
+      ],
+      "wordKey": "encourage",
+      "senseId": "sense-8162b4a9",
+      "source": "import",
+      "sourceType": "translate_blank"
+    },
+    {
+      "id": "child-ec00929c",
+      "kind": "cloze",
+      "prompt": "A good leader must be _____ enough to listen to every member of the team.",
+      "answers": [
+        "patient"
+      ],
+      "wordKey": "patient",
+      "senseId": "sense-c16ef176",
+      "source": "import",
+      "sourceType": "translate_blank"
+    },
+    {
+      "id": "child-b29d7aa7",
+      "kind": "cloze",
+      "prompt": "The advice that my mentor gave me last year turned out to be extremely _____.",
+      "answers": [
+        "valuable"
+      ],
+      "wordKey": "valuable",
+      "senseId": "sense-b82fea5c",
+      "source": "import",
+      "sourceType": "translate_blank"
+    },
+    {
+      "id": "child-59a00973",
+      "kind": "cloze",
+      "prompt": "The doctor strongly _____ that he take a break from work for a while.",
+      "answers": [
+        "suggest"
+      ],
+      "wordKey": "suggest",
+      "senseId": "sense-cbe9efd5",
+      "source": "import",
+      "sourceType": "translate_blank"
+    },
+    {
+      "id": "child-482001f9",
+      "kind": "cloze",
+      "prompt": "Were we to act now, we could still protect the _____ for future generations.",
+      "answers": [
+        "environment"
+      ],
+      "wordKey": "environment",
+      "senseId": "sense-b6634efd",
+      "source": "import",
+      "sourceType": "translate_blank"
+    },
+    {
+      "id": "child-cbf02ee5",
+      "kind": "cloze",
+      "prompt": "The more we practice speaking English, the more _____ we gain.",
+      "answers": [
+        "confidence"
+      ],
+      "wordKey": "confidence",
+      "senseId": "sense-f4c96a49",
+      "source": "import",
+      "sourceType": "translate_blank"
+    },
+    {
+      "id": "child-ce776cb3",
+      "kind": "cloze",
+      "prompt": "If I had known about the company's problems, I would never have decided to _____ from my old job.",
+      "answers": [
+        "resign"
+      ],
+      "wordKey": "resign",
+      "senseId": "sense-c03cbd83",
+      "source": "import",
+      "sourceType": "translate_blank"
+    },
+    {
+      "id": "child-b9c294c1",
+      "kind": "cloze",
+      "prompt": "The students who _____ at the local hospital every weekend are truly admirable.",
+      "answers": [
+        "volunteer"
+      ],
+      "wordKey": "volunteer",
+      "senseId": "sense-39e5c5b6",
+      "source": "import",
+      "sourceType": "translate_blank"
+    },
+    {
+      "id": "child-a1e33fbf",
+      "kind": "cloze",
+      "prompt": "It took me nearly an hour to _____ my parents that studying abroad was the right choice.",
+      "answers": [
+        "convince"
+      ],
+      "wordKey": "convince",
+      "senseId": "sense-4d0816a9",
+      "source": "import",
+      "sourceType": "translate_blank"
+    },
+    {
+      "id": "child-fbb00d22",
+      "kind": "cloze",
+      "prompt": "He was too proud to _____ to his sister, even though he knew he was wrong.",
+      "answers": [
+        "apologize"
+      ],
+      "wordKey": "apologize",
+      "senseId": "sense-44525c34",
+      "source": "import",
+      "sourceType": "translate_blank"
+    },
+    {
+      "id": "child-2bf1eb99",
+      "kind": "cloze",
+      "prompt": "To succeed in any career, developing good communication skills is absolutely _____.",
+      "answers": [
+        "essential"
+      ],
+      "wordKey": "essential",
+      "senseId": "sense-3f5130b1",
+      "source": "import",
+      "sourceType": "translate_blank"
+    },
+    {
+      "id": "child-9d2b0239",
+      "kind": "cloze",
+      "prompt": "With courage and determination, she managed to _____ all the difficulties in her life.",
+      "answers": [
+        "overcome"
+      ],
+      "wordKey": "overcome",
+      "senseId": "sense-dd5e2bcc",
+      "source": "import",
+      "sourceType": "translate_blank"
+    },
+    {
+      "id": "child-20c8da88",
+      "kind": "cloze",
+      "prompt": "If I had saved more money last year, I could _____ a trip to Europe this summer.",
+      "answers": [
+        "afford"
+      ],
+      "wordKey": "afford",
+      "senseId": "sense-ae5074ab",
+      "source": "import",
+      "sourceType": "translate_blank"
+    },
+    {
+      "id": "child-3ce706bc",
+      "kind": "cloze",
+      "prompt": "Were I given the chance to study _____, I would choose a university in Canada.",
+      "answers": [
+        "abroad"
+      ],
+      "wordKey": "abroad",
+      "senseId": "sense-5f3f5cc3",
+      "source": "import",
+      "sourceType": "translate_blank"
+    },
+    {
+      "id": "child-4c5479ef",
+      "kind": "cloze",
+      "prompt": "The student who decided to _____ at the animal shelter won everyone's admiration.",
+      "answers": [
+        "volunteer"
+      ],
+      "wordKey": "volunteer",
+      "senseId": "sense-39e5c5b6",
+      "source": "import",
+      "sourceType": "translate_blank"
+    },
+    {
+      "id": "child-63664fa2",
+      "kind": "cloze",
+      "prompt": "Failure is often more _____ than success, for it teaches us what we still need to learn.",
+      "answers": [
+        "valuable"
+      ],
+      "wordKey": "valuable",
+      "senseId": "sense-b82fea5c",
+      "source": "import",
+      "sourceType": "translate_blank"
+    },
+    {
+      "id": "child-e6107e7a",
+      "kind": "cloze",
+      "prompt": "Never have I seen a teacher treat her students with such _____ and care.",
+      "answers": [
+        "patience"
+      ],
+      "wordKey": "patience",
+      "senseId": "sense-dee47805",
+      "source": "import",
+      "sourceType": "translate_blank"
+    },
+    {
+      "id": "child-f88f2c2c",
+      "kind": "cloze",
+      "prompt": "So _____ was the young swimmer that she believed she could break the national record.",
+      "answers": [
+        "confident"
+      ],
+      "wordKey": "confident",
+      "senseId": "sense-ad28e9d9",
+      "source": "import",
+      "sourceType": "translate_blank"
+    },
+    {
+      "id": "child-407fa2e8",
+      "kind": "cloze",
+      "prompt": "She works late every night in order to _____ her dream of becoming a doctor.",
+      "answers": [
+        "achieve"
+      ],
+      "wordKey": "achieve",
+      "senseId": "sense-2d13f7e3",
+      "source": "import",
+      "sourceType": "translate_blank"
+    },
+    {
+      "id": "child-252e9e8b",
+      "kind": "cloze",
+      "prompt": "It is always better to be _____ with your friends than to hide the truth from them.",
+      "answers": [
+        "honest"
+      ],
+      "wordKey": "honest",
+      "senseId": "sense-c40f574f",
+      "source": "import",
+      "sourceType": "translate_blank"
+    },
+    {
+      "id": "child-15a02007",
+      "kind": "cloze",
+      "prompt": "If you have any questions, our staff will be _____ to help you at any time.",
+      "answers": [
+        "available"
+      ],
+      "wordKey": "available",
+      "senseId": "sense-e76a3b8c",
+      "source": "import",
+      "sourceType": "translate_blank"
+    },
+    {
+      "id": "child-1cb3cd70",
+      "kind": "cloze",
+      "prompt": "The teacher we admire most is the one who is always _____ with her students.",
+      "answers": [
+        "honest"
+      ],
+      "wordKey": "honest",
+      "senseId": "sense-c40f574f",
+      "source": "import",
+      "sourceType": "translate_blank"
+    },
+    {
+      "id": "child-2badb084",
+      "kind": "cloze",
+      "prompt": "If people kept throwing trash into the river, they would _____ the fish living in it.",
+      "answers": [
+        "harm"
+      ],
+      "wordKey": "harm",
+      "senseId": "sense-13bf3f22",
+      "source": "import",
+      "sourceType": "translate_blank"
+    },
+    {
+      "id": "child-f1b6f110",
+      "kind": "cloze",
+      "prompt": "What impressed the judges most was her _____ to remain calm under great pressure.",
+      "answers": [
+        "ability"
+      ],
+      "wordKey": "ability",
+      "senseId": "sense-e98cdb10",
+      "source": "import",
+      "sourceType": "translate_blank"
+    },
+    {
+      "id": "child-d7f37e5f",
+      "kind": "cloze",
+      "prompt": "Not until the engineers worked together did they find a _____ to the problem.",
+      "answers": [
+        "solution"
+      ],
+      "wordKey": "solution",
+      "senseId": "sense-c100c819",
+      "source": "import",
+      "sourceType": "translate_blank"
+    },
+    {
+      "id": "child-28a2d48c",
+      "kind": "cloze",
+      "prompt": "The student who studies hard every day is far more _____ than the one who never reviews.",
+      "answers": [
+        "confident"
+      ],
+      "wordKey": "confident",
+      "senseId": "sense-ad28e9d9",
+      "source": "import",
+      "sourceType": "translate_blank"
+    }
+  ]
+}

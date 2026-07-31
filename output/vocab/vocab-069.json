@@ -1,0 +1,1432 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 69,
+  "words": [
+    {
+      "wordKey": "comparison",
+      "word": "comparison",
+      "senses": [
+        {
+          "id": "sense-8be6ca7e",
+          "pos": "noun",
+          "meaningZh": "比較；對照",
+          "definitionEn": "relation based on similarities and differences",
+          "examples": [
+            "In order to make a well-informed decision, it is important to conduct a thorough comparison of all available options."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-a0899951",
+          "pos": "noun",
+          "meaningZh": "比較行為；對比",
+          "definitionEn": "the act of examining resemblances",
+          "examples": [
+            "In order to make an informed decision, it's important to make a thorough comparison of different products before purchasing."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L2 +1",
+        "textbookTitle": "龍騰 B2·L2、三民 B2·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "compete",
+      "word": "compete",
+      "senses": [
+        {
+          "id": "sense-3659c80f",
+          "pos": "verb",
+          "meaningZh": "競爭；角逐",
+          "definitionEn": "engage in a contest to achieve a goal; strive to do better than others",
+          "examples": [
+            "In order to win the championship, the two teams will compete against each other in a thrilling match."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-ed2f0e09",
+          "pos": "verb",
+          "meaningZh": "參賽；比賽",
+          "definitionEn": "participate in a competition; measure one’s abilities against others",
+          "examples": [
+            "In order to prove his skills, John decided to compete in the regional chess tournament."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L7 +1",
+        "textbookTitle": "龍騰 B1·L7、三民 B1·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "complain",
+      "word": "complain",
+      "senses": [
+        {
+          "id": "sense-7911abac",
+          "pos": "verb",
+          "meaningZh": "抱怨；投訴",
+          "definitionEn": "to express dissatisfaction, annoyance, or unhappiness about something",
+          "examples": [
+            "She complained to the manager about the poor service she received at the restaurant."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-690e45ea",
+          "pos": "verb",
+          "meaningZh": "訴說（病痛）；申訴",
+          "definitionEn": "to state that one is suffering from (a pain or other symptom of illness)",
+          "examples": [
+            "She complained of a severe headache and had to take a painkiller."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L8 +1",
+        "textbookTitle": "龍騰 B4·L8、三民 B2·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "complaint",
+      "word": "complaint",
+      "senses": [
+        {
+          "id": "sense-145b46b7",
+          "pos": "noun",
+          "meaningZh": "投訴；申訴",
+          "definitionEn": "an expression of dissatisfaction with a situation, product, or service",
+          "examples": [
+            "After receiving a faulty product, she called customer service to file a complaint about its poor quality and request a replacement."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-fb571832",
+          "pos": "noun",
+          "meaningZh": "不滿；抱怨",
+          "definitionEn": "a formerly used outcry of pain, rage, or sorrow",
+          "examples": [
+            "After waiting for hours, the customer lodged a complaint about the slow service at the restaurant."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L8 +1",
+        "textbookTitle": "龍騰 B4·L8、三民 B2·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "concert",
+      "word": "concert",
+      "senses": [
+        {
+          "id": "sense-5b5dbb1a",
+          "pos": "noun",
+          "meaningZh": "音樂會；演唱會",
+          "definitionEn": "a public performance of music by singers or musicians, typically presented in a venue specifically designed for such performances with formal staging and lighting",
+          "examples": [
+            "Last night, I went to a concert at the grand theater downtown. The venue was filled with enthusiastic fans, and the musicians delivered an unforgettable performance with spectacular staging and lighting."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-ca5c452d",
+          "pos": "verb",
+          "meaningZh": "協調安排；共同籌劃",
+          "definitionEn": "plan or arrange (an event) by mutual agreement",
+          "examples": [
+            "Emily and Sarah decided to concert their efforts in organizing a charity concert to raise funds for a local orphanage."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "conclusion",
+      "word": "conclusion",
+      "senses": [
+        {
+          "id": "sense-5c75740c",
+          "pos": "noun",
+          "meaningZh": "結論；判斷",
+          "definitionEn": "the process of making a decision or forming an opinion",
+          "examples": [
+            "After much research and consideration, she reached the conclusion that the project would not be feasible within the given time frame."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-d633ad27",
+          "pos": "noun",
+          "meaningZh": "邏輯推論；定論",
+          "definitionEn": "a statement that can be logically made based on the facts and information available",
+          "examples": [
+            "Based on the evidence presented during the trial, the jury came to the conclusion that the defendant was guilty."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L3 +1",
+        "textbookTitle": "龍騰 B4·L3、三民 B4·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "cone",
+      "word": "cone",
+      "senses": [
+        {
+          "id": "sense-c0d6803a",
+          "pos": "noun",
+          "meaningZh": "圓錐形；錐形",
+          "definitionEn": "a shape whose base is a circle and whose sides taper up to a point",
+          "examples": [
+            "The ice cream vendor scooped a dollop of chocolate ice cream onto the cone, creating a perfect swirl that tapered up to a point."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-f6e3070a",
+          "pos": "noun",
+          "meaningZh": "錐形物；交通錐",
+          "definitionEn": "cone-shaped object or structure",
+          "examples": [
+            "The traffic cones were placed along the road to indicate the construction zone."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "confirm",
+      "word": "confirm",
+      "senses": [
+        {
+          "id": "sense-27170c65",
+          "pos": "verb",
+          "meaningZh": "確認；批准",
+          "definitionEn": "give approval or an official stamp to something already determined or established",
+          "examples": [
+            "After reviewing the proposal, the board of directors convened to confirm the decision made by the hiring committee."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-21a00883",
+          "pos": "verb",
+          "meaningZh": "認可；確定人選",
+          "definitionEn": "support a person for a position or role",
+          "examples": [
+            "After carefully reviewing his qualifications and experience, the hiring committee decided to confirm John as the new CEO of the company."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L5 +1",
+        "textbookTitle": "龍騰 B5·L5、三民 B4·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "confuse",
+      "word": "confuse",
+      "senses": [
+        {
+          "id": "sense-8b646fb7",
+          "pos": "verb",
+          "meaningZh": "使困惑；使不知所措",
+          "definitionEn": "cause someone to become bewildered or uncertain",
+          "examples": [
+            "The complicated instructions for assembling the furniture confused me."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-2301aa6e",
+          "pos": "verb",
+          "meaningZh": "混淆；搞錯",
+          "definitionEn": "mix up something with something else, causing a mistake or error",
+          "examples": [
+            "I always confuse the names of my colleagues in the office."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L3 +2",
+        "textbookTitle": "龍騰 B2·L3、三民 B4·L2、翰林 B1·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "connect",
+      "word": "connect",
+      "senses": [
+        {
+          "id": "sense-e774be48",
+          "pos": "verb",
+          "meaningZh": "連接；接通",
+          "definitionEn": "join or unite",
+          "examples": [
+            "The railroad connects the city to the coast."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-38cc7670",
+          "pos": "verb",
+          "meaningZh": "聯繫；關聯",
+          "definitionEn": "make a logical or causal connection",
+          "examples": [
+            "In order to properly connect the wires, you should first read the instructions carefully and identify which wire goes where."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L2 +2",
+        "textbookTitle": "龍騰 B1·L2、三民 B1·L8、翰林 B1·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "conscious",
+      "word": "conscious",
+      "senses": [
+        {
+          "id": "sense-07f78bd6",
+          "pos": "adjective",
+          "meaningZh": "有意識的；清醒的",
+          "definitionEn": "having knowledge or perception of one’s surroundings, sensations, and thoughts",
+          "examples": [
+            "After the accident, he was conscious but remained still until the paramedics arrived."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-910848af",
+          "pos": "adjective",
+          "meaningZh": "意識到的；察覺的",
+          "definitionEn": "showing awareness or realization of something",
+          "examples": [
+            "She was conscious of the fact that she was being followed, so she sped up her pace to lose the follower."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L7",
+        "textbookTitle": "龍騰 B3·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "considerable",
+      "word": "considerable",
+      "senses": [
+        {
+          "id": "sense-ce817702",
+          "pos": "adjective",
+          "meaningZh": "相當大的；可觀的",
+          "definitionEn": "fairly large in size or extent, noteworthy",
+          "examples": [
+            "The project required considerable time and effort to complete."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L3 +1",
+        "textbookTitle": "龍騰 B5·L3、三民 B4·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "constant",
+      "word": "constant",
+      "senses": [
+        {
+          "id": "sense-e0baec3c",
+          "pos": "adjective",
+          "meaningZh": "恆定的；不變的",
+          "definitionEn": "unvarying in nature",
+          "examples": [
+            "The temperature in the laboratory must be kept constant for the experiment to be reliable."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-66e70b60",
+          "pos": "noun",
+          "meaningZh": "常數（數學）",
+          "definitionEn": "a number representing a quantity assumed to have a fixed value in a specified mathematical context",
+          "examples": [
+            "In the equation 2x + 3y = 10, the value of 2 is a constant as it represents a fixed value that does not change regardless of the values assigned to x and y."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L9 +2",
+        "textbookTitle": "龍騰 B2·L9、三民 B2·L8、翰林 B1·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "continent",
+      "word": "continent",
+      "senses": [
+        {
+          "id": "sense-60e11c79",
+          "pos": "noun",
+          "meaningZh": "洲；大陸",
+          "definitionEn": "any of the world’s main continuous expanses of land (Africa, Antarctica, Asia, Australia, Europe, North America, South America).",
+          "examples": [
+            "Australia is the smallest continent in terms of land area, but it is incredibly diverse and home to unique wildlife such as kangaroos and koalas."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-7981d019",
+          "pos": "adjective",
+          "meaningZh": "能自制排泄的",
+          "definitionEn": "able to control urinary and fecal discharge",
+          "examples": [
+            "After undergoing a successful surgery, the patient regained continent control and no longer experienced involuntary bladder or bowel movements."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L6",
+        "textbookTitle": "龍騰 B1·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "controller",
+      "word": "controller",
+      "senses": [
+        {
+          "id": "sense-38836f80",
+          "pos": "noun",
+          "meaningZh": "控制器；搖桿",
+          "definitionEn": "a device used to operate a machine, game console, or system",
+          "examples": [
+            "He grabbed the controller and started the video game."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-066e8a34",
+          "pos": "noun",
+          "meaningZh": "主計長；財務主管",
+          "definitionEn": "someone who maintains and audits business accounts",
+          "examples": [
+            "Jane works as a controller for a large manufacturing company, ensuring all financial records are accurate and conducting regular audits."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-a6a8efbe",
+          "pos": "noun",
+          "meaningZh": "管制員；指揮者",
+          "definitionEn": "a person who directs and restrains",
+          "examples": [
+            "The flight controller at the airport directed the incoming planes to their designated gates and ensured their safe landing."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "cooker",
+      "word": "cooker",
+      "senses": [
+        {
+          "id": "sense-7b6e9014",
+          "pos": "noun",
+          "meaningZh": "烹飪器具；爐具",
+          "definitionEn": "a cooking appliance used for preparing meals, such as an oven, stove, or microwave",
+          "examples": [
+            "After a long day at work, Sarah loves to unwind by using her slow cooker to make a delicious and comforting beef stew."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "costly",
+      "word": "costly",
+      "senses": [
+        {
+          "id": "sense-5c9a0ab6",
+          "pos": "adjective",
+          "meaningZh": "昂貴的；費用高的",
+          "definitionEn": "involving high expense or price",
+          "examples": [
+            "The wedding was quite costly, with a lavish venue, extravagant decorations, and a gourmet menu."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-0e58f305",
+          "pos": "adjective",
+          "meaningZh": "代價大的；損失大的",
+          "definitionEn": "causing or involving great expense or sacrifice",
+          "examples": [
+            "The repair of a luxury car can be quite costly, especially if it involves importing rare parts."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "cotton",
+      "word": "cotton",
+      "senses": [
+        {
+          "id": "sense-610d9cfe",
+          "pos": "noun",
+          "meaningZh": "棉花；棉株",
+          "definitionEn": "a type of plant with erect bushy growth that bears bolls containing seeds with many long, fine, soft, and hairy fibers",
+          "examples": [
+            "The cotton farmer carefully tended to his crop, ensuring that the plants received adequate sunlight and water so that they could produce high-quality cotton fibers."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "cough",
+      "word": "cough",
+      "senses": [
+        {
+          "id": "sense-4f763335",
+          "pos": "verb",
+          "meaningZh": "咳嗽；清喉嚨",
+          "definitionEn": "to clear your throat and make a sudden explosive sound, especially because of irritation or to remove mucus",
+          "examples": [
+            "She had been coughing all morning due to a cold she caught from her coworker."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-4ad079f6",
+          "pos": "noun",
+          "meaningZh": "咳嗽；咳嗽聲",
+          "definitionEn": "a sudden noisy expulsion of air from the lungs that clears the airways; it could be a symptom of many respiratory illnesses, such as upper respiratory infections, bronchitis, pneumonia or tuberculosis",
+          "examples": [
+            "She had to cover her mouth and nose while walking through the crowded train to prevent coughing."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B2·L7",
+        "textbookTitle": "三民 B2·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "countable",
+      "word": "countable",
+      "senses": [
+        {
+          "id": "sense-341004c5",
+          "pos": "adjective",
+          "meaningZh": "可數的；可計算的",
+          "definitionEn": "able to be counted",
+          "examples": [
+            "I have a countable number of books on my shelf."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-c7a204c4",
+          "pos": "adjective",
+          "meaningZh": "（文法）可數的（有單複數）",
+          "definitionEn": "having a singular and plural form",
+          "examples": [
+            "When ordering food, please ensure that you ask for countable items such as one pizza or two hamburgers."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "county",
+      "word": "county",
+      "senses": [
+        {
+          "id": "sense-e82e6703",
+          "pos": "noun",
+          "meaningZh": "（英國）郡；行政區",
+          "definitionEn": "a region created by territorial division for the purpose of local government (United Kingdom)",
+          "examples": [
+            "In the United Kingdom, a county is an administrative region that is responsible for local government. For example, Oxfordshire is a county that has its own council and elected officials."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-05ab8c36",
+          "pos": "noun",
+          "meaningZh": "（美國）縣；郡",
+          "definitionEn": "the largest administrative district within a state (United States)",
+          "examples": [
+            "The residents of Smith County voted in favor of building a new hospital."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "crab",
+      "word": "crab",
+      "senses": [
+        {
+          "id": "sense-bc73c81d",
+          "pos": "noun",
+          "meaningZh": "螃蟹",
+          "definitionEn": "a sea creature with a hard shell, two claws, and five pairs of legs",
+          "examples": [
+            "We caught a crab in the rock pool at low tide."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-aa54f3bf",
+          "pos": "noun",
+          "meaningZh": "脾氣壞的人；易怒者",
+          "definitionEn": "a bad-tempered or irritable person.",
+          "examples": [
+            "At the office, John was known as the crab because of his constant complaints and grumpy attitude."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "cradle",
+      "word": "cradle",
+      "senses": [
+        {
+          "id": "sense-91c377bb",
+          "pos": "noun",
+          "meaningZh": "搖籃",
+          "definitionEn": "a small bed for a baby, often able to rock from side to side",
+          "examples": [
+            "The mother gently rocked the baby in its cradle."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-dd421c00",
+          "pos": "verb",
+          "meaningZh": "輕柔托抱；懷抱",
+          "definitionEn": "to hold something gently and carefully",
+          "examples": [],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "crane",
+      "word": "crane",
+      "senses": [
+        {
+          "id": "sense-0fb14b6e",
+          "pos": "noun",
+          "meaningZh": "吊車；起重機",
+          "definitionEn": "a machine with a pivoted arm for lifting and moving heavy objects",
+          "examples": [
+            "The construction crew used a crane to lift the steel beams into place."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-9d7c5bc6",
+          "pos": "verb",
+          "meaningZh": "伸長脖子；探頭張望",
+          "definitionEn": "to stretch out one’s neck in order to see something better",
+          "examples": [
+            "The child craned his neck to catch a glimpse of the circus parade passing by."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "crash",
+      "word": "crash",
+      "senses": [
+        {
+          "id": "sense-4627ba97",
+          "pos": "verb",
+          "meaningZh": "猛烈撞擊；轟然倒下",
+          "definitionEn": "break violently or noisily; smash",
+          "examples": [
+            "The sound of the crashing waves against the shore was music to her ears."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-1bd325f3",
+          "pos": "verb",
+          "meaningZh": "撞毀；碰撞損壞",
+          "definitionEn": "undergo damage or destruction on impact",
+          "examples": [
+            "The car crashed into the tree, completely destroying the front end."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B1·L2",
+        "textbookTitle": "三民 B1·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "crawl",
+      "word": "crawl",
+      "senses": [
+        {
+          "id": "sense-23ecdd82",
+          "pos": "verb",
+          "meaningZh": "爬行；匍匐前進",
+          "definitionEn": "to move slowly on hands and knees or with the body close to the ground",
+          "examples": [
+            "The baby began to crawl across the living room floor, exploring every corner."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-bd792ea8",
+          "pos": "verb",
+          "meaningZh": "卑躬屈膝；俯首帖耳",
+          "definitionEn": "to show fear or submission",
+          "examples": [
+            "The timid dog would crawl at the feet of its stern owner."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "creative",
+      "word": "creative",
+      "senses": [
+        {
+          "id": "sense-29633d13",
+          "pos": "adjective",
+          "meaningZh": "有創意的；富創造力的",
+          "definitionEn": "having the ability or power to create, especially something new or imaginative",
+          "examples": [
+            "Sara's artwork showcases her creative talent and unique perspective."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-a57d20dd",
+          "pos": "adjective",
+          "meaningZh": "啟發創作的；激發靈感的",
+          "definitionEn": "promoting construction or creation",
+          "examples": [
+            "The brainstorming session sparked many creative ideas for the new advertising campaign."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L4 +2",
+        "textbookTitle": "龍騰 B1·L4、三民 B2·L3、翰林 B1·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "creator",
+      "word": "creator",
+      "senses": [
+        {
+          "id": "sense-ab9b46c7",
+          "pos": "noun",
+          "meaningZh": "創作者；製作人",
+          "definitionEn": "a person, company, or organization that originates or makes something",
+          "examples": [
+            "The artist is known as a prolific creator, producing masterpiece after masterpiece."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-6121a33f",
+          "pos": "noun",
+          "meaningZh": "創造者；發明者",
+          "definitionEn": "someone or something that brings something into existence",
+          "examples": [
+            "The inventor is the creator of innovative technologies that have changed the world."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B1·L9",
+        "textbookTitle": "三民 B1·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "creature",
+      "word": "creature",
+      "senses": [
+        {
+          "id": "sense-ceb1f8fb",
+          "pos": "noun",
+          "meaningZh": "生物；動物",
+          "definitionEn": "a living being that can move voluntarily",
+          "examples": [
+            "While swimming in the ocean, I saw a magnificent creature that resembled a sea dragon."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-fb39b89e",
+          "pos": "noun",
+          "meaningZh": "生靈；生命體",
+          "definitionEn": "any living thing",
+          "examples": [
+            "The dense forests of the Amazon are home to a diverse range of creatures, including monkeys, birds, insects and reptiles."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L3 +2",
+        "textbookTitle": "龍騰 B1·L3、三民 B1·L10、翰林 B1·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "credit",
+      "word": "credit",
+      "senses": [
+        {
+          "id": "sense-868ac50e",
+          "pos": "noun",
+          "meaningZh": "功勞；讚揚",
+          "definitionEn": "praise or recognition given to someone for something they have done",
+          "examples": [
+            "She deserves credit for finishing the project on time."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-49d15cda",
+          "pos": "noun",
+          "meaningZh": "信用消費；賒帳",
+          "definitionEn": "arrangement for deferred payment for goods and services",
+          "examples": [
+            "He purchased a new car on credit, and he is making monthly payments for it."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-04850d7a",
+          "pos": "noun",
+          "meaningZh": "信用額度；貸款額",
+          "definitionEn": "money available for a client to borrow",
+          "examples": [
+            "The bank offered a credit of $10,000 to their trusted clients for their new businesses."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·R2",
+        "textbookTitle": "龍騰 B3·R2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    }
+  ]
+}

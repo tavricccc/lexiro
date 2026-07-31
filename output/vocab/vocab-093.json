@@ -1,0 +1,1378 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 93,
+  "words": [
+    {
+      "wordKey": "tease",
+      "word": "tease",
+      "senses": [
+        {
+          "id": "sense-8cb0f0a2",
+          "pos": "noun",
+          "meaningZh": "戲弄；嘲弄",
+          "definitionEn": "the act of playfully or maliciously harassing or ridiculing someone; provoking someone by persistent annoyances",
+          "examples": [
+            "During lunch break, Sarah would always tease her coworkers about their eating habits, making funny remarks and imitating their gestures."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-3fbf108a",
+          "pos": "noun",
+          "meaningZh": "賣弄風情者；調情不認真的人",
+          "definitionEn": "a flirtatious person who does not intend to follow through with taking action towards romantic or sexual interest",
+          "examples": [
+            "At the party, John was a tease, leading several people on with his charming and flirty behavior, but never making any serious romantic advances."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L6 +1",
+        "textbookTitle": "龍騰 B2·L6、三民 B2·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "technical",
+      "word": "technical",
+      "senses": [
+        {
+          "id": "sense-71941531",
+          "pos": "adjective",
+          "meaningZh": "技術的；專業技術的",
+          "definitionEn": "relating to the practical skills, methods, or knowledge of a particular subject, job, or activity",
+          "examples": [
+            "The manual is full of technical terms that are hard to understand."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-478c5fc7",
+          "pos": "adjective",
+          "meaningZh": "技術面的（金融市場）",
+          "definitionEn": "resulting from market factors, rather than fundamental economic considerations",
+          "examples": [
+            "While the fundamental value of the stock was low, the technical analysis indicated that it was a good time to buy due to positive market factors."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-eca55300",
+          "pos": "noun",
+          "meaningZh": "技術犯規（籃球）",
+          "definitionEn": "(basketball) a foul that can be assessed on a player, coach, or team for unsportsmanlike conduct, which does not usually involve physical contact during play",
+          "examples": [
+            "After constantly arguing with the referee, the coach received a technical and was ejected from the game."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "technique",
+      "word": "technique",
+      "senses": [
+        {
+          "id": "sense-ba584ae9",
+          "pos": "noun",
+          "meaningZh": "技巧；技術熟練度",
+          "definitionEn": "skillfulness in the command of fundamentals deriving from practice and familiarity",
+          "examples": [
+            "Her technique in playing the piano is exceptional, as she has been practicing daily for years."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-90b2820f",
+          "pos": "noun",
+          "meaningZh": "方法；技法",
+          "definitionEn": "a practical method or art applied to some particular task",
+          "examples": [
+            "The surgeon used an innovative technique to perform the complex surgery."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "technology",
+      "word": "technology",
+      "senses": [
+        {
+          "id": "sense-9b04125a",
+          "pos": "noun",
+          "meaningZh": "科技；技術",
+          "definitionEn": "the practical application of scientific knowledge in commerce, industry, and everyday life",
+          "examples": [
+            "The advancements in technology have made communication easier, faster, and more efficient than ever before."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-394962f4",
+          "pos": "noun",
+          "meaningZh": "科技學門；技術研究",
+          "definitionEn": "the branch dealing with the development, design and use of new technological innovations",
+          "examples": [
+            "Studying technology helps to understand the rapid advancements in artificial intelligence, smartphones, and healthcare equipment."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L7 +1",
+        "textbookTitle": "龍騰 B2·L7、翰林 B1·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "teenage",
+      "word": "teenage",
+      "senses": [
+        {
+          "id": "sense-d49a12b8",
+          "pos": "adjective",
+          "meaningZh": "青少年的；十幾歲的",
+          "definitionEn": "relating to or characteristic of teenagers; being of the age 13 through 19",
+          "examples": [
+            "The popular clothing brand is catering to the teenage market with their trendy designs."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B2·L5",
+        "textbookTitle": "三民 B2·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "teens",
+      "word": "teens",
+      "senses": [
+        {
+          "id": "sense-59e4938a",
+          "pos": "noun",
+          "meaningZh": "十幾的數字（13至19）",
+          "definitionEn": "all the numbers that end in -teen",
+          "examples": [
+            "I learned to count from one to twenty as a child, the numbers from eleven to nineteen are known as the *teens*."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-01291a4e",
+          "pos": "noun",
+          "meaningZh": "青少年時期；十幾歲",
+          "definitionEn": "the time of life between the ages of 12 and 20",
+          "examples": [
+            "During their teens, most people experience a lot of changes and challenges as they move from childhood to adulthood."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "temper",
+      "word": "temper",
+      "senses": [
+        {
+          "id": "sense-938df057",
+          "pos": "noun",
+          "meaningZh": "暴躁脾氣；易怒性格",
+          "definitionEn": "the tendency to exhibit uncontrolled anger",
+          "examples": [
+            "His temper got the best of him and he started shouting and throwing things."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-03048c33",
+          "pos": "noun",
+          "meaningZh": "怒氣爆發；發火",
+          "definitionEn": "a sudden outburst of anger",
+          "examples": [
+            "After losing the game, his temper flared up and he kicked the ball at the referee."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "temperature",
+      "word": "temperature",
+      "senses": [
+        {
+          "id": "sense-d4263c07",
+          "pos": "noun",
+          "meaningZh": "溫度；氣溫；體溫",
+          "definitionEn": "a measure of how hot or cold something is",
+          "examples": [
+            "The temperature dropped below zero last night."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-c0e7e3af",
+          "pos": "verb",
+          "meaningZh": "測量溫度；量體溫",
+          "definitionEn": "to measure the degree of heat or coldness of a body or environment",
+          "examples": [
+            "The thermometer showed a temperature of 30 degrees Celsius."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·R1 +1",
+        "textbookTitle": "龍騰 B3·R1、三民 B2·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "temporary",
+      "word": "temporary",
+      "senses": [
+        {
+          "id": "sense-cba06bbd",
+          "pos": "adjective",
+          "meaningZh": "臨時的；暫時的",
+          "definitionEn": "not permanent; not lasting",
+          "examples": [
+            "I'm living in a temporary apartment until I find a permanent home."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L8 +1",
+        "textbookTitle": "龍騰 B2·L8、三民 B4·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "tend",
+      "word": "tend",
+      "senses": [
+        {
+          "id": "sense-ada0a91e",
+          "pos": "verb",
+          "meaningZh": "照料；照顧",
+          "definitionEn": "take care of or look after someone or something",
+          "examples": [
+            "The mother tended to her sick child, making sure they were comfortable and well cared for."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-ed6ef8a7",
+          "pos": "verb",
+          "meaningZh": "管理；經營",
+          "definitionEn": "manage or operate something",
+          "examples": [
+            "John tends to the store in the evenings."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B2·L4",
+        "textbookTitle": "三民 B2·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "tender",
+      "word": "tender",
+      "senses": [
+        {
+          "id": "sense-b79aecb2",
+          "pos": "adjective",
+          "meaningZh": "溫柔的；體貼的",
+          "definitionEn": "gentle, kind, and loving",
+          "examples": [
+            "She gave the baby a tender kiss on the forehead."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-a5b1ff51",
+          "pos": "noun",
+          "meaningZh": "服侍者；侍者",
+          "definitionEn": "someone who waits on or attends to the needs of another",
+          "examples": [
+            "The restaurant provided excellent service with waiters always checking in on the tables to ensure the patrons were comfortable and their every need was met by the attentive tenders."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "tent",
+      "word": "tent",
+      "senses": [
+        {
+          "id": "sense-2e67c6f3",
+          "pos": "noun",
+          "meaningZh": "帳篷；野營帳",
+          "definitionEn": "a portable shelter made of canvas, nylon, or other durable material stretched over supporting poles and fastened to the ground with ropes and pegs",
+          "examples": [
+            "We decided to go camping and set up a tent in the middle of the forest."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-2c18e86a",
+          "pos": "noun",
+          "meaningZh": "帳篷狀布料；網眼布",
+          "definitionEn": "a fabric resembling a tent or carpet with a web-like pattern",
+          "examples": [
+            "The upholstery on the chair had a tent-like pattern, adding a unique touch to the overall design."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "term",
+      "word": "term",
+      "senses": [
+        {
+          "id": "sense-aa2e9e9b",
+          "pos": "noun",
+          "meaningZh": "期限；任期",
+          "definitionEn": "a limited period of time",
+          "examples": [
+            "We have a vacation home, but we can only stay there for a short term."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-3dafd777",
+          "pos": "noun",
+          "meaningZh": "術語；專有名詞",
+          "definitionEn": "a word or expression used for some particular thing",
+          "examples": [
+            "In the field of biology, the term 'mutation' refers to a change in the DNA sequence."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "terrific",
+      "word": "terrific",
+      "senses": [
+        {
+          "id": "sense-07552923",
+          "pos": "adjective",
+          "meaningZh": "極好的；出色的",
+          "definitionEn": "extraordinarily good or great ; used especially as intensifiers",
+          "examples": [
+            "The movie was so terrific that it received a standing ovation at the end."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-049ef8d0",
+          "pos": "adjective",
+          "meaningZh": "極大的；強烈的",
+          "definitionEn": "very great or intense",
+          "examples": [
+            "I had a terrific time at the concert last night! The music was incredible and the energy from the crowd was fantastic."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "territory",
+      "word": "territory",
+      "senses": [
+        {
+          "id": "sense-abccca82",
+          "pos": "noun",
+          "meaningZh": "領土；管轄區",
+          "definitionEn": "the geographical area under the jurisdiction of a sovereign state",
+          "examples": [
+            "During the negotiations, the two countries disputed the ownership of the territory surrounding the border, leading to heightened tensions."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-9cbf4f4b",
+          "pos": "noun",
+          "meaningZh": "特定區域；劃定地帶",
+          "definitionEn": "a region marked off for administrative or other purposes",
+          "examples": [
+            "The government declared the area as a protected territory to preserve its natural resources."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "terrorism",
+      "word": "terrorism",
+      "senses": [
+        {
+          "id": "sense-e5c92083",
+          "pos": "noun",
+          "meaningZh": "恐怖主義；恐怖活動",
+          "definitionEn": "the use of violence against civilians with political, religious, or ideological goals, typically through intimidation or coercion.",
+          "examples": [
+            "In the aftermath of the terrorist attack, the government implemented stricter security measures at airports and public transportation hubs."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "terrorist",
+      "word": "terrorist",
+      "senses": [
+        {
+          "id": "sense-b6cd2b89",
+          "pos": "noun",
+          "meaningZh": "恐怖分子；恐怖主義者",
+          "definitionEn": "a person who uses terror or violence, especially as a means of coercion or intimidation",
+          "examples": [
+            "The country witnessed an increase in terrorist attacks in the last decade, which affected the tourism industry negatively."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "text",
+      "word": "text",
+      "senses": [
+        {
+          "id": "sense-822363c6",
+          "pos": "noun",
+          "meaningZh": "文字；文本",
+          "definitionEn": "the written or printed words of a document or piece of writing",
+          "examples": [
+            "She received a text message from her friend, telling her about the surprise party."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-cceeb4a2",
+          "pos": "noun",
+          "meaningZh": "正文；主體內容",
+          "definitionEn": "the main body of a written work, excluding illustrations and footnotes",
+          "examples": [
+            "In order to analyze the meaning of a poem, it is important to closely read the text and consider its literary devices."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "textbook",
+      "word": "textbook",
+      "senses": [
+        {
+          "id": "sense-3d9ff8b8",
+          "pos": "noun",
+          "meaningZh": "教科書；課本",
+          "definitionEn": "a book specially designed for use in schools or colleges to teach a subject",
+          "examples": [
+            "The students opened their textbooks and began reading the assigned chapter on the French Revolution."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-c1d7480a",
+          "pos": "adjective",
+          "meaningZh": "典型的；如教科書般的",
+          "definitionEn": "characteristic of a typical textbook or according to the style of a textbook",
+          "examples": [
+            "The textbook provides clear explanations and organized chapters, making it a valuable resource for students studying chemistry."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "thankful",
+      "word": "thankful",
+      "senses": [
+        {
+          "id": "sense-9dddfe67",
+          "pos": "adjective",
+          "meaningZh": "感激的；感恩的",
+          "definitionEn": "expressing gratitude and relief",
+          "examples": [
+            "After a long day of hard work, Maria was thankful for her cozy bed."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "theory",
+      "word": "theory",
+      "senses": [
+        {
+          "id": "sense-c04c65db",
+          "pos": "noun",
+          "meaningZh": "學說；理論",
+          "definitionEn": "a well-substantiated explanation of some aspect of the natural world; an organized system of accepted knowledge that applies in a variety of circumstances to explain a specific set of phenomena",
+          "examples": [
+            "The theory of relativity explains the relationship between space, time, and gravity."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-bfe50dff",
+          "pos": "noun",
+          "meaningZh": "信念；主張",
+          "definitionEn": "a belief that can guide behavior",
+          "examples": [
+            "His theory was that hard work is the key to success, so he spent long hours at work every day."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L4",
+        "textbookTitle": "龍騰 B5·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "therefore",
+      "word": "therefore",
+      "senses": [
+        {
+          "id": "sense-3a74e4bf",
+          "pos": "adverb",
+          "meaningZh": "因此；所以",
+          "definitionEn": "For that reason, hence",
+          "examples": [
+            "It was raining heavily; therefore, I decided to stay at home instead of going out."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-6f233cc3",
+          "pos": "adverb",
+          "meaningZh": "故而；是以",
+          "definitionEn": "As a consequence of a stated fact or situation",
+          "examples": [
+            "She forgot her umbrella at home and therefore got soaked in the rain."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L3 +1",
+        "textbookTitle": "龍騰 B1·L3、三民 B1·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "thief",
+      "word": "thief",
+      "senses": [
+        {
+          "id": "sense-6f753514",
+          "pos": "noun",
+          "meaningZh": "小偷；盜賊",
+          "definitionEn": "a person who steals something from someone else",
+          "examples": [
+            "Yesterday, a thief broke into my neighbor's house and stole all of their valuable jewelry."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "thirst",
+      "word": "thirst",
+      "senses": [
+        {
+          "id": "sense-3d43cea2",
+          "pos": "noun",
+          "meaningZh": "口渴；渴望",
+          "definitionEn": "an intense longing or desire for something",
+          "examples": [
+            "After hiking for hours without water, I had an intense thirst that could only be satisfied by drinking a liter of cool water."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-89563856",
+          "pos": "verb",
+          "meaningZh": "渴望；渴求",
+          "definitionEn": "to have a craving or eager desire for something, especially liquid",
+          "examples": [
+            "After hiking for hours in the sun, I had an intense thirst and needed to drink water immediately."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "thirsty",
+      "word": "thirsty",
+      "senses": [
+        {
+          "id": "sense-3300f973",
+          "pos": "adjective",
+          "meaningZh": "口渴的；乾渴的",
+          "definitionEn": "feeling a strong need or desire to drink",
+          "examples": [
+            "After a long hike, I was very thirsty and eagerly gulped down a bottle of water."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-3c4e61ea",
+          "pos": "adjective",
+          "meaningZh": "需要大量水分的",
+          "definitionEn": "able to take in large quantities of liquid",
+          "examples": [
+            "After a long and sweaty workout, I was incredibly thirsty and drank two bottles of water."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "thought",
+      "word": "thought",
+      "senses": [
+        {
+          "id": "sense-5432506d",
+          "pos": "noun",
+          "meaningZh": "想法；念頭",
+          "definitionEn": "the main thing that you are thinking about",
+          "examples": [
+            "Her persistent THOUGHT was to become a doctor and she worked hard towards achieving it."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-3ad40451",
+          "pos": "noun",
+          "meaningZh": "思考；思維",
+          "definitionEn": "the process of using your mind to carefully consider something",
+          "examples": [],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "thread",
+      "word": "thread",
+      "senses": [
+        {
+          "id": "sense-f9e4d906",
+          "pos": "noun",
+          "meaningZh": "脈絡；主線",
+          "definitionEn": "the connections that link the various parts of an event or argument together",
+          "examples": [
+            "The thread that runs through her entire presentation is the idea of embracing diversity and inclusion in the workplace."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-f59d4ca8",
+          "pos": "noun",
+          "meaningZh": "螺紋",
+          "definitionEn": "the raised helical rib that loops around a screw and interlocks with a corresponding groove to transmit motion",
+          "examples": [
+            "Sam carefully inserted the thread into the groove of the screw, allowing it to interlock and transmit the rotational motion."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "threat",
+      "word": "threat",
+      "senses": [
+        {
+          "id": "sense-18c8eac3",
+          "pos": "noun",
+          "meaningZh": "威脅；危險",
+          "definitionEn": "something that is a source of danger",
+          "examples": [
+            "While hiking in the mountains, an unexpected thunderstorm posed a serious threat to their safety."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-a479d2ac",
+          "pos": "noun",
+          "meaningZh": "令人恐懼者；威脅者",
+          "definitionEn": "a person who inspires fear or dread",
+          "examples": [
+            "The notorious gang leader was a terrifying threat to the entire city, instilling fear in the hearts of both civilians and law enforcement."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L4 +1",
+        "textbookTitle": "龍騰 B2·L4、三民 B1·L10"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "threaten",
+      "word": "threaten",
+      "senses": [
+        {
+          "id": "sense-a95dd777",
+          "pos": "verb",
+          "meaningZh": "威脅；危及",
+          "definitionEn": "present a danger",
+          "examples": [
+            "The thunderstorm threatened to postpone the football game."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-7f9bef9e",
+          "pos": "verb",
+          "meaningZh": "預示（負面情況）",
+          "definitionEn": "indicate the possibility of something negative or harmful",
+          "examples": [
+            "The dark clouds threaten to rain heavily, so we decided to cancel the picnic."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L4 +1",
+        "textbookTitle": "龍騰 B2·L4、三民 B1·L10"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "throughout",
+      "word": "throughout",
+      "senses": [
+        {
+          "id": "sense-385a621d",
+          "pos": "adverb",
+          "meaningZh": "遍及；到處",
+          "definitionEn": "in or to every part of a place or object",
+          "examples": [],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-895ab81e",
+          "pos": "adverb",
+          "meaningZh": "自始至終；貫穿整個",
+          "definitionEn": "in every part of something",
+          "examples": [
+            "Throughout the movie, the main character struggled to find their place in the world."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L2 +1",
+        "textbookTitle": "龍騰 B1·L2、三民 B4·L10"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    }
+  ]
+}

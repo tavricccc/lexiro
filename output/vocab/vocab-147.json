@@ -1,0 +1,1421 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 147,
+  "words": [
+    {
+      "wordKey": "indispensable",
+      "word": "indispensable",
+      "senses": [
+        {
+          "id": "sense-30b11058",
+          "pos": "adjective",
+          "meaningZh": "不可或缺的；必要的",
+          "definitionEn": "essential, not able to be replaced or done without",
+          "examples": [
+            "In a kitchen, a good quality knife is indispensable for any cook."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-35933907",
+          "pos": "adjective",
+          "meaningZh": "絕對必要的；關鍵的",
+          "definitionEn": "extremely necessary, crucial for success or survival",
+          "examples": [
+            "Oxygen is an indispensable element for human life."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "indulge",
+      "word": "indulge",
+      "senses": [
+        {
+          "id": "sense-4440aab6",
+          "pos": "verb",
+          "meaningZh": "滿足慾望；放縱自己",
+          "definitionEn": "to satisfy a desire or interest",
+          "examples": [
+            "After a long week of work, he decided to indulge himself with a massage."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-4910a56c",
+          "pos": "verb",
+          "meaningZh": "縱情享受；讓自己沉浸",
+          "definitionEn": "to allow oneself to enjoy something",
+          "examples": [
+            "After a long week of work, I decided to indulge in a spa day and get a massage."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L1 +1",
+        "textbookTitle": "龍騰 B5·L1、三民 B4·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "inevitable",
+      "word": "inevitable",
+      "senses": [
+        {
+          "id": "sense-f353d665",
+          "pos": "adjective",
+          "meaningZh": "不可避免的；必然的",
+          "definitionEn": "certain to happen or occur, especially if nothing is done to prevent it",
+          "examples": [
+            "It was a hot summer day, and my ice cream cone began to melt on the sidewalk. It was inevitable."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-998e689f",
+          "pos": "noun",
+          "meaningZh": "必然發生的事；必然結果",
+          "definitionEn": "a situation that is certain to happen and cannot be avoided",
+          "examples": [
+            "Death is an inevitable part of life that everyone must face."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L4",
+        "textbookTitle": "龍騰 B3·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "infect",
+      "word": "infect",
+      "senses": [
+        {
+          "id": "sense-94d07563",
+          "pos": "verb",
+          "meaningZh": "傳染；感染（他人）",
+          "definitionEn": "to contaminate someone or something with a disease or microorganism, usually unintentionally",
+          "examples": [
+            "After shaking hands with a sick individual, Sarah inadvertently infected her colleagues with the flu."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-aaa6fc1f",
+          "pos": "verb",
+          "meaningZh": "散播疾病；使受感染",
+          "definitionEn": "to spread or communicate a disease to another person or organism",
+          "examples": [
+            "After coming into contact with a sick individual, I inadvertently infected my entire family with the flu."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L4",
+        "textbookTitle": "龍騰 B1·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "infinite",
+      "word": "infinite",
+      "senses": [
+        {
+          "id": "sense-6dee908b",
+          "pos": "adjective",
+          "meaningZh": "無限的；無邊無際的",
+          "definitionEn": "having no boundaries in time, space, or quantity",
+          "examples": [
+            "The universe is believed to be infinite in size, with no known boundaries."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L3",
+        "textbookTitle": "三民 B4·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "infrastructure",
+      "word": "infrastructure",
+      "senses": [
+        {
+          "id": "sense-f4eb4c15",
+          "pos": "noun",
+          "meaningZh": "基礎建設；公共設施",
+          "definitionEn": "the stock of basic facilities and capital equipment needed for the functioning of a country or area",
+          "examples": [
+            "The new highway project will greatly improve the infrastructure of the region, allowing for better transportation and economic growth."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-358eedbf",
+          "pos": "noun",
+          "meaningZh": "基本架構；組織骨幹",
+          "definitionEn": "the basic structure or features of a system or organization",
+          "examples": [
+            "In order to support economic growth, the government invested in improving the country's transportation infrastructure, including building new roads and expanding public transportation systems."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "inherent",
+      "word": "inherent",
+      "senses": [
+        {
+          "id": "sense-df35905c",
+          "pos": "adjective",
+          "meaningZh": "固有的；內在的",
+          "definitionEn": "existing as an essential constituent or characteristic",
+          "examples": [
+            "The inherent problem in the system is that it is too slow to respond to customer complaints."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-bef6600c",
+          "pos": "adjective",
+          "meaningZh": "天生的；本質的",
+          "definitionEn": "naturally occurring as a basic part of something and not needing to be explained or proven",
+          "examples": [
+            "One’s inherent nature plays a major role in shaping their personality."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "inherit",
+      "word": "inherit",
+      "senses": [
+        {
+          "id": "sense-6f8757f2",
+          "pos": "verb",
+          "meaningZh": "遺傳（特徵）；繼承（基因）",
+          "definitionEn": "receive by genetic transmission",
+          "examples": [
+            "He inherited his father's blue eyes and tall stature."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-16c5f964",
+          "pos": "verb",
+          "meaningZh": "繼承（遺產）；承受",
+          "definitionEn": "obtain from someone after their death",
+          "examples": [
+            "After his grandmother passed away, he was able to inherit her antique jewelry collection."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "initiate",
+      "word": "initiate",
+      "senses": [
+        {
+          "id": "sense-e97a4e2f",
+          "pos": "verb",
+          "meaningZh": "啟動；發起",
+          "definitionEn": "to start or set in motion; begin an event or prepare the way for it",
+          "examples": [
+            "The company decided to initiate a new project to improve their online presence."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-77369766",
+          "pos": "verb",
+          "meaningZh": "帶頭；主導推進",
+          "definitionEn": "to take the lead or initiative in something; participate in its development",
+          "examples": [
+            "John initiated the project by outlining the plan and securing funding for it."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "initiative",
+      "word": "initiative",
+      "senses": [
+        {
+          "id": "sense-3530adc2",
+          "pos": "noun",
+          "meaningZh": "主動性；進取心",
+          "definitionEn": "a readiness to start something new",
+          "examples": [
+            "Jane showed great initiative by taking the lead on the new project proposal and presenting it to the team."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-dc5e4674",
+          "pos": "noun",
+          "meaningZh": "第一步；開端行動",
+          "definitionEn": "the first step in a series of actions",
+          "examples": [
+            "Taking the initiative, the new employee started researching and preparing the presentation before being asked to do so by the manager."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "inject",
+      "word": "inject",
+      "senses": [
+        {
+          "id": "sense-2fc2ab80",
+          "pos": "verb",
+          "meaningZh": "注射；打針",
+          "definitionEn": "To pierce and force a liquid or gas into something",
+          "examples": [
+            "The doctor injected the patient with a vaccine to prevent the disease."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-3c2aa2f0",
+          "pos": "verb",
+          "meaningZh": "施打（疫苗或藥物）；注入",
+          "definitionEn": "To administer a medical injection to someone",
+          "examples": [
+            "The nurse will inject the vaccine into the patient’s arm."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "injection",
+      "word": "injection",
+      "senses": [
+        {
+          "id": "sense-973352bb",
+          "pos": "noun",
+          "meaningZh": "注射；打針",
+          "definitionEn": "the act of putting a liquid into the body by means of a syringe",
+          "examples": [
+            "The nurse administered the flu shot to the patient by giving an injection in the arm."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-6563df58",
+          "pos": "noun",
+          "meaningZh": "（高壓）注入；強制注入",
+          "definitionEn": "the forceful insertion of a substance under pressure",
+          "examples": [
+            "The doctor administered a flu vaccination to the patient by injection."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "inning",
+      "word": "inning",
+      "senses": [
+        {
+          "id": "sense-57a67bdf",
+          "pos": "noun",
+          "meaningZh": "（棒球）局；半局",
+          "definitionEn": "A unit of play in baseball during which each team takes a turn at bat and the opposing team plays defense, consisting of three outs for each team",
+          "examples": [
+            "The home team scored three runs in the first inning, but the visiting team came back to tie the game in the third inning."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "innovation",
+      "word": "innovation",
+      "senses": [
+        {
+          "id": "sense-1bb3a4ac",
+          "pos": "noun",
+          "meaningZh": "創新；新發明",
+          "definitionEn": "the introduction of something new; a new idea, method, or device.",
+          "examples": [
+            "The company’s latest innovation, a groundbreaking technology that drastically increases efficiency, has taken the industry by storm."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-9ec2a4f9",
+          "pos": "noun",
+          "meaningZh": "革新成果；創新活動",
+          "definitionEn": "a creation resulting from study and experimentation; the act of innovating.",
+          "examples": [
+            "The company’s constant focus on innovation resulted in the development of an entirely new product line."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L2",
+        "textbookTitle": "龍騰 B3·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "innovative",
+      "word": "innovative",
+      "senses": [
+        {
+          "id": "sense-c613f266",
+          "pos": "adjective",
+          "meaningZh": "創新的；採用新方法的",
+          "definitionEn": "using new ideas or methods",
+          "examples": [
+            "The company's innovative approach to product design resulted in a breakthrough invention that revolutionized the industry."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-a810c89a",
+          "pos": "adjective",
+          "meaningZh": "獨創的；富有創意的",
+          "definitionEn": "characterized by originality and creativity",
+          "examples": [
+            "The company's innovative approach to problem-solving led to groundbreaking new products and increased profitability."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L2",
+        "textbookTitle": "龍騰 B3·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "inquiry",
+      "word": "inquiry",
+      "senses": [
+        {
+          "id": "sense-ea9eea07",
+          "pos": "noun",
+          "meaningZh": "探究；調查",
+          "definitionEn": "a search for knowledge",
+          "examples": [
+            "The student decided to conduct an inquiry into the effects of climate change on coastal cities."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-f63c0867",
+          "pos": "noun",
+          "meaningZh": "詢問；質疑",
+          "definitionEn": "an instance of questioning",
+          "examples": [
+            "The security guard asked the visitor several inquiries regarding the purpose of his visit."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L4",
+        "textbookTitle": "三民 B4·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "insane",
+      "word": "insane",
+      "senses": [
+        {
+          "id": "sense-c3cf1f8f",
+          "pos": "adjective",
+          "meaningZh": "精神失常；瘋狂",
+          "definitionEn": "characteristic of or afflicted by mental derangement",
+          "examples": [
+            "He was judged insane after he started hearing voices telling him to hurt himself."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-fcfe82bf",
+          "pos": "adjective",
+          "meaningZh": "荒唐；不理性",
+          "definitionEn": "extremely foolish or irrational",
+          "examples": [
+            "It would be insane to jump out of the window on the fourth floor."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "insight",
+      "word": "insight",
+      "senses": [
+        {
+          "id": "sense-92cd11c3",
+          "pos": "noun",
+          "meaningZh": "洞察力；深刻理解",
+          "definitionEn": "the understanding of something from a deep and intuitive perspective",
+          "examples": [
+            "After years of studying the behavior of animals in the wild, Jane gained insight into their complex social dynamics."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-da671f5f",
+          "pos": "noun",
+          "meaningZh": "見解；體悟",
+          "definitionEn": "a feeling or understanding of something",
+          "examples": [
+            "After years of research, the scientist gained valuable insights into the behavior of the endangered species."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "installation",
+      "word": "installation",
+      "senses": [
+        {
+          "id": "sense-5aa73f4b",
+          "pos": "noun",
+          "meaningZh": "安裝；設置",
+          "definitionEn": "the act of setting up or putting in place something (such as equipment)",
+          "examples": [
+            "The installation of the new air conditioning unit was completed in just a few hours."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-b0a2603f",
+          "pos": "noun",
+          "meaningZh": "設施；機構建築",
+          "definitionEn": "a building or facility used to provide a particular service or for a specific industry",
+          "examples": [
+            "The new office building is an impressive installation, housing multiple companies from the technology industry."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 翰林 B1·L7",
+        "textbookTitle": "翰林 B1·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "institute",
+      "word": "institute",
+      "senses": [
+        {
+          "id": "sense-6a7e04cc",
+          "pos": "noun",
+          "meaningZh": "研究所；學會",
+          "definitionEn": "an association organized to promote art, science, or education",
+          "examples": [
+            "The local institute organized workshops and exhibitions to foster creativity and learning."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-54c5dcfd",
+          "pos": "verb",
+          "meaningZh": "建立；設立",
+          "definitionEn": "set up or establish (an organization or system), typically with a specified purpose",
+          "examples": [
+            "The government decided to institute a new program to promote renewable energy."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "institution",
+      "word": "institution",
+      "senses": [
+        {
+          "id": "sense-73c47dac",
+          "pos": "noun",
+          "meaningZh": "機構；學府",
+          "definitionEn": "an establishment consisting of a building or complex of buildings where an organization for the promotion of some cause is situated",
+          "examples": [
+            "The university is an institution dedicated to higher education and research."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-3e4f5340",
+          "pos": "noun",
+          "meaningZh": "制度；體制",
+          "definitionEn": "an organization founded and united for a specific purpose",
+          "examples": [
+            "The institution of marriage is a social institution that is founded on the union of two individuals in a legally recognized union."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "intact",
+      "word": "intact",
+      "senses": [
+        {
+          "id": "sense-14ebe20e",
+          "pos": "adjective",
+          "meaningZh": "完好無損；未受破壞",
+          "definitionEn": "not damaged in any way",
+          "examples": [
+            "After the earthquake, the ancient temple remained intact and unharmed."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-66e8663d",
+          "pos": "adjective",
+          "meaningZh": "完整；毫無缺損",
+          "definitionEn": "complete or whole; having nothing missing especially not damaged",
+          "examples": [
+            "Despite the car accident, the structure of the car remained intact."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L10",
+        "textbookTitle": "三民 B4·L10"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "integrate",
+      "word": "integrate",
+      "senses": [
+        {
+          "id": "sense-482f19be",
+          "pos": "verb",
+          "meaningZh": "整合；融入",
+          "definitionEn": "combine two or more things to form a whole or make part of a whole",
+          "examples": [
+            "To successfully integrate the new employees into the company culture, the HR department organized team-building activities and orientation sessions."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-6d106530",
+          "pos": "verb",
+          "meaningZh": "求積分",
+          "definitionEn": "find the integral or calculate by integration",
+          "examples": [
+            "To find the area under the curve, we need to integrate the function."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "integration",
+      "word": "integration",
+      "senses": [
+        {
+          "id": "sense-c88b2f9b",
+          "pos": "noun",
+          "meaningZh": "整合；融合",
+          "definitionEn": "the act of combining things together to form a whole",
+          "examples": [
+            "The integration of different cultures into a new community was a challenge, but it resulted in a more diverse and vibrant society."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-05814805",
+          "pos": "noun",
+          "meaningZh": "（種族）融合；平等納入",
+          "definitionEn": "the process of adding a racial or religious group into a community and treating them equally",
+          "examples": [
+            "The school board has developed a plan to promote integration in all of its schools by ensuring that equal resources and opportunities are provided to every student, regardless of their race or ethnicity."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "integrity",
+      "word": "integrity",
+      "senses": [
+        {
+          "id": "sense-9c9f6beb",
+          "pos": "noun",
+          "meaningZh": "誠信；正直",
+          "definitionEn": "moral soundness",
+          "examples": [
+            "It is essential for a judge to have integrity and be impartial in their judgments."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-858075ef",
+          "pos": "noun",
+          "meaningZh": "完整性；一致性",
+          "definitionEn": "an undivided or unbroken completeness or totality with nothing wanting",
+          "examples": [
+            "As the CEO of the company, it is important that you have integrity in all your dealings with employees, clients, and shareholders."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L1",
+        "textbookTitle": "龍騰 B5·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "intensify",
+      "word": "intensify",
+      "senses": [
+        {
+          "id": "sense-30161f44",
+          "pos": "verb",
+          "meaningZh": "增強；加劇",
+          "definitionEn": "to become greater or more extreme in degree or strength",
+          "examples": [
+            "The storm continued to intensify throughout the night, with thunder and lightning becoming more frequent and the wind picking up speed."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-ad626c22",
+          "pos": "verb",
+          "meaningZh": "加強；強化",
+          "definitionEn": "to make something greater or more extreme in degree or strength",
+          "examples": [
+            "During the negotiations, both parties realized they needed to intensify their efforts to reach a compromise."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "intent",
+      "word": "intent",
+      "senses": [
+        {
+          "id": "sense-fc9116ed",
+          "pos": "noun",
+          "meaningZh": "意圖；目的",
+          "definitionEn": "an anticipated outcome that is intended or that guides planned actions",
+          "examples": [
+            "John's intent was to finish writing the report before the deadline."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-01547070",
+          "pos": "noun",
+          "meaningZh": "所要表達的意思",
+          "definitionEn": "the intended meaning of a communication",
+          "examples": [
+            "When writing a formal email, make sure your intent is clear so there is no confusion."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "interference",
+      "word": "interference",
+      "senses": [
+        {
+          "id": "sense-c9bc4d4e",
+          "pos": "noun",
+          "meaningZh": "干擾；阻礙",
+          "definitionEn": "an act or instance of hindering or obstructing or impeding progress or movement",
+          "examples": [
+            "The interference from the crowd made it difficult for the athletes to hear the starting gun."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-deeb01f2",
+          "pos": "noun",
+          "meaningZh": "障礙；干涉",
+          "definitionEn": "any obstacle that hinders progress or causes difficulty",
+          "examples": [
+            "The heavy rain caused interference with the signal, making it difficult to watch TV."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L6",
+        "textbookTitle": "三民 B4·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "interior",
+      "word": "interior",
+      "senses": [
+        {
+          "id": "sense-a7279cc2",
+          "pos": "noun",
+          "meaningZh": "內部；室內",
+          "definitionEn": "the region that is inside of something",
+          "examples": [
+            "The interior of the house was dark and quiet, giving a sense of privacy away from the noisy street outside."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-5fe85f93",
+          "pos": "adjective",
+          "meaningZh": "室內的；內部的",
+          "definitionEn": "situated within a building; suitable or designed for inside a building",
+          "examples": [
+            "The interior of the house was beautifully designed."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "interpretation",
+      "word": "interpretation",
+      "senses": [
+        {
+          "id": "sense-fafccd9e",
+          "pos": "noun",
+          "meaningZh": "詮釋；解讀",
+          "definitionEn": "a mental image or understanding of the meaning or significance of something",
+          "examples": [
+            "Her interpretation of the painting was completely different than that of the art critic."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-7fdb7dad",
+          "pos": "noun",
+          "meaningZh": "理解方式；說明",
+          "definitionEn": "an explanation or understanding that is based on interpreting something",
+          "examples": [
+            "The interpretation of the painting varied depending on who was viewing it - some saw it as a political commentary while others believed it to be purely aesthetic."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L7",
+        "textbookTitle": "龍騰 B3·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    }
+  ]
+}

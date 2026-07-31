@@ -1,0 +1,1407 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 110,
+  "words": [
+    {
+      "wordKey": "drowsy",
+      "word": "drowsy",
+      "senses": [
+        {
+          "id": "sense-7e73c550",
+          "pos": "adjective",
+          "meaningZh": "昏昏欲睡的；疲倦的",
+          "definitionEn": "feeling sleepy or exhausted",
+          "examples": [
+            "After a long day of hiking in the sun, I felt drowsy and ready for bed."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-4009108e",
+          "pos": "adjective",
+          "meaningZh": "無精打采的；注意力渙散的",
+          "definitionEn": "showing a lack of attention or interest",
+          "examples": [
+            "The students were drowsy during the lecture, which made it clear they hadn’t been studying enough."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L1",
+        "textbookTitle": "龍騰 B3·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "durable",
+      "word": "durable",
+      "senses": [
+        {
+          "id": "sense-00b1ad01",
+          "pos": "adjective",
+          "meaningZh": "耐用的；堅固的",
+          "definitionEn": "capable of withstanding wear and tear and decay",
+          "examples": [
+            "A good quality backpack should be durable enough to last for several years of daily use."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-de43285b",
+          "pos": "adjective",
+          "meaningZh": "耐久的；長期存在的",
+          "definitionEn": "existing for a long time",
+          "examples": [
+            "The Empire State Building is a durable structure, having withstood numerous storms and natural disasters over the last century."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "dusty",
+      "word": "dusty",
+      "senses": [
+        {
+          "id": "sense-7fc22c19",
+          "pos": "adverb",
+          "meaningZh": "積滿灰塵地",
+          "definitionEn": "with a layer of dust covering it",
+          "examples": [
+            "After being stored in the attic for years, the old books were dusty and required a thorough cleaning."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "dye",
+      "word": "dye",
+      "senses": [
+        {
+          "id": "sense-935f1af5",
+          "pos": "verb",
+          "meaningZh": "染色；染髮",
+          "definitionEn": "to change the color of something using a dye",
+          "examples": [
+            "I want to dye my hair black for Halloween so I decided to buy a bottle of black hair dye."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-edb31960",
+          "pos": "noun",
+          "meaningZh": "染料；染色劑",
+          "definitionEn": "a substance used for changing the color of something, such as clothes or hair",
+          "examples": [
+            "She decided to dye her hair blonde for the summer."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·R3",
+        "textbookTitle": "龍騰 B3·R3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "dynamic",
+      "word": "dynamic",
+      "senses": [
+        {
+          "id": "sense-e7f9f1f5",
+          "pos": "adjective",
+          "meaningZh": "充滿活力的；有衝勁的",
+          "definitionEn": "full of energy, ideas, and a strong desire to succeed",
+          "examples": [
+            "She is a dynamic leader who inspires her whole team."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-24d108e0",
+          "pos": "noun",
+          "meaningZh": "動力；驅動力",
+          "definitionEn": "a force that stimulates change or progress within a system or process",
+          "examples": [
+            "The dynamic between the new CEO and the company’s employees sparked a wave of innovative ideas and strategic changes."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L3",
+        "textbookTitle": "三民 B4·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "dynasty",
+      "word": "dynasty",
+      "senses": [
+        {
+          "id": "sense-63ba0a5c",
+          "pos": "noun",
+          "meaningZh": "王朝；朝代",
+          "definitionEn": "a sequence of powerful leaders in the same family",
+          "examples": [
+            "The Ming Dynasty ruled China from 1368 to 1644, with a succession of 16 emperors from the same family."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-bbb921b9",
+          "pos": "noun",
+          "meaningZh": "統治時期；同族掌權期",
+          "definitionEn": "a period during which a particular family or group maintains power and influence",
+          "examples": [
+            "The Ming Dynasty ruled China for almost 300 years, between the 14th and 17th centuries."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "earnest",
+      "word": "earnest",
+      "senses": [
+        {
+          "id": "sense-6278d2ce",
+          "pos": "adjective",
+          "meaningZh": "誠摯的；認真的",
+          "definitionEn": "showing sincere and serious conviction",
+          "examples": [
+            "During the job interview, John spoke earnestly about his passion for the industry and his dedication to his work."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-8d131431",
+          "pos": "adjective",
+          "meaningZh": "熱切的；由衷的",
+          "definitionEn": "resulting from or showing sincere and intense conviction",
+          "examples": [
+            "When Sarah found out she had won the scholarship, she expressed her earnest gratitude to the selection committee."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L6",
+        "textbookTitle": "龍騰 B3·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "earphone",
+      "word": "earphone",
+      "senses": [
+        {
+          "id": "sense-ce346be1",
+          "pos": "noun",
+          "meaningZh": "耳機",
+          "definitionEn": "a device that converts electric signals into sounds and is designed to be held over or inserted into the ear",
+          "examples": [
+            "James plugged his earphone into his phone and listened to his favorite music on the bus."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "economic",
+      "word": "economic",
+      "senses": [
+        {
+          "id": "sense-f65e30de",
+          "pos": "adjective",
+          "meaningZh": "經濟的；與經濟有關的",
+          "definitionEn": "relating to the economy, the system of production and management of material wealth",
+          "examples": [
+            "The government implemented new economic policies to stimulate growth and create jobs."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-d3262e31",
+          "pos": "adjective",
+          "meaningZh": "經濟學的",
+          "definitionEn": "relating to the field of economics",
+          "examples": [
+            "The government implemented several economic policies to promote growth and reduce inflation."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L8",
+        "textbookTitle": "龍騰 B3·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "economical",
+      "word": "economical",
+      "senses": [
+        {
+          "id": "sense-438e3236",
+          "pos": "adjective",
+          "meaningZh": "節省的；不浪費的",
+          "definitionEn": "avoiding waste",
+          "examples": [
+            "Instead of buying new clothes, she decided to repair and reuse her old ones, which was a smart and economical choice."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-bd03257a",
+          "pos": "adjective",
+          "meaningZh": "有效率的；精簡的",
+          "definitionEn": "using the minimum of time or resources necessary for effectiveness",
+          "examples": [
+            "Sarah wanted to be economical with her time, so she made a schedule to complete all her errands in one trip."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L8",
+        "textbookTitle": "龍騰 B3·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "economics",
+      "word": "economics",
+      "senses": [
+        {
+          "id": "sense-c94654bd",
+          "pos": "noun",
+          "meaningZh": "經濟學",
+          "definitionEn": "the branch of social science that deals with the management of resources, production, distribution, and consumption of goods and services",
+          "examples": [
+            "Studying economics has helped me understand how markets work and how different economic systems function."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "economist",
+      "word": "economist",
+      "senses": [
+        {
+          "id": "sense-09a0b67e",
+          "pos": "noun",
+          "meaningZh": "經濟學家",
+          "definitionEn": "A person who studies and understands the economy, including factors such as production, distribution, and consumption of goods and services.",
+          "examples": [
+            "The economist predicted that the decrease in consumer spending would lead to a recession."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "economy",
+      "word": "economy",
+      "senses": [
+        {
+          "id": "sense-3128cac5",
+          "pos": "noun",
+          "meaningZh": "經濟（一國的經濟體系與景氣）",
+          "definitionEn": "the system by which a country's money and goods are produced and used",
+          "examples": [
+            "The country's economy has grown rapidly over the past decade."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-89552397",
+          "pos": "noun",
+          "meaningZh": "節約；節省",
+          "definitionEn": "the efficient and careful use of resources such as money, materials, or labour",
+          "examples": [
+            "During the recession, the company had to implement cost-cutting measures and improve their economy in order to stay afloat."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-61638311",
+          "pos": "noun",
+          "meaningZh": "理財節約；精打細算",
+          "definitionEn": "savings or careful management of financial resources",
+          "examples": [
+            "In order to improve the economy of the household, they started budgeting and cutting unnecessary expenses."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L8",
+        "textbookTitle": "龍騰 B3·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "efficiency",
+      "word": "efficiency",
+      "senses": [
+        {
+          "id": "sense-8409e3d1",
+          "pos": "noun",
+          "meaningZh": "效率；效能比",
+          "definitionEn": "the ratio of the output to the input of any system",
+          "examples": [
+            "The company improved its efficiency by adopting new technology that allowed them to produce twice as many products with the same amount of resources."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-62af513d",
+          "pos": "noun",
+          "meaningZh": "效率；省時省力",
+          "definitionEn": "skillfulness in avoiding wasted time and effort",
+          "examples": [
+            "The new production process increased efficiency and decreased waste by 50%."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L6 +2",
+        "textbookTitle": "龍騰 B4·L6、三民 B4·L7、翰林 B1·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "elastic",
+      "word": "elastic",
+      "senses": [
+        {
+          "id": "sense-9041e8e9",
+          "pos": "adjective",
+          "meaningZh": "有彈性的；可伸縮的",
+          "definitionEn": "able to return to its original shape or size after being stretched, squeezed, or pressed; flexible and springy",
+          "examples": [
+            "The flexible waistband on the sweatpants ensures a comfortable fit for individuals of various sizes."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-7156c4a9",
+          "pos": "adjective",
+          "meaningZh": "靈活的；可調整的",
+          "definitionEn": "able to adapt or be modified according to changing circumstances or needs; adaptable, versatile",
+          "examples": [
+            "In the face of unforeseen challenges, the company's elastic business model allowed them to quickly pivot and find new opportunities."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "electronics",
+      "word": "electronics",
+      "senses": [
+        {
+          "id": "sense-89c06fbf",
+          "pos": "noun",
+          "meaningZh": "電子學；電子工程學",
+          "definitionEn": "The branch of physics and technology that deals with the emission, behavior, and effects of electrons and with electronic devices, circuits, systems, and equipment.",
+          "examples": [
+            "John studied electronics in college and is currently working for a company that designs and manufactures electronic devices such as smartphones and laptops."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-8d8ddacc",
+          "pos": "noun",
+          "meaningZh": "電子設備；電子元件",
+          "definitionEn": "Electronic equipment that involves the controlled flow of electrons, especially in a gas, vacuum, or semiconductor medium.",
+          "examples": [
+            "The college offers a course in electronics engineering which teaches the skills required for designing and building electronic circuits and devices."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "elegant",
+      "word": "elegant",
+      "senses": [
+        {
+          "id": "sense-d6b412b3",
+          "pos": "adjective",
+          "meaningZh": "雅致的；高雅的",
+          "definitionEn": "refined and tasteful in appearance, behavior, or style",
+          "examples": [
+            "She walked into the room with an elegant grace, turning heads with her sophisticated dress and confident demeanor."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-0d734aec",
+          "pos": "adjective",
+          "meaningZh": "優雅的；輕盈流暢的",
+          "definitionEn": "displaying effortless beauty and simplicity in movement or execution",
+          "examples": [
+            "The ballet dancer glided across the stage with elegant movements, captivating the audience with her grace."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "elementary",
+      "word": "elementary",
+      "senses": [
+        {
+          "id": "sense-a1fc9806",
+          "pos": "adjective",
+          "meaningZh": "基礎的；簡單的",
+          "definitionEn": "easy and not involved or complicated",
+          "examples": [
+            "The teacher used elementary language to explain the concept to the students."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-d14e8dbd",
+          "pos": "adjective",
+          "meaningZh": "小學的；初等教育的",
+          "definitionEn": "of or pertaining to or characteristic of elementary school or elementary education",
+          "examples": [
+            "The elementary students practiced their addition and subtraction skills in math class."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L2",
+        "textbookTitle": "龍騰 B3·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "eliminate",
+      "word": "eliminate",
+      "senses": [
+        {
+          "id": "sense-fdddb1af",
+          "pos": "verb",
+          "meaningZh": "去除；移除",
+          "definitionEn": "To remove or take out",
+          "examples": [
+            "In order to create more space in the garage, we need to eliminate some of the old boxes and unused items."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-20e75aa4",
+          "pos": "verb",
+          "meaningZh": "消除；根除",
+          "definitionEn": "To put an end to or get rid of something",
+          "examples": [
+            "The government implemented strict measures to eliminate corruption from the system."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L7",
+        "textbookTitle": "龍騰 B4·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "elsewhere",
+      "word": "elsewhere",
+      "senses": [
+        {
+          "id": "sense-5b864122",
+          "pos": "adverb",
+          "meaningZh": "在別處；到別處",
+          "definitionEn": "in or to another place",
+          "examples": [
+            "He searched for his keys in every room, but they were nowhere to be found. Finally, he looked elsewhere and found them on the kitchen counter."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-21d94465",
+          "pos": "adverb",
+          "meaningZh": "在其他方面；另外",
+          "definitionEn": "in other respects; otherwise",
+          "examples": [
+            "She didn't want to live in the city, so she decided to look for a job elsewhere."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B2·L3",
+        "textbookTitle": "三民 B2·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "embarrass",
+      "word": "embarrass",
+      "senses": [
+        {
+          "id": "sense-eff3947a",
+          "pos": "verb",
+          "meaningZh": "使尷尬；使難為情",
+          "definitionEn": "make (someone) feel awkward, self-conscious, or ashamed",
+          "examples": [
+            "During the speech, the presenter's microphone malfunctioned, which embarrassed him in front of the entire audience."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-3592df7d",
+          "pos": "verb",
+          "meaningZh": "妨礙；使受阻",
+          "definitionEn": "impede, (someone or something) or make difficult to complete a task",
+          "examples": [
+            "The strong wind embarrassed the construction workers as they tried to secure the scaffolding."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L1 +1",
+        "textbookTitle": "龍騰 B1·L1、三民 B2·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "embarrassment",
+      "word": "embarrassment",
+      "senses": [
+        {
+          "id": "sense-5c3cf25b",
+          "pos": "noun",
+          "meaningZh": "尷尬；羞窘",
+          "definitionEn": "the feeling of shame, awkwardness, or humiliation that one experiences when an inadequacy, mistake, or wrongdoing is made public",
+          "examples": [
+            "After tripping on stage during her school play, Sarah turned beet red with embarrassment."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-00db0d31",
+          "pos": "noun",
+          "meaningZh": "令人難堪的事；窘況",
+          "definitionEn": "an event or situation that causes someone to feel embarrassed",
+          "examples": [
+            "John felt a deep sense of embarrassment when he realized he had worn matching socks and sandals to work."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L1 +1",
+        "textbookTitle": "龍騰 B1·L1、三民 B2·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "embassy",
+      "word": "embassy",
+      "senses": [
+        {
+          "id": "sense-1788fa7f",
+          "pos": "noun",
+          "meaningZh": "大使館",
+          "definitionEn": "a building where diplomats live or work",
+          "examples": [
+            "The ambassador hosted a gathering at the embassy to celebrate the successful negotiations between the two countries."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-10f4ea14",
+          "pos": "noun",
+          "meaningZh": "大使官邸；外交辦事處",
+          "definitionEn": "the official residence or offices of an ambassador",
+          "examples": [
+            "The ambassador hosted a diplomatic reception at the embassy, welcoming dignitaries from around the world."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "emerge",
+      "word": "emerge",
+      "senses": [
+        {
+          "id": "sense-f4b1df06",
+          "pos": "verb",
+          "meaningZh": "浮現；出現；顯露",
+          "definitionEn": "come out into view, as from concealment",
+          "examples": [
+            "The sun began to emerge from behind the clouds."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-9251601f",
+          "pos": "verb",
+          "meaningZh": "升出；冒出",
+          "definitionEn": "come up to the surface of or rise",
+          "examples": [
+            "The sun started to emerge from behind the clouds."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L9",
+        "textbookTitle": "龍騰 B3·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "emphasis",
+      "word": "emphasis",
+      "senses": [
+        {
+          "id": "sense-3a8e76d7",
+          "pos": "noun",
+          "meaningZh": "重點；強調之處",
+          "definitionEn": "special importance or significance",
+          "examples": [
+            "The emphasis of the new company’s marketing strategy was on social media outreach."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-0daa54ef",
+          "pos": "noun",
+          "meaningZh": "語氣強調；加重語氣",
+          "definitionEn": "intensity or forcefulness of expression",
+          "examples": [
+            "She spoke with great emphasis to make sure everyone understood the importance of the project."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 翰林 B1·L1",
+        "textbookTitle": "翰林 B1·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "empire",
+      "word": "empire",
+      "senses": [
+        {
+          "id": "sense-8777787f",
+          "pos": "noun",
+          "meaningZh": "帝國",
+          "definitionEn": "a group of countries or states ruled over by a single supreme authority, such as an emperor",
+          "examples": [
+            "The Roman Empire lasted for centuries."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-f63e67d5",
+          "pos": "noun",
+          "meaningZh": "（龐大的）企業集團",
+          "definitionEn": "a large commercial organization controlled by one person or group",
+          "examples": [
+            "She built a business empire from a single shop."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "enclose",
+      "word": "enclose",
+      "senses": [
+        {
+          "id": "sense-cd1359f8",
+          "pos": "verb",
+          "meaningZh": "圍起；環繞",
+          "definitionEn": "surround completely or cover from all sides.",
+          "examples": [
+            "He built a fence to enclose his backyard and keep the dogs from wandering off."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-75b258ac",
+          "pos": "verb",
+          "meaningZh": "附入；包入（信封）",
+          "definitionEn": "close or shut in; surround or confine.",
+          "examples": [
+            "Please enclose the documents in the envelope before sending them."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "encounter",
+      "word": "encounter",
+      "senses": [
+        {
+          "id": "sense-d6bfcfad",
+          "pos": "verb",
+          "meaningZh": "遇見；相遇",
+          "definitionEn": "to come together with someone or something",
+          "examples": [
+            "While hiking through the forest, I encountered a bear."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-9412acea",
+          "pos": "verb",
+          "meaningZh": "意外碰到；偶遇",
+          "definitionEn": "to meet or find something unexpectedly",
+          "examples": [
+            "While hiking in the forest, we encountered a bear!"
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L1 +1",
+        "textbookTitle": "龍騰 B5·L1、三民 B2·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "endanger",
+      "word": "endanger",
+      "senses": [
+        {
+          "id": "sense-fbb3309d",
+          "pos": "verb",
+          "meaningZh": "危害；威脅",
+          "definitionEn": "present a danger to; pose a threat to",
+          "examples": [
+            "Driving under the influence can greatly endanger the lives of others on the road."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-19dd6e1e",
+          "pos": "verb",
+          "meaningZh": "使陷危境；危及",
+          "definitionEn": "put in a dangerous or disadvantageous position; jeopardize",
+          "examples": [
+            "Leaving the machinery unattended in the rain could endanger its functionality and cause long-term damage."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L3",
+        "textbookTitle": "龍騰 B4·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "endure",
+      "word": "endure",
+      "senses": [
+        {
+          "id": "sense-3e59d31e",
+          "pos": "verb",
+          "meaningZh": "忍受；承受",
+          "definitionEn": "to undergo or be subjected to something",
+          "examples": [
+            "Despite the harsh weather, the mountaineer was determined to endure the climb to the summit."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-3aa706f0",
+          "pos": "verb",
+          "meaningZh": "堅持；撐過",
+          "definitionEn": "to face and withstand something, often with courage",
+          "examples": [
+            "Despite the harsh conditions, the hikers were determined to endure the climb to the top of the mountain."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L6",
+        "textbookTitle": "三民 B4·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    }
+  ]
+}

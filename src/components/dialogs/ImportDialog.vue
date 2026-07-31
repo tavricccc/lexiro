@@ -7,6 +7,8 @@ import { extractJsonText, generateWithAi, loadAiSettings } from '@/lib/ai-provid
 import { copyToClipboard } from '@/lib/clipboard'
 import { parseImportJson } from '@/lib/import'
 import { buildImportPrompt } from '@/lib/importPrompt'
+import { parseLibraryImport } from '@/lib/library-import'
+import { useLibraryStore } from '@/stores/library'
 import { useSetsStore } from '@/stores/sets'
 import { useUIStore } from '@/stores/ui'
 import Button from '../ui/button/Button.vue'
@@ -19,6 +21,7 @@ import Textarea from '../ui/textarea/Textarea.vue'
 const { t } = useI18n()
 
 const setsStore = useSetsStore()
+const libraryStore = useLibraryStore()
 const uiStore = useUIStore()
 const { importOpen, importStep, importWords, importJson, importError, importPreview, importDifficulty } = storeToRefs(setsStore)
 const { closeImport, nextImportStep, importSet } = setsStore
@@ -27,6 +30,7 @@ const { showToast } = uiStore
 const importTextarea = ref<InstanceType<typeof Textarea> | null>(null)
 const aiSettings = ref(loadAiSettings())
 const aiGenerating = ref(false)
+const libraryImporting = ref(false)
 
 const difficultyLevels = ['', t('import.difficulty1'), t('import.difficulty2'), t('import.difficulty3')] as const
 const difficultyLabel = computed(() => difficultyLevels[importDifficulty.value])
@@ -119,6 +123,43 @@ async function generateWithConfiguredAi() {
     aiGenerating.value = false
   }
 }
+
+async function importLibraryFiles(event: Event) {
+  const input = event.target as HTMLInputElement
+  const files = Array.from(input.files ?? [])
+  if (!files.length)
+    return
+  libraryImporting.value = true
+  const messages: string[] = []
+  try {
+    for (const file of files) {
+      const result = parseLibraryImport(await file.text())
+      if (!result.valid) {
+        messages.push(`${file.name}：${result.error}`)
+        continue
+      }
+      if (result.data.kind === 'vocab') {
+        libraryStore.importWords(result.data.words)
+        setsStore.importLibraryWords(result.data.words, file.name.replace(/\.json$/i, ''))
+        messages.push(`${file.name}：${result.data.words.length} 個單字`)
+      }
+      else {
+        libraryStore.importQuestions(result.data.questions)
+        messages.push(`${file.name}：${result.data.questions.length} 題`)
+      }
+    }
+    setsStore.importPreview = messages.join('；')
+    setsStore.importError = ''
+    showToast(t('import.libraryImported'))
+  }
+  catch (error) {
+    setsStore.importError = (error as Error).message
+  }
+  finally {
+    libraryImporting.value = false
+    input.value = ''
+  }
+}
 </script>
 
 <template>
@@ -187,6 +228,16 @@ async function generateWithConfiguredAi() {
           {{ $t('import.step2Hint') }}
         </p>
       </SectionPanel>
+
+      <details class="rounded-2xl border border-ink-200/70 bg-ink-50/60 p-4 text-left dark:border-ink-200/20 dark:bg-ink-900/50">
+        <summary class="cursor-pointer text-sm font-bold text-ink-700 dark:text-ink-200">
+          {{ $t('import.libraryFilesTitle') }}
+        </summary>
+        <p class="mt-2 text-xs leading-relaxed text-ink-500 dark:text-ink-400">
+          {{ $t('import.libraryFilesHint') }}
+        </p>
+        <input type="file" accept="application/json,.json" multiple class="mt-3 block w-full text-xs font-semibold text-ink-500 file:mr-3 file:rounded-lg file:border-0 file:bg-accent-primary/10 file:px-3 file:py-2 file:font-bold file:text-accent-primary" :disabled="libraryImporting" @change="importLibraryFiles">
+      </details>
       <StatusMessage v-if="importError" tone="error">
         {{ importError }}
       </StatusMessage>

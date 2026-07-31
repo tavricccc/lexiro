@@ -1,0 +1,1395 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 33,
+  "words": [
+    {
+      "wordKey": "apply",
+      "word": "apply",
+      "senses": [
+        {
+          "id": "sense-eef256d5",
+          "pos": "verb",
+          "meaningZh": "應用；運用；採用",
+          "definitionEn": "utilize or employ for a particular purpose",
+          "examples": [
+            "She decided to apply her organizational skills to plan the company's annual conference."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-9162a4e5",
+          "pos": "verb",
+          "meaningZh": "申請；應徵",
+          "definitionEn": "request something, often formally",
+          "examples": [
+            "She decided to apply for the job at the prestigious law firm."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B1·L4",
+        "textbookTitle": "三民 B1·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "appreciate",
+      "word": "appreciate",
+      "senses": [
+        {
+          "id": "sense-e6e34589",
+          "pos": "verb",
+          "meaningZh": "欣賞；體認；珍惜",
+          "definitionEn": "to fully understand or realize the value or importance of something",
+          "examples": [
+            "After years of hard work and dedication, Jenny could finally appreciate the true value of financial stability."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-9f8ebd90",
+          "pos": "verb",
+          "meaningZh": "增值；升值",
+          "definitionEn": "to cause an increase in value or price",
+          "examples": [
+            "Investing in real estate can appreciate its value over time."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L6 +2",
+        "textbookTitle": "龍騰 B3·L6、三民 B2·L1、翰林 B1·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "approach",
+      "word": "approach",
+      "senses": [
+        {
+          "id": "sense-d35a3f1e",
+          "pos": "noun",
+          "meaningZh": "方法；方式；做法",
+          "definitionEn": "a way of dealing with something or someone",
+          "examples": [
+            "My approach to solving this problem is to break it down into smaller parts and tackle each one separately."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-e0381e5e",
+          "pos": "noun",
+          "meaningZh": "處理方案；應對思路",
+          "definitionEn": "an idea or suggestion for dealing with a problem or situation",
+          "examples": [
+            "In order to approach the issue of climate change, we must take steps to reduce carbon emissions."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L6",
+        "textbookTitle": "龍騰 B2·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "argue",
+      "word": "argue",
+      "senses": [
+        {
+          "id": "sense-f7204632",
+          "pos": "verb",
+          "meaningZh": "爭論；爭辯；吵架",
+          "definitionEn": "have an argument about something",
+          "examples": [
+            "During the meeting, the team members started to argue about the best strategy to approach the new project."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-34ad2a34",
+          "pos": "verb",
+          "meaningZh": "論述；主張；辯稱",
+          "definitionEn": "give evidence of",
+          "examples": [
+            "During the trial, the lawyer will argue the case using various pieces of evidence."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L3 +2",
+        "textbookTitle": "龍騰 B2·L3、三民 B2·L5、翰林 B1·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "army",
+      "word": "army",
+      "senses": [
+        {
+          "id": "sense-65f221ff",
+          "pos": "noun",
+          "meaningZh": "陸軍；軍隊",
+          "definitionEn": "a permanent organization of the military land forces of a nation or state",
+          "examples": [
+            "The army was called into action when the nation faced a threat from a neighboring country."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-5eb4b658",
+          "pos": "noun",
+          "meaningZh": "大批人群；一大群人",
+          "definitionEn": "a large number of people united for some specific purpose",
+          "examples": [
+            "The army was called in to help during the natural disaster."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "arrange",
+      "word": "arrange",
+      "senses": [
+        {
+          "id": "sense-7305159d",
+          "pos": "verb",
+          "meaningZh": "籌備；安排；策劃",
+          "definitionEn": "plan, organize, and carry out an event",
+          "examples": [
+            "The wedding planner will arrange the seating, catering, and entertainment."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-5101d9ca",
+          "pos": "verb",
+          "meaningZh": "整理；排列；排好",
+          "definitionEn": "put into a proper or systematic order",
+          "examples": [
+            "Please arrange the books on the shelf in alphabetical order."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L8 +1",
+        "textbookTitle": "龍騰 B2·L8、翰林 B1·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "arrangement",
+      "word": "arrangement",
+      "senses": [
+        {
+          "id": "sense-67458ea7",
+          "pos": "noun",
+          "meaningZh": "協議；安排",
+          "definitionEn": "an agreed upon plan or agreement",
+          "examples": [
+            "After weeks of negotiation, the two parties finally reached an arrangement regarding the terms of the contract."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-64c8f96b",
+          "pos": "noun",
+          "meaningZh": "排列；整理方式",
+          "definitionEn": "an organized structure used for sorting or classifying things",
+          "examples": [
+            "The librarian carefully placed each book on the shelf in alphabetical order, creating a neat arrangement for easy access."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L8 +1",
+        "textbookTitle": "龍騰 B2·L8、翰林 B1·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "arrival",
+      "word": "arrival",
+      "senses": [
+        {
+          "id": "sense-e660d1ac",
+          "pos": "noun",
+          "meaningZh": "抵達；到達",
+          "definitionEn": "the act of arriving at a certain place",
+          "examples": [
+            "The arrival of the train was delayed by two hours due to heavy snowfall."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-80a15d14",
+          "pos": "noun",
+          "meaningZh": "達成目標；完成",
+          "definitionEn": "accomplishment of an objective",
+          "examples": [
+            "The arrival of the team at the summit marked their successful accomplishment of climbing the mountain."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L4 +1",
+        "textbookTitle": "龍騰 B3·L4、三民 B4·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "arrow",
+      "word": "arrow",
+      "senses": [
+        {
+          "id": "sense-a85af6ff",
+          "pos": "noun",
+          "meaningZh": "箭；箭矢",
+          "definitionEn": "a projectile that is shot from a bow, consisting of a straight thin shaft with an arrowhead on one end and feathers or plastic vanes on the other to provide stabilization during flight",
+          "examples": [
+            "Robin Hood shot an arrow towards the bulls-eye, and it hit the exact spot with great precision."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-86992be5",
+          "pos": "noun",
+          "meaningZh": "箭頭符號；方向符號",
+          "definitionEn": "a symbol or mark used to indicate direction or position",
+          "examples": [
+            "The arrow on the map pointed us towards the north."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "article",
+      "word": "article",
+      "senses": [
+        {
+          "id": "sense-d97bb2d4",
+          "pos": "noun",
+          "meaningZh": "文章；報導",
+          "definitionEn": "a piece of writing included in a publication, usually nonfiction",
+          "examples": [
+            "The newspaper published an article about the increasing rates of pollution in the city."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-03d240c2",
+          "pos": "noun",
+          "meaningZh": "物品；品項",
+          "definitionEn": "an object of a certain class or type",
+          "examples": [
+            "He wrote a scholarly article on the history of democracy."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L2",
+        "textbookTitle": "三民 B4·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "artist",
+      "word": "artist",
+      "senses": [
+        {
+          "id": "sense-2470348a",
+          "pos": "noun",
+          "meaningZh": "藝術家；畫家",
+          "definitionEn": "a person who creates paintings or drawings or other works of art",
+          "examples": [
+            "Sarah is a talented artist who specializes in realistic oil paintings."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B2·L2",
+        "textbookTitle": "三民 B2·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "asleep",
+      "word": "asleep",
+      "senses": [
+        {
+          "id": "sense-46ccfb3d",
+          "pos": "adjective",
+          "meaningZh": "睡著的；沉睡的",
+          "definitionEn": "lacking sensation",
+          "examples": [
+            "After a long day of hiking, Emily fell asleep as soon as her head hit the pillow."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-83c56edc",
+          "pos": "adverb",
+          "meaningZh": "進入睡眠；睡著",
+          "definitionEn": "into a sleeping state",
+          "examples": [
+            "After a long day at work, she quickly fell asleep on the couch."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B2·L6",
+        "textbookTitle": "三民 B2·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "attempt",
+      "word": "attempt",
+      "senses": [
+        {
+          "id": "sense-f7bf54db",
+          "pos": "noun",
+          "meaningZh": "嘗試；努力",
+          "definitionEn": "earnest and conscientious activity intended to do or accomplish something",
+          "examples": [
+            "After several failed attempts, she finally passed the driving test."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-68a38383",
+          "pos": "noun",
+          "meaningZh": "攻擊；進攻",
+          "definitionEn": "the act of attacking",
+          "examples": [
+            "The army made an attempt to conquer the city, but were defeated."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L2",
+        "textbookTitle": "龍騰 B5·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "attend",
+      "word": "attend",
+      "senses": [
+        {
+          "id": "sense-873b6483",
+          "pos": "verb",
+          "meaningZh": "出席；參加",
+          "definitionEn": "to be present at an event, meeting, or place",
+          "examples": [
+            "More than two hundred people attended the conference."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-20605a70",
+          "pos": "verb",
+          "meaningZh": "注意；留心",
+          "definitionEn": "to pay attention to or be mindful of something",
+          "examples": [
+            "During the meeting, it is important to attend to the speaker and actively engage in the discussion."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-1d648e05",
+          "pos": "verb",
+          "meaningZh": "服侍；照料",
+          "definitionEn": "to work for or be a servant to someone",
+          "examples": [
+            "John decided to attend to the needs of his elderly neighbor by doing her grocery shopping for her."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "attention",
+      "word": "attention",
+      "senses": [
+        {
+          "id": "sense-0ab7584c",
+          "pos": "noun",
+          "meaningZh": "注意力；專注",
+          "definitionEn": "the process of concentrating on a particular task or object",
+          "examples": [
+            "During the exam, she was completely focused and gave her full attention to each question."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-b6c9bdf9",
+          "pos": "noun",
+          "meaningZh": "關注；重視",
+          "definitionEn": "a general interest or concern for something",
+          "examples": [
+            "After the teacher announced the pop quiz, all the students immediately perked up and turned their attention to the front of the classroom."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L2 +1",
+        "textbookTitle": "龍騰 B1·L2、三民 B1·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "author",
+      "word": "author",
+      "senses": [
+        {
+          "id": "sense-9aa4d07a",
+          "pos": "noun",
+          "meaningZh": "作家；著作人",
+          "definitionEn": "a person who writes books, stories, articles, or other literary works for income",
+          "examples": [
+            "The author of the book I just finished reading will be speaking at the university next week."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-19fc08c8",
+          "pos": "verb",
+          "meaningZh": "撰寫；創作",
+          "definitionEn": "to write or be the creator of",
+          "examples": [
+            "J.K. Rowling is a famous author who wrote the Harry Potter series."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "available",
+      "word": "available",
+      "senses": [
+        {
+          "id": "sense-e76a3b8c",
+          "pos": "adjective",
+          "meaningZh": "可用的；有空的",
+          "definitionEn": "accessible and ready to be used or served",
+          "examples": [
+            "The room was already booked, but luckily there was another available."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-96c0cc63",
+          "pos": "adjective",
+          "meaningZh": "便於取得的；隨時可用的",
+          "definitionEn": "conveniently placed for use or disposal",
+          "examples": [
+            "There are several taxis available outside the airport."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "average",
+      "word": "average",
+      "senses": [
+        {
+          "id": "sense-70a5ef7e",
+          "pos": "noun",
+          "meaningZh": "平均值；均值",
+          "definitionEn": "a typical or usual value in a set of data",
+          "examples": [
+            "In a class of 30 students, the average score on the test was 80."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-9f734f78",
+          "pos": "adjective",
+          "meaningZh": "普通的；平凡的",
+          "definitionEn": "commonplace, lacking distinction or rank",
+          "examples": [
+            "The food at that restaurant was average - nothing special, but nothing terrible either."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L3 +1",
+        "textbookTitle": "龍騰 B1·L3、三民 B1·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "avoid",
+      "word": "avoid",
+      "senses": [
+        {
+          "id": "sense-6872662b",
+          "pos": "verb",
+          "meaningZh": "迴避；遠離",
+          "definitionEn": "to stay away from someone or something; to keep something from happening by being careful",
+          "examples": [
+            "Jane decided to avoid going to the party because she didn't want to see her ex-boyfriend there."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-4ab5b6a1",
+          "pos": "verb",
+          "meaningZh": "克制；避免",
+          "definitionEn": "to choose not to do something; to not allow yourself to do something",
+          "examples": [
+            "Sarah decided to avoid eating junk food to maintain a healthy diet."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L3 +1",
+        "textbookTitle": "龍騰 B1·L3、三民 B1·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "backpack",
+      "word": "backpack",
+      "senses": [
+        {
+          "id": "sense-6f41b2aa",
+          "pos": "noun",
+          "meaningZh": "背包；後背包",
+          "definitionEn": "A backpack is a type of bag that has two shoulder straps that allow you to carry things on your back.",
+          "examples": [
+            "I always carry my laptop in my backpack to work."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-7989f848",
+          "pos": "verb",
+          "meaningZh": "背包旅行；揹著背包",
+          "definitionEn": "To backpack can also mean to carry something on your back using a backpack.",
+          "examples": [
+            "I prefer to backpack when I go on hiking trips instead of carrying a suitcase or duffel bag."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L10",
+        "textbookTitle": "三民 B4·L10"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "backward",
+      "word": "backward",
+      "senses": [
+        {
+          "id": "sense-98140aae",
+          "pos": "adverb",
+          "meaningZh": "向後；往後",
+          "definitionEn": "toward the back or rear",
+          "examples": [
+            "He stumbled backward and fell down the stairs."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-936881d2",
+          "pos": "adverb",
+          "meaningZh": "往過去；追溯",
+          "definitionEn": "in the past",
+          "examples": [
+            "In the 1980s, fashion trends often took inspiration from styles that were popular backward in time, such as the twenties and fifties."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "badminton",
+      "word": "badminton",
+      "senses": [
+        {
+          "id": "sense-c49ecd05",
+          "pos": "noun",
+          "meaningZh": "羽毛球（運動）",
+          "definitionEn": "a game played with light rackets and a shuttlecock, volleyed over a net on a court",
+          "examples": [
+            "We spent the afternoon playing badminton in the backyard, diving to save every point."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "bake",
+      "word": "bake",
+      "senses": [
+        {
+          "id": "sense-44b20272",
+          "pos": "verb",
+          "meaningZh": "烘焙；烤（食物）",
+          "definitionEn": "to cook food by placing it inside an oven",
+          "examples": [
+            "I love to bake chocolate chip cookies on a rainy day."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "bakery",
+      "word": "bakery",
+      "senses": [
+        {
+          "id": "sense-8f743278",
+          "pos": "noun",
+          "meaningZh": "麵包店；烘焙坊",
+          "definitionEn": "a shop or place where bread, cakes, and pastries are made or sold",
+          "examples": [
+            "I stopped by the bakery on my way home and picked up a fresh loaf of bread."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "balance",
+      "word": "balance",
+      "senses": [
+        {
+          "id": "sense-91b6094c",
+          "pos": "noun",
+          "meaningZh": "平衡；均衡",
+          "definitionEn": "equality of distribution or proportion",
+          "examples": [
+            "The teacher ensured a balance of speaking time for each student in the classroom."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-2e3b80ea",
+          "pos": "noun",
+          "meaningZh": "天秤；磅秤",
+          "definitionEn": "a device for measuring weight, dependent on the pull of gravity",
+          "examples": [
+            "The scientist placed the object on the balance to determine its weight accurately."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·R1",
+        "textbookTitle": "龍騰 B3·R1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "balcony",
+      "word": "balcony",
+      "senses": [
+        {
+          "id": "sense-dc23d129",
+          "pos": "noun",
+          "meaningZh": "陽台；露台",
+          "definitionEn": "a platform that extends from the wall of a building with a railing or balustrade around it",
+          "examples": [
+            "She stepped out onto the balcony to get some fresh air and enjoy the view of the city."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-bbb3242a",
+          "pos": "noun",
+          "meaningZh": "（劇院）樓座；二樓觀眾席",
+          "definitionEn": "an upper floor that extends over the main floor at the back of an auditorium",
+          "examples": [
+            "From the balcony, we could see the entire stage during the play."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "balloon",
+      "word": "balloon",
+      "senses": [
+        {
+          "id": "sense-a28c7f5a",
+          "pos": "noun",
+          "meaningZh": "氣球（橡皮玩具）",
+          "definitionEn": "a small, thin, inflatable rubber bag with a narrow neck, used as a toy or decoration",
+          "examples": [
+            "At the birthday party, the children played with colorful balloons and giggled with joy as they let them float up into the sky."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-9966598d",
+          "pos": "noun",
+          "meaningZh": "熱氣球；飛行氣球",
+          "definitionEn": "a large, tough, non-rigid bag filled with gas (usually helium) or heated air, used as decoration or for travel through the air",
+          "examples": [
+            "The children were delighted as they watched the colorful balloons fill the sky during the annual balloon festival."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "bar",
+      "word": "bar",
+      "senses": [
+        {
+          "id": "sense-9ca58295",
+          "pos": "noun",
+          "meaningZh": "酒吧；吧台",
+          "definitionEn": "a counter where food or drink can be obtained",
+          "examples": [
+            "After a long day of work, we decided to head to the bar and grab a couple of drinks."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-bfe1c93e",
+          "pos": "noun",
+          "meaningZh": "（體操）單槓；橫桿",
+          "definitionEn": "a horizontal rod that gymnasts use to support themselves as they perform exercises",
+          "examples": [
+            "The gymnast gracefully swung from the high bar, showcasing her strength and skill."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "barbecue",
+      "word": "barbecue",
+      "senses": [
+        {
+          "id": "sense-61a3061e",
+          "pos": "noun",
+          "meaningZh": "燒烤肉；烤肉料理",
+          "definitionEn": "meat that has been seasoned with a highly seasoned sauce and grilled over an open flame or hot coals",
+          "examples": [
+            "We decided to have a barbecue in the backyard for our family gathering. We marinated the chicken overnight in a tangy barbecue sauce and grilled it to perfection over hot coals."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-4be0bf05",
+          "pos": "noun",
+          "meaningZh": "烤肉（方式）；戶外燒烤",
+          "definitionEn": "a method of cooking, often outdoors, food is grilled over an open flame or hot coals; especially a whole animal carcass roasted on a spit",
+          "examples": [
+            "We had a barbecue in the backyard and grilled burgers and hot dogs over the charcoal."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "barber",
+      "word": "barber",
+      "senses": [
+        {
+          "id": "sense-cee4fa89",
+          "pos": "noun",
+          "meaningZh": "理髮師；剃髮師",
+          "definitionEn": "a person whose profession is cutting, shaping, and styling hair, especially men’s hair, and shaving or trimming beards as a trade",
+          "examples": [
+            "My father likes to visit the same barber every month to get a trim and shave."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    }
+  ]
+}

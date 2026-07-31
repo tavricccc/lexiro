@@ -1,0 +1,1392 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 28,
+  "words": [
+    {
+      "wordKey": "stay",
+      "word": "stay",
+      "senses": [
+        {
+          "id": "sense-d1c757f4",
+          "pos": "verb",
+          "meaningZh": "停留；留在",
+          "definitionEn": "continue in a place, position, or situation",
+          "examples": [
+            "Despite the heavy rain, the hiker decided to stay on the mountain to enjoy the scenic view."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-02c86ce0",
+          "pos": "verb",
+          "meaningZh": "保持；維持",
+          "definitionEn": "remain in a certain state or condition",
+          "examples": [
+            "Despite the chaos, Sarah managed to stay calm and composed."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "still",
+      "word": "still",
+      "senses": [
+        {
+          "id": "sense-d0260229",
+          "pos": "adjective",
+          "meaningZh": "靜止的；不動的",
+          "definitionEn": "not in physical motion",
+          "examples": [
+            "Sarah sat very still during the meditation class, not moving an inch."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-a8d66d71",
+          "pos": "adjective",
+          "meaningZh": "平靜無波的；靜謐的",
+          "definitionEn": "free from noticeable current",
+          "examples": [
+            "The lake was so still that the reflection of the mountains was crystal clear."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "stop",
+      "word": "stop",
+      "senses": [
+        {
+          "id": "sense-105694d1",
+          "pos": "verb",
+          "meaningZh": "停止；終止",
+          "definitionEn": "to come to an end; to cease activity or movement",
+          "examples": [
+            "After the race, my heart was pounding so hard that I had to stop and catch my breath."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-3b013c1c",
+          "pos": "verb",
+          "meaningZh": "使停下；阻止",
+          "definitionEn": "to cause to come to an end; to halt or prevent from continuing",
+          "examples": [
+            "The police officer yelled ’Stop!’ to the fleeing criminal, bringing the chase to an end."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "store",
+      "word": "store",
+      "senses": [
+        {
+          "id": "sense-7f6b3fb1",
+          "pos": "noun",
+          "meaningZh": "商店；零售店",
+          "definitionEn": "a mercantile establishment where goods or services are sold to consumers",
+          "examples": [
+            "The new store in downtown offers a wide range of clothing and accessories for men and women."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-078174b4",
+          "pos": "noun",
+          "meaningZh": "儲藏處；備品庫",
+          "definitionEn": "a place where something is kept for future use or sale",
+          "examples": [
+            "I went to the store to buy some groceries."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 翰林 B1·L3",
+        "textbookTitle": "翰林 B1·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "story",
+      "word": "story",
+      "senses": [
+        {
+          "id": "sense-4ef97d02",
+          "pos": "noun",
+          "meaningZh": "故事；小說",
+          "definitionEn": "a piece of fiction that narrates a chain of related events",
+          "examples": [
+            "She stayed up all night reading a captivating story about love and adventure."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-06350160",
+          "pos": "noun",
+          "meaningZh": "歷史敘述；記述",
+          "definitionEn": "a record or narrative description of past events",
+          "examples": [
+            "As a historian, I spent hours meticulously researching and piecing together the story of the ancient civilization."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "straight",
+      "word": "straight",
+      "senses": [
+        {
+          "id": "sense-24686548",
+          "pos": "adjective",
+          "meaningZh": "筆直的；無彎曲的",
+          "definitionEn": "having no deviations or bends from the usual or expected course",
+          "examples": [
+            "After the storm, the road was straight and clear, allowing us to drive safely."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-9f642fcc",
+          "pos": "adjective",
+          "meaningZh": "連續不間斷的；一連",
+          "definitionEn": "following in a continuous sequence or succession; without interruption or break",
+          "examples": [
+            "After the marathon, the runner collapsed straight into the arms of the medical team."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "strange",
+      "word": "strange",
+      "senses": [
+        {
+          "id": "sense-9151e6ae",
+          "pos": "adjective",
+          "meaningZh": "奇怪的；怪異的",
+          "definitionEn": "slightly odd or even a bit weird; definitely out of the ordinary and unexpected",
+          "examples": [
+            "After walking down the deserted street for a few minutes, she had a strange feeling that someone was following her."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-08fec757",
+          "pos": "adjective",
+          "meaningZh": "陌生的；未曾見過的",
+          "definitionEn": "not previously known",
+          "examples": [
+            "She discovered a strange plant growing in her garden that she had never seen before."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "street",
+      "word": "street",
+      "senses": [
+        {
+          "id": "sense-67ba21c8",
+          "pos": "noun",
+          "meaningZh": "街道；街",
+          "definitionEn": "a public road in a town or city, typically with houses or other buildings along the sides",
+          "examples": [
+            "I walked down the street, passing by quaint houses and bustling shops."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-a05f005b",
+          "pos": "noun",
+          "meaningZh": "華爾街；金融市場",
+          "definitionEn": "used to refer to Wall Street",
+          "examples": [
+            "Investors gathered anxiously on the street as news of the stock market crash spread like wildfire."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "string",
+      "word": "string",
+      "senses": [
+        {
+          "id": "sense-42e97a8d",
+          "pos": "noun",
+          "meaningZh": "繩子；細繩",
+          "definitionEn": "a thin cord used for tying or fastening things",
+          "examples": [
+            "She tied the package with a piece of string."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-50e2dd0d",
+          "pos": "verb",
+          "meaningZh": "串成一串；穿線",
+          "definitionEn": "to thread objects on a single strand",
+          "examples": [
+            "She used a needle to string the beads together and create a beautiful necklace."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "strong",
+      "word": "strong",
+      "senses": [
+        {
+          "id": "sense-b4cf0276",
+          "pos": "adjective",
+          "meaningZh": "強大的；強力的",
+          "definitionEn": "having strength or power greater than what is expected or normal",
+          "examples": [
+            "Despite being sick, she showed a strong determination to finish the marathon."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-c1d8615a",
+          "pos": "adjective",
+          "meaningZh": "強健的；有力的",
+          "definitionEn": "not weak or faint",
+          "examples": [
+            "After months of rigorous training, he had developed strong muscles and could easily lift heavy weights."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "student",
+      "word": "student",
+      "senses": [
+        {
+          "id": "sense-dd8ffed7",
+          "pos": "noun",
+          "meaningZh": "學生；在學者",
+          "definitionEn": "a learner who is enrolled in an educational institution",
+          "examples": [
+            "The student raised their hand to ask a question during the lecture."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-9891a772",
+          "pos": "noun",
+          "meaningZh": "學生；就讀中的人",
+          "definitionEn": "a person who is studying at a school or college",
+          "examples": [
+            "Sarah is a dedicated student who spends long hours in the library to prepare for her exams."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "study",
+      "word": "study",
+      "senses": [
+        {
+          "id": "sense-433fa5ed",
+          "pos": "noun",
+          "meaningZh": "學習；研讀",
+          "definitionEn": "the act of applying one’s mind to learn and understand a particular subject, especially by reading",
+          "examples": [
+            "During exam week, Sarah had to study late into the night to prepare for her biology test."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-98d1caa9",
+          "pos": "noun",
+          "meaningZh": "學科；研究領域",
+          "definitionEn": "an area of knowledge that is studied",
+          "examples": [
+            "In his biology class, Jack chose marine biology as his area of study."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "stupid",
+      "word": "stupid",
+      "senses": [
+        {
+          "id": "sense-475e0ad0",
+          "pos": "adjective",
+          "meaningZh": "愚蠢的；蠢笨的",
+          "definitionEn": "lacking intelligence or good judgment; foolish",
+          "examples": [
+            "When Jack tried to carry all the grocery bags in one trip and dropped everything, he realized how stupid that decision was."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-0016234c",
+          "pos": "adjective",
+          "meaningZh": "缺乏判斷力的；欠考慮的",
+          "definitionEn": "having or showing a great lack of intelligence or common sense",
+          "examples": [
+            "During the math quiz, John forgot to bring his calculator and ended up using his ruler to do calculations. It was a stupid mistake."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "subject",
+      "word": "subject",
+      "senses": [
+        {
+          "id": "sense-de153371",
+          "pos": "noun",
+          "meaningZh": "主題；議題",
+          "definitionEn": "a situation, thing, or person that is being dealt with or considered",
+          "examples": [
+            "During the math class, the teacher discussed the subject of fractions and asked the students to solve various problems."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-afa8b5ae",
+          "pos": "noun",
+          "meaningZh": "科目；學科",
+          "definitionEn": "an area of knowledge or study",
+          "examples": [
+            "In high school, my favorite subject was history. I loved learning about different time periods and cultures."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "successful",
+      "word": "successful",
+      "senses": [
+        {
+          "id": "sense-e5eb27b7",
+          "pos": "adjective",
+          "meaningZh": "成功的；有能力達成的",
+          "definitionEn": "having the ability to succeed or to accomplish something",
+          "examples": [
+            "Despite facing many challenges, Jane was successful in starting her own business and turning it into a profitable venture."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-2d19fd1d",
+          "pos": "adjective",
+          "meaningZh": "財務有成的；事業有成的",
+          "definitionEn": "having achieved financial prosperity",
+          "examples": [
+            "After years of hard work and dedication, John's business became incredibly successful, allowing him to live a life of luxury and fulfill all his dreams."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L1",
+        "textbookTitle": "龍騰 B2·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "sugar",
+      "word": "sugar",
+      "senses": [
+        {
+          "id": "sense-e2a06449",
+          "pos": "noun",
+          "meaningZh": "糖；食用糖",
+          "definitionEn": "a white crystalline carbohydrate commonly used as a sweetener and preservative in food and drinks",
+          "examples": [
+            "She added a teaspoon of sugar to her coffee for sweetness."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-65aae3e9",
+          "pos": "noun",
+          "meaningZh": "醣類；碳水化合物",
+          "definitionEn": "an essential structural component of living cells and source of energy for animals; includes simple sugars with small molecules as well as macromolecular substances; classified according to the number of monosaccharide groups they contain",
+          "examples": [
+            "The athlete had some sugar before the race for an energy boost."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "sun",
+      "word": "sun",
+      "senses": [
+        {
+          "id": "sense-b0be601e",
+          "pos": "noun",
+          "meaningZh": "太陽；日",
+          "definitionEn": "the star at the center of the solar system that provides light and heat to the planets",
+          "examples": [],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-078bf535",
+          "pos": "noun",
+          "meaningZh": "恆星（有行星繞行）",
+          "definitionEn": "any star with planets orbiting around it",
+          "examples": [
+            "Our solar system consists of eight planets that orbit around the sun."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "sunny",
+      "word": "sunny",
+      "senses": [
+        {
+          "id": "sense-82927745",
+          "pos": "adjective",
+          "meaningZh": "晴朗的；陽光充足的",
+          "definitionEn": "having plenty of sunshine; bright and pleasant",
+          "examples": [
+            "We decided to have a picnic in the park because it was a sunny day."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "supermarket",
+      "word": "supermarket",
+      "senses": [
+        {
+          "id": "sense-b80fca31",
+          "pos": "noun",
+          "meaningZh": "超級市場；超市",
+          "definitionEn": "a large self-service grocery store that sells a variety of products, including groceries, dairy products, and household goods",
+          "examples": [
+            "When I need to buy groceries, I prefer going to the supermarket rather than a small convenience store. It has more options to choose from and the prices are better."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "sure",
+      "word": "sure",
+      "senses": [
+        {
+          "id": "sense-59be8498",
+          "pos": "adjective",
+          "meaningZh": "確定的；有把握的",
+          "definitionEn": "confident and certain; free from doubt or uncertainty",
+          "examples": [
+            "After extensive training, she was sure she would ace the exam."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-9a3158a8",
+          "pos": "adjective",
+          "meaningZh": "必然的；肯定會發生的",
+          "definitionEn": "certain to happen; inevitable",
+          "examples": [
+            "It is sure to rain tomorrow, so don't forget your umbrella."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "surprise",
+      "word": "surprise",
+      "senses": [
+        {
+          "id": "sense-b4a0f0cc",
+          "pos": "noun",
+          "meaningZh": "意外之事；驚喜",
+          "definitionEn": "a sudden unexpected event",
+          "examples": [
+            "The surprise party completely caught her off guard, as she had no idea that her friends had organized such an elaborate gathering for her birthday."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-1ccb269b",
+          "pos": "noun",
+          "meaningZh": "驚訝；吃驚的感受",
+          "definitionEn": "the astonishment you feel when something totally unexpected happens to you",
+          "examples": [
+            "I walked into my house to find all my friends waiting to throw me a surprise birthday party."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "surprised",
+      "word": "surprised",
+      "senses": [
+        {
+          "id": "sense-94d9f53f",
+          "pos": "noun",
+          "meaningZh": "驚訝；吃驚的感受",
+          "definitionEn": "the astonishment you feel when something totally unexpected happens to you",
+          "examples": [
+            "I walked into my house to find all my friends waiting to throw me a surprise birthday party."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "sweet",
+      "word": "sweet",
+      "senses": [
+        {
+          "id": "sense-1e879662",
+          "pos": "adjective",
+          "meaningZh": "甜的；含糖的",
+          "definitionEn": "containing added sweetening",
+          "examples": [
+            "The sweet aroma of freshly baked cookies filled the room."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-20dac86e",
+          "pos": "noun",
+          "meaningZh": "甜味；甜的感覺",
+          "definitionEn": "the property or taste sensation of sugar or something sugary",
+          "examples": [
+            "The cake tasted incredibly sweet due to the excessive use of sugar."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "t-shirt",
+      "word": "t-shirt",
+      "senses": [
+        {
+          "id": "sense-0e0d1aba",
+          "pos": "noun",
+          "meaningZh": "T恤；短袖圓領衫",
+          "definitionEn": "a casual shirt with short sleeves and no collar, usually made of cotton",
+          "examples": [
+            "He bought a white t-shirt with a picture of Taipei 101 on the front."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "table",
+      "word": "table",
+      "senses": [
+        {
+          "id": "sense-c6842770",
+          "pos": "noun",
+          "meaningZh": "桌子；桌台",
+          "definitionEn": "a piece of furniture with a smooth, flat top and one or more vertical legs for support",
+          "examples": [
+            "We gathered around the table to enjoy a delicious meal together."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-ec121412",
+          "pos": "noun",
+          "meaningZh": "餐桌；用餐的桌子",
+          "definitionEn": "a piece of furniture where a meal is served and eaten",
+          "examples": [
+            "The family gathered around the table to enjoy a delicious dinner together."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "tail",
+      "word": "tail",
+      "senses": [
+        {
+          "id": "sense-a1216dd7",
+          "pos": "noun",
+          "meaningZh": "尾部；（飛機或船的）後段",
+          "definitionEn": "the rear part of an aircraft or ship",
+          "examples": [
+            "When the plane started to descend towards the runway, I could see the tail of the aircraft."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "take",
+      "word": "take",
+      "senses": [
+        {
+          "id": "sense-e8a590ea",
+          "pos": "verb",
+          "meaningZh": "拿取；取得",
+          "definitionEn": "physically get something into one’s hands",
+          "examples": [
+            "She took the book from the shelf and began reading."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-62c29bd1",
+          "pos": "verb",
+          "meaningZh": "移除；帶走",
+          "definitionEn": "remove something, concrete or abstract",
+          "examples": [
+            "Please take this piece of garbage out to the trash."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "talk",
+      "word": "talk",
+      "senses": [
+        {
+          "id": "sense-6e9a68fd",
+          "pos": "verb",
+          "meaningZh": "交談；溝通",
+          "definitionEn": "to use language to communicate with others",
+          "examples": [
+            "After the meeting, we need to talk about the next steps in the project."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-f11aa0b5",
+          "pos": "verb",
+          "meaningZh": "說話；講述",
+          "definitionEn": "to express something with spoken words",
+          "examples": [
+            "I need to talk to my boss about my upcoming vacation."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "tall",
+      "word": "tall",
+      "senses": [
+        {
+          "id": "sense-5e8fcf97",
+          "pos": "adjective",
+          "meaningZh": "高的；高挑的",
+          "definitionEn": "being greater in height than most others; high in stature",
+          "examples": [
+            "Gary is so tall that he has to duck to enter through the door of his house."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-b424d4ee",
+          "pos": "noun",
+          "meaningZh": "高身版（服裝尺寸）",
+          "definitionEn": "a clothing size fitting a tall person",
+          "examples": [
+            "John finally found a store that offered tall sizes for men, allowing him to find dress shirts and pants that fit properly."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "tape",
+      "word": "tape",
+      "senses": [
+        {
+          "id": "sense-5e4560c5",
+          "pos": "noun",
+          "meaningZh": "膠帶；膠布",
+          "definitionEn": "a long thin strip of sticky material used for fastening or sticking things together",
+          "examples": [
+            "He used tape to seal the box."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-dfe91bff",
+          "pos": "noun",
+          "meaningZh": "捲尺；量尺",
+          "definitionEn": "a measuring device consisting of a narrow strip marked with inches or centimeters",
+          "examples": [
+            "The carpenter used a tape to measure the length of the wooden board before cutting it."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-1cc54d62",
+          "pos": "verb",
+          "meaningZh": "用膠帶黏貼；貼合",
+          "definitionEn": "fasten or attach using tape",
+          "examples": [
+            "I had to tape the ripped page back together."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    }
+  ]
+}

@@ -1,0 +1,1365 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 196,
+  "words": [
+    {
+      "wordKey": "splendor",
+      "word": "splendor",
+      "senses": [
+        {
+          "id": "sense-3c8e70d7",
+          "pos": "noun",
+          "meaningZh": "富麗；壯觀；輝煌",
+          "definitionEn": "the quality of being magnificent or splendid or grand",
+          "examples": [
+            "The ballroom was adorned with crystal chandeliers, velvet curtains, and gold accents, creating an atmosphere of splendor."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-ef9966c9",
+          "pos": "noun",
+          "meaningZh": "光輝；非凡之美",
+          "definitionEn": "a quality that outshines the usual",
+          "examples": [
+            "As the sun set over the horizon, the golden rays bathed the city in a breathtaking splendor."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L5",
+        "textbookTitle": "龍騰 B3·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "spokeswoman",
+      "word": "spokeswoman",
+      "senses": [
+        {
+          "id": "sense-d4b8035d",
+          "pos": "noun",
+          "meaningZh": "女性發言人；女代言人",
+          "definitionEn": "a woman who speaks on behalf of an organization or group",
+          "examples": [
+            "The spokeswoman addressed the media to provide an update on the company's financial performance."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "spontaneous",
+      "word": "spontaneous",
+      "senses": [
+        {
+          "id": "sense-5bcc8900",
+          "pos": "adjective",
+          "meaningZh": "自發的；無外力驅動的",
+          "definitionEn": "happening or arising without apparent external cause",
+          "examples": [
+            "During the hike, Sarah had a spontaneous idea to go swimming in the nearby lake."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-0516b3ab",
+          "pos": "adjective",
+          "meaningZh": "即興的；臨時起意的",
+          "definitionEn": "said or done without having been planned or written in advance",
+          "examples": [
+            "At the birthday party, the guests broke into a spontaneous dance to celebrate."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "sportsmanship",
+      "word": "sportsmanship",
+      "senses": [
+        {
+          "id": "sense-8ca293b5",
+          "pos": "noun",
+          "meaningZh": "運動精神；體育道德",
+          "definitionEn": "the ethical and courteous behavior exhibited by a participant in a sport or game, especially in situations where one’s opponent has been defeated or has made a mistake.",
+          "examples": [
+            "After winning the championship, John displayed true sportsmanship by congratulating his opponent and expressing admiration for their skills."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-19c23556",
+          "pos": "noun",
+          "meaningZh": "公平競賽精神；遵守規則",
+          "definitionEn": "fairness in following the rules of the game.",
+          "examples": [
+            "Even though their team lost, the players showed great sportsmanship by congratulating their opponents on their well-deserved victory."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "spotlight",
+      "word": "spotlight",
+      "senses": [
+        {
+          "id": "sense-903afdcf",
+          "pos": "noun",
+          "meaningZh": "聚光燈；舞台射燈",
+          "definitionEn": "a lamp that projects a strong beam of light in order to illuminate a particular area, often used to highlight a performer on stage",
+          "examples": [
+            "During the play, the spotlight gently illuminated the lead actor, creating a dramatic effect on stage."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-4bc01333",
+          "pos": "noun",
+          "meaningZh": "公眾目光；媒體焦點",
+          "definitionEn": "a state of public attention or scrutiny",
+          "examples": [
+            "After winning the championship, the athlete found himself in the spotlight, with reporters and fans clamoring for interviews and autographs."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "spur",
+      "word": "spur",
+      "senses": [
+        {
+          "id": "sense-2c406145",
+          "pos": "verb",
+          "meaningZh": "激勵；促進；驅策",
+          "definitionEn": "stimulate, incite, or provoke",
+          "examples": [
+            "The motivational speech by the coach spurred the team to work harder and win the championship."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-aada8093",
+          "pos": "noun",
+          "meaningZh": "馬刺（騎馬用具）",
+          "definitionEn": "a prod attached to a rider’s boot and used to urge a horse forward",
+          "examples": [
+            "The cowboy gently tapped his horse's sides with the spur to encourage it to gallop faster."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "stabilize",
+      "word": "stabilize",
+      "senses": [
+        {
+          "id": "sense-9bd83c3a",
+          "pos": "verb",
+          "meaningZh": "使穩定；維持均衡",
+          "definitionEn": "To make something stable and keep it from fluctuating, or to put it into a state of balance or equilibrium.",
+          "examples": [
+            "After the earthquake, the engineers worked tirelessly to stabilize the damaged buildings and prevent any further collapses."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-1f0c3b7e",
+          "pos": "verb",
+          "meaningZh": "撐固；使穩固不動",
+          "definitionEn": "To support or hold something steady and keep it firmly in place, as if with a brace.",
+          "examples": [
+            "After the earthquake, the construction team worked quickly to stabilize the crumbling building by placing metal beams and supports throughout its structure."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "stagger",
+      "word": "stagger",
+      "senses": [
+        {
+          "id": "sense-00b0f812",
+          "pos": "verb",
+          "meaningZh": "踉蹌；蹣跚而行",
+          "definitionEn": "walk with a unsteady and labored gait",
+          "examples": [
+            "She looked like she was about to stagger and fall any moment due to her heavy intoxification."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-28c5d053",
+          "pos": "noun",
+          "meaningZh": "踉蹌步態；蹣跚",
+          "definitionEn": "an unsteady and labored gait",
+          "examples": [
+            "He tried to stand up but was so drunk that he could only stagger."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "staple",
+      "word": "staple",
+      "senses": [
+        {
+          "id": "sense-c8ebde86",
+          "pos": "noun",
+          "meaningZh": "主食；主要產品",
+          "definitionEn": "a basic food or product that is used or eaten regularly",
+          "examples": [
+            "Rice is a staple in many Asian countries."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-82fc6aba",
+          "pos": "noun",
+          "meaningZh": "U形釘；固線釘",
+          "definitionEn": "a short U-shaped wire nail for securing cables or wires",
+          "examples": [
+            "I used a staple to secure the cable to the wall."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-4729516d",
+          "pos": "noun",
+          "meaningZh": "訂書針",
+          "definitionEn": "a thin wire fastener shaped like a staple that can hold papers together",
+          "examples": [
+            "I used a staple to attach the pages together in my report."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "starvation",
+      "word": "starvation",
+      "senses": [
+        {
+          "id": "sense-d54b6afa",
+          "pos": "noun",
+          "meaningZh": "飢餓；嚴重缺糧",
+          "definitionEn": "a state of extreme hunger resulting from lack of essential nutrients over a prolonged period of time",
+          "examples": [
+            "The people of the drought-stricken region were experiencing starvation due to the lack of food and water for months."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-3cb62842",
+          "pos": "noun",
+          "meaningZh": "使挨餓；食物剝奪",
+          "definitionEn": "the act of depriving someone or something of food or allowing scarcity of food leading to a lack of nourishment",
+          "examples": [
+            "The ongoing drought resulted in widespread starvation among the rural population."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L5",
+        "textbookTitle": "龍騰 B4·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "statesman",
+      "word": "statesman",
+      "senses": [
+        {
+          "id": "sense-3c41f8cc",
+          "pos": "noun",
+          "meaningZh": "政治家；國際知名領袖",
+          "definitionEn": "a man who is a respected leader in national or international affairs, typically one with a great deal of political experience.",
+          "examples": [
+            "The statesman played a crucial role in negotiating the peace treaty between the two warring nations, showcasing his diplomatic skills and extensive political experience."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "stationary",
+      "word": "stationary",
+      "senses": [
+        {
+          "id": "sense-1b4a5eef",
+          "pos": "adjective",
+          "meaningZh": "靜止的；不動的",
+          "definitionEn": "remaining in one place or position",
+          "examples": [
+            "The old man sat on the park bench, stationary, watching the children play."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-3991e717",
+          "pos": "adjective",
+          "meaningZh": "固定的；不可移動的",
+          "definitionEn": "not capable of being moved or not moving",
+          "examples": [
+            "The statue stood stationary on its pedestal, captivating the attention of all who passed by."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "stationery",
+      "word": "stationery",
+      "senses": [
+        {
+          "id": "sense-518803d8",
+          "pos": "noun",
+          "meaningZh": "文具；書寫用品",
+          "definitionEn": "writing materials such as paper, envelopes, and pens",
+          "examples": [
+            "I went to the store to buy some stationery for my new job, which included file folders, notepads, and pens."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "stature",
+      "word": "stature",
+      "senses": [
+        {
+          "id": "sense-7db17af6",
+          "pos": "noun",
+          "meaningZh": "身高；身材",
+          "definitionEn": "the distance from the top of the head to the bottom of the feet when standing",
+          "examples": [
+            "Before joining the basketball team, his tall stature was considered an advantage."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-7cec7b6e",
+          "pos": "noun",
+          "meaningZh": "聲望；地位",
+          "definitionEn": "the level of respect that someone has earned through achievement or reputation",
+          "examples": [
+            "After years of hard work and dedication, she had attained a high stature within the scientific community."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "statute",
+      "word": "statute",
+      "senses": [
+        {
+          "id": "sense-b24a64b4",
+          "pos": "noun",
+          "meaningZh": "法規；成文法",
+          "definitionEn": "a law created by a legislative body",
+          "examples": [
+            "The new statute passed by the government imposes stricter penalties for tax evasion."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-69307f92",
+          "pos": "adjective",
+          "meaningZh": "由立法機關制定的；法定的",
+          "definitionEn": "created or established by a legislative body",
+          "examples": [
+            "The statute passed by the government sets the minimum age for voting at 18 years old."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "stepchild",
+      "word": "stepchild",
+      "senses": [
+        {
+          "id": "sense-4e7cf251",
+          "pos": "noun",
+          "meaningZh": "繼子；繼女",
+          "definitionEn": "a child that your husband or wife had before you got married and who is being raised by that person and you",
+          "examples": [
+            "My husband and I have been doing our best to raise his stepchild as our own son since we got married."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "stepfather",
+      "word": "stepfather",
+      "senses": [
+        {
+          "id": "sense-fcf61aa6",
+          "pos": "noun",
+          "meaningZh": "繼父；後父",
+          "definitionEn": "a man who is married to someone’s mother, but is not their biological father",
+          "examples": [
+            "When my parents divorced, my mom remarried and my stepfather has been a loving and supportive figure in my life ever since."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "stepmother",
+      "word": "stepmother",
+      "senses": [
+        {
+          "id": "sense-2a852b6f",
+          "pos": "noun",
+          "meaningZh": "繼母；後母",
+          "definitionEn": "the woman who is married to one’s father after the divorce or death of one’s mother",
+          "examples": [
+            "After his parents' divorce, John's father remarried and his new wife became his stepmother."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "stimulation",
+      "word": "stimulation",
+      "senses": [
+        {
+          "id": "sense-ed95fb75",
+          "pos": "noun",
+          "meaningZh": "啟發；刺激靈感",
+          "definitionEn": "the act of providing new or interesting ideas that encourage creative thinking or activity",
+          "examples": [
+            "Attending an art exhibition can provide stimulation and inspire new artistic ideas."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-59b2e638",
+          "pos": "noun",
+          "meaningZh": "激勵；驅動",
+          "definitionEn": "the act of arousing someone or something to take action",
+          "examples": [
+            "The coach used positive feedback and encouragement as a means of stimulation to motivate the team to perform at their best during the game."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "strait",
+      "word": "strait",
+      "senses": [
+        {
+          "id": "sense-28a4bc15",
+          "pos": "noun",
+          "meaningZh": "海峽；狹水道",
+          "definitionEn": "a narrow channel of water connecting two larger bodies of water",
+          "examples": [
+            "The Strait of Gibraltar is the narrow channel of water that connects the Atlantic Ocean to the Mediterranean Sea."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-5f71f581",
+          "pos": "noun",
+          "meaningZh": "困境；窘境",
+          "definitionEn": "a difficult or tight situation or position",
+          "examples": [
+            "The company found itself in financial straits after a failed product launch."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "strangle",
+      "word": "strangle",
+      "senses": [
+        {
+          "id": "sense-cb79570a",
+          "pos": "verb",
+          "meaningZh": "掐住喉嚨；窒息",
+          "definitionEn": "prevent someone from breathing by squeezing their throat",
+          "examples": [
+            "The murderer tried to strangle his victim to death with his bare hands."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "stray",
+      "word": "stray",
+      "senses": [
+        {
+          "id": "sense-b7297ee7",
+          "pos": "verb",
+          "meaningZh": "迷路；偏離方向",
+          "definitionEn": "to wander from a direct course or path, often by accident or without a clear purpose",
+          "examples": [
+            "While hiking in the woods, we accidentally strayed from the main trail and got lost for hours."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-bd889619",
+          "pos": "adjective",
+          "meaningZh": "零散的；偶發的",
+          "definitionEn": "not close together in time, distant or scattered in terms of occurrence",
+          "examples": [
+            "The stray clouds were the only ones in the sky, with the rest of it a perfect blue."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "stride",
+      "word": "stride",
+      "senses": [
+        {
+          "id": "sense-b7496aa2",
+          "pos": "noun",
+          "meaningZh": "步伐；大步",
+          "definitionEn": "a step in walking or running",
+          "examples": [
+            "With each confident stride, she moved swiftly towards the finish line."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-b12fed89",
+          "pos": "noun",
+          "meaningZh": "重大進展；大步前進",
+          "definitionEn": "significant progress (especially in the phrase \"make strides\")",
+          "examples": [
+            "The team has made great strides in improving their performance this season."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "stroll",
+      "word": "stroll",
+      "senses": [
+        {
+          "id": "sense-a29e5efc",
+          "pos": "noun",
+          "meaningZh": "悠閒散步；漫步",
+          "definitionEn": "a leisurely walk in some public place.",
+          "examples": [
+            "On a beautiful evening, Maria and her husband took a slow stroll along the beach, enjoying the sound of waves crashing against the shore."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-30308bb7",
+          "pos": "verb",
+          "meaningZh": "閒逛；隨意散步",
+          "definitionEn": "walk leisurely and aimlessly.",
+          "examples": [
+            "After finishing his lunch, he decided to take a stroll in the park."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L8",
+        "textbookTitle": "龍騰 B2·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "stun",
+      "word": "stun",
+      "senses": [
+        {
+          "id": "sense-089da0a1",
+          "pos": "verb",
+          "meaningZh": "使震驚；使目瞪口呆",
+          "definitionEn": "to make someone feel shocked or dazed",
+          "examples": [
+            "The bright flash of lightning and loud clap of thunder seemed to stun the little girl."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-e6520751",
+          "pos": "verb",
+          "meaningZh": "打暈；擊昏",
+          "definitionEn": "to strike or hit someone with force, typically causing them to lose consciousness or fall heavily to the ground",
+          "examples": [
+            "The boxer’s powerful punch was enough to stun his opponent and knock him to the ground."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L5 +2",
+        "textbookTitle": "龍騰 B3·L5、三民 B4·L4、翰林 B1·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "stutter",
+      "word": "stutter",
+      "senses": [
+        {
+          "id": "sense-fe2e7f1c",
+          "pos": "noun",
+          "meaningZh": "口吃；言語障礙",
+          "definitionEn": "a speech disorder involving hesitations and involuntary repetitions of certain sounds",
+          "examples": [
+            "Despite his stutter, he was determined to pursue a career in public speaking."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-1464f5ba",
+          "pos": "verb",
+          "meaningZh": "結巴；說話不流利",
+          "definitionEn": "to speak haltingly",
+          "examples": [
+            "During his presentation, Mark struggled with his nerves and began to stutter, causing his words to come out choppy and disjointed."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "stylish",
+      "word": "stylish",
+      "senses": [
+        {
+          "id": "sense-f30fd536",
+          "pos": "adjective",
+          "meaningZh": "時髦的；流行的",
+          "definitionEn": "being or in accordance with current social fashions",
+          "examples": [
+            "Samantha always dresses in a stylish manner, wearing trendy clothes and accessorizing with fashionable accessories."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-410c28a9",
+          "pos": "adjective",
+          "meaningZh": "有品味的；優雅的",
+          "definitionEn": "having elegance or taste or refinement in manners or dress",
+          "examples": [
+            "Emma walked into the room wearing a sleek black dress and accessorized with a statement necklace, embodying the epitome of stylishness."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·R3",
+        "textbookTitle": "龍騰 B3·R3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "subjective",
+      "word": "subjective",
+      "senses": [
+        {
+          "id": "sense-0ed730ca",
+          "pos": "adjective",
+          "meaningZh": "主觀的；帶個人色彩的",
+          "definitionEn": "based on or influenced by personal feelings, tastes, or opinions",
+          "examples": [
+            "The decision to hire the new employee was subjective because it was based on the personal opinions of the hiring manager rather than on objective criteria."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-ef684a65",
+          "pos": "adjective",
+          "meaningZh": "主觀感受的；症狀自覺的",
+          "definitionEn": "of, relating to, or designating a symptom or condition perceived by the patient and not by the examiner",
+          "examples": [
+            "The patient’s report of pain is a subjective experience that cannot be measured objectively."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "subordinate",
+      "word": "subordinate",
+      "senses": [
+        {
+          "id": "sense-0bb8ae1c",
+          "pos": "adjective",
+          "meaningZh": "下級的；位階較低的",
+          "definitionEn": "lower in rank, position, or importance",
+          "examples": [
+            "In the military, a private is subordinate to a sergeant."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-21748559",
+          "pos": "adjective",
+          "meaningZh": "聽命的；從屬的",
+          "definitionEn": "obeying the orders of someone in a higher position",
+          "examples": [
+            "The employees were required to complete the tasks assigned by their subordinate manager."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "subscribe",
+      "word": "subscribe",
+      "senses": [
+        {
+          "id": "sense-3cd3d77a",
+          "pos": "verb",
+          "meaningZh": "訂閱；定期取得",
+          "definitionEn": "receive or obtain regularly",
+          "examples": [
+            "Jennifer decided to subscribe to her favorite magazine so that she could receive a new issue every month."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-022a835b",
+          "pos": "verb",
+          "meaningZh": "付費訂購；訂閱服務",
+          "definitionEn": "pay (an amount of money) regularly in exchange for access to a service, publication, or product",
+          "examples": [],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    }
+  ]
+}

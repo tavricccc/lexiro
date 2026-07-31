@@ -1,0 +1,1927 @@
+{
+  "schemaVersion": 1,
+  "kind": "questions",
+  "questionKind": "multipleChoice",
+  "questions": [
+    {
+      "id": "child-3d8fb6ea",
+      "kind": "multipleChoice",
+      "prompt": "「創造；創作」的英文是？",
+      "options": [
+        "export",
+        "create",
+        "locate",
+        "branch"
+      ],
+      "answerIndex": 1,
+      "wordKey": "create",
+      "senseId": "sense-c140d10d",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-b34102e4",
+      "kind": "multipleChoice",
+      "prompt": "「罪行；惡行」的英文是？",
+      "options": [
+        "mouth",
+        "crime",
+        "blind",
+        "medal"
+      ],
+      "answerIndex": 1,
+      "wordKey": "crime",
+      "senseId": "sense-26b93821",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-33b74ca4",
+      "kind": "multipleChoice",
+      "prompt": "「危機；緊急狀況」的英文是？",
+      "options": [
+        "crisis",
+        "temple",
+        "change",
+        "forest"
+      ],
+      "answerIndex": 0,
+      "wordKey": "crisis",
+      "senseId": "sense-43f4e88f",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-5d4a060b",
+      "kind": "multipleChoice",
+      "prompt": "「烏鴉」的英文是？",
+      "options": [
+        "golf",
+        "pity",
+        "pipe",
+        "crow"
+      ],
+      "answerIndex": 3,
+      "wordKey": "crow",
+      "senseId": "sense-2c6d984c",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-48bbc08c",
+      "kind": "multipleChoice",
+      "prompt": "「人群；大批人」的英文是？",
+      "options": [
+        "label",
+        "thing",
+        "study",
+        "crowd"
+      ],
+      "answerIndex": 3,
+      "wordKey": "crowd",
+      "senseId": "sense-036177ff",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-86b7e0bf",
+      "kind": "multipleChoice",
+      "prompt": "「文化；文明」的英文是？",
+      "options": [
+        "lantern",
+        "section",
+        "culture",
+        "silence"
+      ],
+      "answerIndex": 2,
+      "wordKey": "culture",
+      "senseId": "sense-248e73f0",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-d8f27057",
+      "kind": "multipleChoice",
+      "prompt": "「醃製；鹽漬保存」的英文是？",
+      "options": [
+        "bake",
+        "swim",
+        "less",
+        "cure"
+      ],
+      "answerIndex": 3,
+      "wordKey": "cure",
+      "senseId": "sense-9991e7c5",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-2e884afd",
+      "kind": "multipleChoice",
+      "prompt": "「奇特的；不尋常的」的英文是？",
+      "options": [
+        "every",
+        "several",
+        "handsome",
+        "curious"
+      ],
+      "answerIndex": 3,
+      "wordKey": "curious",
+      "senseId": "sense-b3252909",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-751b3bdc",
+      "kind": "multipleChoice",
+      "prompt": "「電流」的英文是？",
+      "options": [
+        "science",
+        "current",
+        "network",
+        "balcony"
+      ],
+      "answerIndex": 1,
+      "wordKey": "current",
+      "senseId": "sense-8579d83f",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-ca27053a",
+      "kind": "multipleChoice",
+      "prompt": "「習俗；風俗」的英文是？",
+      "options": [
+        "colony",
+        "garage",
+        "custom",
+        "church"
+      ],
+      "answerIndex": 2,
+      "wordKey": "custom",
+      "senseId": "sense-7996bbeb",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-0d6a6545",
+      "kind": "multipleChoice",
+      "prompt": "「顧客；客戶」的英文是？",
+      "options": [
+        "basement",
+        "customer",
+        "elephant",
+        "dumpling"
+      ],
+      "answerIndex": 1,
+      "wordKey": "customer",
+      "senseId": "sense-948dfb4d",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-33952dfa",
+      "kind": "multipleChoice",
+      "prompt": "「循環；周期」的英文是？",
+      "options": [
+        "thief",
+        "cross",
+        "queen",
+        "cycle"
+      ],
+      "answerIndex": 3,
+      "wordKey": "cycle",
+      "senseId": "sense-fc1023a1",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-557e4a78",
+      "kind": "multipleChoice",
+      "prompt": "「日常的；適合每天使用的」的英文是？",
+      "options": [
+        "daily",
+        "very",
+        "under",
+        "beat"
+      ],
+      "answerIndex": 0,
+      "wordKey": "daily",
+      "senseId": "sense-9b822d7c",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-6989bd24",
+      "kind": "multipleChoice",
+      "prompt": "「損害；損壞」的英文是？",
+      "options": [
+        "damage",
+        "course",
+        "prayer",
+        "client"
+      ],
+      "answerIndex": 0,
+      "wordKey": "damage",
+      "senseId": "sense-4841cd72",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-cff5d2a9",
+      "kind": "multipleChoice",
+      "prompt": "「舞者；舞蹈演員」的英文是？",
+      "options": [
+        "string",
+        "dancer",
+        "client",
+        "office"
+      ],
+      "answerIndex": 1,
+      "wordKey": "dancer",
+      "senseId": "sense-d18240b9",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-3a2aec79",
+      "kind": "multipleChoice",
+      "prompt": "「資料；數據」的英文是？",
+      "options": [
+        "data",
+        "iron",
+        "wave",
+        "sack"
+      ],
+      "answerIndex": 0,
+      "wordKey": "data",
+      "senseId": "sense-f6abc920",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-1f7c1a6b",
+      "kind": "multipleChoice",
+      "prompt": "「辯論；討論」的英文是？",
+      "options": [
+        "almond",
+        "lawyer",
+        "pardon",
+        "debate"
+      ],
+      "answerIndex": 3,
+      "wordKey": "debate",
+      "senseId": "sense-02b88636",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-ae67f420",
+      "kind": "multipleChoice",
+      "prompt": "「決定；裁決」的英文是？",
+      "options": [
+        "decision",
+        "bacteria",
+        "exchange",
+        "moisture"
+      ],
+      "answerIndex": 0,
+      "wordKey": "decision",
+      "senseId": "sense-2fe4e84f",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-4cd2f5f2",
+      "kind": "multipleChoice",
+      "prompt": "「鹿」的英文是？",
+      "options": [
+        "type",
+        "deer",
+        "rent",
+        "book"
+      ],
+      "answerIndex": 1,
+      "wordKey": "deer",
+      "senseId": "sense-171e440e",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-5feccde7",
+      "kind": "multipleChoice",
+      "prompt": "「程度；等級；學位」的英文是？",
+      "options": [
+        "potato",
+        "degree",
+        "arrest",
+        "stitch"
+      ],
+      "answerIndex": 1,
+      "wordKey": "degree",
+      "senseId": "sense-7bc7e612",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-e7330637",
+      "kind": "multipleChoice",
+      "prompt": "「延誤；推遲」的英文是？",
+      "options": [
+        "wheel",
+        "music",
+        "delay",
+        "brake"
+      ],
+      "answerIndex": 2,
+      "wordKey": "delay",
+      "senseId": "sense-f7050091",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-1876dd81",
+      "kind": "multipleChoice",
+      "prompt": "「美味的；可口的」的英文是？",
+      "options": [
+        "delicious",
+        "interested",
+        "several",
+        "handsome"
+      ],
+      "answerIndex": 0,
+      "wordKey": "delicious",
+      "senseId": "sense-36549899",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-c5d2d941",
+      "kind": "multipleChoice",
+      "prompt": "「遞送；交付」的英文是？",
+      "options": [
+        "control",
+        "deliver",
+        "journey",
+        "already"
+      ],
+      "answerIndex": 1,
+      "wordKey": "deliver",
+      "senseId": "sense-4ab7f455",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-814739ca",
+      "kind": "multipleChoice",
+      "prompt": "「（演說）表達方式；口才」的英文是？",
+      "options": [
+        "aircraft",
+        "delivery",
+        "passport",
+        "religion"
+      ],
+      "answerIndex": 1,
+      "wordKey": "delivery",
+      "senseId": "sense-a77babab",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-b6b2ebba",
+      "kind": "multipleChoice",
+      "prompt": "「牙醫；牙科醫師」的英文是？",
+      "options": [
+        "dentist",
+        "shampoo",
+        "tourism",
+        "chimney"
+      ],
+      "answerIndex": 0,
+      "wordKey": "dentist",
+      "senseId": "sense-4599b795",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-7da38876",
+      "kind": "multipleChoice",
+      "prompt": "「部門；科系」的英文是？",
+      "options": [
+        "blackboard",
+        "excitement",
+        "department",
+        "controller"
+      ],
+      "answerIndex": 2,
+      "wordKey": "department",
+      "senseId": "sense-5decbba8",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-45115893",
+      "kind": "multipleChoice",
+      "prompt": "「深度；深刻；透徹性」的英文是？",
+      "options": [
+        "story",
+        "tiger",
+        "apple",
+        "depth"
+      ],
+      "answerIndex": 3,
+      "wordKey": "depth",
+      "senseId": "sense-2eaa49c8",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-91e51aa9",
+      "kind": "multipleChoice",
+      "prompt": "「描述；形容」的英文是？",
+      "options": [
+        "threaten",
+        "describe",
+        "somewhat",
+        "subtract"
+      ],
+      "answerIndex": 1,
+      "wordKey": "describe",
+      "senseId": "sense-198d380c",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-a8f624de",
+      "kind": "multipleChoice",
+      "prompt": "「描述；說明」的英文是？",
+      "options": [
+        "supermarket",
+        "grandmother",
+        "description",
+        "businessman"
+      ],
+      "answerIndex": 2,
+      "wordKey": "description",
+      "senseId": "sense-a820f8ef",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-034bf8dc",
+      "kind": "multipleChoice",
+      "prompt": "「沙漠」的英文是？",
+      "options": [
+        "rather",
+        "desert",
+        "detect",
+        "switch"
+      ],
+      "answerIndex": 1,
+      "wordKey": "desert",
+      "senseId": "sense-3144ddef",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-0ea7e60d",
+      "kind": "multipleChoice",
+      "prompt": "「設計；設計圖」的英文是？",
+      "options": [
+        "tennis",
+        "poetry",
+        "design",
+        "system"
+      ],
+      "answerIndex": 2,
+      "wordKey": "design",
+      "senseId": "sense-4e961742",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-a3dd94d9",
+      "kind": "multipleChoice",
+      "prompt": "「新進展；最新動態」的英文是？",
+      "options": [
+        "environment",
+        "description",
+        "expectation",
+        "development"
+      ],
+      "answerIndex": 3,
+      "wordKey": "development",
+      "senseId": "sense-7fd914a8",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-bf0a98c4",
+      "kind": "multipleChoice",
+      "prompt": "「撥號；轉動刻度盤」的英文是？",
+      "options": [
+        "will",
+        "live",
+        "heal",
+        "dial"
+      ],
+      "answerIndex": 3,
+      "wordKey": "dial",
+      "senseId": "sense-26453798",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-f6845ea8",
+      "kind": "multipleChoice",
+      "prompt": "「對話；交談」的英文是？",
+      "options": [
+        "fountain",
+        "clothing",
+        "identity",
+        "dialogue"
+      ],
+      "answerIndex": 3,
+      "wordKey": "dialogue",
+      "senseId": "sense-240dfefb",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-c4fa9bc1",
+      "kind": "multipleChoice",
+      "prompt": "「日常飲食；食物攝取」的英文是？",
+      "options": [
+        "tail",
+        "bump",
+        "trap",
+        "diet"
+      ],
+      "answerIndex": 3,
+      "wordKey": "diet",
+      "senseId": "sense-fad76199",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-1dc4c264",
+      "kind": "multipleChoice",
+      "prompt": "「差異；不同之處」的英文是？",
+      "options": [
+        "conclusion",
+        "difference",
+        "politician",
+        "lighthouse"
+      ],
+      "answerIndex": 1,
+      "wordKey": "difference",
+      "senseId": "sense-7504cd08",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-05fee3c9",
+      "kind": "multipleChoice",
+      "prompt": "「困難；艱難」的英文是？",
+      "options": [
+        "strawberry",
+        "difficulty",
+        "population",
+        "controller"
+      ],
+      "answerIndex": 1,
+      "wordKey": "difficulty",
+      "senseId": "sense-ff3fa6d2",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-15662b9b",
+      "kind": "multipleChoice",
+      "prompt": "「直接的；不繞路的」的英文是？",
+      "options": [
+        "every",
+        "under",
+        "direct",
+        "several"
+      ],
+      "answerIndex": 2,
+      "wordKey": "direct",
+      "senseId": "sense-29799315",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-898e9588",
+      "kind": "multipleChoice",
+      "prompt": "「意見不合；不一致」的英文是？",
+      "options": [
+        "somewhat",
+        "mushroom",
+        "calendar",
+        "disagree"
+      ],
+      "answerIndex": 3,
+      "wordKey": "disagree",
+      "senseId": "sense-197a719f",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-669a9a6e",
+      "kind": "multipleChoice",
+      "prompt": "「分歧；不一致」的英文是？",
+      "options": [
+        "photographer",
+        "organization",
+        "disagreement",
+        "kindergarten"
+      ],
+      "answerIndex": 2,
+      "wordKey": "disagreement",
+      "senseId": "sense-ac731c70",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-44d1dcc1",
+      "kind": "multipleChoice",
+      "prompt": "「消失；不復存在」的英文是？",
+      "options": [
+        "encourage",
+        "disappear",
+        "represent",
+        "condition"
+      ],
+      "answerIndex": 1,
+      "wordKey": "disappear",
+      "senseId": "sense-89c1bc55",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-375a76ec",
+      "kind": "multipleChoice",
+      "prompt": "「發現；初次得知」的英文是？",
+      "options": [
+        "discover",
+        "vacation",
+        "describe",
+        "hesitate"
+      ],
+      "answerIndex": 0,
+      "wordKey": "discover",
+      "senseId": "sense-4f019486",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-f191d099",
+      "kind": "multipleChoice",
+      "prompt": "「發現；新發現」的英文是？",
+      "options": [
+        "discovery",
+        "kilometer",
+        "porcelain",
+        "challenge"
+      ],
+      "answerIndex": 0,
+      "wordKey": "discovery",
+      "senseId": "sense-8132a7fc",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-a0b0722a",
+      "kind": "multipleChoice",
+      "prompt": "「討論；商討」的英文是？",
+      "options": [
+        "saleswoman",
+        "blackboard",
+        "basketball",
+        "discussion"
+      ],
+      "answerIndex": 3,
+      "wordKey": "discussion",
+      "senseId": "sense-bbf7c526",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-84591727",
+      "kind": "multipleChoice",
+      "prompt": "「疾病；病症」的英文是？",
+      "options": [
+        "athlete",
+        "mistake",
+        "disease",
+        "soldier"
+      ],
+      "answerIndex": 2,
+      "wordKey": "disease",
+      "senseId": "sense-8d9915e9",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-7b770e25",
+      "kind": "multipleChoice",
+      "prompt": "「（時間上的）間距；間隔」的英文是？",
+      "options": [
+        "presence",
+        "question",
+        "nickname",
+        "distance"
+      ],
+      "answerIndex": 3,
+      "wordKey": "distance",
+      "senseId": "sense-1a9c71ae",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-9e27cd9e",
+      "kind": "multipleChoice",
+      "prompt": "「冷淡的；疏遠的」的英文是？",
+      "options": [
+        "distant",
+        "handsome",
+        "absent",
+        "several"
+      ],
+      "answerIndex": 0,
+      "wordKey": "distant",
+      "senseId": "sense-b60ed3de",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-27b52700",
+      "kind": "multipleChoice",
+      "prompt": "「隔開；分隔」的英文是？",
+      "options": [
+        "divide",
+        "remain",
+        "beside",
+        "shrink"
+      ],
+      "answerIndex": 0,
+      "wordKey": "divide",
+      "senseId": "sense-11d4fb15",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-31c81c8b",
+      "kind": "multipleChoice",
+      "prompt": "「除法；分割」的英文是？",
+      "options": [
+        "division",
+        "workbook",
+        "recorder",
+        "electric"
+      ],
+      "answerIndex": 0,
+      "wordKey": "division",
+      "senseId": "sense-d9e4f16a",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-e725cfb1",
+      "kind": "multipleChoice",
+      "prompt": "「國內的；家庭的」的英文是？",
+      "options": [
+        "several",
+        "interested",
+        "handsome",
+        "domestic"
+      ],
+      "answerIndex": 3,
+      "wordKey": "domestic",
+      "senseId": "sense-f7a08910",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-4c108bb1",
+      "kind": "multipleChoice",
+      "prompt": "「點；圓點」的英文是？",
+      "options": [
+        "bed",
+        "boy",
+        "pad",
+        "dot"
+      ],
+      "answerIndex": 3,
+      "wordKey": "dot",
+      "senseId": "sense-7463a4b0",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-d83c0d00",
+      "kind": "multipleChoice",
+      "prompt": "「雙倍的；兩倍的」的英文是？",
+      "options": [
+        "absent",
+        "under",
+        "every",
+        "double"
+      ],
+      "answerIndex": 3,
+      "wordKey": "double",
+      "senseId": "sense-83287f4c",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-1d6ebbb7",
+      "kind": "multipleChoice",
+      "prompt": "「懷疑；存疑」的英文是？",
+      "options": [
+        "doubt",
+        "smell",
+        "quote",
+        "hello"
+      ],
+      "answerIndex": 0,
+      "wordKey": "doubt",
+      "senseId": "sense-c226a149",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-39dfd1df",
+      "kind": "multipleChoice",
+      "prompt": "「鴿子」的英文是？",
+      "options": [
+        "swim",
+        "club",
+        "surf",
+        "dove"
+      ],
+      "answerIndex": 3,
+      "wordKey": "dove",
+      "senseId": "sense-488f5568",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-d07c4eb8",
+      "kind": "multipleChoice",
+      "prompt": "「下載」的英文是？",
+      "options": [
+        "headline",
+        "download",
+        "interest",
+        "progress"
+      ],
+      "answerIndex": 1,
+      "wordKey": "download",
+      "senseId": "sense-317591fc",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-49a467e5",
+      "kind": "multipleChoice",
+      "prompt": "「在樓下；往樓下」的英文是？",
+      "options": [
+        "motorcycle",
+        "throughout",
+        "downstairs",
+        "experience"
+      ],
+      "answerIndex": 2,
+      "wordKey": "downstairs",
+      "senseId": "sense-840721aa",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-277c0b5f",
+      "kind": "multipleChoice",
+      "prompt": "「龍；神話巨龍」的英文是？",
+      "options": [
+        "pepper",
+        "friend",
+        "dragon",
+        "police"
+      ],
+      "answerIndex": 2,
+      "wordKey": "dragon",
+      "senseId": "sense-ebbe1876",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-9675bf03",
+      "kind": "multipleChoice",
+      "prompt": "「劇本；戲劇文學」的英文是？",
+      "options": [
+        "angle",
+        "drama",
+        "plant",
+        "staff"
+      ],
+      "answerIndex": 1,
+      "wordKey": "drama",
+      "senseId": "sense-de9fc0aa",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-280f2af8",
+      "kind": "multipleChoice",
+      "prompt": "「抽屜」的英文是？",
+      "options": [
+        "public",
+        "excuse",
+        "drawer",
+        "jacket"
+      ],
+      "answerIndex": 2,
+      "wordKey": "drawer",
+      "senseId": "sense-6ae23957",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-a5b9ed89",
+      "kind": "multipleChoice",
+      "prompt": "「烘衣機；烘乾機」的英文是？",
+      "options": [
+        "grain",
+        "guard",
+        "cough",
+        "dryer"
+      ],
+      "answerIndex": 3,
+      "wordKey": "dryer",
+      "senseId": "sense-1b40d685",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-a61d2248",
+      "kind": "multipleChoice",
+      "prompt": "「職責；責任感」的英文是？",
+      "options": [
+        "spin",
+        "neck",
+        "baby",
+        "duty"
+      ],
+      "answerIndex": 3,
+      "wordKey": "duty",
+      "senseId": "sense-7b786c41",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-46155040",
+      "kind": "multipleChoice",
+      "prompt": "「老鷹；雄鷹（力量象徵）」的英文是？",
+      "options": [
+        "eagle",
+        "straw",
+        "china",
+        "fault"
+      ],
+      "answerIndex": 0,
+      "wordKey": "eagle",
+      "senseId": "sense-34284b72",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-15aa4665",
+      "kind": "multipleChoice",
+      "prompt": "「贏得；獲得（應得的）」的英文是？",
+      "options": [
+        "earn",
+        "pile",
+        "save",
+        "pave"
+      ],
+      "answerIndex": 0,
+      "wordKey": "earn",
+      "senseId": "sense-8dda4539",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-51d8b684",
+      "kind": "multipleChoice",
+      "prompt": "「耳環」的英文是？",
+      "options": [
+        "earring",
+        "poverty",
+        "cartoon",
+        "jewelry"
+      ],
+      "answerIndex": 0,
+      "wordKey": "earring",
+      "senseId": "sense-c2c8f494",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-e16aa6ac",
+      "kind": "multipleChoice",
+      "prompt": "「耳環」的英文是？",
+      "options": [
+        "earrings",
+        "paradise",
+        "probable",
+        "moisture"
+      ],
+      "answerIndex": 0,
+      "wordKey": "earrings",
+      "senseId": "sense-e8d7827f",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-0f371597",
+      "kind": "multipleChoice",
+      "prompt": "「地震」的英文是？",
+      "options": [
+        "background",
+        "chopsticks",
+        "difference",
+        "earthquake"
+      ],
+      "answerIndex": 3,
+      "wordKey": "earthquake",
+      "senseId": "sense-d50289ab",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-42242f48",
+      "kind": "multipleChoice",
+      "prompt": "「輕鬆；舒適」的英文是？",
+      "options": [
+        "bell",
+        "drop",
+        "ease",
+        "lawn"
+      ],
+      "answerIndex": 2,
+      "wordKey": "ease",
+      "senseId": "sense-eacdbe50",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-35726f18",
+      "kind": "multipleChoice",
+      "prompt": "「東方的；東方文化的」的英文是？",
+      "options": [
+        "several",
+        "eastern",
+        "absent",
+        "every"
+      ],
+      "answerIndex": 1,
+      "wordKey": "eastern",
+      "senseId": "sense-df901390",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-a4ca97a0",
+      "kind": "multipleChoice",
+      "prompt": "「邊緣；邊沿」的英文是？",
+      "options": [
+        "year",
+        "edge",
+        "cost",
+        "back"
+      ],
+      "answerIndex": 1,
+      "wordKey": "edge",
+      "senseId": "sense-52e34edb",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-9d34d912",
+      "kind": "multipleChoice",
+      "prompt": "「努力；心力」的英文是？",
+      "options": [
+        "lawyer",
+        "pocket",
+        "either",
+        "effort"
+      ],
+      "answerIndex": 3,
+      "wordKey": "effort",
+      "senseId": "sense-97642be3",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-1ed297bb",
+      "kind": "multipleChoice",
+      "prompt": "「長輩；年長者」的英文是？",
+      "options": [
+        "shoes",
+        "elder",
+        "touch",
+        "toast"
+      ],
+      "answerIndex": 1,
+      "wordKey": "elder",
+      "senseId": "sense-2fbc4c46",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-9dd716d7",
+      "kind": "multipleChoice",
+      "prompt": "「電力的；用電的」的英文是？",
+      "options": [
+        "interesting",
+        "interested",
+        "electrical",
+        "intelligent"
+      ],
+      "answerIndex": 2,
+      "wordKey": "electrical",
+      "senseId": "sense-80b8c416",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-6887915d",
+      "kind": "multipleChoice",
+      "prompt": "「強調；著重指出」的英文是？",
+      "options": [
+        "emphasize",
+        "represent",
+        "apologize",
+        "breakfast"
+      ],
+      "answerIndex": 0,
+      "wordKey": "emphasize",
+      "senseId": "sense-7f903522",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-fbcc7ca1",
+      "kind": "multipleChoice",
+      "prompt": "「使用；運用（方法或手段）」的英文是？",
+      "options": [
+        "remove",
+        "vanish",
+        "relate",
+        "employ"
+      ],
+      "answerIndex": 3,
+      "wordKey": "employ",
+      "senseId": "sense-31449c50",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-971da9ac",
+      "kind": "multipleChoice",
+      "prompt": "「員工；受薪者」的英文是？",
+      "options": [
+        "practice",
+        "progress",
+        "medicine",
+        "employee"
+      ],
+      "answerIndex": 3,
+      "wordKey": "employee",
+      "senseId": "sense-2dddc0ae",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-b7ce7a9a",
+      "kind": "multipleChoice",
+      "prompt": "「雇主；老闆」的英文是？",
+      "options": [
+        "cocktail",
+        "nickname",
+        "carriage",
+        "employer"
+      ],
+      "answerIndex": 3,
+      "wordKey": "employer",
+      "senseId": "sense-cb306ba0",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-ecd9dd05",
+      "kind": "multipleChoice",
+      "prompt": "「清空；搬空」的英文是？",
+      "options": [
+        "dizzy",
+        "brown",
+        "empty",
+        "leave"
+      ],
+      "answerIndex": 2,
+      "wordKey": "empty",
+      "senseId": "sense-9246e31b",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-e9c31cdc",
+      "kind": "multipleChoice",
+      "prompt": "「鼓勵；激勵」的英文是？",
+      "options": [
+        "encourage",
+        "disappear",
+        "influence",
+        "interview"
+      ],
+      "answerIndex": 0,
+      "wordKey": "encourage",
+      "senseId": "sense-8162b4a9",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-5f7bdd72",
+      "kind": "multipleChoice",
+      "prompt": "「鼓勵；支持」的英文是？",
+      "options": [
+        "kindergarten",
+        "responsibility",
+        "encouragement",
+        "consideration"
+      ],
+      "answerIndex": 2,
+      "wordKey": "encouragement",
+      "senseId": "sense-02bb59c3",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-f453663a",
+      "kind": "multipleChoice",
+      "prompt": "「（文法）字尾；詞尾變化」的英文是？",
+      "options": [
+        "poster",
+        "author",
+        "ending",
+        "import"
+      ],
+      "answerIndex": 2,
+      "wordKey": "ending",
+      "senseId": "sense-be1fcacf",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-78cfef1d",
+      "kind": "multipleChoice",
+      "prompt": "「敵人；仇敵」的英文是？",
+      "options": [
+        "chess",
+        "grade",
+        "novel",
+        "enemy"
+      ],
+      "answerIndex": 3,
+      "wordKey": "enemy",
+      "senseId": "sense-8116d205",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-e2df8664",
+      "kind": "multipleChoice",
+      "prompt": "「（物理）能量；做功能力」的英文是？",
+      "options": [
+        "gossip",
+        "damage",
+        "energy",
+        "pepper"
+      ],
+      "answerIndex": 2,
+      "wordKey": "energy",
+      "senseId": "sense-b4f6b049",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-002eeb6c",
+      "kind": "multipleChoice",
+      "prompt": "「火車頭；機車頭」的英文是？",
+      "options": [
+        "string",
+        "coffee",
+        "pardon",
+        "engine"
+      ],
+      "answerIndex": 3,
+      "wordKey": "engine",
+      "senseId": "sense-a986ba69",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-20d825ab",
+      "kind": "multipleChoice",
+      "prompt": "「環境；自然環境」的英文是？",
+      "options": [
+        "environment",
+        "preparation",
+        "personality",
+        "electricity"
+      ],
+      "answerIndex": 0,
+      "wordKey": "environment",
+      "senseId": "sense-b6634efd",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-93dade6a",
+      "kind": "multipleChoice",
+      "prompt": "「環保的；生態保護的」的英文是？",
+      "options": [
+        "environmental",
+        "intelligent",
+        "interested",
+        "interesting"
+      ],
+      "answerIndex": 0,
+      "wordKey": "environmental",
+      "senseId": "sense-535223f1",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-aa9bcf84",
+      "kind": "multipleChoice",
+      "prompt": "「逃跑；脫逃」的英文是？",
+      "options": [
+        "always",
+        "escape",
+        "detect",
+        "aboard"
+      ],
+      "answerIndex": 1,
+      "wordKey": "escape",
+      "senseId": "sense-0900aa80",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-fab94366",
+      "kind": "multipleChoice",
+      "prompt": "「論文；文章」的英文是？",
+      "options": [
+        "cable",
+        "organ",
+        "giant",
+        "essay"
+      ],
+      "answerIndex": 3,
+      "wordKey": "essay",
+      "senseId": "sense-faf7734f",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-6a52c8e0",
+      "kind": "multipleChoice",
+      "prompt": "「夏娃（聖經人物，人類始祖）」的英文是？",
+      "options": [
+        "eve",
+        "red",
+        "fit",
+        "pen"
+      ],
+      "answerIndex": 0,
+      "wordKey": "eve",
+      "senseId": "sense-9ba032c3",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-0e84f7c8",
+      "kind": "multipleChoice",
+      "prompt": "「事件；活動」的英文是？",
+      "options": [
+        "cabin",
+        "place",
+        "print",
+        "event"
+      ],
+      "answerIndex": 3,
+      "wordKey": "event",
+      "senseId": "sense-938c2797",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-fa036f26",
+      "kind": "multipleChoice",
+      "prompt": "「精確的；確切的」的英文是？",
+      "options": [
+        "iron",
+        "exact",
+        "every",
+        "under"
+      ],
+      "answerIndex": 1,
+      "wordKey": "exact",
+      "senseId": "sense-95a0962d",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-14ca711c",
+      "kind": "multipleChoice",
+      "prompt": "「仔細檢查；審視」的英文是？",
+      "options": [
+        "process",
+        "examine",
+        "approve",
+        "replace"
+      ],
+      "answerIndex": 1,
+      "wordKey": "examine",
+      "senseId": "sense-61352ed0",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-f067d06e",
+      "kind": "multipleChoice",
+      "prompt": "「引起性慾；激起慾望」的英文是？",
+      "options": [
+        "arouse",
+        "prefer",
+        "remain",
+        "across"
+      ],
+      "answerIndex": 0,
+      "wordKey": "arouse",
+      "senseId": "sense-32f07140",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-e64141fe",
+      "kind": "multipleChoice",
+      "prompt": "「勉強維生；糊口」的英文是？",
+      "options": [
+        "exist",
+        "again",
+        "means",
+        "brake"
+      ],
+      "answerIndex": 0,
+      "wordKey": "exist",
+      "senseId": "sense-97ae222b",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-853a6342",
+      "kind": "multipleChoice",
+      "prompt": "「存在；實存」的英文是？",
+      "options": [
+        "committee",
+        "continent",
+        "existence",
+        "professor"
+      ],
+      "answerIndex": 2,
+      "wordKey": "existence",
+      "senseId": "sense-fd96731e",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-8db10639",
+      "kind": "multipleChoice",
+      "prompt": "「開銷；費用」的英文是？",
+      "options": [
+        "reality",
+        "expense",
+        "spinach",
+        "chimney"
+      ],
+      "answerIndex": 1,
+      "wordKey": "expense",
+      "senseId": "sense-077f2c31",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-08ed94cf",
+      "kind": "multipleChoice",
+      "prompt": "「精通的；專業的」的英文是？",
+      "options": [
+        "under",
+        "expert",
+        "absent",
+        "several"
+      ],
+      "answerIndex": 1,
+      "wordKey": "expert",
+      "senseId": "sense-e17f63c6",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-de74477d",
+      "kind": "multipleChoice",
+      "prompt": "「明確的；直接的」的英文是？",
+      "options": [
+        "several",
+        "express",
+        "handsome",
+        "absent"
+      ],
+      "answerIndex": 1,
+      "wordKey": "express",
+      "senseId": "sense-ed68c06b",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-989fa237",
+      "kind": "multipleChoice",
+      "prompt": "「慣用語；用語」的英文是？",
+      "options": [
+        "membership",
+        "expression",
+        "toothbrush",
+        "connection"
+      ],
+      "answerIndex": 1,
+      "wordKey": "expression",
+      "senseId": "sense-674be0b5",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-eee672fd",
+      "kind": "multipleChoice",
+      "prompt": "「額外的；多餘的」的英文是？",
+      "options": [
+        "some",
+        "under",
+        "extra",
+        "every"
+      ],
+      "answerIndex": 2,
+      "wordKey": "extra",
+      "senseId": "sense-2f896572",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-53988a56",
+      "kind": "multipleChoice",
+      "prompt": "「公平的；公正的」的英文是？",
+      "options": [
+        "some",
+        "beat",
+        "iron",
+        "fair"
+      ],
+      "answerIndex": 3,
+      "wordKey": "fair",
+      "senseId": "sense-05733e87",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-259ef262",
+      "kind": "multipleChoice",
+      "prompt": "「時尚；流行服飾」的英文是？",
+      "options": [
+        "fashion",
+        "shampoo",
+        "failure",
+        "cleaner"
+      ],
+      "answerIndex": 0,
+      "wordKey": "fashion",
+      "senseId": "sense-4865dd42",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-14e7fa33",
+      "kind": "multipleChoice",
+      "prompt": "「命運（女神）；天命」的英文是？",
+      "options": [
+        "zero",
+        "fate",
+        "face",
+        "hunt"
+      ],
+      "answerIndex": 1,
+      "wordKey": "fate",
+      "senseId": "sense-5ca685c3",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-b2f78122",
+      "kind": "multipleChoice",
+      "prompt": "「好感；好意」的英文是？",
+      "options": [
+        "flour",
+        "crowd",
+        "stool",
+        "favor"
+      ],
+      "answerIndex": 3,
+      "wordKey": "favor",
+      "senseId": "sense-e033d10c",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-a56049df",
+      "kind": "multipleChoice",
+      "prompt": "「最愛之物；最喜歡的東西」的英文是？",
+      "options": [
+        "laughter",
+        "novelist",
+        "backpack",
+        "favorite"
+      ],
+      "answerIndex": 3,
+      "wordKey": "favorite",
+      "senseId": "sense-fc2913e8",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-15026898",
+      "kind": "multipleChoice",
+      "prompt": "「恐懼；害怕」的英文是？",
+      "options": [
+        "bomb",
+        "dust",
+        "bump",
+        "fear"
+      ],
+      "answerIndex": 3,
+      "wordKey": "fear",
+      "senseId": "sense-d02f435c",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-d4b5ab8d",
+      "kind": "multipleChoice",
+      "prompt": "「特色；特點」的英文是？",
+      "options": [
+        "receipt",
+        "feature",
+        "married",
+        "squeeze"
+      ],
+      "answerIndex": 1,
+      "wordKey": "feature",
+      "senseId": "sense-65c5aac4",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-d12ea747",
+      "kind": "multipleChoice",
+      "prompt": "「費用；服務費」的英文是？",
+      "options": [
+        "owl",
+        "lap",
+        "fee",
+        "jar"
+      ],
+      "answerIndex": 2,
+      "wordKey": "fee",
+      "senseId": "sense-f563377a",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-f3a17d30",
+      "kind": "multipleChoice",
+      "prompt": "「感受；感覺」的英文是？",
+      "options": [
+        "chapter",
+        "mystery",
+        "feeling",
+        "stomach"
+      ],
+      "answerIndex": 2,
+      "wordKey": "feeling",
+      "senseId": "sense-71d327f3",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-1c2d24c6",
+      "kind": "multipleChoice",
+      "prompt": "「雌性；女性」的英文是？",
+      "options": [
+        "helmet",
+        "female",
+        "guitar",
+        "couple"
+      ],
+      "answerIndex": 1,
+      "wordKey": "female",
+      "senseId": "sense-478f90a7",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-06e3c0c9",
+      "kind": "multipleChoice",
+      "prompt": "「發燒；高燒」的英文是？",
+      "options": [
+        "mouse",
+        "enemy",
+        "fever",
+        "comic"
+      ],
+      "answerIndex": 2,
+      "wordKey": "fever",
+      "senseId": "sense-a0bfc05a",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-08dd74a0",
+      "kind": "multipleChoice",
+      "prompt": "「計算；估算」的英文是？",
+      "options": [
+        "figure",
+        "police",
+        "always",
+        "repeat"
+      ],
+      "answerIndex": 0,
+      "wordKey": "figure",
+      "senseId": "sense-f9a666a0",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-9a1b5211",
+      "kind": "multipleChoice",
+      "prompt": "「漁夫；漁民」的英文是？",
+      "options": [
+        "butterfly",
+        "statement",
+        "temporary",
+        "fisherman"
+      ],
+      "answerIndex": 3,
+      "wordKey": "fisherman",
+      "senseId": "sense-63effb2b",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-de62d0d4",
+      "kind": "multipleChoice",
+      "prompt": "「合身程度；契合度」的英文是？",
+      "options": [
+        "fit",
+        "war",
+        "sip",
+        "shy"
+      ],
+      "answerIndex": 0,
+      "wordKey": "fit",
+      "senseId": "sense-1c03cf97",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-0f0c5766",
+      "kind": "multipleChoice",
+      "prompt": "「毒品注射；癮頭」的英文是？",
+      "options": [
+        "toy",
+        "tug",
+        "yam",
+        "fix"
+      ],
+      "answerIndex": 3,
+      "wordKey": "fix",
+      "senseId": "sense-ad2a0c88",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-efadb446",
+      "kind": "multipleChoice",
+      "prompt": "「洞旗（高爾夫）；旗桿」的英文是？",
+      "options": [
+        "gift",
+        "flag",
+        "milk",
+        "exit"
+      ],
+      "answerIndex": 1,
+      "wordKey": "flag",
+      "senseId": "sense-9e418d5b",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-1a34744a",
+      "kind": "multipleChoice",
+      "prompt": "「流動；流量」的英文是？",
+      "options": [
+        "flow",
+        "land",
+        "will",
+        "boil"
+      ],
+      "answerIndex": 0,
+      "wordKey": "flow",
+      "senseId": "sense-7ecc23b4",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-918e0dc7",
+      "kind": "multipleChoice",
+      "prompt": "「流行性感冒；流感」的英文是？",
+      "options": [
+        "few",
+        "bun",
+        "flu",
+        "bet"
+      ],
+      "answerIndex": 2,
+      "wordKey": "flu",
+      "senseId": "sense-3a77e2d8",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-8f247202",
+      "kind": "multipleChoice",
+      "prompt": "「民族；族裔」的英文是？",
+      "options": [
+        "crop",
+        "tour",
+        "folk",
+        "belt"
+      ],
+      "answerIndex": 2,
+      "wordKey": "folk",
+      "senseId": "sense-bbd105a6",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-52221664",
+      "kind": "multipleChoice",
+      "prompt": "「緊接著的；下一個」的英文是？",
+      "options": [
+        "interested",
+        "handsome",
+        "following",
+        "intelligent"
+      ],
+      "answerIndex": 2,
+      "wordKey": "following",
+      "senseId": "sense-e50cef5a",
+      "source": "import",
+      "sourceType": "zh_en"
+    },
+    {
+      "id": "child-ad9947b6",
+      "kind": "multipleChoice",
+      "prompt": "「愚蠢的；不明智的」的英文是？",
+      "options": [
+        "foolish",
+        "several",
+        "handsome",
+        "under"
+      ],
+      "answerIndex": 0,
+      "wordKey": "foolish",
+      "senseId": "sense-d5c2a1e2",
+      "source": "import",
+      "sourceType": "zh_en"
+    }
+  ]
+}

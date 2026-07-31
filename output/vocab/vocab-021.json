@@ -1,0 +1,1446 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 21,
+  "words": [
+    {
+      "wordKey": "out",
+      "word": "out",
+      "senses": [
+        {
+          "id": "sense-c45d394a",
+          "pos": "adverb",
+          "meaningZh": "向外；出去",
+          "definitionEn": "moving or appearing to move away from a place, especially one that is enclosed or hidden",
+          "examples": [
+            "The cat found a way to get out of the cardboard box."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-4d6d724b",
+          "pos": "adverb",
+          "meaningZh": "耗盡；缺乏",
+          "definitionEn": "away from one’s possession or control",
+          "examples": [
+            "Tom was out of cash and had to borrow some from his friend."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "outside",
+      "word": "outside",
+      "senses": [
+        {
+          "id": "sense-f7b26e23",
+          "pos": "noun",
+          "meaningZh": "外部；外面",
+          "definitionEn": "the region exterior to something",
+          "examples": [
+            "The children were playing outside the house when it started raining heavily."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-0dc8507f",
+          "pos": "noun",
+          "meaningZh": "外側；外表面",
+          "definitionEn": "the outer side or surface of something",
+          "examples": [
+            "The cat was waiting outside the house for its owner to return."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "over",
+      "word": "over",
+      "senses": [
+        {
+          "id": "sense-c0192622",
+          "pos": "adverb",
+          "meaningZh": "越過；跨過",
+          "definitionEn": "at or to a point across intervening space or distance",
+          "examples": [
+            "Can you please throw the ball over the fence?"
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-3565baf7",
+          "pos": "adverb",
+          "meaningZh": "在另一側；到對面",
+          "definitionEn": "beyond a certain point in space or time; in the opposite direction",
+          "examples": [
+            "The plane flew over the mountains to reach the other side."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "own",
+      "word": "own",
+      "senses": [
+        {
+          "id": "sense-d006a44f",
+          "pos": "adjective",
+          "meaningZh": "自己的；本身的",
+          "definitionEn": "belonging to or associated with oneself (used to emphasize that someone or something is closely connected with oneself or itself)",
+          "examples": [
+            "As an artist, she takes pride in creating her own unique style of painting."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-0bd320f2",
+          "pos": "verb",
+          "meaningZh": "承認；坦承",
+          "definitionEn": "to admit, especially taking personal responsibility for one’s actions",
+          "examples": [
+            "After realizing her mistake, Lily owned up to her part in the argument and apologized."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "pack",
+      "word": "pack",
+      "senses": [
+        {
+          "id": "sense-dfe3dd74",
+          "pos": "verb",
+          "meaningZh": "裝滿；打包",
+          "definitionEn": "fill something completely",
+          "examples": [
+            "I had to pack all my belongings into a single suitcase for my trip."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-d7e955b8",
+          "pos": "noun",
+          "meaningZh": "一組；一套",
+          "definitionEn": "a complete set or collection of similar things",
+          "examples": [
+            "I bought a pack of pens for the office."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "package",
+      "word": "package",
+      "senses": [
+        {
+          "id": "sense-50d5f2c0",
+          "pos": "noun",
+          "meaningZh": "包裹；包裝盒",
+          "definitionEn": "a wrapped container",
+          "examples": [
+            "I received a package in the mail this morning."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "page",
+      "word": "page",
+      "senses": [
+        {
+          "id": "sense-b915a22f",
+          "pos": "noun",
+          "meaningZh": "頁；書頁",
+          "definitionEn": "one side of a leaf in a book or newspaper, or the text or pictures it contains",
+          "examples": [
+            "She eagerly turned the page of her new novel to find out what happens next."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-ae69c2a3",
+          "pos": "verb",
+          "meaningZh": "編頁碼；標頁數",
+          "definitionEn": "to number the pages in a book or manuscript",
+          "examples": [
+            "She meticulously paged through the manuscript, carefully numbering each page."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "paint",
+      "word": "paint",
+      "senses": [
+        {
+          "id": "sense-9ca86fc1",
+          "pos": "noun",
+          "meaningZh": "油漆；塗料",
+          "definitionEn": "A substance used to decorate or protect a surface, consisting of a mixture of pigments and liquid that dries to form a hard coating.",
+          "examples": [
+            "She spent all day painting the living room walls with a beautiful shade of blue."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-867cf3f0",
+          "pos": "verb",
+          "meaningZh": "油漆；粉刷",
+          "definitionEn": "To apply paint onto a surface; to cover something with paint.",
+          "examples": [
+            "I need to paint my bedroom walls with a fresh coat of light blue paint."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "pair",
+      "word": "pair",
+      "senses": [
+        {
+          "id": "sense-8d3946a0",
+          "pos": "noun",
+          "meaningZh": "一雙；一對",
+          "definitionEn": "two things that are used or worn together, especially if they are of the same type",
+          "examples": [
+            "She bought a new pair of shoes to match her dress."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-11a13d48",
+          "pos": "noun",
+          "meaningZh": "一副；成對物品",
+          "definitionEn": "an object that is made up of two parts joined together",
+          "examples": [
+            "I bought a beautiful pair of earrings for my sister's birthday."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "pants",
+      "word": "pants",
+      "senses": [
+        {
+          "id": "sense-a1d9824f",
+          "pos": "noun",
+          "meaningZh": "長褲；褲子",
+          "definitionEn": "a garment extending from the waist to the knee or ankle, covering each leg separately (chiefly used in the U.S.)",
+          "examples": [
+            "I need to buy a new pair of pants for work as my old ones have a hole in them."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-23a64e55",
+          "pos": "noun",
+          "meaningZh": "內褲（英式）",
+          "definitionEn": "underwear (chiefly used in the UK)",
+          "examples": [
+            "In the UK, the term ’pants’ refers to an item of underwear that is worn under one’s clothes."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "paper",
+      "word": "paper",
+      "senses": [
+        {
+          "id": "sense-fd89d209",
+          "pos": "noun",
+          "meaningZh": "紙；紙張",
+          "definitionEn": "a material made from wood pulp, rags, or certain grasses, used for writing, printing, drawing, or wrapping",
+          "examples": [
+            "I need to buy some paper to print out my essay."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-9d6bdb28",
+          "pos": "noun",
+          "meaningZh": "一張紙；紙片",
+          "definitionEn": "a piece of thin, flat material on which to write or print",
+          "examples": [
+            "She grabbed a piece of paper and started jotting down notes during the meeting."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "parent",
+      "word": "parent",
+      "senses": [
+        {
+          "id": "sense-51f4855e",
+          "pos": "noun",
+          "meaningZh": "父母；雙親",
+          "definitionEn": "a father or mother who gives birth to or raises a child; a guardian relative",
+          "examples": [
+            "After the birth of their baby, the couple became proud parents and dedicated themselves to providing a loving and nurturing environment for their child."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-0de3a506",
+          "pos": "noun",
+          "meaningZh": "親本；母體（生物學）",
+          "definitionEn": "an organism, either a plant or animal, from which offspring develop or are obtained",
+          "examples": [
+            "The mother bird diligently guards her nest, acting as a nurturing parent until her chicks are ready to leave."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "parents",
+      "word": "parents",
+      "senses": [
+        {
+          "id": "sense-2c93d9c7",
+          "pos": "noun",
+          "meaningZh": "父母；雙親",
+          "definitionEn": "a father or mother who gives birth to or raises a child; a guardian relative",
+          "examples": [
+            "After the birth of their baby, the couple became proud parents and dedicated themselves to providing a loving and nurturing environment for their child."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-5e289e85",
+          "pos": "noun",
+          "meaningZh": "親本；母體（生物學）",
+          "definitionEn": "an organism, either a plant or animal, from which offspring develop or are obtained",
+          "examples": [
+            "The mother bird diligently guards her nest, acting as a nurturing parent until her chicks are ready to leave."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "park",
+      "word": "park",
+      "senses": [
+        {
+          "id": "sense-ed035523",
+          "pos": "noun",
+          "meaningZh": "公園；花園",
+          "definitionEn": "a piece of land in a city for people to relax and play in",
+          "examples": [
+            "On the weekend, my family and I decided to have a picnic at the park. We played frisbee, enjoyed the sunshine, and had a great time!"
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-358c25ea",
+          "pos": "noun",
+          "meaningZh": "自然公園；保護區",
+          "definitionEn": "a large area of land that is open to the public and is kept in a natural state",
+          "examples": [
+            "On the weekends, families often enjoy picnics and play outdoor games in the park."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "part",
+      "word": "part",
+      "senses": [
+        {
+          "id": "sense-71883580",
+          "pos": "noun",
+          "meaningZh": "部分；部份",
+          "definitionEn": "one of the sections into which something is divided, making up the entire whole",
+          "examples": [
+            "In baking a cake, the flour, eggs, sugar, and butter are all important parts of the recipe."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-f3c63db7",
+          "pos": "noun",
+          "meaningZh": "零件；組成部件",
+          "definitionEn": "a piece or component that, when found together, make up a larger object",
+          "examples": [
+            "When assembling a puzzle, each individual piece is a part that contributes to completing the whole picture."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 翰林 B1·L4",
+        "textbookTitle": "翰林 B1·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "party",
+      "word": "party",
+      "senses": [
+        {
+          "id": "sense-58f09928",
+          "pos": "noun",
+          "meaningZh": "派對；聚會",
+          "definitionEn": "an occasion for socializing and having fun with other people",
+          "examples": [
+            "We are planning a birthday party for my friend next weekend. It will be a gathering of friends and family to celebrate and have a good time."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-a44e2c87",
+          "pos": "noun",
+          "meaningZh": "一群人；聚會人群",
+          "definitionEn": "a group of people who get together for enjoyment or celebration",
+          "examples": [
+            "We had a party to celebrate my graduation and invited all of our friends and family to attend."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "pass",
+      "word": "pass",
+      "senses": [
+        {
+          "id": "sense-45e4fce1",
+          "pos": "verb",
+          "meaningZh": "通過；穿越",
+          "definitionEn": "move past or go across or through",
+          "examples": [
+            "I had to pass through many security checkpoints before entering the airport."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-2249b942",
+          "pos": "verb",
+          "meaningZh": "通過（考試）；及格",
+          "definitionEn": "go successfully through a test or selection process",
+          "examples": [
+            "After months of preparation, she finally passed the driving test on her third attempt."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "past",
+      "word": "past",
+      "senses": [
+        {
+          "id": "sense-71e34e48",
+          "pos": "noun",
+          "meaningZh": "過去；昔日",
+          "definitionEn": "the time that has elapsed",
+          "examples": [
+            "In the past, I used to play the piano every day."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-dd97d5de",
+          "pos": "noun",
+          "meaningZh": "往事；不可告人的過去",
+          "definitionEn": "a earlier period in someone’s life (especially one that they have reason to keep secret)",
+          "examples": [
+            "Sarah's past came back to haunt her when her long-lost sister showed up unexpectedly at her doorstep."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "pay",
+      "word": "pay",
+      "senses": [
+        {
+          "id": "sense-182a4672",
+          "pos": "verb",
+          "meaningZh": "付款；支付",
+          "definitionEn": "give money in exchange for goods or services",
+          "examples": [
+            "I need to pay the bills by the end of this week."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-93cb11fb",
+          "pos": "verb",
+          "meaningZh": "回報；償還",
+          "definitionEn": "do or give something to somebody in return for something received",
+          "examples": [
+            "He decided to pay the bill for dinner since his friend had paid for his lunch the previous day."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "payment",
+      "word": "payment",
+      "senses": [
+        {
+          "id": "sense-cb7bf63e",
+          "pos": "noun",
+          "meaningZh": "付款；繳費",
+          "definitionEn": "the act of paying money",
+          "examples": [
+            "John made a payment for his new car through online banking."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-f16d68dc",
+          "pos": "noun",
+          "meaningZh": "回報；報答",
+          "definitionEn": "an act of requiting; returning in kind",
+          "examples": [
+            "Lila's kind gesture of preparing dinner for her friend was met with payment when her friend surprised her with tickets to a concert."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "pen",
+      "word": "pen",
+      "senses": [
+        {
+          "id": "sense-42a4ec3c",
+          "pos": "noun",
+          "meaningZh": "鋼筆；原子筆",
+          "definitionEn": "a writing tool that uses ink to create text on paper or other surfaces",
+          "examples": [
+            "She picked up her pen and began to write a letter."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-90fe1a26",
+          "pos": "verb",
+          "meaningZh": "撰寫；執筆",
+          "definitionEn": "to write or compose",
+          "examples": [
+            "She used a pen to jot down her thoughts in her journal."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "pencil",
+      "word": "pencil",
+      "senses": [
+        {
+          "id": "sense-4edce497",
+          "pos": "noun",
+          "meaningZh": "鉛筆",
+          "definitionEn": "a pointed writing tool made of a thin cylindrical piece of graphite or other marking substance encased in wood or plastic",
+          "examples": [
+            "Please pass me the pencil so I can write down the phone number."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-b339f32d",
+          "pos": "verb",
+          "meaningZh": "用鉛筆標記；素描",
+          "definitionEn": "to make marks or notes using a pencil",
+          "examples": [
+            "She used a pencil to sketch the outline of the new design."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "people",
+      "word": "people",
+      "senses": [
+        {
+          "id": "sense-048e60da",
+          "pos": "noun",
+          "meaningZh": "人；人們",
+          "definitionEn": "human beings in general",
+          "examples": [
+            "During the social gathering, there were many interesting conversations among the people."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-d83b61ad",
+          "pos": "noun",
+          "meaningZh": "員工；職員",
+          "definitionEn": "the group of individuals who are employed by a specific organization or individual",
+          "examples": [
+            "The people working at the company are all dedicated and experienced professionals."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "perhaps",
+      "word": "perhaps",
+      "senses": [
+        {
+          "id": "sense-b53e8abf",
+          "pos": "adverb",
+          "meaningZh": "也許；可能",
+          "definitionEn": "possibly; maybe",
+          "examples": [
+            "Perhaps we will go to the beach tomorrow if the weather is nice."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-37b1b4ab",
+          "pos": "adverb",
+          "meaningZh": "或許；說不定",
+          "definitionEn": "by chance",
+          "examples": [
+            "Perhaps, I will see you at the concert tonight if I can get there by chance."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "person",
+      "word": "person",
+      "senses": [
+        {
+          "id": "sense-de9f5118",
+          "pos": "noun",
+          "meaningZh": "人；個人",
+          "definitionEn": "a human being",
+          "examples": [
+            "Every person must have equal rights regardless of their gender, religion or race."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-1d33b755",
+          "pos": "noun",
+          "meaningZh": "人（含身體）",
+          "definitionEn": "a human body, including clothing",
+          "examples": [
+            "The person sitting next to me on the bus was reading a book."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L2",
+        "textbookTitle": "龍騰 B1·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "pet",
+      "word": "pet",
+      "senses": [
+        {
+          "id": "sense-08a7e80a",
+          "pos": "noun",
+          "meaningZh": "寵物",
+          "definitionEn": "a domesticated animal kept for companionship or amusement",
+          "examples": [
+            "Sarah loves her pet dog, Max, and enjoys taking him for walks in the park."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-e67e54db",
+          "pos": "noun",
+          "meaningZh": "心愛的人；掌上明珠",
+          "definitionEn": "a special loved one",
+          "examples": [
+            "For her birthday, Emily's parents surprised her with a fluffy kitten, who quickly became her cherished pet."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "piano",
+      "word": "piano",
+      "senses": [
+        {
+          "id": "sense-9e210910",
+          "pos": "noun",
+          "meaningZh": "鋼琴",
+          "definitionEn": "a musical instrument with a keyboard that produces sound by striking strings with hammers",
+          "examples": [
+            "During her performance, she played the piano like a skilled musician, eliciting cheers from the audience."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-6f913c80",
+          "pos": "noun",
+          "meaningZh": "弱音（音樂力度記號）",
+          "definitionEn": "a dynamic marking in music indicating a soft and quiet sound",
+          "examples": [
+            "The pianist played the sonata quietly and with the piano pedal down to get a beautiful and ethereal tone."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "pick",
+      "word": "pick",
+      "senses": [
+        {
+          "id": "sense-d6be514e",
+          "pos": "verb",
+          "meaningZh": "挑選；選擇",
+          "definitionEn": "to choose someone or something from a group",
+          "examples": [
+            "You can pick any color you like for your bike."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-aa7212d8",
+          "pos": "noun",
+          "meaningZh": "選出的人或物；首選",
+          "definitionEn": "the person or thing chosen or selected",
+          "examples": [
+            "The coach was impressed by his performance and decided to make him the team’s pick for the upcoming tournament."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-810f8055",
+          "pos": "noun",
+          "meaningZh": "精選；菁英",
+          "definitionEn": "the best people or things in a group",
+          "examples": [
+            "The coach picked the best players for the game."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "picnic",
+      "word": "picnic",
+      "senses": [
+        {
+          "id": "sense-979adb97",
+          "pos": "noun",
+          "meaningZh": "野餐",
+          "definitionEn": "an occasion where people have a meal consisting of sandwiches, fruits, and/or other light foods outdoors or while on an outing",
+          "examples": [
+            "We decided to have a picnic at the park and enjoyed sandwiches and fresh fruit in the sunshine."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-b9389dff",
+          "pos": "noun",
+          "meaningZh": "輕鬆愉快的事",
+          "definitionEn": "an easy or pleasant activity",
+          "examples": [
+            "The sun was shining, and a gentle breeze swept through the park as families spread out their blankets and enjoyed a delightful picnic together."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "picture",
+      "word": "picture",
+      "senses": [
+        {
+          "id": "sense-e9fb7159",
+          "pos": "noun",
+          "meaningZh": "圖畫；圖片；照片",
+          "definitionEn": "a visual representation of an object or scene or person or idea, typically produced by painting, drawing, photography, or film",
+          "examples": [
+            "I like to take pictures of landscapes when I go on hikes."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-b4f04299",
+          "pos": "noun",
+          "meaningZh": "插圖；圖解",
+          "definitionEn": "illustrations used to enhance or explain a text",
+          "examples": [
+            "The book had beautiful pictures of different animals, which helped the children understand and enjoy the story."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    }
+  ]
+}

@@ -3,7 +3,7 @@ import { computed, ref, watch } from 'vue'
 import Badge from './ui/badge/Badge.vue'
 
 const props = defineProps<{
-  item: { id?: string, word: string, pos: string, meaning: string, example: string } | null
+  item: { id?: string, word: string, pos: string, meaning: string, example: string, phonetic?: string, audioUrl?: string, senses?: { id: string, pos: string, meaningZh: string, definitionEn?: string, examples: string[] }[] } | null
   index: number
   flipped?: boolean
 }>()
@@ -66,20 +66,26 @@ function toggle() {
         <Badge variant="secondary" class="flashcard-index">
           {{ $t('flashcard.cardIndex', { index: index + 1 }) }}
         </Badge>
-        <div class="flashcard-block flashcard-block-primary">
-          <p class="flashcard-label text-accent-primary">
-            {{ $t('flashcard.meaning') }}
-          </p>
-          <p class="flashcard-body">
-            {{ item.meaning }}
-          </p>
+        <div v-if="item.phonetic" class="mb-3 text-sm font-semibold text-ink-500">
+          {{ item.phonetic }}
         </div>
-        <div class="flashcard-block flashcard-block-muted">
-          <p class="flashcard-label text-ink-400 dark:text-ink-500">
-            {{ $t('flashcard.example') }}
+        <div v-for="sense in (item.senses?.length ? item.senses : [{ id: 'legacy', pos: item.pos, meaningZh: item.meaning, definitionEn: undefined, examples: [item.example] }])" :key="sense.id" class="flashcard-block flashcard-block-primary">
+          <div class="flex items-center gap-2">
+            <Badge v-if="sense.pos" variant="secondary" class="rounded-md text-[10px]">
+              {{ sense.pos }}
+            </Badge>
+            <p class="flashcard-label text-accent-primary">
+              {{ $t('flashcard.meaning') }}
+            </p>
+          </div>
+          <p class="flashcard-body">
+            {{ sense.meaningZh }}
           </p>
-          <p class="flashcard-example">
-            {{ item.example }}
+          <p v-if="sense.definitionEn" class="mt-1 text-sm leading-relaxed text-ink-600 dark:text-ink-300">
+            {{ sense.definitionEn }}
+          </p>
+          <p v-for="example in sense.examples" :key="example" class="flashcard-example mt-2">
+            {{ example }}
           </p>
         </div>
       </div>

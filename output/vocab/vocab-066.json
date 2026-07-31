@@ -1,0 +1,1407 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 66,
+  "words": [
+    {
+      "wordKey": "blouse",
+      "word": "blouse",
+      "senses": [
+        {
+          "id": "sense-50392bee",
+          "pos": "noun",
+          "meaningZh": "女用上衣；女衫",
+          "definitionEn": "a type of shirt worn by women or girls:",
+          "examples": [
+            "She paired her new blouse with a skirt for a professional and stylish look."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-a2d8a9a3",
+          "pos": "noun",
+          "meaningZh": "寬鬆上衣；罩衫",
+          "definitionEn": "a garment typically worn by women or girls that covers the upper body",
+          "examples": [
+            "She paired her floral blouse with a skirt for a feminine look."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "bold",
+      "word": "bold",
+      "senses": [
+        {
+          "id": "sense-e8bf0ed9",
+          "pos": "adjective",
+          "meaningZh": "大膽的；勇敢的",
+          "definitionEn": "fearless and daring",
+          "examples": [
+            "Despite her fear of heights, she took a bold leap off the cliff into the deep blue ocean below."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-c34a0a92",
+          "pos": "adjective",
+          "meaningZh": "醒目的；鮮明的",
+          "definitionEn": "clear and distinct",
+          "examples": [
+            "The bold headline caught everyone's attention."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L7",
+        "textbookTitle": "龍騰 B4·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "bomb",
+      "word": "bomb",
+      "senses": [
+        {
+          "id": "sense-62363119",
+          "pos": "noun",
+          "meaningZh": "炸彈；爆炸物",
+          "definitionEn": "An explosive device that can be set to detonate under specific conditions.",
+          "examples": [
+            "The bomb squad was called in to safely defuse the explosive device."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-e81699d7",
+          "pos": "verb",
+          "meaningZh": "轟炸；投彈",
+          "definitionEn": "To attack with bombs; to throw bombs at a target.",
+          "examples": [
+            "The military bombed the enemy's headquarters, causing significant damage."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "bookcase",
+      "word": "bookcase",
+      "senses": [
+        {
+          "id": "sense-39766ea4",
+          "pos": "noun",
+          "meaningZh": "書櫃；書架",
+          "definitionEn": "A piece of furniture consisting of shelves for storing books, often designed to be placed against a wall.",
+          "examples": [
+            "I finally organized my book collection on the bookcase my grandfather built for me."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-a0361227",
+          "pos": "noun",
+          "meaningZh": "壁掛書架；嵌牆書架",
+          "definitionEn": "A set of shelves for storing books, usually attached to the wall or built into it.",
+          "examples": [
+            "John proudly displayed his extensive book collection on the bookcase he built himself."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "boot",
+      "word": "boot",
+      "senses": [
+        {
+          "id": "sense-21785d75",
+          "pos": "noun",
+          "meaningZh": "靴子；長靴",
+          "definitionEn": "a type of shoe that covers the foot and part of the leg",
+          "examples": [
+            "She pulled on her rubber boots before going out in the rain."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-1c120924",
+          "pos": "verb",
+          "meaningZh": "踢；踹",
+          "definitionEn": "to kick or give a boot to",
+          "examples": [
+            "The bully threatened to boot the timid boy if he didn’t give him his lunch money."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "bore",
+      "word": "bore",
+      "senses": [
+        {
+          "id": "sense-313a5db8",
+          "pos": "noun",
+          "meaningZh": "令人厭煩的人或事",
+          "definitionEn": "a person or thing that causes boredom or disinterest",
+          "examples": [
+            "The lengthy lecture on logarithmic equations was a real bore, and many students struggled to stay awake."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-2e1abaa3",
+          "pos": "verb",
+          "meaningZh": "鑽孔；打洞",
+          "definitionEn": "to make a hole in something using a tool, usually a drill",
+          "examples": [
+            "The carpenter used a power drill to bore holes in the wooden board for the screws."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "bowling",
+      "word": "bowling",
+      "senses": [
+        {
+          "id": "sense-e74d757e",
+          "pos": "noun",
+          "meaningZh": "保齡球運動",
+          "definitionEn": "the activity of playing bowling",
+          "examples": [
+            "On weekends, we usually gather at the bowling alley and have a friendly competition."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-2ed98f48",
+          "pos": "noun",
+          "meaningZh": "（板球）投球",
+          "definitionEn": "(cricket) the action of throwing the ball towards the batsman",
+          "examples": [
+            "In the cricket match, the bowler showed excellent bowling skills by consistently delivering the ball with precision and pace."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "brake",
+      "word": "brake",
+      "senses": [
+        {
+          "id": "sense-3f0dc0fa",
+          "pos": "noun",
+          "meaningZh": "剎車；煞車裝置",
+          "definitionEn": "a device used for slowing or stopping a vehicle",
+          "examples": [
+            "When driving down a steep hill, it's important to apply the brake to ensure safety."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-14733218",
+          "pos": "verb",
+          "meaningZh": "剎車；煞車",
+          "definitionEn": "to stop by using the brake",
+          "examples": [
+            "When approaching a red light, remember to brake gently to avoid jolting the passengers."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L7",
+        "textbookTitle": "三民 B4·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "brass",
+      "word": "brass",
+      "senses": [
+        {
+          "id": "sense-10e80c3e",
+          "pos": "noun",
+          "meaningZh": "黃銅；銅鋅合金",
+          "definitionEn": "an alloy of copper and zinc",
+          "examples": [
+            "The musician played a beautiful melody on his brass trumpet."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-129f429c",
+          "pos": "noun",
+          "meaningZh": "黃銅製品；銅器",
+          "definitionEn": "an ornament or utensil made of brass",
+          "examples": [
+            "The vintage doorknob was adorned with an intricate brass design."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "bravery",
+      "word": "bravery",
+      "senses": [
+        {
+          "id": "sense-b815c2d6",
+          "pos": "noun",
+          "meaningZh": "勇氣；勇敢",
+          "definitionEn": "the feeling or quality of being brave; courageously facing danger, difficulty, or pain without showing fear",
+          "examples": [
+            "In the face of a burning building, the firefighter displayed tremendous bravery as they rushed inside to save lives."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-c32cbb19",
+          "pos": "noun",
+          "meaningZh": "無畏；膽量",
+          "definitionEn": "the state or condition of having no fear",
+          "examples": [
+            "Despite her fear of heights, Sara displayed great bravery when she climbed to the top of the mountain to rescue the stranded hiker."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L5",
+        "textbookTitle": "龍騰 B4·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "breast",
+      "word": "breast",
+      "senses": [
+        {
+          "id": "sense-98804a66",
+          "pos": "noun",
+          "meaningZh": "胸部",
+          "definitionEn": "the upper front part of a person's body; either of the two soft parts on a woman's chest",
+          "examples": [
+            "He clutched the letter to his breast."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-b8e80a91",
+          "pos": "noun",
+          "meaningZh": "禽胸肉；雞胸",
+          "definitionEn": "the meat from the front part of a bird’s body",
+          "examples": [
+            "The roasted chicken breast was perfectly cooked and juicy."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "breath",
+      "word": "breath",
+      "senses": [
+        {
+          "id": "sense-3dc6c10a",
+          "pos": "noun",
+          "meaningZh": "呼吸；氣息",
+          "definitionEn": "the air that you inhale and exhale from your lungs",
+          "examples": [
+            "After running up the stairs, she took a deep breath to catch her breath."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L3 +1",
+        "textbookTitle": "龍騰 B1·L3、翰林 B1·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "breathe",
+      "word": "breathe",
+      "senses": [
+        {
+          "id": "sense-a333d25a",
+          "pos": "verb",
+          "meaningZh": "呼吸；吸氣吐氣",
+          "definitionEn": "to inhale and exhale air from the lungs",
+          "examples": [
+            "After finishing his intense workout, John took a moment to sit down and breathe deeply, allowing his heart rate to gradually return to normal."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-78fdbdcd",
+          "pos": "verb",
+          "meaningZh": "表達；傳達",
+          "definitionEn": "to express or communicate something",
+          "examples": [
+            "She took a deep breath and calmly expressed her opinion during the meeting."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L3 +1",
+        "textbookTitle": "龍騰 B1·L3、翰林 B1·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "breeze",
+      "word": "breeze",
+      "senses": [
+        {
+          "id": "sense-2d0f5d28",
+          "pos": "noun",
+          "meaningZh": "微風；清風",
+          "definitionEn": "a gentle wind (sometimes refreshing)",
+          "examples": [
+            "As I lounged on the beach, a cool breeze rustled through the palm trees, providing a refreshing break from the scorching sun."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-ce0b3f4c",
+          "pos": "noun",
+          "meaningZh": "輕而易舉的事",
+          "definitionEn": "an easy task or endeavor",
+          "examples": [
+            "Cleaning my room is always a breeze because I have a systematic approach and it doesn't take much time."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "brick",
+      "word": "brick",
+      "senses": [
+        {
+          "id": "sense-405483ca",
+          "pos": "noun",
+          "meaningZh": "磚塊；磚頭",
+          "definitionEn": "a rectangular block of clay, hardened by baking in the sun or a kiln, used in building and paving.",
+          "examples": [
+            "The mason carefully placed each brick on top of the other, using mortar to hold them in place."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "bride",
+      "word": "bride",
+      "senses": [
+        {
+          "id": "sense-77392af1",
+          "pos": "noun",
+          "meaningZh": "新娘",
+          "definitionEn": "A woman who is getting married or has just been married.",
+          "examples": [
+            "As the bride walked down the aisle, everyone admired her beautiful wedding gown."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "broadcast",
+      "word": "broadcast",
+      "senses": [
+        {
+          "id": "sense-f344acdf",
+          "pos": "verb",
+          "meaningZh": "廣播；播出",
+          "definitionEn": "to transmit a radio or television program",
+          "examples": [
+            "The radio station will broadcast the live concert to millions of listeners."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-3b426bb5",
+          "pos": "verb",
+          "meaningZh": "廣泛宣傳；散播消息",
+          "definitionEn": "to make something widely known or publicized",
+          "examples": [
+            "The local news station will broadcast the announcement of the winner of the election."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "brunch",
+      "word": "brunch",
+      "senses": [
+        {
+          "id": "sense-599319bc",
+          "pos": "noun",
+          "meaningZh": "早午餐",
+          "definitionEn": "A meal that combines breakfast and lunch, usually served late morning or early afternoon.",
+          "examples": [
+            "On lazy Sundays, my friends and I like to go out for brunch and enjoy a leisurely meal of avocado toast and mimosas."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-0e61ec0c",
+          "pos": "verb",
+          "meaningZh": "吃早午餐",
+          "definitionEn": "To eat a brunch meal.",
+          "examples": [
+            "On Sundays, I like to brunch with my friends at a trendy cafe and enjoy some delicious avocado toast."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "bubble",
+      "word": "bubble",
+      "senses": [
+        {
+          "id": "sense-870fed0e",
+          "pos": "noun",
+          "meaningZh": "泡泡；氣泡",
+          "definitionEn": "a hollow ball of gas (such as air or carbon dioxide)",
+          "examples": [
+            "The children were delighted by the bubbles floating in the air."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-7723edaa",
+          "pos": "verb",
+          "meaningZh": "冒泡；起泡",
+          "definitionEn": "to form, produce, or give off bubbles",
+          "examples": [
+            "As she poured the soda into the glass, she watched the bubbles bubble up to the surface."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "bucket",
+      "word": "bucket",
+      "senses": [
+        {
+          "id": "sense-0aeab3dc",
+          "pos": "noun",
+          "meaningZh": "水桶；提桶",
+          "definitionEn": "a cylindrical container with an open top and a handle, typically used for carrying liquids or other materials",
+          "examples": [
+            "I filled up the bucket with water from the well."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-4e2e8659",
+          "pos": "verb",
+          "meaningZh": "用桶搬運",
+          "definitionEn": "to carry or move something in a bucket",
+          "examples": [
+            "I need to bucket the sand from the beach."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "bud",
+      "word": "bud",
+      "senses": [
+        {
+          "id": "sense-da46558c",
+          "pos": "noun",
+          "meaningZh": "芽；嫩芽",
+          "definitionEn": "a swelling on a plant stem consisting of overlapping immature leaves or petals",
+          "examples": [
+            "As I examined the rose bush in my garden, I noticed several small buds beginning to form at the base of the stems."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-b0f7bde4",
+          "pos": "noun",
+          "meaningZh": "花苞；未開花蕾",
+          "definitionEn": "a partially opened flower",
+          "examples": [
+            "The rose bush was covered in buds, each waiting for its moment to unfold into a beautiful bloom."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "budget",
+      "word": "budget",
+      "senses": [
+        {
+          "id": "sense-2afd6cb8",
+          "pos": "noun",
+          "meaningZh": "預算；經費",
+          "definitionEn": "a sum of money allocated for a particular purpose",
+          "examples": [
+            "Before going shopping, I created a budget for myself to ensure that I wouldn't overspend."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-a4542c00",
+          "pos": "verb",
+          "meaningZh": "編列預算；做財務規劃",
+          "definitionEn": "to plan to use money for a particular purpose",
+          "examples": [
+            "Before going on vacation, it is important to budget your expenses and prioritize your spending."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L7",
+        "textbookTitle": "三民 B4·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "buffalo",
+      "word": "buffalo",
+      "senses": [
+        {
+          "id": "sense-6bff0963",
+          "pos": "noun",
+          "meaningZh": "水牛；野牛",
+          "definitionEn": "a large wild animal of the cattle family with curved horns",
+          "examples": [
+            "A herd of buffalo grazed on the open plain."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-c134c067",
+          "pos": "noun",
+          "meaningZh": "野牛皮；水牛皮",
+          "definitionEn": "a buffalo robe.",
+          "examples": [
+            "The Native American warrior draped the warm buffalo over his shoulders, providing protection from the bitter winter chill."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "buffet",
+      "word": "buffet",
+      "senses": [
+        {
+          "id": "sense-ffbef771",
+          "pos": "noun",
+          "meaningZh": "自助餐；吃到飽",
+          "definitionEn": "a meal where people serve themselves from a variety of dishes set out on a table",
+          "examples": [
+            "The hotel offers a breakfast buffet every morning."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-2c5325bb",
+          "pos": "noun",
+          "meaningZh": "（餐廳旁）餐具碗櫃；餐邊櫃",
+          "definitionEn": "a piece of furniture that stands at the side of a dining room; has shelves and drawers",
+          "examples": [
+            "The buffet was filled with fine dishes and linens."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-c6554f9d",
+          "pos": "verb",
+          "meaningZh": "猛烈衝擊；使搖晃",
+          "definitionEn": "knock (someone) off course",
+          "examples": [
+            "The strong winds buffeted the small boat, making it difficult for the sailor to stay on course."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "bulb",
+      "word": "bulb",
+      "senses": [
+        {
+          "id": "sense-29bb17ef",
+          "pos": "noun",
+          "meaningZh": "（儀器）球形端；燈泡",
+          "definitionEn": "a rounded part of a cylindrical instrument, typically at one end; e.g. a thermometer or syringe",
+          "examples": [
+            "Be sure to check the bulb of the thermometer before taking your temperature."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 翰林 B1·L7",
+        "textbookTitle": "翰林 B1·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "bull",
+      "word": "bull",
+      "senses": [
+        {
+          "id": "sense-40fed6bf",
+          "pos": "noun",
+          "meaningZh": "公牛",
+          "definitionEn": "the adult male of cattle",
+          "examples": [
+            "The farmer kept the bull in a separate field."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-b56b5e58",
+          "pos": "noun",
+          "meaningZh": "多頭；看漲投資者",
+          "definitionEn": "an investor with an optimistic market outlook; an investor who expects prices to rise and buys now for resale later",
+          "examples": [
+            "Jerry is a bull who believes that the stock market will continue to rise, so he invests heavily in the market."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "bullet",
+      "word": "bullet",
+      "senses": [
+        {
+          "id": "sense-d83bc889",
+          "pos": "noun",
+          "meaningZh": "子彈；彈頭",
+          "definitionEn": "a projectile that is fired from a gun",
+          "examples": [
+            "The detective examined the bullet found at the crime scene for any potential clues."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-782b97a6",
+          "pos": "noun",
+          "meaningZh": "高鐵；子彈列車",
+          "definitionEn": "a high-speed passenger train",
+          "examples": [
+            "The bullet train raced through the countryside, reaching speeds of over 300 kilometers per hour."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "bump",
+      "word": "bump",
+      "senses": [
+        {
+          "id": "sense-020e0a26",
+          "pos": "noun",
+          "meaningZh": "腫塊；隆起",
+          "definitionEn": "a lump on the body caused by a blow",
+          "examples": [
+            "After tripping and falling, he noticed a painful bump on his forehead."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-1da68fb9",
+          "pos": "noun",
+          "meaningZh": "突起；凸出物",
+          "definitionEn": "something that bulges out or projects from its surroundings",
+          "examples": [
+            "I accidentally hit the wall with my shoulder and left a visible bump."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "bunch",
+      "word": "bunch",
+      "senses": [
+        {
+          "id": "sense-3b0d32e4",
+          "pos": "noun",
+          "meaningZh": "束；串；一把",
+          "definitionEn": "a group of similar things that are held or tied together",
+          "examples": [
+            "I picked a bunch of flowers for my mom’s birthday."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-999072a6",
+          "pos": "verb",
+          "meaningZh": "聚集；成束",
+          "definitionEn": "form into a close group or cluster",
+          "examples": [
+            "The kids gathered a bunch of flowers and presented it to their teacher."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "bundle",
+      "word": "bundle",
+      "senses": [
+        {
+          "id": "sense-23c7d2ab",
+          "pos": "noun",
+          "meaningZh": "包裹；一批",
+          "definitionEn": "a collection of things wrapped or boxed together",
+          "examples": [
+            "I received a bundle of books as a gift."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-376d0410",
+          "pos": "noun",
+          "meaningZh": "捆；紮",
+          "definitionEn": "a package of several things tied together, typically for carrying or storing",
+          "examples": [
+            "The hiker tightly secured a bundle of firewood to his backpack before heading into the wilderness."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    }
+  ]
+}

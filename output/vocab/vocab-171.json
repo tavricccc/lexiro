@@ -1,0 +1,1291 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 171,
+  "words": [
+    {
+      "wordKey": "bribe",
+      "word": "bribe",
+      "senses": [
+        {
+          "id": "sense-dc56542e",
+          "pos": "noun",
+          "meaningZh": "賄賂；賄款",
+          "definitionEn": "Money or gift given to someone, especially someone in a position of power or government official, to persuade or influence them to take a particular action.",
+          "examples": [
+            "The businessman attempted to bribe the city official with a large sum of money to secure a building permit for his new project."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-eb38f9ad",
+          "pos": "verb",
+          "meaningZh": "賄賂；行賄",
+          "definitionEn": "Persuade someone to act in one’s favor, typically illegally or dishonestly, by a gift of money or other incentives.",
+          "examples": [
+            "The corrupt official demanded a bribe of $10,000 to expedite the processing of his visa application."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "brink",
+      "word": "brink",
+      "senses": [
+        {
+          "id": "sense-ba105f35",
+          "pos": "noun",
+          "meaningZh": "邊緣；關鍵時刻",
+          "definitionEn": "the limit beyond which something happens or changes",
+          "examples": [
+            "She was on the brink of giving up, but then she received an unexpected phone call with good news."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-0ee17771",
+          "pos": "noun",
+          "meaningZh": "邊沿；崖邊",
+          "definitionEn": "a region marking a boundary",
+          "examples": [
+            "The hikers stood on the brink of the cliff, gazing down at the expansive valley below."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "broaden",
+      "word": "broaden",
+      "senses": [
+        {
+          "id": "sense-8c51194b",
+          "pos": "verb",
+          "meaningZh": "擴大；拓展",
+          "definitionEn": "to increase the width or extent of something",
+          "examples": [
+            "The company plans to broaden its market by expanding to other countries."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-4c7454fc",
+          "pos": "verb",
+          "meaningZh": "開闊；變寬廣",
+          "definitionEn": "to become wider or more extensive",
+          "examples": [
+            "The art teacher decided to broaden the students’ horizons by introducing them to different art forms and styles from around the world."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L7",
+        "textbookTitle": "龍騰 B2·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "brochure",
+      "word": "brochure",
+      "senses": [
+        {
+          "id": "sense-7ad019a3",
+          "pos": "noun",
+          "meaningZh": "宣傳冊；小冊子",
+          "definitionEn": "a small book or magazine containing pictures and information about a product or service",
+          "examples": [
+            "The travel agency handed out brochures to potential customers, showcasing different vacation destinations and their exclusive packages."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "broil",
+      "word": "broil",
+      "senses": [
+        {
+          "id": "sense-295bacba",
+          "pos": "noun",
+          "meaningZh": "直火烘烤；炙烤",
+          "definitionEn": "cooking by direct exposure to radiant heat (as over a fire or under a grill)",
+          "examples": [
+            "I like to broil my steaks for a crispy crust on the outside while keeping the center juicy."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-616386bb",
+          "pos": "verb",
+          "meaningZh": "炙烤；直火烤",
+          "definitionEn": "cook (food) by direct exposure to radiant heat (as over a fire or under a grill)",
+          "examples": [
+            "I love to broil salmon fillets in my oven with a little bit of olive oil and sea salt until they’re perfectly crisp and flaky."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "brook",
+      "word": "brook",
+      "senses": [
+        {
+          "id": "sense-4d2577d7",
+          "pos": "noun",
+          "meaningZh": "小溪；溪流",
+          "definitionEn": "a creek or small stream",
+          "examples": [
+            "We sat by the brook and listened to the gentle babbling of water."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "broth",
+      "word": "broth",
+      "senses": [
+        {
+          "id": "sense-eaac7920",
+          "pos": "noun",
+          "meaningZh": "高湯；肉湯",
+          "definitionEn": "a liquid in which meat, fish, or vegetables have been simmered, used as a basis for soup or for making sauces and gravy",
+          "examples": [
+            "She slowly poured the hot chicken broth into the bowl and stirred it, creating a fragrant steam that made her mouth water."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-fbeca8d6",
+          "pos": "noun",
+          "meaningZh": "清湯；原汁湯",
+          "definitionEn": "a thin soup made of meat or fish or vegetable stock",
+          "examples": [
+            "The homemade chicken broth was simmered for hours and was rich in flavor."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "brotherhood",
+      "word": "brotherhood",
+      "senses": [
+        {
+          "id": "sense-905fca57",
+          "pos": "noun",
+          "meaningZh": "兄弟情誼；手足情",
+          "definitionEn": "the feeling or relationship between brothers",
+          "examples": [
+            "Growing up, my two brothers and I always had a strong sense of brotherhood, supporting each other through thick and thin."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-703ddd3b",
+          "pos": "noun",
+          "meaningZh": "四海一家；博愛精神",
+          "definitionEn": "the concept or belief that all men should treat each other like brothers",
+          "examples": [
+            "The organization promotes brotherhood and unity among men of all cultures and backgrounds."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "bulky",
+      "word": "bulky",
+      "senses": [
+        {
+          "id": "sense-a8fe62c8",
+          "pos": "adjective",
+          "meaningZh": "龐大笨重的；不便攜帶的",
+          "definitionEn": "awkwardly large or heavy",
+          "examples": [
+            "Ryan struggled to carry the bulky boxes up the stairs."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-e1226ec4",
+          "pos": "adjective",
+          "meaningZh": "占空間的；笨重的",
+          "definitionEn": "taking up much space, typically inconveniently; large and unwieldy",
+          "examples": [
+            "He struggled to fit the bulky suitcase into the overhead compartment of the airplane."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "bureaucrat",
+      "word": "bureaucrat",
+      "senses": [
+        {
+          "id": "sense-40c8e156",
+          "pos": "noun",
+          "meaningZh": "官僚；行政人員",
+          "definitionEn": "an official who works by following official rules and procedures of a bureaucracy, often without showing concern for people affected by those rules",
+          "examples": [
+            "The bureaucrat refused to help the woman in distress because it was against the rules, even though it would have been the right thing to do."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "bypass",
+      "word": "bypass",
+      "senses": [
+        {
+          "id": "sense-78777073",
+          "pos": "verb",
+          "meaningZh": "繞過；規避；忽視",
+          "definitionEn": "to ignore a rule or official authority",
+          "examples": [
+            "The rebels decided to bypass the checkpoint and find an alternate route to their destination."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-cf0a6d0b",
+          "pos": "noun",
+          "meaningZh": "繞道手術；血管繞接",
+          "definitionEn": "a medical procedure to redirect blood flow or bypass a blocked vessel",
+          "examples": [
+            "The surgeon performed a bypass to create an alternate route for blood flow, bypassing the blocked coronary artery."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "caffeine",
+      "word": "caffeine",
+      "senses": [
+        {
+          "id": "sense-6d2dbe21",
+          "pos": "noun",
+          "meaningZh": "咖啡因",
+          "definitionEn": "a stimulant drug that is found in coffee and tea and is responsible for their stimulating effects.",
+          "examples": [
+            "After a long night of studying, Sarah relied on the power of caffeine to stay awake during her morning lecture."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "calculator",
+      "word": "calculator",
+      "senses": [
+        {
+          "id": "sense-64cb39ed",
+          "pos": "noun",
+          "meaningZh": "計算機；計算器",
+          "definitionEn": "a small electronic device used for mathematical calculations",
+          "examples": [
+            "John used his calculator to quickly solve complex algebraic equations."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "calligraphy",
+      "word": "calligraphy",
+      "senses": [
+        {
+          "id": "sense-44210ded",
+          "pos": "noun",
+          "meaningZh": "書法；美術字",
+          "definitionEn": "the art of producing decorative handwriting",
+          "examples": [
+            "My sister has amazing calligraphy skills and she always makes beautiful invitations for our family events."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "cape",
+      "word": "cape",
+      "senses": [
+        {
+          "id": "sense-16074ca6",
+          "pos": "noun",
+          "meaningZh": "海角；岬",
+          "definitionEn": "a strip of land projecting into a body of water",
+          "examples": [
+            "The lighthouse stands tall on the cape, directing ships away from the rocky shore."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-bbd02864",
+          "pos": "noun",
+          "meaningZh": "披風；斗篷",
+          "definitionEn": "a sleeveless garment like a cloak but shorter",
+          "examples": [
+            "She wore a beautiful red cape to the party that flowed behind her as she walked."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "capsule",
+      "word": "capsule",
+      "senses": [
+        {
+          "id": "sense-1ca34163",
+          "pos": "noun",
+          "meaningZh": "膠囊；小容器",
+          "definitionEn": "a small container, often in the shape of a cylinder, used for holding small objects or medication",
+          "examples": [
+            "I always carry a capsule of pain reliever in my wallet in case of emergency."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-f3e925f4",
+          "pos": "noun",
+          "meaningZh": "囊膜；包囊（解剖）",
+          "definitionEn": "a structure that surrounds and protects a part of the body, such as a joint or an organ",
+          "examples": [
+            "The doctor found a capsule of fluid surrounding my knee joint."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "caption",
+      "word": "caption",
+      "senses": [
+        {
+          "id": "sense-f564b2c7",
+          "pos": "noun",
+          "meaningZh": "圖說；標題說明",
+          "definitionEn": "a brief description of a picture or illustration",
+          "examples": [
+            "The photo included a caption explaining when and where it was taken."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "captive",
+      "word": "captive",
+      "senses": [
+        {
+          "id": "sense-04e97654",
+          "pos": "noun",
+          "meaningZh": "俘虜；被囚者",
+          "definitionEn": "a person who is confined, especially as a prisoner of war",
+          "examples": [
+            "The soldiers managed to rescue the captives from the enemy camp."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L6",
+        "textbookTitle": "龍騰 B5·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "captivity",
+      "word": "captivity",
+      "senses": [
+        {
+          "id": "sense-1abbd342",
+          "pos": "noun",
+          "meaningZh": "囚禁；被監禁狀態",
+          "definitionEn": "the state of being imprisoned",
+          "examples": [
+            "After being captured by the enemy, the soldiers were held in captivity for months."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L6",
+        "textbookTitle": "龍騰 B5·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "cardboard",
+      "word": "cardboard",
+      "senses": [
+        {
+          "id": "sense-91ce73fe",
+          "pos": "noun",
+          "meaningZh": "紙板；厚紙板",
+          "definitionEn": "a stiff, moderately thick paperboard, often used for packaging or in construction",
+          "examples": [
+            "I need some cardboard to build a model of the Eiffel Tower for my school project."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-4557dc94",
+          "pos": "adjective",
+          "meaningZh": "缺乏個性的；平板的",
+          "definitionEn": "having little or no depth of personality or character",
+          "examples": [
+            "In the play, his portrayal of the villain was so cardboard that the audience struggled to connect with the character."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "cardinal",
+      "word": "cardinal",
+      "senses": [
+        {
+          "id": "sense-8f1354b8",
+          "pos": "noun",
+          "meaningZh": "基數；集合的元素個數",
+          "definitionEn": "the number of elements in a mathematical set; denotes a quantity but not the order",
+          "examples": [
+            "The cardinality of the set {1,2,3} is 3, whereas the cardinality of the empty set is 0."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "carefree",
+      "word": "carefree",
+      "senses": [
+        {
+          "id": "sense-8eefcd9b",
+          "pos": "adjective",
+          "meaningZh": "無憂無慮的；輕鬆的",
+          "definitionEn": "having no worries or troubles",
+          "examples": [
+            "After completing her exams, she felt so carefree that she went for a long walk in the park."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-aa943eb9",
+          "pos": "adjective",
+          "meaningZh": "漫不經心的；不在乎的",
+          "definitionEn": "irresponsibly cheerful",
+          "examples": [
+            "Despite the heavy workload, the carefree attitude of the team leader kept the rest of the team in high spirits."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "caretaker",
+      "word": "caretaker",
+      "senses": [
+        {
+          "id": "sense-d86e228e",
+          "pos": "noun",
+          "meaningZh": "看管人；管理員",
+          "definitionEn": "a person who is hired to take care of a property or person",
+          "examples": [
+            "The caretaker of the estate ensured that the premises were clean and tidy, and took great care to maintain the garden."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-d2cffb13",
+          "pos": "noun",
+          "meaningZh": "代理人；臨時負責人",
+          "definitionEn": "a temporary official who performs the duties of an office",
+          "examples": [
+            "The assistant manager acted as caretaker while the manager was on vacation."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "carton",
+      "word": "carton",
+      "senses": [
+        {
+          "id": "sense-8b0a8860",
+          "pos": "noun",
+          "meaningZh": "紙盒；紙箱",
+          "definitionEn": "a box made of cardboard, typically used for packaging; opens by flaps on top",
+          "examples": [
+            "I bought a carton of milk from the store."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-b8bdd1a8",
+          "pos": "noun",
+          "meaningZh": "一盒份量；盒裝容量",
+          "definitionEn": "the quantity contained in a carton or cardboard box",
+          "examples": [
+            "One carton of milk contains one liter of milk."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "cashier",
+      "word": "cashier",
+      "senses": [
+        {
+          "id": "sense-69283318",
+          "pos": "noun",
+          "meaningZh": "收銀員；出納員",
+          "definitionEn": "a person who receives payments for goods and services, typically in a shop or restaurant",
+          "examples": [
+            "The cashier at the grocery store bagged my purchases and gave me my receipt."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "casualty",
+      "word": "casualty",
+      "senses": [
+        {
+          "id": "sense-21835cdf",
+          "pos": "noun",
+          "meaningZh": "傷亡者；意外受害者",
+          "definitionEn": "a person who is injured or killed in an accident",
+          "examples": [
+            "There were several casualties in the car accident on the highway yesterday."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-69cccab0",
+          "pos": "noun",
+          "meaningZh": "傷亡人數；兵力損失",
+          "definitionEn": "a reduction in military personnel or equipment",
+          "examples": [
+            "The general reported that there were 20 casualties, including 5 deaths and 15 wounded soldiers, after the intense battle yesterday."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "catastrophe",
+      "word": "catastrophe",
+      "senses": [
+        {
+          "id": "sense-d3f567d6",
+          "pos": "noun",
+          "meaningZh": "災難；大禍",
+          "definitionEn": "an event resulting in great loss and misfortune",
+          "examples": [
+            "The earthquake that struck the city was a catastrophic event, causing the loss of countless lives and the destruction of homes and infrastructure."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-185962a7",
+          "pos": "noun",
+          "meaningZh": "地殼劇變；自然大災變",
+          "definitionEn": "a sudden violent change in the earth’s surface",
+          "examples": [
+            "The earthquake that struck the city caused a catastrophic event, resulting in buildings collapsing and roads cracking."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "cater",
+      "word": "cater",
+      "senses": [
+        {
+          "id": "sense-6efa13b2",
+          "pos": "verb",
+          "meaningZh": "迎合；滿足需求",
+          "definitionEn": "give what is desired or needed, especially support, food or sustenance",
+          "examples": [
+            "The restaurant’s menu was specifically designed to cater to the dietary needs of vegans and vegetarians."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-7746451c",
+          "pos": "verb",
+          "meaningZh": "外燴；供應餐飲",
+          "definitionEn": "supply food ready to eat; for parties and banquets",
+          "examples": [
+            "We decided to cater our wedding with a local restaurant that specialized in Indian cuisine."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "caterpillar",
+      "word": "caterpillar",
+      "senses": [
+        {
+          "id": "sense-104785a5",
+          "pos": "noun",
+          "meaningZh": "毛毛蟲；蝶蛾幼蟲",
+          "definitionEn": "the larval form of a butterfly or moth, often characterized by a worm-like body and brightly colored and hairy or spiny appearance",
+          "examples": [
+            "We saw a fuzzy, bright green caterpillar inching along the garden path."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "cavity",
+      "word": "cavity",
+      "senses": [
+        {
+          "id": "sense-aa440537",
+          "pos": "noun",
+          "meaningZh": "齲齒；蛀牙",
+          "definitionEn": "soft decayed area in a tooth; progressive decay can lead to the death of a tooth",
+          "examples": [
+            "After neglecting their oral health for too long, John developed a painful cavity in one of his molars."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-816aa9c6",
+          "pos": "noun",
+          "meaningZh": "體腔；空腔",
+          "definitionEn": "a natural hollow or sinus within the body",
+          "examples": [
+            "During his dental check-up, the dentist discovered a cavity in his patient's tooth."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    }
+  ]
+}

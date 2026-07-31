@@ -10,7 +10,7 @@ export interface VocabItem {
   pos: string
   meaning: string
   example: string
-  question: Question
+  question?: Question
   definition?: string
   phonetic?: string
   audioUrl?: string
@@ -28,6 +28,7 @@ export interface VocabSet {
   setName: string
   difficulty: number
   items: VocabItem[]
+  folderId?: string
   createdAt?: string
   updatedAt?: string
 }

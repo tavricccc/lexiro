@@ -1,0 +1,1420 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 145,
+  "words": [
+    {
+      "wordKey": "fragment",
+      "word": "fragment",
+      "senses": [
+        {
+          "id": "sense-b681a237",
+          "pos": "noun",
+          "meaningZh": "碎片；碎塊",
+          "definitionEn": "a piece that has broken off or been cut off of something else, typically brittle or fragile",
+          "examples": [
+            "As I was cleaning up the broken vase, I found a small fragment of glass on the floor."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-fe50e467",
+          "pos": "noun",
+          "meaningZh": "殘片；斷片",
+          "definitionEn": "a broken part or piece of an object",
+          "examples": [
+            "After dropping the vase, we were left with only a fragment of porcelain."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "framework",
+      "word": "framework",
+      "senses": [
+        {
+          "id": "sense-1789b02a",
+          "pos": "noun",
+          "meaningZh": "框架；支撐結構",
+          "definitionEn": "a structure supporting or containing something",
+          "examples": [
+            "The team used a framework of wooden beams to support the weight of the roof during construction."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-f25e491b",
+          "pos": "noun",
+          "meaningZh": "架構；基本框架",
+          "definitionEn": "the underlying structure",
+          "examples": [
+            "Before starting to build your application, make sure you have a framework in place that outlines the design and architecture."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "franchise",
+      "word": "franchise",
+      "senses": [
+        {
+          "id": "sense-c837c5c2",
+          "pos": "noun",
+          "meaningZh": "特許經營權；加盟授權",
+          "definitionEn": "the permission given by a company for someone to sell their goods or services in a particular place",
+          "examples": [
+            "After investing in a fast-food franchise, John opened up a restaurant in the busy downtown area with the help of the support he received from the parent company."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-fcc40f7e",
+          "pos": "noun",
+          "meaningZh": "加盟店；特許店",
+          "definitionEn": "a business that sells or distributes a company’s products in a specific area, authorized by the company",
+          "examples": [
+            "John opened a Subway franchise in his town, allowing him to sell Subway’s products with the support and recognition of the company behind him."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "fraud",
+      "word": "fraud",
+      "senses": [
+        {
+          "id": "sense-22feac98",
+          "pos": "noun",
+          "meaningZh": "詐欺；欺詐行為",
+          "definitionEn": "intentional deception resulting in injury to another person or entity",
+          "examples": [
+            "John committed fraud by selling counterfeit products online claiming that they were genuine, causing a financial loss to several buyers."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-9ce4ee66",
+          "pos": "noun",
+          "meaningZh": "詐騙；騙局",
+          "definitionEn": "deliberate trickery intended to gain an advantage; something intended to deceive",
+          "examples": [
+            "The businessman was caught in a fraud scheme that involved falsifying documents and stealing money from investors."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "freight",
+      "word": "freight",
+      "senses": [
+        {
+          "id": "sense-dd455fb1",
+          "pos": "noun",
+          "meaningZh": "貨物；貨運",
+          "definitionEn": "Goods that are transported by train, truck, ship, or aircraft.",
+          "examples": [
+            "The shipping company was responsible for transporting the freight from the port to the warehouse."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-8a4171cb",
+          "pos": "verb",
+          "meaningZh": "運送貨物；承運",
+          "definitionEn": "To transport goods commercially.",
+          "examples": [
+            "The company ordered a 20-ton freight of steel beams to be delivered to the construction site."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "frontier",
+      "word": "frontier",
+      "senses": [
+        {
+          "id": "sense-adf17f52",
+          "pos": "noun",
+          "meaningZh": "邊疆；拓荒地帶",
+          "definitionEn": "a wilderness area at the edge of a settled region of a country",
+          "examples": [
+            "As they ventured into the frontier, the explorers encountered untouched landscapes and uncharted territories."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-f64a888c",
+          "pos": "noun",
+          "meaningZh": "（學術）前沿；新領域",
+          "definitionEn": "an undeveloped field of study; a topic inviting research and exploration",
+          "examples": [
+            "The frontier of neuroscience explores the mysteries of the human brain, paving the way for breakthrough discoveries in understanding cognition and consciousness."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "galaxy",
+      "word": "galaxy",
+      "senses": [
+        {
+          "id": "sense-f1c07cc4",
+          "pos": "noun",
+          "meaningZh": "星系；銀河系",
+          "definitionEn": "a collection of star systems, each having many stars, nebulae, and dust; there are billions of such systems (astronomy)",
+          "examples": [
+            "During the stargazing workshop, the astronomer pointed out a galaxy in the night sky, explaining how it is made up of numerous star systems and contains billions of stars, nebulae, and dust."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-0ff439df",
+          "pos": "noun",
+          "meaningZh": "璀璨群星；名人薈萃",
+          "definitionEn": "an assemblage of splendid or famous people",
+          "examples": [
+            "The red carpet event was a galaxy of A-list celebrities and influential figures from the entertainment industry."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "gasp",
+      "word": "gasp",
+      "senses": [
+        {
+          "id": "sense-d1451ac0",
+          "pos": "noun",
+          "meaningZh": "倒抽一口氣；驚呼",
+          "definitionEn": "a sudden, short, and noisy intake of breath, usually of shock or surprise",
+          "examples": [
+            "When she reached the mountain peak and saw the stunning view, she couldn’t help but gasp in amazement."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-5aa898a6",
+          "pos": "verb",
+          "meaningZh": "喘氣；大口喘息",
+          "definitionEn": "to breathe loudly and with effort, usually due to exhaustion or pain",
+          "examples": [
+            "After running 10 miles, I had to stop and gasp for air."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "gathering",
+      "word": "gathering",
+      "senses": [
+        {
+          "id": "sense-c069d9c5",
+          "pos": "noun",
+          "meaningZh": "聚會；集會",
+          "definitionEn": "a group of people or things brought together in one place",
+          "examples": [
+            "The annual neighborhood barbecue was a wonderful gathering of friends and families enjoying food, games, and laughter."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-67f82bad",
+          "pos": "noun",
+          "meaningZh": "集合；聚集活動",
+          "definitionEn": "the act or process of coming together; an assembly or meeting",
+          "examples": [
+            "Friends and family came from all over the country to attend the annual family gathering, where they shared stories, laughter, and delicious food."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "generate",
+      "word": "generate",
+      "senses": [
+        {
+          "id": "sense-1bf0d258",
+          "pos": "verb",
+          "meaningZh": "產生；生成",
+          "definitionEn": "to bring into existence or create something",
+          "examples": [
+            "The new wind turbines generate clean energy for the whole town."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-6c2784ae",
+          "pos": "verb",
+          "meaningZh": "繁殖；生育",
+          "definitionEn": "to bring offspring into existence",
+          "examples": [
+            "The new technology aims to help infertile couples generate offspring."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L5",
+        "textbookTitle": "三民 B4·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "generator",
+      "word": "generator",
+      "senses": [
+        {
+          "id": "sense-a163f3f0",
+          "pos": "noun",
+          "meaningZh": "發電機",
+          "definitionEn": "a machine that converts mechanical energy into electrical energy",
+          "examples": [
+            "The generator produced enough electricity to power the entire city for days, even during the blackout."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-1a7d64aa",
+          "pos": "noun",
+          "meaningZh": "信號產生器；電子振盪器",
+          "definitionEn": "an electronic device that produces electrical signals or waveforms",
+          "examples": [
+            "The power went out in the neighborhood, but thankfully I had a generator to produce electricity and keep my home appliances running."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "genetic",
+      "word": "genetic",
+      "senses": [
+        {
+          "id": "sense-f0c4f901",
+          "pos": "adjective",
+          "meaningZh": "遺傳學的；基因的",
+          "definitionEn": "relating to the study of genes and their inheritance",
+          "examples": [
+            "The researcher conducted a genetic study to determine the hereditary factors of the rare disease."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-cda18e9a",
+          "pos": "adjective",
+          "meaningZh": "遺傳性的；隔代遺傳的",
+          "definitionEn": "occurring in families by inherited characteristics",
+          "examples": [
+            "The doctor explained that my red hair is genetic, as it runs in my family."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L4 +1",
+        "textbookTitle": "龍騰 B5·L4、三民 B4·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "genetics",
+      "word": "genetics",
+      "senses": [
+        {
+          "id": "sense-8165dfa6",
+          "pos": "noun",
+          "meaningZh": "遺傳學",
+          "definitionEn": "the study of how traits are passed on from parents to offspring in living things",
+          "examples": [
+            "My sister is studying genetics at university and learning how certain traits are passed on from generation to generation."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "genre",
+      "word": "genre",
+      "senses": [
+        {
+          "id": "sense-fb876616",
+          "pos": "noun",
+          "meaningZh": "（藝術）類型；流派",
+          "definitionEn": "a category of artistic composition characterized by similarities in form, style, or subject matter",
+          "examples": [
+            "This music festival attracts all genres of music lovers, from classical to hip-hop."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-a0f6e7ea",
+          "pos": "noun",
+          "meaningZh": "文學體裁；藝術形式",
+          "definitionEn": "a kind of literary or artistic work",
+          "examples": [
+            "The library has a vast collection of different genres including fiction, non-fiction, romance, mystery, sci-fi, and fantasy books."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "glare",
+      "word": "glare",
+      "senses": [
+        {
+          "id": "sense-bbc64a5b",
+          "pos": "verb",
+          "meaningZh": "強烈反射；刺眼照射",
+          "definitionEn": "be sharply reflected",
+          "examples": [
+            "When the sun sets over the ocean, its light glares off the surface of the water."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-3b74a399",
+          "pos": "noun",
+          "meaningZh": "刺眼強光；眩光",
+          "definitionEn": "a light within the field of vision that is brighter than the brightness to which the eyes are adapted",
+          "examples": [
+            "The sun’s glare made it difficult to see the road ahead."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "gloomy",
+      "word": "gloomy",
+      "senses": [
+        {
+          "id": "sense-ad324ff1",
+          "pos": "adjective",
+          "meaningZh": "憂鬱的；沮喪的",
+          "definitionEn": "filled with melancholy and despondency",
+          "examples": [
+            "After days of rain, the gray clouds and dim lighting created a gloomy atmosphere."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-7c9408e9",
+          "pos": "adjective",
+          "meaningZh": "令人沮喪的；陰鬱的",
+          "definitionEn": "causing dejection",
+          "examples": [
+            "After her long and stressful day at work, Sarah returned home to a gloomy apartment with dim lighting and empty silence."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "gorgeous",
+      "word": "gorgeous",
+      "senses": [
+        {
+          "id": "sense-9101348e",
+          "pos": "adjective",
+          "meaningZh": "極漂亮的；迷人的",
+          "definitionEn": "extremely beautiful and attractive",
+          "examples": [
+            "The bride looked absolutely gorgeous in her white lace wedding gown."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L3",
+        "textbookTitle": "龍騰 B5·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "grant",
+      "word": "grant",
+      "senses": [
+        {
+          "id": "sense-2c75995b",
+          "pos": "noun",
+          "meaningZh": "補助金；授予的權利",
+          "definitionEn": "a right or privilege that has been granted",
+          "examples": [
+            "The university has decided to grant a full scholarship to the student with the best grades."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L6 +1",
+        "textbookTitle": "龍騰 B5·L6、三民 B4·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "graphic",
+      "word": "graphic",
+      "senses": [
+        {
+          "id": "sense-70a206df",
+          "pos": "adjective",
+          "meaningZh": "生動逼真的；栩栩如生的",
+          "definitionEn": "evoking vivid mental images",
+          "examples": [
+            "The writer used very graphic descriptions of the crime scene to help the reader visualize the details."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-153e86a0",
+          "pos": "adjective",
+          "meaningZh": "視覺設計的；平面設計的",
+          "definitionEn": "related to the graphic arts",
+          "examples": [
+            "She works as a graphic designer at an advertising agency creating visually appealing advertisements for clients."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "gravity",
+      "word": "gravity",
+      "senses": [
+        {
+          "id": "sense-5edcd3d7",
+          "pos": "noun",
+          "meaningZh": "重力；地心引力",
+          "definitionEn": "the force that attracts two bodies towards each other, often used to describe the force that causes objects to fall towards the earth’s surface",
+          "examples": [
+            "The reason why the apple fell from the tree is because of the force of gravity."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-ddee29b2",
+          "pos": "noun",
+          "meaningZh": "嚴肅；莊重",
+          "definitionEn": "a serious and formal manner or attitude",
+          "examples": [
+            "During the meeting, the CEO reflected gravity in his speech and conveyed the importance of the decision that had to be made."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "greed",
+      "word": "greed",
+      "senses": [
+        {
+          "id": "sense-3e8677df",
+          "pos": "noun",
+          "meaningZh": "貪婪；自私自利",
+          "definitionEn": "A selfish desire to have or control more than others, especially with respect to wealth or material possessions.",
+          "examples": [
+            "The businessman's relentless greed drove him to exploit his employees and cheat his partners in order to increase his own wealth."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-3fa610b7",
+          "pos": "noun",
+          "meaningZh": "貪欲；強烈的佔有慾",
+          "definitionEn": "An intense and selfish desire for something, especially wealth, power, or food.",
+          "examples": [
+            "Despite having billions of dollars, his greed compelled him to amass even more wealth."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "grieve",
+      "word": "grieve",
+      "senses": [
+        {
+          "id": "sense-3842e705",
+          "pos": "verb",
+          "meaningZh": "感到悲痛；哀悼",
+          "definitionEn": "to experience a deep sadness or sorrow, especially over a loss",
+          "examples": [
+            "After the sudden death of her pet cat, she grieved for weeks, unable to shake off the overwhelming sadness."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-9eb202b6",
+          "pos": "verb",
+          "meaningZh": "使悲傷；令人哀慟",
+          "definitionEn": "to cause great sadness or sorrow, especially over a loss",
+          "examples": [
+            "After the sudden passing of her beloved pet, Sarah couldn't help but grieve for weeks, reminiscing about their cherished memories together."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L6",
+        "textbookTitle": "龍騰 B3·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "grill",
+      "word": "grill",
+      "senses": [
+        {
+          "id": "sense-b5c6c12a",
+          "pos": "noun",
+          "meaningZh": "烤架；燒烤爐",
+          "definitionEn": "a type of cooking device consisting of a metal framework of parallel bars used for grilling food",
+          "examples": [
+            "John is using the grill to cook some burgers for the party."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-04f7e730",
+          "pos": "noun",
+          "meaningZh": "金屬格柵；爐架",
+          "definitionEn": "a framework of metal bars used as a partition or a grate",
+          "examples": [
+            "We cooked burgers on the grill for the family BBQ."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "grim",
+      "word": "grim",
+      "senses": [
+        {
+          "id": "sense-91e90773",
+          "pos": "adjective",
+          "meaningZh": "嚴峻的；冷酷的",
+          "definitionEn": "having a harsh or uninviting manner or appearance",
+          "examples": [
+            "The job interview was a grim experience, with the interviewer hardly smiling and asking only difficult questions."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-79d86530",
+          "pos": "adjective",
+          "meaningZh": "恐怖的；令人不安的",
+          "definitionEn": "causing horror; very unpleasant",
+          "examples": [
+            "The horror movie was so grim that even its trailer had me too scared to sleep."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L5",
+        "textbookTitle": "龍騰 B5·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "grip",
+      "word": "grip",
+      "senses": [
+        {
+          "id": "sense-7992ec5e",
+          "pos": "noun",
+          "meaningZh": "把手；握柄",
+          "definitionEn": "the appendage to an object that is designed to be held in order to use or move it",
+          "examples": [
+            "She tightened her grip on the steering wheel as she maneuvered through the narrow, winding road."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-72b30395",
+          "pos": "noun",
+          "meaningZh": "緊握；抓握",
+          "definitionEn": "the act of grasping",
+          "examples": [
+            "She tightened her grip on the handle as the roller coaster sped up."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L10",
+        "textbookTitle": "三民 B4·L10"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "gross",
+      "word": "gross",
+      "senses": [
+        {
+          "id": "sense-610f31ca",
+          "pos": "adjective",
+          "meaningZh": "總額的；毛（額）的",
+          "definitionEn": "being the total amount before anything is taken away, such as taxes",
+          "examples": [
+            "Her gross income is higher than what she actually takes home."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-42e99475",
+          "pos": "adjective",
+          "meaningZh": "噁心的；令人反感的",
+          "definitionEn": "without qualification, used informally as (often negative) intensifiers",
+          "examples": [
+            "The smell in the garbage can was so gross that I had to hold my breath."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-7ad43913",
+          "pos": "adjective",
+          "meaningZh": "肉眼可見的；宏觀的",
+          "definitionEn": "visible to the naked eye, especially in rocks and anatomical features",
+          "examples": [
+            "The gross anatomy of the specimen was easily observed without any special instruments."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "guideline",
+      "word": "guideline",
+      "senses": [
+        {
+          "id": "sense-32f80a6c",
+          "pos": "noun",
+          "meaningZh": "指導方針；準則",
+          "definitionEn": "a detailed plan or explanation that gives direction in setting standards or determining a course of action",
+          "examples": [
+            "The company provided guidelines to its employees on how to handle customer complaints effectively."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-857994b7",
+          "pos": "noun",
+          "meaningZh": "導引線；基準線",
+          "definitionEn": "a line or cord used to guide or assist in a task, such as in lettering",
+          "examples": [
+            "When practicing calligraphy, it is important to use guidelines to ensure consistent spacing and alignment of letters."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L4",
+        "textbookTitle": "龍騰 B4·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "gut",
+      "word": "gut",
+      "senses": [
+        {
+          "id": "sense-ec6912e7",
+          "pos": "noun",
+          "meaningZh": "腸；內臟；直覺",
+          "definitionEn": "the stomach or intestines; also an instinctive feeling",
+          "examples": [
+            "My gut told me that something was wrong."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-b7d067b6",
+          "pos": "verb",
+          "meaningZh": "掏空；摧毀內部",
+          "definitionEn": "empty completely; destroy",
+          "examples": [
+            "The fire gutted the old building, leaving only a charred shell behind."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "habitat",
+      "word": "habitat",
+      "senses": [
+        {
+          "id": "sense-4f1e2b4d",
+          "pos": "noun",
+          "meaningZh": "棲息地；自然環境",
+          "definitionEn": "the natural home or environment of an animal, plant, or other organism",
+          "examples": [
+            "The polar bear’s habitat is the Arctic region where it lives on sea ice and hunts for its prey."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-5bc0f3d5",
+          "pos": "noun",
+          "meaningZh": "棲地；生存環境",
+          "definitionEn": "the type of environment in which an organism or group normally lives or occurs",
+          "examples": [
+            "The Arctic is the natural habitat of polar bears."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·R1 +1",
+        "textbookTitle": "龍騰 B3·R1、翰林 B1·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "haul",
+      "word": "haul",
+      "senses": [
+        {
+          "id": "sense-c3446ac4",
+          "pos": "noun",
+          "meaningZh": "拖拉；費力搬運",
+          "definitionEn": "the act of pulling or dragging something heavy",
+          "examples": [
+            "The workers labored hard to haul the heavy boxes into the truck."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-8bdc5a09",
+          "pos": "noun",
+          "meaningZh": "漁獲；捕獲量",
+          "definitionEn": "the quantity of something that has been captured, especially fish or game",
+          "examples": [
+            "The fisherman had an impressive haul of tuna after a long day at sea."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L10",
+        "textbookTitle": "三民 B4·L10"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    }
+  ]
+}

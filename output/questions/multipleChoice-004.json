@@ -1,0 +1,1927 @@
+{
+  "schemaVersion": 1,
+  "kind": "questions",
+  "questionKind": "multipleChoice",
+  "questions": [
+    {
+      "id": "child-58f84e4b",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，furious 是什麼意思？\n「The furious storm sent trees crashing to the ground and turned the peaceful town into chaos.」",
+      "options": [
+        "猛烈的；狂暴的",
+        "暴怒的；極為憤怒的",
+        "繁忙的；忙亂的",
+        "勇敢的；無畏的"
+      ],
+      "answerIndex": 0,
+      "wordKey": "furious",
+      "senseId": "sense-769bdc7a",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-c9d49766",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，scene 是什麼意思？\n「The crime scene was carefully examined by the forensic team.」",
+      "options": [
+        "（案發的）現場",
+        "（電影的）一場；一幕",
+        "風景；景色",
+        "觀點；看法"
+      ],
+      "answerIndex": 0,
+      "wordKey": "scene",
+      "senseId": "sense-22d230bb",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-f82a030e",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，thought 是什麼意思？\n「Solving such a complex problem requires a great deal of careful thought.」",
+      "options": [
+        "思考；思維（的過程）",
+        "想法；念頭",
+        "思想；學說",
+        "回憶；記憶"
+      ],
+      "answerIndex": 0,
+      "wordKey": "thought",
+      "senseId": "sense-5432506d",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-1cb751fd",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，bodily 是什麼意思？\n「The security guards seized the protester and bodily removed him from the hall.」",
+      "options": [
+        "連人帶身地（整個人被搬動）",
+        "身體上地（指生理方面）",
+        "勉強地；不情願地",
+        "祕密地；偷偷地"
+      ],
+      "answerIndex": 0,
+      "wordKey": "bodily",
+      "senseId": "sense-a2cb6cf0",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-e65c52e8",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，engine 是什麼意思？\n「The powerful engine pulled the freight train up the steep hill with ease.」",
+      "options": [
+        "火車頭；機車",
+        "引擎；發動機",
+        "（達成目的的）手段",
+        "搜尋引擎"
+      ],
+      "answerIndex": 0,
+      "wordKey": "engine",
+      "senseId": "sense-a986ba69",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-38960d02",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，threat 是什麼意思？\n「The kidnapper made a threat that he would harm the child unless the ransom was paid.」",
+      "options": [
+        "恐嚇；揚言加害",
+        "禍患；危險來源",
+        "壞事將至的徵兆",
+        "莊嚴的承諾"
+      ],
+      "answerIndex": 0,
+      "wordKey": "threat",
+      "senseId": "sense-18c8eac3",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-f3beac5d",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，play 是什麼意思？\n「Shakespeare wrote many famous plays, such as Hamlet and Macbeth.」",
+      "options": [
+        "玩耍；遊戲",
+        "戲劇；劇本",
+        "（球賽中的）一次戰術配合",
+        "比賽；競賽"
+      ],
+      "answerIndex": 1,
+      "wordKey": "play",
+      "senseId": "sense-edd5674f",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-5e29b04d",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，bit 是什麼意思？\n「I'll be there in a bit.」",
+      "options": [
+        "一會兒；片刻",
+        "一點點；少量",
+        "（表演中的）橋段",
+        "馬銜"
+      ],
+      "answerIndex": 0,
+      "wordKey": "bit",
+      "senseId": "sense-7decdf7f",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-79329e2a",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，description 是什麼意思？\n「Vehicles of every description, from old bikes to sports cars, were on display at the fair.」",
+      "options": [
+        "種類；類型",
+        "描述；敘述",
+        "外觀；長相",
+        "說明書；指南"
+      ],
+      "answerIndex": 0,
+      "wordKey": "description",
+      "senseId": "sense-a820f8ef",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-93461777",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，sponsor 是什麼意思？\n「To join the private club, each new member needs a sponsor who is already a member to vouch for them.」",
+      "options": [
+        "推薦人；介紹人（為他人作保或引薦）",
+        "贊助者；出資者",
+        "贊助；出資支持",
+        "主辦單位"
+      ],
+      "answerIndex": 0,
+      "wordKey": "sponsor",
+      "senseId": "sense-a472eceb",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-1348f343",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，posture 是什麼意思？\n「Despite facing numerous setbacks, she maintained a posture of resilience and determination.」",
+      "options": [
+        "態度；立場（心態）",
+        "姿勢；體態",
+        "裝模作樣；故作姿態",
+        "處境；困境"
+      ],
+      "answerIndex": 0,
+      "wordKey": "posture",
+      "senseId": "sense-60e19142",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-30e7ee9e",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，novice 是什麼意思？\n「As a novice monk, she was still learning all the rules and duties of the monastery.」",
+      "options": [
+        "（尚未正式宣誓的）見習修士",
+        "新手；初學者",
+        "資深修士；長老",
+        "朝聖者；香客"
+      ],
+      "answerIndex": 0,
+      "wordKey": "novice",
+      "senseId": "sense-9d7e9267",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-fce69b7d",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，rip 是什麼意思？\n「Be careful if you are swimming near the beach today; there is a dangerous rip in the water.」",
+      "options": [
+        "（海中的）激流",
+        "撕破的裂縫",
+        "撕裂的動作",
+        "漩渦"
+      ],
+      "answerIndex": 0,
+      "wordKey": "rip",
+      "senseId": "sense-b5699055",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-a264f219",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，sensible 是什麼意思？\n「It would be sensible to bring an umbrella when there's a chance of rain.」",
+      "options": [
+        "明智的；合理的",
+        "可察覺的；可感知的",
+        "敏感的；易受影響的",
+        "敏銳的；感覺靈敏的"
+      ],
+      "answerIndex": 0,
+      "wordKey": "sensible",
+      "senseId": "sense-80ed7223",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-cfbacc62",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，nervous 是什麼意思？\n「The brain and the spinal cord are the two main parts of the central nervous system.」",
+      "options": [
+        "神經的；神經系統的",
+        "緊張不安的",
+        "興奮期待的",
+        "易受驚的"
+      ],
+      "answerIndex": 0,
+      "wordKey": "nervous",
+      "senseId": "sense-304f1ddf",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-87283b9a",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，issue 是什麼意思？\n「The government issued identification cards to all citizens.」",
+      "options": [
+        "（正式地）發給；核發",
+        "爭論的議題",
+        "發行（股票）",
+        "沒收；扣押"
+      ],
+      "answerIndex": 0,
+      "wordKey": "issue",
+      "senseId": "sense-96223abe",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-6012616b",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，production 是什麼意思？\n「The school's production of Hamlet received a standing ovation on opening night.」",
+      "options": [
+        "（戲劇、影視的）製作；演出作品",
+        "生產；製造",
+        "產量",
+        "宣傳；廣告"
+      ],
+      "answerIndex": 0,
+      "wordKey": "production",
+      "senseId": "sense-524fb4b5",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-43650d05",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，circuit 是什麼意思？\n「After winning locally, the young pianist began performing on the international competition circuit.」",
+      "options": [
+        "巡迴（一連串的活動或場所）",
+        "電路；迴路",
+        "賽車跑道",
+        "邊界線；周長"
+      ],
+      "answerIndex": 0,
+      "wordKey": "circuit",
+      "senseId": "sense-2eb0cbd0",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-7e048996",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，menu 是什麼意思？\n「You can access various functions through the menu at the top of the screen.」",
+      "options": [
+        "（電腦）選單；功能表",
+        "菜單；餐牌",
+        "鍵盤；按鍵",
+        "視窗；畫面"
+      ],
+      "answerIndex": 0,
+      "wordKey": "menu",
+      "senseId": "sense-4384f559",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-aad7ff55",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，landmark 是什麼意思？\n「The invention of the printing press in the 15th century is considered a landmark in the history of communication.」",
+      "options": [
+        "（歷史上的）里程碑；重大事件",
+        "地標；著名景物",
+        "界標；地界標記",
+        "障礙；阻礙"
+      ],
+      "answerIndex": 0,
+      "wordKey": "landmark",
+      "senseId": "sense-c4e722e0",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-87cc3188",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，withdraw 是什麼意思？\n「Michelle decided to withdraw from the competition as she realized she was not fully prepared.」",
+      "options": [
+        "退出；不再參加",
+        "提領；領出（金錢）",
+        "收回（言論）；撤回",
+        "撤回（贊助）；撤出"
+      ],
+      "answerIndex": 0,
+      "wordKey": "withdraw",
+      "senseId": "sense-12699601",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-7cdad857",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，see 是什麼意思？\n「After he explained it twice, I finally began to see what he meant.」",
+      "options": [
+        "明白；理解",
+        "看見；看到",
+        "會面；與……見面",
+        "查看；仔細檢視"
+      ],
+      "answerIndex": 0,
+      "wordKey": "see",
+      "senseId": "sense-5a4efd4d",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-e8e27747",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，operative 是什麼意思？\n「The operative infiltrated the enemy organization to gather critical intelligence.」",
+      "options": [
+        "特工；密探",
+        "生效的",
+        "有效的",
+        "外科手術的"
+      ],
+      "answerIndex": 0,
+      "wordKey": "operative",
+      "senseId": "sense-751bcfda",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-81a20a5c",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，attend 是什麼意思？\n「I have some urgent business to attend to before I can leave the office.」",
+      "options": [
+        "處理；著手應付",
+        "出席；參加",
+        "注意；專心於",
+        "照料；服侍"
+      ],
+      "answerIndex": 0,
+      "wordKey": "attend",
+      "senseId": "sense-873b6483",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-7b74b428",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，edge 是什麼意思？\n「In a race, the experienced athlete had the edge over his competitors due to his extensive training and endurance.」",
+      "options": [
+        "優勢；勝過一籌之處",
+        "邊緣；邊界",
+        "（刀刃的）鋒；利刃",
+        "（語氣中的）尖銳"
+      ],
+      "answerIndex": 0,
+      "wordKey": "edge",
+      "senseId": "sense-52e34edb",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-e0eff135",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，extent 是什麼意思？\n「To some extent, his success can be attributed to sheer luck rather than hard work.」",
+      "options": [
+        "（受損、波及的）範圍；廣度",
+        "程度；限度",
+        "面積；體積大小",
+        "意圖；目的"
+      ],
+      "answerIndex": 1,
+      "wordKey": "extent",
+      "senseId": "sense-03b58c57",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-678ac57c",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，decide 是什麼意思？\n「After a long and intense game, the final play would decide the winner of the championship.」",
+      "options": [
+        "決定…的勝負",
+        "下定決心",
+        "推遲；延後",
+        "懷疑；質疑"
+      ],
+      "answerIndex": 0,
+      "wordKey": "decide",
+      "senseId": "sense-fc1e7e65",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-73681f4e",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，illustration 是什麼意思？\n「The recent flood is a clear illustration of how dangerous climate change can be.」",
+      "options": [
+        "（用以說明的）例子；實例",
+        "插圖；圖解",
+        "照明；採光",
+        "錯覺；幻象"
+      ],
+      "answerIndex": 0,
+      "wordKey": "illustration",
+      "senseId": "sense-734cfc8e",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-acc9e1d3",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，premium 是什麼意思？\n「Each month I pay a premium to my health insurance company to stay covered.」",
+      "options": [
+        "保險費",
+        "高級的；優質的",
+        "退款；退費",
+        "罰款；罰金"
+      ],
+      "answerIndex": 0,
+      "wordKey": "premium",
+      "senseId": "sense-7836674f",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-5af449dc",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，hurry 是什麼意思？\n「The mother hurried her children to get ready, fearing they would miss the school bus.」",
+      "options": [
+        "催促（某人加快）",
+        "匆忙；急著",
+        "稱讚；誇獎",
+        "責罵；訓斥"
+      ],
+      "answerIndex": 0,
+      "wordKey": "hurry",
+      "senseId": "sense-7939ab94",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-f0dca758",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，formidable 是什麼意思？\n「Our team will face a formidable opponent in the final, so we must train hard.」",
+      "options": [
+        "難以對付的；令人敬畏的",
+        "艱鉅而龐大的",
+        "友善的",
+        "弱小的"
+      ],
+      "answerIndex": 0,
+      "wordKey": "formidable",
+      "senseId": "sense-ade7dc7e",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-31b34ca6",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，bait 是什麼意思？\n「Don't let him bait you into an argument; he just wants to see you lose your temper.」",
+      "options": [
+        "故意激怒；挑釁",
+        "在鉤上掛餌",
+        "誘餌；魚餌",
+        "懇求；央求"
+      ],
+      "answerIndex": 0,
+      "wordKey": "bait",
+      "senseId": "sense-183ea3ea",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-4e6ed7ce",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，elderly 是什麼意思？\n「The community center organizes weekly social activities for the elderly, such as bingo and knitting classes.」",
+      "options": [
+        "（the elderly）老年人；年長者",
+        "年長的；上了年紀的",
+        "嬰幼兒",
+        "志工"
+      ],
+      "answerIndex": 0,
+      "wordKey": "elderly",
+      "senseId": "sense-25bee6cd",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-608859aa",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，ride 是什麼意思？\n「We took a ride in the convertible along the coastal highway.」",
+      "options": [
+        "（搭乘的）一趟路程；兜風",
+        "騎（馬、單車）",
+        "搭乘（車、船）",
+        "道路"
+      ],
+      "answerIndex": 0,
+      "wordKey": "ride",
+      "senseId": "sense-4c865024",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-418e3581",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，fetch 是什麼意思？\n「The vintage guitar fetched a high price at the auction.」",
+      "options": [
+        "（以某價格）賣出；售得",
+        "去拿來；取回",
+        "吸引；招來",
+        "搬運；運送"
+      ],
+      "answerIndex": 0,
+      "wordKey": "fetch",
+      "senseId": "sense-136b9b56",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-76a48ec5",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，delivery 是什麼意思？\n「After a difficult delivery, the mother and her newborn baby were both healthy.」",
+      "options": [
+        "分娩；生產",
+        "遞送；投遞（的行為）",
+        "說話的表達方式；口才台風",
+        "釋放；解放"
+      ],
+      "answerIndex": 0,
+      "wordKey": "delivery",
+      "senseId": "sense-a77babab",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-f703e1ac",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，threshold 是什麼意思？\n「I stumbled over the threshold as I stepped into the dark room.」",
+      "options": [
+        "門檻；門下橫木",
+        "起點；開端",
+        "臨界值；界限",
+        "走廊；通道"
+      ],
+      "answerIndex": 0,
+      "wordKey": "threshold",
+      "senseId": "sense-aa812eeb",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-4f6eac46",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，smash 是什麼意思？\n「The band's new album was a smash, selling millions of copies within the first week of its release.」",
+      "options": [
+        "巨大的成功；轟動之作",
+        "猛烈的撞擊",
+        "砸碎；打碎",
+        "走私"
+      ],
+      "answerIndex": 0,
+      "wordKey": "smash",
+      "senseId": "sense-2ee9ca21",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-3e985247",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，whatever 是什麼意思？\n「When asked about his opinion on the movie, John simply shrugged and replied, 'Whatever.'」",
+      "options": [
+        "（表示不在乎、敷衍）隨便啦；無所謂",
+        "無論什麼；任何……的",
+        "到底是什麼",
+        "為什麼"
+      ],
+      "answerIndex": 0,
+      "wordKey": "whatever",
+      "senseId": "sense-330b632c",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-70007ffc",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，disaster 是什麼意思？\n「Without any rehearsal, the school play was a complete disaster.」",
+      "options": [
+        "徹底的失敗；糟糕透頂",
+        "天災；重大災難",
+        "巨大的成功",
+        "意外的驚喜"
+      ],
+      "answerIndex": 0,
+      "wordKey": "disaster",
+      "senseId": "sense-e68947b5",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-0805dc21",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，meanwhile 是什麼意思？\n「Mary was studying hard for her exam. Meanwhile, her friends were playing video games in the next room.」",
+      "options": [
+        "與此同時，在另一處（指另一地點同時發生）",
+        "在此期間；同時（指時間上的空檔）",
+        "在那之後；後來",
+        "因此；所以"
+      ],
+      "answerIndex": 0,
+      "wordKey": "meanwhile",
+      "senseId": "sense-46c7528e",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-2b307402",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，mark 是什麼意思？\n「She studied hard all semester and finally got a perfect mark on the final exam.」",
+      "options": [
+        "（評量）分數；成績",
+        "痕跡；污痕",
+        "（標點）符號",
+        "標誌；象徵"
+      ],
+      "answerIndex": 0,
+      "wordKey": "mark",
+      "senseId": "sense-df80d23d",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-62522f50",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，slippery 是什麼意思？\n「Be careful of Joe; he has a reputation for being slippery, always dodging his responsibilities.」",
+      "options": [
+        "狡猾的；靠不住的",
+        "濕滑的；易滑的",
+        "光滑平整的",
+        "膽小怯懦的"
+      ],
+      "answerIndex": 0,
+      "wordKey": "slippery",
+      "senseId": "sense-0569807f",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-62528ebf",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，form 是什麼意思？\n「Please fill in this form with your name, address, and phone number before the interview.」",
+      "options": [
+        "表格",
+        "外形；體態",
+        "形態；狀態",
+        "種類；類型"
+      ],
+      "answerIndex": 0,
+      "wordKey": "form",
+      "senseId": "sense-27e1410d",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-00d9812b",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，sponge 是什麼意思？\n「Amy is a real sponge when it comes to languages; she picks up new vocabulary and grammar in a matter of weeks.」",
+      "options": [
+        "學東西又快又好的人；求知若渴的人",
+        "海綿（清潔用具）",
+        "用海綿擦拭",
+        "吝嗇鬼；愛佔便宜的人"
+      ],
+      "answerIndex": 0,
+      "wordKey": "sponge",
+      "senseId": "sense-474685ff",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-7aa479c5",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，dedication 是什麼意思？\n「The dedication of the new community center was attended by the mayor, city council members, and hundreds of local residents.」",
+      "options": [
+        "（建築物的）落成啟用典禮",
+        "奉獻；投入",
+        "（書中的）獻詞",
+        "捐款；捐贈"
+      ],
+      "answerIndex": 0,
+      "wordKey": "dedication",
+      "senseId": "sense-ef02048a",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-d3302d2f",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，elevate 是什麼意思？\n「After years of hard work and dedication, she was finally elevated to the position of CEO.」",
+      "options": [
+        "提拔；晉升",
+        "舉起；抬高（位置）",
+        "增加；提高（數量、程度）",
+        "讚揚；表揚"
+      ],
+      "answerIndex": 0,
+      "wordKey": "elevate",
+      "senseId": "sense-76794c63",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-7fa4644c",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，aesthetic 是什麼意思？\n「Her bold colors and clean lines reflect a distinctly modern aesthetic.」",
+      "options": [
+        "(藝術家或流派的)美學觀；審美風格",
+        "美觀的；好看的",
+        "美學的；關於美感的",
+        "技術的；技巧的"
+      ],
+      "answerIndex": 0,
+      "wordKey": "aesthetic",
+      "senseId": "sense-c46f8376",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-d00d90ab",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，roar 是什麼意思？\n「As the comedian told his joke, the whole audience roared with laughter.」",
+      "options": [
+        "大笑；放聲（說笑）",
+        "（動物等）吼叫；轟鳴",
+        "怒吼聲；轟鳴聲",
+        "鼓掌；喝采"
+      ],
+      "answerIndex": 0,
+      "wordKey": "roar",
+      "senseId": "sense-3d3f5b84",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-01acd19b",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，remainder 是什麼意思？\n「When you divide 25 by 7, the quotient is 3 and the remainder is 4.」",
+      "options": [
+        "（除法後的）餘數",
+        "剩餘的部分；其餘",
+        "提醒；提示",
+        "備註；評語"
+      ],
+      "answerIndex": 0,
+      "wordKey": "remainder",
+      "senseId": "sense-b6238e3d",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-7a020069",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，enrich 是什麼意思？\n「Taking courses in art history can enrich your appreciation of paintings and sculptures.」",
+      "options": [
+        "豐富；提升（品質或內涵）",
+        "使富裕；使更有錢",
+        "使生氣；激怒",
+        "使簡化；使單純"
+      ],
+      "answerIndex": 0,
+      "wordKey": "enrich",
+      "senseId": "sense-e96d09ad",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-02025d42",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，track 是什麼意思？\n「The athletes were warming up on the track before the start of the race.」",
+      "options": [
+        "（賽跑的）跑道",
+        "鐵軌；軌道",
+        "小路；小徑",
+        "（歌曲）音軌"
+      ],
+      "answerIndex": 0,
+      "wordKey": "track",
+      "senseId": "sense-df5173af",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-26f742ad",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，mystery 是什麼意思？\n「In the gripping mystery, the detective sets out to solve the murder of a wealthy businessman found dead in his study.」",
+      "options": [
+        "推理小說（或戲劇、電影）",
+        "難以理解的謎團",
+        "祕密儀式",
+        "奇蹟"
+      ],
+      "answerIndex": 0,
+      "wordKey": "mystery",
+      "senseId": "sense-b35f2f39",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-9c4dc78d",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，tube 是什麼意思？\n「I took the tube to work this morning and avoided the traffic jam on the streets.」",
+      "options": [
+        "（倫敦的）地鐵",
+        "管子；軟管",
+        "（人體的）管狀器官",
+        "牙膏"
+      ],
+      "answerIndex": 0,
+      "wordKey": "tube",
+      "senseId": "sense-1195cd7b",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-5f59c7a2",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，dwell 是什麼意思？\n「Despite her friends' reassurances, Sarah continued to dwell on the possibility of failing her exam.」",
+      "options": [
+        "老是想著；糾結於",
+        "居住；棲身",
+        "源自；起因於",
+        "迅速移動"
+      ],
+      "answerIndex": 0,
+      "wordKey": "dwell",
+      "senseId": "sense-76b57d70",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-08142cb8",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，cabinet 是什麼意思？\n「The cabinet met to discuss the latest economic policies and create a plan for job creation.」",
+      "options": [
+        "（政府的）內閣",
+        "櫥櫃；收納櫃",
+        "委員會的會議室",
+        "保險箱；保險櫃"
+      ],
+      "answerIndex": 0,
+      "wordKey": "cabinet",
+      "senseId": "sense-428febfe",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-f3255a6e",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，benefit 是什麼意思？\n「After losing his job, John received unemployment benefits to help cover his expenses.」",
+      "options": [
+        "（失業、生病等的）津貼；補助金",
+        "好處；益處",
+        "（為慈善募款的）義演",
+        "受益；得到好處"
+      ],
+      "answerIndex": 0,
+      "wordKey": "benefit",
+      "senseId": "sense-f6229376",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-5ab59fca",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，biological 是什麼意思？\n「The biological siblings decided to trace their family tree to learn more about their heritage.」",
+      "options": [
+        "有血緣關係的；親生的",
+        "生物學的",
+        "生態的",
+        "化學的"
+      ],
+      "answerIndex": 0,
+      "wordKey": "biological",
+      "senseId": "sense-e3730e4d",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-b6bf46a7",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，replace 是什麼意思？\n「After reading the book, please replace it on the shelf where you found it.」",
+      "options": [
+        "把……放回原處",
+        "取代；接替",
+        "更換成新的",
+        "丟棄；扔掉"
+      ],
+      "answerIndex": 0,
+      "wordKey": "replace",
+      "senseId": "sense-2152f194",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-8c66149a",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，bell 是什麼意思？\n「The farmer decided to bell the sheep so that he could locate them easily across the grazing field.」",
+      "options": [
+        "替……繫上鈴鐺",
+        "鐘；鈴",
+        "門鈴",
+        "敲響"
+      ],
+      "answerIndex": 0,
+      "wordKey": "bell",
+      "senseId": "sense-97aa13c9",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-602766ec",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，cushion 是什麼意思？\n「The airbags in the car cushioned the passengers from the impact during the crash.」",
+      "options": [
+        "緩衝（保護免受衝擊）",
+        "靠墊；坐墊",
+        "刺傷；割傷",
+        "膨脹；擴大"
+      ],
+      "answerIndex": 0,
+      "wordKey": "cushion",
+      "senseId": "sense-a07b1754",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-4708a49c",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，boxing 是什麼意思？\n「My cousin frequents the local boxing gym to train for his upcoming match.」",
+      "options": [
+        "拳擊（運動）",
+        "裝箱（把物品打包入箱）",
+        "包裝材料",
+        "摔角"
+      ],
+      "answerIndex": 0,
+      "wordKey": "boxing",
+      "senseId": "sense-d946ed65",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-e7b86811",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，road 是什麼意思？\n「Despite many obstacles and setbacks, she persevered on the road to success.」",
+      "options": [
+        "（達成目標的）途徑；歷程",
+        "道路；馬路",
+        "地圖；指南",
+        "界線；邊界"
+      ],
+      "answerIndex": 0,
+      "wordKey": "road",
+      "senseId": "sense-c25e8f1b",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-e5634c44",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，talk 是什麼意思？\n「After the meeting, I had a talk with my boss regarding a raise.」",
+      "options": [
+        "一次談話、交談（名詞）",
+        "說話、交談（動詞）",
+        "演講",
+        "謠言"
+      ],
+      "answerIndex": 0,
+      "wordKey": "talk",
+      "senseId": "sense-6e9a68fd",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-6374bf2e",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，regular 是什麼意思？\n「The regular at the coffee shop always orders the same drink every morning and chats with the baristas.」",
+      "options": [
+        "常客；老主顧",
+        "規律的；定期的",
+        "正職員工",
+        "店員；服務生"
+      ],
+      "answerIndex": 0,
+      "wordKey": "regular",
+      "senseId": "sense-55feeedd",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-96193f81",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，excess 是什麼意思？\n「After winning the lottery, she indulged in excess, buying luxury cars and throwing lavish parties.」",
+      "options": [
+        "放縱；無節制的享樂",
+        "過量；過剩",
+        "短缺；不足",
+        "節儉；樸素"
+      ],
+      "answerIndex": 0,
+      "wordKey": "excess",
+      "senseId": "sense-6b9c530b",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-da4e4b7e",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，harbor 是什麼意思？\n「He harbored resentment against his former employer for years.」",
+      "options": [
+        "心懷；懷有（想法或情緒）",
+        "窩藏；藏匿（罪犯、逃犯）",
+        "港口；港灣",
+        "停泊；下錨"
+      ],
+      "answerIndex": 0,
+      "wordKey": "harbor",
+      "senseId": "sense-652f3ecc",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-ba17073f",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，content 是什麼意思？\n「After finishing the marathon, she was content with her time and didn't feel the need to push herself harder.」",
+      "options": [
+        "滿足的；知足的",
+        "內容；所含之物",
+        "好奇的；感興趣的",
+        "疲憊的；筋疲力盡的"
+      ],
+      "answerIndex": 0,
+      "wordKey": "content",
+      "senseId": "sense-af2013c0",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-595d38b2",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，handicap 是什麼意思？\n「The stronger player gave his opponent a two-stroke handicap to make the golf match fairer.」",
+      "options": [
+        "（比賽中給弱者的）讓分；讓步",
+        "不利條件；障礙",
+        "妨礙；使不利",
+        "罰則；處分"
+      ],
+      "answerIndex": 0,
+      "wordKey": "handicap",
+      "senseId": "sense-8949dd55",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-2bcdb5aa",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，coarse 是什麼意思？\n「John's coarse behavior towards the waiter at the restaurant was embarrassing for everyone at the table.」",
+      "options": [
+        "粗俗的；不文雅的",
+        "粗糙的；粗粒的",
+        "膽小的；怯懦的",
+        "慷慨的；大方的"
+      ],
+      "answerIndex": 0,
+      "wordKey": "coarse",
+      "senseId": "sense-66c51133",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-6f43c1ca",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，fortify 是什麼意思？\n「She chose to fortify her evening tea with a shot of whiskey to keep warm.」",
+      "options": [
+        "強化；增強",
+        "在飲料中加入酒精",
+        "設防；加強防禦工事",
+        "添加營養素"
+      ],
+      "answerIndex": 1,
+      "wordKey": "fortify",
+      "senseId": "sense-fb947754",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-241fb0b3",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，tricky 是什麼意思？\n「Solving this tricky puzzle required me to think outside the box.」",
+      "options": [
+        "棘手的；難處理的",
+        "狡猾的；耍詐的",
+        "脆弱易壞的",
+        "可疑的"
+      ],
+      "answerIndex": 0,
+      "wordKey": "tricky",
+      "senseId": "sense-98f9d8b7",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-08357627",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，beyond 是什麼意思？\n「She walked beyond the gate and entered the magical garden.」",
+      "options": [
+        "在……的另一邊；越過",
+        "超過；超出（限度）",
+        "除……之外；此外",
+        "在……之前"
+      ],
+      "answerIndex": 0,
+      "wordKey": "beyond",
+      "senseId": "sense-df8ecfe4",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-b90e9d36",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，grasp 是什麼意思？\n「It took him several days to grasp the concept of quantum physics.」",
+      "options": [
+        "理解；領會",
+        "緊握；抓牢",
+        "（能力或理解的）極限；所及範圍",
+        "教導；傳授"
+      ],
+      "answerIndex": 0,
+      "wordKey": "grasp",
+      "senseId": "sense-65d1873c",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-a9a84697",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，administration 是什麼意思？\n「During his administration, the president focused on economic reforms and improving healthcare.」",
+      "options": [
+        "（總統的）任期",
+        "管理；經營",
+        "（藥物的）給予；施用",
+        "行政部門；政府"
+      ],
+      "answerIndex": 0,
+      "wordKey": "administration",
+      "senseId": "sense-9aee52f2",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-6ba08eea",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，along 是什麼意思？\n「We are going to the night market tonight; do you want to come along?」",
+      "options": [
+        "一起；一同（隨同前往）",
+        "沿著（某條路徑）",
+        "獨自；單獨",
+        "提前；事先"
+      ],
+      "answerIndex": 0,
+      "wordKey": "along",
+      "senseId": "sense-e67167de",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-f4a29165",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，stutter 是什麼意思？\n「Despite his stutter, he was determined to pursue a career in public speaking.」",
+      "options": [
+        "口吃（名詞）",
+        "結結巴巴地說；口吃（動詞）",
+        "怯場；舞台恐懼",
+        "結巴的習慣性停頓動作"
+      ],
+      "answerIndex": 0,
+      "wordKey": "stutter",
+      "senseId": "sense-fe2e7f1c",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-52fce039",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，straw 是什麼意思？\n「She sipped her iced lemonade slowly through a colorful paper straw.」",
+      "options": [
+        "（喝飲料用的）吸管",
+        "稻草；麥稈",
+        "淡黃色",
+        "稻草人"
+      ],
+      "answerIndex": 0,
+      "wordKey": "straw",
+      "senseId": "sense-a570deaf",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-e48fd773",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，orchestra 是什麼意思？\n「As the conductor lifted the baton, the orchestra filled the hall with the harmonious sound of strings, woodwinds, brass, and percussion.」",
+      "options": [
+        "管弦樂團；交響樂團",
+        "（劇院的）正廳前排座位區",
+        "指揮家",
+        "舞台布幕"
+      ],
+      "answerIndex": 0,
+      "wordKey": "orchestra",
+      "senseId": "sense-cd7adfeb",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-72e4e2d1",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，mouth 是什麼意思？\n「The explorers found themselves facing a dark mouth of a cave, unsure of what they would find inside.」",
+      "options": [
+        "（洞穴、瓶罐等的）開口；入口",
+        "嘴；口",
+        "牙齒；齒列",
+        "舌頭"
+      ],
+      "answerIndex": 0,
+      "wordKey": "mouth",
+      "senseId": "sense-8980f1b4",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-d78e6be1",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，fin 是什麼意思？\n「Before the dive, Sarah put on her mask and a pair of fins.」",
+      "options": [
+        "蛙鞋；蹼狀腳掌",
+        "魚鰭",
+        "船的穩定翼",
+        "魚翅料理"
+      ],
+      "answerIndex": 0,
+      "wordKey": "fin",
+      "senseId": "sense-22849999",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-b2fa95f5",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，refuse 是什麼意思？\n「I always make sure to properly separate my refuse into recyclable and non-recyclable items before discarding them.」",
+      "options": [
+        "垃圾；廢棄物",
+        "拒絕；不願意",
+        "退還；歸還",
+        "捐贈；贈送"
+      ],
+      "answerIndex": 0,
+      "wordKey": "refuse",
+      "senseId": "sense-6f15ae29",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-b13fe1d8",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，ass 是什麼意思？\n「The farmer rode his ass through the fields to collect hay.」",
+      "options": [
+        "驢子",
+        "蠢蛋；做蠢事的人",
+        "屁股",
+        "公牛"
+      ],
+      "answerIndex": 0,
+      "wordKey": "ass",
+      "senseId": "sense-c853a96d",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-5e0849e2",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，knight 是什麼意思？\n「He moved his knight into an L-shape to put his opponent’s king in check.」",
+      "options": [
+        "（西洋棋的）騎士棋；馬",
+        "騎士（貴族武士）",
+        "授予爵位",
+        "城堡（西洋棋的車）"
+      ],
+      "answerIndex": 0,
+      "wordKey": "knight",
+      "senseId": "sense-948d71a1",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-30adae4f",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，counselor 是什麼意思？\n「During the summer camp, the counselor organized various recreational activities and ensured that all the campers were having a great time.」",
+      "options": [
+        "（夏令營的）營隊輔導員",
+        "諮商師",
+        "（出庭的）律師",
+        "營養師"
+      ],
+      "answerIndex": 0,
+      "wordKey": "counselor",
+      "senseId": "sense-c02646a4",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-66cbd27e",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，contrast 是什麼意思？\n「To improve the contrast in the photograph, the photographer adjusted the exposure settings on the camera.」",
+      "options": [
+        "（影像的）明暗對比度",
+        "差異；對比；反差",
+        "對照；使形成對比",
+        "解析度；清晰度"
+      ],
+      "answerIndex": 0,
+      "wordKey": "contrast",
+      "senseId": "sense-c0f12d3d",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-768906cd",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，steal 是什麼意思？\n「She stole quietly out of the room so as not to wake the sleeping baby.」",
+      "options": [
+        "悄悄地移動；潛行",
+        "偷竊；竊取",
+        "（棒球）盜壘",
+        "歸還；交還"
+      ],
+      "answerIndex": 0,
+      "wordKey": "steal",
+      "senseId": "sense-b48893dd",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-5bf3a1d9",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，machine 是什麼意思？\n「When it comes to getting things done, Sarah is a machine—she tackles several projects at once and never misses a deadline.」",
+      "options": [
+        "（做事極有效率的）能手",
+        "機器；機械裝置",
+        "（操控政黨的）黨機器",
+        "汽車；交通工具"
+      ],
+      "answerIndex": 0,
+      "wordKey": "machine",
+      "senseId": "sense-a657a18e",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-eca20d68",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，dismiss 是什麼意思？\n「The company had to dismiss the employee after discovering that they had been stealing from the company funds.」",
+      "options": [
+        "解僱；開除",
+        "駁回（訴訟）",
+        "對……不予理會",
+        "雇用；聘請"
+      ],
+      "answerIndex": 0,
+      "wordKey": "dismiss",
+      "senseId": "sense-50e075e0",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-f611bb16",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，province 是什麼意思？\n「Microeconomics was his province, and he published many papers on the subject.」",
+      "options": [
+        "（專業的）領域；範圍",
+        "省；行政區",
+        "首都；都會",
+        "邊境；國界"
+      ],
+      "answerIndex": 0,
+      "wordKey": "province",
+      "senseId": "sense-cdf8fd4b",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-c657a156",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，suit 是什麼意思？\n「John decided to file a suit against his former employer for unfair termination.」",
+      "options": [
+        "訴訟；官司",
+        "西裝；成套服裝",
+        "（撲克牌的）一組花色",
+        "求婚；追求"
+      ],
+      "answerIndex": 0,
+      "wordKey": "suit",
+      "senseId": "sense-2c5c34d9",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-75154295",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，damp 是什麼意思？\n「The bad news did nothing to damp their excitement about the trip.」",
+      "options": [
+        "減弱；抑制",
+        "潮濕的",
+        "弄濕",
+        "增強"
+      ],
+      "answerIndex": 0,
+      "wordKey": "damp",
+      "senseId": "sense-ce03343f",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-98da6fa3",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，doom 是什麼意思？\n「Neglecting to prepare for the exam will doom your chances of passing.」",
+      "options": [
+        "註定（使走向失敗）",
+        "厄運；劫數",
+        "懷疑",
+        "拖延"
+      ],
+      "answerIndex": 0,
+      "wordKey": "doom",
+      "senseId": "sense-682d89e9",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-af1d7cbe",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，blade 是什麼意思？\n「A single blade of grass poked through the crack in the sidewalk.」",
+      "options": [
+        "（細長的）草葉",
+        "刀刃；刀片",
+        "槳葉",
+        "肩胛骨"
+      ],
+      "answerIndex": 0,
+      "wordKey": "blade",
+      "senseId": "sense-f68064fc",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-fb9ef0f6",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，dumb 是什麼意思？\n「It would be dumb to leave your passport at home when you're about to board a flight.」",
+      "options": [
+        "愚蠢的",
+        "啞的；不能說話的",
+        "沉默的",
+        "聾的"
+      ],
+      "answerIndex": 0,
+      "wordKey": "dumb",
+      "senseId": "sense-92dae9bb",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-3f9db0d1",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，notion 是什麼意思？\n「She opened her sewing box and carefully sorted through her notions, selecting the perfect buttons for her new dress.」",
+      "options": [
+        "（縫紉用的）小零件；針線雜貨",
+        "概念；想法",
+        "（一時興起的）怪念頭；異想",
+        "預感；直覺"
+      ],
+      "answerIndex": 0,
+      "wordKey": "notion",
+      "senseId": "sense-760b84dd",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-3128a9f3",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，lure 是什麼意思？\n「The company used the lure of a free vacation to entice customers to purchase their timeshare.」",
+      "options": [
+        "誘惑；吸引力",
+        "（釣魚用的）誘餌",
+        "引誘；誘使",
+        "風險；陷阱"
+      ],
+      "answerIndex": 0,
+      "wordKey": "lure",
+      "senseId": "sense-6eb09828",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-990f9685",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，professional 是什麼意思？\n「She gave up her office job to become a professional photographer and travel the world.」",
+      "options": [
+        "職業的；以此為業的",
+        "專業的；夠水準的（態度）",
+        "專業人士；內行人",
+        "業餘的；非正式的"
+      ],
+      "answerIndex": 0,
+      "wordKey": "professional",
+      "senseId": "sense-028490bb",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-de7f6478",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，thunder 是什麼意思？\n「When the teacher found out that he had cheated on the test, she thundered at him in front of the entire class.」",
+      "options": [
+        "怒吼；大聲斥責",
+        "（沉重快速地）隆隆移動",
+        "雷；雷聲",
+        "低聲耳語"
+      ],
+      "answerIndex": 0,
+      "wordKey": "thunder",
+      "senseId": "sense-70b83c48",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-be9974ab",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，curiosity 是什麼意思？\n「The old shop was full of curiosities, from dusty maps to strangely shaped seashells.」",
+      "options": [
+        "稀奇罕見之物；珍品",
+        "好奇心；求知慾",
+        "懷疑；疑慮",
+        "焦慮；不安"
+      ],
+      "answerIndex": 0,
+      "wordKey": "curiosity",
+      "senseId": "sense-f91d519d",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-451e9d07",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，liberate 是什麼意思？\n「During the combustion process, the fuel molecules liberate a large amount of energy.」",
+      "options": [
+        "釋放出（能量）",
+        "解放；使獲自由",
+        "吸收",
+        "壓縮"
+      ],
+      "answerIndex": 0,
+      "wordKey": "liberate",
+      "senseId": "sense-573576f1",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-a3070619",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，sink 是什麼意思？\n「The company’s sales began to sink after the release of their controversial ad.」",
+      "options": [
+        "（數量、價值等）下降；衰退",
+        "下沉；沉沒",
+        "水槽；洗手台",
+        "暴增；激增"
+      ],
+      "answerIndex": 0,
+      "wordKey": "sink",
+      "senseId": "sense-6379288c",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-7605c422",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，scales 是什麼意思？\n「When weighing ingredients for a recipe, it is important to use accurate scales.」",
+      "options": [
+        "磅秤；天平",
+        "比例尺",
+        "薪資級距",
+        "魚鱗"
+      ],
+      "answerIndex": 0,
+      "wordKey": "scales",
+      "senseId": "sense-c0614b5b",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-affced93",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，lighten 是什麼意思？\n「After removing the unnecessary items, the hiker was able to lighten his backpack and tackle the steep trail more easily.」",
+      "options": [
+        "減輕（重量、負擔）",
+        "使變亮；使顏色變淺",
+        "使（心情）開朗",
+        "點燃"
+      ],
+      "answerIndex": 0,
+      "wordKey": "lighten",
+      "senseId": "sense-c4aa688f",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-9e112280",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，usage 是什麼意思？\n「In formal writing, it is important to follow the standard usage of language to convey your ideas clearly.」",
+      "options": [
+        "（語言的）慣用法；用語習慣",
+        "使用（方式）；用法",
+        "費用；規費",
+        "保管；監護"
+      ],
+      "answerIndex": 0,
+      "wordKey": "usage",
+      "senseId": "sense-3d1f535d",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-cf9daa3a",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，plunge 是什麼意思？\n「Stock prices plunged sharply after the disappointing earnings report.」",
+      "options": [
+        "（價格、數值）暴跌",
+        "猛然插入（液體中）",
+        "投身；全心投入",
+        "上漲；攀升"
+      ],
+      "answerIndex": 0,
+      "wordKey": "plunge",
+      "senseId": "sense-9126b060",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-ec365012",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，wake 是什麼意思？\n「The wake from the speedboat stretched out behind it, shimmering in the sunlight.」",
+      "options": [
+        "（船行後的）航跡；尾流",
+        "醒來；叫醒",
+        "守靈；守夜",
+        "覺醒；醒悟"
+      ],
+      "answerIndex": 0,
+      "wordKey": "wake",
+      "senseId": "sense-ce045388",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-a0076f4e",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，flexible 是什麼意思？\n「The gymnast's body is so flexible that she can bend backwards and touch the floor.」",
+      "options": [
+        "易彎曲的；柔軟的",
+        "有彈性的；可變動的",
+        "願意妥協的",
+        "脆弱易斷的"
+      ],
+      "answerIndex": 0,
+      "wordKey": "flexible",
+      "senseId": "sense-ec0d153a",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-3d2ae1b2",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，competitive 是什麼意思？\n「He is so competitive that he hates losing even in friendly games.」",
+      "options": [
+        "好勝的；好競爭的",
+        "有競爭力的；價格優惠的",
+        "能勝任的；有能力的",
+        "抱怨的；不滿的"
+      ],
+      "answerIndex": 0,
+      "wordKey": "competitive",
+      "senseId": "sense-baa57a53",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-11dd1000",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，close 是什麼意思？\n「The game was close until the final quarter, when the home team pulled ahead.」",
+      "options": [
+        "（比賽）勢均力敵的；難分高下的",
+        "近的；接近的",
+        "親密的；關係密切的",
+        "封閉的；不通風的"
+      ],
+      "answerIndex": 0,
+      "wordKey": "close",
+      "senseId": "sense-6a4d97ec",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-7c1d586f",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，kind 是什麼意思？\n「There are different kinds of fruits, such as apples, bananas, and oranges.」",
+      "options": [
+        "種類；類型",
+        "親切的；仁慈的",
+        "（以實物支付的）實物",
+        "善意；好意"
+      ],
+      "answerIndex": 0,
+      "wordKey": "kind",
+      "senseId": "sense-decaa283",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-02fd3301",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，judge 是什麼意思？\n「Before you judge someone, make sure you understand their perspective and circumstances.」",
+      "options": [
+        "評斷；批評（看法）",
+        "法官",
+        "（比賽的）評審；裁判",
+        "原諒；寬恕"
+      ],
+      "answerIndex": 0,
+      "wordKey": "judge",
+      "senseId": "sense-beea8b37",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-5cf97520",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，car 是什麼意思？\n「We loaded all the luggage into the last car of the train before it departed.」",
+      "options": [
+        "（火車的）車廂",
+        "汽車；轎車",
+        "（電梯的）廂體",
+        "纜車"
+      ],
+      "answerIndex": 0,
+      "wordKey": "car",
+      "senseId": "sense-7dbe636b",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-c542e081",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，dragon 是什麼意思？\n「Jessica may look petite, but once she steps into the boardroom, she becomes a dragon, fiercely defending her position and never backing down.」",
+      "options": [
+        "兇悍嚴厲的人",
+        "龍（神話生物）",
+        "膽小怕事的人",
+        "能言善道的人"
+      ],
+      "answerIndex": 0,
+      "wordKey": "dragon",
+      "senseId": "sense-ebbe1876",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-f04b429b",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，bold 是什麼意思？\n「The most important warning was printed in bold letters at the top of the page.」",
+      "options": [
+        "（字體）粗體的；醒目的",
+        "勇敢的；大膽的",
+        "潦草的；難辨認的",
+        "褪色的；模糊的"
+      ],
+      "answerIndex": 0,
+      "wordKey": "bold",
+      "senseId": "sense-e8bf0ed9",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-c1134a76",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，dark 是什麼意思？\n「He chose a dark blue tie to match his grey suit.」",
+      "options": [
+        "（顏色）深的",
+        "黑暗的；昏暗的",
+        "陰沉的",
+        "髒的"
+      ],
+      "answerIndex": 0,
+      "wordKey": "dark",
+      "senseId": "sense-4b4de7cf",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-c8de5145",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，agency 是什麼意思？\n「When she turned 18, Sarah gained agency over her own life and could decide where to go to college.」",
+      "options": [
+        "（自主行動的）能動性；自主權",
+        "代辦處；服務機構",
+        "政府機關；局署",
+        "代理權（代人辦事的職務）"
+      ],
+      "answerIndex": 0,
+      "wordKey": "agency",
+      "senseId": "sense-d5cca4d1",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-82991ef9",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，trustee 是什麼意思？\n「My grandfather appointed a trustee to oversee the inheritance he left for me.」",
+      "options": [
+        "受託人；信託管理人",
+        "（機構的）董事；理事",
+        "繼承人",
+        "監護人"
+      ],
+      "answerIndex": 0,
+      "wordKey": "trustee",
+      "senseId": "sense-bbba6b59",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-7deed70e",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，bead 是什麼意思？\n「A single bead of sweat ran down his forehead.」",
+      "options": [
+        "（汗、水的）小滴",
+        "珠子；念珠",
+        "毛孔；汗腺",
+        "皺紋；紋路"
+      ],
+      "answerIndex": 0,
+      "wordKey": "bead",
+      "senseId": "sense-c26db954",
+      "source": "import",
+      "sourceType": "polysemy"
+    },
+    {
+      "id": "child-31cf0f97",
+      "kind": "multipleChoice",
+      "prompt": "在這個句子裡，surrender 是什麼意思？\n「The fugitive finally realized he had no other option but to surrender himself to the authorities.」",
+      "options": [
+        "自首；向當局投案",
+        "交出；放棄所有物",
+        "投降；停止抵抗",
+        "認命；接受無法改變的事實"
+      ],
+      "answerIndex": 0,
+      "wordKey": "surrender",
+      "senseId": "sense-a2d1f820",
+      "source": "import",
+      "sourceType": "polysemy"
+    }
+  ]
+}

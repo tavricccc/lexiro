@@ -1,0 +1,1403 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 62,
+  "words": [
+    {
+      "wordKey": "what",
+      "word": "what",
+      "senses": [
+        {
+          "id": "sense-3be416e4",
+          "pos": "pronoun",
+          "meaningZh": "什麼；哪件事",
+          "definitionEn": "the thing which; that which",
+          "examples": [
+            "What is that noise coming from the kitchen?"
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-b8a735e1",
+          "pos": "pronoun",
+          "meaningZh": "用於表達看法或詢問",
+          "definitionEn": "used to introduce your opinion",
+          "examples": [
+            "What do you think about the new movie?"
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "when",
+      "word": "when",
+      "senses": [
+        {
+          "id": "sense-d8ba5d6c",
+          "pos": "conjunction",
+          "meaningZh": "當……時；既然",
+          "definitionEn": "considering the fact that:",
+          "examples": [
+            "When it started raining, we decided to stay indoors."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-b6c313f5",
+          "pos": "conjunction",
+          "meaningZh": "儘管；雖然",
+          "definitionEn": "despite the fact that:",
+          "examples": [
+            "When I was sick, I still managed to finish my work on time."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "where",
+      "word": "where",
+      "senses": [
+        {
+          "id": "sense-28be76aa",
+          "pos": "conjunction",
+          "meaningZh": "在哪裡；何處",
+          "definitionEn": "used to ask about the location or place",
+          "examples": [
+            "Where is the nearest coffee shop?"
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-a2f3fcfa",
+          "pos": "conjunction",
+          "meaningZh": "在哪個階段；到了哪一步",
+          "definitionEn": "used to ask about the stage or point",
+          "examples": [
+            "Where are we in the project timeline?"
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "whether",
+      "word": "whether",
+      "senses": [
+        {
+          "id": "sense-62c8c723",
+          "pos": "conjunction",
+          "meaningZh": "是否；不管……還是",
+          "definitionEn": "used to introduce a clause expressing a doubt or choice between alternatives",
+          "examples": [
+            "I can't decide whether to go on vacation or stay home and relax."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-617430fc",
+          "pos": "conjunction",
+          "meaningZh": "不論；無論……還是",
+          "definitionEn": "used to refer to one or more possibilities or to express uncertainty; used to indicate a choice between two or more alternatives",
+          "examples": [
+            "I'm not sure whether I should go to the party or stay home tonight."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "which",
+      "word": "which",
+      "senses": [
+        {
+          "id": "sense-441760ee",
+          "pos": "pronoun",
+          "meaningZh": "哪一個；哪些",
+          "definitionEn": "used to show what particular thing is being referred to",
+          "examples": [
+            "Which book would you like to borrow from the library?"
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-ed178723",
+          "pos": "pronoun",
+          "meaningZh": "其中；用以補充說明",
+          "definitionEn": "used to add extra information about something mentioned earlier, in writing following a comma",
+          "examples": [
+            "She received two job offers, one from a small startup and another from a large corporation, of which she chose the latter."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "while",
+      "word": "while",
+      "senses": [
+        {
+          "id": "sense-247531a1",
+          "pos": "noun",
+          "meaningZh": "一段時間；片刻",
+          "definitionEn": "a period of time, usually short, marked by some action or condition",
+          "examples": [
+            "While she was waiting for the bus, she checked her emails."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "white",
+      "word": "white",
+      "senses": [
+        {
+          "id": "sense-b5ea5727",
+          "pos": "noun",
+          "meaningZh": "白色；白",
+          "definitionEn": "the quality or state of the achromatic color of greatest lightness (bearing the least resemblance to black)",
+          "examples": [
+            "The bride wore a white gown on her wedding day."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-e2037353",
+          "pos": "noun",
+          "meaningZh": "蛋白；蛋清",
+          "definitionEn": "the white part of an egg; the nutritive and protective gelatinous substance surrounding the yolk consisting mainly of albumin dissolved in water",
+          "examples": [
+            "When baking a cake, be sure to separate the white from the yolk in order to whip the egg white and add it to the batter for extra lightness."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "who",
+      "word": "who",
+      "senses": [
+        {
+          "id": "sense-1f15c015",
+          "pos": "pronoun",
+          "meaningZh": "誰；什麼人",
+          "definitionEn": "used especially in questions to ask which person or people, or to ask someone’s name.",
+          "examples": [
+            "Who is the new employee in the office?"
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-4a9c60c8",
+          "pos": "pronoun",
+          "meaningZh": "（指某人的）關係代名詞",
+          "definitionEn": "used as the subject or object of a verb when referring to a particular person or when adding information about a person just mentioned.",
+          "examples": [
+            "Who is the captain of the basketball team?"
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "whose",
+      "word": "whose",
+      "senses": [
+        {
+          "id": "sense-da9c5b1c",
+          "pos": "pronoun",
+          "meaningZh": "誰的；哪個人的",
+          "definitionEn": "used to ask which person owns or is responsible for something, or to say who is responsible for something",
+          "examples": [
+            "Whose pencil is this? Can you check whose turn it is to clean the kitchen?"
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-9e686ab2",
+          "pos": "pronoun",
+          "meaningZh": "（所有格關係代名詞）的",
+          "definitionEn": "Used to refer to possession or ownership, often asking about the owner of a thing",
+          "examples": [
+            "Whose book is this?"
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "why",
+      "word": "why",
+      "senses": [
+        {
+          "id": "sense-c62a5f26",
+          "pos": "noun",
+          "meaningZh": "原因；理由",
+          "definitionEn": "the reason or purpose for which something is done or exists, often expressed in the phrase `the whys and wherefores’",
+          "examples": [
+            "Before making a decision, it is important to understand the whys and wherefores behind each option."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "wide",
+      "word": "wide",
+      "senses": [
+        {
+          "id": "sense-1360e5ea",
+          "pos": "adjective",
+          "meaningZh": "寬闊的；廣大的",
+          "definitionEn": "having a large span or distance from side to side",
+          "examples": [
+            "The wide river flowed peacefully, its waters stretching as far as the eye could see."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-78d8c04a",
+          "pos": "adverb",
+          "meaningZh": "大大地；充分地",
+          "definitionEn": "completely or to the greatest degree possible",
+          "examples": [
+            "He opened his arms wide to embrace his long-lost friend."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "wife",
+      "word": "wife",
+      "senses": [
+        {
+          "id": "sense-4d50f0f4",
+          "pos": "noun",
+          "meaningZh": "妻子；太太",
+          "definitionEn": "a woman who is married and in a committed relationship with a man; a spouse",
+          "examples": [
+            "After work, John enjoys spending quality time with his wife, watching a movie and enjoying a delicious dinner together."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "will",
+      "word": "will",
+      "senses": [
+        {
+          "id": "sense-ec4d07a2",
+          "pos": "auxiliary verb",
+          "meaningZh": "將要；將會（表未來）",
+          "definitionEn": "used to talk about what is going to happen in the future",
+          "examples": [
+            "I will call you as soon as I get home."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-f54b991a",
+          "pos": "verb",
+          "meaningZh": "決定；選擇",
+          "definitionEn": "to decide or choose",
+          "examples": [
+            "After much contemplation, she will go with the red dress for the party."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-34b2db0f",
+          "pos": "noun",
+          "meaningZh": "遺囑；遺言",
+          "definitionEn": "a legal document that states a person’s wishes for how their property will be distributed after they die",
+          "examples": [
+            "After his passing, Philip's family gathered to read his will and learn how his estate would be divided among them."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "win",
+      "word": "win",
+      "senses": [
+        {
+          "id": "sense-dbfb20ca",
+          "pos": "verb",
+          "meaningZh": "獲勝；贏得",
+          "definitionEn": "to be the victor or champion in a contest or competition",
+          "examples": [
+            "John trained hard and won the marathon, crossing the finish line with a triumphant smile."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-c67d1439",
+          "pos": "verb",
+          "meaningZh": "爭取到；取得",
+          "definitionEn": "to obtain something, especially through effort or merit",
+          "examples": [
+            "After years of hard work and dedication, she was finally able to win the championship title in her sport."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "wind",
+      "word": "wind",
+      "senses": [
+        {
+          "id": "sense-8ee5ee94",
+          "pos": "noun",
+          "meaningZh": "風；氣流",
+          "definitionEn": "air moving from high to low pressure, often forcefully",
+          "examples": [
+            "During the hurricane, the wind howled and ripped shingles off the roof."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-8a679829",
+          "pos": "verb",
+          "meaningZh": "察覺；嗅出線索",
+          "definitionEn": "to sense or discover information; to catch a scent",
+          "examples": [
+            "The detective arrived at the crime scene and used his trained senses to wind the clues, unraveling the mystery piece by piece."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "window",
+      "word": "window",
+      "senses": [
+        {
+          "id": "sense-0e55d070",
+          "pos": "noun",
+          "meaningZh": "窗戶；窗框",
+          "definitionEn": "a framework that holds a glass or plastic panel and is placed in a wall or roof to let in light or air",
+          "examples": [
+            "I opened the window to let in some fresh air."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-8b9cdc45",
+          "pos": "noun",
+          "meaningZh": "窗口；類窗開口",
+          "definitionEn": "an opening in a surface that looks or functions like a window",
+          "examples": [],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "wise",
+      "word": "wise",
+      "senses": [
+        {
+          "id": "sense-6f266825",
+          "pos": "adjective",
+          "meaningZh": "明智的；有智慧的",
+          "definitionEn": "having or showing good judgement or sense",
+          "examples": [
+            "She sought advice from her wise grandmother before making an important decision."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-e6f860ef",
+          "pos": "adjective",
+          "meaningZh": "有經驗的；老練的",
+          "definitionEn": "based on understanding and experience",
+          "examples": [
+            "After many years working as a financial advisor, Sarah has become wise in making investment decisions."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "wish",
+      "word": "wish",
+      "senses": [
+        {
+          "id": "sense-78f4acff",
+          "pos": "noun",
+          "meaningZh": "願望；心願",
+          "definitionEn": "a particular preference",
+          "examples": [
+            "My sister's wish to travel to Paris came true when she won a free trip."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-1dd2fc00",
+          "pos": "noun",
+          "meaningZh": "希望；心中祈願",
+          "definitionEn": "an expression of a desire or inclination",
+          "examples": [
+            "As the clock struck midnight on New Year's Eve, she closed her eyes and made a heartfelt wish for a year filled with happiness and success."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "with",
+      "word": "with",
+      "senses": [
+        {
+          "id": "sense-ca01e750",
+          "pos": "preposition",
+          "meaningZh": "和……一起；與",
+          "definitionEn": "used to show people or things that are together or doing something together",
+          "examples": [
+            "She went to the party with her friends."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-81b95933",
+          "pos": "preposition",
+          "meaningZh": "用；以……方式",
+          "definitionEn": "used to show using something or by means of something",
+          "examples": [
+            "He cut the bread with a knife."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "without",
+      "word": "without",
+      "senses": [
+        {
+          "id": "sense-7657f424",
+          "pos": "preposition",
+          "meaningZh": "沒有；不帶",
+          "definitionEn": "not having or doing something",
+          "examples": [
+            "He went to the meeting without his ID card."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-170b1788",
+          "pos": "preposition",
+          "meaningZh": "缺乏；不靠",
+          "definitionEn": "lacking the use or help of someone or something",
+          "examples": [
+            "She managed to fix the leaky faucet without calling a plumber."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "woman",
+      "word": "woman",
+      "senses": [
+        {
+          "id": "sense-827160f7",
+          "pos": "noun",
+          "meaningZh": "女性；婦女",
+          "definitionEn": "an adult female human being.",
+          "examples": [
+            "The woman walked confidently into the boardroom, ready to deliver her presentation."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-1e96c27f",
+          "pos": "noun",
+          "meaningZh": "女性性別；女性身分",
+          "definitionEn": "the female sex, gender, or identity.",
+          "examples": [
+            "A confident woman led the successful marketing campaign for the new product."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "wonderful",
+      "word": "wonderful",
+      "senses": [
+        {
+          "id": "sense-7a02ab40",
+          "pos": "adjective",
+          "meaningZh": "美好的；精彩的；令人讚嘆的",
+          "definitionEn": "excellent or highly enjoyable; causing a feeling of wonder or admiration",
+          "examples": [
+            "The beach view from the hotel was simply wonderful, with palm trees swaying in the breeze and crystal-clear turquoise water."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "word",
+      "word": "word",
+      "senses": [
+        {
+          "id": "sense-a87aae77",
+          "pos": "noun",
+          "meaningZh": "單字；詞語",
+          "definitionEn": "a unit of language that native speakers can identify",
+          "examples": [
+            "In a spelling bee, the contestants were asked to spell the word 'antidisestablishmentarianism'."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-36d2e54a",
+          "pos": "noun",
+          "meaningZh": "簡短陳述；話語",
+          "definitionEn": "a brief statement",
+          "examples": [
+            "The teacher asked the students to write a word definition and provide an example to demonstrate its usage."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "work",
+      "word": "work",
+      "senses": [
+        {
+          "id": "sense-a4daddbf",
+          "pos": "noun",
+          "meaningZh": "工作；勞動",
+          "definitionEn": "activity of doing something in order to achieve a goal or desired outcome",
+          "examples": [
+            "James had to work hard to complete the project on time."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-4cc1e7e1",
+          "pos": "noun",
+          "meaningZh": "心力；用功努力",
+          "definitionEn": "mental effort or study put into learning or understanding a subject or topic",
+          "examples": [
+            "Your work for this project is commendable. You have put a lot of mental effort into studying the subject and it shows in the quality of your work."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 翰林 B1·L2",
+        "textbookTitle": "翰林 B1·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "worker",
+      "word": "worker",
+      "senses": [
+        {
+          "id": "sense-7b1e0704",
+          "pos": "noun",
+          "meaningZh": "工作者；從業人員",
+          "definitionEn": "a person who works at a specific occupation",
+          "examples": [
+            "The construction worker diligently hammered nails into the wooden frame."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-e0c87199",
+          "pos": "noun",
+          "meaningZh": "做事積極的人；實幹者",
+          "definitionEn": "a person who acts and gets things done",
+          "examples": [
+            "John is a dedicated worker who always completes his tasks ahead of schedule."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "world",
+      "word": "world",
+      "senses": [
+        {
+          "id": "sense-ed8b24a1",
+          "pos": "noun",
+          "meaningZh": "世界；宇宙萬物",
+          "definitionEn": "everything that exists anywhere",
+          "examples": [
+            "Exploring the world through travel allows us to experience different cultures and landscapes."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-b32b7974",
+          "pos": "noun",
+          "meaningZh": "個人視野；生活體驗",
+          "definitionEn": "all of your experiences that determine how things appear to you",
+          "examples": [
+            "Traveling to different countries and immersing oneself in new cultures can broaden one's world."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "worry",
+      "word": "worry",
+      "senses": [
+        {
+          "id": "sense-47fd13c4",
+          "pos": "verb",
+          "meaningZh": "擔心；掛慮",
+          "definitionEn": "be concerned with",
+          "examples": [
+            "After receiving the news of her father's accident, she couldn't help but worry about his well-being."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-40b6e4f2",
+          "pos": "verb",
+          "meaningZh": "使憂慮；讓人不安",
+          "definitionEn": "cause to feel anxious or concerned; make someone feel uneasy or disturbed",
+          "examples": [
+            "She began to worry when her teenage daughter didn't come home on time."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "write",
+      "word": "write",
+      "senses": [
+        {
+          "id": "sense-98993cfd",
+          "pos": "verb",
+          "meaningZh": "書寫；寫下",
+          "definitionEn": "to put letters, numbers or symbols on paper or a screen using a pen, pencil or keyboard",
+          "examples": [
+            "As a novelist, she would write for hours, crafting intricate stories and developing complex characters."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-f2e5c0c4",
+          "pos": "verb",
+          "meaningZh": "撰寫；寫作",
+          "definitionEn": "to create a document to share information or communicate with someone",
+          "examples": [
+            "I need to write an email to my boss about the project update."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "writer",
+      "word": "writer",
+      "senses": [
+        {
+          "id": "sense-9dd91c36",
+          "pos": "noun",
+          "meaningZh": "寫作者；執筆人",
+          "definitionEn": "a person who writes something",
+          "examples": [
+            "As a writer, she spends most of her time scribbling in her notebook, trying to come up with new stories to tell."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-036449ac",
+          "pos": "noun",
+          "meaningZh": "職業作家；專業寫手",
+          "definitionEn": "a person who writes professionally and is paid for their work",
+          "examples": [],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "wrong",
+      "word": "wrong",
+      "senses": [
+        {
+          "id": "sense-80451c95",
+          "pos": "adjective",
+          "meaningZh": "錯誤的；不正確的",
+          "definitionEn": "not correct; not in line with the truth or facts",
+          "examples": [
+            "It is wrong to assume that all cats hate water."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-c9c1fff8",
+          "pos": "adjective",
+          "meaningZh": "有誤的；不合規則的",
+          "definitionEn": "not following established rules or models; characterized by errors",
+          "examples": [
+            "The student got all the answers wrong on the math test."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    }
+  ]
+}

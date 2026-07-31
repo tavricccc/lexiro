@@ -1,0 +1,1444 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 11,
+  "words": [
+    {
+      "wordKey": "fill",
+      "word": "fill",
+      "senses": [
+        {
+          "id": "sense-4f96b47e",
+          "pos": "verb",
+          "meaningZh": "裝滿；填滿",
+          "definitionEn": "make something full, also in a figurative sense",
+          "examples": [
+            "Please fill the glass with water."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-1515aeb1",
+          "pos": "verb",
+          "meaningZh": "充滿；盈滿",
+          "definitionEn": "become full of something",
+          "examples": [
+            "After a heavy rainfall, the river will fill with water."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "finally",
+      "word": "finally",
+      "senses": [
+        {
+          "id": "sense-9e6bd2a5",
+          "pos": "adverb",
+          "meaningZh": "終於；最終",
+          "definitionEn": "at last; after a long time or some difficulty; ultimately",
+          "examples": [
+            "Finally, after months of hard work, she got the promotion she deserved."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-a7dd5a74",
+          "pos": "adverb",
+          "meaningZh": "最後；總結",
+          "definitionEn": "as a concluding remark or item; in conclusion",
+          "examples": [
+            "Finally, after months of hard work, he completed his thesis."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "find",
+      "word": "find",
+      "senses": [
+        {
+          "id": "sense-d4db5a52",
+          "pos": "verb",
+          "meaningZh": "找到；發現",
+          "definitionEn": "discover or determine the existence, presence, or fact of",
+          "examples": [
+            "After hours of searching, I finally managed to find my lost keys under the couch."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-f10b000e",
+          "pos": "verb",
+          "meaningZh": "查明；確認",
+          "definitionEn": "establish after a calculation, investigation, experiment, survey, or study",
+          "examples": [
+            "After conducting a thorough investigation, the detective was able to find the missing evidence."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "fine",
+      "word": "fine",
+      "senses": [
+        {
+          "id": "sense-58291bb5",
+          "pos": "adjective",
+          "meaningZh": "不錯的；令人滿意的",
+          "definitionEn": "being satisfactory or in satisfactory condition",
+          "examples": [
+            "The doctor examined him and said ’you’re going to be fine’."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-cfff97c3",
+          "pos": "adjective",
+          "meaningZh": "純淨的；精純的",
+          "definitionEn": "free from impurities; having a high or specified degree of purity",
+          "examples": [
+            "The fine wine was smooth and had no sediment."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "finger",
+      "word": "finger",
+      "senses": [
+        {
+          "id": "sense-82f03d40",
+          "pos": "noun",
+          "meaningZh": "手指",
+          "definitionEn": "any of the digits at the end of the hand, except the thumb",
+          "examples": [
+            "She pricked her finger with a needle while sewing."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-ff88302a",
+          "pos": "noun",
+          "meaningZh": "指寬（量度單位）",
+          "definitionEn": "a unit of measurement equal to the width or length of a finger",
+          "examples": [
+            "The size of the fish I caught was about three fingers long."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "finish",
+      "word": "finish",
+      "senses": [
+        {
+          "id": "sense-ca275973",
+          "pos": "verb",
+          "meaningZh": "完成；結束",
+          "definitionEn": "to bring something to a completion or an end",
+          "examples": [
+            "I need to finish writing this essay before tonight."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-8d3cda02",
+          "pos": "verb",
+          "meaningZh": "告終；用完",
+          "definitionEn": "to come to an end, either in a temporal, spatial, or quantitative sense; either spatial or metaphorical",
+          "examples": [
+            "We need to finish this project by the end of the week."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 翰林 B1·L3",
+        "textbookTitle": "翰林 B1·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "fire",
+      "word": "fire",
+      "senses": [
+        {
+          "id": "sense-bd07ceb4",
+          "pos": "noun",
+          "meaningZh": "火；燃燒",
+          "definitionEn": "the process of burning materials producing heat, light, and smoke",
+          "examples": [
+            "The firefighters worked tirelessly to put out the fire that had engulfed the building."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-7be36725",
+          "pos": "noun",
+          "meaningZh": "火（古代四元素之一）",
+          "definitionEn": "an element in ancient philosophy believed to be among the four basic elements constituting the universe",
+          "examples": [
+            "The ancient Greeks believed that fire was one of the four basic elements that make up the universe, along with water, earth, and air."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "first",
+      "word": "first",
+      "senses": [
+        {
+          "id": "sense-dedf728d",
+          "pos": "adjective",
+          "meaningZh": "第一的；最先的",
+          "definitionEn": "Coming before all others in order, time, amount, quality, or importance.",
+          "examples": [
+            "In a race, the person who crosses the finish line before anyone else is considered the first place winner."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-cecbbf32",
+          "pos": "adjective",
+          "meaningZh": "最初的；起始的",
+          "definitionEn": "Relating to or denoting the initial stage of something.",
+          "examples": [
+            "In the first few months of their relationship, they took things slow and got to know each other better."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "fish",
+      "word": "fish",
+      "senses": [
+        {
+          "id": "sense-77292563",
+          "pos": "noun",
+          "meaningZh": "魚",
+          "definitionEn": "a cold-blooded animal that lives in water, has scales, and breathes through gills",
+          "examples": [
+            "I caught a big fish in the lake this morning while fishing with my friends."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-aaecb2a2",
+          "pos": "noun",
+          "meaningZh": "魚肉（食材）",
+          "definitionEn": "the flesh of this animal as food",
+          "examples": [
+            "We grilled some fresh fish for dinner tonight."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "floor",
+      "word": "floor",
+      "senses": [
+        {
+          "id": "sense-ff8398a1",
+          "pos": "noun",
+          "meaningZh": "地面；地板",
+          "definitionEn": "the ground or surface on which people and animals walk or move around",
+          "examples": [
+            "The dance studio had a smooth wooden floor, perfect for practicing ballet."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-e905f118",
+          "pos": "noun",
+          "meaningZh": "室內地板；地面",
+          "definitionEn": "the inside lower surface of a room, hallway, tent, or other structure",
+          "examples": [
+            "She carefully mopped the floor to remove any dirt and stains."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "flower",
+      "word": "flower",
+      "senses": [
+        {
+          "id": "sense-f738ea50",
+          "pos": "noun",
+          "meaningZh": "花朵；花器",
+          "definitionEn": "the reproductive organ of a plant which is made up of petals and consists of both male and female organs.",
+          "examples": [
+            "The garden was filled with blooming flowers, their vibrant colors attracting bees and butterflies."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-774957cb",
+          "pos": "noun",
+          "meaningZh": "開花植物；花卉",
+          "definitionEn": "a plant that is grown for its beautiful blooms or blossoms.",
+          "examples": [
+            "She received a bouquet of colorful flowers on her birthday."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "fly",
+      "word": "fly",
+      "senses": [
+        {
+          "id": "sense-5b2cd3b2",
+          "pos": "verb",
+          "meaningZh": "飛；飛行",
+          "definitionEn": "to move through the air using wings or in an aircraft",
+          "examples": [
+            "Birds fly south for the winter."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-776a6e14",
+          "pos": "noun",
+          "meaningZh": "擬餌（釣魚）",
+          "definitionEn": "fisherman’s lure consisting of a fishhook decorated to look like an insect",
+          "examples": [
+            "The fisherman used a fly to catch the trout."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "follow",
+      "word": "follow",
+      "senses": [
+        {
+          "id": "sense-e5a5a36c",
+          "pos": "verb",
+          "meaningZh": "跟隨；追隨",
+          "definitionEn": "go after, travel behind, or come after someone or something",
+          "examples": [
+            "She follows her instructor’s directions carefully during the dance class."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-eb289058",
+          "pos": "verb",
+          "meaningZh": "沿路走；遵循路線",
+          "definitionEn": "move along a particular path or route",
+          "examples": [
+            "The group of hikers followed the trail through the forest."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "food",
+      "word": "food",
+      "senses": [
+        {
+          "id": "sense-640816c2",
+          "pos": "noun",
+          "meaningZh": "食物；食品",
+          "definitionEn": "any solid or liquid substance that living organisms consume in order to sustain life and growth.",
+          "examples": [
+            "It is important to provide your body with a balanced variety of food to maintain a healthy lifestyle."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-dd662779",
+          "pos": "noun",
+          "meaningZh": "食物；食材",
+          "definitionEn": "items that are eaten and provide nutrition",
+          "examples": [
+            "It is important to consume a variety of nutritious foods such as fruits, vegetables, and whole grains."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "fool",
+      "word": "fool",
+      "senses": [
+        {
+          "id": "sense-3666f50d",
+          "pos": "noun",
+          "meaningZh": "笨蛋；蠢人",
+          "definitionEn": "a person who lacks good judgment or sense",
+          "examples": [
+            "He tried to fix his car engine without any prior knowledge and realized later that he was a fool to attempt it."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-4b40b1bf",
+          "pos": "noun",
+          "meaningZh": "受騙的人；傻瓜",
+          "definitionEn": "a person who is easily deceived or tricked",
+          "examples": [
+            "He fell for the con artist’s story and ended up losing all his money. He felt like a fool!"
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "foot",
+      "word": "foot",
+      "senses": [
+        {
+          "id": "sense-55d337be",
+          "pos": "noun",
+          "meaningZh": "腳",
+          "definitionEn": "the part of the leg below the ankle that touches the ground when you stand or walk",
+          "examples": [
+            "She twisted her ankle and couldn't put any weight on her foot."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-32c0fa1b",
+          "pos": "noun",
+          "meaningZh": "英尺（長度單位）",
+          "definitionEn": "a unit of length equal to 12 inches or approximately 30 centimeters",
+          "examples": [
+            "He measured the length of the room using a ruler and found it to be 10 feet."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "for",
+      "word": "for",
+      "senses": [
+        {
+          "id": "sense-fedeffb2",
+          "pos": "preposition",
+          "meaningZh": "為了；供",
+          "definitionEn": "used to indicate the purpose or function of something",
+          "examples": [
+            "I bought this new laptop for work."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-0f9bffd6",
+          "pos": "conjunction",
+          "meaningZh": "因為；由於",
+          "definitionEn": "because; as",
+          "examples": [
+            "For it was her birthday, she decided to throw a big party."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "foreign",
+      "word": "foreign",
+      "senses": [
+        {
+          "id": "sense-5018c4d3",
+          "pos": "adjective",
+          "meaningZh": "外國的；進口的",
+          "definitionEn": "imported or coming from outside",
+          "examples": [],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-8d2cf209",
+          "pos": "adjective",
+          "meaningZh": "格格不入的；外來的",
+          "definitionEn": "not belonging to the essential nature of something",
+          "examples": [
+            "While he had gotten used to the foreign culture, he still missed home."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "foreigner",
+      "word": "foreigner",
+      "senses": [
+        {
+          "id": "sense-aa3b3885",
+          "pos": "noun",
+          "meaningZh": "外國人；異國人",
+          "definitionEn": "a person who comes from a country different from your own",
+          "examples": [
+            "When I traveled to Japan, I met many friendly foreigners who were eager to learn about my culture."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-2fb8c230",
+          "pos": "noun",
+          "meaningZh": "局外人；異鄉人",
+          "definitionEn": "someone who is not part of a particular group or community",
+          "examples": [
+            "When I traveled to Japan, I felt like a foreigner because I didn't speak the language and was unfamiliar with the customs."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "forget",
+      "word": "forget",
+      "senses": [
+        {
+          "id": "sense-d9448e12",
+          "pos": "verb",
+          "meaningZh": "忘記；記不住",
+          "definitionEn": "To be unable to remember.",
+          "examples": [
+            "After a long day at work, I completely forget where I parked my car."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-23e4a42f",
+          "pos": "verb",
+          "meaningZh": "拋開；不再想",
+          "definitionEn": "To dismiss from the mind; stop remembering.",
+          "examples": [
+            "After a long day at work, she was able to forget about her stressful day by diving into a good book."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "fork",
+      "word": "fork",
+      "senses": [
+        {
+          "id": "sense-5eecbf6a",
+          "pos": "noun",
+          "meaningZh": "餐叉；叉子",
+          "definitionEn": "cutlery used for serving and eating food",
+          "examples": [
+            "At the dinner party, she elegantly used her fork to enjoy the salad and main course."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-f2e07abb",
+          "pos": "noun",
+          "meaningZh": "農用叉；草叉",
+          "definitionEn": "an agricultural tool used for lifting or digging; it has a handle and metal prongs",
+          "examples": [
+            "The farmer used a fork to dig up the potatoes from the ground."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "free",
+      "word": "free",
+      "senses": [
+        {
+          "id": "sense-731ea67b",
+          "pos": "adjective",
+          "meaningZh": "自由的；不受約束的",
+          "definitionEn": "able to act without restraint; not under compulsion or restrictions",
+          "examples": [
+            "After retiring from his job, he finally felt free to travel the world."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-159651ba",
+          "pos": "adjective",
+          "meaningZh": "自由的；獲得解放的",
+          "definitionEn": "not held in slavery or servitude",
+          "examples": [
+            "After the abolition of slavery, Harriet Tubman helped many slaves become free."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "fresh",
+      "word": "fresh",
+      "senses": [
+        {
+          "id": "sense-db46139c",
+          "pos": "adjective",
+          "meaningZh": "新鮮的；剛出爐的",
+          "definitionEn": "newly made, produced, or harvested",
+          "examples": [
+            "The bakery had a display of fresh bread straight out of the oven."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-8cf80df7",
+          "pos": "adjective",
+          "meaningZh": "嶄新的；未用過的",
+          "definitionEn": "not yet used, worn, or soiled",
+          "examples": [
+            "She wore a fresh pair of socks every day to avoid any unpleasant odors."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "friend",
+      "word": "friend",
+      "senses": [
+        {
+          "id": "sense-6e34b580",
+          "pos": "noun",
+          "meaningZh": "朋友；好友",
+          "definitionEn": "a person you know well and have a close relationship with, often someone you have met through shared experiences or interests",
+          "examples": [
+            "Alice and Sarah have been friends since they were in kindergarten. They have been through thick and thin together, supporting each other in both good times and bad times."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-46792249",
+          "pos": "noun",
+          "meaningZh": "知心朋友；患難之交",
+          "definitionEn": "someone who provides kindness and support, often during difficult times",
+          "examples": [
+            "After losing his job, John's best friend offered him a place to stay and helped him find a new job."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "friendly",
+      "word": "friendly",
+      "senses": [
+        {
+          "id": "sense-e10c7f4c",
+          "pos": "adjective",
+          "meaningZh": "友善的；樂於助人的",
+          "definitionEn": "inclined to help or support; not antagonistic or hostile",
+          "examples": [
+            "Sarah was always friendly to her new colleagues, offering them guidance and support as they settled into their new roles."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-887a9bb3",
+          "pos": "adjective",
+          "meaningZh": "易於使用的；友善的（介面）",
+          "definitionEn": "easy to understand or use",
+          "examples": [
+            "The new software has a user-friendly interface that simplifies navigation and allows for quick learning."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "frog",
+      "word": "frog",
+      "senses": [
+        {
+          "id": "sense-577fbf78",
+          "pos": "noun",
+          "meaningZh": "青蛙；蛙",
+          "definitionEn": "any of various tailless, stout-bodied amphibians with long hind limbs for leaping, found both in water and on land.",
+          "examples": [
+            "During our hike, we came across a frog sitting on a lily pad in the pond."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-f59ada55",
+          "pos": "verb",
+          "meaningZh": "捕蛙；獵蛙",
+          "definitionEn": "catch or hunt for frogs for food or sport.",
+          "examples": [
+            "In the summertime, the children went frogging by the river and caught several frogs to observe and then released them back into the wild."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "from",
+      "word": "from",
+      "senses": [
+        {
+          "id": "sense-ad54703d",
+          "pos": "preposition",
+          "meaningZh": "從……出發；由……地點",
+          "definitionEn": "used to indicate the starting point of movement or travel",
+          "examples": [
+            "I walked from my house to the grocery store."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-35af05e6",
+          "pos": "preposition",
+          "meaningZh": "從……時間起；自……開始",
+          "definitionEn": "used to indicate the starting time or the time when something was made or first existed",
+          "examples": [
+            "I have been working at this company from 2015."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "front",
+      "word": "front",
+      "senses": [
+        {
+          "id": "sense-9bb184b0",
+          "pos": "noun",
+          "meaningZh": "正面；前方",
+          "definitionEn": "the side that is forward or prominent",
+          "examples": [
+            "The front of the room is where the teacher stands."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-144a2175",
+          "pos": "noun",
+          "meaningZh": "前端；最前列",
+          "definitionEn": "the side that is seen or that goes first",
+          "examples": [
+            "Please stand at the front of the line."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "fruit",
+      "word": "fruit",
+      "senses": [
+        {
+          "id": "sense-bf707860",
+          "pos": "noun",
+          "meaningZh": "水果；果實",
+          "definitionEn": "the ripened reproductive body of a seed plant",
+          "examples": [
+            "I picked some fresh fruit from the apple tree for breakfast."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-528df82b",
+          "pos": "noun",
+          "meaningZh": "一批；一份產量",
+          "definitionEn": "an amount of a product",
+          "examples": [
+            "She bought a fruit of tomatoes for her salad."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "full",
+      "word": "full",
+      "senses": [
+        {
+          "id": "sense-14aed9d3",
+          "pos": "adjective",
+          "meaningZh": "完整的；充足的；飽滿的",
+          "definitionEn": "complete; containing as much or as many as is possible or normal; having the normally expected amount; constituting the full quantity or extent; being at a peak or culminating point; having ample fabric; (of sound) having marked deepness and body",
+          "examples": [
+            "After her long day at work, she enjoyed a full night of uninterrupted sleep."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-b323f356",
+          "pos": "adverb",
+          "meaningZh": "完全地；充分地",
+          "definitionEn": "completely or entirely; to the greatest degree or extent; (full’ in this sense is used as a combining form)",
+          "examples": [
+            "After the stressful day, she found comfort in a hot bath and a full night's sleep."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    }
+  ]
+}

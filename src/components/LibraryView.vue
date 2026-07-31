@@ -3,9 +3,11 @@ import type { VocabSet } from '@/types'
 import { ClipboardPaste, FileQuestion, Plus, Search, Upload } from 'lucide-vue-next'
 import { storeToRefs } from 'pinia'
 import { computed, ref } from 'vue'
+import { useLibraryStore } from '@/stores/library'
 import { useSetsStore } from '@/stores/sets'
 import { useUIStore } from '@/stores/ui'
 import SetStudyModal from './dialogs/SetStudyModal.vue'
+import QuestionGenerationPanel from './QuestionGenerationPanel.vue'
 import SetCard from './SetCard.vue'
 import Button from './ui/button/Button.vue'
 import Card from './ui/card/Card.vue'
@@ -13,21 +15,33 @@ import EmptyState from './ui/empty-state/EmptyState.vue'
 import Input from './ui/input/Input.vue'
 
 const setsStore = useSetsStore()
+const libraryStore = useLibraryStore()
 const uiStore = useUIStore()
 const { hasSets, sets } = storeToRefs(setsStore)
 const { isSetInProgress, requestDelete, openSetEditor, openImport } = setsStore
 const { openTransfer } = uiStore
 
 const query = ref('')
+const selectedFolderId = ref<string | null>(null)
+const newFolderName = ref('')
 const studyModalOpen = ref(false)
 const studyModalSet = ref<VocabSet | null>(null)
 
 const filteredSets = computed(() => {
   const q = query.value.trim().toLowerCase()
-  if (!q)
-    return sets.value
-  return sets.value.filter(set => set.setName.toLowerCase().includes(q) || set.items.some(item => [item.word, item.meaning, item.definition ?? '', ...(item.tags ?? [])].some(value => value.toLowerCase().includes(q))))
+  return sets.value.filter(set => (!selectedFolderId.value || set.folderId === selectedFolderId.value) && (!q || set.setName.toLowerCase().includes(q) || set.items.some(item => [item.word, item.meaning, item.definition ?? '', ...(item.tags ?? [])].some(value => value.toLowerCase().includes(q)))))
 })
+
+const sortedFolders = computed(() => [...libraryStore.folders].sort((a, b) => a.order - b.order || a.name.localeCompare(b.name)))
+
+function createFolder() {
+  const name = newFolderName.value.trim()
+  if (!name)
+    return
+  const folder = libraryStore.addFolder(name, selectedFolderId.value ?? undefined)
+  selectedFolderId.value = folder.id
+  newFolderName.value = ''
+}
 
 function handleStudy(setId: string) {
   const found = sets.value.find(s => s.id === setId)
@@ -86,6 +100,27 @@ function handleStudy(setId: string) {
           <Search class="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-ink-400" /><Input v-model="query" :placeholder="$t('home.searchPlaceholder')" class="rounded-xl pl-9" />
         </div>
       </Card>
+
+      <Card class="p-4">
+        <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <div class="flex flex-wrap items-center gap-2">
+            <Button size="sm" :variant="selectedFolderId === null ? 'default' : 'outline'" @click="selectedFolderId = null">
+              {{ $t('library.allFolders') }}
+            </Button>
+            <Button v-for="folder in sortedFolders" :key="folder.id" size="sm" :variant="selectedFolderId === folder.id ? 'default' : 'outline'" @click="selectedFolderId = folder.id">
+              {{ folder.name }}
+            </Button>
+          </div>
+          <form class="flex gap-2" @submit.prevent="createFolder">
+            <Input v-model="newFolderName" :placeholder="$t('library.newFolderPlaceholder')" class="h-9 w-44 rounded-xl" />
+            <Button type="submit" size="sm" variant="outline">
+              {{ $t('library.newFolder') }}
+            </Button>
+          </form>
+        </div>
+      </Card>
+
+      <QuestionGenerationPanel />
 
       <div v-if="filteredSets.length" class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
         <div v-for="(set, i) in filteredSets" :key="set.id" class="set-card-enter" :style="{ animationDelay: `${Math.min(i, 10) * 40}ms` }">

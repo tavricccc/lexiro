@@ -1,0 +1,1324 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 168,
+  "words": [
+    {
+      "wordKey": "accessory",
+      "word": "accessory",
+      "senses": [
+        {
+          "id": "sense-73653050",
+          "pos": "noun",
+          "meaningZh": "配件；附加裝置",
+          "definitionEn": "an additional object or device that enhances or increases the capability of a main device or system",
+          "examples": [
+            "She purchased a wireless headset as an accessory to her phone, allowing her to answer calls hands-free."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-11e25b65",
+          "pos": "noun",
+          "meaningZh": "共犯；從犯",
+          "definitionEn": "a person who assists someone else in committing a crime, either before or after the crime",
+          "examples": [
+            "Detective Johnson arrested Mike, who was an accessory to the bank robbery, for providing the getaway vehicle."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "acclaim",
+      "word": "acclaim",
+      "senses": [
+        {
+          "id": "sense-c987fa25",
+          "pos": "noun",
+          "meaningZh": "喝采；熱烈讚揚",
+          "definitionEn": "enthusiastic approval or praise",
+          "examples": [
+            "The entire audience rose to their feet, giving a thunderous acclaim to the musician's captivating performance."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-7a07c0bd",
+          "pos": "verb",
+          "meaningZh": "公開稱讚；大力讚揚",
+          "definitionEn": "praise enthusiastically and publicly",
+          "examples": [
+            "The talented young musician received great acclaim for his captivating performance at the concert."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "accordance",
+      "word": "accordance",
+      "senses": [
+        {
+          "id": "sense-eee76561",
+          "pos": "noun",
+          "meaningZh": "一致；符合",
+          "definitionEn": "concurrence of opinion",
+          "examples": [
+            "The committee members reached an accordance on the final decision."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "accordingly",
+      "word": "accordingly",
+      "senses": [
+        {
+          "id": "sense-0c405163",
+          "pos": "adverb",
+          "meaningZh": "因此；從而",
+          "definitionEn": "as a result of what has been said or done; consequently",
+          "examples": [],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-be5fb77f",
+          "pos": "adverb",
+          "meaningZh": "相應地；照此",
+          "definitionEn": "in accordance with what is expected or fitting",
+          "examples": [
+            "She completed all the tasks assigned to her and was rewarded accordingly."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "accountable",
+      "word": "accountable",
+      "senses": [
+        {
+          "id": "sense-7de3d21e",
+          "pos": "adjective",
+          "meaningZh": "須負責的；需說明的",
+          "definitionEn": "being responsible for one’s actions and able to explain them",
+          "examples": [
+            "After the project failed, the manager was held accountable and had to explain why the team missed the deadline."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "accumulate",
+      "word": "accumulate",
+      "senses": [
+        {
+          "id": "sense-e8d07ab0",
+          "pos": "verb",
+          "meaningZh": "累積；堆積",
+          "definitionEn": "to gather or collect, often in gradual degrees; heap up",
+          "examples": [
+            "I have to clean my closet because over the years, I have accumulated so much clothing that I no longer have any space to store them."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "accumulation",
+      "word": "accumulation",
+      "senses": [
+        {
+          "id": "sense-8fd56437",
+          "pos": "noun",
+          "meaningZh": "累積；積聚過程",
+          "definitionEn": "the process of collecting or gathering together a large amount of something",
+          "examples": [
+            "The accumulation of wealth can be achieved through careful saving and investing over time."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-948e8f87",
+          "pos": "noun",
+          "meaningZh": "積累物；一大堆",
+          "definitionEn": "a mass or group of things that are gathered or considered as a whole",
+          "examples": [
+            "The accumulation of books in her study was impressive, showcasing her love for literature."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "accusation",
+      "word": "accusation",
+      "senses": [
+        {
+          "id": "sense-bfed55c9",
+          "pos": "noun",
+          "meaningZh": "指控；指責",
+          "definitionEn": "a claim that someone has done something wrong or illegal",
+          "examples": [
+            "During the trial, the prosecution presented several pieces of evidence to support their accusation that the defendant committed the crime."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-5e7eb0c6",
+          "pos": "noun",
+          "meaningZh": "正式控訴；罪名",
+          "definitionEn": "a formal charge of wrongdoing brought against a person",
+          "examples": [
+            "During the trial, the defense attorney presented evidence to refute the accusation of theft against his client."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L2",
+        "textbookTitle": "三民 B4·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "accustom",
+      "word": "accustom",
+      "senses": [
+        {
+          "id": "sense-6e11a7c5",
+          "pos": "verb",
+          "meaningZh": "使習慣；使適應",
+          "definitionEn": "To make someone or something become used to a new environment, situation, or habit.",
+          "examples": [
+            "After moving to a new country, it took some time for Jane to become accustom to the different customs and language."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "acne",
+      "word": "acne",
+      "senses": [
+        {
+          "id": "sense-2cda7e99",
+          "pos": "noun",
+          "meaningZh": "痤瘡；青春痘",
+          "definitionEn": "a skin condition caused by inflammation of the sebaceous glands and characterized by the presence of pimples, blackheads, and whiteheads",
+          "examples": [
+            "The teenager was embarrassed about her acne, so she started using a daily face cleanser recommended by her dermatologist."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "acre",
+      "word": "acre",
+      "senses": [
+        {
+          "id": "sense-c61173f7",
+          "pos": "noun",
+          "meaningZh": "英畝（面積單位）",
+          "definitionEn": "A unit of measurement for land area, which equals to 43,560 square feet or 4,047 square meters.",
+          "examples": [
+            "The ranch consisted of several hundred acres of land."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-8ddc5ac8",
+          "pos": "noun",
+          "meaningZh": "一英畝土地；田地",
+          "definitionEn": "A piece of land, typically in a rural area, that is measured in acres and used for a specific purpose such as farming or forestry.",
+          "examples": [
+            "The farmer purchased an acre of land to grow his crops on."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "adaptation",
+      "word": "adaptation",
+      "senses": [
+        {
+          "id": "sense-6a8095ba",
+          "pos": "noun",
+          "meaningZh": "適應；改編",
+          "definitionEn": "the process of changing to better suit new conditions or environment",
+          "examples": [
+            "The chameleon’s adaptation to the environment was remarkable, as it changed its color to match the tree bark perfectly."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-d467daa9",
+          "pos": "noun",
+          "meaningZh": "（生理）感官適應；調節",
+          "definitionEn": "(physiology) the adjustment of the eyes or other sense organs to varying degrees of light or other external conditions",
+          "examples": [
+            "As she stepped out of the dark cinema into the bright sunlight, her eyes went through a quick adaptation to the change in light intensity."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "addiction",
+      "word": "addiction",
+      "senses": [
+        {
+          "id": "sense-0da11b8d",
+          "pos": "noun",
+          "meaningZh": "成癮；上癮",
+          "definitionEn": "a compulsive need or intense desire to do or have something, often accompanied by a lack of control",
+          "examples": [
+            "Despite knowing the harmful effects, John couldn't resist the temptation and continued to indulge in his gambling addiction, risking his financial stability and personal relationships."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "admiral",
+      "word": "admiral",
+      "senses": [
+        {
+          "id": "sense-2f8b4d2b",
+          "pos": "noun",
+          "meaningZh": "海軍上將；艦隊司令",
+          "definitionEn": "the person in charge of a group of ships; in the navy this may be a rank within its own right or part of a wider rank, such as rear admiral or admiral of the fleet",
+          "examples": [
+            "The admiral led a fleet of battleships into battle against the enemy navy."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-601c7aad",
+          "pos": "noun",
+          "meaningZh": "蛺蝶（色彩鮮豔的蝴蝶）",
+          "definitionEn": "a type of butterfly with bright colors and distinctive patterns",
+          "examples": [
+            "As I walked through the garden, a graceful admiral fluttered by, its vibrant orange and black wings contrasting beautifully with the green foliage."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "adolescence",
+      "word": "adolescence",
+      "senses": [
+        {
+          "id": "sense-089cc39c",
+          "pos": "noun",
+          "meaningZh": "青少年期；青春期",
+          "definitionEn": "the period of life when a person develops from a child into an adult, which includes the teenage years and early twenties",
+          "examples": [
+            "During adolescence, teenagers go through a lot of changes, physically and emotionally."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-b3a77685",
+          "pos": "noun",
+          "meaningZh": "青春期身心變化",
+          "definitionEn": "the physical and psychological changes that occur during puberty, including growth spurts, hormonal changes, and the development of sexual characteristics",
+          "examples": [
+            "During adolescence, teenagers may experience sudden changes in their mood and behavior due to hormonal changes."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "advisory",
+      "word": "advisory",
+      "senses": [
+        {
+          "id": "sense-a887734f",
+          "pos": "adjective",
+          "meaningZh": "顧問性的；諮詢的",
+          "definitionEn": "giving advice",
+          "examples": [
+            "During the pandemic, the government issued an advisory recommending citizens to stay at home and practice social distancing."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-afc78db0",
+          "pos": "noun",
+          "meaningZh": "公告；警示通知",
+          "definitionEn": "an announcement that advises or warns the public of a potential threat",
+          "examples": [
+            "The weather advisory warned residents to stay indoors during the upcoming hurricane."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "aesthetic",
+      "word": "aesthetic",
+      "senses": [
+        {
+          "id": "sense-c46f8376",
+          "pos": "adjective",
+          "meaningZh": "美學的；審美的",
+          "definitionEn": "relating to the philosophy of beauty and taste, especially in art",
+          "examples": [
+            "The art gallery showcased a variety of aesthetic works, from abstract paintings to minimalist sculptures."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-216a7626",
+          "pos": "adjective",
+          "meaningZh": "有美感的；重視美的",
+          "definitionEn": "having a sense of beauty; characterized by a love of beauty",
+          "examples": [
+            "The art gallery showcased a stunning collection of aesthetic paintings and sculptures."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "affectionate",
+      "word": "affectionate",
+      "senses": [
+        {
+          "id": "sense-a4682c83",
+          "pos": "adjective",
+          "meaningZh": "深情的；慈愛的",
+          "definitionEn": "displaying affection; fond or loving",
+          "examples": [],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-b42af324",
+          "pos": "adjective",
+          "meaningZh": "充滿愛意的；溫情的",
+          "definitionEn": "having or showing warm feelings or affection towards others",
+          "examples": [
+            "My aunt is extremely affectionate towards her grandchildren and showers them with hugs and kisses."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "affiliate",
+      "word": "affiliate",
+      "senses": [
+        {
+          "id": "sense-185b7e89",
+          "pos": "verb",
+          "meaningZh": "加入；附屬於",
+          "definitionEn": "join an organization or group as a member or partner",
+          "examples": [
+            "After completing her degree in marketing, Sarah decided to affiliate herself with a prominent advertising agency."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-f09107aa",
+          "pos": "verb",
+          "meaningZh": "隸屬；掛名於",
+          "definitionEn": "be officially attached or connected to an organization",
+          "examples": [
+            "As a small business owner, it was important for me to affiliate with a reputable industry association to enhance my credibility and gain access to valuable resources."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "affirm",
+      "word": "affirm",
+      "senses": [
+        {
+          "id": "sense-8f1e3ee3",
+          "pos": "verb",
+          "meaningZh": "鄭重聲明；斷言",
+          "definitionEn": "declare or state solemnly and formally as true",
+          "examples": [
+            "During the trial, the witness will affirm that she saw the defendant at the crime scene."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-7d83555e",
+          "pos": "verb",
+          "meaningZh": "證實；確認",
+          "definitionEn": "establish or strengthen as with new evidence or facts",
+          "examples": [
+            "The witness's testimony affirmed the defendant's innocence."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "airtight",
+      "word": "airtight",
+      "senses": [
+        {
+          "id": "sense-e0a1db8b",
+          "pos": "adjective",
+          "meaningZh": "密封的；不透氣的",
+          "definitionEn": "not allowing air or gas to pass in or out",
+          "examples": [
+            "The container for storing perishable goods must be airtight to prevent them from spoiling."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-a6a26db5",
+          "pos": "adjective",
+          "meaningZh": "無懈可擊的；滴水不漏的",
+          "definitionEn": "having no weak points",
+          "examples": [
+            "The airtight alibi presented by the suspect convinced the jury of his innocence."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "airway",
+      "word": "airway",
+      "senses": [
+        {
+          "id": "sense-02a731b4",
+          "pos": "noun",
+          "meaningZh": "氣道；呼吸道",
+          "definitionEn": "the passages through which air enters and exits the body",
+          "examples": [
+            "During an asthma attack, the airway becomes narrower and it gets difficult to breathe."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-eea77788",
+          "pos": "noun",
+          "meaningZh": "通風管道；通氣孔",
+          "definitionEn": "a duct that provides ventilation, such as in mines",
+          "examples": [
+            "In hazardous underground mines, airways ensure that fresh air is pumped into the tunnels."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "algebra",
+      "word": "algebra",
+      "senses": [
+        {
+          "id": "sense-99566318",
+          "pos": "noun",
+          "meaningZh": "代數；代數學",
+          "definitionEn": "a branch of mathematics in which letters and symbols are used to represent numbers and quantities in formulas and equations",
+          "examples": [
+            "In order to solve the equation 2x + 5 = 15, you will need to use algebra to isolate x and find its value."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-a5678675",
+          "pos": "noun",
+          "meaningZh": "代數運算；廣義算術",
+          "definitionEn": "the mathematics of generalized arithmetical operations",
+          "examples": [
+            "In order to solve complex equations, students must have a solid understanding of algebra."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "alienate",
+      "word": "alienate",
+      "senses": [
+        {
+          "id": "sense-617f5c1e",
+          "pos": "verb",
+          "meaningZh": "疏遠；使感到孤立",
+          "definitionEn": "to make someone feel isolated or unfriendly",
+          "examples": [
+            "Her constant humiliation and criticism alienated her from her friends and family."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-2b220e3e",
+          "pos": "verb",
+          "meaningZh": "移轉（財產）；讓渡",
+          "definitionEn": "to transfer ownership or property",
+          "examples": [
+            "John decided to alienate one of his rental properties to his daughter as a gift."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "align",
+      "word": "align",
+      "senses": [
+        {
+          "id": "sense-5e668c77",
+          "pos": "verb",
+          "meaningZh": "對齊；排成一線",
+          "definitionEn": "to arrange things in a straight line or in the correct relative positions",
+          "examples": [
+            "In order to hang a picture perfectly, you must align it with the leveler."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-503b84c7",
+          "pos": "verb",
+          "meaningZh": "結盟；使立場一致",
+          "definitionEn": "to bring into cooperation or agreement with a particular group, party, or cause",
+          "examples": [
+            "It is important for political candidates to align themselves with the values and beliefs of their constituents."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "allege",
+      "word": "allege",
+      "senses": [
+        {
+          "id": "sense-1546f765",
+          "pos": "verb",
+          "meaningZh": "聲稱；指稱（未經證實）",
+          "definitionEn": "to state or claim that someone has done something illegal or wrong, but without providing proof",
+          "examples": [
+            "During the trial, the prosecution will allege that the defendant stole the valuable artwork."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "alligator",
+      "word": "alligator",
+      "senses": [
+        {
+          "id": "sense-c3741017",
+          "pos": "noun",
+          "meaningZh": "短吻鱷；美洲鱷",
+          "definitionEn": "either of two amphibious reptiles related to crocodiles, having shorter and broader snouts.",
+          "examples": [
+            "The swamp was filled with alligators basking in the sun."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "altitude",
+      "word": "altitude",
+      "senses": [
+        {
+          "id": "sense-79013f73",
+          "pos": "noun",
+          "meaningZh": "海拔；高度",
+          "definitionEn": "the height of an object or point in relation to sea level or ground level",
+          "examples": [
+            "The plane ascended to an altitude of 10,000 feet before leveling off for the rest of the flight."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-d2b0132f",
+          "pos": "noun",
+          "meaningZh": "仰角；天體高度角",
+          "definitionEn": "the distance of a celestial object above the horizon",
+          "examples": [
+            "The plane rose to an altitude of 30,000 feet."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "aluminum",
+      "word": "aluminum",
+      "senses": [
+        {
+          "id": "sense-548b8a7d",
+          "pos": "noun",
+          "meaningZh": "鋁（美式拼法）",
+          "definitionEn": "A silvery, lightweight, ductile, and nonmagnetic metallic element having good thermal and electrical conductivity, high reflectivity, and resistance to oxidation",
+          "examples": [
+            "The soda can I drank from was made of aluminum."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "ambiguity",
+      "word": "ambiguity",
+      "senses": [
+        {
+          "id": "sense-83a85ce2",
+          "pos": "noun",
+          "meaningZh": "模糊性；含糊不清",
+          "definitionEn": "unclearness or confusion caused by having more than one meaning",
+          "examples": [
+            "The ambiguity in the contract allowed for multiple interpretations, leading to a legal dispute between the two parties."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-5029e5af",
+          "pos": "noun",
+          "meaningZh": "歧義；多義詞句",
+          "definitionEn": "a word, phrase, or statement that has more than one meaning and the meaning cannot be determined from its context",
+          "examples": [
+            "The politician’s ambiguous statement about the new policy left everyone uncertain about its implications."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    }
+  ]
+}

@@ -1,0 +1,1317 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 167,
+  "words": [
+    {
+      "wordKey": "welfare",
+      "word": "welfare",
+      "senses": [
+        {
+          "id": "sense-772aedc5",
+          "pos": "noun",
+          "meaningZh": "福祉；幸福安康",
+          "definitionEn": "a contented state of being happy, healthy, and prosperous",
+          "examples": [
+            "After years of hard work and dedication, John finally achieved a state of welfare. He had a fulfilling career, a loving family, and good health."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-6e51c4a2",
+          "pos": "noun",
+          "meaningZh": "社會福利；救濟金",
+          "definitionEn": "governmental provision of economic assistance to persons in need",
+          "examples": [
+            "The welfare program provides financial support to low-income families, helping them meet their basic needs such as food, housing, and medical care."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L8",
+        "textbookTitle": "三民 B4·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "whatsoever",
+      "word": "whatsoever",
+      "senses": [
+        {
+          "id": "sense-4310a7f4",
+          "pos": "adjective",
+          "meaningZh": "任何的；絲毫的",
+          "definitionEn": "without any particular thing(s) being specified; whatever",
+          "examples": [
+            "She will not tolerate any kind of disrespect whatsoever."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "wheelchair",
+      "word": "wheelchair",
+      "senses": [
+        {
+          "id": "sense-f07f244a",
+          "pos": "noun",
+          "meaningZh": "輪椅",
+          "definitionEn": "a chair on wheels used by someone who cannot walk or has difficulty walking",
+          "examples": [
+            "The MRT station has elevators so that wheelchair users can reach the platform easily."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "whereabouts",
+      "word": "whereabouts",
+      "senses": [
+        {
+          "id": "sense-fe6de061",
+          "pos": "noun",
+          "meaningZh": "下落；所在地點",
+          "definitionEn": "the place where someone or something is; the location of someone or something",
+          "examples": [
+            "She was asking about my whereabouts yesterday means she wanted to know where I was during that time."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "whereas",
+      "word": "whereas",
+      "senses": [
+        {
+          "id": "sense-20db09b4",
+          "pos": "conjunction",
+          "meaningZh": "而；然而；反之",
+          "definitionEn": "used to contrast or compare two different facts or situations",
+          "examples": [
+            "John loves action movies, whereas Sarah prefers romantic comedies."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L3",
+        "textbookTitle": "三民 B4·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "whine",
+      "word": "whine",
+      "senses": [
+        {
+          "id": "sense-f654562c",
+          "pos": "noun",
+          "meaningZh": "嬌聲抱怨；哀鳴聲",
+          "definitionEn": "a complaint expressed in an annoying, high-pitched tone",
+          "examples": [
+            "Stop whining about the heat. It’s not that hot outside."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-4924bb29",
+          "pos": "verb",
+          "meaningZh": "發牢騷；哀聲訴苦",
+          "definitionEn": "to complain persistently and annoyingly",
+          "examples": [
+            "Stop whining about the heat and do something to cool yourself down."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "widespread",
+      "word": "widespread",
+      "senses": [
+        {
+          "id": "sense-0c69d338",
+          "pos": "adjective",
+          "meaningZh": "廣泛的；普遍的",
+          "definitionEn": "distributed over a considerable extent",
+          "examples": [
+            "The news of the pandemic led to widespread panic and fear throughout the entire country."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-25e908e5",
+          "pos": "adjective",
+          "meaningZh": "大範圍流傳的；廣為擴散的",
+          "definitionEn": "widely circulated or diffused",
+          "examples": [
+            "During the pandemic, there was widespread panic and fear."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L9 +1",
+        "textbookTitle": "龍騰 B2·L9、三民 B4·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "wig",
+      "word": "wig",
+      "senses": [
+        {
+          "id": "sense-d73adffc",
+          "pos": "noun",
+          "meaningZh": "假髮；假髮套",
+          "definitionEn": "a hairpiece made of real or synthetic hair that covers the head",
+          "examples": [
+            "She wore a beautiful blonde wig to the costume party, completely transforming her appearance."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-3a8265f6",
+          "pos": "noun",
+          "meaningZh": "嚴厲斥責；痛罵",
+          "definitionEn": "a severe scolding, especially in British slang",
+          "examples": [
+            "After coming home late for the third night in a row, John received a proper wig from his disappointed parents."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "wilderness",
+      "word": "wilderness",
+      "senses": [
+        {
+          "id": "sense-3313ca50",
+          "pos": "noun",
+          "meaningZh": "荒野；蠻荒之地",
+          "definitionEn": "a wild or uncultivated region, typically uninhabited by humans",
+          "examples": [
+            "After days of hiking, we finally reached the breathtaking wilderness at the top of the mountain."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-2b7f8443",
+          "pos": "noun",
+          "meaningZh": "孤立；與世隔絕",
+          "definitionEn": "a state of being alone or isolated",
+          "examples": [
+            "After losing their way on the hike, they found themselves in the heart of the wilderness with no cell phone signal or civilization in sight."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "wildlife",
+      "word": "wildlife",
+      "senses": [
+        {
+          "id": "sense-4831712e",
+          "pos": "noun",
+          "meaningZh": "野生動物；野生生態",
+          "definitionEn": "all the non-cultivated organisms and their natural environments that are not controlled by humans",
+          "examples": [
+            "We went on a safari and saw various forms of wildlife, including lions, elephants, and giraffes, in their natural habitats."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "windshield",
+      "word": "windshield",
+      "senses": [
+        {
+          "id": "sense-ec4ed97e",
+          "pos": "noun",
+          "meaningZh": "擋風玻璃；前擋玻璃",
+          "definitionEn": "A transparent screen made of glass or plastic that protects the driver and passengers of a vehicle from wind, debris, and other objects.",
+          "examples": [
+            "As the car sped down the highway, the sturdy windshield shielded the driver and passengers from the gusts of wind and flying insects."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "wink",
+      "word": "wink",
+      "senses": [
+        {
+          "id": "sense-4e05bafa",
+          "pos": "noun",
+          "meaningZh": "眨眼；瞬間眨眼",
+          "definitionEn": "the act of closing and opening the eyes rapidly",
+          "examples": [
+            "After telling a joke, she gave a playful wink to let him know she was kidding."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-d14b8702",
+          "pos": "noun",
+          "meaningZh": "眨眼示意；飛吻眼神",
+          "definitionEn": "a signal made by quickly closing one eye",
+          "examples": [
+            "When Jenny saw her crush across the room, she gave him a playful wink to let him know she was interested."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "wit",
+      "word": "wit",
+      "senses": [
+        {
+          "id": "sense-2b5a1ba1",
+          "pos": "noun",
+          "meaningZh": "機智；才思",
+          "definitionEn": "mental acuity or keen intelligence",
+          "examples": [
+            "She displayed her wit by coming up with funny jokes at the party."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-38ae666d",
+          "pos": "noun",
+          "meaningZh": "妙語；俏皮話",
+          "definitionEn": "a message or remark that shows cleverness or humor, often intended to be amusing",
+          "examples": [
+            "His quick wit and sense of humor won over the crowd during the stand-up comedy show."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "withdraw",
+      "word": "withdraw",
+      "senses": [
+        {
+          "id": "sense-12699601",
+          "pos": "verb",
+          "meaningZh": "撤回；退出",
+          "definitionEn": "to pull back or move away or backward",
+          "examples": [
+            "After losing his job, he had to withdraw his children from their expensive school and enroll them in a public school."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-7089365b",
+          "pos": "verb",
+          "meaningZh": "收回承諾；食言取消",
+          "definitionEn": "to retract from a previous commitment or statement",
+          "examples": [
+            "Although she had promised to bring the cake to the party, she had to withdraw due to an unexpected emergency."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "wither",
+      "word": "wither",
+      "senses": [
+        {
+          "id": "sense-38fdbac9",
+          "pos": "verb",
+          "meaningZh": "枯萎；凋謝",
+          "definitionEn": "to shrivel up or become dry and lifeless, typically as a result of a lack of water or a sustained high temperature.",
+          "examples": [
+            "During the severe drought, the once lush garden began to wither and the plants turned brown."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-65a53e5e",
+          "pos": "verb",
+          "meaningZh": "衰退；減弱",
+          "definitionEn": "to become weak or less effective.",
+          "examples": [
+            "During the drought, the crops began to wither, and their leaves started to turn brown."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L6",
+        "textbookTitle": "龍騰 B5·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "witness",
+      "word": "witness",
+      "senses": [
+        {
+          "id": "sense-82a2e9c2",
+          "pos": "noun",
+          "meaningZh": "目擊者；見證人",
+          "definitionEn": "a close observer; someone who looks at something (such as an exhibition of some kind)",
+          "examples": [
+            "The detective interviewed several witnesses who had seen the crime taking place."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-6297f2e0",
+          "pos": "noun",
+          "meaningZh": "證人；親歷者",
+          "definitionEn": "a person who sees an event and reports what happened",
+          "examples": [
+            "The police were searching for witnesses who could help them solve the crime."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L1 +1",
+        "textbookTitle": "龍騰 B4·L1、三民 B4·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "witty",
+      "word": "witty",
+      "senses": [
+        {
+          "id": "sense-5b1c7d03",
+          "pos": "adjective",
+          "meaningZh": "機智風趣的；妙語如珠的",
+          "definitionEn": "possessing or showing quick wit or clever humor",
+          "examples": [
+            "During the discussion, he made several witty remarks that had the audience in stitches."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "workout",
+      "word": "workout",
+      "senses": [
+        {
+          "id": "sense-1d994abf",
+          "pos": "noun",
+          "meaningZh": "健身訓練；運動課程",
+          "definitionEn": "a session of physical exercise designed to improve fitness and health",
+          "examples": [
+            "After a long day at work, I like to unwind by going to the gym and doing a workout."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "workplace",
+      "word": "workplace",
+      "senses": [
+        {
+          "id": "sense-2e36f794",
+          "pos": "noun",
+          "meaningZh": "工作場所；辦公環境",
+          "definitionEn": "a physical location where an employee works and where business is conducted",
+          "examples": [
+            "She loves the decorations in her workplace, which make the otherwise boring corporate environment feel more inviting and comfortable."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "workshop",
+      "word": "workshop",
+      "senses": [
+        {
+          "id": "sense-b40adc33",
+          "pos": "noun",
+          "meaningZh": "工作坊；手工作業室",
+          "definitionEn": "a small workplace where handcrafts or manufacturing are carried out.",
+          "examples": [
+            "The carpenter spent the day in his workshop, crafting a beautiful wooden chair."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-e5893025",
+          "pos": "noun",
+          "meaningZh": "研習營；短期培訓課程",
+          "definitionEn": "a brief, intensive course for a small group of people, designed to teach or improve skills in a particular area",
+          "examples": [
+            "I attended a photography workshop where they taught us advanced techniques for capturing stunning landscapes."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "wreck",
+      "word": "wreck",
+      "senses": [
+        {
+          "id": "sense-141ed787",
+          "pos": "noun",
+          "meaningZh": "事故殘骸；撞毀的車船",
+          "definitionEn": "a ship, car, or plane accident, often causing serious damage or destruction.",
+          "examples": [
+            "The storm caused a massive wreck, leaving dozens of cars scattered across the highway."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-12785ddb",
+          "pos": "verb",
+          "meaningZh": "使崩潰；摧毀心理",
+          "definitionEn": "to cause a person or their emotions to feel devastated.",
+          "examples": [
+            "The sudden loss of her job completely wrecked her, leaving her feeling hopeless and lost."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "yawn",
+      "word": "yawn",
+      "senses": [
+        {
+          "id": "sense-5519ff2a",
+          "pos": "noun",
+          "meaningZh": "打哈欠；哈欠",
+          "definitionEn": "an involuntary reflex consisting of the inhalation of air following the opening of the mouth widely, typically caused by tiredness or boredom",
+          "examples": [
+            "After staying up all night studying, she couldn't help but yawn during class."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-2a19c25e",
+          "pos": "verb",
+          "meaningZh": "打哈欠",
+          "definitionEn": "open one’s mouth wide and inhale deeply due to tiredness or boredom",
+          "examples": [
+            "After a long day at work, I couldn't help but yawn as soon as I sat down on the couch."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "youthful",
+      "word": "youthful",
+      "senses": [
+        {
+          "id": "sense-85edd8b6",
+          "pos": "adjective",
+          "meaningZh": "年輕的；青春洋溢的",
+          "definitionEn": "having qualities or looking like someone young; showing vigor and freshness",
+          "examples": [
+            "Sarah's energetic dance moves and radiant smile made her look youthful, even though she was in her fifties."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "abbreviate",
+      "word": "abbreviate",
+      "senses": [
+        {
+          "id": "sense-89b79731",
+          "pos": "verb",
+          "meaningZh": "縮短；省略",
+          "definitionEn": "to make shorter in length or time, to shorten by omission of parts without sacrificing the essential meaning",
+          "examples": [
+            "In order to fit within the required time frame, the speaker had to abbreviate her presentation by condensing the content and skipping some non-essential details."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-7a84a966",
+          "pos": "verb",
+          "meaningZh": "縮減；摘要",
+          "definitionEn": "to reduce in scope while retaining essential elements",
+          "examples": [
+            "We need to abbreviate the five-page report into a concise two-page summary."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "abide",
+      "word": "abide",
+      "senses": [
+        {
+          "id": "sense-02fdb2e8",
+          "pos": "verb",
+          "meaningZh": "忍受；容忍",
+          "definitionEn": "tolerate or endure something unpleasant",
+          "examples": [
+            "Even though the weather was terrible, she had to abide the conditions and continue with the outdoor event."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-7dfaf9a6",
+          "pos": "verb",
+          "meaningZh": "留居；暫住",
+          "definitionEn": "to remain or stay in a place",
+          "examples": [
+            "After a long day of hiking, we found a comfortable spot by the river and decided to abide there for the night."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "aboriginal",
+      "word": "aboriginal",
+      "senses": [
+        {
+          "id": "sense-d22e2b37",
+          "pos": "noun",
+          "meaningZh": "原住民；土著",
+          "definitionEn": "an indigenous person who was born in a particular place",
+          "examples": [
+            "The aboriginals of Australia have a rich cultural heritage that they have been preserving for thousands of years."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-93bd1e7a",
+          "pos": "adjective",
+          "meaningZh": "原住民的；原生的",
+          "definitionEn": "characteristic of or relating to people inhabiting a region from the beginning",
+          "examples": [
+            "The aboriginal people of Australia have a rich cultural heritage that dates back tens of thousands of years."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "abound",
+      "word": "abound",
+      "senses": [
+        {
+          "id": "sense-dd3bf504",
+          "pos": "verb",
+          "meaningZh": "大量存在；充斥",
+          "definitionEn": "exist in large numbers or amounts; be plentiful",
+          "examples": [
+            "During the summer, the beaches abound with tourists enjoying the sunshine and waves."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-c31e4421",
+          "pos": "verb",
+          "meaningZh": "充滿活動；洋溢",
+          "definitionEn": "be in a state of movement or action",
+          "examples": [
+            "The streets were abounding with people celebrating the festival."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "abstraction",
+      "word": "abstraction",
+      "senses": [
+        {
+          "id": "sense-39d46a7f",
+          "pos": "noun",
+          "meaningZh": "抽象化；抽象概念",
+          "definitionEn": "the process of formulating general concepts by abstracting common properties of instances",
+          "examples": [
+            "The painter’s use of abstraction allowed her to express emotions more powerfully than with realistic depictions."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-a64c6bde",
+          "pos": "noun",
+          "meaningZh": "出神；沉思",
+          "definitionEn": "the state of preoccupation with something abstract or non-material",
+          "examples": [
+            "His abstraction with the idea of utopia prevented him from taking action in the real world."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "abundance",
+      "word": "abundance",
+      "senses": [
+        {
+          "id": "sense-c508d3c7",
+          "pos": "noun",
+          "meaningZh": "大量；豐富",
+          "definitionEn": "a very large quantity of something",
+          "examples": [
+            "After a successful harvest, the farmer had an abundance of fresh fruits and vegetables."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-e99a8f76",
+          "pos": "noun",
+          "meaningZh": "（化學）元素豐度；含量比例",
+          "definitionEn": "(chemistry) the ratio of the total mass of an element in the earth’s crust to the total mass of the earth’s crust; expressed as a percentage or in parts per million",
+          "examples": [
+            "The abundance of oxygen in the earth's crust is approximately 46.6%, making it the most abundant element."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L3",
+        "textbookTitle": "龍騰 B4·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "academy",
+      "word": "academy",
+      "senses": [
+        {
+          "id": "sense-2ba7aca7",
+          "pos": "noun",
+          "meaningZh": "學術機構；研究院",
+          "definitionEn": "a learned establishment for the advancement of knowledge",
+          "examples": [
+            "Many students who aspire to be scientists or academics apply to prestigious academies such as Harvard or Stanford."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-b36f15a7",
+          "pos": "noun",
+          "meaningZh": "專科學校；訓練機構",
+          "definitionEn": "a school for specialized training",
+          "examples": [
+            "John always wanted to become a chef, so he enrolled himself in a culinary academy to gain specialized training in cooking."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L6",
+        "textbookTitle": "龍騰 B3·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    }
+  ]
+}

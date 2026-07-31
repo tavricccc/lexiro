@@ -1,0 +1,1315 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 190,
+  "words": [
+    {
+      "wordKey": "pilgrim",
+      "word": "pilgrim",
+      "senses": [
+        {
+          "id": "sense-4fd98a5d",
+          "pos": "noun",
+          "meaningZh": "朝聖者",
+          "definitionEn": "someone who journeys to a sacred place as an act of religious devotion",
+          "examples": [
+            "During her visit to Mecca, she joined millions of other pilgrims on the hajj, walking around the Kaaba seven times in an act of devotion."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-cc0cb94b",
+          "pos": "noun",
+          "meaningZh": "旅行者；異鄉客",
+          "definitionEn": "someone who journeys in foreign lands",
+          "examples": [
+            "When she graduated, she felt like a pilgrim starting a new journey in an unknown land."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L9",
+        "textbookTitle": "龍騰 B3·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "pimple",
+      "word": "pimple",
+      "senses": [
+        {
+          "id": "sense-52596f8b",
+          "pos": "noun",
+          "meaningZh": "粉刺；青春痘；丘疹",
+          "definitionEn": "A small, inflamed bump on the surface of the skin; also known as a pustule or papule. Pimples are a common symptom of acne, a skin condition caused by clogged pores.",
+          "examples": [
+            "I woke up with a big pimple on my forehead, which was very embarrassing."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "pinch",
+      "word": "pinch",
+      "senses": [
+        {
+          "id": "sense-230674b3",
+          "pos": "noun",
+          "meaningZh": "夾傷；捏痛",
+          "definitionEn": "an injury resulting from getting some body part squeezed",
+          "examples": [
+            "While cooking, she accidentally gave herself a pinch in her finger between the two metal spoons."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-d6189db4",
+          "pos": "noun",
+          "meaningZh": "少許；一撮",
+          "definitionEn": "a slight but appreciable amount",
+          "examples": [
+            "Add just a pinch of salt to enhance the flavor of the soup."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "plague",
+      "word": "plague",
+      "senses": [
+        {
+          "id": "sense-f20c78dd",
+          "pos": "noun",
+          "meaningZh": "瘟疫；傳染病",
+          "definitionEn": "any epidemic disease with a high death rate",
+          "examples": [
+            "During the Middle Ages, the Black Death ravaged Europe, causing a massive plague that resulted in the deaths of millions of people."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-1c611280",
+          "pos": "noun",
+          "meaningZh": "鼠疫；黑死病",
+          "definitionEn": "a serious infection of rodents caused by Yersinia pestis and accidentally transmitted to humans",
+          "examples": [
+            "During the Middle Ages, the plague ravaged Europe, resulting in the death of millions of people."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "plantation",
+      "word": "plantation",
+      "senses": [
+        {
+          "id": "sense-c8704474",
+          "pos": "noun",
+          "meaningZh": "大農場；種植園",
+          "definitionEn": "an estate typically located in tropical areas, where crops are grown on a large scale for commercial purposes",
+          "examples": [
+            "The plantation owner oversaw the cultivation of acres of sugarcane, employing a workforce to ensure a successful harvest."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-a1fc8b5d",
+          "pos": "noun",
+          "meaningZh": "人工林；樹木園",
+          "definitionEn": "a garden that contains a small forested area with cultivated trees and little undergrowth",
+          "examples": [
+            "In the plantation, towering oak trees are interspersed with neatly trimmed hedge rows."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "playwright",
+      "word": "playwright",
+      "senses": [
+        {
+          "id": "sense-e04561fd",
+          "pos": "noun",
+          "meaningZh": "劇作家；編劇",
+          "definitionEn": "a person who writes plays or dramas for the theater",
+          "examples": [
+            "The talented playwright won numerous awards for her captivating script."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "plow",
+      "word": "plow",
+      "senses": [
+        {
+          "id": "sense-85f85103",
+          "pos": "noun",
+          "meaningZh": "犁；耕犁",
+          "definitionEn": "a farm tool with one or more heavy blades used to break and turn over soil in preparation for planting crops",
+          "examples": [
+            "The farmer used his new plow to till the land for the upcoming growing season."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-47e05e47",
+          "pos": "verb",
+          "meaningZh": "犁地；耕田",
+          "definitionEn": "to use a plow to break, turn over, and prepare the soil for planting",
+          "examples": [
+            "The farmer plowed the field to create furrows for planting crops."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "pneumonia",
+      "word": "pneumonia",
+      "senses": [
+        {
+          "id": "sense-8b581d31",
+          "pos": "noun",
+          "meaningZh": "肺炎",
+          "definitionEn": "An illness that affects one or both lungs. It causes the air sacs of the lungs to become inflamed, making it difficult to breathe. The most common causes of pneumonia are viral or bacterial infections, but it can also be caused by inhaling irritants such as chemicals or dust.",
+          "examples": [
+            "After being exposed to a dusty environment without wearing a mask, she developed pneumonia and had to be hospitalized."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "polar",
+      "word": "polar",
+      "senses": [
+        {
+          "id": "sense-87ba5caf",
+          "pos": "adjective",
+          "meaningZh": "極地的；極圈的",
+          "definitionEn": "located at or near the Earth’s poles",
+          "examples": [
+            "The scientists conducted their research expedition in the polar region, enduring extreme cold temperatures and harsh weather conditions."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-74cd54bc",
+          "pos": "adjective",
+          "meaningZh": "南北極的；兩極的",
+          "definitionEn": "of or existing at or near one of the two opposite ends of the Earth’s axis",
+          "examples": [
+            "Despite the freezing temperatures, the team of scientists bravely conducted research in the polar region."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L5",
+        "textbookTitle": "龍騰 B5·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "ponder",
+      "word": "ponder",
+      "senses": [
+        {
+          "id": "sense-9241f0df",
+          "pos": "verb",
+          "meaningZh": "深思；沉思",
+          "definitionEn": "To carefully think about something for a long time",
+          "examples": [
+            "After receiving a job offer from two different companies, she took several days off to ponder her decision."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "pony",
+      "word": "pony",
+      "senses": [
+        {
+          "id": "sense-8ad099e7",
+          "pos": "noun",
+          "meaningZh": "小馬；矮種馬",
+          "definitionEn": "a small gentle horse, usually less than five feet tall at the shoulder",
+          "examples": [
+            "My niece had her first pony ride at the local fair."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "populate",
+      "word": "populate",
+      "senses": [
+        {
+          "id": "sense-14ea117e",
+          "pos": "verb",
+          "meaningZh": "居住於；棲息在",
+          "definitionEn": "inhabit or live in; be an inhabitant of",
+          "examples": [
+            "The small island is populated by a community of fishermen who rely on the sea for their livelihood."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-356f0665",
+          "pos": "verb",
+          "meaningZh": "填充居民；使有人居住",
+          "definitionEn": "fill with inhabitants",
+          "examples": [
+            "After many years of growth, the once deserted island is now populated with a thriving community of residents."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "porter",
+      "word": "porter",
+      "senses": [
+        {
+          "id": "sense-b895177e",
+          "pos": "verb",
+          "meaningZh": "搬運行李；挑夫",
+          "definitionEn": "to carry luggage or supplies",
+          "examples": [
+            "The porter hurriedly picked up the traveler’s heavy luggage and loaded it onto the cart."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "posture",
+      "word": "posture",
+      "senses": [
+        {
+          "id": "sense-60e19142",
+          "pos": "noun",
+          "meaningZh": "姿勢；體態",
+          "definitionEn": "the arrangement of the body and its limbs, in a way that communicates confidence or a lack thereof",
+          "examples": [
+            "When preparing for a job interview, it is important to maintain good posture by sitting up straight, shoulders back, and chin up, as it conveys confidence and professionalism."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-ebf47411",
+          "pos": "verb",
+          "meaningZh": "擺姿勢；故意採取某種姿態",
+          "definitionEn": "intentionally adopt a certain pose or stance, often for artistic purposes",
+          "examples": [
+            "The ballet dancer gracefully adjusted her posture as she prepared to execute a challenging move, her body appearing as a work of art in motion."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "potent",
+      "word": "potent",
+      "senses": [
+        {
+          "id": "sense-15e24adf",
+          "pos": "adjective",
+          "meaningZh": "強大的；有力的",
+          "definitionEn": "powerful",
+          "examples": [
+            "The potent engine effortlessly propelled the race car down the track."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-6548122c",
+          "pos": "adjective",
+          "meaningZh": "效力強的；強效的",
+          "definitionEn": "having a strong effect on your body or mind",
+          "examples": [
+            "After taking the potent pain medication, she was finally able to sleep through the night."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "poultry",
+      "word": "poultry",
+      "senses": [
+        {
+          "id": "sense-da29656c",
+          "pos": "noun",
+          "meaningZh": "家禽；飼養禽鳥",
+          "definitionEn": "the domesticated fowl, including chickens, turkeys, ducks, and geese, raised for meat or eggs",
+          "examples": [
+            "The farmer takes care of a large poultry flock, consisting of chickens, turkeys, ducks, and geese, to supply fresh eggs and meat to the local market."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-75f1b66f",
+          "pos": "noun",
+          "meaningZh": "家禽肉；禽肉",
+          "definitionEn": "the flesh of such birds, used as food",
+          "examples": [
+            "I bought a whole chicken to cook for dinner - I enjoy preparing a delicious poultry dish."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "preach",
+      "word": "preach",
+      "senses": [
+        {
+          "id": "sense-9ef36677",
+          "pos": "verb",
+          "meaningZh": "佈道；講道",
+          "definitionEn": "deliver a sermon or religious address to an assembled group of people",
+          "examples": [
+            "The priest will preach about the importance of forgiveness during today’s church service."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-ccecc959",
+          "pos": "verb",
+          "meaningZh": "宣揚；力倡",
+          "definitionEn": "urge or encourage a particular belief or course of action; advocate strongly",
+          "examples": [
+            "The teacher preached the importance of teamwork to his students, hoping they would work together on their next project."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "precede",
+      "word": "precede",
+      "senses": [
+        {
+          "id": "sense-cffb5817",
+          "pos": "verb",
+          "meaningZh": "先於；領先",
+          "definitionEn": "to come before (something) in time, order, or rank",
+          "examples": [
+            "In a traditional wedding ceremony, the maid of honor usually precedes the bride down the aisle."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-6b3c9e70",
+          "pos": "verb",
+          "meaningZh": "走在前面；居前",
+          "definitionEn": "to go ahead or in front of (someone or something) in time or space",
+          "examples": [
+            "In a parade, the marching band will precede the floats and dancers."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "precedent",
+      "word": "precedent",
+      "senses": [
+        {
+          "id": "sense-c849daeb",
+          "pos": "noun",
+          "meaningZh": "先例；前例",
+          "definitionEn": "a subject mentioned earlier (preceding in time)",
+          "examples": [
+            "In the previous meeting, the team set a precedent by agreeing to work on weekends when necessary."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-d4c48757",
+          "pos": "adjective",
+          "meaningZh": "在前的；先前的",
+          "definitionEn": "preceding in time, order, or significance",
+          "examples": [
+            "In the court of law, the judge considered the decision made in a similar case as a precedent for the current trial."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "precision",
+      "word": "precision",
+      "senses": [
+        {
+          "id": "sense-4dff22b4",
+          "pos": "noun",
+          "meaningZh": "精確；準確",
+          "definitionEn": "the quality of being exact or accurate",
+          "examples": [
+            "When performing surgery, the doctor needs to have precision in their movements to ensure the safety of the patient."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-e0087e51",
+          "pos": "noun",
+          "meaningZh": "精密度；一致性",
+          "definitionEn": "the quality of being reproducible in amount or performance",
+          "examples": [
+            "The surgeon used her precision to make the exact incision needed for the delicate procedure."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "predecessor",
+      "word": "predecessor",
+      "senses": [
+        {
+          "id": "sense-f6abc2c4",
+          "pos": "noun",
+          "meaningZh": "前任；前任者",
+          "definitionEn": "a person who held a particular position before the current holder",
+          "examples": [
+            "After John retired, Sarah became the CEO, succeeding her predecessor in the position."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-d913e9f8",
+          "pos": "noun",
+          "meaningZh": "前身；先驅",
+          "definitionEn": "something that came before something else and influenced or led to its development",
+          "examples": [
+            "The flip phone was a predecessor to the smartphone."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "prehistoric",
+      "word": "prehistoric",
+      "senses": [
+        {
+          "id": "sense-cd93170b",
+          "pos": "adjective",
+          "meaningZh": "史前的；有文字以前的",
+          "definitionEn": "belonging to or existing in times before recorded history or the invention of writing",
+          "examples": [
+            "Archaeologists uncovered prehistoric cave paintings that date back thousands of years."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-f9a1f62a",
+          "pos": "adjective",
+          "meaningZh": "史前時代的",
+          "definitionEn": "of, relating to, or denoting the period before written records",
+          "examples": [
+            "Archaeologists found prehistoric cave paintings in the deep underground caves."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "premiere",
+      "word": "premiere",
+      "senses": [
+        {
+          "id": "sense-97b72253",
+          "pos": "noun",
+          "meaningZh": "首演；首映",
+          "definitionEn": "the first public performance of a play, movie, or musical composition.",
+          "examples": [
+            "The theater was abuzz with excitement as the curtains rose for the premiere of the highly anticipated play."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-e4705d27",
+          "pos": "verb",
+          "meaningZh": "首次公演；首映",
+          "definitionEn": "perform something publicly for the first time.",
+          "examples": [
+            "The famous singer's highly anticipated album premiere drew a large crowd of excited fans."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "preside",
+      "word": "preside",
+      "senses": [
+        {
+          "id": "sense-fb06e45a",
+          "pos": "verb",
+          "meaningZh": "主持；主導",
+          "definitionEn": "to be in charge of a meeting or gathering",
+          "examples": [
+            "During the conference, the chairman will preside over the proceedings and ensure that each speaker adheres to the allocated time limit."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "prestige",
+      "word": "prestige",
+      "senses": [
+        {
+          "id": "sense-128110f4",
+          "pos": "noun",
+          "meaningZh": "聲望；威望",
+          "definitionEn": "a high level of respect and admiration that is achieved through being successful, important, or powerful",
+          "examples": [
+            "The company’s prestige grew significantly after their successful merger with their main competitor."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "preventive",
+      "word": "preventive",
+      "senses": [
+        {
+          "id": "sense-0e16440c",
+          "pos": "adjective",
+          "meaningZh": "預防性的；防範的",
+          "definitionEn": "designed or used to prevent something, especially something undesirable",
+          "examples": [
+            "Wearing sunscreen is a preventive measure against skin cancer."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-0d34fce3",
+          "pos": "adjective",
+          "meaningZh": "疾病預防的；促進健康的",
+          "definitionEn": "relating to disease prevention or health promotion",
+          "examples": [
+            "Regular exercise and a balanced diet are preventive measures against chronic illnesses."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "preview",
+      "word": "preview",
+      "senses": [
+        {
+          "id": "sense-0ab1e5ec",
+          "pos": "noun",
+          "meaningZh": "預告；試映；預覽",
+          "definitionEn": "a preliminary introduction or inspection of something, especially a movie or play",
+          "examples": [],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-574f9c8a",
+          "pos": "verb",
+          "meaningZh": "事先審閱；預先查看",
+          "definitionEn": "inspect or see (something) in advance or as a preliminary step",
+          "examples": [
+            "Before releasing the movie trailer, the production team decided to preview the clip to a select group of critics and audience members."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "priceless",
+      "word": "priceless",
+      "senses": [
+        {
+          "id": "sense-c56a3a6d",
+          "pos": "adjective",
+          "meaningZh": "無價的；珍貴無比的",
+          "definitionEn": "having a value beyond measure or incomparable to any price or material possession",
+          "examples": [
+            "As Sarah held her newborn baby in her arms for the first time, she realized that the love and joy she felt in that moment were priceless."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L3",
+        "textbookTitle": "龍騰 B4·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "privatize",
+      "word": "privatize",
+      "senses": [
+        {
+          "id": "sense-fc7cecb7",
+          "pos": "verb",
+          "meaningZh": "民營化；私有化",
+          "definitionEn": "to sell a business or industry owned by the government so that it becomes privately owned",
+          "examples": [
+            "The government plans to privatize the national railway despite strong opposition from the unions."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "probe",
+      "word": "probe",
+      "senses": [
+        {
+          "id": "sense-917c4df6",
+          "pos": "noun",
+          "meaningZh": "探測；探勘",
+          "definitionEn": "an exploratory action or expedition",
+          "examples": [
+            "The scientist used a probe to investigate the depths of the ocean and discover new species."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-b4731013",
+          "pos": "noun",
+          "meaningZh": "調查；探查",
+          "definitionEn": "an inquiry into unfamiliar or questionable activities",
+          "examples": [
+            "The detective used a probe to investigate the mysterious disappearance."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    }
+  ]
+}

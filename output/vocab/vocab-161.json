@@ -1,0 +1,1391 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 161,
+  "words": [
+    {
+      "wordKey": "supervision",
+      "word": "supervision",
+      "senses": [
+        {
+          "id": "sense-0caa89f3",
+          "pos": "noun",
+          "meaningZh": "監督；監管",
+          "definitionEn": "the act or process of watching and directing what someone does or how something is done",
+          "examples": [
+            "The construction site manager provided constant supervision to ensure that safety protocols were followed and the project was completed on time."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-1d18a4b8",
+          "pos": "noun",
+          "meaningZh": "督導；管理工作",
+          "definitionEn": "the job of making sure that something is done correctly or safely",
+          "examples": [
+            "The construction site manager was responsible for the supervision of the workers to ensure that all safety protocols were followed."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "supervisor",
+      "word": "supervisor",
+      "senses": [
+        {
+          "id": "sense-6c15e117",
+          "pos": "noun",
+          "meaningZh": "主管；監督者",
+          "definitionEn": "a person who supervises or oversees a person or work",
+          "examples": [
+            "The supervisor inspected the construction site to ensure that all safety protocols were being followed."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-8cab7cb5",
+          "pos": "noun",
+          "meaningZh": "監控程式；管理程序",
+          "definitionEn": "a program that monitors and controls the execution of other programs",
+          "examples": [
+            "In a computer network, the supervisor ensures that all the programs running on the server are functioning properly and efficiently."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "supposedly",
+      "word": "supposedly",
+      "senses": [
+        {
+          "id": "sense-38919c43",
+          "pos": "adverb",
+          "meaningZh": "據說；相傳",
+          "definitionEn": "according to what is generally assumed or believed to be true",
+          "examples": [
+            "Supposedly, the flowers in this garden are known to bloom year round."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-14532ddf",
+          "pos": "adverb",
+          "meaningZh": "據稱；據我所知",
+          "definitionEn": "as supposed; as I was told by someone",
+          "examples": [
+            "She is supposedly the best detective in town, but nobody has ever seen her solve a case."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "supreme",
+      "word": "supreme",
+      "senses": [
+        {
+          "id": "sense-5319834c",
+          "pos": "adjective",
+          "meaningZh": "最高的；卓越超群的",
+          "definitionEn": "highest in excellence or achievement",
+          "examples": [
+            "He was crowned the supreme champion of the competition after winning every single match and showcasing unparalleled skill."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-75bb2e85",
+          "pos": "adjective",
+          "meaningZh": "最高權力的；至高無上的",
+          "definitionEn": "greatest in status or authority or power",
+          "examples": [
+            "In a monarchy, the king holds supreme power over the entire kingdom."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "surgeon",
+      "word": "surgeon",
+      "senses": [
+        {
+          "id": "sense-40632c13",
+          "pos": "noun",
+          "meaningZh": "外科醫生；外科醫師",
+          "definitionEn": "a doctor who specializes in performing surgical procedures",
+          "examples": [
+            "The patient needed immediate surgery due to a life-threatening injury, so the surgeon was called in to perform the operation."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "surgery",
+      "word": "surgery",
+      "senses": [
+        {
+          "id": "sense-e042e82c",
+          "pos": "noun",
+          "meaningZh": "手術；外科手術",
+          "definitionEn": "a medical procedure that involves making incisions in the body to repair damage or treat various conditions",
+          "examples": [
+            "Alex underwent a surgery to correct his deviated septum and improve his breathing."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-152957fd",
+          "pos": "noun",
+          "meaningZh": "外科學；外科醫術",
+          "definitionEn": "the branch of medicine that involves the treatment of injuries or disorders by surgical methods, which may involve cutting into the body with medical instruments",
+          "examples": [
+            "After his skiing accident, the athlete required surgery to repair his broken leg."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L4",
+        "textbookTitle": "龍騰 B2·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "surplus",
+      "word": "surplus",
+      "senses": [
+        {
+          "id": "sense-613c7410",
+          "pos": "adjective",
+          "meaningZh": "多餘的；過剩的",
+          "definitionEn": "exceeding what is necessary, extra or leftover",
+          "examples": [
+            "After the party, there was a surplus of food that could feed another twenty people."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-3dc40866",
+          "pos": "noun",
+          "meaningZh": "剩餘量；過剩品",
+          "definitionEn": "an amount, quantity, etc., greater than needed",
+          "examples": [
+            "After the harvest, the farmers had a surplus of corn, so they decided to sell the excess to neighboring towns."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "surrender",
+      "word": "surrender",
+      "senses": [
+        {
+          "id": "sense-a2d1f820",
+          "pos": "verb",
+          "meaningZh": "投降；認輸",
+          "definitionEn": "give up; agree to stop fighting or resisting",
+          "examples": [
+            "The army decided to surrender after realizing they were outnumbered and out of ammunition."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-f28fd276",
+          "pos": "verb",
+          "meaningZh": "放棄；讓出（控制權）",
+          "definitionEn": "relinquish possession or control over",
+          "examples": [
+            "After a long and intense battle, the enemy forces were forced to surrender and hand over their weapons."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "surroundings",
+      "word": "surroundings",
+      "senses": [
+        {
+          "id": "sense-bee49ed4",
+          "pos": "noun",
+          "meaningZh": "環境；周圍狀況",
+          "definitionEn": "the environmental condition",
+          "examples": [
+            "Before moving ahead with the construction of the new industrial unit, it is necessary to assess its impact on the surroundings, including air, water, and land."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-2f5ced04",
+          "pos": "noun",
+          "meaningZh": "周遭地區；附近環境",
+          "definitionEn": "the area in which something exists or lives",
+          "examples": [
+            "When moving into a new neighborhood, it is important to familiarize yourself with your surroundings in order to feel more comfortable and safe."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L5",
+        "textbookTitle": "龍騰 B1·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "surveillance",
+      "word": "surveillance",
+      "senses": [
+        {
+          "id": "sense-836b3840",
+          "pos": "noun",
+          "meaningZh": "監視；監控",
+          "definitionEn": "the act of observing someone or something for a particular purpose or reason, often to gather information; also refers to the systems or methods used for such observation, especially for monitoring activities of individuals or groups (typically by a government or other authority)",
+          "examples": [
+            "In order to investigate the suspected criminal activity, the police set up surveillance cameras around the building."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "suspend",
+      "word": "suspend",
+      "senses": [
+        {
+          "id": "sense-8f385a93",
+          "pos": "verb",
+          "meaningZh": "懸掛；懸空吊著",
+          "definitionEn": "hang freely",
+          "examples": [
+            "The wind caused the curtains to suspend in mid-air."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-85a71715",
+          "pos": "verb",
+          "meaningZh": "暫時停職；停學",
+          "definitionEn": "bar temporarily from school, office, etc.",
+          "examples": [
+            "The student was suspended for cheating on the exam."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "suspicious",
+      "word": "suspicious",
+      "senses": [
+        {
+          "id": "sense-411b8b50",
+          "pos": "adjective",
+          "meaningZh": "可疑的；令人起疑的",
+          "definitionEn": "causing one to have the feeling that something is wrong or harmful; not as expected or trustworthy",
+          "examples": [
+            "The man’s furtive glances and nervous behavior made the police officer suspicious of his activities."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-d5c1965d",
+          "pos": "adjective",
+          "meaningZh": "多疑的；心存疑慮的",
+          "definitionEn": "inclined to distrust or suspect; having doubts or reservations",
+          "examples": [
+            "The police are suspicious of the new neighbor because he hasn’t been seen outside during the daytime."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L4",
+        "textbookTitle": "三民 B4·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "sustain",
+      "word": "sustain",
+      "senses": [
+        {
+          "id": "sense-d3dd3072",
+          "pos": "verb",
+          "meaningZh": "維持；支撐（長期）",
+          "definitionEn": "provide support or strength to (something) over time or for a prolonged period",
+          "examples": [
+            "She relied on her family for emotional sustenance during her difficult times."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-77335027",
+          "pos": "verb",
+          "meaningZh": "援助；支持",
+          "definitionEn": "give assistance or support to, especially in the form of financial or other help",
+          "examples": [
+            "After the devastating flood, the government provided funds to sustain the affected communities and help them rebuild."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·R3 +2",
+        "textbookTitle": "龍騰 B3·R3、龍騰 B5·L5、三民 B4·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "sustainable",
+      "word": "sustainable",
+      "senses": [
+        {
+          "id": "sense-21ebd378",
+          "pos": "adjective",
+          "meaningZh": "永續的；不破壞環境的",
+          "definitionEn": "using methods that do not cause long-term harm to the environment",
+          "examples": [
+            "The company implemented sustainable practices such as using renewable energy sources and reducing waste production to minimize their environmental impact."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-1fabe891",
+          "pos": "adjective",
+          "meaningZh": "可持續的；能長期維持的",
+          "definitionEn": "capable of being sustained",
+          "examples": [],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·R3",
+        "textbookTitle": "龍騰 B3·R3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "swap",
+      "word": "swap",
+      "senses": [
+        {
+          "id": "sense-80b85206",
+          "pos": "verb",
+          "meaningZh": "交換；互換",
+          "definitionEn": "to exchange one thing for another",
+          "examples": [
+            "Can we swap seats? I prefer having a window seat."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-a581feb9",
+          "pos": "noun",
+          "meaningZh": "交換；互換行為",
+          "definitionEn": "an act of exchanging one thing for another",
+          "examples": [
+            "I will swap my blue shirt for your red one."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "sway",
+      "word": "sway",
+      "senses": [
+        {
+          "id": "sense-87c852e3",
+          "pos": "noun",
+          "meaningZh": "左右搖擺；晃動",
+          "definitionEn": "a slow movement from side to side.",
+          "examples": [
+            "The tall palm trees swayed gently in the breeze, creating a soothing and rhythmic motion."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-fe5d2ef3",
+          "pos": "noun",
+          "meaningZh": "影響力；說服力",
+          "definitionEn": "the ability to persuade.",
+          "examples": [
+            "The charismatic speaker swayed the crowd with his powerful speech, convincing them to support his cause."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L9 +1",
+        "textbookTitle": "龍騰 B4·L9、三民 B4·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "syllable",
+      "word": "syllable",
+      "senses": [
+        {
+          "id": "sense-68af2ae9",
+          "pos": "noun",
+          "meaningZh": "音節（語音單位）",
+          "definitionEn": "a unit of spoken language larger than a phoneme",
+          "examples": [
+            "In the word 'banana', there are three syllables: ba-na-na."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "symbolic",
+      "word": "symbolic",
+      "senses": [
+        {
+          "id": "sense-091652c7",
+          "pos": "adjective",
+          "meaningZh": "象徵性的；符號的",
+          "definitionEn": "relating to symbols or the use of symbols",
+          "examples": [
+            "The dove is a symbolic representation of peace."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-39f8921c",
+          "pos": "adjective",
+          "meaningZh": "以象徵表示的；具有象徵意義的",
+          "definitionEn": "representing or representing something by means of a symbol",
+          "examples": [
+            "Using a dove as a symbolic representation of peace."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L6",
+        "textbookTitle": "龍騰 B1·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "sympathetic",
+      "word": "sympathetic",
+      "senses": [
+        {
+          "id": "sense-5d9c8cfd",
+          "pos": "adjective",
+          "meaningZh": "有同情心的；體恤的",
+          "definitionEn": "disposed toward expressing or feeling compassion or friendly feelings; showing sympathy and understanding; generous",
+          "examples": [
+            "After hearing about the loss of her pet, the veterinarian was very sympathetic and comforted the grieving owner."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-2d2e32bc",
+          "pos": "adjective",
+          "meaningZh": "引起同情的；志趣相投的",
+          "definitionEn": "evoking empathetic or compassionate feelings in literature or drama; having similar tastes and disposition",
+          "examples": [
+            "The audience felt sympathetic towards the main character when her best friend died tragically in the story. We share the same love for books and movies, which makes us very sympathetic towards each other’s opinions."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B2·L8",
+        "textbookTitle": "三民 B2·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "sympathy",
+      "word": "sympathy",
+      "senses": [
+        {
+          "id": "sense-ae26880b",
+          "pos": "noun",
+          "meaningZh": "同情；憐憫",
+          "definitionEn": "the feeling of being sorry for someone; compassion or commiseration",
+          "examples": [
+            "After hearing about her friend's loss, Sarah expressed her sympathy by sending a heartfelt card and offering to lend a listening ear."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-14dcc982",
+          "pos": "noun",
+          "meaningZh": "支持；認同",
+          "definitionEn": "an inclination to support, agree with, or be loyal to an opinion or cause",
+          "examples": [
+            "After hearing the heartbreaking stories of the refugees, she felt a deep sympathy for their plight and decided to volunteer at a local charity."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B2·L8",
+        "textbookTitle": "三民 B2·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "symptom",
+      "word": "symptom",
+      "senses": [
+        {
+          "id": "sense-ce7996ce",
+          "pos": "noun",
+          "meaningZh": "症狀；病徵",
+          "definitionEn": "any sensation or change in bodily function that is experienced by a patient and is associated with a particular disease (medicine)",
+          "examples": [
+            "One common symptom of the flu is a high fever."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-9e70f79e",
+          "pos": "noun",
+          "meaningZh": "徵兆；跡象",
+          "definitionEn": "anything that accompanies and is regarded as an indication of X’s existence",
+          "examples": [
+            "Fever is a common symptom of a viral infection."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "syndrome",
+      "word": "syndrome",
+      "senses": [
+        {
+          "id": "sense-258a0492",
+          "pos": "noun",
+          "meaningZh": "症候群；綜合症狀",
+          "definitionEn": "a complex of concurrent things",
+          "examples": [
+            "Down syndrome is a genetic syndrome caused by the presence of an extra chromosome."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-e1688359",
+          "pos": "noun",
+          "meaningZh": "症候群；某疾病的症狀模式",
+          "definitionEn": "a pattern of symptoms indicating a particular disease or condition",
+          "examples": [
+            "Down syndrome is characterized by certain physical features and developmental delays."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "systematic",
+      "word": "systematic",
+      "senses": [
+        {
+          "id": "sense-3ddbf819",
+          "pos": "adjective",
+          "meaningZh": "有系統的；有條不紊的",
+          "definitionEn": "of, relating to, or using a system; methodical",
+          "examples": [
+            "She approached the project in a systematic manner by creating a detailed plan and breaking down tasks into smaller steps."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-5f481d3c",
+          "pos": "adjective",
+          "meaningZh": "有組織的；按計畫進行的",
+          "definitionEn": "characterized by order and planning in a precise or methodical way",
+          "examples": [
+            "In order to successfully complete the project, it is important to take a systematic approach by breaking the tasks down into manageable steps and following a carefully planned timeline."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "tackle",
+      "word": "tackle",
+      "senses": [
+        {
+          "id": "sense-f89c56b7",
+          "pos": "verb",
+          "meaningZh": "處理；應付（難題）",
+          "definitionEn": "to make a determined effort to deal with a problem or difficult task",
+          "examples": [
+            "The government promised to tackle the issue of unemployment."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-0397e801",
+          "pos": "noun",
+          "meaningZh": "（美式足球）擒抱；攔截",
+          "definitionEn": "(American football) grasping an opposing player with the intention of stopping by throwing to the ground",
+          "examples": [
+            "The defensive player made a great tackle, stopping the opposing team’s running back in his tracks."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L2",
+        "textbookTitle": "三民 B4·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "tactic",
+      "word": "tactic",
+      "senses": [
+        {
+          "id": "sense-f51af244",
+          "pos": "noun",
+          "meaningZh": "戰術；策略",
+          "definitionEn": "a method or strategy used to achieve a particular goal",
+          "examples": [
+            "One common tactic used in negotiations is to start with an unreasonably high demand, and then slowly back down to a more reasonable offer."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L6",
+        "textbookTitle": "龍騰 B4·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "tactics",
+      "word": "tactics",
+      "senses": [
+        {
+          "id": "sense-e3bc6f94",
+          "pos": "noun",
+          "meaningZh": "策略；戰術計畫",
+          "definitionEn": "a plan or set of actions that is used to achieve a particular goal",
+          "examples": [
+            "The coach’s tactics for winning the game involved a combination of aggressive offense and strong defense."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-aba16829",
+          "pos": "noun",
+          "meaningZh": "競技策略；取勝方法",
+          "definitionEn": "the methods and actions used to gain an advantage over an opponent in a game, sport, or competition",
+          "examples": [
+            "The coach changed his team’s tactics to a more aggressive style, which helped them win the match."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "tangle",
+      "word": "tangle",
+      "senses": [
+        {
+          "id": "sense-702973bc",
+          "pos": "noun",
+          "meaningZh": "糾結；纏繞",
+          "definitionEn": "a twisted and tangled mass that is highly interwoven",
+          "examples": [
+            "The fisherman's net got caught in a tangle of seaweed, making it difficult to untangle."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-3279e822",
+          "pos": "noun",
+          "meaningZh": "一團混亂；雜亂",
+          "definitionEn": "something jumbled or confused",
+          "examples": [
+            "After the party, the living room was a tangle of empty cups, confetti, and discarded wrapping paper."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "technician",
+      "word": "technician",
+      "senses": [
+        {
+          "id": "sense-d91452b1",
+          "pos": "noun",
+          "meaningZh": "技術人員；技師",
+          "definitionEn": "a person skilled in the use of technology in a particular field or occupation",
+          "examples": [
+            "The technician quickly diagnosed the problem and repaired the faulty wiring that was causing the computer to malfunction."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-8e511c51",
+          "pos": "noun",
+          "meaningZh": "專業技術人員；技術員",
+          "definitionEn": "a person who is trained or skilled in the technical aspects of a particular subject or field",
+          "examples": [
+            "The technician was able to repair my computer quickly and efficiently."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "technological",
+      "word": "technological",
+      "senses": [
+        {
+          "id": "sense-d69e76ca",
+          "pos": "adjective",
+          "meaningZh": "科技的；技術性的",
+          "definitionEn": "based in scientific and industrial progress",
+          "examples": [
+            "The development of smartphones and tablets has transformed the way we communicate and access information, showcasing the rapid advancements in technological innovation."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-ba6df041",
+          "pos": "adjective",
+          "meaningZh": "應用科學的；科技導向的",
+          "definitionEn": "of or relating to a practical subject that is organized according to scientific principles",
+          "examples": [
+            "The company implemented technological advancements in their production process, resulting in increased efficiency and productivity."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L7 +1",
+        "textbookTitle": "龍騰 B2·L7、翰林 B1·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "telegraph",
+      "word": "telegraph",
+      "senses": [
+        {
+          "id": "sense-59c4fa9f",
+          "pos": "noun",
+          "meaningZh": "電報機；電報系統",
+          "definitionEn": "an electronic communication system using wires and electrical signals, originally developed in the 19th century, and usually transmitting Morse code messages over long distances",
+          "examples": [
+            "In the 1800s, the telegraph revolutionized long-distance communication by allowing people to send messages across continents in a matter of minutes."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-056a1e76",
+          "pos": "verb",
+          "meaningZh": "發電報；用電報傳訊",
+          "definitionEn": "to send a message by telegraph, typically using wires or cables",
+          "examples": [
+            "During the war, soldiers relied on telegrams to inform their families of their well-being."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    }
+  ]
+}

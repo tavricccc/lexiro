@@ -1,0 +1,1406 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 154,
+  "words": [
+    {
+      "wordKey": "profound",
+      "word": "profound",
+      "senses": [
+        {
+          "id": "sense-89529ac3",
+          "pos": "adjective",
+          "meaningZh": "深刻的；深遠的",
+          "definitionEn": "extending to a great depth; too deep to be measured or understood",
+          "examples": [
+            "The speaker had a profound impact on the audience because her speech had touched their hearts and minds."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-9a42c73c",
+          "pos": "adjective",
+          "meaningZh": "深切的；發自內心的",
+          "definitionEn": "felt or experienced deeply from within oneself",
+          "examples": [
+            "The loss of his father caused a profound sadness that he couldn’t shake for months."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "progressive",
+      "word": "progressive",
+      "senses": [
+        {
+          "id": "sense-a596175d",
+          "pos": "adjective",
+          "meaningZh": "進步的；漸進的；累進的",
+          "definitionEn": "favoring or promoting progress; gradually advancing in extent; (of taxes) adjusted so that the rate increases as the amount of income increases; advancing in severity; favoring or promoting reform (often by government action)",
+          "examples": [],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-208cab98",
+          "pos": "noun",
+          "meaningZh": "進步主義者；改革派人士",
+          "definitionEn": "a person who favors a political philosophy of progress and reform and the protection of civil liberties",
+          "examples": [
+            "My aunt is a progressive and always puts civil rights at the forefront of her political choices."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "prohibit",
+      "word": "prohibit",
+      "senses": [
+        {
+          "id": "sense-50bbddfe",
+          "pos": "verb",
+          "meaningZh": "禁止；不允許",
+          "definitionEn": "to officially forbid",
+          "examples": [
+            "The school prohibits students from bringing their phones to the exams."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "projection",
+      "word": "projection",
+      "senses": [
+        {
+          "id": "sense-253dc4d8",
+          "pos": "noun",
+          "meaningZh": "預測；推算",
+          "definitionEn": "a prediction made through the extrapolation of past observations",
+          "examples": [
+            "Based on the sales figures from the previous year, the financial analyst made a projection for the company's revenue growth for the upcoming quarter."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-7b780f1a",
+          "pos": "noun",
+          "meaningZh": "突出物；延伸結構",
+          "definitionEn": "any structure that branches out from a central support system",
+          "examples": [
+            "The tree had many projections extending from its trunk, providing shade and shelter for animals."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "prolong",
+      "word": "prolong",
+      "senses": [
+        {
+          "id": "sense-c36c50cb",
+          "pos": "verb",
+          "meaningZh": "延長；拉長",
+          "definitionEn": "to extend in duration or space",
+          "examples": [
+            "The meeting was prolonged due to the numerous questions and discussions."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-060f16f9",
+          "pos": "verb",
+          "meaningZh": "使持續更久；延續",
+          "definitionEn": "to lengthen in time; to cause to be or last longer",
+          "examples": [
+            "They decided to prolong their vacation by another week."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "prone",
+      "word": "prone",
+      "senses": [
+        {
+          "id": "sense-0b4f89bf",
+          "pos": "adjective",
+          "meaningZh": "易於；傾向於",
+          "definitionEn": "(especially of a person) likely to be affected by something undesirable; having a tendency to do something; often used in combination",
+          "examples": [
+            "Due to her weak immune system, she is prone to catching frequent colds."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-a602e3af",
+          "pos": "adjective",
+          "meaningZh": "俯臥的；面朝下的",
+          "definitionEn": "lying face downward or flat",
+          "examples": [
+            "After a long day of hiking, I was so exhausted that I was prone on the grass, completely unable to move."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "propaganda",
+      "word": "propaganda",
+      "senses": [
+        {
+          "id": "sense-a7f92b8b",
+          "pos": "noun",
+          "meaningZh": "宣傳；政治宣傳",
+          "definitionEn": "Information, especially of a biased or misleading nature, that is spread for the purpose of promoting a particular cause or ideology.",
+          "examples": [
+            "During the election campaign, the candidate's team used propaganda to manipulate public opinion through false claims and exaggerated statistics."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "prophet",
+      "word": "prophet",
+      "senses": [
+        {
+          "id": "sense-0167d5e8",
+          "pos": "noun",
+          "meaningZh": "預言者；先知",
+          "definitionEn": "an authoritative person who divines the future",
+          "examples": [
+            "The villagers gathered around the prophet, eagerly seeking his predictions for the next harvest season."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-95fbb032",
+          "pos": "noun",
+          "meaningZh": "先知；神的代言人",
+          "definitionEn": "someone who speaks by divine inspiration; someone who is an interpreter of the will of God",
+          "examples": [
+            "The prophet was able to foretell the future and shared messages from God with the people."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "proportion",
+      "word": "proportion",
+      "senses": [
+        {
+          "id": "sense-ce466972",
+          "pos": "noun",
+          "meaningZh": "比例；比率",
+          "definitionEn": "the relation between things or parts of things in terms of their comparative quantity, magnitude, or degree",
+          "examples": [
+            "To make a cake, you need to use the right proportion of flour, sugar, eggs, and butter."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-8240dc93",
+          "pos": "noun",
+          "meaningZh": "規模；範圍",
+          "definitionEn": "magnitude or extent",
+          "examples": [
+            "The proportion of water to flour in this bread recipe is 2:1."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "prosecution",
+      "word": "prosecution",
+      "senses": [
+        {
+          "id": "sense-ce0b0233",
+          "pos": "noun",
+          "meaningZh": "起訴；刑事追訴",
+          "definitionEn": "the institution and conduct of legal proceedings against someone who has been accused of a crime",
+          "examples": [
+            "After gathering sufficient evidence, the prosecution presented their case in court, aiming to secure a conviction against the accused."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-6fc4fb1f",
+          "pos": "noun",
+          "meaningZh": "檢察官；公訴方",
+          "definitionEn": "the lawyers who represent the state in a criminal trial and present evidence against the defendant",
+          "examples": [
+            "The prosecution called multiple witnesses to testify against the defendant and presented compelling evidence of his guilt."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "prospect",
+      "word": "prospect",
+      "senses": [
+        {
+          "id": "sense-c1a0bb45",
+          "pos": "noun",
+          "meaningZh": "前景；可能性",
+          "definitionEn": "the possibility or likelihood of something happening in the future; a potential future event.",
+          "examples": [
+            "Despite facing initial challenges, the young entrepreneur saw great prospects for success in the growing technology industry."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-13125af5",
+          "pos": "noun",
+          "meaningZh": "潛力人選；候選人",
+          "definitionEn": "a person who is being considered for a position, honor, or award.",
+          "examples": [
+            "The young basketball player has been identified as a promising prospect for the college team."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L10",
+        "textbookTitle": "三民 B4·L10"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "province",
+      "word": "province",
+      "senses": [
+        {
+          "id": "sense-cdf8fd4b",
+          "pos": "noun",
+          "meaningZh": "省份；行省",
+          "definitionEn": "a division of a country or empire",
+          "examples": [
+            "My friend lives in the southeastern province of the country."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-60494cca",
+          "pos": "noun",
+          "meaningZh": "職責範疇；專業領域",
+          "definitionEn": "an area of special knowledge, interest, or responsibility",
+          "examples": [
+            "As a tenured professor of economics, his province was microeconomics, and he published several research papers on that subject."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "provision",
+      "word": "provision",
+      "senses": [
+        {
+          "id": "sense-16ea5bf4",
+          "pos": "noun",
+          "meaningZh": "供應；提供",
+          "definitionEn": "the activity or process of supplying or providing something, especially of food, equipment or other necessities",
+          "examples": [
+            "The provision of emergency food supplies is essential during a natural disaster."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-ab5839e2",
+          "pos": "noun",
+          "meaningZh": "糧食；補給品",
+          "definitionEn": "an amount or supply of something provided, especially of food, equipment or other necessities",
+          "examples": [
+            "The ship was well-stocked with provisions for the long voyage ahead."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "provoke",
+      "word": "provoke",
+      "senses": [
+        {
+          "id": "sense-0d68d89a",
+          "pos": "verb",
+          "meaningZh": "激起；引發（反應）",
+          "definitionEn": "to cause a reaction or feeling, especially a strong one",
+          "examples": [
+            "The protestors were trying to provoke a response from the police by shouting insults at them."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-96969128",
+          "pos": "verb",
+          "meaningZh": "激怒；惹怒",
+          "definitionEn": "to annoy or irritate someone, especially persistently",
+          "examples": [
+            "Samantha tried her best to ignore her brother’s taunts, but he continued to provoke her until she lashed out in anger."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L4",
+        "textbookTitle": "龍騰 B5·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "pulse",
+      "word": "pulse",
+      "senses": [
+        {
+          "id": "sense-196d45a6",
+          "pos": "noun",
+          "meaningZh": "脈搏；心跳律動",
+          "definitionEn": "the rhythmic expansion and contraction of the arteries produced by each beat of the heart",
+          "examples": [
+            "The doctor checked the patient’s pulse to determine his heart rate."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-fa3b6690",
+          "pos": "verb",
+          "meaningZh": "跳動；有節律地搏動",
+          "definitionEn": "beat or throb rhythmically",
+          "examples": [
+            "The doctor checked the patient’s pulse by placing her fingers on his wrist."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "purchase",
+      "word": "purchase",
+      "senses": [
+        {
+          "id": "sense-4110dfa5",
+          "pos": "noun",
+          "meaningZh": "購買物；採購品",
+          "definitionEn": "something acquired by purchasing",
+          "examples": [
+            "I made a purchase of a new laptop to replace my old one."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-d3a90200",
+          "pos": "noun",
+          "meaningZh": "影響力；立足點",
+          "definitionEn": "a means of exerting influence or gaining advantage",
+          "examples": [
+            "The company's recent purchase of a rival business gave them a significant advantage in the market."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L8 +1",
+        "textbookTitle": "龍騰 B1·L8、三民 B4·L10"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "pyramid",
+      "word": "pyramid",
+      "senses": [
+        {
+          "id": "sense-a2e6ea15",
+          "pos": "noun",
+          "meaningZh": "金字塔（古埃及陵墓）",
+          "definitionEn": "a massive monument in ancient Egypt with a square base and four triangular sides; used as royal tombs, the most famous one is the Great Pyramid of Giza",
+          "examples": [
+            "During their visit to Egypt, the tourists marveled at the grandeur of the pyramid and learned about the pharaohs who were buried inside."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-fbffa6d2",
+          "pos": "noun",
+          "meaningZh": "角錐體；錐形體",
+          "definitionEn": "a solid shape with a polygonal base and triangular sides that meet at a common vertex",
+          "examples": [
+            "The ancient Egyptians constructed magnificent pyramids as tombs for their pharaohs."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "qualify",
+      "word": "qualify",
+      "senses": [
+        {
+          "id": "sense-8b0f4ac7",
+          "pos": "verb",
+          "meaningZh": "取得資格；達到標準",
+          "definitionEn": "to successfully complete a course of study or training or acquire the necessary skills in order to be competent for a job",
+          "examples": [
+            "After four years of medical school and passing the licensing exam, she was finally able to qualify as a doctor."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-fe8c10bc",
+          "pos": "verb",
+          "meaningZh": "符合資格；具有資格",
+          "definitionEn": "to have the legal entitlement to possess or engage in something due to your circumstances, or to grant someone this entitlement",
+          "examples": [
+            "Only individuals who meet the age and experience requirements can qualify for the job."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "quest",
+      "word": "quest",
+      "senses": [
+        {
+          "id": "sense-d31da106",
+          "pos": "noun",
+          "meaningZh": "追尋；探索",
+          "definitionEn": "the act of searching for something",
+          "examples": [
+            "After college, Sarah went on a quest to find her life’s purpose, traveling to different countries and exploring various career paths."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-1f55e81c",
+          "pos": "verb",
+          "meaningZh": "追蹤；尋獵",
+          "definitionEn": "to follow and search for (game)",
+          "examples": [
+            "The hunter set out on a quest to find the elusive deer deep in the forest."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "questionnaire",
+      "word": "questionnaire",
+      "senses": [
+        {
+          "id": "sense-b4b8d8b1",
+          "pos": "noun",
+          "meaningZh": "問卷；調查表",
+          "definitionEn": "a written list of questions that are answered by a number of people in order to collect information",
+          "examples": [
+            "In order to gather data about customer satisfaction, the company distributed a questionnaire to all of its customers, asking them to rate their experience on a scale of 1 to 10."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "quiver",
+      "word": "quiver",
+      "senses": [
+        {
+          "id": "sense-18dff22f",
+          "pos": "noun",
+          "meaningZh": "箭袋；箭筒",
+          "definitionEn": "a case for holding arrows",
+          "examples": [
+            "The hunter reached into his quiver and pulled out an arrow to shoot at the deer."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-979438c9",
+          "pos": "noun",
+          "meaningZh": "顫抖；震顫",
+          "definitionEn": "a shaky motion",
+          "examples": [
+            "As the earthquake tremors grew stronger, the whole building began to quiver, causing everyone inside to panic."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "quota",
+      "word": "quota",
+      "senses": [
+        {
+          "id": "sense-245c4e6b",
+          "pos": "noun",
+          "meaningZh": "配額；定額",
+          "definitionEn": "a prescribed number or amount of something",
+          "examples": [
+            "The sales team was given a quota of 100 units to sell by the end of the month."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-158252ae",
+          "pos": "noun",
+          "meaningZh": "分配份額；按比例分配",
+          "definitionEn": "a proportional share or part assigned to each participant",
+          "examples": [
+            "The manager set a quota for each salesperson, ensuring that everyone had an equal opportunity to meet their targets."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "racism",
+      "word": "racism",
+      "senses": [
+        {
+          "id": "sense-f67d5255",
+          "pos": "noun",
+          "meaningZh": "種族歧視（行為）",
+          "definitionEn": "discriminatory or abusive behavior towards members of another race",
+          "examples": [
+            "John's refusal to hire anyone from a different race is a clear example of racism."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-f71f73ed",
+          "pos": "noun",
+          "meaningZh": "種族優越論；種族主義",
+          "definitionEn": "the prejudice that members of one race are intrinsically superior to members of other races",
+          "examples": [
+            "During the job interview, the hiring manager expressed his racism by rejecting all applicants of a certain race, regardless of their qualifications."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L6",
+        "textbookTitle": "龍騰 B5·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "rack",
+      "word": "rack",
+      "senses": [
+        {
+          "id": "sense-b5ced6ae",
+          "pos": "noun",
+          "meaningZh": "架子；展示架",
+          "definitionEn": "a framework or support for holding objects or displaying various articles",
+          "examples": [
+            "The bakery had a sturdy rack filled with fresh breads and pastries."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-09ac6b56",
+          "pos": "noun",
+          "meaningZh": "（中世紀）拉肢刑架",
+          "definitionEn": "a form of torture in which pain is inflicted by stretching the body",
+          "examples": [
+            "During medieval times, the rack was used to extract confessions from prisoners."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "radiation",
+      "word": "radiation",
+      "senses": [
+        {
+          "id": "sense-320b5760",
+          "pos": "noun",
+          "meaningZh": "輻射（核衰變）",
+          "definitionEn": "the spontaneous emission of a stream of particles or electromagnetic rays in nuclear decay",
+          "examples": [
+            "After the nuclear reactor meltdown, the area was heavily contaminated with radiation, making it unsuitable for human habitation."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-332680d3",
+          "pos": "noun",
+          "meaningZh": "放射治療；放射線治療",
+          "definitionEn": "(medicine) the treatment of disease (especially cancer) by exposure to a radioactive substance",
+          "examples": [
+            "After being diagnosed with lung cancer, Mark underwent radiation therapy to target and destroy the cancer cells."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 翰林 B1·L3",
+        "textbookTitle": "翰林 B1·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "radical",
+      "word": "radical",
+      "senses": [
+        {
+          "id": "sense-2401c4fb",
+          "pos": "adjective",
+          "meaningZh": "激進的；極端的",
+          "definitionEn": "far beyond the norm; favoring extreme changes in existing views, habits, or conditions",
+          "examples": [
+            "An example of a radical approach would be advocating for the complete abolition of the current education system and proposing a revolutionary alternative."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-817e7274",
+          "pos": "adjective",
+          "meaningZh": "根本的；徹底的",
+          "definitionEn": "markedly new or introducing extreme change",
+          "examples": [
+            "The company implemented a radical new strategy to revamp its declining sales."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "ragged",
+      "word": "ragged",
+      "senses": [
+        {
+          "id": "sense-adc1f49b",
+          "pos": "adjective",
+          "meaningZh": "衣衫襤褸的；破舊的",
+          "definitionEn": "wearing clothes that are old, torn, and in poor condition",
+          "examples": [
+            "The homeless man was wearing a shirt with ragged sleeves and frayed hems."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-40eb08c1",
+          "pos": "adjective",
+          "meaningZh": "粗糙的；參差不齊的",
+          "definitionEn": "having an uneven or irregular surface or edge",
+          "examples": [
+            "She cut her finger on the ragged edge of the broken glass."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "raid",
+      "word": "raid",
+      "senses": [
+        {
+          "id": "sense-3ac9af25",
+          "pos": "verb",
+          "meaningZh": "突襲；搜查",
+          "definitionEn": "to attack suddenly",
+          "examples": [
+            "The burglars planned to raid the jewelry store at midnight."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-4940b5cb",
+          "pos": "noun",
+          "meaningZh": "突擊；突襲行動",
+          "definitionEn": "a sudden attack",
+          "examples": [
+            "During the war, the enemy carried out a surprise raid on our base camp and killed many of our soldiers."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "rail",
+      "word": "rail",
+      "senses": [
+        {
+          "id": "sense-f75c9fd6",
+          "pos": "noun",
+          "meaningZh": "橫桿；扶手欄桿",
+          "definitionEn": "a horizontal bar (usually of wood or metal)",
+          "examples": [
+            "He grabbed onto the rail for support while walking down the stairs."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-489f382d",
+          "pos": "noun",
+          "meaningZh": "護欄；欄杆",
+          "definitionEn": "a barrier consisting of a horizontal bar and supports",
+          "examples": [
+            "The construction worker installed a rail on the staircase for safety purposes."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "rally",
+      "word": "rally",
+      "senses": [
+        {
+          "id": "sense-4491569b",
+          "pos": "verb",
+          "meaningZh": "集結；聚集",
+          "definitionEn": "gather",
+          "examples": [
+            "The activists rallied outside the government building, demanding justice and change."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-47574317",
+          "pos": "noun",
+          "meaningZh": "病情好轉；恢復元氣",
+          "definitionEn": "a marked recovery of strength or spirits during an illness",
+          "examples": [
+            "After a week of rest and medication, the patient began to rally, regaining their energy and optimism."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    }
+  ]
+}

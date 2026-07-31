@@ -1,0 +1,1434 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 7,
+  "words": [
+    {
+      "wordKey": "common",
+      "word": "common",
+      "senses": [
+        {
+          "id": "sense-2a5d77f7",
+          "pos": "adjective",
+          "meaningZh": "普通的；常見的",
+          "definitionEn": "widely known or frequently encountered; average, ordinary, or usual",
+          "examples": [
+            "It is common for people to celebrate their birthdays with cake."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-f4bbd742",
+          "pos": "noun",
+          "meaningZh": "公共草地；公有地",
+          "definitionEn": "an area of open land for leisure in an urban area",
+          "examples": [
+            "During the summer, the local residents gather at the common to have picnics and play outdoor games."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "computer",
+      "word": "computer",
+      "senses": [
+        {
+          "id": "sense-089cec1b",
+          "pos": "noun",
+          "meaningZh": "電腦；電子計算機",
+          "definitionEn": "a machine for performing calculations automatically",
+          "examples": [
+            "I rely on my computer to do complex mathematical calculations for me."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-37a7a528",
+          "pos": "noun",
+          "meaningZh": "電腦操作員；計算員",
+          "definitionEn": "a person who is skilled in using and/or programming computers",
+          "examples": [
+            "As a computer, she can effortlessly troubleshoot any software or hardware issue."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "convenient",
+      "word": "convenient",
+      "senses": [
+        {
+          "id": "sense-e1e66414",
+          "pos": "adjective",
+          "meaningZh": "方便的；便利的",
+          "definitionEn": "suited to your comfort, purpose, or needs",
+          "examples": [
+            "Having a coffee shop downstairs is really convenient for those early morning caffeine cravings."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-71ba3b7e",
+          "pos": "adjective",
+          "meaningZh": "寬敞易用的（古義）",
+          "definitionEn": "spacious and easy to use or reach (convenient is archaic in this sense)",
+          "examples": [
+            "The restaurant had a convenient layout, with plenty of space between tables and easy access to the buffet."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "cook",
+      "word": "cook",
+      "senses": [
+        {
+          "id": "sense-c550ca90",
+          "pos": "verb",
+          "meaningZh": "烹調；煮食",
+          "definitionEn": "prepare food by heating it",
+          "examples": [
+            "Sarah loves to cook elaborate meals for her friends and family."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-3492c6c1",
+          "pos": "noun",
+          "meaningZh": "廚師；烹飪者",
+          "definitionEn": "a person who prepares food for eating",
+          "examples": [
+            "The professional cook skillfully prepared a delicious three-course meal for the guests."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "cookie",
+      "word": "cookie",
+      "senses": [
+        {
+          "id": "sense-7b4889c3",
+          "pos": "noun",
+          "meaningZh": "餅乾；小甜餅",
+          "definitionEn": "a small, sweet, baked treat that is usually flat, round, and crisp.",
+          "examples": [
+            "After dinner, we always enjoy having a cookie and a cup of tea."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "cool",
+      "word": "cool",
+      "senses": [
+        {
+          "id": "sense-e189f90e",
+          "pos": "adjective",
+          "meaningZh": "涼爽的；清涼的",
+          "definitionEn": "neither warm nor very cold; giving relief from heat",
+          "examples": [
+            "The air conditioning made the room cool and comfortable on a hot summer day."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-c189ae31",
+          "pos": "noun",
+          "meaningZh": "涼意；涼爽",
+          "definitionEn": "the quality of being at a refreshingly low temperature",
+          "examples": [
+            "The weather was so hot, but the air conditioner made the room cool and comfortable."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "copy",
+      "word": "copy",
+      "senses": [
+        {
+          "id": "sense-4599ef75",
+          "pos": "noun",
+          "meaningZh": "副本；複製品",
+          "definitionEn": "a thing made to be similar or identical to another thing",
+          "examples": [
+            "She made a copy of the document for her colleagues."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-27a4423a",
+          "pos": "noun",
+          "meaningZh": "（待印）文稿；稿件",
+          "definitionEn": "matter to be printed, exclusive of graphical materials",
+          "examples": [
+            "The editor reviewed the copy for spelling errors and grammatical mistakes before sending it to the printer."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "corner",
+      "word": "corner",
+      "senses": [
+        {
+          "id": "sense-e4ca6d6f",
+          "pos": "noun",
+          "meaningZh": "角落；角隅",
+          "definitionEn": "a projecting part where two sides or edges meet",
+          "examples": [
+            "She found her cat hiding in the corner of the room."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-cee29282",
+          "pos": "noun",
+          "meaningZh": "交叉點；三角接點",
+          "definitionEn": "the point where three areas or surfaces meet or intersect",
+          "examples": [
+            "In the game of chess, I trapped my opponent's king in the corner of the board."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "correct",
+      "word": "correct",
+      "senses": [
+        {
+          "id": "sense-97c01561",
+          "pos": "adjective",
+          "meaningZh": "正確的；無誤的",
+          "definitionEn": "Accurate; free from errors, mistakes, or flaws",
+          "examples": [
+            "The mathematician double-checked his calculations to ensure they were correct before submitting the research paper."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-f7b590e7",
+          "pos": "adjective",
+          "meaningZh": "合乎規範的；得體的",
+          "definitionEn": "Conforming to accepted standards; proper or appropriate",
+          "examples": [
+            "In order to receive a passing grade on the essay, you must use correct grammar and punctuation."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "cost",
+      "word": "cost",
+      "senses": [
+        {
+          "id": "sense-ec7414a8",
+          "pos": "noun",
+          "meaningZh": "費用；代價",
+          "definitionEn": "the total spent for goods or services including money, time, and labor",
+          "examples": [
+            "The cost of the new building includes not only the money spent on construction materials but also the time invested and labor wages paid to the workers."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-c6d0caed",
+          "pos": "noun",
+          "meaningZh": "成本；所需代價",
+          "definitionEn": "value measured by what must be given, done, or undergone to obtain something",
+          "examples": [
+            "The cost of attending college includes tuition, textbooks, and other fees."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "couch",
+      "word": "couch",
+      "senses": [
+        {
+          "id": "sense-fbafb6e1",
+          "pos": "noun",
+          "meaningZh": "沙發；長椅",
+          "definitionEn": "an upholstered seat, typically for more than one person to sit on",
+          "examples": [
+            "Emma and her friends sat together on the couch and watched TV all night."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-efa6762d",
+          "pos": "noun",
+          "meaningZh": "（心理治療）躺椅",
+          "definitionEn": "a narrow bed on which a patient lies during psychiatric or psychoanalytic treatment",
+          "examples": [
+            "The patient reclined on the couch while discussing his childhood memories with the therapist."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "count",
+      "word": "count",
+      "senses": [
+        {
+          "id": "sense-548498d9",
+          "pos": "verb",
+          "meaningZh": "計數；數算",
+          "definitionEn": "determine the number or amount of",
+          "examples": [
+            "Can you please count the number of chairs in the room?"
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-246be5d6",
+          "pos": "verb",
+          "meaningZh": "歸類；算入",
+          "definitionEn": "put into a group",
+          "examples": [
+            "In order to take inventory of the store, the manager asked the employees to count the products and group them according to their types."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "country",
+      "word": "country",
+      "senses": [
+        {
+          "id": "sense-c8c91d9b",
+          "pos": "noun",
+          "meaningZh": "國家；國家政體",
+          "definitionEn": "a politically organized body of people under a single government",
+          "examples": [
+            "The president addressed the citizens of the country during his annual State of the Union speech."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-ce38c1c5",
+          "pos": "noun",
+          "meaningZh": "國土；領土",
+          "definitionEn": "the territory occupied by a nation",
+          "examples": [
+            "The country's vast landscape is filled with beautiful mountains, rivers, and forests."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "course",
+      "word": "course",
+      "senses": [
+        {
+          "id": "sense-d4e6e0ef",
+          "pos": "noun",
+          "meaningZh": "課程；學科",
+          "definitionEn": "education given in a series of lessons or meetings",
+          "examples": [
+            "I am taking a course in programming languages to enhance my skills."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-dda934d0",
+          "pos": "noun",
+          "meaningZh": "同班學生；選課學生",
+          "definitionEn": "a body of students who are taught together",
+          "examples": [
+            "The course in Economics consists of 60 students."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "cousin",
+      "word": "cousin",
+      "senses": [
+        {
+          "id": "sense-2e8e0037",
+          "pos": "noun",
+          "meaningZh": "表親；堂親",
+          "definitionEn": "the child of your aunt or uncle",
+          "examples": [
+            "My cousin and I are about the same age and we used to play together all the time when we were kids."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-7d28aa97",
+          "pos": "noun",
+          "meaningZh": "遠親；親戚",
+          "definitionEn": "a person who is related to you but not in your immediate family",
+          "examples": [
+            "I am going to visit my cousin in California this summer. She is my dad’s sister’s daughter."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "cover",
+      "word": "cover",
+      "senses": [
+        {
+          "id": "sense-2a578820",
+          "pos": "verb",
+          "meaningZh": "涵蓋；包含",
+          "definitionEn": "to include as part of something broader",
+          "examples": [
+            "The book covers various topics related to science and technology."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-4f7eab33",
+          "pos": "verb",
+          "meaningZh": "翻唱；演繹",
+          "definitionEn": "to act verbally or in some form of artistic expression",
+          "examples": [
+            "During the talent show, Sarah decided to cover a popular song by Adele."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "cow",
+      "word": "cow",
+      "senses": [
+        {
+          "id": "sense-efd63b67",
+          "pos": "noun",
+          "meaningZh": "母牛；乳牛",
+          "definitionEn": "a female domesticated bovine animal. It provides milk, meat, and other products for humans.",
+          "examples": [
+            "The farmer took the cow to the milking shed to extract fresh milk and later sold it for consumption."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-c1c391dd",
+          "pos": "noun",
+          "meaningZh": "（象、鯨等）雌性動物",
+          "definitionEn": "an adult female of certain mammals such as elephants, whales, and seals",
+          "examples": [
+            "The researchers observed a group of elephant cows migrating across the savannahs of Africa."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "crazy",
+      "word": "crazy",
+      "senses": [
+        {
+          "id": "sense-b8e2479f",
+          "pos": "adjective",
+          "meaningZh": "著迷的；狂熱的",
+          "definitionEn": "intensely enthusiastic about or preoccupied with",
+          "examples": [
+            "Emily is crazy about photography, she spends every weekend capturing beautiful moments around the city."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-ea2f7bee",
+          "pos": "adjective",
+          "meaningZh": "極度興奮的；瘋狂的",
+          "definitionEn": "possessed by inordinate excitement",
+          "examples": [
+            "After winning the lottery, John went crazy with excitement and started jumping up and down."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "cross",
+      "word": "cross",
+      "senses": [
+        {
+          "id": "sense-48c1ba25",
+          "pos": "noun",
+          "meaningZh": "十字形記號；交叉符號",
+          "definitionEn": "a marking made by two lines that cross each other",
+          "examples": [
+            "The cross on the map indicates the location of the hidden treasure."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-513d5b6e",
+          "pos": "noun",
+          "meaningZh": "雜交品種；混血種",
+          "definitionEn": "an organism that is produced by breeding two different varieties or species",
+          "examples": [
+            "The farmer decided to cross a horse with a donkey to create a new hybrid called a mule."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "cry",
+      "word": "cry",
+      "senses": [
+        {
+          "id": "sense-912bfef6",
+          "pos": "verb",
+          "meaningZh": "哭泣；流淚",
+          "definitionEn": "shed tears, often due to sadness, rage, or pain",
+          "examples": [
+            "When the news of her father’s death reached her, she couldn’t help but cry."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-d05a909c",
+          "pos": "verb",
+          "meaningZh": "大叫；哭喊",
+          "definitionEn": "utter a sudden loud cry",
+          "examples": [
+            "When the little girl realized that she had lost her favorite toy, she burst into tears and began to cry uncontrollably."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "cup",
+      "word": "cup",
+      "senses": [
+        {
+          "id": "sense-eed01b06",
+          "pos": "noun",
+          "meaningZh": "杯子；茶杯",
+          "definitionEn": "a small open container, often with a handle, used for drinking or holding liquids",
+          "examples": [
+            "She poured herself a cup of coffee before heading to work."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-35648f04",
+          "pos": "noun",
+          "meaningZh": "杯（容量單位，約240毫升）",
+          "definitionEn": "a unit of measurement for liquids in the United States equal to 8 fluid ounces",
+          "examples": [
+            "The recipe calls for one cup of milk."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "cut",
+      "word": "cut",
+      "senses": [
+        {
+          "id": "sense-fa705287",
+          "pos": "noun",
+          "meaningZh": "割傷；切口",
+          "definitionEn": "a wound made by cutting",
+          "examples": [
+            "After he fell from his bike, he had a deep cut on his leg."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-1838a9bc",
+          "pos": "noun",
+          "meaningZh": "溝渠；開鑿的渠道",
+          "definitionEn": "a trench or canal made by erosion or excavation",
+          "examples": [
+            "The river had cut a deep cut through the rocky terrain."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "cute",
+      "word": "cute",
+      "senses": [
+        {
+          "id": "sense-87b619b8",
+          "pos": "adjective",
+          "meaningZh": "可愛的；嬌小迷人的",
+          "definitionEn": "attractive because of smallness, prettiness, or quaintness",
+          "examples": [
+            "The little puppy with its floppy ears and wagging tail was so cute that everyone wanted to cuddle it."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-14bbe448",
+          "pos": "adjective",
+          "meaningZh": "刻意討喜的；矯情可愛的",
+          "definitionEn": "deliberately or excessively charming",
+          "examples": [
+            "The little puppy's big, round eyes and playful nature made it impossible to resist. It was just too cute!"
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "dance",
+      "word": "dance",
+      "senses": [
+        {
+          "id": "sense-e602148e",
+          "pos": "noun",
+          "meaningZh": "舞蹈；舞步",
+          "definitionEn": "a series of rhythmical steps and movements to music",
+          "examples": [
+            "At the wedding reception, the newlyweds took to the dance floor for their first dance as a married couple."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-4297f7f1",
+          "pos": "noun",
+          "meaningZh": "舞蹈藝術；肢體表演",
+          "definitionEn": "a form of expression through movement",
+          "examples": [
+            "The ballet dancers gracefully performed a mesmerizing dance on stage."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "dangerous",
+      "word": "dangerous",
+      "senses": [
+        {
+          "id": "sense-f74b84e6",
+          "pos": "adjective",
+          "meaningZh": "危險的；有害的",
+          "definitionEn": "liable to hurt or harm; involving or causing danger or risk",
+          "examples": [
+            "It is dangerous to drive without wearing a seatbelt."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-9ab96976",
+          "pos": "adjective",
+          "meaningZh": "令人懼怕的；可能造成重大傷害的",
+          "definitionEn": "causing fear or anxiety by threatening great harm",
+          "examples": [
+            "Driving at high speeds on icy roads can be extremely dangerous."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "dark",
+      "word": "dark",
+      "senses": [
+        {
+          "id": "sense-4b4de7cf",
+          "pos": "adjective",
+          "meaningZh": "黑暗的；無光的",
+          "definitionEn": "devoid of light or brightness; shadowed or black",
+          "examples": [
+            "When I entered the haunted house, the room was completely dark, and I couldn't see anything."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-ab9bfd65",
+          "pos": "adjective",
+          "meaningZh": "深色的；顏色深沉的",
+          "definitionEn": "having a dark color",
+          "examples": [
+            "He wore a dark suit to the formal dinner."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "date",
+      "word": "date",
+      "senses": [
+        {
+          "id": "sense-0d9f8b33",
+          "pos": "noun",
+          "meaningZh": "日期",
+          "definitionEn": "a particular day of the month or year",
+          "examples": [
+            "What is the date of your birthday?"
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-8c4efd30",
+          "pos": "noun",
+          "meaningZh": "當今；現在",
+          "definitionEn": "the present",
+          "examples": [
+            "I am currently living in the date, enjoying my life to the fullest."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "daughter",
+      "word": "daughter",
+      "senses": [
+        {
+          "id": "sense-f81baac2",
+          "pos": "noun",
+          "meaningZh": "女兒",
+          "definitionEn": "a female child of a parent or parents",
+          "examples": [
+            "My daughter is the light of my life. She makes me proud every day."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "day",
+      "word": "day",
+      "senses": [
+        {
+          "id": "sense-e9114337",
+          "pos": "noun",
+          "meaningZh": "一天；地球自轉一周",
+          "definitionEn": "the period of time taken by a planet to make a complete rotation",
+          "examples": [
+            "On Earth, a day consists of 24 hours, during which the sun rises and sets."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-9d782fb8",
+          "pos": "noun",
+          "meaningZh": "白晝；日間",
+          "definitionEn": "the time it is light outside between sunrise and sunset",
+          "examples": [
+            "We went for a picnic and enjoyed the beautiful weather during the day."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "dead",
+      "word": "dead",
+      "senses": [
+        {
+          "id": "sense-68d6345d",
+          "pos": "adjective",
+          "meaningZh": "死的；無生命的",
+          "definitionEn": "no longer alive",
+          "examples": [
+            "They found a dead bird lying under the tree."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-cba8b6cd",
+          "pos": "noun",
+          "meaningZh": "死亡狀態；亡故",
+          "definitionEn": "the state of being no longer alive; death",
+          "examples": [
+            "After the car accident, unfortunately, the driver was found dead at the scene."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-39790a7f",
+          "pos": "adjective",
+          "meaningZh": "毫無感情的；冷漠麻木的",
+          "definitionEn": "completely lacking in emotion; unfeeling",
+          "examples": [
+            "After receiving the devastating news, she stared at the letter with dead eyes, unable to process the reality of her loss."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    }
+  ]
+}

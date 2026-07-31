@@ -1,0 +1,1381 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 29,
+  "words": [
+    {
+      "wordKey": "taste",
+      "word": "taste",
+      "senses": [
+        {
+          "id": "sense-74e075c4",
+          "pos": "noun",
+          "meaningZh": "味覺；口感",
+          "definitionEn": "the sense of distinguishing the sweet, sour, bitter, and salty properties of food in the mouth",
+          "examples": [
+            "After taking a bite, she paused to savor the taste of the freshly baked chocolate chip cookie."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-304ef8ab",
+          "pos": "noun",
+          "meaningZh": "品嚐；嚐味",
+          "definitionEn": "the act of recognizing the flavor of a substance by means of the taste buds",
+          "examples": [
+            "After taking a bite of the delicious cake, she could immediately taste the rich chocolate and creamy frosting."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "tea",
+      "word": "tea",
+      "senses": [
+        {
+          "id": "sense-e76d6d77",
+          "pos": "noun",
+          "meaningZh": "茶葉；茶",
+          "definitionEn": "dried leaves of the tea shrub, used to make tea",
+          "examples": [
+            "After a long day of work, I like to brew a cup of tea to help me relax."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-75c6a943",
+          "pos": "noun",
+          "meaningZh": "茶樹；茶灌木",
+          "definitionEn": "a tropical evergreen shrub or small tree extensively cultivated in China, Japan, and India; the source of tea leaves",
+          "examples": [
+            "Afternoon tea is a relaxing way to socialize with friends and family while enjoying a delicious cup of tea."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "teach",
+      "word": "teach",
+      "senses": [
+        {
+          "id": "sense-1ff249a8",
+          "pos": "verb",
+          "meaningZh": "教導；傳授",
+          "definitionEn": "impart skills or knowledge to; instruct",
+          "examples": [
+            "Susan wanted to teach her students about sustainable living by demonstrating how to reduce waste and conserve resources."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-071f737f",
+          "pos": "verb",
+          "meaningZh": "訓練；培養習慣",
+          "definitionEn": "accustom gradually to some action or attitude; coach",
+          "examples": [
+            "I will teach my child to ride a bike by starting with training wheels and gradually removing them as they become more confident."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "teacher",
+      "word": "teacher",
+      "senses": [
+        {
+          "id": "sense-dccda792",
+          "pos": "noun",
+          "meaningZh": "老師；教師",
+          "definitionEn": "a person whose occupation is teaching",
+          "examples": [
+            "Ms. Smith is a dedicated teacher who spends hours every day preparing meaningful lessons for her students."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-272cc79f",
+          "pos": "noun",
+          "meaningZh": "道德典範；精神導師",
+          "definitionEn": "an abstract concept or idea that teaches or provides guidance",
+          "examples": [
+            "The teacher of the novel ’To Kill a Mockingbird’ is Atticus Finch, who serves as a moral teacher and role model to his children and community."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "team",
+      "word": "team",
+      "senses": [
+        {
+          "id": "sense-41d1a1aa",
+          "pos": "noun",
+          "meaningZh": "團隊；隊伍",
+          "definitionEn": "a group of people working together to achieve a common goal (especially in sports)",
+          "examples": [
+            "The basketball team practiced tirelessly to prepare for the championship game."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-1d912925",
+          "pos": "noun",
+          "meaningZh": "役畜組合（如牛隊）",
+          "definitionEn": "two or more animals working together to pull something, especially draft animals",
+          "examples": [
+            "The farmer harnessed a team of strong oxen to plow the field."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "teenager",
+      "word": "teenager",
+      "senses": [
+        {
+          "id": "sense-bba909d8",
+          "pos": "noun",
+          "meaningZh": "青少年；少男少女",
+          "definitionEn": "a person who is between 13 and 19 years old",
+          "examples": [
+            "My cousin is a teenager who is always on her phone."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "tell",
+      "word": "tell",
+      "senses": [
+        {
+          "id": "sense-a171aab8",
+          "pos": "verb",
+          "meaningZh": "告訴；表達",
+          "definitionEn": "express in words",
+          "examples": [
+            "She used hand signals to communicate with the deaf person, since she couldn't tell him verbally."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-e6034aff",
+          "pos": "verb",
+          "meaningZh": "講述；敘述",
+          "definitionEn": "narrate or give a detailed account of",
+          "examples": [
+            "During the family gathering, Grandpa would often tell us fascinating stories from his time in the war."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "temple",
+      "word": "temple",
+      "senses": [
+        {
+          "id": "sense-129ffccc",
+          "pos": "noun",
+          "meaningZh": "廟宇；寺廟",
+          "definitionEn": "a building for religious worship, especially in Hinduism and Buddhism.",
+          "examples": [
+            "The temple in Bali was a beautiful sight, and we marvelled at the intricate design and religious symbolism carved throughout."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-62794fa6",
+          "pos": "noun",
+          "meaningZh": "猶太教會堂；猶太聖殿",
+          "definitionEn": "(Judaism) a synagogue or house of prayer for Jewish congregation.",
+          "examples": [
+            "The community gathers at the temple every Saturday for Shabbat services."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "tennis",
+      "word": "tennis",
+      "senses": [
+        {
+          "id": "sense-f2bef899",
+          "pos": "noun",
+          "meaningZh": "網球；網球運動",
+          "definitionEn": "a sport played with rackets by two or four players who hit a ball back and forth over a net that divides the court",
+          "examples": [
+            "This weekend, I plan to invite some friends over to play tennis in my backyard."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "terrible",
+      "word": "terrible",
+      "senses": [
+        {
+          "id": "sense-eb288c1f",
+          "pos": "adjective",
+          "meaningZh": "糟糕的；極差的",
+          "definitionEn": "Intensely bad or unpleasant",
+          "examples": [
+            "The weather was terrible during the camping trip. It rained the whole time and the wind knocked down our tents."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-7dbebfe8",
+          "pos": "adjective",
+          "meaningZh": "惡劣的；令人不快的",
+          "definitionEn": "Exceptionally bad or unpleasant",
+          "examples": [
+            "The food at the restaurant was terrible and made us both sick."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "test",
+      "word": "test",
+      "senses": [
+        {
+          "id": "sense-95c01f50",
+          "pos": "noun",
+          "meaningZh": "考試；測驗",
+          "definitionEn": "a set of questions or exercises used to evaluate someone’s knowledge or skill",
+          "examples": [
+            "The teacher gave us a difficult math test to see how much we understood the subject."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-f67552a0",
+          "pos": "noun",
+          "meaningZh": "測試；評量",
+          "definitionEn": "a procedure used to measure sensitivity, memory, intelligence, aptitude, personality, etc.",
+          "examples": [
+            "Before starting the job, Sheila had to take a test to assess her knowledge in computer programming."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "than",
+      "word": "than",
+      "senses": [
+        {
+          "id": "sense-902bcdfe",
+          "pos": "preposition",
+          "meaningZh": "比；與……相比",
+          "definitionEn": "used to join two parts of a comparison.",
+          "examples": [
+            "John is taller than Mary."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-e58726ff",
+          "pos": "preposition",
+          "meaningZh": "比（用於數量比較）",
+          "definitionEn": "used with more or less to compare numbers or amounts.",
+          "examples": [
+            "John's salary is higher than Mary's salary."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "thank",
+      "word": "thank",
+      "senses": [
+        {
+          "id": "sense-f22669e9",
+          "pos": "verb",
+          "meaningZh": "感謝；道謝",
+          "definitionEn": "to express gratitude or show appreciation",
+          "examples": [
+            "I would like to thank my parents for their unwavering support throughout my life."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "that",
+      "word": "that",
+      "senses": [
+        {
+          "id": "sense-862a58af",
+          "pos": "pronoun",
+          "meaningZh": "那；那個",
+          "definitionEn": "used to refer to a person or thing already mentioned, known, or at a distance",
+          "examples": [
+            "That is my house at the end of the street."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-cf8a0402",
+          "pos": "adverb",
+          "meaningZh": "那麼；到那種程度",
+          "definitionEn": "to the degree or extent suggested",
+          "examples": [
+            "I didn't think you would go that far to help me."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "the",
+      "word": "the",
+      "senses": [
+        {
+          "id": "sense-14a58442",
+          "pos": "definite article",
+          "meaningZh": "這；那（定冠詞，指特定事物）",
+          "definitionEn": "used before a noun when it is clear which thing is intended.",
+          "examples": [
+            "Please pass me the salt."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-d0542304",
+          "pos": "definite article",
+          "meaningZh": "該；這種（指特定類別）",
+          "definitionEn": "used before some nouns to refer to a specific type of activity or thing.",
+          "examples": [
+            "I need to go to the store to buy the groceries."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "theater",
+      "word": "theater",
+      "senses": [
+        {
+          "id": "sense-aa7962b0",
+          "pos": "noun",
+          "meaningZh": "劇院；戲院",
+          "definitionEn": "a building, room, or outdoor structure with rows of seats, where people can watch performances, movies, or other activities",
+          "examples": [
+            "Last night, we went to the theater to watch a play by William Shakespeare."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-e7fee391",
+          "pos": "noun",
+          "meaningZh": "戲劇藝術；劇場表演",
+          "definitionEn": "the art or activity of writing and performing plays, or the public presentation of plays",
+          "examples": [
+            "Sarah has always had a passion for theater. She spends hours each day writing scripts and rehearsing with her fellow actors, eagerly preparing for their upcoming performance on the main stage."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "then",
+      "word": "then",
+      "senses": [
+        {
+          "id": "sense-ba8647d8",
+          "pos": "noun",
+          "meaningZh": "那時；當時",
+          "definitionEn": "that time; that moment",
+          "examples": [
+            "Back then when I was a kid, we used to play in the park all day."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-65245a03",
+          "pos": "adjective",
+          "meaningZh": "當時的；以前那時的",
+          "definitionEn": "referring to a specific previous time",
+          "examples": [
+            "I had a meeting this morning, and then I went for lunch with my colleagues."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "there",
+      "word": "there",
+      "senses": [
+        {
+          "id": "sense-818c6cfb",
+          "pos": "noun",
+          "meaningZh": "那裡；那個地方",
+          "definitionEn": "a location other than here; that place",
+          "examples": [
+            "Please put the book over there on the shelf."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-2a910f6d",
+          "pos": "adverb",
+          "meaningZh": "在那裡；往那邊",
+          "definitionEn": "to or toward that place; away from the speaker",
+          "examples": [
+            "Can you please go there and fetch me a glass of water?"
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "these",
+      "word": "these",
+      "senses": [
+        {
+          "id": "sense-7a868be1",
+          "pos": "pronoun",
+          "meaningZh": "這些（this 的複數）",
+          "definitionEn": "pl of this",
+          "examples": [
+            "These apples are delicious."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "thick",
+      "word": "thick",
+      "senses": [
+        {
+          "id": "sense-da4e71b1",
+          "pos": "adjective",
+          "meaningZh": "厚的；粗的",
+          "definitionEn": "having a relatively great extent from one surface to the opposite, not thin; of a specific thickness",
+          "examples": [
+            "The winter coat was so thick that I didn’t feel the cold wind at all."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-5a13f6e3",
+          "pos": "adjective",
+          "meaningZh": "濃密的；稠密的",
+          "definitionEn": "having component parts crowded closely together",
+          "examples": [
+            "The fog was so thick that it was difficult to see the road ahead."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "thin",
+      "word": "thin",
+      "senses": [
+        {
+          "id": "sense-e09a0ff8",
+          "pos": "adjective",
+          "meaningZh": "薄的；細的",
+          "definitionEn": "having little thickness or depth",
+          "examples": [
+            "She was so thin that you could see her bones protruding."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-011adfd2",
+          "pos": "adjective",
+          "meaningZh": "瘦的；纖細的",
+          "definitionEn": "not having much flesh on one’s body",
+          "examples": [
+            "She was so thin that people often mistook her for a model."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "thing",
+      "word": "thing",
+      "senses": [
+        {
+          "id": "sense-4610abfc",
+          "pos": "noun",
+          "meaningZh": "東西；事物",
+          "definitionEn": "a separate and self-contained entity",
+          "examples": [
+            "He had so many things to pack before his move to a new home."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-d4fadf86",
+          "pos": "noun",
+          "meaningZh": "那個；某物（泛稱）",
+          "definitionEn": "an entity that is not named specifically",
+          "examples": [
+            "Can you hand me that thing on the table?"
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "think",
+      "word": "think",
+      "senses": [
+        {
+          "id": "sense-920c269a",
+          "pos": "verb",
+          "meaningZh": "思考；認為",
+          "definitionEn": "to have or formulate an idea or opinion",
+          "examples": [
+            "After careful consideration, she thought that starting her own business would be a good idea."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-4b6d007b",
+          "pos": "verb",
+          "meaningZh": "回想；憶起",
+          "definitionEn": "to recall information from memory",
+          "examples": [
+            "As she searched for the answer, she had to think back to her childhood memories."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "third",
+      "word": "third",
+      "senses": [
+        {
+          "id": "sense-cb7e6b8d",
+          "pos": "noun",
+          "meaningZh": "第三名；第三位",
+          "definitionEn": "immediately following the second position in a series",
+          "examples": [
+            "In a race of five runners, she finished in third place."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-0b365e84",
+          "pos": "noun",
+          "meaningZh": "三分之一",
+          "definitionEn": "one of three equal parts of a whole",
+          "examples": [
+            "Each team will play two games, with the winners of each game and the best-performing second-placed team advancing to the third round."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "this",
+      "word": "this",
+      "senses": [
+        {
+          "id": "sense-389c3018",
+          "pos": "determiner",
+          "meaningZh": "這；這個",
+          "definitionEn": "used to identify a specific person or thing close at hand or being indicated",
+          "examples": [
+            "This book is mine, not yours."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-77f88b0a",
+          "pos": "pronoun",
+          "meaningZh": "這；這件事",
+          "definitionEn": "used to refer to a specific thing or situation just mentioned or about to be mentioned",
+          "examples": [
+            "This is exactly what I wanted."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "those",
+      "word": "those",
+      "senses": [
+        {
+          "id": "sense-5b33d815",
+          "pos": "pron./adj.",
+          "meaningZh": "那些（指較遠的複數事物）",
+          "definitionEn": "plural form of ’that’ - indicating a higher degree of distance in space or time",
+          "examples": [
+            "Those books on the top shelf are mine."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "though",
+      "word": "though",
+      "senses": [
+        {
+          "id": "sense-371894fa",
+          "pos": "adverb",
+          "meaningZh": "儘管；雖然",
+          "definitionEn": "nevertheless",
+          "examples": [
+            "I wanted to go to the party, though I was feeling tired."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-e194c6fc",
+          "pos": "adverb",
+          "meaningZh": "不過；然而",
+          "definitionEn": "(postpositive) however",
+          "examples": [
+            "She was tired, though she continued to work hard."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "thousand",
+      "word": "thousand",
+      "senses": [
+        {
+          "id": "sense-14aa3a1a",
+          "pos": "noun",
+          "meaningZh": "一千；千",
+          "definitionEn": "the number equal to 10 multiplied by 100, or a large but unspecified number",
+          "examples": [
+            "She must have spent a thousand dollars on that designer handbag."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-e6e85016",
+          "pos": "adjective",
+          "meaningZh": "一千的；千個的",
+          "definitionEn": "involving or consisting of a quantity of 1,000 items or units",
+          "examples": [
+            "The company hired more than a thousand employees to work on the project."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "throat",
+      "word": "throat",
+      "senses": [
+        {
+          "id": "sense-da36bcfd",
+          "pos": "noun",
+          "meaningZh": "喉嚨；咽喉",
+          "definitionEn": "the passage through which food and air pass into the body, located in the front part of the neck between the chin and the collarbone",
+          "examples": [
+            "After swallowing a large bite of food, it got stuck in his throat for a moment before he coughed it back up."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-3af20e25",
+          "pos": "noun",
+          "meaningZh": "（動物的）喉部",
+          "definitionEn": "the part of an animal’s body that corresponds to a person’s throat",
+          "examples": [
+            "The lion let out a fierce roar, its throat rumbling with power."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "through",
+      "word": "through",
+      "senses": [
+        {
+          "id": "sense-2e5a1f63",
+          "pos": "adverb",
+          "meaningZh": "穿越；從頭到尾",
+          "definitionEn": "throughout the entire extent",
+          "examples": [
+            "John drove the car through the tunnel."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-e908eea5",
+          "pos": "adverb",
+          "meaningZh": "直到完成；貫穿",
+          "definitionEn": "to completion",
+          "examples": [
+            "I worked my way through the entire book in just three days."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    }
+  ]
+}

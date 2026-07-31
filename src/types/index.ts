@@ -5,7 +5,7 @@ export type {
   ImportResult,
   VersionDiff,
 } from './backup'
-export type { FirestoreDailyStatsDoc, FirestoreProgressDoc, FirestoreSetDoc, FirestoreStatsDoc, SetSyncConflict } from './cloud'
+export type { FirestoreDailyStatsDoc, FirestoreLibraryChunk, FirestoreProgressDoc, FirestoreSetDoc, FirestoreStatsDoc, SetSyncConflict } from './cloud'
 export type { DictionaryDefinition, DictionaryEntry, DictionaryMeaning, DictionaryPhonetic } from './dictionary'
 export type {
   Achievement,
@@ -16,6 +16,20 @@ export type {
   ReviewRating,
   SyncStatus,
 } from './learning'
+export type {
+  ClozeQuestion,
+  LibraryDataSource,
+  LibraryQuestion,
+  LibraryQuestionBase,
+  LibraryState,
+  MultipleChoiceQuestion,
+  ReadingChildQuestion,
+  ReadingPack,
+  VocabFolder,
+  VocabSetMember,
+  WordEntry,
+  WordSense,
+} from './library'
 export type {
   AnswerRecord,
   Draft,

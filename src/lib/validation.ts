@@ -48,20 +48,13 @@ export function normalizeItem(item: unknown, itemIndex: number): VocabItem {
   if (!isNonEmptyString(it.meaning)) {
     throw new Error(`第 ${itemIndex + 1} 筆缺少 meaning`)
   }
-  if (!isNonEmptyString(it.example)) {
-    throw new Error(`第 ${itemIndex + 1} 筆缺少 example`)
-  }
-  if (!it.question) {
-    throw new Error(`第 ${itemIndex + 1} 筆缺少 question`)
-  }
-
   return {
     id: isNonEmptyString(it.id) ? (it.id as string).trim() : generateId('item'),
     word: (it.word as string).trim(),
     pos: isNonEmptyString(it.pos) ? (it.pos as string).trim() : '',
     meaning: (it.meaning as string).trim(),
-    example: (it.example as string).trim(),
-    question: normalizeQuestion(it.question, itemIndex),
+    example: isNonEmptyString(it.example) ? (it.example as string).trim() : '',
+    question: it.question ? normalizeQuestion(it.question, itemIndex) : undefined,
     definition: isNonEmptyString(it.definition) ? (it.definition as string).trim() : undefined,
     phonetic: isNonEmptyString(it.phonetic) ? (it.phonetic as string).trim() : undefined,
     audioUrl: isNonEmptyString(it.audioUrl) ? (it.audioUrl as string).trim() : undefined,
@@ -95,6 +88,7 @@ export function normalizeSet(data: unknown, fallbackId = generateId()): VocabSet
     setName: isNonEmptyString(d.setName) ? (d.setName as string).trim() : fallbackName,
     difficulty: (d.difficulty as number) ?? 2,
     items: (d.items as unknown[]).map((item, index) => normalizeItem(item, index)),
+    folderId: isNonEmptyString(d.folderId) ? (d.folderId as string).trim() : undefined,
     createdAt: isNonEmptyString(d.createdAt) ? d.createdAt as string : undefined,
     updatedAt: isNonEmptyString(d.updatedAt) ? d.updatedAt as string : undefined,
   }

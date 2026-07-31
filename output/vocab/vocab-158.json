@@ -1,0 +1,1369 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 158,
+  "words": [
+    {
+      "wordKey": "shrug",
+      "word": "shrug",
+      "senses": [
+        {
+          "id": "sense-17aa6035",
+          "pos": "verb",
+          "meaningZh": "聳肩（表不知或無所謂）",
+          "definitionEn": "lift and lower (the shoulders) slightly and quickly to express doubt, ignorance, or indifference.",
+          "examples": [
+            "When I asked him where he had been all night, he just shrugged his shoulders, leaving me even more suspicious."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-6bcfbfdf",
+          "pos": "noun",
+          "meaningZh": "聳肩動作",
+          "definitionEn": "a gesture involving the shoulders",
+          "examples": [
+            "When she was asked about her plans for the evening, she simply shrugged."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "shuttle",
+      "word": "shuttle",
+      "senses": [
+        {
+          "id": "sense-cf64b902",
+          "pos": "noun",
+          "meaningZh": "接駁車；班車；太空梭",
+          "definitionEn": "a form of public transport that operates between two points repeatedly, such as a bus, train, or airplane",
+          "examples": [
+            "I took the shuttle from the airport to the city center."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-23ddab94",
+          "pos": "noun",
+          "meaningZh": "梭子（織布機）",
+          "definitionEn": "a device that passes the weft thread between the warp threads in weaving",
+          "examples": [
+            "The weaver skillfully maneuvered the shuttle back and forth, seamlessly weaving the colorful threads into a beautiful tapestry."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "sibling",
+      "word": "sibling",
+      "senses": [
+        {
+          "id": "sense-c7f2a330",
+          "pos": "noun",
+          "meaningZh": "兄弟姊妹；手足",
+          "definitionEn": "a brother or sister; one of two or more individuals having one or both parents in common",
+          "examples": [
+            "Growing up with a sibling can be both challenging and rewarding, as they are there to share your experiences and support you."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "siege",
+      "word": "siege",
+      "senses": [
+        {
+          "id": "sense-6dec2340",
+          "pos": "noun",
+          "meaningZh": "圍城；圍攻",
+          "definitionEn": "a military operation in which enemy forces surround a town or building, cutting off essential supplies with the aim of compelling the surrender of those inside",
+          "examples": [
+            "During the siege, the town's residents ran out of food and water, forcing them to surrender after several weeks of resistance."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "skeleton",
+      "word": "skeleton",
+      "senses": [
+        {
+          "id": "sense-3274b411",
+          "pos": "noun",
+          "meaningZh": "骨骼；骨架",
+          "definitionEn": "the hard structure, made up of bones and cartilage, that supports and gives shape to the body of an animal",
+          "examples": [
+            "The forensic pathologist identified the deceased from the skeleton found in the woods."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-8e041265",
+          "pos": "noun",
+          "meaningZh": "（物體的）骨架；框架",
+          "definitionEn": "the internal supporting structure that gives shape to an artifact or object",
+          "examples": [
+            "The dinosaur skeleton exhibit at the museum displayed the impressive framework of the prehistoric animal."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "skull",
+      "word": "skull",
+      "senses": [
+        {
+          "id": "sense-609672a5",
+          "pos": "noun",
+          "meaningZh": "頭骨；顱骨",
+          "definitionEn": "the structure of bones that encloses the brain and supports the face of humans and other vertebrates",
+          "examples": [
+            "She fell off her bike without a helmet, and hit her skull on the pavement, resulting in a concussion."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "slam",
+      "word": "slam",
+      "senses": [
+        {
+          "id": "sense-a523b462",
+          "pos": "verb",
+          "meaningZh": "猛力關上；砰地關",
+          "definitionEn": "to shut something forcefully and noisily",
+          "examples": [
+            "She slammed the door as she left the room."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-d5ecf239",
+          "pos": "verb",
+          "meaningZh": "（音樂）衝撞舞；激烈搖滾",
+          "definitionEn": "to perform the slam dance",
+          "examples": [
+            "The crowd went wild as the punk rock band started playing, and everyone began to slam and mosh in the pit."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "slap",
+      "word": "slap",
+      "senses": [
+        {
+          "id": "sense-0489cf81",
+          "pos": "noun",
+          "meaningZh": "掌摑；巴掌",
+          "definitionEn": "a blow delivered with an open hand or something flat.",
+          "examples": [
+            "During their argument, she couldn't control her anger and slapped him across the face."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-e1c2ff30",
+          "pos": "noun",
+          "meaningZh": "拍打；抽打",
+          "definitionEn": "an act of smacking something.",
+          "examples": [
+            "After he made an insulting comment, she responded with a quick slap across his face."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "slavery",
+      "word": "slavery",
+      "senses": [
+        {
+          "id": "sense-d362275c",
+          "pos": "noun",
+          "meaningZh": "奴役；被奴役的狀態",
+          "definitionEn": "the state of being under the control of another person",
+          "examples": [
+            "In the 1800s, many African Americans were forced into slavery and treated as property."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-822ec531",
+          "pos": "noun",
+          "meaningZh": "苦役；奴隸制度",
+          "definitionEn": "work done under harsh conditions for little or no pay",
+          "examples": [
+            "During the 18th and 19th centuries, millions of African people were forcibly brought to America and subjected to slavery, where they were forced to work on plantations under unbearable conditions and received no compensation."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L6",
+        "textbookTitle": "龍騰 B1·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "slot",
+      "word": "slot",
+      "senses": [
+        {
+          "id": "sense-107c9061",
+          "pos": "noun",
+          "meaningZh": "時段；排程時間",
+          "definitionEn": "a designated and scheduled time for something to occur or take place",
+          "examples": [
+            "I have a time slot at 3 PM for my doctor's appointment."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-907370b0",
+          "pos": "noun",
+          "meaningZh": "吃角子老虎機；投幣機",
+          "definitionEn": "a machine used for gambling, activated by inserting coins or tokens into a slot and pulling a handle or pushing a button to spin rollers bearing symbols",
+          "examples": [
+            "In the casino, I decided to try my luck at the slot machine and inserted a few coins into the slot before pulling the handle."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "smash",
+      "word": "smash",
+      "senses": [
+        {
+          "id": "sense-2ee9ca21",
+          "pos": "verb",
+          "meaningZh": "猛烈撞擊；打碎",
+          "definitionEn": "hit violently or hard, colliding or striking suddenly and destructively, causing something to break into pieces or be damaged",
+          "examples": [
+            "In a fit of anger, he took his hammer and smashed the mirror, shattering it into tiny shards."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-589ae95d",
+          "pos": "verb",
+          "meaningZh": "摧毀；使破產",
+          "definitionEn": "to humiliate or depress completely or to reduce to bankruptcy",
+          "examples": [
+            "After years of mismanagement, the reckless spending finally smashed the company, leaving it bankrupt."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "smog",
+      "word": "smog",
+      "senses": [
+        {
+          "id": "sense-46bc9b72",
+          "pos": "noun",
+          "meaningZh": "霾；煙霧污染",
+          "definitionEn": "a type of air pollution that results from a mixture of smoke and fog",
+          "examples": [
+            "The city was blanketed in a thick layer of smog, making it difficult to see the tall buildings."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "snatch",
+      "word": "snatch",
+      "senses": [
+        {
+          "id": "sense-a07772b2",
+          "pos": "verb",
+          "meaningZh": "奪取；一把抓住",
+          "definitionEn": "to take hold of something quickly and roughly",
+          "examples": [
+            "A thief snatched her bag and ran off."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-48461600",
+          "pos": "noun",
+          "meaningZh": "片段；一小部分",
+          "definitionEn": "a brief part or piece of something",
+          "examples": [
+            "He managed to catch a quick snatch of the conversation as he passed by."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "sneak",
+      "word": "sneak",
+      "senses": [
+        {
+          "id": "sense-caa06ade",
+          "pos": "verb",
+          "meaningZh": "偷偷行動；暗中潛入",
+          "definitionEn": "to go or do something secretly, or take someone or something somewhere secretly",
+          "examples": [
+            "The spy managed to sneak into the enemy base without being detected."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L5",
+        "textbookTitle": "龍騰 B4·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "sniff",
+      "word": "sniff",
+      "senses": [
+        {
+          "id": "sense-93a1decc",
+          "pos": "noun",
+          "meaningZh": "吸聞；嗅一嗅",
+          "definitionEn": "the act of quickly breathing in through the nose to smell something",
+          "examples": [
+            "As she walked into the bakery, the enticing aroma of freshly baked bread made her pause and take a deep sniff."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "soak",
+      "word": "soak",
+      "senses": [
+        {
+          "id": "sense-8d4dd857",
+          "pos": "verb",
+          "meaningZh": "浸泡；將⋯浸入液體",
+          "definitionEn": "submerge something in a liquid",
+          "examples": [
+            "I like to soak my clothes in a bucket of water before washing them."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-bb4ac4c6",
+          "pos": "verb",
+          "meaningZh": "使充分吸收；讓⋯滲透",
+          "definitionEn": "pour liquid onto something and let it be absorbed",
+          "examples": [
+            "She likes to soak her feet in warm water after a long day at work."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "soar",
+      "word": "soar",
+      "senses": [
+        {
+          "id": "sense-be70ba86",
+          "pos": "verb",
+          "meaningZh": "高飛；翱翔",
+          "definitionEn": "to fly upwards or high in the sky",
+          "examples": [
+            "The majestic eagle spread its wings and soared effortlessly through the clear blue sky."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-9c4a57f5",
+          "pos": "verb",
+          "meaningZh": "急速上升；飆漲",
+          "definitionEn": "to rise rapidly or go or move upward, as in the stock market",
+          "examples": [
+            "After releasing their groundbreaking product, the company's stocks began to soar, reaching record highs within a few days."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L3",
+        "textbookTitle": "龍騰 B5·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "sob",
+      "word": "sob",
+      "senses": [
+        {
+          "id": "sense-60803c51",
+          "pos": "noun",
+          "meaningZh": "哽咽；嗚咽聲",
+          "definitionEn": "The act of sobbing; a convulsive weeping.",
+          "examples": [
+            "After receiving the devastating news, she collapsed onto the floor in a fit of uncontrollable sobs."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-d306a24a",
+          "pos": "verb",
+          "meaningZh": "嗚咽；放聲大哭",
+          "definitionEn": "To cry noisily and convulsively.",
+          "examples": [
+            "After receiving the heartbreaking news, she began to sob uncontrollably, her whole body trembling in grief."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L6",
+        "textbookTitle": "龍騰 B3·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "sober",
+      "word": "sober",
+      "senses": [
+        {
+          "id": "sense-7b33e9ff",
+          "pos": "adjective",
+          "meaningZh": "清醒的；未飲酒的",
+          "definitionEn": "not drunk; having had no alcohol",
+          "examples": [
+            "After a night of heavy drinking, John had to wait several hours before he was sober enough to drive home."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-f36b0e15",
+          "pos": "adjective",
+          "meaningZh": "冷靜的；沉著的",
+          "definitionEn": "serious and calm",
+          "examples": [
+            "After the initial shock, she remained sober and dealt with the situation in a composed manner."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "soften",
+      "word": "soften",
+      "senses": [
+        {
+          "id": "sense-fceb7c3c",
+          "pos": "verb",
+          "meaningZh": "使軟化；使柔軟",
+          "definitionEn": "to make something soft or softer; to reduce the hardness, stiffness, or intensity of something",
+          "examples": [
+            "To make the butter for the cake, you have to soften it first by leaving it at room temperature for a few hours."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-90ccefe6",
+          "pos": "verb",
+          "meaningZh": "變軟；軟化",
+          "definitionEn": "to become soft or softer; to lose hardness, stiffness, or intensity",
+          "examples": [
+            "Please soak the towels in hot water to soften the fabric before using them."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "sole",
+      "word": "sole",
+      "senses": [
+        {
+          "id": "sense-e040b43c",
+          "pos": "adjective",
+          "meaningZh": "唯一的；獨有的",
+          "definitionEn": "not divided or shared with others",
+          "examples": [
+            "He is the sole proprietor of the company, owning 100% of the shares."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-ca4f20e9",
+          "pos": "noun",
+          "meaningZh": "比目魚；龍脷（食用魚）",
+          "definitionEn": "right-eyed flatfish; many are valued as food; most common in warm seas especially European",
+          "examples": [
+            "The fisherman caught a sole and served it for dinner."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L10",
+        "textbookTitle": "三民 B4·L10"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "solo",
+      "word": "solo",
+      "senses": [
+        {
+          "id": "sense-e64c44e1",
+          "pos": "noun",
+          "meaningZh": "獨奏；獨唱曲",
+          "definitionEn": "a piece of music played or sung by one person without accompaniment or with very little accompaniment",
+          "examples": [
+            "The pianist performed a beautiful solo piece at the concert, leaving the audience mesmerized by his skillful playing."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-fc9b378b",
+          "pos": "noun",
+          "meaningZh": "單飛；獨自飛行",
+          "definitionEn": "a flight in which the pilot is the only person in the aircraft",
+          "examples": [
+            "John undertook a solo flight across the Atlantic Ocean in his single-engine Cessna."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "sophisticated",
+      "word": "sophisticated",
+      "senses": [
+        {
+          "id": "sense-093be594",
+          "pos": "adjective",
+          "meaningZh": "世故的；有品味的；見多識廣",
+          "definitionEn": "Having worldly knowledge and refinement, and showing good judgement or taste.",
+          "examples": [
+            "The woman was highly sophisticated, able to discuss art, music, and politics with ease at the dinner party."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-6fddf019",
+          "pos": "adjective",
+          "meaningZh": "精密的；複雜的；先進的",
+          "definitionEn": "Complex or intricate, and often involving advanced technology or design.",
+          "examples": [
+            "The company’s new smartphone features a sophisticated facial recognition system that can identify the user’s face from different angles."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "sophomore",
+      "word": "sophomore",
+      "senses": [
+        {
+          "id": "sense-91f4f181",
+          "pos": "noun",
+          "meaningZh": "大二生；高二生",
+          "definitionEn": "a student in the second year of college or high school",
+          "examples": [
+            "As a sophomore, she started taking more advanced courses and participating in clubs and organizations."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-857c884d",
+          "pos": "adjective",
+          "meaningZh": "二年級的；第二年的",
+          "definitionEn": "relating to the second year of college or high school education in the United States",
+          "examples": [
+            "As a sophomore, she was more comfortable with the campus culture and knew what to expect from her classes."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "souvenir",
+      "word": "souvenir",
+      "senses": [
+        {
+          "id": "sense-b5b4ea34",
+          "pos": "noun",
+          "meaningZh": "紀念品；留念物",
+          "definitionEn": "something kept to remember a place, event, or person",
+          "examples": [
+            "While on vacation, Emily bought a beautiful seashell as a souvenir to remind her of her time at the beach."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-d19b7cbf",
+          "pos": "noun",
+          "meaningZh": "紀念物；回憶信物",
+          "definitionEn": "a reminder of past events",
+          "examples": [
+            "After their trip to Paris, they brought back a small Eiffel Tower as a souvenir."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "sovereignty",
+      "word": "sovereignty",
+      "senses": [
+        {
+          "id": "sense-1b3a1aab",
+          "pos": "noun",
+          "meaningZh": "主權；自治權",
+          "definitionEn": "the authority of a state to govern itself or another state",
+          "examples": [
+            "After gaining independence, the nation exercised its sovereignty by establishing a democratic government."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-5f52dd83",
+          "pos": "noun",
+          "meaningZh": "王權；君主權力",
+          "definitionEn": "royal authority; the dominion of a monarch",
+          "examples": [
+            "The king exercises his sovereignty by making important decisions that affect the entire kingdom."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "sow",
+      "word": "sow",
+      "senses": [
+        {
+          "id": "sense-e708e9e8",
+          "pos": "verb",
+          "meaningZh": "播種；種植",
+          "definitionEn": "to plant (seeds) in soil",
+          "examples": [
+            "The farmer sowed seeds in the field to grow crops."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-ffd5fb47",
+          "pos": "verb",
+          "meaningZh": "散播；引入（某事物）",
+          "definitionEn": "to introduce or spread (something) in an environment",
+          "examples": [
+            "The farmer carefully sowed the seeds in the freshly plowed field."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L10",
+        "textbookTitle": "三民 B4·L10"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "spacious",
+      "word": "spacious",
+      "senses": [
+        {
+          "id": "sense-a5cef460",
+          "pos": "adjective",
+          "meaningZh": "寬敞的；寬廣舒適的",
+          "definitionEn": "having enough room or space and being comfortable to use",
+          "examples": [
+            "The newly renovated apartment had a spacious living room, perfect for hosting gatherings."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-934769b9",
+          "pos": "adjective",
+          "meaningZh": "廣大的；面積遼闊的",
+          "definitionEn": "very large in area or size",
+          "examples": [
+            "The living room in their new house is so spacious that they can fit a large sofa, a dining table, and an entertainment center."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "sparkle",
+      "word": "sparkle",
+      "senses": [
+        {
+          "id": "sense-d83dea72",
+          "pos": "noun",
+          "meaningZh": "閃光；火花",
+          "definitionEn": "the occurrence of a small flash or spark",
+          "examples": [
+            "The fireworks above the lake sparkled in the dark."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-4db6a2f9",
+          "pos": "noun",
+          "meaningZh": "閃爍；反光光澤",
+          "definitionEn": "the quality of shining with a bright reflected light",
+          "examples": [
+            "The stars sparkled in the clear night sky."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L1",
+        "textbookTitle": "龍騰 B3·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "specialist",
+      "word": "specialist",
+      "senses": [
+        {
+          "id": "sense-c799d22f",
+          "pos": "noun",
+          "meaningZh": "專家；專業人士",
+          "definitionEn": "someone who has a lot of experience, knowledge, or skill in a particular subject or field, and is often paid a lot of money for their expertise",
+          "examples": [
+            "The patient was experiencing severe heart problems, so they decided to consult a cardiac specialist for a thorough evaluation and specific treatment plan."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-711e4a57",
+          "pos": "noun",
+          "meaningZh": "專科醫師",
+          "definitionEn": "a doctor who focuses on a specific area of medicine, such as cardiology or oncology",
+          "examples": [
+            "When John experienced irregular heartbeats, he consulted a specialist in cardiology."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    }
+  ]
+}

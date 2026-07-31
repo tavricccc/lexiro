@@ -1,0 +1,1415 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 117,
+  "words": [
+    {
+      "wordKey": "including",
+      "word": "including",
+      "senses": [
+        {
+          "id": "sense-48e1e320",
+          "pos": "verb",
+          "meaningZh": "包含；涵蓋",
+          "definitionEn": "be composed of; have as a part",
+          "examples": [
+            "The ingredients for the salad include lettuce, tomatoes, and cucumbers."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-3041a2ab",
+          "pos": "verb",
+          "meaningZh": "包括在內；含括",
+          "definitionEn": "regard something as part of a whole; take into account",
+          "examples": [
+            "When planning a family vacation, make sure to include activities that cater to everyone's interests."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B2·L1 +1",
+        "textbookTitle": "三民 B2·L1、翰林 B1·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "incredible",
+      "word": "incredible",
+      "senses": [
+        {
+          "id": "sense-fc9764c6",
+          "pos": "adjective",
+          "meaningZh": "驚人的；了不起的",
+          "definitionEn": "extraordinarily good or great; used especially as intensifiers",
+          "examples": [
+            "The performance of the gymnast was incredible, she executed the routine flawlessly and left the audience in awe."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-87f1b0d6",
+          "pos": "adjective",
+          "meaningZh": "難以置信的；不可思議的",
+          "definitionEn": "beyond belief or understanding",
+          "examples": [
+            "The view from the top of the mountain was incredible. It was so breathtaking and stunning that it was beyond belief or understanding."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "indication",
+      "word": "indication",
+      "senses": [
+        {
+          "id": "sense-816f6379",
+          "pos": "noun",
+          "meaningZh": "跡象；徵兆",
+          "definitionEn": "something that serves to indicate or suggest",
+          "examples": [
+            "The dark clouds were an indication that it might rain soon."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-02a96514",
+          "pos": "noun",
+          "meaningZh": "指示；標示",
+          "definitionEn": "the act of indicating or pointing out by name",
+          "examples": [
+            "The sudden dark clouds and the distant sound of thunder are an indication of an approaching storm."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L2 +1",
+        "textbookTitle": "龍騰 B2·L2、三民 B1·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "infant",
+      "word": "infant",
+      "senses": [
+        {
+          "id": "sense-0016993f",
+          "pos": "noun",
+          "meaningZh": "嬰兒；未滿一歲的幼兒",
+          "definitionEn": "a baby who is less than one year old and cannot yet walk or talk",
+          "examples": [
+            "The new parents were filled with joy as they cradled their adorable infant in their arms."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "infection",
+      "word": "infection",
+      "senses": [
+        {
+          "id": "sense-a02f2c82",
+          "pos": "noun",
+          "meaningZh": "感染；病菌侵入",
+          "definitionEn": "The invasion of the body by harmful microorganisms, which can cause tissue damage and lead to illness.",
+          "examples": [],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-42fd7e98",
+          "pos": "noun",
+          "meaningZh": "傳染；病菌傳播",
+          "definitionEn": "The transmission of an infectious disease from one person to another.",
+          "examples": [
+            "After being in close contact with a sick coworker who had the flu, Sarah unfortunately contracted the infection and became ill."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L4",
+        "textbookTitle": "龍騰 B1·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "inflation",
+      "word": "inflation",
+      "senses": [
+        {
+          "id": "sense-5817466b",
+          "pos": "noun",
+          "meaningZh": "通貨膨脹；物價上漲",
+          "definitionEn": "a general and progressive increase in prices",
+          "examples": [
+            "Rising fuel costs and increased consumer demand have contributed to the inflation in the housing market, making it increasingly difficult for first-time buyers to afford a home."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-a75f7f53",
+          "pos": "noun",
+          "meaningZh": "（宇宙學）宇宙暴脹",
+          "definitionEn": "(cosmology) a brief exponential expansion of the universe (faster than the speed of light) postulated to have occurred shortly after the big bang",
+          "examples": [
+            "Scientists believe that during the period of inflation, the universe rapidly expanded from a tiny subatomic size to its current vastness in just a fraction of a second."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "influential",
+      "word": "influential",
+      "senses": [
+        {
+          "id": "sense-918edca4",
+          "pos": "adjective",
+          "meaningZh": "有影響力的；舉足輕重的",
+          "definitionEn": "having or exercising great influence or power over something or someone",
+          "examples": [
+            "The CEO's persuasive speech was influential, swaying the entire board of directors to support his proposal."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-81381b54",
+          "pos": "adjective",
+          "meaningZh": "具說服力的；能影響決策的",
+          "definitionEn": "having the ability to affect people, things, or decisions",
+          "examples": [
+            "The influential speaker convinced the audience to donate to the charity."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B1·L4",
+        "textbookTitle": "三民 B1·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "informative",
+      "word": "informative",
+      "senses": [
+        {
+          "id": "sense-2f548ac8",
+          "pos": "adjective",
+          "meaningZh": "資訊豐富的；提供大量資訊的",
+          "definitionEn": "providing or conveying information",
+          "examples": [],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-1b405bf3",
+          "pos": "adjective",
+          "meaningZh": "有教育意義的；啟發性的",
+          "definitionEn": "serving to instruct, enlighten, or inform",
+          "examples": [
+            "The documentary provided informative insights into the history and culture of the indigenous tribe."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B1·L5",
+        "textbookTitle": "三民 B1·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "ingredient",
+      "word": "ingredient",
+      "senses": [
+        {
+          "id": "sense-f42ea2a4",
+          "pos": "noun",
+          "meaningZh": "（烹飪）食材；原料",
+          "definitionEn": "food that is used to make a dish or recipe",
+          "examples": [
+            "Tomatoes are a key ingredient in pasta sauce."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-dd6b9934",
+          "pos": "noun",
+          "meaningZh": "成分；組成要素",
+          "definitionEn": "a component of a mixture or compound",
+          "examples": [
+            "Flour is a key ingredient in baking a cake."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L2",
+        "textbookTitle": "龍騰 B2·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "initial",
+      "word": "initial",
+      "senses": [
+        {
+          "id": "sense-3925f922",
+          "pos": "noun",
+          "meaningZh": "初始的；起初的",
+          "definitionEn": "taking action at the beginning stage of a project",
+          "examples": [
+            "In order to ensure the success of the project, the initial phase must be carefully planned and executed."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-663502a5",
+          "pos": "noun",
+          "meaningZh": "首字母；名字縮寫",
+          "definitionEn": "the first letter of a word, especially when used to represent a name",
+          "examples": [
+            "When filling out the form, please provide your full name, including your initial letter."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L7 +1",
+        "textbookTitle": "龍騰 B3·L7、三民 B4·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "injure",
+      "word": "injure",
+      "senses": [
+        {
+          "id": "sense-863ca9b0",
+          "pos": "verb",
+          "meaningZh": "使受傷；造成身體損傷",
+          "definitionEn": "cause injuries or bodily harm to",
+          "examples": [
+            "John accidentally injured his leg while playing soccer."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-6cb30604",
+          "pos": "verb",
+          "meaningZh": "傷害；損害",
+          "definitionEn": "cause damage or affect negatively",
+          "examples": [
+            "After his fall, he managed to injure his leg and had to be taken to the hospital."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L1 +1",
+        "textbookTitle": "龍騰 B2·L1、三民 B1·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "innocence",
+      "word": "innocence",
+      "senses": [
+        {
+          "id": "sense-e7eb2dae",
+          "pos": "noun",
+          "meaningZh": "純真；天真無邪",
+          "definitionEn": "the state of being free from sin or moral wrongdoing; lacking knowledge or experience of evil",
+          "examples": [
+            "She looked at the world with innocence, believing that everyone was good and trustworthy until she faced the harsh reality."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-c34dec91",
+          "pos": "noun",
+          "meaningZh": "無罪；清白",
+          "definitionEn": "the state of being innocent of a specific crime or offense",
+          "examples": [
+            "After the DNA evidence cleared him from the murder charges, his innocence was finally proved in front of the judge."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L9",
+        "textbookTitle": "龍騰 B1·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "input",
+      "word": "input",
+      "senses": [
+        {
+          "id": "sense-a82a803d",
+          "pos": "noun",
+          "meaningZh": "輸入（資料）",
+          "definitionEn": "information or data put into a computer or system",
+          "examples": [
+            "The program processes the input and shows the results."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-9fc63d99",
+          "pos": "noun",
+          "meaningZh": "投入要素；原料",
+          "definitionEn": "a component that is used in the production of output",
+          "examples": [
+            "The software program requires user input before generating any output."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-0760f174",
+          "pos": "noun",
+          "meaningZh": "意見；建議",
+          "definitionEn": "any information or event that stimulates action to occur",
+          "examples": [
+            "The teacher asked for input from her students on what topics they wanted to study in the upcoming semester."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "insert",
+      "word": "insert",
+      "senses": [
+        {
+          "id": "sense-92364cec",
+          "pos": "verb",
+          "meaningZh": "插入；加入",
+          "definitionEn": "to introduce something",
+          "examples": [
+            "I will insert the new data into the spreadsheet."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-f71a968e",
+          "pos": "verb",
+          "meaningZh": "放入；置入",
+          "definitionEn": "to put or place something into something else",
+          "examples": [
+            "Please insert the USB drive into the computer before transferring any files."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B2·L8",
+        "textbookTitle": "三民 B2·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "inspection",
+      "word": "inspection",
+      "senses": [
+        {
+          "id": "sense-5127ec64",
+          "pos": "noun",
+          "meaningZh": "檢查；視察",
+          "definitionEn": "an official examination or review; a careful check or scrutiny",
+          "examples": [
+            "During the inspection, the safety inspector thoroughly examined the construction site for any potential hazards."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "inspiration",
+      "word": "inspiration",
+      "senses": [
+        {
+          "id": "sense-acb360c4",
+          "pos": "noun",
+          "meaningZh": "靈感；啟發",
+          "definitionEn": "a sudden intuition or idea, especially one that leads to creative work or problem-solving",
+          "examples": [
+            "The artist found inspiration for his new painting in the vibrant colors of the sunset he saw the previous evening."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L2 +1",
+        "textbookTitle": "龍騰 B1·L2、翰林 B1·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "inspire",
+      "word": "inspire",
+      "senses": [
+        {
+          "id": "sense-1eae2897",
+          "pos": "verb",
+          "meaningZh": "激勵；鼓舞",
+          "definitionEn": "to serve as the reason or cause of something; to motivate or encourage someone to do something",
+          "examples": [
+            "The story of a brave woman who fought against all odds to become a successful entrepreneur and inspired many young women to start their own businesses."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-ecb673fe",
+          "pos": "verb",
+          "meaningZh": "激發創意；啟迪",
+          "definitionEn": "to provoke or stimulate creative action or thought",
+          "examples": [
+            "Her artwork was inspired by the beauty of nature."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L2 +1",
+        "textbookTitle": "龍騰 B1·L2、翰林 B1·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "install",
+      "word": "install",
+      "senses": [
+        {
+          "id": "sense-d0786729",
+          "pos": "verb",
+          "meaningZh": "安裝；設置",
+          "definitionEn": "set up for use",
+          "examples": [
+            "After purchasing the new computer, I called a technician to install the operating system and all the necessary software."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-ceebb349",
+          "pos": "verb",
+          "meaningZh": "裝設；安置",
+          "definitionEn": "place",
+          "examples": [
+            "The plumber came to install a new sink in the kitchen."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L2 +1",
+        "textbookTitle": "龍騰 B4·L2、翰林 B1·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "instinct",
+      "word": "instinct",
+      "senses": [
+        {
+          "id": "sense-2ea0bc0b",
+          "pos": "noun",
+          "meaningZh": "本能；天性",
+          "definitionEn": "a natural tendency to behave in a certain way without thinking",
+          "examples": [
+            "Birds build nests by instinct."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-d6e6b325",
+          "pos": "verb",
+          "meaningZh": "依本能行動",
+          "definitionEn": "To behave instinctively or in a way that is typical for a certain species.",
+          "examples": [
+            "When a newborn lamb stands up and begins to walk within minutes of being born, it is an instinctual behavior that ensures its survival."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L9",
+        "textbookTitle": "龍騰 B4·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "instruct",
+      "word": "instruct",
+      "senses": [
+        {
+          "id": "sense-c08b1f0f",
+          "pos": "verb",
+          "meaningZh": "教導；傳授",
+          "definitionEn": "impart skills or knowledge to",
+          "examples": [
+            "The teacher will instruct the students on how to solve the math problem."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-f1c5d8c7",
+          "pos": "verb",
+          "meaningZh": "告知；指示",
+          "definitionEn": "make someone aware of something by communicating or informing them.",
+          "examples": [],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L1 +1",
+        "textbookTitle": "龍騰 B4·L1、三民 B4·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "instructor",
+      "word": "instructor",
+      "senses": [
+        {
+          "id": "sense-a641aaf9",
+          "pos": "noun",
+          "meaningZh": "教師；講師",
+          "definitionEn": "a person whose occupation is teaching; a teacher or trainer",
+          "examples": [
+            "The yoga instructor patiently explained the correct posture to her students."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-599fc71a",
+          "pos": "noun",
+          "meaningZh": "飛行教官",
+          "definitionEn": "a pilot who gives in-flight training to other pilots",
+          "examples": [
+            "The instructor, an experienced pilot, demonstrated the proper procedures for takeoff and landing to the trainee pilots."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L1 +1",
+        "textbookTitle": "龍騰 B4·L1、三民 B4·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "insult",
+      "word": "insult",
+      "senses": [
+        {
+          "id": "sense-15aa52bb",
+          "pos": "noun",
+          "meaningZh": "侮辱；冒犯",
+          "definitionEn": "a deliberately offensive act or something producing the effect of deliberate disrespect",
+          "examples": [
+            "During the heated argument, John resorted to hurling insults at his opponent, hoping to provoke a reaction."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-7d34f40d",
+          "pos": "noun",
+          "meaningZh": "羞辱；惡言",
+          "definitionEn": "a rude expression intended to offend or hurt",
+          "examples": [
+            "He insulted her by making a derogatory comment about her appearance."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "insurance",
+      "word": "insurance",
+      "senses": [
+        {
+          "id": "sense-2309de67",
+          "pos": "noun",
+          "meaningZh": "保險；保險契約",
+          "definitionEn": "An agreement in which an insurance company agrees to compensate a specific loss as stated in the contract",
+          "examples": [
+            "Nancy purchased insurance for her house, which covered any damage caused by natural disasters such as floods or earthquakes."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-851a3f38",
+          "pos": "noun",
+          "meaningZh": "保障；防護",
+          "definitionEn": "The act of being protected against future loss",
+          "examples": [
+            "John bought insurance to protect his car in case of an accident."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "intellectual",
+      "word": "intellectual",
+      "senses": [
+        {
+          "id": "sense-0ad0ca7f",
+          "pos": "noun",
+          "meaningZh": "知識分子；思想家",
+          "definitionEn": "a person who uses the mind creatively",
+          "examples": [
+            "As an intellectual, she always seeks to expand her knowledge through reading and discussions with others."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-ef1b05a8",
+          "pos": "adjective",
+          "meaningZh": "需用智識的；腦力的",
+          "definitionEn": "requiring the use of the mind",
+          "examples": [
+            "Solving complex mathematical problems requires intellectual ability."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "intelligence",
+      "word": "intelligence",
+      "senses": [
+        {
+          "id": "sense-27a3c480",
+          "pos": "noun",
+          "meaningZh": "智力；理解力",
+          "definitionEn": "the ability to comprehend and understand new or complex information; mental capacity",
+          "examples": [
+            "John's intelligence allowed him to quickly grasp advanced mathematical concepts that confounded others."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-0382f9d8",
+          "pos": "noun",
+          "meaningZh": "情報；消息",
+          "definitionEn": "news or information of importance or interest",
+          "examples": [
+            "The intelligence gathered by the spy revealed the location of the secret meeting."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L8 +1",
+        "textbookTitle": "龍騰 B3·L8、翰林 B1·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "intend",
+      "word": "intend",
+      "senses": [
+        {
+          "id": "sense-046a4c02",
+          "pos": "verb",
+          "meaningZh": "打算；意圖",
+          "definitionEn": "to have something in mind as a plan or purpose",
+          "examples": [
+            "She intends to start her own business after she graduates."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-b7b52ffa",
+          "pos": "verb",
+          "meaningZh": "意指；想表達",
+          "definitionEn": "to mean or plan to express or convey something",
+          "examples": [
+            "I intend to propose to my girlfriend on our anniversary."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L3 +1",
+        "textbookTitle": "龍騰 B5·L3、三民 B2·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "intense",
+      "word": "intense",
+      "senses": [
+        {
+          "id": "sense-9ab52441",
+          "pos": "adjective",
+          "meaningZh": "強烈；嚴肅認真",
+          "definitionEn": "displaying strong feeling, seriousness, or earnestness",
+          "examples": [
+            "The intense look on his face showed his determination to win the race."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-29b8ddf8",
+          "pos": "adjective",
+          "meaningZh": "極度；高度",
+          "definitionEn": "possessing or displaying a distinctive feature to a heightened degree",
+          "examples": [
+            "The intense heat of the desert made it impossible to go outside without proper protection."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "intensity",
+      "word": "intensity",
+      "senses": [
+        {
+          "id": "sense-98d7abb8",
+          "pos": "noun",
+          "meaningZh": "強烈程度；強度",
+          "definitionEn": "the property of being intense; high level or degree",
+          "examples": [
+            "The noise level reached such intensity that it was impossible to have a conversation."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-8a2dfa9b",
+          "pos": "noun",
+          "meaningZh": "（物理）能量強度",
+          "definitionEn": "the amount of energy transmitted, as by acoustic or electromagnetic radiation",
+          "examples": [
+            "The intensity of the sound wave was so high that it shattered the glass windows."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "intensive",
+      "word": "intensive",
+      "senses": [
+        {
+          "id": "sense-064ea911",
+          "pos": "adjective",
+          "meaningZh": "密集的；高強度的",
+          "definitionEn": "characterized by a high degree or intensity; often used as a combining form",
+          "examples": [
+            "The intensive training program for the athletes involved rigorous exercise routines and strict dietary regulations to build strength and endurance."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-64267316",
+          "pos": "noun",
+          "meaningZh": "強調詞；加強語",
+          "definitionEn": "a modifier that intensifies the meaning of the word it modifies",
+          "examples": [
+            "The intensive workout regimen helped her lose weight quickly."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "intention",
+      "word": "intention",
+      "senses": [
+        {
+          "id": "sense-7a35842b",
+          "pos": "noun",
+          "meaningZh": "意圖；預期目標",
+          "definitionEn": "a desired or intended outcome; what you plan to do or achieve",
+          "examples": [
+            "Sarah had the intention of finishing her work early so she could attend her friend’s party."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-74fc8e68",
+          "pos": "noun",
+          "meaningZh": "計畫；決心",
+          "definitionEn": "the act of planning or deciding to do something",
+          "examples": [
+            "It was her intention to finish the project before the deadline."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L3 +1",
+        "textbookTitle": "龍騰 B5·L3、三民 B2·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    }
+  ]
+}

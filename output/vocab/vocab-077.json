@@ -1,0 +1,1369 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 77,
+  "words": [
+    {
+      "wordKey": "housekeeper",
+      "word": "housekeeper",
+      "senses": [
+        {
+          "id": "sense-68c32c52",
+          "pos": "noun",
+          "meaningZh": "管家；家務幫傭",
+          "definitionEn": "a person employed to manage a household and perform various tasks such as cleaning, cooking, and organizing",
+          "examples": [
+            "Martha hired a housekeeper to help maintain her busy household. The housekeeper cleans the rooms, prepares meals, and ensures everything is organized and tidy."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "hug",
+      "word": "hug",
+      "senses": [
+        {
+          "id": "sense-9861f61a",
+          "pos": "verb",
+          "meaningZh": "擁抱；緊抱",
+          "definitionEn": "to hold someone tightly in your arms, especially to show affection",
+          "examples": [
+            "After being apart for months, they reunited at the airport and shared a warm, heartfelt hug."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-d2c23e4c",
+          "pos": "noun",
+          "meaningZh": "擁抱；抱擁",
+          "definitionEn": "a tight or affectionate embrace",
+          "examples": [
+            "After a long absence, they embraced in a warm hug, not wanting to let go."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L1",
+        "textbookTitle": "龍騰 B3·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "hum",
+      "word": "hum",
+      "senses": [
+        {
+          "id": "sense-758a716b",
+          "pos": "verb",
+          "meaningZh": "哼唱；閉嘴哼歌",
+          "definitionEn": "to sing with closed lips, producing a low, continuous sound",
+          "examples": [
+            "As he worked on his painting, he would hum a soothing melody under his breath."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-5be0ef9a",
+          "pos": "verb",
+          "meaningZh": "嗡嗡作響；發出低鳴聲",
+          "definitionEn": "to make a low, continuous sound, like that of a bee",
+          "examples": [
+            "As the bee buzzed around the garden, it began to hum, filling the air with a melodious tune."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "humid",
+      "word": "humid",
+      "senses": [
+        {
+          "id": "sense-96ac7cf9",
+          "pos": "adjective",
+          "meaningZh": "潮濕的；濕熱的",
+          "definitionEn": "having a large amount of water vapor in the air",
+          "examples": [
+            "After a hot summer rain, the air became humid and made it difficult to breathe."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "humor",
+      "word": "humor",
+      "senses": [
+        {
+          "id": "sense-2cd71540",
+          "pos": "noun",
+          "meaningZh": "幽默；趣味",
+          "definitionEn": "the quality of being funny",
+          "examples": [
+            "During the long, tedious meeting, John injected some humor by telling a hilarious joke."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-14ce5277",
+          "pos": "noun",
+          "meaningZh": "幽默感；逗趣的能力",
+          "definitionEn": "the trait of appreciating and being able to express humor",
+          "examples": [
+            "During the stand-up comedy show, the audience couldn't contain their laughter as the comedian displayed his excellent humor by sharing hilarious jokes and witty anecdotes."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B2·L7",
+        "textbookTitle": "三民 B2·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "humorous",
+      "word": "humorous",
+      "senses": [
+        {
+          "id": "sense-7a9bfddb",
+          "pos": "adjective",
+          "meaningZh": "有趣的；滑稽的",
+          "definitionEn": "funny, amusing or entertaining",
+          "examples": [
+            "The comedian's stand-up routine was so humorous that the entire audience was in stitches with laughter."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-af8c6ef0",
+          "pos": "adjective",
+          "meaningZh": "富幽默感的；詼諧的",
+          "definitionEn": "having or showing a sense of humor",
+          "examples": [
+            "During the dinner party, Mark shared a humorous story that had everyone laughing."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B2·L7",
+        "textbookTitle": "三民 B2·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "hunger",
+      "word": "hunger",
+      "senses": [
+        {
+          "id": "sense-c469447a",
+          "pos": "noun",
+          "meaningZh": "飢餓；饑渴感",
+          "definitionEn": "a strong desire or craving for food or the feeling of discomfort or weakness caused by a lack of food",
+          "examples": [
+            "After a long day of hiking, I experienced intense hunger and devoured a whole pizza."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-5a3fad8c",
+          "pos": "verb",
+          "meaningZh": "感到飢餓；渴求食物",
+          "definitionEn": "to experience a strong desire or craving for food or to feel the physical effects of not having eaten",
+          "examples": [
+            "After hours of hiking in the mountains, I began to feel the pangs of hunger and couldn't wait to devour a delicious meal."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L10",
+        "textbookTitle": "三民 B4·L10"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "hut",
+      "word": "hut",
+      "senses": [
+        {
+          "id": "sense-69855079",
+          "pos": "noun",
+          "meaningZh": "茅屋；小屋",
+          "definitionEn": "a small, basic dwelling made of natural materials like mud, wood, or grass, typically used by people in rural areas or in the countryside",
+          "examples": [
+            "During our camping trip, we built a small hut using branches and leaves found nearby."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-88d3c133",
+          "pos": "noun",
+          "meaningZh": "臨時軍用住所；野戰小屋",
+          "definitionEn": "a temporary military shelter that is usually small and basic, used for protection and sleeping",
+          "examples": [
+            "The soldiers set up their temporary huts in the field before starting their mission."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 翰林 B1·L7",
+        "textbookTitle": "翰林 B1·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "icy",
+      "word": "icy",
+      "senses": [
+        {
+          "id": "sense-e5a495ff",
+          "pos": "adjective",
+          "meaningZh": "結冰的；滑溜溜的",
+          "definitionEn": "shiny and slick as with a thin coating of ice",
+          "examples": [
+            "The roads were icy, so I had to drive slowly to avoid accidents."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-66fa364e",
+          "pos": "adjective",
+          "meaningZh": "嚴寒的；極冷的",
+          "definitionEn": "extremely cold",
+          "examples": [
+            "The icy wind sliced through their heavy coats and made them shiver."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "imagination",
+      "word": "imagination",
+      "senses": [
+        {
+          "id": "sense-c1fd8331",
+          "pos": "noun",
+          "meaningZh": "想像力；幻想",
+          "definitionEn": "the formation of a mental image of something that is not real or present",
+          "examples": [
+            "Her vivid imagination allowed her to dream up fantastical worlds filled with talking animals and magical creatures."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-d3e6ae48",
+          "pos": "noun",
+          "meaningZh": "想像能力；創造力",
+          "definitionEn": "the ability to form mental images of things or events",
+          "examples": [
+            "The little girl's imagination ran wild as she pretended to be an astronaut, exploring the vast unknown of outer space."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L5 +1",
+        "textbookTitle": "龍騰 B2·L5、三民 B2·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "immediate",
+      "word": "immediate",
+      "senses": [
+        {
+          "id": "sense-027f9b77",
+          "pos": "adjective",
+          "meaningZh": "即時的；立刻的",
+          "definitionEn": "occurring or done without delay; instant",
+          "examples": [
+            "When a fire broke out in the building, the firefighters responded immediately."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-45efca84",
+          "pos": "adjective",
+          "meaningZh": "直接的；不假介質的",
+          "definitionEn": "existing without the participation of an intermediate agency or substance",
+          "examples": [
+            "The emergency room doctor performed immediate CPR on the patient to revive them."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L1 +1",
+        "textbookTitle": "龍騰 B2·L1、三民 B1·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "import",
+      "word": "import",
+      "senses": [
+        {
+          "id": "sense-bdcc51d6",
+          "pos": "verb",
+          "meaningZh": "進口；輸入",
+          "definitionEn": "to bring in from another country",
+          "examples": [
+            "The United States often imports goods from China for domestic consumption."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-0c504bf7",
+          "pos": "noun",
+          "meaningZh": "進口品；輸入物",
+          "definitionEn": "goods or services brought in from another country",
+          "examples": [
+            "The company decided to import high-quality silk from China to use in their luxury clothing line."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "impress",
+      "word": "impress",
+      "senses": [
+        {
+          "id": "sense-2774611a",
+          "pos": "verb",
+          "meaningZh": "使印象深刻；令人讚嘆",
+          "definitionEn": "make a strong, lasting, and favorable impact on someone’s mind or feelings",
+          "examples": [
+            "Her thoughtful gesture of cleaning up after dinner really impressed her guests and left a lasting positive impression on them."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-a37373af",
+          "pos": "verb",
+          "meaningZh": "留下深刻印象；銘刻於心",
+          "definitionEn": "create a clear and vivid image or idea in someone’s mind",
+          "examples": [
+            "Her captivating performance impressed the audience, leaving a lasting impression on their minds."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L3 +2",
+        "textbookTitle": "龍騰 B1·L3、三民 B1·L7、翰林 B1·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "indoor",
+      "word": "indoor",
+      "senses": [
+        {
+          "id": "sense-7e04f3af",
+          "pos": "adjective",
+          "meaningZh": "室內的；在屋內的",
+          "definitionEn": "within doors",
+          "examples": [
+            "Due to the heavy rain, we decided to have our picnic indoor instead of at the park."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-dafe38ff",
+          "pos": "adjective",
+          "meaningZh": "室內用的；適合室內的",
+          "definitionEn": "located, suited for, or taking place within a building",
+          "examples": [
+            "On rainy days, I prefer indoor activities like board games or reading."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "indoors",
+      "word": "indoors",
+      "senses": [
+        {
+          "id": "sense-7e366099",
+          "pos": "adverb",
+          "meaningZh": "在室內；在屋內",
+          "definitionEn": "inside a building or house, especially when contrasted with being outside",
+          "examples": [
+            "It’s best to exercise indoors when the weather is bad."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "industrial",
+      "word": "industrial",
+      "senses": [
+        {
+          "id": "sense-1040f957",
+          "pos": "adjective",
+          "meaningZh": "工業用的；工廠用的",
+          "definitionEn": "used in industry or manufacturing",
+          "examples": [
+            "The abandoned factory was a reminder of the town’s industrial past."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-43ea4ad9",
+          "pos": "adjective",
+          "meaningZh": "工業的；與製造業相關的",
+          "definitionEn": "relating to industry or factories",
+          "examples": [
+            "The city’s economy is driven by industrial production, revolving around factories and manufacturing plants."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B2·L8",
+        "textbookTitle": "三民 B2·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "inferior",
+      "word": "inferior",
+      "senses": [
+        {
+          "id": "sense-064ee548",
+          "pos": "adjective",
+          "meaningZh": "劣質的；品質低劣的",
+          "definitionEn": "of low or inferior quality",
+          "examples": [
+            "The car’s interior was made with inferior materials that didn’t last long."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L7",
+        "textbookTitle": "三民 B4·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "inform",
+      "word": "inform",
+      "senses": [
+        {
+          "id": "sense-01d35a62",
+          "pos": "verb",
+          "meaningZh": "告知；通知",
+          "definitionEn": "to give information to someone",
+          "examples": [
+            "I called my friend to inform her about the party tonight."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-1eb34daa",
+          "pos": "verb",
+          "meaningZh": "賦予特質；形塑（性格或風格）",
+          "definitionEn": "to give character or essence to something",
+          "examples": [
+            "Their colorful personalities and vibrant stories inform the diverse cultural fabric of our community."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L3 +1",
+        "textbookTitle": "龍騰 B2·L3、三民 B1·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "information",
+      "word": "information",
+      "senses": [
+        {
+          "id": "sense-e10c08a4",
+          "pos": "noun",
+          "meaningZh": "知識；資訊",
+          "definitionEn": "knowledge gained through study, experience, or instruction",
+          "examples": [
+            "Attending a conference can provide valuable information on the latest trends in the industry."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-f6c37a7c",
+          "pos": "noun",
+          "meaningZh": "資料；情報",
+          "definitionEn": "a collection of facts from which conclusions can be drawn",
+          "examples": [
+            "The detective gathered all the information about the crime scene to help him solve the case."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B1·L5",
+        "textbookTitle": "三民 B1·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "injury",
+      "word": "injury",
+      "senses": [
+        {
+          "id": "sense-8cc4e56e",
+          "pos": "noun",
+          "meaningZh": "傷害；身體創傷",
+          "definitionEn": "physical harm caused to a person’s body, such as a cut or a broken bone, often resulting from an accident or violence.",
+          "examples": [
+            "After the car accident, Tom suffered a severe injury to his leg."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-9eabdc5d",
+          "pos": "noun",
+          "meaningZh": "（軍事）戰傷；傷亡",
+          "definitionEn": "a casualty suffered by military personnel as a result of combat",
+          "examples": [
+            "After the battle, many soldiers were taken to the hospital to treat their injuries."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L1 +1",
+        "textbookTitle": "龍騰 B2·L1、三民 B1·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "inn",
+      "word": "inn",
+      "senses": [
+        {
+          "id": "sense-2496506d",
+          "pos": "noun",
+          "meaningZh": "小旅館；鄉村旅店",
+          "definitionEn": "a small hotel, usually located in a rural area, that provides lodging, food, and drink for travelers",
+          "examples": [
+            "After a long hike, we were relieved to come across an inn in the middle of the mountains where we could rest for the night and enjoy a warm meal."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "inner",
+      "word": "inner",
+      "senses": [
+        {
+          "id": "sense-39a25ea0",
+          "pos": "adjective",
+          "meaningZh": "內側的；靠中心的",
+          "definitionEn": "located inward, toward the center",
+          "examples": [
+            "The inner layer of the skin is made up of cells that produce sweat and oil."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-32198b21",
+          "pos": "adjective",
+          "meaningZh": "核心的；內部（機密）的",
+          "definitionEn": "private, confidential; exclusive to a center; especially a center of influence or power",
+          "examples": [
+            "The CEO disclosed his inner thoughts about the merger only to the board members."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L1",
+        "textbookTitle": "龍騰 B5·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "innocent",
+      "word": "innocent",
+      "senses": [
+        {
+          "id": "sense-26f87b20",
+          "pos": "adjective",
+          "meaningZh": "無罪的；清白的",
+          "definitionEn": "free from sin",
+          "examples": [
+            "The judge decided that the suspect was innocent and released him from custody."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-462b4a76",
+          "pos": "adjective",
+          "meaningZh": "無害的；無惡意的",
+          "definitionEn": "lacking intent or capacity to injure",
+          "examples": [
+            "The child seemed innocent of any wrongdoing."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L9",
+        "textbookTitle": "龍騰 B1·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "inspect",
+      "word": "inspect",
+      "senses": [
+        {
+          "id": "sense-b6b95219",
+          "pos": "verb",
+          "meaningZh": "檢查；仔細審視",
+          "definitionEn": "to look over carefully or examine thoroughly in order to assess condition or situation",
+          "examples": [
+            "The mechanic inspected the car's engine to determine why it was making a strange noise."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-ba99b257",
+          "pos": "verb",
+          "meaningZh": "查驗；核實",
+          "definitionEn": "to examine carefully in order to determine accuracy or truthfulness, often with the intent of verification",
+          "examples": [
+            "The quality control supervisor inspected each product before it was packaged and ready for shipment."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "inspector",
+      "word": "inspector",
+      "senses": [
+        {
+          "id": "sense-ec107b2b",
+          "pos": "noun",
+          "meaningZh": "檢查員；視察員",
+          "definitionEn": "an investigator who observes carefully",
+          "examples": [
+            "The inspector was sent to verify the compliance of the factory with the safety regulations."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-057b8b31",
+          "pos": "noun",
+          "meaningZh": "警察督察",
+          "definitionEn": "a high ranking police officer",
+          "examples": [
+            "The inspector arrived at the crime scene to investigate the murder."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "intelligent",
+      "word": "intelligent",
+      "senses": [
+        {
+          "id": "sense-b2e72b87",
+          "pos": "adjective",
+          "meaningZh": "聰明；有學識",
+          "definitionEn": "possessing sound knowledge",
+          "examples": [
+            "She is an intelligent student who scores A’s in all of her exams."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-fb5b4581",
+          "pos": "adjective",
+          "meaningZh": "有判斷力；明智",
+          "definitionEn": "exercising or showing good judgment",
+          "examples": [
+            "The CEO’s intelligent decision to invest in the company’s research and development led to a significant increase in profits."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L8 +1",
+        "textbookTitle": "龍騰 B3·L8、翰林 B1·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "interrupt",
+      "word": "interrupt",
+      "senses": [
+        {
+          "id": "sense-e6f96a8e",
+          "pos": "verb",
+          "meaningZh": "打斷；中斷",
+          "definitionEn": "to make a break in or stop something, especially something happening when it is not expected or planned",
+          "examples": [
+            "While I was speaking to the audience, my little cousin interrupted me by asking for a candy."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "invent",
+      "word": "invent",
+      "senses": [
+        {
+          "id": "sense-344e524c",
+          "pos": "verb",
+          "meaningZh": "發明；創造",
+          "definitionEn": "to create or produce (something) with the use of imagination or original ideas",
+          "examples": [
+            "Thomas Edison invented the phonograph, a device that recorded and played back sounds."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-3261bf94",
+          "pos": "verb",
+          "meaningZh": "捏造；虛構",
+          "definitionEn": "to make up or fabricate (something fictitious or false)",
+          "examples": [
+            "In order to get out of trouble, the young boy decided to invent an elaborate story about aliens visiting his backyard."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B2·L7 +1",
+        "textbookTitle": "三民 B2·L7、翰林 B1·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "inventor",
+      "word": "inventor",
+      "senses": [
+        {
+          "id": "sense-bc7cb698",
+          "pos": "noun",
+          "meaningZh": "發明者；創始人",
+          "definitionEn": "someone who is the first to think of or make something",
+          "examples": [
+            "Thomas Edison is known as the inventor of the light bulb."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-a713335c",
+          "pos": "noun",
+          "meaningZh": "發明家",
+          "definitionEn": "a person who creates or designs a new idea or device that performs a function",
+          "examples": [
+            "Alexander Graham Bell is famous for being the inventor of the telephone."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B2·L7",
+        "textbookTitle": "三民 B2·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "investigate",
+      "word": "investigate",
+      "senses": [
+        {
+          "id": "sense-946821fc",
+          "pos": "verb",
+          "meaningZh": "調查；深入追查",
+          "definitionEn": "to carry out a thorough search or examination into something, especially in order to discover information or evidence",
+          "examples": [
+            "The police were called to investigate the crime scene and gather any possible evidence."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-5dad451b",
+          "pos": "verb",
+          "meaningZh": "研究；系統探查",
+          "definitionEn": "to conduct a systematic or scientific inquiry into something",
+          "examples": [
+            "The police department had to investigate the crime scene thoroughly to collect evidence."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L3 +1",
+        "textbookTitle": "龍騰 B5·L3、三民 B2·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    }
+  ]
+}

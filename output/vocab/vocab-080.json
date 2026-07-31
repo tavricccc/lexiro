@@ -1,0 +1,1369 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 80,
+  "words": [
+    {
+      "wordKey": "loose",
+      "word": "loose",
+      "senses": [
+        {
+          "id": "sense-4c749667",
+          "pos": "adjective",
+          "meaningZh": "鬆的；未固定的",
+          "definitionEn": "not affixed or tightly held together",
+          "examples": [
+            "The rope was loose and could easily be untied."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-acac1343",
+          "pos": "adjective",
+          "meaningZh": "鬆散的；疏鬆的",
+          "definitionEn": "not compact or dense in structure or arrangement",
+          "examples": [
+            "The soil in the garden was loose and easy to dig."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "lord",
+      "word": "lord",
+      "senses": [
+        {
+          "id": "sense-7ee9f1ea",
+          "pos": "noun",
+          "meaningZh": "領主；貴族；君主",
+          "definitionEn": "a person who has general authority over others; a ruler or nobleman",
+          "examples": [
+            "The lord of the castle summoned his knights to prepare for battle."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-077797db",
+          "pos": "verb",
+          "meaningZh": "封為勛爵；授予貴族頭銜",
+          "definitionEn": "to grant the title of lord to someone; to make someone a lord",
+          "examples": [
+            "In the ceremony, the queen will lord him in recognition of his remarkable service to the country."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "loser",
+      "word": "loser",
+      "senses": [
+        {
+          "id": "sense-d955ae6a",
+          "pos": "noun",
+          "meaningZh": "落敗者；輸家",
+          "definitionEn": "a contestant who loses a contest",
+          "examples": [
+            "After joining the singing competition, he unfortunately became the loser in the final round."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-366c1936",
+          "pos": "noun",
+          "meaningZh": "失敗慣犯；窩囊廢",
+          "definitionEn": "a person with a record of failing; someone who loses consistently",
+          "examples": [
+            "Despite his best efforts, he was always the first one to lose in any game or competition. He truly lived up to his reputation as a loser."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "lover",
+      "word": "lover",
+      "senses": [
+        {
+          "id": "sense-7bf2606e",
+          "pos": "noun",
+          "meaningZh": "情人；愛侶（非婚姻關係）",
+          "definitionEn": "a significant other to whom you are not related by marriage",
+          "examples": [
+            "After years of dating, they finally introduced each other as lovers to their friends and family."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-540b6e7b",
+          "pos": "noun",
+          "meaningZh": "戀人；相愛的人",
+          "definitionEn": "a person who loves someone or is loved by someone",
+          "examples": [
+            "John and Jane had been dating for years, and they were deeply in love with each other. They were inseparable lovers who supported and cared for each other through thick and thin."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "luggage",
+      "word": "luggage",
+      "senses": [
+        {
+          "id": "sense-3f9ca5be",
+          "pos": "noun",
+          "meaningZh": "行李；旅行袋",
+          "definitionEn": "bags, suitcases, and boxes used for carrying personal belongings during travel",
+          "examples": [
+            "I packed my clothes and toiletries in my luggage before heading to the airport."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "lung",
+      "word": "lung",
+      "senses": [
+        {
+          "id": "sense-012e507f",
+          "pos": "noun",
+          "meaningZh": "肺；肺臟",
+          "definitionEn": "One of a pair of organs within the chest of vertebrates that exchanges oxygen from the air with carbon dioxide from the blood; A person’s capacity for sustaining prolonged exertion or stress.",
+          "examples": [
+            "After years of smoking, John developed a severe respiratory condition affecting his lung function."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "magical",
+      "word": "magical",
+      "senses": [
+        {
+          "id": "sense-e2e2fc7f",
+          "pos": "adjective",
+          "meaningZh": "魔幻的；神奇的",
+          "definitionEn": "relating to magic wonder, or supernatural phenomena",
+          "examples": [
+            "As the sun set, the enchanted forest transformed into a magical realm filled with talking animals and sparkling lights."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-bbe03132",
+          "pos": "adjective",
+          "meaningZh": "迷人的；令人著迷的",
+          "definitionEn": "enchanting; delightful",
+          "examples": [
+            "As the sun set, the fairytale castle was illuminated, creating a truly magical scene."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "magician",
+      "word": "magician",
+      "senses": [
+        {
+          "id": "sense-7719252c",
+          "pos": "noun",
+          "meaningZh": "魔術師；幻術表演者",
+          "definitionEn": "someone who performs magic tricks to amuse an audience",
+          "examples": [
+            "The magician pulled a rabbit out of his hat, leaving the audience in awe."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-bbef29cf",
+          "pos": "noun",
+          "meaningZh": "巫師；魔法師",
+          "definitionEn": "one who practices magic or sorcery",
+          "examples": [
+            "The magician mystified the audience with his incredible illusions and card tricks."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "magnet",
+      "word": "magnet",
+      "senses": [
+        {
+          "id": "sense-e06ec1ea",
+          "pos": "noun",
+          "meaningZh": "磁鐵；磁石",
+          "definitionEn": "a device that attracts iron and produces a magnetic field",
+          "examples": [
+            "I used a magnet to pick up the metal screws from the floor."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-cd88ed72",
+          "pos": "noun",
+          "meaningZh": "吸引力；令人趨之若鶩的特質",
+          "definitionEn": "a characteristic that attracts and provides pleasure",
+          "examples": [
+            "Her infectious laughter and charming personality acted as a magnet, drawing everyone to her at parties."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "maid",
+      "word": "maid",
+      "senses": [
+        {
+          "id": "sense-f591d052",
+          "pos": "noun",
+          "meaningZh": "女傭；家庭幫傭",
+          "definitionEn": "a female domestic servant",
+          "examples": [
+            "The maid diligently cleaned every room in the house, ensuring that everything was spotless and tidy."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-5480f814",
+          "pos": "noun",
+          "meaningZh": "女服務員；客房清潔員",
+          "definitionEn": "a female servant or attendant in a hotel or other establishment",
+          "examples": [
+            "The maid promptly delivered fresh towels to the guests' room."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "majority",
+      "word": "majority",
+      "senses": [
+        {
+          "id": "sense-21960692",
+          "pos": "noun",
+          "meaningZh": "大多數；多數",
+          "definitionEn": "the main part; the greater in number of two parts",
+          "examples": [
+            "The majority of the students in the class preferred pizza over hamburgers for lunch."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-09a22e7f",
+          "pos": "noun",
+          "meaningZh": "過半數；多數票",
+          "definitionEn": "more than half of the votes, especially in elections",
+          "examples": [
+            "The majority of voters chose the new mayor in the recent election."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L7 +1",
+        "textbookTitle": "龍騰 B4·L7、三民 B2·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "mall",
+      "word": "mall",
+      "senses": [
+        {
+          "id": "sense-35913d6b",
+          "pos": "noun",
+          "meaningZh": "購物中心；商場",
+          "definitionEn": "A large building or buildings containing a variety of retail stores and restaurants, typically connected by walkways.",
+          "examples": [
+            "She went to the mall to buy a new dress for the party."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-ca6feba0",
+          "pos": "noun",
+          "meaningZh": "步行商業街；徒步區",
+          "definitionEn": "A public area set aside for pedestrian traffic.",
+          "examples": [
+            "The mall was crowded with shoppers during the Christmas season."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "marble",
+      "word": "marble",
+      "senses": [
+        {
+          "id": "sense-7c186c02",
+          "pos": "noun",
+          "meaningZh": "大理石",
+          "definitionEn": "a hard, shiny type of rock that is commonly used in sculptures and buildings due to its ability to take a high polish",
+          "examples": [
+            "The grand entrance hall of the museum was adorned with intricate marble pillars and a magnificent marble staircase."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "march",
+      "word": "march",
+      "senses": [
+        {
+          "id": "sense-75940c7d",
+          "pos": "verb",
+          "meaningZh": "行進；行軍",
+          "definitionEn": "to walk in a military manner with a regular, measured step",
+          "examples": [
+            "The soldiers marched across the field."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-3259a046",
+          "pos": "noun",
+          "meaningZh": "遊行；示威活動",
+          "definitionEn": "an organized walk by many people to make a protest or show support",
+          "examples": [
+            "Thousands joined the march for equal rights."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L6",
+        "textbookTitle": "龍騰 B5·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "marker",
+      "word": "marker",
+      "senses": [
+        {
+          "id": "sense-74c76789",
+          "pos": "noun",
+          "meaningZh": "麥克筆；標記筆",
+          "definitionEn": "a writing tool used to make lines and marks on a surface",
+          "examples": [
+            "She used a red marker to highlight important points in her presentation."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-18b5a2b6",
+          "pos": "noun",
+          "meaningZh": "標示物；記號（指示或識別用）",
+          "definitionEn": "an object that is used to indicate or identify something, often by being placed on or next to it",
+          "examples": [
+            "The teacher used a yellow marker to highlight the important points on the whiteboard."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "marvelous",
+      "word": "marvelous",
+      "senses": [
+        {
+          "id": "sense-32a60f6d",
+          "pos": "adjective",
+          "meaningZh": "極好的；出色的",
+          "definitionEn": "extremely good or great; superb",
+          "examples": [
+            "The play was a marvelous success and the audience clapped for a long time after the curtain came down."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-597cb4df",
+          "pos": "adjective",
+          "meaningZh": "不可思議的；難以置信的",
+          "definitionEn": "incredible; too difficult to believe",
+          "examples": [
+            "The magician’s tricks were simply marvelous, leaving the audience in awe."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L9",
+        "textbookTitle": "三民 B4·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "mathematical",
+      "word": "mathematical",
+      "senses": [
+        {
+          "id": "sense-a0775426",
+          "pos": "adjective",
+          "meaningZh": "數學的；與數學相關的",
+          "definitionEn": "of or pertaining to the nature of mathematics",
+          "examples": [
+            "In order to solve the complex equation, the students utilized various mathematical principles and formulas."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-432bdf48",
+          "pos": "adjective",
+          "meaningZh": "精確的；嚴謹的",
+          "definitionEn": "characterized by the exactness or precision of mathematics",
+          "examples": [
+            "In this mathematical problem, students will need to solve for x using algebraic equations."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "mayor",
+      "word": "mayor",
+      "senses": [
+        {
+          "id": "sense-c5f3b196",
+          "pos": "noun",
+          "meaningZh": "市長",
+          "definitionEn": "the highest-ranking officer in a municipal government, responsible for overseeing city operations and services",
+          "examples": [
+            "The mayor of the city held a press conference to address the recent increase in crime rates and the plans for improvement."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "meadow",
+      "word": "meadow",
+      "senses": [
+        {
+          "id": "sense-12476956",
+          "pos": "noun",
+          "meaningZh": "草地；草原",
+          "definitionEn": "a field with grass or other plants growing on it, typically used for grazing livestock.",
+          "examples": [
+            "The shepherd led his flock of sheep to graze in the lush meadow, as they happily nibbled on the grass."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-e404d915",
+          "pos": "noun",
+          "meaningZh": "牧草地；草料田",
+          "definitionEn": "a field where grass or alfalfa is grown to be made into hay",
+          "examples": [
+            "The farmer rode his tractor through the meadow, cutting down the tall grass and alfalfa to make into hay for the winter."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "meaningful",
+      "word": "meaningful",
+      "senses": [
+        {
+          "id": "sense-fe6780b1",
+          "pos": "adjective",
+          "meaningZh": "有意義的；有目的的",
+          "definitionEn": "having a purpose or significance",
+          "examples": [
+            "Rachel’s speech on climate change was so meaningful that It made everyone in the audience rethink their actions and make changes in their lifestyle to save the planet."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L7",
+        "textbookTitle": "龍騰 B3·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "meanwhile",
+      "word": "meanwhile",
+      "senses": [
+        {
+          "id": "sense-46c7528e",
+          "pos": "adverb",
+          "meaningZh": "在此期間；同時",
+          "definitionEn": "during the intervening time",
+          "examples": [
+            "I will finish up this project. Meanwhile, could you please water the plants?"
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-16ac821c",
+          "pos": "adverb",
+          "meaningZh": "與此同時；另一方面",
+          "definitionEn": "at the same time but in another place",
+          "examples": [
+            "Mary was studying hard for her exam. Meanwhile, her friends were playing video games in the next room."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L6",
+        "textbookTitle": "龍騰 B3·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "medal",
+      "word": "medal",
+      "senses": [
+        {
+          "id": "sense-d48d1684",
+          "pos": "noun",
+          "meaningZh": "獎牌；勳章",
+          "definitionEn": "a metal disk with an inscription or design, made to commemorate an event or awarded as a distinction to someone such as a soldier, athlete, or scholar",
+          "examples": [
+            "After winning the Olympic gold medal in the 100m sprint, the athlete proudly wore the medal around his neck during the medal ceremony."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L1",
+        "textbookTitle": "龍騰 B2·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "melon",
+      "word": "melon",
+      "senses": [
+        {
+          "id": "sense-de3e0623",
+          "pos": "noun",
+          "meaningZh": "瓜；甜瓜",
+          "definitionEn": "a type of fruit that is large, round, sweet, and has a thick skin and seeds",
+          "examples": [
+            "On a hot summer day, there's nothing more refreshing than biting into a juicy slice of watermelon."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "melt",
+      "word": "melt",
+      "senses": [
+        {
+          "id": "sense-761601b7",
+          "pos": "verb",
+          "meaningZh": "融化；溶解",
+          "definitionEn": "to change from solid to liquid by heating",
+          "examples": [
+            "The chocolate will melt if you leave it under the sun for too long."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-75f974a0",
+          "pos": "noun",
+          "meaningZh": "融化；熔化過程",
+          "definitionEn": "the process of changing from solid to liquid by the application of heat or pressure",
+          "examples": [
+            "When I put the chocolate in the microwave, it began to melt and turned into a smooth, liquid consistency."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L5",
+        "textbookTitle": "龍騰 B5·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "mend",
+      "word": "mend",
+      "senses": [
+        {
+          "id": "sense-30580eca",
+          "pos": "verb",
+          "meaningZh": "修補；縫補",
+          "definitionEn": "to restore by replacing a part or by putting together what is torn or broken, especially of clothes or other objects",
+          "examples": [
+            "After tearing his favorite shirt, he decided to mend it by sewing up the hole."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-68b027f7",
+          "pos": "verb",
+          "meaningZh": "痊癒；康復",
+          "definitionEn": "to heal or recover from injury or illness",
+          "examples": [
+            "After her surgery, it took several weeks for Sarah to mend and regain her strength."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L1 +1",
+        "textbookTitle": "三民 B4·L1、翰林 B1·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "mental",
+      "word": "mental",
+      "senses": [
+        {
+          "id": "sense-4ef8f231",
+          "pos": "adjective",
+          "meaningZh": "心智的；思維的",
+          "definitionEn": "related to the mind or involving an intellectual process",
+          "examples": [
+            "A person with mental agility will be able to solve the puzzle easily."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-a1552771",
+          "pos": "adjective",
+          "meaningZh": "下顎的；頦部的",
+          "definitionEn": "related to the chin or lower jaw",
+          "examples": [
+            "The dentist examined the patient's mental area to assess their bite alignment."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "merry",
+      "word": "merry",
+      "senses": [
+        {
+          "id": "sense-5f568aaa",
+          "pos": "adjective",
+          "meaningZh": "歡樂的；喜悅的",
+          "definitionEn": "full of joy and cheerfulness",
+          "examples": [
+            "The children laughed and played, creating a merry atmosphere at the birthday party."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-eaa3be0a",
+          "pos": "adjective",
+          "meaningZh": "輕快的；活潑的",
+          "definitionEn": "quick and lively",
+          "examples": [
+            "Emily's dance routine was merry as she gracefully moved across the stage, captivating the audience."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "mess",
+      "word": "mess",
+      "senses": [
+        {
+          "id": "sense-a8268baf",
+          "pos": "noun",
+          "meaningZh": "混亂；雜亂",
+          "definitionEn": "a dirty or untidy state of things",
+          "examples": [
+            "His room was such a mess that he couldn't find his keys."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-7f810f92",
+          "pos": "verb",
+          "meaningZh": "弄亂；搞糟",
+          "definitionEn": "make a mess of or create disorder in",
+          "examples": [
+            "After the children finished playing, they managed to mess up the entire room with toys and scattered books."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-ce63ce6b",
+          "pos": "noun",
+          "meaningZh": "一大堆；大量",
+          "definitionEn": "(often followed by `of’) a large number or amount or extent",
+          "examples": [
+            "After the party, there was a mess of empty bottles and discarded decorations."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L9",
+        "textbookTitle": "龍騰 B1·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "microwave",
+      "word": "microwave",
+      "senses": [
+        {
+          "id": "sense-27ae25ea",
+          "pos": "noun",
+          "meaningZh": "微波爐",
+          "definitionEn": "a kitchen appliance that cooks or heats food quickly by using electromagnetic radiation in the microwave frequency range",
+          "examples": [
+            "After a long day at work, I heated up some leftover pizza in the microwave."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-a1201614",
+          "pos": "noun",
+          "meaningZh": "微波；微波輻射",
+          "definitionEn": "a type of electromagnetic radiation that has a wavelength shorter than radio waves but longer than infrared radiation, used for radar, microwave ovens, and communication applications",
+          "examples": [
+            "Scientists are conducting experiments to harness microwave energy for wireless charging of electronic devices."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "mighty",
+      "word": "mighty",
+      "senses": [
+        {
+          "id": "sense-16526bca",
+          "pos": "adjective",
+          "meaningZh": "強大的；強有力的",
+          "definitionEn": "very strong and powerful",
+          "examples": [
+            "The mighty river carved a deep canyon over millions of years."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-05889273",
+          "pos": "adverb",
+          "meaningZh": "極為；相當",
+          "definitionEn": "extremely",
+          "examples": [
+            "The mighty superhero lifted the car effortlessly with one hand."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L3",
+        "textbookTitle": "龍騰 B5·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    }
+  ]
+}

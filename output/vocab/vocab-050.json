@@ -1,0 +1,1393 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 50,
+  "words": [
+    {
+      "wordKey": "mirror",
+      "word": "mirror",
+      "senses": [
+        {
+          "id": "sense-d77b63fb",
+          "pos": "noun",
+          "meaningZh": "鏡子；反光鏡",
+          "definitionEn": "a polished surface that reflects light and forms images",
+          "examples": [
+            "As she stepped into the room, she caught a glimpse of herself in the mirror, making sure she looked presentable before the job interview."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-a5a60fe0",
+          "pos": "verb",
+          "meaningZh": "反映；映照",
+          "definitionEn": "show a reflection of",
+          "examples": [
+            "He stood in front of the mirror, admiring his new haircut."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "mix",
+      "word": "mix",
+      "senses": [
+        {
+          "id": "sense-f8b8eaa8",
+          "pos": "verb",
+          "meaningZh": "混合；攙入",
+          "definitionEn": "add as an additional element or part",
+          "examples": [
+            "She decided to mix in some cinnamon to enhance the flavor of the dish."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-d691d119",
+          "pos": "noun",
+          "meaningZh": "混合；攪拌",
+          "definitionEn": "the act of mixing together",
+          "examples": [
+            "Sarah decided to mix all the ingredients together in a large bowl to create a delicious cake batter."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "mixture",
+      "word": "mixture",
+      "senses": [
+        {
+          "id": "sense-36f7c135",
+          "pos": "noun",
+          "meaningZh": "混合物；拌料",
+          "definitionEn": "any food made by combining different ingredients",
+          "examples": [
+            "She made a delicious mixture of tomatoes, cucumbers, and onions for the salad."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-ece9aad0",
+          "pos": "noun",
+          "meaningZh": "混合；攪拌過程",
+          "definitionEn": "the act of mixing things together",
+          "examples": [
+            "She added a mixture of flour, sugar, and butter to make the cake batter."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "model",
+      "word": "model",
+      "senses": [
+        {
+          "id": "sense-837b6695",
+          "pos": "noun",
+          "meaningZh": "模型；縮小比例模型",
+          "definitionEn": "the act of representing something (usually on a smaller scale)",
+          "examples": [
+            "The architect built a scale model of the new office building to show the client."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-790d13b1",
+          "pos": "noun",
+          "meaningZh": "模特兒；典範",
+          "definitionEn": "a representative form or pattern",
+          "examples": [
+            "In the fashion industry, the designer presented her latest collection using models to showcase her designs on the runway."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "mood",
+      "word": "mood",
+      "senses": [
+        {
+          "id": "sense-13e6d33c",
+          "pos": "noun",
+          "meaningZh": "心情；情緒",
+          "definitionEn": "a state of mind or emotion, often experienced as varying degree of positivity or negativity",
+          "examples": [
+            "Her bad mood affected the entire team’s productivity."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-7f44da17",
+          "pos": "noun",
+          "meaningZh": "氣氛；普遍情緒",
+          "definitionEn": "the prevailing emotional tone or general attitude",
+          "examples": [
+            "His sour mood made everyone uncomfortable during the meeting."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B2·L7",
+        "textbookTitle": "三民 B2·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "mop",
+      "word": "mop",
+      "senses": [
+        {
+          "id": "sense-579da2ed",
+          "pos": "noun",
+          "meaningZh": "拖把",
+          "definitionEn": "a tool used for cleaning floors and other surfaces, consisting of absorbent material attached to a handle",
+          "examples": [
+            "After the party, she grabbed a mop and started cleaning up the spilled drinks on the floor."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-75213573",
+          "pos": "verb",
+          "meaningZh": "拖地；擦拭地板",
+          "definitionEn": "to clean or wipe a surface with a mop",
+          "examples": [
+            "After the party, Sarah mopped the kitchen floor to remove all the spilled drinks and food crumbs."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "motion",
+      "word": "motion",
+      "senses": [
+        {
+          "id": "sense-d7d15ac8",
+          "pos": "noun",
+          "meaningZh": "移動；運動",
+          "definitionEn": "the act of changing location from one place to another",
+          "examples": [
+            "The motion of the subway train made it difficult for me to read my book."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-b09a534b",
+          "pos": "noun",
+          "meaningZh": "波動；自然運動",
+          "definitionEn": "a natural event that involves a change in the position or location of something",
+          "examples": [
+            "The motion of the waves was so intense that it made us feel seasick."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "motorcycle",
+      "word": "motorcycle",
+      "senses": [
+        {
+          "id": "sense-2615e3dd",
+          "pos": "noun",
+          "meaningZh": "摩托車；機車",
+          "definitionEn": "a two-wheeled motor vehicle with a strong frame",
+          "examples": [
+            "He rode his motorcycle through the winding mountain roads, enjoying the thrill of the open air and the breathtaking views."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-f76aac62",
+          "pos": "verb",
+          "meaningZh": "騎摩托車",
+          "definitionEn": "to ride on a motorcycle",
+          "examples": [
+            "After receiving her motorcycle license, Sarah couldn't wait to hop on her new bike and motorcycle through the scenic countryside."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "mug",
+      "word": "mug",
+      "senses": [
+        {
+          "id": "sense-881eb9db",
+          "pos": "noun",
+          "meaningZh": "馬克杯；大杯",
+          "definitionEn": "A cylindrical container with a handle for holding drinks.",
+          "examples": [
+            "I grabbed a ceramic mug and poured myself a hot cup of coffee."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "musical",
+      "word": "musical",
+      "senses": [
+        {
+          "id": "sense-f3ff1e0b",
+          "pos": "adjective",
+          "meaningZh": "音樂的；有音樂性的",
+          "definitionEn": "having qualities of or connected with music, often accompanied by music",
+          "examples": [
+            "The drama club is putting on a musical about a young singer’s rise to fame."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-20678179",
+          "pos": "noun",
+          "meaningZh": "音樂劇",
+          "definitionEn": "a theatrical work or film integrating singing and dancing into its action and dialogue",
+          "examples": [
+            "The classic example of a musical is ’The Sound of Music’, in which singing and dancing play a major role in telling the story."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "musician",
+      "word": "musician",
+      "senses": [
+        {
+          "id": "sense-c453560f",
+          "pos": "noun",
+          "meaningZh": "音樂家；樂手",
+          "definitionEn": "someone who plays a musical instrument as a profession",
+          "examples": [
+            "John is a talented pianist who performs in orchestras and teaches music at a conservatory. He is a dedicated musician who spends hours practicing and refining his technique."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-a493c278",
+          "pos": "noun",
+          "meaningZh": "作曲家；音樂創作者",
+          "definitionEn": "artist who composes music as a profession",
+          "examples": [
+            "The talented musician composed a beautiful symphony that was performed by a renowned orchestra."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B2·L10",
+        "textbookTitle": "三民 B2·L10"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "nail",
+      "word": "nail",
+      "senses": [
+        {
+          "id": "sense-90fc79bb",
+          "pos": "noun",
+          "meaningZh": "釘子；鐵釘",
+          "definitionEn": "a thin, pointed piece of metal that is hammered into materials to join them together",
+          "examples": [
+            "I used a nail to attach the picture frame to the wall."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-53a99bfd",
+          "pos": "noun",
+          "meaningZh": "指甲；趾甲",
+          "definitionEn": "a hard, horny covering that protects the tips of the fingers and toes in humans and other animals",
+          "examples": [
+            "Samantha painted her nails with bright red polish to match her dress."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "narrow",
+      "word": "narrow",
+      "senses": [
+        {
+          "id": "sense-ba5b29b6",
+          "pos": "adjective",
+          "meaningZh": "狹窄的；不寬的",
+          "definitionEn": "not wide; not broad, wide, ample, or liberal",
+          "examples": [
+            "The bicycle barely fit through the narrow alleyway."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-627d4e82",
+          "pos": "adjective",
+          "meaningZh": "有限的；狹隘的",
+          "definitionEn": "very limited in degree; tight, close, or strict",
+          "examples": [
+            "The company has a narrow focus on sustainability, only considering environmental impacts and not social or economic factors."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L8",
+        "textbookTitle": "龍騰 B4·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "nation",
+      "word": "nation",
+      "senses": [
+        {
+          "id": "sense-e886f918",
+          "pos": "noun",
+          "meaningZh": "國家；民族",
+          "definitionEn": "a large body of people united by common descent, history, culture, or language, inhabiting a particular country or territory",
+          "examples": [
+            "During the Olympic Games, athletes from every nation come together to compete in the spirit of unity and friendly competition."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-6dbf2c7b",
+          "pos": "noun",
+          "meaningZh": "全國人民；國民",
+          "definitionEn": "the people who live in a particular country or area",
+          "examples": [
+            "The nation celebrated its independence with a grand parade and fireworks."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "natural",
+      "word": "natural",
+      "senses": [
+        {
+          "id": "sense-0538ea8f",
+          "pos": "adjective",
+          "meaningZh": "自然的；天然的",
+          "definitionEn": "not made or caused by people; existing or happening naturally",
+          "examples": [
+            "The Grand Canyon is a natural wonder of the world, formed by millions of years of erosion by the Colorado River."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-321d3490",
+          "pos": "adjective",
+          "meaningZh": "天生的；有天賦的",
+          "definitionEn": "having a natural ability to do something well",
+          "examples": [
+            "She has a natural talent for playing the piano."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B1·L4",
+        "textbookTitle": "三民 B1·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "naughty",
+      "word": "naughty",
+      "senses": [
+        {
+          "id": "sense-363ea937",
+          "pos": "adjective",
+          "meaningZh": "頑皮的；不聽話的",
+          "definitionEn": "Behaving badly and not being obedient, especially when talking about children.",
+          "examples": [
+            "Despite being told not to, the naughty child snuck a cookie from the cookie jar when no one was looking."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-569cd2f2",
+          "pos": "adjective",
+          "meaningZh": "行為不當的；不雅的",
+          "definitionEn": "Not socially acceptable, particularly when referring to behavior or language.",
+          "examples": [
+            "During the class, the little boy couldn't resist being naughty and kept throwing paper airplanes at his classmates."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "nearby",
+      "word": "nearby",
+      "senses": [
+        {
+          "id": "sense-77096736",
+          "pos": "adjective",
+          "meaningZh": "附近的；鄰近的",
+          "definitionEn": "close at hand",
+          "examples": [
+            "I went to the cafe nearby to have a cup of coffee."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-a9ba2936",
+          "pos": "adverb",
+          "meaningZh": "在附近；不遠處",
+          "definitionEn": "not far away",
+          "examples": [
+            "The nearest coffee shop is just a few blocks away, it’s nearby."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "nearly",
+      "word": "nearly",
+      "senses": [
+        {
+          "id": "sense-7b42a804",
+          "pos": "adverb",
+          "meaningZh": "幾乎；差不多",
+          "definitionEn": "Almost; not quite; just about",
+          "examples": [
+            "I was nearly late for my flight because of traffic."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-949bac45",
+          "pos": "adverb",
+          "meaningZh": "差一點；接近地",
+          "definitionEn": "In a close manner",
+          "examples": [
+            "She missed her flight by nearly five minutes."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "necessary",
+      "word": "necessary",
+      "senses": [
+        {
+          "id": "sense-8d0ccd75",
+          "pos": "adjective",
+          "meaningZh": "必要的；必需的",
+          "definitionEn": "unavoidably determined by prior circumstances",
+          "examples": [
+            "It was necessary for me to quit my job in order to take care of my sick mother."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-193df075",
+          "pos": "noun",
+          "meaningZh": "必需品；必要之物",
+          "definitionEn": "anything indispensable",
+          "examples": [
+            "Oxygen is necessary for our survival."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "necklace",
+      "word": "necklace",
+      "senses": [
+        {
+          "id": "sense-b359e3bd",
+          "pos": "noun",
+          "meaningZh": "項鍊；頸鍊",
+          "definitionEn": "a piece of jewelry worn around the neck, usually consisting of a chain or cord with precious stones, beads, or metal ornaments",
+          "examples": [
+            "She wore a beautiful pearl necklace to the party."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "needle",
+      "word": "needle",
+      "senses": [
+        {
+          "id": "sense-bc4aa154",
+          "pos": "noun",
+          "meaningZh": "針；縫針；注射針",
+          "definitionEn": "a sharp pointed tool made of steel or other materials used for sewing or puncturing",
+          "examples": [
+            "Sarah carefully threaded the needle and began stitching the torn fabric back together."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-426c5666",
+          "pos": "noun",
+          "meaningZh": "松針；針葉",
+          "definitionEn": "a thin, pointed leaf of a coniferous tree",
+          "examples": [
+            "While on a hike, Sarah admired the needle of the towering pine tree as it gently swayed in the breeze."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "negative",
+      "word": "negative",
+      "senses": [
+        {
+          "id": "sense-5dcc6505",
+          "pos": "adjective",
+          "meaningZh": "負面的；消極的",
+          "definitionEn": "having no positive features; showing opposition or resistance",
+          "examples": [
+            "The negative reviews of the movie highlighted its poorly developed characters and predictable plot."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-a13aa3e1",
+          "pos": "adjective",
+          "meaningZh": "負電荷的；陰極的",
+          "definitionEn": "having a negative electric charge",
+          "examples": [
+            "When the two wires are connected, the negative terminal of the battery repels the electrons, pushing them towards the positive terminal."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L8 +2",
+        "textbookTitle": "龍騰 B4·L8、三民 B2·L9、翰林 B1·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "neighbor",
+      "word": "neighbor",
+      "senses": [
+        {
+          "id": "sense-3a526363",
+          "pos": "noun",
+          "meaningZh": "鄰居；鄰人",
+          "definitionEn": "a person who lives or is located close to another",
+          "examples": [
+            "Mr. Johnson has always been a friendly neighbor, often helping us with gardening and lending tools."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-66eb381b",
+          "pos": "noun",
+          "meaningZh": "相鄰之物；鄰近事物",
+          "definitionEn": "an object located close to another of the same kind",
+          "examples": [
+            "My neighbor and I both have dogs and often meet at the park for walks."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "nephew",
+      "word": "nephew",
+      "senses": [
+        {
+          "id": "sense-f64940e6",
+          "pos": "noun",
+          "meaningZh": "姪子；外甥",
+          "definitionEn": "the son of your brother or sister",
+          "examples": [
+            "My nephew loves playing basketball and always asks me to join him in a game."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "nerve",
+      "word": "nerve",
+      "senses": [
+        {
+          "id": "sense-b6aab74a",
+          "pos": "noun",
+          "meaningZh": "神經",
+          "definitionEn": "any bundle of nerve fibers that transmits impulses of sensation to the brain or spinal cord as well as impulses from these to the muscles and organs",
+          "examples": [
+            "The doctor hit a nerve, causing the patient to feel a sharp pain in her arm."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-ba10fa8e",
+          "pos": "noun",
+          "meaningZh": "勇氣；膽量",
+          "definitionEn": "the courage and determination to face and deal with danger, difficulty, or pain",
+          "examples": [
+            "She showed great nerve during the crisis by staying calm and coming up with a solution."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "nervous",
+      "word": "nervous",
+      "senses": [
+        {
+          "id": "sense-304f1ddf",
+          "pos": "adjective",
+          "meaningZh": "緊張的；忐忑的",
+          "definitionEn": "excited in anticipation; apprehensive.",
+          "examples": [
+            "She was nervous before her first job interview."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-0fde4d8f",
+          "pos": "adjective",
+          "meaningZh": "焦慮的；不安的",
+          "definitionEn": "causing or showing anxiety or unease; easily agitated or alarmed",
+          "examples": [
+            "Sarah felt nervous before her big presentation, her hands were shaking and she had trouble concentrating."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "network",
+      "word": "network",
+      "senses": [
+        {
+          "id": "sense-7feb3226",
+          "pos": "noun",
+          "meaningZh": "網路；網絡",
+          "definitionEn": "a system of intersecting lines or channels",
+          "examples": [
+            "The internet is a vast network of connected computers and devices."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-6ffd536c",
+          "pos": "noun",
+          "meaningZh": "廣播網；聯播網",
+          "definitionEn": "(broadcasting) a communication system consisting of a group of broadcasting stations that all transmit the same programs",
+          "examples": [
+            "The Super Bowl was watched by millions of people around the world thanks to the network of broadcasting stations that aired the game simultaneously."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L6",
+        "textbookTitle": "龍騰 B4·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "niece",
+      "word": "niece",
+      "senses": [
+        {
+          "id": "sense-bef4715f",
+          "pos": "noun",
+          "meaningZh": "姪女；外甥女",
+          "definitionEn": "the daughter of your sibling",
+          "examples": [
+            "I am flying to Florida to attend my niece’s graduation."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "nod",
+      "word": "nod",
+      "senses": [
+        {
+          "id": "sense-86136a4d",
+          "pos": "noun",
+          "meaningZh": "點頭；頷首",
+          "definitionEn": "a sign of agreement or greeting made by moving the head up and down",
+          "examples": [],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-c6e116c1",
+          "pos": "verb",
+          "meaningZh": "點頭示意；頷首",
+          "definitionEn": "to indicate or express something by moving the head up and down",
+          "examples": [
+            "When the teacher asked if we understood the lesson, I nodded my head to show my understanding."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "none",
+      "word": "none",
+      "senses": [
+        {
+          "id": "sense-e0acfecf",
+          "pos": "pronoun",
+          "meaningZh": "無；沒有任何",
+          "definitionEn": "not one, or not any.",
+          "examples": [
+            "I have none of the required documents for the passport application."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-805981cc",
+          "pos": "noun",
+          "meaningZh": "零；無足輕重之物",
+          "definitionEn": "a person or thing of no importance or significance.",
+          "examples": [
+            "After all his bragging, his accomplishments amounted to none."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    }
+  ]
+}

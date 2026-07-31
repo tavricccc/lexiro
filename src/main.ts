@@ -4,6 +4,7 @@ import App from './App.vue'
 import { i18n } from './lib/i18n'
 import router from './router'
 import { useLearningStore } from './stores/learning'
+import { useLibraryStore } from './stores/library'
 import { useSessionStore } from './stores/session'
 import { useSetsStore } from './stores/sets'
 import { useUIStore } from './stores/ui'
@@ -20,8 +21,12 @@ async function bootstrap() {
   const sessionStore = useSessionStore(pinia)
   const uiStore = useUIStore(pinia)
   const learningStore = useLearningStore(pinia)
+  const libraryStore = useLibraryStore(pinia)
 
   await setsStore.loadState()
+  await libraryStore.loadState()
+  for (const set of setsStore.sets)
+    libraryStore.linkSet(set)
   await sessionStore.loadState()
   await learningStore.loadState()
   uiStore.initTheme()

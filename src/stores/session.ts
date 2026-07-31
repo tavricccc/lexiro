@@ -7,6 +7,7 @@ import type {
   ResultSummary,
   SessionEntry,
   SpellingRecord,
+  VocabSet,
 } from '@/types'
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
@@ -17,6 +18,7 @@ import { createDebouncedSaver, loadFromStorage, saveToStorage } from '@/lib/pers
 import { shuffleEntries, shuffleQuizEntry } from '@/lib/shuffle'
 import { isSpellingAnswerCorrect } from '@/lib/spelling'
 import { normalizeSession, toSessionEntries } from '@/lib/validation'
+import { useLibraryStore } from './library'
 import { useSetsStore } from './sets'
 import { useUIStore } from './ui'
 
@@ -336,9 +338,28 @@ export const useSessionStore = defineStore('session', () => {
   }
 
   function buildPracticeEntries(setId: string, items: SessionEntry[]): SessionEntry[] {
-    const shuffled = shuffleEntries(items)
+    const available = items.filter(entry => entry.item.question)
+    const shuffled = shuffleEntries(available)
     const count = getPracticeCount(setId, shuffled.length)
     return shuffled.slice(0, count)
+  }
+
+  function buildQuizItems(setId: string, items: VocabSet['items']): VocabSet['items'] {
+    const libraryStore = useLibraryStore()
+    return items.map((item) => {
+      const choices = libraryStore.getQuestionsFor(setId, item.word, 'multipleChoice').filter((question): question is Extract<typeof question, { kind: 'multipleChoice' }> => question.kind === 'multipleChoice')
+      const selected = choices[Math.floor(Math.random() * choices.length)]
+      if (!selected)
+        return item
+      return {
+        ...item,
+        question: {
+          prompt: selected.prompt,
+          opts: selected.options,
+          ans: selected.answerIndex,
+        },
+      }
+    }).filter(item => Boolean(item.question))
   }
 
   function createSession(mode: PracticeMode, entries: SessionEntry[], review = false, sourceSetId: string | null = null): PracticeSession {
@@ -458,9 +479,10 @@ export const useSessionStore = defineStore('session', () => {
     }
 
     const items = setsStore.sets.find(s => s.id === setId)?.items ?? setsStore.activeSet?.items ?? []
+    const modeItems = mode === 'quiz' ? buildQuizItems(setId, items) : items
     const entries = reviewEntries
       ? shuffleEntries(reviewEntries.map(entry => ({ ...entry })))
-      : buildPracticeEntries(setId, toSessionEntries(items))
+      : buildPracticeEntries(setId, toSessionEntries(modeItems))
 
     putSession(setId, mode, createSession(mode, entries, Boolean(reviewEntries), setId))
     currentView.value = mode
@@ -483,7 +505,7 @@ export const useSessionStore = defineStore('session', () => {
       return
     practiceDialogMode.value = mode
     practiceDialogSetId.value = setId
-    practiceDialogCount.value = getPracticeCount(setId, set.items.length)
+    practiceDialogCount.value = getPracticeCount(setId, mode === 'quiz' ? buildQuizItems(setId, set.items).length : set.items.length)
     practiceDialogOpen.value = true
   }
 
@@ -492,7 +514,7 @@ export const useSessionStore = defineStore('session', () => {
       return
     const setsStore = useSetsStore()
     const set = setsStore.sets.find(item => item.id === practiceDialogSetId.value)
-    const total = set?.items.length ?? 1
+    const total = set ? (practiceDialogMode.value === 'quiz' ? buildQuizItems(practiceDialogSetId.value, set.items).length : set.items.length) : 1
     handlePracticeCountChange(practiceDialogSetId.value, practiceDialogCount.value, total)
     practiceDialogOpen.value = false
     await startRound(practiceDialogMode.value, practiceDialogSetId.value)
@@ -505,20 +527,21 @@ export const useSessionStore = defineStore('session', () => {
   function getQuizUserAnswerText(entry: SessionEntry, selectedIndex: number | null | undefined): string {
     if (selectedIndex === null || selectedIndex === undefined)
       return t('result.notAnswered')
-    return entry.item.question.opts[selectedIndex] ?? t('result.notAnswered')
+    return entry.item.question?.opts[selectedIndex] ?? t('result.notAnswered')
   }
 
   function buildQuizRecord(entry: SessionEntry, draft: Draft): QuizRecord {
     const selectedIndex = (draft && 'selectedIndex' in draft)
       ? draft.selectedIndex
       : null
-    const isCorrect = selectedIndex === entry.item.question.ans
+    const question = entry.item.question
+    const isCorrect = Boolean(question && selectedIndex === question.ans)
 
     return {
       type: 'quiz',
       selectedIndex,
       userAnswer: getQuizUserAnswerText(entry, selectedIndex),
-      correctAnswer: entry.item.question.opts[entry.item.question.ans],
+      correctAnswer: question?.opts[question.ans] ?? t('result.notAnswered'),
       isCorrect,
       skipped: selectedIndex === null || selectedIndex === undefined,
     }

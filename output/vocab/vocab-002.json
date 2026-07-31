@@ -1,0 +1,1365 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 2,
+  "words": [
+    {
+      "wordKey": "another",
+      "word": "another",
+      "senses": [
+        {
+          "id": "sense-a37e1a34",
+          "pos": "adjective",
+          "meaningZh": "另一個；不同的",
+          "definitionEn": "some other; different",
+          "examples": [
+            "I am tired of eating pizza everyday, can we get another food for dinner tonight?"
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "answer",
+      "word": "answer",
+      "senses": [
+        {
+          "id": "sense-4a1ed200",
+          "pos": "noun",
+          "meaningZh": "回答；答覆",
+          "definitionEn": "a statement made in reply to a question, request, criticism or accusation, whether spoken or written.",
+          "examples": [
+            "He provided a clear answer to the interviewer’s question."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-76e47ea5",
+          "pos": "noun",
+          "meaningZh": "解答；答案",
+          "definitionEn": "the act of replying to a question.",
+          "examples": [
+            "When the teacher asked a math question, Sarah raised her hand and provided the correct answer."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "ant",
+      "word": "ant",
+      "senses": [
+        {
+          "id": "sense-844ff247",
+          "pos": "noun",
+          "meaningZh": "螞蟻",
+          "definitionEn": "a small insect that lives in large organized colonies; the fertile females are the queens and have wings during breeding season, while the wingless, sterile females are the workers",
+          "examples": [
+            "The army ants scurried in a straight line to gather resources for their queen."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "any",
+      "word": "any",
+      "senses": [
+        {
+          "id": "sense-57102a10",
+          "pos": "adjective",
+          "meaningZh": "任何的；任一的",
+          "definitionEn": "without limitation or restriction; unconfined",
+          "examples": [
+            "You can choose any book you like from the library."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-5251e6ca",
+          "pos": "adverb",
+          "meaningZh": "絲毫；任何程度",
+          "definitionEn": "to any extent; at all",
+          "examples": [
+            "I don’t have any money left after paying my bills this month."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "anything",
+      "word": "anything",
+      "senses": [
+        {
+          "id": "sense-af577e13",
+          "pos": "pronoun",
+          "meaningZh": "任何事物；什麼（都）",
+          "definitionEn": "refers to any event, act, or object, or (especially in negative statements or questions) something",
+          "examples": [
+            "I'm sorry, but I don't have anything to give you right now."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "apartment",
+      "word": "apartment",
+      "senses": [
+        {
+          "id": "sense-5c9f6dbf",
+          "pos": "noun",
+          "meaningZh": "公寓；套房",
+          "definitionEn": "a set of rooms for someone to live in on one level of a building with other similar sets of rooms, often rented",
+          "examples": [
+            "Alice just moved into a cozy apartment in the heart of the city."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "appear",
+      "word": "appear",
+      "senses": [
+        {
+          "id": "sense-1f2fc8e7",
+          "pos": "verb",
+          "meaningZh": "出現；現身",
+          "definitionEn": "come into sight or view",
+          "examples": [
+            "As soon as the sun rose, the magical kingdom appeared beyond the misty mountains."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-3fd2d62b",
+          "pos": "verb",
+          "meaningZh": "似乎；看來",
+          "definitionEn": "seem to be true, probable, or apparent",
+          "examples": [
+            "It appears that she is not interested in the job."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L5",
+        "textbookTitle": "龍騰 B3·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "apple",
+      "word": "apple",
+      "senses": [
+        {
+          "id": "sense-3c9bf57e",
+          "pos": "noun",
+          "meaningZh": "蘋果",
+          "definitionEn": "The round fruit of this tree, with red, yellow, or green skin and crisp whitish flesh.",
+          "examples": [
+            "She took a bite of the juicy apple, savoring the sweet and tangy flavor."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-278c4887",
+          "pos": "noun",
+          "meaningZh": "蘋果樹",
+          "definitionEn": "A widely cultivated tree of Eurasian origin, grown in many varieties for its firm, rounded edible fruits.",
+          "examples": [
+            "My grandmother has an apple tree in her backyard, and every year we gather together to pick the ripe, juicy apples."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "area",
+      "word": "area",
+      "senses": [
+        {
+          "id": "sense-ddb9ed08",
+          "pos": "noun",
+          "meaningZh": "區域；區塊",
+          "definitionEn": "a part or section of a structure that has a distinct characteristic or function",
+          "examples": [
+            "In the hospital, the emergency department is a designated area for immediate medical assistance."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-4d22cdc3",
+          "pos": "noun",
+          "meaningZh": "地區；地帶",
+          "definitionEn": "a specific environment or way of life",
+          "examples": [
+            "She grew up in a rural area surrounded by farmland."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "arm",
+      "word": "arm",
+      "senses": [
+        {
+          "id": "sense-ab5ee186",
+          "pos": "noun",
+          "meaningZh": "手臂",
+          "definitionEn": "either of the two long parts of the body from the shoulder to the hand",
+          "examples": [
+            "She broke her arm playing basketball."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-62b7aabd",
+          "pos": "noun",
+          "meaningZh": "扶手；椅子扶手",
+          "definitionEn": "a support for the arm, as on a piece of furniture",
+          "examples": [
+            "He leaned his arm on the comfortable armrest of the armchair while watching TV."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "around",
+      "word": "around",
+      "senses": [
+        {
+          "id": "sense-f0ec5595",
+          "pos": "adverb",
+          "meaningZh": "附近；在周圍",
+          "definitionEn": "in the area or nearby location",
+          "examples": [
+            "She walked around the park, enjoying the scenery."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-d66c6984",
+          "pos": "adverb",
+          "meaningZh": "到某處；轉向某地",
+          "definitionEn": "to a specific location that may or may not have been mentioned before",
+          "examples": [
+            "She asked me to meet her around the corner."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "arrive",
+      "word": "arrive",
+      "senses": [
+        {
+          "id": "sense-c75b29b1",
+          "pos": "verb",
+          "meaningZh": "抵達；到達",
+          "definitionEn": "to reach a destination by traveling or moving",
+          "examples": [
+            "We will arrive at the airport at 10 am tomorrow."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-a34d3082",
+          "pos": "verb",
+          "meaningZh": "成功；出頭；功成名就",
+          "definitionEn": "to achieve success or reach a position of power or influence",
+          "examples": [
+            "After years of hard work and dedication, Jane finally arrived at the top of her profession as a CEO."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "art",
+      "word": "art",
+      "senses": [
+        {
+          "id": "sense-3b8a0f20",
+          "pos": "noun",
+          "meaningZh": "藝術；藝術作品",
+          "definitionEn": "the creation of beautiful or significant things",
+          "examples": [
+            "The artist spent hours in her studio, pouring her heart and soul into her latest piece of art."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-307b1c4b",
+          "pos": "noun",
+          "meaningZh": "技藝；技巧",
+          "definitionEn": "a superior skill that you can learn by study and practice and observation",
+          "examples": [
+            "He dedicated years to studying and practicing art, refining his skills and techniques."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "as",
+      "word": "as",
+      "senses": [
+        {
+          "id": "sense-9ff5dd86",
+          "pos": "conjunction",
+          "meaningZh": "如同；就像",
+          "definitionEn": "used to indicate similarity or equality in the manner or degree that something is done (often followed by `as’)",
+          "examples": [
+            "As cold as ice, as clear as crystal is a simile that compares extreme temperatures and visual clarity to something in order to illustrate similarity."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-b58ab046",
+          "pos": "adverb",
+          "meaningZh": "同等地；一樣地",
+          "definitionEn": "to the same degree or extent; equally; symmetrically",
+          "examples": [
+            "The twins looked so alike that you could not tell them apart as they were dressed identically."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "ask",
+      "word": "ask",
+      "senses": [
+        {
+          "id": "sense-90138a26",
+          "pos": "verb",
+          "meaningZh": "詢問；發問",
+          "definitionEn": "to address a question to someone in order to get an answer",
+          "examples": [
+            "When I couldn't find my way, I had to ask the passerby for directions."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-a9fd94d2",
+          "pos": "verb",
+          "meaningZh": "請求；要求",
+          "definitionEn": "to request or demand something from someone",
+          "examples": [
+            "May I ask for a favor?"
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "at",
+      "word": "at",
+      "senses": [
+        {
+          "id": "sense-b446039d",
+          "pos": "preposition",
+          "meaningZh": "在（某地點／時間）",
+          "definitionEn": "used to indicate a particular place or time",
+          "examples": [
+            "Let's meet at the park tomorrow at 5 pm."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-7672f316",
+          "pos": "preposition",
+          "meaningZh": "朝向；對準",
+          "definitionEn": "in the direction of",
+          "examples": [
+            "She aimed the dart at the bullseye."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "attack",
+      "word": "attack",
+      "senses": [
+        {
+          "id": "sense-409a3116",
+          "pos": "noun",
+          "meaningZh": "攻擊；突襲",
+          "definitionEn": "the act of attacking",
+          "examples": [
+            "The enemy launched a surprise attack on the base, catching the soldiers off guard."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "aunt",
+      "word": "aunt",
+      "senses": [
+        {
+          "id": "sense-451f982f",
+          "pos": "noun",
+          "meaningZh": "姑媽；阿姨；嬸嬸；舅媽",
+          "definitionEn": "the sister of your father or mother; the wife of your mom’s or dad’s sibling",
+          "examples": [
+            "I visited my aunt last weekend. She is my mom’s sister."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-58c0aef9",
+          "pos": "noun",
+          "meaningZh": "（對長輩女性的稱呼）阿姨",
+          "definitionEn": "a term of address used by a child when speaking to an older woman",
+          "examples": [
+            "When the little girl saw her aunt, she ran up and hugged her tightly."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "away",
+      "word": "away",
+      "senses": [
+        {
+          "id": "sense-3e75b7ba",
+          "pos": "adverb",
+          "meaningZh": "在遠處；離開",
+          "definitionEn": "at a distance in space or time",
+          "examples": [
+            "I moved away from the city to live in the countryside."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-5daf1d1b",
+          "pos": "adverb",
+          "meaningZh": "朝另一方向；轉向",
+          "definitionEn": "in a different direction",
+          "examples": [
+            "After taking a wrong turn, I had to turn my car away from the highway and head back towards the city."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "baby",
+      "word": "baby",
+      "senses": [
+        {
+          "id": "sense-62890998",
+          "pos": "noun",
+          "meaningZh": "嬰兒；寶寶",
+          "definitionEn": "a very young child (birth to 1 year) who has not yet begun to walk or talk",
+          "examples": [
+            "The baby cooed and giggled as her mother played peek-a-boo."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-6d70cdb5",
+          "pos": "noun",
+          "meaningZh": "幼獸；幼崽",
+          "definitionEn": "a very young mammal",
+          "examples": [
+            "The baby elephant clumsily stumbled after its mother, learning to walk on its wobbly legs."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "back",
+      "word": "back",
+      "senses": [
+        {
+          "id": "sense-fd9ccd59",
+          "pos": "noun",
+          "meaningZh": "背部；背面",
+          "definitionEn": "the posterior part of a human or animal body from the neck to the end of the spine",
+          "examples": [
+            "She had a tattoo of a dragon on her lower back."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-efad7b52",
+          "pos": "noun",
+          "meaningZh": "脊椎；脊柱",
+          "definitionEn": "the series of vertebrae forming the axis of the skeleton and protecting the spinal cord",
+          "examples": [
+            "After injuring his back in a car accident, John had to wear a brace for support and refrain from any physical activities."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "bad",
+      "word": "bad",
+      "senses": [
+        {
+          "id": "sense-f8caaf3c",
+          "pos": "adjective",
+          "meaningZh": "不好的；劣質的；有問題的",
+          "definitionEn": "having undesirable or negative qualities; below average in quality or performance; not working properly; physically unsound or diseased; feeling physical discomfort or pain (`tough’ is occasionally used colloquially for `bad’)",
+          "examples": [
+            "The milk smells bad and should be thrown away."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-659cf5d9",
+          "pos": "adjective",
+          "meaningZh": "有害的；嚴重的",
+          "definitionEn": "capable of harming; very intense",
+          "examples": [
+            "The storm was so bad that it knocked down trees and powerlines."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "bag",
+      "word": "bag",
+      "senses": [
+        {
+          "id": "sense-1badc201",
+          "pos": "noun",
+          "meaningZh": "袋子；包包",
+          "definitionEn": "a flexible container with a single opening",
+          "examples": [
+            "She packed her clothes and toiletries into a bag for her weekend trip."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-e065bf2d",
+          "pos": "noun",
+          "meaningZh": "旅行袋；行李袋",
+          "definitionEn": "a portable rectangular container for carrying clothes",
+          "examples": [
+            "While preparing for a weekend getaway, she carefully packed her clothes and toiletries into her travel bag."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "ball",
+      "word": "ball",
+      "senses": [
+        {
+          "id": "sense-64afb250",
+          "pos": "noun",
+          "meaningZh": "球；球狀物",
+          "definitionEn": "an object with a spherical shape, typically used in games or as a plaything.",
+          "examples": [
+            "I played soccer with my friends using a ball that we found in the park."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-c963122d",
+          "pos": "noun",
+          "meaningZh": "球形團塊",
+          "definitionEn": "a compact spherical or nearly spherical mass",
+          "examples": [],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "banana",
+      "word": "banana",
+      "senses": [
+        {
+          "id": "sense-b7ea6c35",
+          "pos": "noun",
+          "meaningZh": "香蕉（果實）",
+          "definitionEn": "an elongated, curving fruit with yellow skin and soft, sweet flesh",
+          "examples": [
+            "I ate a ripe banana for breakfast."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-4e1c1da1",
+          "pos": "noun",
+          "meaningZh": "香蕉樹；芭蕉植株",
+          "definitionEn": "a tropical plant of the genus Musa, with large, broad leaves and clusters of elongated, yellow or greenish fruits",
+          "examples": [
+            "During our trip to the beach, we enjoyed a refreshing smoothie made from fresh bananas."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "band",
+      "word": "band",
+      "senses": [
+        {
+          "id": "sense-6bd76b0d",
+          "pos": "noun",
+          "meaningZh": "樂團；樂隊",
+          "definitionEn": "a group of musicians playing popular music for dancing",
+          "examples": [
+            "The local band played covers of popular songs and got everyone dancing at the party."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-b6839bfb",
+          "pos": "noun",
+          "meaningZh": "束帶；綁帶",
+          "definitionEn": "a restraint put around something to hold it together",
+          "examples": [
+            "The band around the package kept it secure during transit."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "bank",
+      "word": "bank",
+      "senses": [
+        {
+          "id": "sense-ccd2e86d",
+          "pos": "noun",
+          "meaningZh": "銀行",
+          "definitionEn": "a business that keeps and lends money and provides other financial services",
+          "examples": [
+            "I need to go to the bank to deposit my paycheck."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-e4cc840b",
+          "pos": "verb",
+          "meaningZh": "在銀行存款；往來銀行",
+          "definitionEn": "to keep or put your money into a particular bank",
+          "examples": [],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-a2869038",
+          "pos": "verb",
+          "meaningZh": "賺進；獲得（金錢）",
+          "definitionEn": "to earn or win a specific amount of money",
+          "examples": [
+            "After years of hard work, she finally banked a six-figure salary."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "baseball",
+      "word": "baseball",
+      "senses": [
+        {
+          "id": "sense-a83f5bcf",
+          "pos": "noun",
+          "meaningZh": "棒球（運動）",
+          "definitionEn": "A game played with a bat and a ball between two teams of nine players. The teams take turns batting and trying to score runs.",
+          "examples": [
+            "Every summer, my friends and I gather at the local park to play baseball. We split into two teams, pitch balls to each other, and try to hit them as far as possible."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "basket",
+      "word": "basket",
+      "senses": [
+        {
+          "id": "sense-f3e8c580",
+          "pos": "noun",
+          "meaningZh": "籃子；提籃",
+          "definitionEn": "a container made of woven materials, typically with handles for carrying items such as groceries or laundry.",
+          "examples": [
+            "I carried my farmer’s market haul in a large woven basket."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-b27bdc6d",
+          "pos": "noun",
+          "meaningZh": "（籃球）籃框；得分",
+          "definitionEn": "a circular metal hoop that supports a net through which a basketball player tries to throw the ball.",
+          "examples": [
+            "Tom made a jump shot and the ball went through the basket, earning his team two points."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "basketball",
+      "word": "basketball",
+      "senses": [
+        {
+          "id": "sense-1b4b1d75",
+          "pos": "noun",
+          "meaningZh": "籃球（運動）",
+          "definitionEn": "a game played by two teams of five players who score points by throwing the ball through a net that hangs from a metal ring",
+          "examples": [
+            "In the basketball game last night, my team won by making a three-point shot in the final seconds."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    }
+  ]
+}

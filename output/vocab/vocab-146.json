@@ -1,0 +1,1367 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 146,
+  "words": [
+    {
+      "wordKey": "hazard",
+      "word": "hazard",
+      "senses": [
+        {
+          "id": "sense-684f1d03",
+          "pos": "noun",
+          "meaningZh": "危險；隱患",
+          "definitionEn": "an unknown event or situation that can lead to a dangerous or risky outcome",
+          "examples": [
+            "The sharp rocks on the road posed a hazard to the motorcyclist, causing him to lose control and crash into the nearby tree."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-44452762",
+          "pos": "verb",
+          "meaningZh": "冒險；賭一把",
+          "definitionEn": "to take a chance or risk in the hope of achieving a favorable outcome",
+          "examples": [
+            "She decided to hazard her career and start her own business."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "heir",
+      "word": "heir",
+      "senses": [
+        {
+          "id": "sense-51781e90",
+          "pos": "noun",
+          "meaningZh": "繼承人；遺產受益人",
+          "definitionEn": "a person who is entitled to receive the assets or property of a deceased person, especially by law or through a will",
+          "examples": [
+            "After his grandfather passed away, John discovered that he was the sole heir to a vast fortune."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-ecf87df2",
+          "pos": "noun",
+          "meaningZh": "王位繼承人；頭銜繼承者",
+          "definitionEn": "a person who inherits a particular title or position, such as a king or queen",
+          "examples": [
+            "Upon the death of the current monarch, Prince William becomes the heir to the throne."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "hence",
+      "word": "hence",
+      "senses": [
+        {
+          "id": "sense-49d46cdb",
+          "pos": "adverb",
+          "meaningZh": "因此；從此地",
+          "definitionEn": "from this place",
+          "examples": [
+            "He packed his bags and left the hotel. Hence, he had to find a new place to stay."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-c0f548d2",
+          "pos": "adverb",
+          "meaningZh": "從現在起；因此",
+          "definitionEn": "from this time",
+          "examples": [
+            "She has decided to quit her job; hence, she will pursue her passion for photography."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L8",
+        "textbookTitle": "三民 B4·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "herb",
+      "word": "herb",
+      "senses": [
+        {
+          "id": "sense-9bd55b3b",
+          "pos": "noun",
+          "meaningZh": "香草；藥草",
+          "definitionEn": "A type of plant that is used in cooking and medicine. It has a soft stem and usually has a pleasant smell and taste.",
+          "examples": [
+            "The recipe called for fresh herbs such as basil, parsley, and thyme to enhance the flavor of the dish."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "heritage",
+      "word": "heritage",
+      "senses": [
+        {
+          "id": "sense-a277d416",
+          "pos": "noun",
+          "meaningZh": "文化遺產；傳統",
+          "definitionEn": "practices that are handed down from the past by tradition",
+          "examples": [
+            "Every year, the small town celebrates its cultural heritage with a festival that showcases traditional dances, music, and cuisine."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-9dfbc12c",
+          "pos": "noun",
+          "meaningZh": "繼承物；先祖遺留",
+          "definitionEn": "any attribute or immaterial possession that is inherited from ancestors",
+          "examples": [
+            "She proudly showcased her rich cultural heritage by performing traditional folk dances from her native country."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "highlight",
+      "word": "highlight",
+      "senses": [
+        {
+          "id": "sense-cda0b880",
+          "pos": "verb",
+          "meaningZh": "凸顯；強調；標示",
+          "definitionEn": "move into the foreground to make more visible or prominent",
+          "examples": [
+            "During the presentation, the speaker used a laser pointer to highlight the key points on the slide."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-ed65c4eb",
+          "pos": "noun",
+          "meaningZh": "精彩片段；亮點",
+          "definitionEn": "the most interesting or memorable part",
+          "examples": [
+            "The highlight of the concert was when the lead singer performed an incredible guitar solo."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L8",
+        "textbookTitle": "龍騰 B3·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "hockey",
+      "word": "hockey",
+      "senses": [
+        {
+          "id": "sense-4786f36c",
+          "pos": "noun",
+          "meaningZh": "冰球；冰上曲棍球",
+          "definitionEn": "a game played on an ice rink by two teams with six players on each team. They use angled sticks to shoot a flat, round puck into the opposing team’s goal.",
+          "examples": [
+            "During the winter break, my friends and I decided to go watch a hockey game at the local arena. The players skated gracefully on the ice, fiercely competing to shoot the puck into the opposing team's goal."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-329a434d",
+          "pos": "noun",
+          "meaningZh": "草地曲棍球",
+          "definitionEn": "a game similar to ice hockey but played on an open field. Two opposing teams use curved sticks to drive a hard ball into the opponents’ net.",
+          "examples": [
+            "The hockey players glided across the field, skillfully maneuvering the ball with their curved sticks in an attempt to score a goal."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "honorable",
+      "word": "honorable",
+      "senses": [
+        {
+          "id": "sense-a01fc76d",
+          "pos": "adjective",
+          "meaningZh": "品德高尚的；高潔的",
+          "definitionEn": "having high moral principles and ideals",
+          "examples": [
+            "It was honorable of him to decline the bribe and uphold his principles."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-3c03501c",
+          "pos": "adjective",
+          "meaningZh": "光明磊落的；公正誠實的",
+          "definitionEn": "fair and honest in behavior and dealings",
+          "examples": [
+            "It was honorable of the politician to return the campaign donations when the company’s scandal was uncovered."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L4",
+        "textbookTitle": "龍騰 B2·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "horizontal",
+      "word": "horizontal",
+      "senses": [
+        {
+          "id": "sense-8b3d79a1",
+          "pos": "adjective",
+          "meaningZh": "水平的；與地平線平行的",
+          "definitionEn": "parallel to the horizon or in the same plane as the horizon",
+          "examples": [
+            "The tightrope walker maintained perfect balance as he walked along the horizontal wire, parallel to the horizon."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-53e91b8c",
+          "pos": "noun",
+          "meaningZh": "水平線；水平面",
+          "definitionEn": "a line, plane, or object that is positioned horizontally",
+          "examples": [
+            "The painting on the wall was hung horizontally to create a balanced composition."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "hormone",
+      "word": "hormone",
+      "senses": [
+        {
+          "id": "sense-43828620",
+          "pos": "noun",
+          "meaningZh": "荷爾蒙；激素",
+          "definitionEn": "A hormone is a substance made by one type of cell that travels through the bloodstream and has a certain effect on the activity of other cells in the body.",
+          "examples": [
+            "The thyroid gland produces hormones that regulate metabolism and body temperature."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "hostage",
+      "word": "hostage",
+      "senses": [
+        {
+          "id": "sense-5a7a4f6c",
+          "pos": "noun",
+          "meaningZh": "人質",
+          "definitionEn": "a person who is held captive by someone who demands that certain things be done before the captive is freed",
+          "examples": [
+            "During the bank robbery, the criminals took several hostages and threatened to harm them if their demands were not met."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "hostile",
+      "word": "hostile",
+      "senses": [
+        {
+          "id": "sense-3e616fa1",
+          "pos": "adjective",
+          "meaningZh": "充滿敵意的；不友善的",
+          "definitionEn": "having or showing unfriendly attitude towards someone or something",
+          "examples": [
+            "The customer became hostile when the store refused to accept the expired coupon."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-8b0ae574",
+          "pos": "adjective",
+          "meaningZh": "敵方的；對立國的",
+          "definitionEn": "belonging to an opposing army or country; not friendly",
+          "examples": [
+            "The two hostile nations engaged in a brutal war that lasted for years."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L1 +1",
+        "textbookTitle": "龍騰 B5·L1、三民 B4·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "hostility",
+      "word": "hostility",
+      "senses": [
+        {
+          "id": "sense-8050741d",
+          "pos": "noun",
+          "meaningZh": "敵意；敵視態度",
+          "definitionEn": "a very unfriendly or aggressive feeling or behavior towards someone or something",
+          "examples": [
+            "His hostility towards his colleague was evident when he refused to collaborate with her on the project."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-f20d871e",
+          "pos": "noun",
+          "meaningZh": "深仇；積怨",
+          "definitionEn": "a state of deep-seated ill-will or hostility",
+          "examples": [
+            "Despite the peace talks, the hostility between the two countries continued to escalate."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L1",
+        "textbookTitle": "龍騰 B5·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "housing",
+      "word": "housing",
+      "senses": [
+        {
+          "id": "sense-1ee3ec37",
+          "pos": "noun",
+          "meaningZh": "住房；住宅（供給）",
+          "definitionEn": "buildings where people live, considered as a whole",
+          "examples": [
+            "The city needs more affordable housing for young families."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-c3819234",
+          "pos": "noun",
+          "meaningZh": "馬鞍鞍飾；戰馬披甲",
+          "definitionEn": "a covering or decorative piece of equipment for a horse, especially one used in the past for a warhorse",
+          "examples": [
+            "The knight's warhorse was adorned with a magnificent housing, embroidered with gold and adorned with jewels."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "howl",
+      "word": "howl",
+      "senses": [
+        {
+          "id": "sense-cc02c31a",
+          "pos": "noun",
+          "meaningZh": "嚎叫聲；狼嗥聲",
+          "definitionEn": "the long, mournful cry of a hound or a wolf",
+          "examples": [
+            "As the full moon rose, the lone wolf began to howl, sending shivers down the spine of all those who heard it."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-9a08a74c",
+          "pos": "noun",
+          "meaningZh": "長鳴聲；類似嗥叫的聲音",
+          "definitionEn": "a loud, sustained noise resembling the cry of a hound",
+          "examples": [
+            "At night, the wolves would howl as they searched for prey."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "hypothesis",
+      "word": "hypothesis",
+      "senses": [
+        {
+          "id": "sense-892ed01f",
+          "pos": "noun",
+          "meaningZh": "假說；假設",
+          "definitionEn": "an idea or explanation that may be true but has not yet been completely proven",
+          "examples": [
+            "In order to test their hypothesis, the scientists conducted a series of experiments."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-9444baa7",
+          "pos": "noun",
+          "meaningZh": "推論；待驗假說",
+          "definitionEn": "a proposed explanation or theory based on limited evidence or research",
+          "examples": [
+            "In order to test her hypothesis, the scientist conducted a series of experiments."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "icon",
+      "word": "icon",
+      "senses": [
+        {
+          "id": "sense-571a305f",
+          "pos": "noun",
+          "meaningZh": "圖像；視覺符號",
+          "definitionEn": "a visual representation of an object, scene, person, or idea, usually on a surface",
+          "examples": [
+            "The artist created a stunning icon of the city skyline, capturing its architectural beauty and grandeur."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-8d301024",
+          "pos": "noun",
+          "meaningZh": "標誌性象徵；代表圖示",
+          "definitionEn": "a special design or visual object representing a type, group, or quality",
+          "examples": [
+            "The Statue of Liberty is an iconic symbol of freedom and democracy."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "ideology",
+      "word": "ideology",
+      "senses": [
+        {
+          "id": "sense-ccb7c29b",
+          "pos": "noun",
+          "meaningZh": "意識形態；思想體系",
+          "definitionEn": "a set of beliefs or principles, especially one on which a political system, party, or organization is based",
+          "examples": [
+            "The political party’s ideology strongly advocates for individual liberties and limited government intervention."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-b1b291cd",
+          "pos": "noun",
+          "meaningZh": "群體信念；民族思想取向",
+          "definitionEn": "an orientation that characterizes the thinking of a group or nation",
+          "examples": [
+            "The ideology of Marxism emphasizes the class struggle between the proletariat and the bourgeoisie."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "idiot",
+      "word": "idiot",
+      "senses": [
+        {
+          "id": "sense-e05cd512",
+          "pos": "noun",
+          "meaningZh": "笨蛋；蠢人",
+          "definitionEn": "a foolish or stupid person, often lacking common sense",
+          "examples": [
+            "Don’t be an idiot and touch the hot stove without using an oven mitt."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "illusion",
+      "word": "illusion",
+      "senses": [
+        {
+          "id": "sense-bd3bcb21",
+          "pos": "noun",
+          "meaningZh": "錯覺；幻覺",
+          "definitionEn": "a false or mistaken mental image or impression",
+          "examples": [
+            "The magician created an illusion of a flying bird that looked so real, I almost believed it to be true."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-4fc71c95",
+          "pos": "noun",
+          "meaningZh": "幻術；假象",
+          "definitionEn": "an act or instance of creating a false impression",
+          "examples": [
+            "The magician performed his illusions on stage, making it seem like he was able to read minds or defy gravity."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "immense",
+      "word": "immense",
+      "senses": [
+        {
+          "id": "sense-3a8e5b95",
+          "pos": "adjective",
+          "meaningZh": "巨大的；龐大的",
+          "definitionEn": "very large or huge in size, amount, or degree",
+          "examples": [
+            "The immense whale shark is the largest fish in the world, growing up to 40 feet long."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L6",
+        "textbookTitle": "三民 B4·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "immune",
+      "word": "immune",
+      "senses": [
+        {
+          "id": "sense-c24ed8e8",
+          "pos": "adjective",
+          "meaningZh": "免疫的；有抵抗力的",
+          "definitionEn": "having protection against a particular disease or illness",
+          "examples": [
+            "After receiving the vaccine, she became immune to the flu virus."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-bb2371cc",
+          "pos": "adjective",
+          "meaningZh": "具免疫性的；不受感染的",
+          "definitionEn": "relating to the condition of having protection against a particular disease or illness",
+          "examples": [
+            "After receiving the vaccination, she became immune to the flu and didn't get sick even when everyone else around her did."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "implement",
+      "word": "implement",
+      "senses": [
+        {
+          "id": "sense-e220abbe",
+          "pos": "verb",
+          "meaningZh": "執行；實施",
+          "definitionEn": "put into effect or action in accordance with a plan, a method, or a design",
+          "examples": [
+            "After months of planning, the team was finally ready to implement their new marketing strategy."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-a7892886",
+          "pos": "noun",
+          "meaningZh": "工具；器具",
+          "definitionEn": "a tool or piece of equipment used to achieve a specific purpose",
+          "examples": [
+            "In agriculture, tractors are commonly used as implements for plowing fields."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "implication",
+      "word": "implication",
+      "senses": [
+        {
+          "id": "sense-de6c8e99",
+          "pos": "noun",
+          "meaningZh": "言外之意；隱含之義",
+          "definitionEn": "something that can be understood or inferred even though it is not directly stated",
+          "examples": [
+            "The implication of the student’s absence from class was that she did not understand the material well enough to participate."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-a0b2298b",
+          "pos": "noun",
+          "meaningZh": "邏輯蘊含；必然推論",
+          "definitionEn": "a logical relationship between two propositions where, if the first proposition is true, the second proposition must also be true",
+          "examples": [
+            "The implication of skipping breakfast is that you will be hungrier at lunchtime."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "impulse",
+      "word": "impulse",
+      "senses": [
+        {
+          "id": "sense-804441a6",
+          "pos": "noun",
+          "meaningZh": "衝動；突然念頭",
+          "definitionEn": "a sudden urge or strong inclination to act",
+          "examples": [
+            "After a long day at work, I had the impulse to buy a tub of ice cream and eat it all in one sitting."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-fa73a85e",
+          "pos": "noun",
+          "meaningZh": "推力；衝力",
+          "definitionEn": "a force or energy that causes something to move or happen",
+          "examples": [
+            "The sudden impulse to hit the brakes prevented the car from colliding with the pedestrian."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L8",
+        "textbookTitle": "龍騰 B1·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "incentive",
+      "word": "incentive",
+      "senses": [
+        {
+          "id": "sense-9f7230a8",
+          "pos": "noun",
+          "meaningZh": "誘因；激勵因素",
+          "definitionEn": "a positive motivational influence",
+          "examples": [
+            "The company offers a sales incentive to its employees, which includes a bonus for every sale made."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-3254e63a",
+          "pos": "noun",
+          "meaningZh": "獎勵；額外報酬",
+          "definitionEn": "an additional payment (or other remuneration) to employees as a means of increasing output",
+          "examples": [
+            "The company offered a $5000 bonus as an incentive for employees who exceeded their sales targets."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "incorporate",
+      "word": "incorporate",
+      "senses": [
+        {
+          "id": "sense-25e22a99",
+          "pos": "verb",
+          "meaningZh": "整合；合而為一",
+          "definitionEn": "combine parts to form a single entity or system",
+          "examples": [
+            "To create a successful business, it is essential to incorporate various departments such as marketing, finance, and operations into a cohesive organizational structure."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-be02db7b",
+          "pos": "verb",
+          "meaningZh": "納入；加入（作為一部分）",
+          "definitionEn": "include or add as a part or component",
+          "examples": [
+            "When designing the new office space, we should incorporate standing desks for employees who prefer to work while standing."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "index",
+      "word": "index",
+      "senses": [
+        {
+          "id": "sense-8b6162f8",
+          "pos": "noun",
+          "meaningZh": "指數；比率指標",
+          "definitionEn": "a value or ratio obtained from a set of data that can indicate relative changes in time",
+          "examples": [
+            "The consumer price index is used to measure inflation over time by comparing the prices of a standard basket of goods and services."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-9d28dcfe",
+          "pos": "verb",
+          "meaningZh": "建立索引；編製目錄",
+          "definitionEn": "to create or provide with an index",
+          "examples": [
+            "The librarian indexed all the books in the library to make it easier for patrons to find what they need."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "indifferent",
+      "word": "indifferent",
+      "senses": [
+        {
+          "id": "sense-79dbb27e",
+          "pos": "adjective",
+          "meaningZh": "無所謂的；中立的",
+          "definitionEn": "not having a preference; neutral or unbiased",
+          "examples": [
+            "When it comes to choosing a restaurant for dinner, I am indifferent and will eat anywhere."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-74912620",
+          "pos": "adjective",
+          "meaningZh": "平淡的；不好不壞的",
+          "definitionEn": "not particularly good or bad",
+          "examples": [
+            "He had an indifferent attitude towards his job, rarely taking initiative or showing enthusiasm."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "indigenous",
+      "word": "indigenous",
+      "senses": [
+        {
+          "id": "sense-8b888dda",
+          "pos": "adjective",
+          "meaningZh": "原住民的；本土的",
+          "definitionEn": "originating or occurring naturally in a particular place; native.",
+          "examples": [
+            "The indigenous people of Australia are known as aboriginals."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    }
+  ]
+}

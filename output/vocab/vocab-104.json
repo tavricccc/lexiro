@@ -1,0 +1,1421 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 104,
+  "words": [
+    {
+      "wordKey": "circumstance",
+      "word": "circumstance",
+      "senses": [
+        {
+          "id": "sense-98d479a5",
+          "pos": "noun",
+          "meaningZh": "情況；背景條件",
+          "definitionEn": "the set of facts or conditions that surround a situation or event",
+          "examples": [
+            "Due to unforeseen circumstances, the conference has been postponed."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-88af0302",
+          "pos": "noun",
+          "meaningZh": "（伴隨事件的）情境；條件",
+          "definitionEn": "a condition that accompanies or influences an event or activity",
+          "examples": [
+            "Due to unforeseen circumstances, the wedding had to be postponed until next month."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L7 +1",
+        "textbookTitle": "龍騰 B3·L7、三民 B2·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "civilian",
+      "word": "civilian",
+      "senses": [
+        {
+          "id": "sense-7fd9ae98",
+          "pos": "noun",
+          "meaningZh": "平民；非軍人",
+          "definitionEn": "a non-military person; a member of the general public who is not a part of the armed forces",
+          "examples": [
+            "During wartime, the military evacuated the civilians from the conflict zone to ensure their safety."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-607463f4",
+          "pos": "adjective",
+          "meaningZh": "平民的；民間的",
+          "definitionEn": "relating to civil life, or performed by people who are not active members of the military",
+          "examples": [
+            "As a civilian, he worked in a government office and had no military experience."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "civilization",
+      "word": "civilization",
+      "senses": [
+        {
+          "id": "sense-eb4efc2c",
+          "pos": "noun",
+          "meaningZh": "文明；高度發展的社會",
+          "definitionEn": "an advanced society with complex legal, political, and religious systems",
+          "examples": [
+            "The ancient civilization of Egypt developed a sophisticated legal system, advanced political structures, and intricate religious beliefs that continue to influence society today."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-d98d3ea1",
+          "pos": "noun",
+          "meaningZh": "文明發展；文明化進程",
+          "definitionEn": "the process of social development leading to a highly organized and technologically advanced society",
+          "examples": [
+            "The Mayan civilization had advanced systems of agriculture, writing, and astronomy."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L3",
+        "textbookTitle": "龍騰 B3·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "clarify",
+      "word": "clarify",
+      "senses": [
+        {
+          "id": "sense-87fb46a7",
+          "pos": "verb",
+          "meaningZh": "釐清；說明白",
+          "definitionEn": "make clear and (more) comprehensible",
+          "examples": [
+            "The teacher asked the student to clarify their answer so that everyone in the class could understand it better."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-3e22a00f",
+          "pos": "verb",
+          "meaningZh": "澄清（油脂等）；濾淨",
+          "definitionEn": "make clear by removing impurities or solids, as by heating",
+          "examples": [
+            "To clarify the butter, the chef melted it down and strained out the milk solids."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "clash",
+      "word": "clash",
+      "senses": [
+        {
+          "id": "sense-17fd61ba",
+          "pos": "verb",
+          "meaningZh": "衝突；激烈碰撞",
+          "definitionEn": "crash together with violent impact",
+          "examples": [
+            "During the heated protest, the police clashed with the demonstrators, resulting in chaos and clashes between the two groups."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-6059d1fa",
+          "pos": "noun",
+          "meaningZh": "碰撞聲；鏗鏘聲",
+          "definitionEn": "a loud resonant repeating noise",
+          "examples": [
+            "The clash of cymbals filled the concert hall."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "classification",
+      "word": "classification",
+      "senses": [
+        {
+          "id": "sense-176e14f8",
+          "pos": "noun",
+          "meaningZh": "分類；歸類",
+          "definitionEn": "the act or process of categorizing things into groups",
+          "examples": [
+            "The library uses a system of classification to organize books by genre and author, making it easier for patrons to find what they are looking for."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-bd9904c3",
+          "pos": "noun",
+          "meaningZh": "機密等級；保密分級",
+          "definitionEn": "the act of restricting access to certain documents or weapons by the government, available only to authorized personnel",
+          "examples": [
+            "The classified information about the military operation was only accessible to the top-ranking officials."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "classify",
+      "word": "classify",
+      "senses": [
+        {
+          "id": "sense-7d31050c",
+          "pos": "verb",
+          "meaningZh": "分類；按類整理",
+          "definitionEn": "To arrange or order something by categories.",
+          "examples": [
+            "The librarian will classify books based on their genres, such as mystery, romance, or science fiction."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-c5db74ea",
+          "pos": "verb",
+          "meaningZh": "歸入類別；劃為…類",
+          "definitionEn": "To assign something to a particular category or group.",
+          "examples": [
+            "In order to organize the books in the library, they classify them according to genre and author."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "claw",
+      "word": "claw",
+      "senses": [
+        {
+          "id": "sense-d0c5fb0e",
+          "pos": "noun",
+          "meaningZh": "爪；螯",
+          "definitionEn": "a sharp, curved nail on the foot of an animal or bird",
+          "examples": [
+            "The cat sharpened its claws on the post."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-0c8c2f25",
+          "pos": "verb",
+          "meaningZh": "用爪抓；用指甲抓",
+          "definitionEn": "to use one’s nails to seize or grasp something, typically with great effort or difficulty",
+          "examples": [
+            "The cat extended its sharp claws and clawed at the tree trunk, trying to climb it."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-91c2fa4f",
+          "pos": "verb",
+          "meaningZh": "艱難爭取；拼命奪得",
+          "definitionEn": "to achieve or obtain something with great effort or difficulty",
+          "examples": [
+            "After months of hard work and late nights, she finally clawed her way to the top of the corporate ladder."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "cliff",
+      "word": "cliff",
+      "senses": [
+        {
+          "id": "sense-79cccffe",
+          "pos": "noun",
+          "meaningZh": "懸崖；峭壁",
+          "definitionEn": "a steep, high face of rock that extends above the surrounding area",
+          "examples": [
+            "The view from the top of the cliff was breathtaking, but it was terrifying to look down and see how far the drop was."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "clumsy",
+      "word": "clumsy",
+      "senses": [
+        {
+          "id": "sense-557bd9a6",
+          "pos": "adjective",
+          "meaningZh": "動作笨拙的；不靈活的",
+          "definitionEn": "lacking grace in movement or posture",
+          "examples": [
+            "While attempting to carry the tray of drinks, he tripped over his own feet and sent the glasses flying, showcasing his clumsy nature."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-0a0c55c8",
+          "pos": "adjective",
+          "meaningZh": "笨拙的（表達）；不流暢的",
+          "definitionEn": "not elegant or graceful in expression",
+          "examples": [
+            "During the presentation, John tripped over his words and fumbled with the projector, revealing his clumsy communication skills."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B2·L1",
+        "textbookTitle": "三民 B2·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "coarse",
+      "word": "coarse",
+      "senses": [
+        {
+          "id": "sense-66c51133",
+          "pos": "adjective",
+          "meaningZh": "粗糙的；粗粒的",
+          "definitionEn": "consisting of large or rough particles that feel rough when touched",
+          "examples": [
+            "The sandpaper was too coarse to use on the delicate surface."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-4ef5ce74",
+          "pos": "adjective",
+          "meaningZh": "粗魯的；粗俗的",
+          "definitionEn": "lacking sophistication or refinement in manners or tastes",
+          "examples": [
+            "John’s coarse behavior towards the waiter at the restaurant was embarrassing for everyone at the table."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "code",
+      "word": "code",
+      "senses": [
+        {
+          "id": "sense-765e3d56",
+          "pos": "noun",
+          "meaningZh": "規則；法典；準則",
+          "definitionEn": "a set of rules, principles, or laws, especially written ones",
+          "examples": [
+            "The software developer carefully studied the code for errors before testing the new program."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-0153391d",
+          "pos": "noun",
+          "meaningZh": "密碼；暗號",
+          "definitionEn": "a system of symbols or letters used for transmitting messages that need brevity or secrecy",
+          "examples": [
+            "The spy used a code to communicate with his handler without being discovered by the enemy."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L6",
+        "textbookTitle": "龍騰 B4·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "collapse",
+      "word": "collapse",
+      "senses": [
+        {
+          "id": "sense-09794f06",
+          "pos": "verb",
+          "meaningZh": "崩塌；垮掉；崩潰",
+          "definitionEn": "break down or fall apart, whether it be literally or metaphorically",
+          "examples": [
+            "The old bridge collapsed under the weight of heavy traffic."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-132ef4be",
+          "pos": "verb",
+          "meaningZh": "折疊；收合",
+          "definitionEn": "cause to fold or close up",
+          "examples": [
+            "After a long day at work, I collapse onto the couch to relax."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L1",
+        "textbookTitle": "龍騰 B2·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "colleague",
+      "word": "colleague",
+      "senses": [
+        {
+          "id": "sense-306217eb",
+          "pos": "noun",
+          "meaningZh": "同事；共事者",
+          "definitionEn": "an associate that one works with",
+          "examples": [
+            "At the office, my colleague and I collaborate on various projects."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-4e7a1a1f",
+          "pos": "noun",
+          "meaningZh": "同僚；同行",
+          "definitionEn": "a person who is a member of one’s class or profession, especially in a subordinate position",
+          "examples": [
+            "As a software developer, my colleagues and I work together to develop innovative solutions."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L5",
+        "textbookTitle": "龍騰 B4·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "combination",
+      "word": "combination",
+      "senses": [
+        {
+          "id": "sense-536f164f",
+          "pos": "noun",
+          "meaningZh": "組合；搭配",
+          "definitionEn": "the act of arranging elements into specified groups without regard to order",
+          "examples": [
+            "In the game of poker, a winning hand is often a combination of cards that include a pair, a three of a kind, or a straight flush."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-939b60b5",
+          "pos": "noun",
+          "meaningZh": "（密碼鎖）組合密碼",
+          "definitionEn": "a sequence of numbers or letters that opens a combination lock",
+          "examples": [
+            "Mary couldn't remember the combination to her locker, so she had to ask her friend for help."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L9",
+        "textbookTitle": "龍騰 B2·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "comedy",
+      "word": "comedy",
+      "senses": [
+        {
+          "id": "sense-773b5ab4",
+          "pos": "noun",
+          "meaningZh": "喜劇；喜劇片",
+          "definitionEn": "a movie, play, or book that is intentionally amusing either in its characters or its action",
+          "examples": [
+            "I watched a comedy last night and couldn't stop laughing at the hilarious antics of the main character."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-032ed1d2",
+          "pos": "noun",
+          "meaningZh": "（情境中的）喜劇性；幽默",
+          "definitionEn": "the amusing part of a situation",
+          "examples": [
+            "During the play, the comedy came alive as the characters' witty remarks had the audience in stitches."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "commander",
+      "word": "commander",
+      "senses": [
+        {
+          "id": "sense-7cf6769c",
+          "pos": "noun",
+          "meaningZh": "指揮官；長官",
+          "definitionEn": "someone who is in an official position of authority and has the power to give orders or make decisions",
+          "examples": [
+            "The commander analyzed the situation and swiftly devised a plan of action for his troops."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-3b4f248e",
+          "pos": "noun",
+          "meaningZh": "軍事指揮官；部隊首長",
+          "definitionEn": "a military officer who is in charge of a unit or group of units",
+          "examples": [
+            "The commander led his troops into battle with bravery and strategy."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "comment",
+      "word": "comment",
+      "senses": [
+        {
+          "id": "sense-1e5ba8ec",
+          "pos": "noun",
+          "meaningZh": "評論；意見",
+          "definitionEn": "a statement that expresses a personal opinion or belief or adds information",
+          "examples": [
+            "Please leave a comment below and let us know what you think of the new product."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-beafe6c9",
+          "pos": "noun",
+          "meaningZh": "注解；注釋",
+          "definitionEn": "a written explanation, criticism, or illustration added to a book or other written work",
+          "examples": [
+            "The editor added a comment to the manuscript, suggesting that the author revise the conclusion for clarity."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 翰林 B1·L6",
+        "textbookTitle": "翰林 B1·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "commerce",
+      "word": "commerce",
+      "senses": [
+        {
+          "id": "sense-91944766",
+          "pos": "noun",
+          "meaningZh": "商業；貿易",
+          "definitionEn": "the activity of buying and selling goods and services, especially on a large scale.",
+          "examples": [
+            "International commerce plays a key role in the global economy, facilitating trade between countries and driving economic growth."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-15f9539f",
+          "pos": "noun",
+          "meaningZh": "（思想）交流；互通",
+          "definitionEn": "the exchange of ideas, opinions, or attitudes among people",
+          "examples": [
+            "During the conference, there was a vibrant commerce of ideas and perspectives among the attendees."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L5 +1",
+        "textbookTitle": "龍騰 B5·L5、三民 B4·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "commit",
+      "word": "commit",
+      "senses": [
+        {
+          "id": "sense-8aa342a6",
+          "pos": "verb",
+          "meaningZh": "全力投入；致力於",
+          "definitionEn": "engage in or perform",
+          "examples": [
+            "The students commit themselves fully to their studies, spending long hours in the library and attending every class."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-b7ba11b8",
+          "pos": "verb",
+          "meaningZh": "犯（罪）；做（壞事）",
+          "definitionEn": "perform an act, typically with a negative connotation",
+          "examples": [
+            "He decided to commit a crime and rob the bank."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "communication",
+      "word": "communication",
+      "senses": [
+        {
+          "id": "sense-0e6219bb",
+          "pos": "noun",
+          "meaningZh": "溝通；傳達（行為）",
+          "definitionEn": "the act of conveying information through speaking, writing, or using some other medium",
+          "examples": [
+            "Effective communication is the key to a successful relationship."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-35cc7ec6",
+          "pos": "noun",
+          "meaningZh": "（傳遞的）資訊；訊息",
+          "definitionEn": "information that is shared between people or groups through speaking, writing, or some other medium",
+          "examples": [
+            "Clear communication is essential in any workplace to ensure that all team members understand each other and can work together effectively."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L2",
+        "textbookTitle": "龍騰 B1·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "community",
+      "word": "community",
+      "senses": [
+        {
+          "id": "sense-0385d29e",
+          "pos": "noun",
+          "meaningZh": "社區；社群；群體",
+          "definitionEn": "a group of people living in a particular local area",
+          "examples": [
+            "The new community center provides a space for the residents to come together and socialize."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L9 +1",
+        "textbookTitle": "龍騰 B1·L9、三民 B1·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "companion",
+      "word": "companion",
+      "senses": [
+        {
+          "id": "sense-2d499124",
+          "pos": "noun",
+          "meaningZh": "同伴；夥伴；摯友",
+          "definitionEn": "a person who is often in the company of another and shares activities or experiences with them; a friend",
+          "examples": [
+            "After her husband’s death, Mary adopted a dog as her companion to keep her company and make her feel less lonely."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-b41b3c03",
+          "pos": "noun",
+          "meaningZh": "（受雇的）照護陪伴者；伴護",
+          "definitionEn": "a person who is paid to accompany or assist another, such as an elderly or disabled person",
+          "examples": [
+            "The old man hired a companion to help him with his daily routine and keep him company."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L7",
+        "textbookTitle": "三民 B4·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "competition",
+      "word": "competition",
+      "senses": [
+        {
+          "id": "sense-622275b5",
+          "pos": "noun",
+          "meaningZh": "競賽；比賽",
+          "definitionEn": "the act of competing, especially for a prize or profit",
+          "examples": [
+            "The annual spelling bee is a fierce competition among the best spellers from different schools, all vying for the grand prize."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-c8adada9",
+          "pos": "noun",
+          "meaningZh": "競爭；商業角逐",
+          "definitionEn": "a rivalry between two or more businesses or individuals striving to attract customers or achieve a goal",
+          "examples": [
+            "In the cutthroat world of technology, companies engage in fierce competition to secure the largest market share and gain a competitive edge."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L7 +1",
+        "textbookTitle": "龍騰 B1·L7、三民 B1·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "competitive",
+      "word": "competitive",
+      "senses": [
+        {
+          "id": "sense-baa57a53",
+          "pos": "adjective",
+          "meaningZh": "好勝的；競爭性強的",
+          "definitionEn": "showing a fighting disposition",
+          "examples": [
+            "The two athletes had a competitive spirit and fought hard to win the game."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-a7e370ca",
+          "pos": "adjective",
+          "meaningZh": "競爭激烈的；有競爭力的",
+          "definitionEn": "involving competition or competitiveness",
+          "examples": [
+            "The company experienced a surge in sales after adopting a more competitive pricing strategy."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L7 +1",
+        "textbookTitle": "龍騰 B1·L7、三民 B1·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "competitor",
+      "word": "competitor",
+      "senses": [
+        {
+          "id": "sense-235c9a44",
+          "pos": "noun",
+          "meaningZh": "競爭對手；同業",
+          "definitionEn": "a company or organization operating in the same market as another",
+          "examples": [
+            "Our new product launch was delayed due to a price war with our competitors."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-56e48a70",
+          "pos": "noun",
+          "meaningZh": "競賽者；對手",
+          "definitionEn": "the contestant you hope to defeat",
+          "examples": [
+            "Our company’s new product needs to be better than what our competitor is offering."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L7",
+        "textbookTitle": "龍騰 B1·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "complicate",
+      "word": "complicate",
+      "senses": [
+        {
+          "id": "sense-7a0bc888",
+          "pos": "verb",
+          "meaningZh": "使複雜；使難以處理",
+          "definitionEn": "make something more difficult to understand or deal with",
+          "examples": [
+            "The instructions for assembling the furniture were so complicated that even a skilled carpenter struggled to put it together."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-92cd9aa5",
+          "pos": "verb",
+          "meaningZh": "使繁雜；增加難度",
+          "definitionEn": "to make something more complex, intricate, or detailed",
+          "examples": [
+            "When you add too many clauses to a legal document, you complicate its meaning."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "compose",
+      "word": "compose",
+      "senses": [
+        {
+          "id": "sense-d2513a7c",
+          "pos": "verb",
+          "meaningZh": "構成；組成",
+          "definitionEn": "to form or make up the substance of something",
+          "examples": [
+            "The beautiful flowers composed a stunning bouquet."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-ab5e57d4",
+          "pos": "verb",
+          "meaningZh": "創作；譜曲",
+          "definitionEn": "to put together using existing materials or elements",
+          "examples": [
+            "He was asked to compose a symphony for the orchestra using only the existing musical pieces."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L4",
+        "textbookTitle": "龍騰 B5·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "composer",
+      "word": "composer",
+      "senses": [
+        {
+          "id": "sense-87e02351",
+          "pos": "noun",
+          "meaningZh": "作曲家",
+          "definitionEn": "a person who writes music as a profession",
+          "examples": [
+            "Mozart is regarded as one of the greatest composers in history for his masterpieces like Symphony No. 41 and Don Giovanni."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L4",
+        "textbookTitle": "龍騰 B5·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "composition",
+      "word": "composition",
+      "senses": [
+        {
+          "id": "sense-00318d5e",
+          "pos": "noun",
+          "meaningZh": "作文；作品",
+          "definitionEn": "the act of creating written works, especially as an assignment",
+          "examples": [
+            "For her composition class, she wrote a 10-page essay on the effects of climate change on the world’s oceans."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-64b3c212",
+          "pos": "noun",
+          "meaningZh": "構圖；構成方式",
+          "definitionEn": "the way in which something is put together or arranged",
+          "examples": [
+            "The composition of this painting is very intricate, with bold lines and bright colors in the foreground and more muted tones in the background."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L4",
+        "textbookTitle": "龍騰 B5·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    }
+  ]
+}

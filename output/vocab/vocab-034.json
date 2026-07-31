@@ -1,0 +1,1404 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 34,
+  "words": [
+    {
+      "wordKey": "bark",
+      "word": "bark",
+      "senses": [
+        {
+          "id": "sense-1e560096",
+          "pos": "noun",
+          "meaningZh": "狗叫聲；吠聲",
+          "definitionEn": "the sound made by a dog",
+          "examples": [
+            "I knew the dog was coming around the corner because I could hear its loud bark."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-527b6333",
+          "pos": "noun",
+          "meaningZh": "類似吠聲的聲音；轟響",
+          "definitionEn": "a noise resembling the bark of a dog",
+          "examples": [
+            "The sound of the thunder could be heard far away, it was barking like a hungry dog."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "base",
+      "word": "base",
+      "senses": [
+        {
+          "id": "sense-3d2ca7bd",
+          "pos": "noun",
+          "meaningZh": "底部；基座",
+          "definitionEn": "a flat bottom on which something sits",
+          "examples": [
+            "The vase wobbled on its unstable base."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-e3d032e5",
+          "pos": "noun",
+          "meaningZh": "鹼；鹼性物質",
+          "definitionEn": "any of various water-soluble compounds capable of turning litmus blue and reacting with an acid to form a salt and water",
+          "examples": [
+            "When baking soda (sodium bicarbonate) reacts with vinegar (acetic acid), it produces carbon dioxide gas, water, and a salt called sodium acetate. This reaction is an example of a base reacting with an acid to form a salt and water."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "basic",
+      "word": "basic",
+      "senses": [
+        {
+          "id": "sense-60e425bf",
+          "pos": "adjective",
+          "meaningZh": "基本的；基礎的",
+          "definitionEn": "pertaining to or constituting a base or basis",
+          "examples": [
+            "Learning the alphabet is a basic step in acquiring strong reading skills."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-1223c707",
+          "pos": "adjective",
+          "meaningZh": "最簡化的；最精要的",
+          "definitionEn": "reduced to the simplest and most significant form possible without loss of generality",
+          "examples": [
+            "In mathematics, understanding basic concepts like addition and subtraction is crucial before moving on to more complex operations."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "basics",
+      "word": "basics",
+      "senses": [
+        {
+          "id": "sense-a939ca03",
+          "pos": "noun",
+          "meaningZh": "基本原理；基礎知識",
+          "definitionEn": "principles from which other truths can be derived",
+          "examples": [
+            "Understanding the basics of mathematics is necessary for solving complex problems."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-70392393",
+          "pos": "noun",
+          "meaningZh": "基本事實；基本要點",
+          "definitionEn": "a statement of fundamental facts or principles",
+          "examples": [
+            "Before we dive into the advanced topics, let’s review the basics to make sure everyone is on the same page."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "basis",
+      "word": "basis",
+      "senses": [
+        {
+          "id": "sense-0a5c3427",
+          "pos": "noun",
+          "meaningZh": "基礎；前提",
+          "definitionEn": "the fundamental assumptions from which something is begun or developed or calculated or explained",
+          "examples": [
+            "The basis of his argument is that all humans have the right to freedom and equality."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-fcdb1e5a",
+          "pos": "noun",
+          "meaningZh": "核心；關鍵所在",
+          "definitionEn": "the most important or necessary part of something",
+          "examples": [
+            "The basis for a successful business is a strong and reliable team."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "bathe",
+      "word": "bathe",
+      "senses": [
+        {
+          "id": "sense-3b96d5a7",
+          "pos": "verb",
+          "meaningZh": "沖洗；清洗身體",
+          "definitionEn": "to clean your body by washing it in water",
+          "examples": [
+            "After a long day at the beach, Sarah likes to bathe in the outdoor shower to rinse off the sand and saltwater."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-ac4c39f8",
+          "pos": "verb",
+          "meaningZh": "洗澡；泡浴",
+          "definitionEn": "to wash the whole body all over",
+          "examples": [
+            "After a long hike, Sarah loves to bathe in a hot tub to relax her muscles."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "battle",
+      "word": "battle",
+      "senses": [
+        {
+          "id": "sense-0b205e4e",
+          "pos": "noun",
+          "meaningZh": "戰役；戰鬥",
+          "definitionEn": "a hostile meeting of opposing military forces in the course of a war",
+          "examples": [
+            "During World War II, the soldiers engaged in a fierce battle to gain control over the strategic hill."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-4312ddc0",
+          "pos": "noun",
+          "meaningZh": "爭鬥；衝突",
+          "definitionEn": "an open clash between two opposing groups (or individuals)",
+          "examples": [
+            "The two armies engaged in a fierce battle on the battlefield, with swords clashing and arrows flying."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "beard",
+      "word": "beard",
+      "senses": [
+        {
+          "id": "sense-60d7aa61",
+          "pos": "noun",
+          "meaningZh": "鬍鬚；絡腮鬍",
+          "definitionEn": "hair that grows on the lower part of a man’s face, sometimes including the hair that grows above the lips",
+          "examples": [
+            "John decided to grow out his beard to look more mature and distinguished."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-1ce1e84a",
+          "pos": "verb",
+          "meaningZh": "留鬍鬚",
+          "definitionEn": "to grow or allow hair to grow on the lower part of one’s face",
+          "examples": [
+            "As a symbol of his masculinity, Gary decided to grow a long and full beard."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "beat",
+      "word": "beat",
+      "senses": [
+        {
+          "id": "sense-c959a680",
+          "pos": "verb",
+          "meaningZh": "毆打；痛打",
+          "definitionEn": "subject to a beating, either as a punishment or as an act of aggression",
+          "examples": [
+            "The bully threatened to beat up his victim if he didn’t hand over his lunch money."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-14fa2aa6",
+          "pos": "adjective",
+          "meaningZh": "精疲力竭；累壞了",
+          "definitionEn": "very tired",
+          "examples": [
+            "After running a marathon, I was completely beat and couldn’t even stand."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "beauty",
+      "word": "beauty",
+      "senses": [
+        {
+          "id": "sense-689765bb",
+          "pos": "noun",
+          "meaningZh": "美；美麗",
+          "definitionEn": "the qualities, such as shape, color, proportion, and appearance, that give pleasure to the senses and often evoke emotional admiration",
+          "examples": [
+            "As she stood on the balcony overlooking the sunset, the breathtaking beauty of the colorful sky and the tranquil atmosphere left her in awe."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-f6edc983",
+          "pos": "noun",
+          "meaningZh": "美女；美人",
+          "definitionEn": "a very attractive or seductive looking woman",
+          "examples": [
+            "The beauty walked into the room, turning heads wherever she went."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "beer",
+      "word": "beer",
+      "senses": [
+        {
+          "id": "sense-f7a41323",
+          "pos": "noun",
+          "meaningZh": "啤酒",
+          "definitionEn": "An alcoholic beverage made by fermenting a cereal or mixture of cereals flavored with hops.",
+          "examples": [
+            "After a long day at work, he enjoys relaxing with a cold beer."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-431b84ae",
+          "pos": "noun",
+          "meaningZh": "一杯啤酒",
+          "definitionEn": "A serving of beer.",
+          "examples": [
+            "On a hot summer day, there is nothing better than enjoying a cold beer with friends at a backyard barbecue."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "beg",
+      "word": "beg",
+      "senses": [
+        {
+          "id": "sense-b1338ea4",
+          "pos": "verb",
+          "meaningZh": "懇求；乞求",
+          "definitionEn": "request urgently or persistently, typically for something to be given or done",
+          "examples": [
+            "After losing his job, he had to beg strangers for food and money to survive."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-79c57f42",
+          "pos": "verb",
+          "meaningZh": "行乞；討食",
+          "definitionEn": "to ask for something especially money or food, to be given, especially by someone in authority",
+          "examples": [
+            "After losing his job, John had to beg for food from his neighbors."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "beginner",
+      "word": "beginner",
+      "senses": [
+        {
+          "id": "sense-b0723071",
+          "pos": "noun",
+          "meaningZh": "初學者；新手",
+          "definitionEn": "a person who is new to a field or activity",
+          "examples": [
+            "As a beginner in painting, she enrolled in a beginner's art class to learn the basics."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "behave",
+      "word": "behave",
+      "senses": [
+        {
+          "id": "sense-d0621b23",
+          "pos": "verb",
+          "meaningZh": "表現；舉止",
+          "definitionEn": "conduct oneself in a particular way; show a specific behavior or conduct",
+          "examples": [
+            "It is important to behave civilly at the workplace."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-a3b9b8db",
+          "pos": "verb",
+          "meaningZh": "行為；行動",
+          "definitionEn": "act or react in a particular way; conduct oneself in a certain manner",
+          "examples": [
+            "It’s important to behave professionally during a job interview."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L4 +1",
+        "textbookTitle": "龍騰 B1·L4、三民 B1·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "being",
+      "word": "being",
+      "senses": [
+        {
+          "id": "sense-b5bef2b2",
+          "pos": "noun",
+          "meaningZh": "生物；存在物",
+          "definitionEn": "a living thing that has (or can develop) the ability to act or function independently",
+          "examples": [
+            "In the depths of the rainforest, the diverse range of beings, such as monkeys, birds, and insects, coexist harmoniously."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-2e89b1cf",
+          "pos": "noun",
+          "meaningZh": "存在；實存",
+          "definitionEn": "the state or fact of existing",
+          "examples": [
+            "The being of a unicorn is purely fictional."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "belief",
+      "word": "belief",
+      "senses": [
+        {
+          "id": "sense-b192c86a",
+          "pos": "noun",
+          "meaningZh": "信念；信仰",
+          "definitionEn": "a cognitive content held as true, especially with strong conviction",
+          "examples": [
+            "Her belief in the justice system was shattered after the innocent man was convicted of the crime he didn’t commit."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-d7ffeb29",
+          "pos": "noun",
+          "meaningZh": "看法；（模糊的）信感",
+          "definitionEn": "a vague idea or impression that one thinks is likely true",
+          "examples": [
+            "She had a deep-seated belief that things would always work out for the best."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L9 +1",
+        "textbookTitle": "龍騰 B3·L9、三民 B1·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "bend",
+      "word": "bend",
+      "senses": [
+        {
+          "id": "sense-1a211a6d",
+          "pos": "verb",
+          "meaningZh": "轉彎；彎曲方向",
+          "definitionEn": "to change direction or angle",
+          "examples": [
+            "As the road curved sharply to the left, I had to bend my bike's handlebar to avoid hitting the wall."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-d1c28bf7",
+          "pos": "verb",
+          "meaningZh": "彎曲（關節）；屈折",
+          "definitionEn": "to bend a joint",
+          "examples": [
+            "He couldn't straighten his leg after he tried to bend his knee too far."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "better",
+      "word": "better",
+      "senses": [
+        {
+          "id": "sense-5c6eb7a9",
+          "pos": "adjective",
+          "meaningZh": "更好的；較優的",
+          "definitionEn": "Of higher quality, greater excellence, or more desirable than another, of the same class, set, or kind",
+          "examples": [
+            "I felt much better after taking a nap."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-9b4542f8",
+          "pos": "adverb",
+          "meaningZh": "更好地；更勝一籌",
+          "definitionEn": "In a more excellent manner or to a greater degree; used to compare with a similar action or thing",
+          "examples": [],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "beyond",
+      "word": "beyond",
+      "senses": [
+        {
+          "id": "sense-df8ecfe4",
+          "pos": "adverb",
+          "meaningZh": "超越；更遠地",
+          "definitionEn": "To a further extent or degree.",
+          "examples": [
+            "She pushed herself beyond her limits and finished the marathon."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-3fee240e",
+          "pos": "adverb",
+          "meaningZh": "在另一側；在更遠處",
+          "definitionEn": "On or to the further side of something.",
+          "examples": [
+            "She walked beyond the gate and entered the magical garden."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "bill",
+      "word": "bill",
+      "senses": [
+        {
+          "id": "sense-e87d7fbd",
+          "pos": "noun",
+          "meaningZh": "帳單；費用單據",
+          "definitionEn": "a written statement showing how much money you owe for goods or services",
+          "examples": [
+            "The waiter brought us the bill after dinner."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-81749f90",
+          "pos": "noun",
+          "meaningZh": "廣告牌；公告海報",
+          "definitionEn": "a sign posted in a public place as an advertisement",
+          "examples": [],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-836f68b4",
+          "pos": "noun",
+          "meaningZh": "節目表；演出項目",
+          "definitionEn": "public entertainment offered at a presentation or performance",
+          "examples": [
+            "During the concert, the stage lighting created a spectacular backdrop for the band’s bill."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "billion",
+      "word": "billion",
+      "senses": [
+        {
+          "id": "sense-570406bf",
+          "pos": "noun",
+          "meaningZh": "十億（美式）",
+          "definitionEn": "the number one followed by nine zeros (1,000,000,000)",
+          "examples": [
+            "The cost of building the new bridge was expected to be several billion dollars."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-cb0e4f8f",
+          "pos": "noun",
+          "meaningZh": "兆（英式舊制）",
+          "definitionEn": "in Great Britain, the number one followed by twelve zeros (1,000,000,000,000)",
+          "examples": [
+            "The total cost of the project was nearly a billion pounds."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "birth",
+      "word": "birth",
+      "senses": [
+        {
+          "id": "sense-f6da1063",
+          "pos": "noun",
+          "meaningZh": "出生；分娩",
+          "definitionEn": "the emergence of a baby or other young from the body of its mother; the process of giving birth",
+          "examples": [
+            "After a long and difficult labor, the new mother finally gave birth to a healthy baby boy."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-322b7160",
+          "pos": "noun",
+          "meaningZh": "血緣；親屬關係",
+          "definitionEn": "the relationship between a parent and child; kinship relation",
+          "examples": [
+            "After his father's sudden passing, Tom cherished the bond of birth he shared with his siblings, finding solace in their shared experiences and memories."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "biscuit",
+      "word": "biscuit",
+      "senses": [
+        {
+          "id": "sense-3e95b930",
+          "pos": "noun",
+          "meaningZh": "餅乾（美式，鬆軟圓餅）",
+          "definitionEn": "a small, flat, unleavened cake made from dough that has been rolled out and stamped or cut into shapes",
+          "examples": [
+            "On a cozy Sunday morning, Jane baked a batch of delicious biscuits that were perfectly golden on the outside and fluffy on the inside."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "bit",
+      "word": "bit",
+      "senses": [
+        {
+          "id": "sense-7decdf7f",
+          "pos": "noun",
+          "meaningZh": "一點點；少量",
+          "definitionEn": "a small amount or piece of something",
+          "examples": [
+            "Could you give me a bit of help with this?"
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-602b6c36",
+          "pos": "noun",
+          "meaningZh": "鑽頭；鑽嘴",
+          "definitionEn": "the pointed end of a drill, used for cutting through material",
+          "examples": [
+            "The carpenter inserted the bit into his electric drill and started making a hole in the wooden panel."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "blackboard",
+      "word": "blackboard",
+      "senses": [
+        {
+          "id": "sense-63ba98e2",
+          "pos": "noun",
+          "meaningZh": "黑板",
+          "definitionEn": "A dark surface on which you can write with chalk, especially in a classroom",
+          "examples": [
+            "The teacher wrote equations on the blackboard for the students to solve."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "blame",
+      "word": "blame",
+      "senses": [
+        {
+          "id": "sense-929f7d06",
+          "pos": "verb",
+          "meaningZh": "責怪；怪罪",
+          "definitionEn": "accuse someone of something wrong or reprehensible",
+          "examples": [
+            "She was quick to blame her colleagues for the project's failure, even though she had contributed very little to it."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-63ec231b",
+          "pos": "verb",
+          "meaningZh": "指責；批評",
+          "definitionEn": "criticize someone for something they have done wrong",
+          "examples": [
+            "John decided to blame his coworker for the mistake, even though he was the one who made the error."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L2 +1",
+        "textbookTitle": "龍騰 B2·L2、三民 B1·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "blank",
+      "word": "blank",
+      "senses": [
+        {
+          "id": "sense-f59e4a1f",
+          "pos": "noun",
+          "meaningZh": "空白；空格",
+          "definitionEn": "An empty space or a missing part.",
+          "examples": [
+            "When I received the letter, there was a blank space where the sender's name should have been."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-f5e87fb0",
+          "pos": "adjective",
+          "meaningZh": "面無表情的；茫然的",
+          "definitionEn": "Describing a facial expression that doesn’t show any emotion.",
+          "examples": [
+            "After hearing the news, she just stared at me with a blank expression."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "blanket",
+      "word": "blanket",
+      "senses": [
+        {
+          "id": "sense-bc527b52",
+          "pos": "noun",
+          "meaningZh": "毯子；毛毯",
+          "definitionEn": "a covering for a bed, typically made of wool or other warm material",
+          "examples": [
+            "As the temperature dropped, she pulled the blanket tightly around herself."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-81a53518",
+          "pos": "noun",
+          "meaningZh": "覆蓋物；覆蓋層",
+          "definitionEn": "a layer of material used to cover or wrap something",
+          "examples": [
+            "I like to curl up on the couch with a warm blanket on a cold night."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "blood",
+      "word": "blood",
+      "senses": [
+        {
+          "id": "sense-ac2c4f54",
+          "pos": "noun",
+          "meaningZh": "血液；血",
+          "definitionEn": "the red fluid that circulates in the veins and arteries of humans and other vertebrate animals, carrying oxygen to and waste products away from the body tissues",
+          "examples": [
+            "The nurse drew some blood from the patient’s arm to send to the lab for testing."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "board",
+      "word": "board",
+      "senses": [
+        {
+          "id": "sense-a50ef877",
+          "pos": "noun",
+          "meaningZh": "板；特定用途板材",
+          "definitionEn": "a flat piece of material designed for a special purpose",
+          "examples": [
+            "Emily used a cutting board when she prepared the vegetables for dinner."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-23cb9e70",
+          "pos": "noun",
+          "meaningZh": "棋盤；遊戲板",
+          "definitionEn": "a flat portable surface (usually rectangular) designed for board games",
+          "examples": [
+            "On a rainy day, they decided to stay indoors and play a board game."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    }
+  ]
+}

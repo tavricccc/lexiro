@@ -1,0 +1,1381 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 133,
+  "words": [
+    {
+      "wordKey": "alongside",
+      "word": "alongside",
+      "senses": [
+        {
+          "id": "sense-152689a3",
+          "pos": "adverb",
+          "meaningZh": "並排；在旁邊",
+          "definitionEn": "in a line next to something or someone",
+          "examples": [
+            "Sarah walked alongside her best friend as they strolled down the beach, enjoying the warm sand between their toes."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "alter",
+      "word": "alter",
+      "senses": [
+        {
+          "id": "sense-6dbd5679",
+          "pos": "verb",
+          "meaningZh": "改變；修改",
+          "definitionEn": "to change something, or make something different",
+          "examples": [
+            "She decided to alter her appearance by dyeing her hair pink."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-1c7beffb",
+          "pos": "verb",
+          "meaningZh": "調整；更動",
+          "definitionEn": "to make changes or modifications to something",
+          "examples": [
+            "Alice decided to alter her dress by shortening the hem and adding sequins to give it a more glamorous look."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L4",
+        "textbookTitle": "龍騰 B5·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "alternate",
+      "word": "alternate",
+      "senses": [
+        {
+          "id": "sense-27b81f59",
+          "pos": "adjective",
+          "meaningZh": "交替的；輪流的",
+          "definitionEn": "happening or appearing in turns; first one and then the other",
+          "examples": [
+            "The teacher asked the students to form two straight lines, with each student in one row taking turns to alternate as the leader of their group."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-9c289818",
+          "pos": "noun",
+          "meaningZh": "代替者；代理人",
+          "definitionEn": "someone who takes the place of another person or acts as a substitute",
+          "examples": [
+            "Samantha was sick, so her colleague acted as her alternate during the meeting."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L7",
+        "textbookTitle": "三民 B4·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "amend",
+      "word": "amend",
+      "senses": [
+        {
+          "id": "sense-977d811c",
+          "pos": "verb",
+          "meaningZh": "修正；修改",
+          "definitionEn": "set straight or right",
+          "examples": [
+            "After getting feedback from his supervisor, he amended the proposal to include additional details and clarify his proposal."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-f6dd18b6",
+          "pos": "verb",
+          "meaningZh": "改善；彌補過失",
+          "definitionEn": "make better",
+          "examples": [
+            "He amended his mistake by apologizing to his colleague."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "ample",
+      "word": "ample",
+      "senses": [
+        {
+          "id": "sense-8631914e",
+          "pos": "adjective",
+          "meaningZh": "充裕的；寬敞的",
+          "definitionEn": "large enough, spacious, or abundant",
+          "examples": [
+            "The picnic basket was filled with ample amounts of delicious food and drinks, satisfying everyone's hunger and thirst."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-4fdd4eca",
+          "pos": "adjective",
+          "meaningZh": "足夠的；綽綽有餘的",
+          "definitionEn": "sufficient or more than enough in size, amount, or capacity",
+          "examples": [
+            "They had ample time to finish the project before the deadline."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L7",
+        "textbookTitle": "三民 B4·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "analyst",
+      "word": "analyst",
+      "senses": [
+        {
+          "id": "sense-18dc4e40",
+          "pos": "noun",
+          "meaningZh": "分析師；分析人員",
+          "definitionEn": "a person who is skilled in analyzing data or information",
+          "examples": [
+            "The market analyst carefully studied the trends in the stock market to make informed investments for her clients."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-372a8d0b",
+          "pos": "noun",
+          "meaningZh": "財務分析師；投資顧問",
+          "definitionEn": "a financial expert who examines and interprets financial information, such as financial statements, and provides advice on financial plans and investments",
+          "examples": [
+            "The company hired an analyst to review their financial statements and guide their investment decisions."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "anonymous",
+      "word": "anonymous",
+      "senses": [
+        {
+          "id": "sense-8f2612b4",
+          "pos": "adjective",
+          "meaningZh": "匿名的；身分不明的",
+          "definitionEn": "having no known name or identity or known source",
+          "examples": [
+            "The anonymous tip led to the arrest of the suspect."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-638536b1",
+          "pos": "adjective",
+          "meaningZh": "無特色的；缺乏個性的",
+          "definitionEn": "not known or lacking marked individuality",
+          "examples": [
+            "A benevolent stranger left an anonymous gift on her doorstep."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 翰林 B1·L6",
+        "textbookTitle": "翰林 B1·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "anticipate",
+      "word": "anticipate",
+      "senses": [
+        {
+          "id": "sense-9fa2c427",
+          "pos": "verb",
+          "meaningZh": "預料；預期",
+          "definitionEn": "realize or expect that something is likely to happen",
+          "examples": [
+            "As a detective, John had to anticipate the next move of the criminal in order to catch him."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-3777975e",
+          "pos": "verb",
+          "meaningZh": "期待；盼望",
+          "definitionEn": "feel excited or anxious about something that is going to happen",
+          "examples": [
+            "As the wedding day neared, Sarah couldn't help but anticipate seeing her groom at the altar."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L4",
+        "textbookTitle": "龍騰 B3·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "antique",
+      "word": "antique",
+      "senses": [
+        {
+          "id": "sense-c913eb10",
+          "pos": "adjective",
+          "meaningZh": "古老的；古代的",
+          "definitionEn": "belonging to or dating from a period long ago",
+          "examples": [
+            "When visiting her grandmother's house, Sally discovered an antique chest filled with delicate lace and elegant porcelain."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-d5919ac5",
+          "pos": "verb",
+          "meaningZh": "仿舊；做舊",
+          "definitionEn": "give an appearance of age to (a piece of furniture, decorative object, etc.)",
+          "examples": [
+            "To create an antique look, the carpenter distressed the edges of the wooden bookshelf and applied a dark stain to give it an aged appearance."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "applause",
+      "word": "applause",
+      "senses": [
+        {
+          "id": "sense-cdb9af3d",
+          "pos": "noun",
+          "meaningZh": "掌聲；喝采",
+          "definitionEn": "a demonstration of approval or appreciation by clapping the hands together",
+          "examples": [
+            "The audience erupted in thunderous applause, cheering and clapping to show their appreciation for the breathtaking performance."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "appliance",
+      "word": "appliance",
+      "senses": [
+        {
+          "id": "sense-3adc7950",
+          "pos": "noun",
+          "meaningZh": "家電；電器用品",
+          "definitionEn": "durable goods for home or office use",
+          "examples": [
+            "I bought a new appliance for my kitchen, a state-of-the-art refrigerator that has a built-in ice maker and water dispenser."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-7ba2c251",
+          "pos": "noun",
+          "meaningZh": "小型器具；小型機器",
+          "definitionEn": "a small mechanical device or gadget",
+          "examples": [
+            "The kitchen was filled with the aroma of freshly baked bread, thanks to the appliance that automatically prepares and bakes the dough."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "apt",
+      "word": "apt",
+      "senses": [
+        {
+          "id": "sense-6ef42b10",
+          "pos": "adjective",
+          "meaningZh": "易於；傾向於",
+          "definitionEn": "Naturally disposed towards (usually followed by `to’).",
+          "examples": [
+            "She is apt to get lost whenever she travels to a new city."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-e503d439",
+          "pos": "adjective",
+          "meaningZh": "機靈的；反應敏捷的",
+          "definitionEn": "Quick and resourceful mentally.",
+          "examples": [
+            "In a business meeting, she was apt at coming up with innovative solutions on the spot."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "architect",
+      "word": "architect",
+      "senses": [
+        {
+          "id": "sense-65d8ea46",
+          "pos": "noun",
+          "meaningZh": "建築師",
+          "definitionEn": "a person who designs buildings and supervises their construction",
+          "examples": [
+            "The architect carefully crafted the blueprints for the new office building, taking into consideration both functionality and aesthetics."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L2",
+        "textbookTitle": "龍騰 B3·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "architecture",
+      "word": "architecture",
+      "senses": [
+        {
+          "id": "sense-0bd71919",
+          "pos": "noun",
+          "meaningZh": "建築學；建築藝術",
+          "definitionEn": "the art and science of designing and building structures and buildings",
+          "examples": [
+            "The architect's vision for the new museum perfectly showcased the fusion of modern design and sustainable practices in architecture."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-87d4c217",
+          "pos": "noun",
+          "meaningZh": "（電腦）架構；系統結構",
+          "definitionEn": "(computer science) the structure and organization of a computer’s hardware or system software",
+          "examples": [
+            "The architecture of this computer system is designed to efficiently process large amounts of data."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L2",
+        "textbookTitle": "龍騰 B3·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "arena",
+      "word": "arena",
+      "senses": [
+        {
+          "id": "sense-67cdec9e",
+          "pos": "noun",
+          "meaningZh": "競技場域；領域；舞台",
+          "definitionEn": "a particular environment or sphere of activity or work",
+          "examples": [
+            "The political arena can be quite competitive and unpredictable, with politicians vying for power and influence."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-30058205",
+          "pos": "noun",
+          "meaningZh": "競技場館；體育館",
+          "definitionEn": "a large structure used for outdoor sports or entertainment events",
+          "examples": [
+            "The concert was held in a state-of-the-art arena with a seating capacity of over 20,000 people."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "arouse",
+      "word": "arouse",
+      "senses": [
+        {
+          "id": "sense-32f07140",
+          "pos": "verb",
+          "meaningZh": "激起；振奮；喚起",
+          "definitionEn": "cause to be alert and energetic",
+          "examples": [
+            "A cup of strong coffee in the morning can arouse your senses and give you the energy you need to start your day."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-7e7269db",
+          "pos": "verb",
+          "meaningZh": "喚醒；叫醒",
+          "definitionEn": "cause to become awake or conscious",
+          "examples": [
+            "The sound of the alarm clock finally aroused him from deep sleep."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L4",
+        "textbookTitle": "三民 B4·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "array",
+      "word": "array",
+      "senses": [
+        {
+          "id": "sense-d7e68a5a",
+          "pos": "noun",
+          "meaningZh": "陣列；有序排列",
+          "definitionEn": "an orderly arrangement",
+          "examples": [
+            "The books on my shelf are arranged in an array according to their genres."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-0efb3986",
+          "pos": "noun",
+          "meaningZh": "天線陣列；定向排列",
+          "definitionEn": "an arrangement of aerials spaced to give desired directional characteristics",
+          "examples": [
+            "To improve the reception of television signals, the antennas on top of the building were installed in a precise array, ensuring optimal directional coverage."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "arrogant",
+      "word": "arrogant",
+      "senses": [
+        {
+          "id": "sense-dfe67b9f",
+          "pos": "adjective",
+          "meaningZh": "傲慢的；自大的；目中無人的",
+          "definitionEn": "showing an offensive attitude of superiority or self-importance",
+          "examples": [
+            "The manager was so arrogant that she refused to listen to any ideas from her subordinates."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "articulate",
+      "word": "articulate",
+      "senses": [
+        {
+          "id": "sense-167a9b6c",
+          "pos": "verb",
+          "meaningZh": "清晰表達；明確說明",
+          "definitionEn": "to express oneself clearly and effectively",
+          "examples": [
+            "During the interview, she was able to articulate her thoughts and experiences in a way that impressed the panel."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-d048db28",
+          "pos": "verb",
+          "meaningZh": "用關節連接；接合",
+          "definitionEn": "to unite or combine by means of joints",
+          "examples": [
+            "The skilled carpenter carefully articulated the different pieces of wood to create a sturdy and beautiful chair."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "ass",
+      "word": "ass",
+      "senses": [
+        {
+          "id": "sense-c853a96d",
+          "pos": "noun",
+          "meaningZh": "驢；驢子",
+          "definitionEn": "a donkey (an animal similar to a small horse)",
+          "examples": [
+            "The farmer rode his ass through the fields to collect hay."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-9c5a9b3a",
+          "pos": "noun",
+          "meaningZh": "蠢人；笨蛋",
+          "definitionEn": "a person who behaves or says foolish things",
+          "examples": [
+            "During the meeting, John continued to make inappropriate jokes and acted like a complete ass."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "assault",
+      "word": "assault",
+      "senses": [
+        {
+          "id": "sense-d7f3d4fc",
+          "pos": "verb",
+          "meaningZh": "攻擊；傷害；侵犯",
+          "definitionEn": "physically or emotionally attack someone",
+          "examples": [
+            "The man was arrested for assault after attacking a woman on the street."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-4d07ee23",
+          "pos": "verb",
+          "meaningZh": "言詞攻擊；抨擊",
+          "definitionEn": "attack someone in speech or writing",
+          "examples": [
+            "The journalist committed an assault on the politician’s character in her latest article."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L9",
+        "textbookTitle": "龍騰 B4·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "assert",
+      "word": "assert",
+      "senses": [
+        {
+          "id": "sense-69bac84f",
+          "pos": "verb",
+          "meaningZh": "聲稱；宣稱；堅持",
+          "definitionEn": "state or affirm something confidently and forcefully",
+          "examples": [
+            "She asserted her innocence even though there was evidence against her."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-b41207ee",
+          "pos": "verb",
+          "meaningZh": "主張；斷言",
+          "definitionEn": "declare or affirm as true, often formally or forcefully",
+          "examples": [
+            "In the court, the lawyer knew he had to assert his client’s innocence to the jury."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "assess",
+      "word": "assess",
+      "senses": [
+        {
+          "id": "sense-a6630367",
+          "pos": "verb",
+          "meaningZh": "評估；評量；評鑑",
+          "definitionEn": "to evaluate or determine the quality, nature, ability, extent, or importance of something",
+          "examples": [
+            "Before starting a new project, the manager needs to assess the skills and abilities of each team member to guarantee the success of the project."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-d772d0e6",
+          "pos": "verb",
+          "meaningZh": "估算（稅）；課稅估價",
+          "definitionEn": "to determine the value of a property for taxation purposes",
+          "examples": [
+            "The county assessor will assess the value of the house for tax purposes."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "assessment",
+      "word": "assessment",
+      "senses": [
+        {
+          "id": "sense-3346ca79",
+          "pos": "noun",
+          "meaningZh": "評估；考核；評鑑",
+          "definitionEn": "the process of classifying someone or something based on their importance or value",
+          "examples": [
+            "The assessment of a student’s performance includes evaluating their understanding of the subject matter and their progress in the course."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-ca15e2e1",
+          "pos": "noun",
+          "meaningZh": "估值；市場估價",
+          "definitionEn": "the value assigned to an asset in the market",
+          "examples": [
+            "After thorough assessment, the vintage car was appraised at a much higher value than the owner expected."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "asset",
+      "word": "asset",
+      "senses": [
+        {
+          "id": "sense-71795b5f",
+          "pos": "noun",
+          "meaningZh": "資產；有價財物",
+          "definitionEn": "a valuable item that someone owns",
+          "examples": [
+            "His car collection is his most prized asset."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-11e7460a",
+          "pos": "noun",
+          "meaningZh": "優勢；長處；有利條件",
+          "definitionEn": "a useful or valuable quality",
+          "examples": [
+            "Good communication skills are an asset in any profession."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "assumption",
+      "word": "assumption",
+      "senses": [
+        {
+          "id": "sense-7b543781",
+          "pos": "noun",
+          "meaningZh": "假設；推定",
+          "definitionEn": "the act of assuming or taking for granted",
+          "examples": [
+            "John made the assumption that his sister would be home for dinner, so he prepared an extra place at the table."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-335c0d30",
+          "pos": "noun",
+          "meaningZh": "臆測；前提假設",
+          "definitionEn": "a hypothesis that is taken for granted",
+          "examples": [
+            "Sarah made the assumption that her keys were on the kitchen counter, so she began searching for them there."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L1",
+        "textbookTitle": "三民 B4·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "astonish",
+      "word": "astonish",
+      "senses": [
+        {
+          "id": "sense-ac0bbd0d",
+          "pos": "verb",
+          "meaningZh": "使驚訝；使詫異；使震驚",
+          "definitionEn": "to surprise greatly",
+          "examples": [
+            "The magician’s trick of pulling a rabbit out of a hat astonished the audience."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L7",
+        "textbookTitle": "三民 B4·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "astonishment",
+      "word": "astonishment",
+      "senses": [
+        {
+          "id": "sense-4f45b447",
+          "pos": "noun",
+          "meaningZh": "驚訝；詫異；震驚",
+          "definitionEn": "a feeling of great surprise",
+          "examples": [
+            "The children's astonishment was evident when they discovered an elephant in their backyard."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-98e16ca2",
+          "pos": "noun",
+          "meaningZh": "驚愕狀態；目瞪口呆",
+          "definitionEn": "the state of being greatly surprised",
+          "examples": [
+            "Her face was a picture of astonishment when she won the lottery jackpot."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L7",
+        "textbookTitle": "三民 B4·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "athletics",
+      "word": "athletics",
+      "senses": [
+        {
+          "id": "sense-c3929dac",
+          "pos": "noun",
+          "meaningZh": "田徑運動；競技運動",
+          "definitionEn": "an active diversion requiring physical exertion and competition",
+          "examples": [
+            "John participates in athletics to stay fit and compete with other athletes."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-273da586",
+          "pos": "noun",
+          "meaningZh": "課外體育活動",
+          "definitionEn": "participation in sports events as an extracurricular activity",
+          "examples": [
+            "At the school, the students are encouraged to participate in athletics to promote overall physical fitness and team spirit."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "attendance",
+      "word": "attendance",
+      "senses": [
+        {
+          "id": "sense-3b30240c",
+          "pos": "noun",
+          "meaningZh": "出席；到場",
+          "definitionEn": "the act of being present at a meeting or event.",
+          "examples": [
+            "Attendance at the conference was mandatory for all employees."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-d96ece2c",
+          "pos": "noun",
+          "meaningZh": "出席人數；到場人數",
+          "definitionEn": "the number of people present at a particular place or event.",
+          "examples": [
+            "The attendance at the conference exceeded all expectations, with over 500 participants from around the world."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    }
+  ]
+}

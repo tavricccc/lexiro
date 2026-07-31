@@ -6,7 +6,7 @@ import Button from './ui/button/Button.vue'
 import Card from './ui/card/Card.vue'
 
 const props = defineProps<{
-  entry: { item: { word: string, pos: string, meaning: string, example: string, question: { prompt: string, opts: string[], ans: number } } }
+  entry: { item: { word: string, pos: string, meaning: string, example: string, question?: { prompt: string, opts: string[], ans: number } } }
   index: number
   total: number
   review?: boolean
@@ -24,10 +24,11 @@ const labels = ['A', 'B', 'C', 'D']
 const selectedIndex = ref<number | null>(null)
 const answered = ref(false)
 const feedbackClass = ref('')
+const question = computed(() => props.entry.item.question ?? { prompt: '', opts: ['', '', '', ''], ans: 0 })
 
-const answerText = computed(() => props.entry.item.question.opts[props.entry.item.question.ans])
-const promptParts = computed(() => props.entry.item.question.prompt.split('_____'))
-const hasBlank = computed(() => props.entry.item.question.prompt.includes('_____'))
+const answerText = computed(() => question.value.opts[question.value.ans])
+const promptParts = computed(() => question.value.prompt.split('_____'))
+const hasBlank = computed(() => question.value.prompt.includes('_____'))
 
 watch(
   () => props.draft?.selectedIndex,
@@ -47,7 +48,7 @@ function choose(index: number) {
     return
   answered.value = true
   selectedIndex.value = index
-  const correct = index === props.entry.item.question.ans
+  const correct = index === question.value.ans
   feedbackClass.value = correct ? 'feedback-correct' : 'feedback-wrong'
   emit('draft-change', { selectedIndex: index })
 }
@@ -65,7 +66,7 @@ function skip() {
 }
 
 function optionClass(index: number) {
-  const isCorrect = index === props.entry.item.question.ans
+  const isCorrect = index === question.value.ans
   const isSelected = index === selectedIndex.value
 
   return cn(
@@ -130,17 +131,17 @@ onUnmounted(() => window.removeEventListener('keydown', onKeydown))
           {{ promptParts.slice(1).join('_____') }}
         </template>
         <template v-else-if="answered && hasBlank">
-          {{ props.entry.item.question.prompt.replace('_____', answerText) }}
+          {{ question.prompt.replace('_____', answerText) }}
         </template>
         <template v-else>
-          {{ props.entry.item.question.prompt }}
+          {{ question.prompt }}
         </template>
       </p>
     </div>
 
     <div class="mt-6 grid gap-3 sm:grid-cols-2">
       <button
-        v-for="(option, optionIndex) in entry.item.question.opts"
+        v-for="(option, optionIndex) in question.opts"
         :key="`${optionIndex}`"
         type="button"
         :class="optionClass(optionIndex)"
@@ -164,8 +165,8 @@ onUnmounted(() => window.removeEventListener('keydown', onKeydown))
       role="status"
       aria-live="polite"
     >
-      <p class="text-sm font-extrabold" :class="[selectedIndex === entry.item.question.ans ? 'text-emerald-600 dark:text-emerald-400' : selectedIndex == null ? 'text-ink-500' : 'text-red-500']">
-        {{ selectedIndex === entry.item.question.ans ? $t('result.correct') : selectedIndex == null ? $t('result.skipped') : $t('result.wrong') }}
+      <p class="text-sm font-extrabold" :class="[selectedIndex === question.ans ? 'text-emerald-600 dark:text-emerald-400' : selectedIndex == null ? 'text-ink-500' : 'text-red-500']">
+        {{ selectedIndex === question.ans ? $t('result.correct') : selectedIndex == null ? $t('result.skipped') : $t('result.wrong') }}
       </p>
       <p class="mt-2 text-sm leading-relaxed text-ink-600 dark:text-ink-400">
         {{ $t('result.correctAnswer') }}：<span class="font-bold text-emerald-600 dark:text-emerald-400"> {{ answerText }}</span>。

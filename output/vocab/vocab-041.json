@@ -1,0 +1,1393 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 41,
+  "words": [
+    {
+      "wordKey": "drawing",
+      "word": "drawing",
+      "senses": [
+        {
+          "id": "sense-b1b36385",
+          "pos": "noun",
+          "meaningZh": "繪圖；圖畫",
+          "definitionEn": "a representation of forms or objects on a surface by means of lines",
+          "examples": [
+            "The artist created a beautiful drawing of a flower using charcoal and pencil."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "drug",
+      "word": "drug",
+      "senses": [
+        {
+          "id": "sense-57e714bf",
+          "pos": "noun",
+          "meaningZh": "藥物；毒品",
+          "definitionEn": "a substance used as a medicine or taken illegally for its effects",
+          "examples": [
+            "The doctor prescribed a new drug for her illness."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-1912fe40",
+          "pos": "verb",
+          "meaningZh": "給藥；投藥",
+          "definitionEn": "to administer medicine to",
+          "examples": [
+            "The doctor will drug the patient to relieve his pain."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "dryer",
+      "word": "dryer",
+      "senses": [
+        {
+          "id": "sense-1b40d685",
+          "pos": "noun",
+          "meaningZh": "烘衣機；烘乾機",
+          "definitionEn": "a machine or appliance for removing moisture from clothing, towels, or textiles",
+          "examples": [
+            "After washing the clothes, she put them in the dryer to get rid of excess water."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-6a931498",
+          "pos": "noun",
+          "meaningZh": "吹風機；烘乾器",
+          "definitionEn": "an appliance that removes moisture from hair, or wet objects such as dishes",
+          "examples": [
+            "After washing the dishes, Sarah used the dryer to make sure they were completely dry before putting them away."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "due",
+      "word": "due",
+      "senses": [
+        {
+          "id": "sense-2bdc9ba6",
+          "pos": "adjective",
+          "meaningZh": "到期的；應繳的",
+          "definitionEn": "appropriate or expected under the circumstances",
+          "examples": [
+            "The assignment is due by 5 PM tomorrow."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-b74807dd",
+          "pos": "adjective",
+          "meaningZh": "歸因於；由⋯造成的",
+          "definitionEn": "able to be credited to or assigned to something",
+          "examples": [
+            "The success of the project was due to the dedication and hard work of the team."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "dull",
+      "word": "dull",
+      "senses": [
+        {
+          "id": "sense-90b3f182",
+          "pos": "adjective",
+          "meaningZh": "無聊乏味的；遲鈍的",
+          "definitionEn": "not interesting or exciting; not sharp or bright",
+          "examples": [
+            "The lecture was so dull that I almost fell asleep."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-7ef44f1d",
+          "pos": "verb",
+          "meaningZh": "使暗淡；使失去光澤",
+          "definitionEn": "reduce shine or brightness; make less clear",
+          "examples": [
+            "The cloudy weather dulled the reflection of the sun on the lake."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 翰林 B1·L9",
+        "textbookTitle": "翰林 B1·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "duty",
+      "word": "duty",
+      "senses": [
+        {
+          "id": "sense-7b786c41",
+          "pos": "noun",
+          "meaningZh": "職責；責任感",
+          "definitionEn": "the social force that binds you to the courses of action demanded by that force",
+          "examples": [
+            "John was called to serve on jury duty and therefore had a duty to attend court and fulfill his civic obligation."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-05ccc002",
+          "pos": "noun",
+          "meaningZh": "義務；本分",
+          "definitionEn": "work that you are obliged to perform for moral or legal reasons",
+          "examples": [
+            "It is my duty as a citizen to vote in the election."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B1·L3",
+        "textbookTitle": "三民 B1·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "eagle",
+      "word": "eagle",
+      "senses": [
+        {
+          "id": "sense-34284b72",
+          "pos": "noun",
+          "meaningZh": "老鷹；雄鷹（力量象徵）",
+          "definitionEn": "a symbol of power and strength",
+          "examples": [
+            "The eagle soared through the sky with graceful ease, its majestic wings outstretched as if asserting its dominion over the land beneath."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-aaca329a",
+          "pos": "verb",
+          "meaningZh": "打出老鷹分（低於標準桿兩桿）",
+          "definitionEn": "(in golf) to score two strokes under par on a hole",
+          "examples": [
+            "The golfer managed to eagle the difficult par-5 hole with a perfect drive and a precise approach shot."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "earn",
+      "word": "earn",
+      "senses": [
+        {
+          "id": "sense-8dda4539",
+          "pos": "verb",
+          "meaningZh": "賺取；領取（薪資）",
+          "definitionEn": "receive money in return for work done or services rendered",
+          "examples": [
+            "After putting in a lot of hard work and dedication, the employee was able to earn a promotion and a substantial raise."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-92d46811",
+          "pos": "verb",
+          "meaningZh": "贏得；獲得（應得的）",
+          "definitionEn": "acquire or deserve by one’s efforts or actions",
+          "examples": [
+            "After years of hard work and dedication to her job, she was finally able to earn the promotion she had been hoping for."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B2·L1",
+        "textbookTitle": "三民 B2·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "earring",
+      "word": "earring",
+      "senses": [
+        {
+          "id": "sense-c2c8f494",
+          "pos": "noun",
+          "meaningZh": "耳環",
+          "definitionEn": "A piece of jewelry worn on the ear, usually attached to the earlobe or pushed through a hole in it.",
+          "examples": [
+            "She wore a beautiful pair of diamond earrings to the party."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "earrings",
+      "word": "earrings",
+      "senses": [
+        {
+          "id": "sense-e8d7827f",
+          "pos": "noun",
+          "meaningZh": "耳環",
+          "definitionEn": "A piece of jewelry worn on the ear, usually attached to the earlobe or pushed through a hole in it.",
+          "examples": [
+            "She wore a beautiful pair of diamond earrings to the party."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "earthquake",
+      "word": "earthquake",
+      "senses": [
+        {
+          "id": "sense-d50289ab",
+          "pos": "noun",
+          "meaningZh": "地震",
+          "definitionEn": "a sudden and violent shaking of the ground that can disrupt buildings, roads, and other infrastructure",
+          "examples": [
+            "The earthquake shook the city, causing buildings to collapse and roads to crack."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-3afc2fba",
+          "pos": "noun",
+          "meaningZh": "大動盪；重大衝擊",
+          "definitionEn": "a disturbance or upheaval that causes great turmoil or chaos",
+          "examples": [
+            "The earthquake caused buildings to crumble, roads to crack, and widespread panic among the residents."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "ease",
+      "word": "ease",
+      "senses": [
+        {
+          "id": "sense-eacdbe50",
+          "pos": "noun",
+          "meaningZh": "輕鬆；舒適",
+          "definitionEn": "the quality of being comfortable and free from difficulty, hardship, or effort",
+          "examples": [
+            "After a long week of work, she looked forward to spending the weekend in ease and relaxation."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-2b7e1a5b",
+          "pos": "noun",
+          "meaningZh": "安逸；無壓力狀態",
+          "definitionEn": "freedom from activity, work, strain, or responsibility",
+          "examples": [
+            "After a long and stressful day, she found ease in a warm bath and a good book."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "eastern",
+      "word": "eastern",
+      "senses": [
+        {
+          "id": "sense-df901390",
+          "pos": "adjective",
+          "meaningZh": "東方的；東方文化的",
+          "definitionEn": "relating to or typical of regions in the eastern part of the world",
+          "examples": [
+            "The Eastern Hemisphere is home to many countries, including India, China and Russia."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-4562f6cd",
+          "pos": "adjective",
+          "meaningZh": "位於東部的；朝東的",
+          "definitionEn": "located toward or in the east",
+          "examples": [
+            "The sun rises in the eastern part of the horizon."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B1·L1",
+        "textbookTitle": "三民 B1·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "edge",
+      "word": "edge",
+      "senses": [
+        {
+          "id": "sense-52e34edb",
+          "pos": "noun",
+          "meaningZh": "邊緣；邊沿",
+          "definitionEn": "the outside limit of an object or area or surface; a place farthest away from the center of something",
+          "examples": [
+            "Carefully walk along the edge of the cliff to get a breathtaking view of the valley below."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-c12f4afd",
+          "pos": "noun",
+          "meaningZh": "（物體的）邊界；邊",
+          "definitionEn": "the boundary of a surface",
+          "examples": [
+            "He carefully painted the edge of the table to ensure a clean finish."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "edition",
+      "word": "edition",
+      "senses": [
+        {
+          "id": "sense-fe4671a3",
+          "pos": "noun",
+          "meaningZh": "版本；版次（略有差異者）",
+          "definitionEn": "something slightly different from others of the same type",
+          "examples": [
+            "The first edition of the novel contained numerous errors, while the revised edition had been thoroughly proofread."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-120a7489",
+          "pos": "noun",
+          "meaningZh": "版；（同一批次印行的）刷次",
+          "definitionEn": "all of the identical copies of something offered to the public at the same time",
+          "examples": [
+            "The first edition of the book sold out very quickly, prompting the publisher to print a second edition."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L9",
+        "textbookTitle": "龍騰 B2·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "education",
+      "word": "education",
+      "senses": [
+        {
+          "id": "sense-032f4f8e",
+          "pos": "noun",
+          "meaningZh": "教育；學習過程",
+          "definitionEn": "the gradual process of acquiring knowledge or skill",
+          "examples": [
+            "The government’s investment in public education has led to higher literacy rates and improved job prospects for the population."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-1a61d60f",
+          "pos": "noun",
+          "meaningZh": "學識；知識",
+          "definitionEn": "knowledge acquired by learning and instruction",
+          "examples": [
+            "A good education is essential for a successful career."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L4 +1",
+        "textbookTitle": "龍騰 B2·L4、三民 B2·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "effect",
+      "word": "effect",
+      "senses": [
+        {
+          "id": "sense-77998e45",
+          "pos": "noun",
+          "meaningZh": "效果；印象；影響",
+          "definitionEn": "the appearance or impression that someone or something creates on others",
+          "examples": [
+            "The effect of his speech was moving, and many people were in tears."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-536562e5",
+          "pos": "verb",
+          "meaningZh": "促成；實現",
+          "definitionEn": "to act or behave in a way that brings about a particular result or outcome",
+          "examples": [
+            "The medication will effect a change in the patient’s condition."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B1·L4 +1",
+        "textbookTitle": "三民 B1·L4、翰林 B1·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "effective",
+      "word": "effective",
+      "senses": [
+        {
+          "id": "sense-b0ecac78",
+          "pos": "adjective",
+          "meaningZh": "有效的；奏效的",
+          "definitionEn": "producing the desired outcome or having a noticeable impact",
+          "examples": [
+            "The new advertisement strategy proved to be highly effective in increasing sales by 50%."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-62330980",
+          "pos": "adjective",
+          "meaningZh": "有實際功效的；管用的",
+          "definitionEn": "functional and efficient as a solution or remedy",
+          "examples": [
+            "The new medication proved to be very effective in reducing the symptoms of the common cold."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B1·L4 +1",
+        "textbookTitle": "三民 B1·L4、翰林 B1·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "effort",
+      "word": "effort",
+      "senses": [
+        {
+          "id": "sense-97642be3",
+          "pos": "noun",
+          "meaningZh": "努力；心力",
+          "definitionEn": "hard work or use of physical or mental energy to achieve a task",
+          "examples": [
+            "He put a lot of effort into planning his sister’s surprise birthday party."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-60c3b3e3",
+          "pos": "noun",
+          "meaningZh": "努力嘗試；用功",
+          "definitionEn": "a determined and diligent attempt to do something",
+          "examples": [
+            "Jessie put in a lot of effort to prepare for her upcoming exam."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L9 +1",
+        "textbookTitle": "龍騰 B1·L9、三民 B2·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "elder",
+      "word": "elder",
+      "senses": [
+        {
+          "id": "sense-2fbc4c46",
+          "pos": "noun",
+          "meaningZh": "長輩；年長者",
+          "definitionEn": "a person who is older than you are",
+          "examples": [
+            "I asked my elder sister for advice on my college applications."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-c07fe7d1",
+          "pos": "noun",
+          "meaningZh": "教會長老",
+          "definitionEn": "any of various church officers",
+          "examples": [
+            "The elder addressed the congregation during the Sunday service to share a message of love and unity."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L8",
+        "textbookTitle": "龍騰 B2·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "electric",
+      "word": "electric",
+      "senses": [
+        {
+          "id": "sense-85f2c725",
+          "pos": "adjective",
+          "meaningZh": "電動的；發電的",
+          "definitionEn": "operated by or producing electricity",
+          "examples": [
+            "She plugged in her electric guitar and started playing a loud rock song."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-0d520fd8",
+          "pos": "noun",
+          "meaningZh": "電動車",
+          "definitionEn": "a car that is powered by electricity",
+          "examples": [
+            "I decided to buy an electric car to reduce my carbon footprint."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 翰林 B1·L7",
+        "textbookTitle": "翰林 B1·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "electrical",
+      "word": "electrical",
+      "senses": [
+        {
+          "id": "sense-80b8c416",
+          "pos": "adjective",
+          "meaningZh": "電力的；用電的",
+          "definitionEn": "using or providing or producing or transmitting or operated by electricity",
+          "examples": [
+            "The electrical engineer designed a new circuit for the power grid."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-b8a3e8dc",
+          "pos": "adjective",
+          "meaningZh": "與電學相關的",
+          "definitionEn": "relating to or concerned with electricity",
+          "examples": [
+            "The electrical engineer designed a new circuit board for the high-tech device."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 翰林 B1·L7",
+        "textbookTitle": "翰林 B1·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "emotion",
+      "word": "emotion",
+      "senses": [
+        {
+          "id": "sense-72ceded6",
+          "pos": "noun",
+          "meaningZh": "情緒；感情",
+          "definitionEn": "a strong feeling such as joy, anger, love, hate, or fear",
+          "examples": [
+            "The emotion on her face was clear as she saw her long lost friend after years of separation."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L1 +2",
+        "textbookTitle": "龍騰 B2·L1、三民 B2·L10、翰林 B1·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "emphasize",
+      "word": "emphasize",
+      "senses": [
+        {
+          "id": "sense-7f903522",
+          "pos": "verb",
+          "meaningZh": "強調；著重指出",
+          "definitionEn": "to give special importance or attention to (something)",
+          "examples": [
+            "The teacher emphasized the importance of studying for the upcoming exam."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 翰林 B1·L1",
+        "textbookTitle": "翰林 B1·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "employ",
+      "word": "employ",
+      "senses": [
+        {
+          "id": "sense-31449c50",
+          "pos": "verb",
+          "meaningZh": "雇用；聘用",
+          "definitionEn": "to hire someone to do a job or work for a person or company",
+          "examples": [
+            "The company decided to employ a new manager to oversee the project."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-e851b398",
+          "pos": "verb",
+          "meaningZh": "使用；運用（方法或手段）",
+          "definitionEn": "to use or make use of something or someone for a particular purpose",
+          "examples": [
+            "The manager decided to employ a new strategy for boosting sales."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L1 +1",
+        "textbookTitle": "龍騰 B3·L1、三民 B4·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "employee",
+      "word": "employee",
+      "senses": [
+        {
+          "id": "sense-2dddc0ae",
+          "pos": "noun",
+          "meaningZh": "員工；受薪者",
+          "definitionEn": "a person employed for wages or salary, especially at non-executive level.",
+          "examples": [
+            "The small business owner decided to hire an employee to help with the day-to-day tasks of running the shop."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-965ffc9d",
+          "pos": "noun",
+          "meaningZh": "受雇者；雇員",
+          "definitionEn": "a worker who is hired to perform a job",
+          "examples": [
+            "The company hired an employee to work in the customer service department."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L1 +1",
+        "textbookTitle": "龍騰 B3·L1、三民 B4·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "employer",
+      "word": "employer",
+      "senses": [
+        {
+          "id": "sense-cb306ba0",
+          "pos": "noun",
+          "meaningZh": "雇主；老闆",
+          "definitionEn": "a person or company that hires someone to work for them",
+          "examples": [
+            "The employer was impressed with the candidate’s qualifications and offered them the job."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-f43ede23",
+          "pos": "noun",
+          "meaningZh": "提供職位或福利的機構",
+          "definitionEn": "an organization or individual that pays for or provides benefits for a particular service, activity, or job",
+          "examples": [
+            "My employer provides excellent health insurance benefits for all employees."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L1 +1",
+        "textbookTitle": "龍騰 B3·L1、三民 B4·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "employment",
+      "word": "employment",
+      "senses": [
+        {
+          "id": "sense-e89ccb1f",
+          "pos": "noun",
+          "meaningZh": "受雇狀態；就業",
+          "definitionEn": "the state of having a job",
+          "examples": [
+            "After months of searching, John finally found employment as a software developer at a reputable company."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-5ff390ef",
+          "pos": "noun",
+          "meaningZh": "工作；職業",
+          "definitionEn": "the work that you do for a particular company or organization and receive payment for",
+          "examples": [
+            "After months of searching, he finally found employment at a reputable marketing firm."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L1 +1",
+        "textbookTitle": "龍騰 B3·L1、三民 B4·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "empty",
+      "word": "empty",
+      "senses": [
+        {
+          "id": "sense-9246e31b",
+          "pos": "adjective",
+          "meaningZh": "空的；空蕩的",
+          "definitionEn": "containing nothing; having no contents",
+          "examples": [
+            "The fridge is empty, so we need to go shopping."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-cf74c7f5",
+          "pos": "verb",
+          "meaningZh": "清空；搬空",
+          "definitionEn": "move out of a place and leave it empty",
+          "examples": [
+            "Before selling the house, the previous owner emptied all the furniture and appliances."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-118f5c8b",
+          "pos": "adjective",
+          "meaningZh": "無表情的；麻木的",
+          "definitionEn": "not showing or feeling any emotion",
+          "examples": [
+            "Mary’s face remained empty of emotion, even as she was told of her father’s passing."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B1·L1",
+        "textbookTitle": "三民 B1·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "encourage",
+      "word": "encourage",
+      "senses": [
+        {
+          "id": "sense-8162b4a9",
+          "pos": "verb",
+          "meaningZh": "鼓勵；激勵",
+          "definitionEn": "to inspire with confidence, to give hope or courage to",
+          "examples": [
+            "After a difficult loss, the coach gathered the team to encourage them to keep working hard and to never give up."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-2b8f1021",
+          "pos": "verb",
+          "meaningZh": "促進；助長",
+          "definitionEn": "to contribute to the progress or growth of",
+          "examples": [
+            "I always encourage my students to pursue their dreams."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L9 +2",
+        "textbookTitle": "龍騰 B4·L9、三民 B1·L1、翰林 B1·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    }
+  ]
+}

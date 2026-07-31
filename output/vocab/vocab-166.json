@@ -1,0 +1,1408 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 166,
+  "words": [
+    {
+      "wordKey": "veteran",
+      "word": "veteran",
+      "senses": [
+        {
+          "id": "sense-d2064627",
+          "pos": "noun",
+          "meaningZh": "退伍軍人；老兵",
+          "definitionEn": "a person who has served in the armed forces or is a former member of the military.",
+          "examples": [
+            "After retiring from the army, John became an active veteran, dedicating his time to supporting fellow servicemen and women."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-9f34061d",
+          "pos": "noun",
+          "meaningZh": "身經百戰的老兵；資深士兵",
+          "definitionEn": "a soldier who has seen considerable active service in the military and has extensive experience in warfare",
+          "examples": [
+            "After serving multiple tours in Iraq and Afghanistan, he emerged as a seasoned veteran with a wealth of combat knowledge."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "via",
+      "word": "via",
+      "senses": [
+        {
+          "id": "sense-07531d81",
+          "pos": "preposition",
+          "meaningZh": "透過；藉由",
+          "definitionEn": "by way of or by use of",
+          "examples": [
+            "She communicated with her friends via video call during the lockdown."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-1751ba11",
+          "pos": "adverb",
+          "meaningZh": "經由；途經",
+          "definitionEn": "through a particular place or by a particular route",
+          "examples": [
+            "We will be traveling to Europe via Paris."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "viable",
+      "word": "viable",
+      "senses": [
+        {
+          "id": "sense-84b2c8fa",
+          "pos": "adjective",
+          "meaningZh": "可行的；行得通的",
+          "definitionEn": "capable of being done with means at hand and circumstances as they are",
+          "examples": [
+            "It is not a viable option to launch a new product without sufficient market research and financial backing."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-c3a4c50c",
+          "pos": "adjective",
+          "meaningZh": "有生命力的；能存活的",
+          "definitionEn": "capable of life or normal growth and development",
+          "examples": [
+            "After conducting a thorough examination, the doctors determined that the newborn baby is viable and healthy."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "vicious",
+      "word": "vicious",
+      "senses": [
+        {
+          "id": "sense-dbc90086",
+          "pos": "adjective",
+          "meaningZh": "品行惡劣的；充滿惡意的",
+          "definitionEn": "(of persons or their actions) having the nature or quality of vice",
+          "examples": [
+            "Despite his friendly facade, the new neighbor's vicious gossipmongering caused a lot of trouble in the small community."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-b85ad8b7",
+          "pos": "adjective",
+          "meaningZh": "兇猛的；殘暴的",
+          "definitionEn": "able or disposed to inflict pain or suffering; cruel or violent",
+          "examples": [
+            "The vicious dog lunged at the stranger, baring its sharp teeth and growling ferociously."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L6",
+        "textbookTitle": "龍騰 B5·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "viewer",
+      "word": "viewer",
+      "senses": [
+        {
+          "id": "sense-c688324f",
+          "pos": "noun",
+          "meaningZh": "觀眾；收視者",
+          "definitionEn": "a person who watches television programs or movies",
+          "examples": [
+            "The viewer was completely engrossed in the movie and did not move from their seat until the end."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "viewpoint",
+      "word": "viewpoint",
+      "senses": [
+        {
+          "id": "sense-723336a6",
+          "pos": "noun",
+          "meaningZh": "觀點；立場",
+          "definitionEn": "a mental position from which things are viewed",
+          "examples": [
+            "From her viewpoint, the new policy is a step in the wrong direction."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-87f59d44",
+          "pos": "noun",
+          "meaningZh": "觀景台；瞭望點",
+          "definitionEn": "a place from which something can be viewed",
+          "examples": [
+            "The mountaintop provided a breathtaking viewpoint of the entire valley."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "vinegar",
+      "word": "vinegar",
+      "senses": [
+        {
+          "id": "sense-ce16fd87",
+          "pos": "noun",
+          "meaningZh": "醋；食醋",
+          "definitionEn": "A dilute acetic acid, produced by the oxidation of ethanol and used as a solvent, preservative, and condiment.",
+          "examples": [
+            "I added a few drops of vinegar to the salad dressing for added flavor."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-4de6d218",
+          "pos": "noun",
+          "meaningZh": "醋（釀造調味品）",
+          "definitionEn": "A sour-tasting liquid that is made by fermenting alcoholic liquids, such as wine or cider, and is widely used as a cooking ingredient.",
+          "examples": [
+            "The recipe calls for 1/4 cup of vinegar to be added to the salad dressing to give it a tangy flavor."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "violate",
+      "word": "violate",
+      "senses": [
+        {
+          "id": "sense-5e2a55f4",
+          "pos": "verb",
+          "meaningZh": "違反；違背",
+          "definitionEn": "fail to comply with; break or infringe upon (a law, rule, agreement, etc.)",
+          "examples": [
+            "He was fined for violating the speed limit."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-9adbf015",
+          "pos": "verb",
+          "meaningZh": "違抗；不遵守",
+          "definitionEn": "disobey or disregard (an obligation, rule, etc.)",
+          "examples": [
+            "He knew that he would violate the terms of his parole if he left the state without permission."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B2·L8",
+        "textbookTitle": "三民 B2·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "violation",
+      "word": "violation",
+      "senses": [
+        {
+          "id": "sense-31b0e112",
+          "pos": "noun",
+          "meaningZh": "違規；輕罪",
+          "definitionEn": "a crime less serious than a felony",
+          "examples": [
+            "She received a fine for the parking violation outside the bank."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-90e96c85",
+          "pos": "noun",
+          "meaningZh": "擅闖；侵入他人財產",
+          "definitionEn": "entry to another’s property without right or permission",
+          "examples": [
+            "He was charged with violation of the property when he broke into his neighbor’s house for stealing."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B2·L8",
+        "textbookTitle": "三民 B2·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "virtual",
+      "word": "virtual",
+      "senses": [
+        {
+          "id": "sense-ffa89653",
+          "pos": "adjective",
+          "meaningZh": "虛擬的；實質上的",
+          "definitionEn": "existing or being in essence, but not in actual fact",
+          "examples": [
+            "The school organized a virtual tour of the museum, which allowed the students to experience the art without leaving the classroom."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-029c6542",
+          "pos": "adjective",
+          "meaningZh": "線上的；近乎真實的",
+          "definitionEn": "almost the same as described, but not completely real",
+          "examples": [
+            "During the pandemic, the virtual meetings have become the new norm as most workplaces have shifted to remote work."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "virtue",
+      "word": "virtue",
+      "senses": [
+        {
+          "id": "sense-a680ef35",
+          "pos": "noun",
+          "meaningZh": "美德；道德品質",
+          "definitionEn": "a particular moral excellence, such as courage or honesty",
+          "examples": [
+            "She was admired for her virtue of patience during difficult times."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-34684ad8",
+          "pos": "noun",
+          "meaningZh": "正直；善行",
+          "definitionEn": "the quality of doing what is right and avoiding what is wrong",
+          "examples": [
+            "She showed remarkable virtue by returning the wallet she found in the street instead of keeping it."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L1 +1",
+        "textbookTitle": "龍騰 B5·L1、三民 B2·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "virus",
+      "word": "virus",
+      "senses": [
+        {
+          "id": "sense-7a8df420",
+          "pos": "noun",
+          "meaningZh": "病毒（生物）",
+          "definitionEn": "An ultramicroscopic infectious agent, which can only replicate itself inside living cells of a host organism. Many types of viruses are pathogenic and can cause diseases. It is composed of a DNA or RNA molecule wrapped in a protein coat.",
+          "examples": [
+            "During flu season, a person can easily contract the virus by being in close proximity to someone who is already infected."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-a6aa608e",
+          "pos": "noun",
+          "meaningZh": "電腦病毒",
+          "definitionEn": "A type of software program that can replicate itself and cause significant damage to computer files and other programs within the same computer.",
+          "examples": [
+            "Despite having antivirus software installed, my computer got infected with a virus when I unknowingly clicked on a suspicious email attachment."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L8",
+        "textbookTitle": "三民 B4·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "visa",
+      "word": "visa",
+      "senses": [
+        {
+          "id": "sense-f76cf710",
+          "pos": "noun",
+          "meaningZh": "簽證",
+          "definitionEn": "an official endorsement on a passport, permitting entry into a foreign country",
+          "examples": [
+            "Before traveling to France, make sure you have a valid visa in your passport to avoid any issues at the border."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-087afcfc",
+          "pos": "verb",
+          "meaningZh": "簽發；批准",
+          "definitionEn": "to approve or authorize officially",
+          "examples": [
+            "The embassy granted her a visa, allowing her to travel to the country."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "visual",
+      "word": "visual",
+      "senses": [
+        {
+          "id": "sense-6daeedb4",
+          "pos": "adjective",
+          "meaningZh": "視覺的；視覺輔助的",
+          "definitionEn": "related to or using sight, especially with reference to teaching materials or aids that are intended to be visually appealing or carefully designed to aid in learning",
+          "examples": [
+            "The teacher used colorful charts and diagrams as visual aids during the lecture."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-44f12415",
+          "pos": "adjective",
+          "meaningZh": "可見的；視覺上的",
+          "definitionEn": "able to be seen; visible",
+          "examples": [
+            "The artist used vibrant colors to create a visually stunning painting."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L9",
+        "textbookTitle": "龍騰 B1·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "vital",
+      "word": "vital",
+      "senses": [
+        {
+          "id": "sense-96ea42b2",
+          "pos": "adjective",
+          "meaningZh": "不可或缺的；維生必需的",
+          "definitionEn": "Performing an essential function in the living body; necessary for survival",
+          "examples": [
+            "Oxygen is vital for human survival."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L5",
+        "textbookTitle": "三民 B4·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "vocal",
+      "word": "vocal",
+      "senses": [
+        {
+          "id": "sense-4a3738b9",
+          "pos": "adjective",
+          "meaningZh": "直言不諱的；大聲表達意見的",
+          "definitionEn": "expressing opinions or feelings freely and forcefully",
+          "examples": [
+            "She was very vocal about her opposition to the plan."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-e263a96c",
+          "pos": "noun",
+          "meaningZh": "聲樂；人聲演唱",
+          "definitionEn": "music intended to be performed by one or more singers, usually with instrumental accompaniment",
+          "examples": [
+            "The acapella group showcased their impressive vocal range during their performance."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-5ecca577",
+          "pos": "adjective",
+          "meaningZh": "聲樂的；歌唱的",
+          "definitionEn": "relating to or designed for or using the singing voice",
+          "examples": [
+            "She trained hard to perfect her vocal abilities, and now she sings beautifully on the stage."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "volcano",
+      "word": "volcano",
+      "senses": [
+        {
+          "id": "sense-a621858a",
+          "pos": "noun",
+          "meaningZh": "火山（地形）",
+          "definitionEn": "a mountain formed by volcanic material",
+          "examples": [
+            "The eruption of Mount Vesuvius in 79 AD buried the ancient city of Pompeii under a thick layer of ash and pumice, turning it into a ghost town and preserving its ruins for future generations to explore. The remnants of this volcanic disaster serve as a chilling reminder of the power and destructive force of a volcano."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-208c431c",
+          "pos": "noun",
+          "meaningZh": "火山口；噴發口",
+          "definitionEn": "a fissure in the earth’s crust (or in the surface of some other planet) through which molten lava and gases erupt",
+          "examples": [
+            "During our hike, we witnessed the awe-inspiring sight of a volcano spewing molten lava into the sky."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "voluntary",
+      "word": "voluntary",
+      "senses": [
+        {
+          "id": "sense-e1605ce1",
+          "pos": "adjective",
+          "meaningZh": "自願的；主動的",
+          "definitionEn": "done by choice; not forced",
+          "examples": [
+            "She made a voluntary donation to the charity."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-70eaf2b5",
+          "pos": "adjective",
+          "meaningZh": "出於意志的；自主控制的",
+          "definitionEn": "controlled by one’s own will",
+          "examples": [
+            "She made a voluntary decision to donate her time to the local charity."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B2·L6",
+        "textbookTitle": "三民 B2·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "volunteer",
+      "word": "volunteer",
+      "senses": [
+        {
+          "id": "sense-39e5c5b6",
+          "pos": "verb",
+          "meaningZh": "自願參與；主動提供",
+          "definitionEn": "agree or offer to do something willingly and without being asked",
+          "examples": [
+            "I decided to volunteer at the animal shelter, so I could help take care of the dogs and cats that needed homes."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-01923297",
+          "pos": "verb",
+          "meaningZh": "主動提出；自動獻議",
+          "definitionEn": "offer information or suggest something without being asked",
+          "examples": [
+            "During the group discussion, John volunteered a solution to the problem that the team hadn't considered."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B1·L6",
+        "textbookTitle": "三民 B1·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "vomit",
+      "word": "vomit",
+      "senses": [
+        {
+          "id": "sense-cab6fd15",
+          "pos": "noun",
+          "meaningZh": "嘔吐；作嘔",
+          "definitionEn": "the act of forcefully expelling the contents of the stomach through the mouth; throwing up",
+          "examples": [
+            "She felt nauseous and suddenly had to vomit in the middle of the restaurant, causing a commotion and ruining everyone’s appetite."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-6db544a8",
+          "pos": "noun",
+          "meaningZh": "嘔吐物；吐出之物",
+          "definitionEn": "the substance that is forcibly ejected from the stomach through the mouth during vomiting",
+          "examples": [
+            "After eating the spoiled food, she began to feel extremely nauseous and eventually had to vomit in the bathroom."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "voucher",
+      "word": "voucher",
+      "senses": [
+        {
+          "id": "sense-15d97c75",
+          "pos": "noun",
+          "meaningZh": "兌換券；禮券",
+          "definitionEn": "a negotiable certificate that can be detached and redeemed as needed",
+          "examples": [
+            "Jenny received a voucher for a spa day as a birthday gift, allowing her to redeem it whenever she wanted."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-64bcdba2",
+          "pos": "noun",
+          "meaningZh": "憑單；付款證明",
+          "definitionEn": "a document that serves as evidence of some expenditure",
+          "examples": [
+            "I kept the voucher from my hotel stay as proof of payment."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "vow",
+      "word": "vow",
+      "senses": [
+        {
+          "id": "sense-03351024",
+          "pos": "verb",
+          "meaningZh": "立誓；鄭重承諾",
+          "definitionEn": "to formally and solemnly promise or pledge to do something",
+          "examples": [
+            "The couple stood before their friends and family, exchanging heartfelt vows to love and cherish each other for the rest of their lives."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-827ef012",
+          "pos": "noun",
+          "meaningZh": "誓言；誓約",
+          "definitionEn": "a solemn promise or pledge to do something or to behave in a certain manner, whether to oneself, to another person, or to a deity.",
+          "examples": [
+            "On their wedding day, the couple exchanged heartfelt vows to love and cherish each other until death do them part."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "voyage",
+      "word": "voyage",
+      "senses": [
+        {
+          "id": "sense-903d79d4",
+          "pos": "noun",
+          "meaningZh": "長途旅行；遠征",
+          "definitionEn": "a journey to some distant place",
+          "examples": [
+            "My grandfather embarked on a perilous voyage to explore the uncharted territories of the Pacific Ocean."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-8bdeb91a",
+          "pos": "noun",
+          "meaningZh": "航海；航行",
+          "definitionEn": "an act of traveling by water",
+          "examples": [
+            "After saving up for years, they finally decided to take a voyage across the Atlantic Ocean."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "vulnerable",
+      "word": "vulnerable",
+      "senses": [
+        {
+          "id": "sense-138b5b98",
+          "pos": "adjective",
+          "meaningZh": "脆弱的；容易受傷的",
+          "definitionEn": "easily hurt physically or emotionally",
+          "examples": [
+            "After the breakup, she felt vulnerable and didn’t want to trust anyone with her heart."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-8fbe5ba4",
+          "pos": "adjective",
+          "meaningZh": "易受攻擊的；有漏洞的",
+          "definitionEn": "open to attack or damage",
+          "examples": [
+            "Leaving your car unlocked in a high-crime area makes it vulnerable to theft."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L8",
+        "textbookTitle": "龍騰 B3·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "waken",
+      "word": "waken",
+      "senses": [
+        {
+          "id": "sense-4dbde0b8",
+          "pos": "verb",
+          "meaningZh": "叫醒；使清醒",
+          "definitionEn": "cause to become awake or conscious",
+          "examples": [
+            "The sound of the alarm clock wakened her from a deep sleep."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-9d644483",
+          "pos": "verb",
+          "meaningZh": "醒來；甦醒",
+          "definitionEn": "stop sleeping",
+          "examples": [
+            "The sound of the thunderstorm was so loud that it wakened me from a deep sleep."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "warehouse",
+      "word": "warehouse",
+      "senses": [
+        {
+          "id": "sense-7e8b41ba",
+          "pos": "noun",
+          "meaningZh": "倉庫；貨倉",
+          "definitionEn": "a large building used for storing goods and merchandise",
+          "examples": [
+            "After unloading the shipment, the workers carefully organized the boxes and placed them in the warehouse."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-26da8296",
+          "pos": "verb",
+          "meaningZh": "存放倉庫；入庫",
+          "definitionEn": "to store goods or merchandise in a warehouse",
+          "examples": [
+            "After receiving a large shipment of electronics, the company decided to warehouse the products until they could be distributed to various retail locations."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "warrior",
+      "word": "warrior",
+      "senses": [
+        {
+          "id": "sense-62bb17c6",
+          "pos": "noun",
+          "meaningZh": "武士；戰士",
+          "definitionEn": "a person who fights in battles and is experienced in warfare",
+          "examples": [
+            "The brave warrior led his troops into battle, fearlessly facing the enemy and strategizing to secure victory."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L6",
+        "textbookTitle": "龍騰 B5·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "wary",
+      "word": "wary",
+      "senses": [
+        {
+          "id": "sense-52849533",
+          "pos": "adjective",
+          "meaningZh": "謹慎的；小心翼翼的",
+          "definitionEn": "watchful and cautious; marked by keen caution and prudence",
+          "examples": [
+            "After getting mugged on the street, she became wary of walking alone at night."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-dff9461a",
+          "pos": "adjective",
+          "meaningZh": "戒備的；不輕易信任的",
+          "definitionEn": "distrustful and hesitant; openly distrustful and unwilling to confide",
+          "examples": [
+            "After being scammed, Maria became wary of any suspicious emails or phone calls."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "website",
+      "word": "website",
+      "senses": [
+        {
+          "id": "sense-3ab33ca5",
+          "pos": "noun",
+          "meaningZh": "網站；網頁",
+          "definitionEn": "a set of pages of information on the internet about a particular subject or organization",
+          "examples": [
+            "You can check the train schedule on the railway company's website."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L2",
+        "textbookTitle": "三民 B4·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "weird",
+      "word": "weird",
+      "senses": [
+        {
+          "id": "sense-addeb10b",
+          "pos": "adjective",
+          "meaningZh": "奇怪的；怪異的",
+          "definitionEn": "strikingly odd or unusual",
+          "examples": [
+            "I saw a weird creature in the woods that had wings and a long tail."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-820482ac",
+          "pos": "adjective",
+          "meaningZh": "詭異的；超自然的",
+          "definitionEn": "suggesting the operation of supernatural influences",
+          "examples": [
+            "There was a weird feeling in the air as the old, abandoned house loomed ahead."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 翰林 B1·L5",
+        "textbookTitle": "翰林 B1·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    }
+  ]
+}

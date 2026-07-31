@@ -1,0 +1,1395 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 86,
+  "words": [
+    {
+      "wordKey": "puppet",
+      "word": "puppet",
+      "senses": [
+        {
+          "id": "sense-95606244",
+          "pos": "noun",
+          "meaningZh": "玩偶；布偶；傀儡玩具",
+          "definitionEn": "a type of toy that resembles a person or animal and is manipulated by strings or by placing a hand inside it",
+          "examples": [
+            "During the school talent show, Sarah brought her puppet to life, making it dance and sing, delighting the audience."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-c847b92b",
+          "pos": "noun",
+          "meaningZh": "傀儡；受人操縱者",
+          "definitionEn": "a person or group whose actions are controlled by someone else, often seen as disapproving",
+          "examples": [
+            "During the investigation, it was revealed that the corrupt politician was just a puppet, with his actions being dictated by a powerful lobbyist."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "pure",
+      "word": "pure",
+      "senses": [
+        {
+          "id": "sense-9cff0cac",
+          "pos": "adjective",
+          "meaningZh": "純粹的；無雜念的",
+          "definitionEn": "Free from turmoil, conflict or emotions; free from unpleasant feelings or thoughts",
+          "examples": [
+            "After a long day of work, she likes to indulge in the pure pleasure of watching the sunset over the ocean without any distractions."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-c03ff61a",
+          "pos": "adjective",
+          "meaningZh": "純正的；鮮豔的（顏色）",
+          "definitionEn": "Of a color, being vivid and intense; not mixed with other colors or shades",
+          "examples": [
+            "Her dress was a pure shade of red, not maroon or pink."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "purse",
+      "word": "purse",
+      "senses": [
+        {
+          "id": "sense-3f63b4f0",
+          "pos": "noun",
+          "meaningZh": "手提包；錢包",
+          "definitionEn": "a container used for carrying money and personal items, typically by women",
+          "examples": [
+            "She reached into her purse to grab her wallet and pay for the movie tickets."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "queer",
+      "word": "queer",
+      "senses": [
+        {
+          "id": "sense-db9d4c9e",
+          "pos": "adjective",
+          "meaningZh": "奇異的；怪異的",
+          "definitionEn": "strange, unusual, or different in a way that is interesting or exciting",
+          "examples": [
+            "The artist’s work was so queer that it caught everyone’s attention at the art gallery opening."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-8cbe9125",
+          "pos": "adjective",
+          "meaningZh": "酷兒的；同性戀的",
+          "definitionEn": "relating to or characterized by sexual or romantic attraction to people of one’s own gender",
+          "examples": [
+            "After realizing her queer identity, Maria came out to her family and friends."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "quit",
+      "word": "quit",
+      "senses": [
+        {
+          "id": "sense-54a90932",
+          "pos": "verb",
+          "meaningZh": "放棄；退出",
+          "definitionEn": "to give up because of fear or because it is too difficult",
+          "examples": [
+            "John decided to quit his new job after just one week because he found the work too challenging and demanding."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-283bee42",
+          "pos": "verb",
+          "meaningZh": "戒除（壞習慣）；停止",
+          "definitionEn": "to stop or end a habit",
+          "examples": [
+            "After years of smoking, Mark finally decided to quit and work towards a healthier lifestyle."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "quote",
+      "word": "quote",
+      "senses": [
+        {
+          "id": "sense-b02151a1",
+          "pos": "verb",
+          "meaningZh": "引用；援引",
+          "definitionEn": "refer to for illustration or proof",
+          "examples": [
+            "She used a famous quote from Shakespeare to emphasize her point."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-1652eeb5",
+          "pos": "noun",
+          "meaningZh": "引號",
+          "definitionEn": "a punctuation mark used to attribute the enclosed text to someone else",
+          "examples": [
+            "She added a quote from Shakespeare to support her argument."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "racial",
+      "word": "racial",
+      "senses": [
+        {
+          "id": "sense-b771b1e2",
+          "pos": "adjective",
+          "meaningZh": "種族的；與種族相關",
+          "definitionEn": "of or relating to a specific race or multiple races:",
+          "examples": [
+            "The organization aims to promote racial equality and inclusivity in the workplace."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-e6e73f54",
+          "pos": "adjective",
+          "meaningZh": "種族（歧視）的；涉及種族的",
+          "definitionEn": "related to or influenced by the concept of race:",
+          "examples": [
+            "The government enacted laws to address racial discrimination and promote equality."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L6",
+        "textbookTitle": "龍騰 B5·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "rag",
+      "word": "rag",
+      "senses": [
+        {
+          "id": "sense-e5632c95",
+          "pos": "noun",
+          "meaningZh": "破布；抹布",
+          "definitionEn": "a small piece of cloth or paper used for cleaning or wiping",
+          "examples": [
+            "I grabbed a rag to wipe up the spills on the kitchen counter."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-968a0f67",
+          "pos": "noun",
+          "meaningZh": "小報；地方報紙",
+          "definitionEn": "(chiefly North American) a newspaper or section of a newspaper consisting of pages about half the size of a standard sheet",
+          "examples": [
+            "My grandfather loves reading the local rag every morning with his cup of coffee."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "rank",
+      "word": "rank",
+      "senses": [
+        {
+          "id": "sense-dbe826ed",
+          "pos": "noun",
+          "meaningZh": "等級；地位；階級",
+          "definitionEn": "a position in a social hierarchy or relative status",
+          "examples": [
+            "His rank as captain gives him authority over the rest of the team."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L2",
+        "textbookTitle": "龍騰 B3·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "rate",
+      "word": "rate",
+      "senses": [
+        {
+          "id": "sense-d9a27042",
+          "pos": "noun",
+          "meaningZh": "費率；收費標準",
+          "definitionEn": "the cost or fee of something compared to a standard or scale",
+          "examples": [
+            "The hourly rate for the yoga class is $20."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-4a32204c",
+          "pos": "verb",
+          "meaningZh": "評估；評定價值",
+          "definitionEn": "determine the value or worth of something",
+          "examples": [
+            "We need to rate this company’s performance based on their revenue and profitability."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L6",
+        "textbookTitle": "龍騰 B4·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "raw",
+      "word": "raw",
+      "senses": [
+        {
+          "id": "sense-167e68fc",
+          "pos": "adjective",
+          "meaningZh": "生的；未烹調的",
+          "definitionEn": "not cooked or processed to make it suitable for eating",
+          "examples": [
+            "He enjoyed eating raw fruits and vegetables as part of his healthy diet."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-5aefcce9",
+          "pos": "adjective",
+          "meaningZh": "未加工的；天然的",
+          "definitionEn": "not processed or refined; unprocessed",
+          "examples": [
+            "The chef preferred to use raw ingredients in his dishes to emphasize the natural flavors."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "ray",
+      "word": "ray",
+      "senses": [
+        {
+          "id": "sense-814c01c4",
+          "pos": "noun",
+          "meaningZh": "（數學）射線",
+          "definitionEn": "half of a line",
+          "examples": [
+            "The teacher used a ray on the whiteboard to demonstrate the direction of light."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-dc34b08b",
+          "pos": "noun",
+          "meaningZh": "一線（希望）；一絲光芒",
+          "definitionEn": "a slight amount or signal of something good",
+          "examples": [
+            "As the storm clouds dispersed, a ray of sunlight broke through, offering a ray of hope to the stranded hikers."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 翰林 B1·L7",
+        "textbookTitle": "翰林 B1·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "razor",
+      "word": "razor",
+      "senses": [
+        {
+          "id": "sense-45dbda56",
+          "pos": "noun",
+          "meaningZh": "剃刀；刮鬍刀",
+          "definitionEn": "a sharp bladed tool used in shaving hair from the face or body",
+          "examples": [
+            "John carefully held the razor to his face and began shaving off his beard."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "react",
+      "word": "react",
+      "senses": [
+        {
+          "id": "sense-5d1f504f",
+          "pos": "verb",
+          "meaningZh": "反應；回應",
+          "definitionEn": "display a response or reaction to something",
+          "examples": [
+            "When Sarah heard the good news, she couldn’t help but react with tears of joy."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-d44b1379",
+          "pos": "verb",
+          "meaningZh": "反對；抵制",
+          "definitionEn": "oppose or act against",
+          "examples": [
+            "The protesters were quick to react against the new policy."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L4 +1",
+        "textbookTitle": "龍騰 B5·L4、三民 B2·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "reaction",
+      "word": "reaction",
+      "senses": [
+        {
+          "id": "sense-c6e4e79c",
+          "pos": "noun",
+          "meaningZh": "反應；回應",
+          "definitionEn": "the way someone behaves or feels in response to something that happens",
+          "examples": [
+            "Her first reaction to the news was complete shock."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-ce9f2b67",
+          "pos": "noun",
+          "meaningZh": "（化學）反應",
+          "definitionEn": "(chemistry) a process in which one or more substances are changed into others",
+          "examples": [
+            "When hydrogen reacts with oxygen, water is formed."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-4e9c474a",
+          "pos": "noun",
+          "meaningZh": "（力學）反作用力",
+          "definitionEn": "(mechanics) the equal and opposite force that is produced when any force is applied to a body",
+          "examples": [
+            "When a person pushes against a wall with a certain force, the reaction is felt as an equal and opposite force pushing back on the person's hand."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L4 +1",
+        "textbookTitle": "龍騰 B5·L4、三民 B2·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "reasonable",
+      "word": "reasonable",
+      "senses": [
+        {
+          "id": "sense-fb02c307",
+          "pos": "adjective",
+          "meaningZh": "合理的；明智的",
+          "definitionEn": "showing reason or sound judgment",
+          "examples": [
+            "In order to reach a reasonable decision, we must carefully consider all the available evidence and analyze it objectively."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-7586aafe",
+          "pos": "adjective",
+          "meaningZh": "有道理的；公道的",
+          "definitionEn": "marked by sound judgment",
+          "examples": [
+            "It's reasonable to assume that studying regularly will lead to better grades."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "receipt",
+      "word": "receipt",
+      "senses": [
+        {
+          "id": "sense-630db30c",
+          "pos": "noun",
+          "meaningZh": "收據；發票",
+          "definitionEn": "an acknowledgment that a payment has been made, usually in the form of a piece of paper or digital record",
+          "examples": [
+            "After purchasing groceries, make sure to keep the receipt in case you need to return an item or claim a refund."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-2a361061",
+          "pos": "verb",
+          "meaningZh": "收取；收訖",
+          "definitionEn": "to receive or obtain something, typically an item purchased or money",
+          "examples": [
+            "After paying for the groceries, make sure you keep the receipt in case you need to return any items."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "receiver",
+      "word": "receiver",
+      "senses": [
+        {
+          "id": "sense-8faec0ec",
+          "pos": "noun",
+          "meaningZh": "（無線電、電視）接收器；收訊機",
+          "definitionEn": "a device that receives radio or television signals",
+          "examples": [
+            "I bought an expensive receiver to improve the sound quality of my home theater system."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "recognize",
+      "word": "recognize",
+      "senses": [
+        {
+          "id": "sense-e880ae8b",
+          "pos": "verb",
+          "meaningZh": "認出；辨認",
+          "definitionEn": "perceive to be the same",
+          "examples": [
+            "Even though Mary had not seen John in years, she was still able to recognize him from a distance."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-aa24d0cd",
+          "pos": "verb",
+          "meaningZh": "察覺；識別（氣味等）",
+          "definitionEn": "detect with the senses",
+          "examples": [
+            "A trained dog can recognize its owner by the scent."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L4 +2",
+        "textbookTitle": "龍騰 B3·L4、三民 B2·L7、翰林 B1·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "recorder",
+      "word": "recorder",
+      "senses": [
+        {
+          "id": "sense-30b3502c",
+          "pos": "noun",
+          "meaningZh": "錄音機；錄影機",
+          "definitionEn": "equipment for making records",
+          "examples": [
+            "The journalist used a high-quality audio recorder to conduct interviews and capture sound for her news stories."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-fde3ce99",
+          "pos": "noun",
+          "meaningZh": "記錄員；書記",
+          "definitionEn": "someone responsible for keeping records",
+          "examples": [
+            "The recorder diligently documented every meeting, ensuring that no important details were overlooked."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "rectangle",
+      "word": "rectangle",
+      "senses": [
+        {
+          "id": "sense-35510a54",
+          "pos": "noun",
+          "meaningZh": "長方形；矩形",
+          "definitionEn": "a quadrilateral with four right angles",
+          "examples": [
+            "The carpenter used his measuring tape to ensure that all the sides of the wooden board were equal before cutting it into a perfect rectangle."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "reduce",
+      "word": "reduce",
+      "senses": [
+        {
+          "id": "sense-6bd2afaa",
+          "pos": "verb",
+          "meaningZh": "減少；縮小",
+          "definitionEn": "make smaller or decrease in size or amount",
+          "examples": [
+            "To save energy, we need to reduce the amount of electricity we use."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-6b947aca",
+          "pos": "verb",
+          "meaningZh": "縮水；縮小（體積）",
+          "definitionEn": "loss of weight or shrink in physical size",
+          "examples": [
+            "The washing machine reduced the size of the sweater."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·R1 +1",
+        "textbookTitle": "龍騰 B3·R1、三民 B4·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "regional",
+      "word": "regional",
+      "senses": [
+        {
+          "id": "sense-28a8bb94",
+          "pos": "adjective",
+          "meaningZh": "地區性的；區域的",
+          "definitionEn": "related or limited to a particular region",
+          "examples": [
+            "The regional government has announced plans to build a new airport in the area."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-2c42b31f",
+          "pos": "adjective",
+          "meaningZh": "具地方特色的；地方性的",
+          "definitionEn": "characteristic of a region",
+          "examples": [
+            "The cuisine in this part of the country is highly regional, with each region featuring its own unique flavors and dishes."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L4 +1",
+        "textbookTitle": "龍騰 B2·L4、三民 B2·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "regret",
+      "word": "regret",
+      "senses": [
+        {
+          "id": "sense-93106921",
+          "pos": "noun",
+          "meaningZh": "遺憾；後悔",
+          "definitionEn": "a feeling of sadness or disappointment over something that has happened or been done, especially when it involves a loss or missed opportunity",
+          "examples": [
+            "She couldn’t help but feel regret for not taking the job offer when it was presented to her."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-c0e95fc1",
+          "pos": "verb",
+          "meaningZh": "懊悔；感到遺憾",
+          "definitionEn": "feel remorse or sorrow for (an act, fault, disappointment, etc.)",
+          "examples": [
+            "I regret not studying harder in college."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B1·L10 +1",
+        "textbookTitle": "三民 B1·L10、三民 B2·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "relax",
+      "word": "relax",
+      "senses": [
+        {
+          "id": "sense-10908714",
+          "pos": "verb",
+          "meaningZh": "放鬆；鬆弛",
+          "definitionEn": "make less taut or tense",
+          "examples": [
+            "After a long day at work, she likes to relax by taking a warm bath and reading a book."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-19866aab",
+          "pos": "verb",
+          "meaningZh": "放寬（規定）；鬆懈",
+          "definitionEn": "make less severe or strict, allowing for more freedom",
+          "examples": [
+            "After a long and stressful week at work, Sarah decided to relax by spending the weekend at a spa resort, where she could unwind and rejuvenate."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L8 +1",
+        "textbookTitle": "龍騰 B2·L8、三民 B1·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "release",
+      "word": "release",
+      "senses": [
+        {
+          "id": "sense-b6a2f93d",
+          "pos": "noun",
+          "meaningZh": "（資訊）發布；公開",
+          "definitionEn": "the act of making information available to the public",
+          "examples": [
+            "The company held a press conference to announce the release of their latest product."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-e1e722bc",
+          "pos": "noun",
+          "meaningZh": "（有害物質）排放；釋出",
+          "definitionEn": "a process in which gases or chemical substances are produced as part of manufacturing or industrial processes",
+          "examples": [
+            "During the production of plastic bottles, the heating and molding stages cause the release of toxic fumes."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L9 +1",
+        "textbookTitle": "龍騰 B2·L9、翰林 B1·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "reliable",
+      "word": "reliable",
+      "senses": [
+        {
+          "id": "sense-c307b96a",
+          "pos": "adjective",
+          "meaningZh": "可靠的；值得信賴的",
+          "definitionEn": "worthy of being depended on or trusted",
+          "examples": [
+            "He is a reliable employee. He always shows up on time and completes his tasks efficiently."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-666a9323",
+          "pos": "adjective",
+          "meaningZh": "穩定可信的；負責任的",
+          "definitionEn": "able to be trusted to do what is required",
+          "examples": [
+            "You can always count on Tom to be reliable and meet his deadlines."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L2 +1",
+        "textbookTitle": "龍騰 B3·L2、三民 B4·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "relief",
+      "word": "relief",
+      "senses": [
+        {
+          "id": "sense-d20d2617",
+          "pos": "noun",
+          "meaningZh": "寬慰；如釋重負",
+          "definitionEn": "the feeling of comfort or satisfaction, especially after something unpleasant has been removed or reduced",
+          "examples": [
+            "After hours of intense work, taking a hot shower brought a sense of relief to his aching muscles."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-56172667",
+          "pos": "noun",
+          "meaningZh": "緩解；減輕；解除",
+          "definitionEn": "the act of reducing or removing something unpleasant, such as pain, annoyance, or distress",
+          "examples": [
+            "After taking the pain medication, he felt a sense of relief from his chronic back pain."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L3 +1",
+        "textbookTitle": "龍騰 B4·L3、三民 B1·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "religious",
+      "word": "religious",
+      "senses": [
+        {
+          "id": "sense-47ddea70",
+          "pos": "adjective",
+          "meaningZh": "宗教的；虔誠的",
+          "definitionEn": "having or showing belief in and reverence for a deity",
+          "examples": [
+            "The religious ceremony was filled with prayer, hymns, and rituals dedicated to their deity."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-945f1421",
+          "pos": "adjective",
+          "meaningZh": "修道的；出家的",
+          "definitionEn": "of or relating to clergy bound by monastic vows",
+          "examples": [
+            "The religious monk devoted his life to prayer and contemplation in the monastery."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L9 +2",
+        "textbookTitle": "龍騰 B3·L9、三民 B1·L8、翰林 B1·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "rely",
+      "word": "rely",
+      "senses": [
+        {
+          "id": "sense-6bd806bb",
+          "pos": "verb",
+          "meaningZh": "依賴；依靠",
+          "definitionEn": "rely on for support",
+          "examples": [
+            "I rely on my family for emotional support during difficult times."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-54c3b572",
+          "pos": "verb",
+          "meaningZh": "信賴；信任",
+          "definitionEn": "have confidence or faith in",
+          "examples": [
+            "My teammates rely on me to finish the project on time."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L2",
+        "textbookTitle": "龍騰 B3·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    }
+  ]
+}

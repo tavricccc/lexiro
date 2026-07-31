@@ -1,0 +1,1394 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 186,
+  "words": [
+    {
+      "wordKey": "meditate",
+      "word": "meditate",
+      "senses": [
+        {
+          "id": "sense-51adfa2e",
+          "pos": "verb",
+          "meaningZh": "沉思；冥想",
+          "definitionEn": "reflect deeply on a subject",
+          "examples": [
+            "Every morning, I like to meditate for twenty minutes to clear my mind and focus on my goals."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-cd24b945",
+          "pos": "verb",
+          "meaningZh": "靜坐冥想；修行打坐",
+          "definitionEn": "think intently and at length, as for spiritual purposes",
+          "examples": [
+            "Every morning, she would meditate for 30 minutes to clear her mind and start the day with a positive attitude."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "meditation",
+      "word": "meditation",
+      "senses": [
+        {
+          "id": "sense-b6d7df5f",
+          "pos": "noun",
+          "meaningZh": "冥想；靜心",
+          "definitionEn": "The act of focusing the mind and body in a particular way, usually for the purpose of relaxation, stress reduction, and inner peace.",
+          "examples": [
+            "Every morning, Sarah practices meditation by sitting in a quiet room, closing her eyes, and taking slow, deep breaths to calm her mind and body."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-79d46920",
+          "pos": "noun",
+          "meaningZh": "靜思；宗教默禱",
+          "definitionEn": "(religion) Contemplation or reflection on spiritual matters, often in a religious or philosophical context.",
+          "examples": [
+            "After a long day at work, Sarah found solace in meditation, sitting quietly in her backyard and contemplating the meaning of life."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "melancholy",
+      "word": "melancholy",
+      "senses": [
+        {
+          "id": "sense-2af94b32",
+          "pos": "adjective",
+          "meaningZh": "憂鬱的；沮喪的",
+          "definitionEn": "having a feeling of melancholy; sad or depressed",
+          "examples": [
+            "After her cat passed away, Lisa felt a deep melancholy and couldn’t bring herself to do anything."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-637184d5",
+          "pos": "adjective",
+          "meaningZh": "令人憂鬱的；悲傷的",
+          "definitionEn": "causing or expressing sadness; pensive or thoughtful",
+          "examples": [
+            "As the sun set behind the mountains, Sarah felt a sense of melancholy wash over her as she gazed out at the peaceful scenery."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "mentality",
+      "word": "mentality",
+      "senses": [
+        {
+          "id": "sense-9d0d2ed9",
+          "pos": "noun",
+          "meaningZh": "心態；思維模式",
+          "definitionEn": "a habitual or characteristic mental attitude that determines how one will interpret and respond to situations",
+          "examples": [
+            "His competitive mentality helped him to achieve success in his career."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-24f001cd",
+          "pos": "noun",
+          "meaningZh": "心智能力；智力",
+          "definitionEn": "mental ability",
+          "examples": [
+            "Her strong mentality allowed her to overcome difficult challenges and achieve success."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "merchandise",
+      "word": "merchandise",
+      "senses": [
+        {
+          "id": "sense-c8665ce1",
+          "pos": "noun",
+          "meaningZh": "商品；貨品",
+          "definitionEn": "Items that are bought and sold.",
+          "examples": [
+            "The store owner stocked his shelves with a wide variety of merchandise, including clothing, electronics, and home goods."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-22a50801",
+          "pos": "noun",
+          "meaningZh": "貿易商品；買賣貨物",
+          "definitionEn": "Commercial commodities or products that are bought and sold; trade goods.",
+          "examples": [
+            "The large retail store is filled with a wide variety of merchandise, including clothing, electronics, and home goods."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "mermaid",
+      "word": "mermaid",
+      "senses": [
+        {
+          "id": "sense-304f2ce2",
+          "pos": "noun",
+          "meaningZh": "美人魚",
+          "definitionEn": "A legendary sea creature with the upper body of a woman and the lower body of a fish.",
+          "examples": [
+            "During our seaside vacation, my sister and I imagined spotting a beautiful mermaid lounging on a rock near the shore."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "migrant",
+      "word": "migrant",
+      "senses": [
+        {
+          "id": "sense-c32b1734",
+          "pos": "noun",
+          "meaningZh": "移民；移工",
+          "definitionEn": "a person who moves from one region to another, often in search of work or better living conditions",
+          "examples": [
+            "The family of migrants left their hometown in the hopes of finding a more stable economy and brighter future."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-ca6c2233",
+          "pos": "adjective",
+          "meaningZh": "移動的；遷徙的",
+          "definitionEn": "relating to or characteristic of a person who moves from one place to another, often in search of work or better living conditions; itinerant",
+          "examples": [
+            "With the global economy, many people have become migrants, seeking employment opportunities in other countries."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "mimic",
+      "word": "mimic",
+      "senses": [
+        {
+          "id": "sense-0e7d7f8f",
+          "pos": "verb",
+          "meaningZh": "模仿；惟妙惟肖地學",
+          "definitionEn": "to imitate or copy someone’s behavior, speech etc., especially in order to make fun of them or entertain people",
+          "examples": [
+            "The comedian did an impression of the president by mimicking his voice and mannerisms, which made the audience burst into laughter."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-754cc322",
+          "pos": "noun",
+          "meaningZh": "模仿者；擅長模仿的人",
+          "definitionEn": "a person, especially an actor or comedian, who imitates or copies the behavior or speech patterns of another person",
+          "examples": [
+            "The comedian was able to perfectly mimic the mannerisms of the famous politician in their comedy routine."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "mingle",
+      "word": "mingle",
+      "senses": [
+        {
+          "id": "sense-bcacfae1",
+          "pos": "verb",
+          "meaningZh": "混合；融合",
+          "definitionEn": "to mix or blend together, usually thoroughly",
+          "examples": [
+            "At the party, people from different backgrounds came together to mingle and get to know each other."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-bc3e0d41",
+          "pos": "verb",
+          "meaningZh": "交際；與人往來",
+          "definitionEn": "to become involved with or associate with someone or something",
+          "examples": [
+            "At the networking event, she mingled with industry professionals to expand her professional network."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "miraculous",
+      "word": "miraculous",
+      "senses": [
+        {
+          "id": "sense-f361f6ea",
+          "pos": "adjective",
+          "meaningZh": "奇蹟般的；神奇的",
+          "definitionEn": "being or having the character of a miracle",
+          "examples": [
+            "The recovery of the young girl, who was diagnosed with a rare disease and was on the brink of death, is nothing short of miraculous."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-4619f2e9",
+          "pos": "adjective",
+          "meaningZh": "不可思議的；宛如天助的",
+          "definitionEn": "peculiarly fortunate or appropriate; as if by divine intervention",
+          "examples": [
+            "It was a miraculous recovery, as the patient who was in a coma for several months woke up fully responsive after the surgery."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "miscellaneous",
+      "word": "miscellaneous",
+      "senses": [
+        {
+          "id": "sense-fa3e3332",
+          "pos": "adjective",
+          "meaningZh": "雜項的；各式各樣的",
+          "definitionEn": "consisting of various types of things that are not connected and do not belong to the same category",
+          "examples": [
+            "The thrift store had a miscellaneous collection of items including books, clothing, electronics and kitchenware."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-f940a63b",
+          "pos": "adjective",
+          "meaningZh": "混雜的；種類繁多的",
+          "definitionEn": "having many different types of things",
+          "examples": [
+            "The thrift shop had a miscellaneous collection of furniture, clothing, and kitchenware."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "mischievous",
+      "word": "mischievous",
+      "senses": [
+        {
+          "id": "sense-d086bccc",
+          "pos": "adjective",
+          "meaningZh": "頑皮的；愛惡作劇的",
+          "definitionEn": "causing or showing a fondness for causing trouble in a playful way",
+          "examples": [
+            "The mischievous little boy put whoopee cushions on all the chairs before his mother's dinner party."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-670059eb",
+          "pos": "adjective",
+          "meaningZh": "蓄意破壞的；有害的",
+          "definitionEn": "causing harm or damage on purpose",
+          "examples": [
+            "The mischievous children secretly filled their teacher's desk with water balloons, causing chaos and causing her to slip when she sat down."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "mistress",
+      "word": "mistress",
+      "senses": [
+        {
+          "id": "sense-91e902db",
+          "pos": "noun",
+          "meaningZh": "女主人；女管事",
+          "definitionEn": "a woman master who directs the work of others",
+          "examples": [
+            "The mistress of the mansion oversees the daily tasks of the staff and ensures that everything runs smoothly."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "mobilize",
+      "word": "mobilize",
+      "senses": [
+        {
+          "id": "sense-a6ad3dc9",
+          "pos": "verb",
+          "meaningZh": "動員；調度",
+          "definitionEn": "to prepare something, such as an organization or country, to be ready to take action",
+          "examples": [
+            "In response to the natural disaster, the government decided to mobilize emergency response teams and resources to provide immediate assistance to the affected areas."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-a27df283",
+          "pos": "verb",
+          "meaningZh": "備戰；集結軍力",
+          "definitionEn": "to prepare for war or other significant action",
+          "examples": [
+            "In response to the impending threat, the government decided to mobilize its military forces and strengthen its defense."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "modernization",
+      "word": "modernization",
+      "senses": [
+        {
+          "id": "sense-e9b9b8fe",
+          "pos": "noun",
+          "meaningZh": "現代化；革新過程",
+          "definitionEn": "the process of making something more modern by adopting the latest methods, ideas, equipment, etc.",
+          "examples": [
+            "The government invested in the modernization of the public transportation system by replacing old buses with electric ones, implementing a cashless payment system, and introducing real-time tracking for commuters."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-d97be466",
+          "pos": "noun",
+          "meaningZh": "更新改造；與時俱進",
+          "definitionEn": "the act of updating or renovating something to conform to contemporary standards and practices",
+          "examples": [
+            "The old factory underwent modernization, with the installation of state-of-the-art machinery and the implementation of eco-friendly practices."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "modernize",
+      "word": "modernize",
+      "senses": [
+        {
+          "id": "sense-ec0cfef6",
+          "pos": "verb",
+          "meaningZh": "現代化；翻新",
+          "definitionEn": "make repairs, renovations, revisions or adjustments to in order to bring up to date",
+          "examples": [
+            "The company decided to modernize their production facilities by replacing the old equipment with state-of-the-art machinery."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-d20e74d6",
+          "pos": "verb",
+          "meaningZh": "引進新技術；更新設備",
+          "definitionEn": "adopt or incorporate modern technology or ideas; update and make modern",
+          "examples": [
+            "The company decided to modernize its manufacturing process by incorporating automation and robotics."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "momentum",
+      "word": "momentum",
+      "senses": [
+        {
+          "id": "sense-8c6dfa10",
+          "pos": "noun",
+          "meaningZh": "氣勢；推進力",
+          "definitionEn": "an impelling force or strength",
+          "examples": [
+            "The team gained momentum after scoring the first goal, and they continued to dominate the game."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-6ba838f8",
+          "pos": "noun",
+          "meaningZh": "動量；衝量",
+          "definitionEn": "the product of a body’s mass and its velocity",
+          "examples": [
+            "The football player’s momentum caused him to crash into the opposing team’s defense with great force."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "monarch",
+      "word": "monarch",
+      "senses": [
+        {
+          "id": "sense-98cf2bf8",
+          "pos": "noun",
+          "meaningZh": "君主；帝王",
+          "definitionEn": "a hereditary leader of a nation or state.",
+          "examples": [
+            "The monarch addressed the nation in a televised speech, reassuring the citizens during a time of crisis."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-59440e4a",
+          "pos": "noun",
+          "meaningZh": "帝王蝶（大型遷徙蝴蝶）",
+          "definitionEn": "a large butterfly that migrates.",
+          "examples": [
+            "During the summer, thousands of monarchs gather in the fields before beginning their long migration to Mexico."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "monetary",
+      "word": "monetary",
+      "senses": [
+        {
+          "id": "sense-e80bd92f",
+          "pos": "adjective",
+          "meaningZh": "貨幣的；金融的",
+          "definitionEn": "related to money or currency",
+          "examples": [
+            "The government’s monetary policy aims to stabilize the economy by regulating interest rates and controlling the supply of money in circulation."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "monotony",
+      "word": "monotony",
+      "senses": [
+        {
+          "id": "sense-d56a1810",
+          "pos": "noun",
+          "meaningZh": "單調；枯燥乏味",
+          "definitionEn": "the quality of being wearisome because of constancy, routine, and lack of variety",
+          "examples": [
+            "After working the same shift at the factory for 10 years, John couldn't help but feel the monotony of his job."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-eee6b95e",
+          "pos": "noun",
+          "meaningZh": "聲調不變；語調平板",
+          "definitionEn": "constancy of tone, pitch, or inflection",
+          "examples": [
+            "The professor's lecture was filled with monotony as he spoke in a monotonous tone throughout the entire class."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "monstrous",
+      "word": "monstrous",
+      "senses": [
+        {
+          "id": "sense-1fdec251",
+          "pos": "adjective",
+          "meaningZh": "巨大的；龐大的",
+          "definitionEn": "abnormally large",
+          "examples": [
+            "The monstrous elephant stood towering over the other animals in the zoo."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-894a7285",
+          "pos": "adjective",
+          "meaningZh": "醜陋的；畸形駭人的",
+          "definitionEn": "distorted and unnatural in shape or size; abnormal and hideous",
+          "examples": [
+            "The storm left behind a monstrous pile of debris in the front yard."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "moody",
+      "word": "moody",
+      "senses": [
+        {
+          "id": "sense-58c6b946",
+          "pos": "adjective",
+          "meaningZh": "鬱鬱寡歡的；易怒的",
+          "definitionEn": "feeling unhappy, easily annoyed, or irritated",
+          "examples": [
+            "Maria's mood is so moody today, she snapped at everyone in the office for no reason."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-0a0747c3",
+          "pos": "adjective",
+          "meaningZh": "情緒化的；喜怒無常的",
+          "definitionEn": "having moods that change often and quickly",
+          "examples": [
+            "Jenna is very moody - one moment she is happy and the next she is upset."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "morale",
+      "word": "morale",
+      "senses": [
+        {
+          "id": "sense-8b04159c",
+          "pos": "noun",
+          "meaningZh": "士氣；團隊精神",
+          "definitionEn": "the spirit of a group that makes the members want the group to succeed",
+          "examples": [
+            "After the team won their first game, their morale was incredibly high, and they were motivated to continue performing well in upcoming matches."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-5c9aca74",
+          "pos": "noun",
+          "meaningZh": "心理狀態；鬥志",
+          "definitionEn": "a state of individual psychological well-being based upon a sense of confidence, usefulness, and purpose",
+          "examples": [
+            "After winning the championship, the team's morale was at an all-time high, as they knew their hard work and dedication paid off."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "mortal",
+      "word": "mortal",
+      "senses": [
+        {
+          "id": "sense-e076e0be",
+          "pos": "adjective",
+          "meaningZh": "終有一死的；凡間的",
+          "definitionEn": "subject to death",
+          "examples": [
+            "In ancient mythology, mortals were often depicted as being at the mercy of the immortal gods."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-30a336da",
+          "pos": "noun",
+          "meaningZh": "凡人；普通人",
+          "definitionEn": "a human being",
+          "examples": [
+            "John, a mortal, lived a fulfilling life on Earth."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "motherhood",
+      "word": "motherhood",
+      "senses": [
+        {
+          "id": "sense-00e0d674",
+          "pos": "noun",
+          "meaningZh": "母親的身分；為人母",
+          "definitionEn": "the state or experience of being a mother",
+          "examples": [
+            "She decided to take a break from her corporate job to focus on motherhood and spend quality time with her newborn baby."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-faccc8e3",
+          "pos": "noun",
+          "meaningZh": "母子關係；母親角色",
+          "definitionEn": "the kinship relation between an offspring and the mother",
+          "examples": [
+            "Motherhood can be very rewarding but also very challenging, especially for single mothers."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "motto",
+      "word": "motto",
+      "senses": [
+        {
+          "id": "sense-9df17ec4",
+          "pos": "noun",
+          "meaningZh": "座右銘；格言；口號",
+          "definitionEn": "a word, phrase, or sentence that expresses the principles or beliefs of a person, group, country, or organization.",
+          "examples": [
+            "The motto of our company is 'Excellence in all we do'."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "mound",
+      "word": "mound",
+      "senses": [
+        {
+          "id": "sense-ce780561",
+          "pos": "noun",
+          "meaningZh": "土丘；小丘",
+          "definitionEn": "a small hill created naturally",
+          "examples": [
+            "We sat on top of the grassy mound and enjoyed the view of the surrounding countryside."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-375102af",
+          "pos": "noun",
+          "meaningZh": "堆積物；一堆",
+          "definitionEn": "a collection of objects placed on top of each other",
+          "examples": [
+            "The archeologists uncovered a mound of ancient artifacts buried beneath the ground."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "mourn",
+      "word": "mourn",
+      "senses": [
+        {
+          "id": "sense-5e807077",
+          "pos": "verb",
+          "meaningZh": "哀悼；悲痛",
+          "definitionEn": "to feel or express deep sadness or grief especially due to the death of someone",
+          "examples": [
+            "After the sudden passing of her beloved pet dog, Sarah mourned for days, unable to stop the tears from flowing."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-e135e62f",
+          "pos": "verb",
+          "meaningZh": "服喪；守喪",
+          "definitionEn": "to show the customary signs of grief for a period of time after the death of a loved one",
+          "examples": [
+            "After the sudden passing of his older brother, John mourned by wearing black clothing, attending the memorial service, and spending hours reflecting at his brother's gravesite."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L4",
+        "textbookTitle": "龍騰 B3·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "mournful",
+      "word": "mournful",
+      "senses": [
+        {
+          "id": "sense-7f90cfd3",
+          "pos": "adjective",
+          "meaningZh": "悲傷的；哀愁的",
+          "definitionEn": "filled with or evoking sadness",
+          "examples": [
+            "The mournful melody played by the violin tugged at the heartstrings of everyone in the audience."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-0eb0101a",
+          "pos": "adjective",
+          "meaningZh": "沉痛的；表示哀傷的",
+          "definitionEn": "expressing or showing sorrow",
+          "examples": [
+            "The mournful wail of a lone wolf echoed through the forest, piercing the silence of the night."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L4",
+        "textbookTitle": "龍騰 B3·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "mow",
+      "word": "mow",
+      "senses": [
+        {
+          "id": "sense-4d0a0456",
+          "pos": "verb",
+          "meaningZh": "割草；刈草",
+          "definitionEn": "to cut grass or other plants using a blade or a machine called a mower",
+          "examples": [
+            "After the heavy rainfall, John had to mow the lawn to keep it neat and tidy."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-d4325d99",
+          "pos": "noun",
+          "meaningZh": "乾草堆放處；穀倉草堆",
+          "definitionEn": "a space in a barn or shed where hay or other crops are stored",
+          "examples": [
+            "After the harvest, the farmer stacked the bales of hay neatly in the mow."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    }
+  ]
+}

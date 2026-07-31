@@ -1,0 +1,1419 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 43,
+  "words": [
+    {
+      "wordKey": "failure",
+      "word": "failure",
+      "senses": [
+        {
+          "id": "sense-75c1eb8c",
+          "pos": "noun",
+          "meaningZh": "失敗；失利",
+          "definitionEn": "lack of success",
+          "examples": [
+            "Despite her hard work, she faced failure in her attempt to climb Mount Everest."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L5",
+        "textbookTitle": "龍騰 B2·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "fair",
+      "word": "fair",
+      "senses": [
+        {
+          "id": "sense-05733e87",
+          "pos": "adjective",
+          "meaningZh": "公平的；公正的",
+          "definitionEn": "impartial or unbiased; conforming with standards or rules",
+          "examples": [
+            "The judge was fair in his ruling and did not take anyone’s side.  The teacher graded all the papers fairly and the students received the grades they deserved."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-86efcdb5",
+          "pos": "adjective",
+          "meaningZh": "正當的；不欺詐的",
+          "definitionEn": "acquired honestly, without cheating or stealing",
+          "examples": [
+            "The company’s success was due to fair business practices and providing quality services to its customers."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L6",
+        "textbookTitle": "龍騰 B1·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "false",
+      "word": "false",
+      "senses": [
+        {
+          "id": "sense-a0c11a87",
+          "pos": "adjective",
+          "meaningZh": "不真實的；錯誤的",
+          "definitionEn": "not in accordance with the truth or reality",
+          "examples": [
+            "Spreading false information can have serious consequences."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-cb253a66",
+          "pos": "adjective",
+          "meaningZh": "虛假的；不正確的",
+          "definitionEn": "untrue or incorrect",
+          "examples": [
+            "It’s false that the earth is flat."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "fashion",
+      "word": "fashion",
+      "senses": [
+        {
+          "id": "sense-4865dd42",
+          "pos": "noun",
+          "meaningZh": "時尚；流行服飾",
+          "definitionEn": "clothing and other consumer goods that are currently in style",
+          "examples": [
+            "She always stays up to date with the latest fashion trends, and her wardrobe is filled with stylish and fashionable clothing."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-726eb108",
+          "pos": "noun",
+          "meaningZh": "習慣方式；做法",
+          "definitionEn": "a characteristic or habitual practice",
+          "examples": [
+            "Her fashion of always wearing black clothes reflects her gothic style."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·R3",
+        "textbookTitle": "龍騰 B3·R3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "fate",
+      "word": "fate",
+      "senses": [
+        {
+          "id": "sense-5ca685c3",
+          "pos": "noun",
+          "meaningZh": "命運；天定結局",
+          "definitionEn": "the future events that are destined to happen",
+          "examples": [
+            "Despite their best efforts, the protagonists couldn't change the fate of the kingdom, as it was already predetermined."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L6",
+        "textbookTitle": "龍騰 B3·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "fault",
+      "word": "fault",
+      "senses": [
+        {
+          "id": "sense-2d220f91",
+          "pos": "noun",
+          "meaningZh": "缺陷；毛病",
+          "definitionEn": "an imperfection or defect in an object or machine",
+          "examples": [
+            "The technician found a fault in the engine’s wiring, which was causing it to shut off unexpectedly."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-c77cfcc1",
+          "pos": "verb",
+          "meaningZh": "歸咎；追究責任",
+          "definitionEn": "to ascribe (an error or malfunction) to a person or thing",
+          "examples": [
+            "After the car accident, the insurance adjuster tried to fault the other driver for the collision."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L1",
+        "textbookTitle": "三民 B4·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "favor",
+      "word": "favor",
+      "senses": [
+        {
+          "id": "sense-e033d10c",
+          "pos": "noun",
+          "meaningZh": "好感；好意",
+          "definitionEn": "a positive feeling towards something or someone",
+          "examples": [
+            "She did him a favor by giving him a ride to the airport."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-d8445d31",
+          "pos": "verb",
+          "meaningZh": "偏袒；給予優待",
+          "definitionEn": "to give a privilege or advantage to someone",
+          "examples": [
+            "The boss showed favoritism to his top employee by giving her the best opportunities for promotion."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "favorite",
+      "word": "favorite",
+      "senses": [
+        {
+          "id": "sense-fc2913e8",
+          "pos": "noun",
+          "meaningZh": "最愛之物；最喜歡的東西",
+          "definitionEn": "something regarded with special favor or liking",
+          "examples": [],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-69733f40",
+          "pos": "noun",
+          "meaningZh": "最疼愛的人；心頭好",
+          "definitionEn": "a special loved one",
+          "examples": [
+            "Marie was always his favorite daughter as she shared his passion for chess and he would spend hours playing with her."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "fear",
+      "word": "fear",
+      "senses": [
+        {
+          "id": "sense-d02f435c",
+          "pos": "noun",
+          "meaningZh": "恐懼；害怕",
+          "definitionEn": "an emotion experienced in anticipation of danger or threat (usually accompanied by a desire to fight or flee)",
+          "examples": [
+            "As she walked alone in the dark alley, she couldn't help but feel a rising fear in her chest, accompanied by the urge to run back to safety."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-ce20ae7a",
+          "pos": "noun",
+          "meaningZh": "憂慮；不安",
+          "definitionEn": "an uneasy or anxious feeling",
+          "examples": [
+            "As she walked through the dark and empty house, a feeling of fear began to creep over her."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "feature",
+      "word": "feature",
+      "senses": [
+        {
+          "id": "sense-65c5aac4",
+          "pos": "noun",
+          "meaningZh": "特色；特點",
+          "definitionEn": "a prominent attribute or aspect of something",
+          "examples": [
+            "The new smartphone has a variety of features, including a high-resolution camera, fingerprint scanner, and waterproof design."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-1bc64024",
+          "pos": "verb",
+          "meaningZh": "以⋯為特色；收錄",
+          "definitionEn": "have as a feature",
+          "examples": [
+            "The new smartphone model features a high-resolution camera."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L9",
+        "textbookTitle": "龍騰 B2·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "fee",
+      "word": "fee",
+      "senses": [
+        {
+          "id": "sense-f563377a",
+          "pos": "noun",
+          "meaningZh": "費用；服務費",
+          "definitionEn": "a fixed charge for a privilege or professional service",
+          "examples": [
+            "Before starting the job, the lawyer asked his client to pay a consultation fee."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-2795a7dd",
+          "pos": "noun",
+          "meaningZh": "（法律）不動產所有權",
+          "definitionEn": "an interest in land capable of being inherited",
+          "examples": [
+            "After the death of his grandfather, the mansion and the land were taken over by his uncle who had a fee interest in the property."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "feeling",
+      "word": "feeling",
+      "senses": [
+        {
+          "id": "sense-71d327f3",
+          "pos": "noun",
+          "meaningZh": "感受；感覺",
+          "definitionEn": "a physical sensation that you experience",
+          "examples": [
+            "After a long hike, she experienced a feeling of exhilaration."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-905cd599",
+          "pos": "noun",
+          "meaningZh": "觸覺；肌膚感覺",
+          "definitionEn": "the sensation produced by pressure receptors in the skin",
+          "examples": [
+            "She experienced a tingling feeling in her fingers after holding the icy cold drink for too long."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "fellow",
+      "word": "fellow",
+      "senses": [
+        {
+          "id": "sense-abcc2143",
+          "pos": "noun",
+          "meaningZh": "傢伙；男子",
+          "definitionEn": "a male person, typically a boy or man",
+          "examples": [
+            "The fellow standing over there is my brother."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-28919dbe",
+          "pos": "noun",
+          "meaningZh": "男人；男生",
+          "definitionEn": "a man or boy",
+          "examples": [
+            "The fellow over there is wearing a blue shirt."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L7 +1",
+        "textbookTitle": "龍騰 B3·L7、三民 B2·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "female",
+      "word": "female",
+      "senses": [
+        {
+          "id": "sense-478f90a7",
+          "pos": "noun",
+          "meaningZh": "雌性；女性",
+          "definitionEn": "a person or animal of the sex that can produce ova and give birth to offspring",
+          "examples": [
+            "The female lioness fiercely protects her cubs from any potential threats in the wild."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-4b4e7610",
+          "pos": "adjective",
+          "meaningZh": "雌性的；女性的",
+          "definitionEn": "relating to or denoting a plant or animal that produces reproductive cells (ova) that can be fertilized by male cells (spermatozoa)",
+          "examples": [
+            "The female cat gave birth to a litter of adorable kittens."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L4 +1",
+        "textbookTitle": "龍騰 B2·L4、三民 B1·L10"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "fever",
+      "word": "fever",
+      "senses": [
+        {
+          "id": "sense-a0bfc05a",
+          "pos": "noun",
+          "meaningZh": "發燒；高燒",
+          "definitionEn": "a rise in the body temperature, often a sign of illness",
+          "examples": [
+            "After spending the day outside in the pouring rain, Sam developed a fever and had to stay home from school."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-49b55271",
+          "pos": "noun",
+          "meaningZh": "狂熱；亢奮",
+          "definitionEn": "an intense feeling of nervousness or excitement",
+          "examples": [
+            "She had a fever of anticipation as she waited for the results of her job interview."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "field",
+      "word": "field",
+      "senses": [
+        {
+          "id": "sense-c4be2b36",
+          "pos": "noun",
+          "meaningZh": "田地；農田",
+          "definitionEn": "an area of land that has been cleared of trees and usually enclosed",
+          "examples": [
+            "The farmer planted a crop of corn in the field behind his house."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-cf9a5467",
+          "pos": "noun",
+          "meaningZh": "戰場；前線",
+          "definitionEn": "a region where active military operations are taking place",
+          "examples": [
+            "The soldiers prepared to move out to the field for their training exercises."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L7 +2",
+        "textbookTitle": "龍騰 B2·L7、三民 B1·L5、翰林 B1·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "figure",
+      "word": "figure",
+      "senses": [
+        {
+          "id": "sense-f9a666a0",
+          "pos": "noun",
+          "meaningZh": "數字；人物；身材",
+          "definitionEn": "a number; an important person; the shape of a person's body",
+          "examples": [
+            "The sales figures rose sharply this year."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-aeb48da1",
+          "pos": "verb",
+          "meaningZh": "計算；估算",
+          "definitionEn": "to calculate something.",
+          "examples": [
+            "I need to figure out how much money I have left after paying bills."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-16b2865f",
+          "pos": "verb",
+          "meaningZh": "出現；佔有一席",
+          "definitionEn": "to appear or be included in something.",
+          "examples": [
+            "In the report, the data figures prominently as evidence of the company's success."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L5",
+        "textbookTitle": "三民 B4·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "final",
+      "word": "final",
+      "senses": [
+        {
+          "id": "sense-ffae4655",
+          "pos": "adjective",
+          "meaningZh": "最終的；最後的",
+          "definitionEn": "forming or occurring at the end; last",
+          "examples": [
+            "After months of studying and hard work, Sarah reached the final stage of her project."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-ee002d04",
+          "pos": "noun",
+          "meaningZh": "期末考；決賽",
+          "definitionEn": "an examination at the end of a term, course, or academic year",
+          "examples": [
+            "After months of studying, Anna was nervous for her final in chemistry."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "firm",
+      "word": "firm",
+      "senses": [
+        {
+          "id": "sense-8977571c",
+          "pos": "adjective",
+          "meaningZh": "穩固的；牢固的",
+          "definitionEn": "securely fixed in place",
+          "examples": [
+            "He twisted the screw until the lid was firm on the jar."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-13b42b26",
+          "pos": "adjective",
+          "meaningZh": "堅定的；不動搖的",
+          "definitionEn": "marked by firm determination or resolution; not shakable",
+          "examples": [
+            "Despite the storm raging outside, the firm captain refused to turn back and kept the ship moving towards its destination."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B1·L2",
+        "textbookTitle": "三民 B1·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "fisherman",
+      "word": "fisherman",
+      "senses": [
+        {
+          "id": "sense-63effb2b",
+          "pos": "noun",
+          "meaningZh": "漁夫；漁民",
+          "definitionEn": "a person who catches fish for a living or as a hobby",
+          "examples": [
+            "The fisherman woke up early to set his nets in the river."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "fit",
+      "word": "fit",
+      "senses": [
+        {
+          "id": "sense-1c03cf97",
+          "pos": "adjective",
+          "meaningZh": "健康的；適合的",
+          "definitionEn": "in good physical condition; suitable for a purpose",
+          "examples": [
+            "He runs every day to stay fit."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-9f78acf0",
+          "pos": "noun",
+          "meaningZh": "合身程度；契合度",
+          "definitionEn": "the manner in which something fits",
+          "examples": [
+            "The dress fit perfectly, hugging her curves in all the right places."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-90454496",
+          "pos": "noun",
+          "meaningZh": "突發；發作",
+          "definitionEn": "a sudden uncontrollable attack",
+          "examples": [
+            "During the game, he suddenly had a fit of anger and started hurling insults at the referee."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "fix",
+      "word": "fix",
+      "senses": [
+        {
+          "id": "sense-ad2a0c88",
+          "pos": "verb",
+          "meaningZh": "修理；固定",
+          "definitionEn": "to repair something broken; to fasten something firmly in place",
+          "examples": [
+            "Can you fix my bike? The chain is broken."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-e17e05e1",
+          "pos": "noun",
+          "meaningZh": "定位；方位確認",
+          "definitionEn": "a determination of the place where something is",
+          "examples": [
+            "The map will help us fix the location of the treasure."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "flag",
+      "word": "flag",
+      "senses": [
+        {
+          "id": "sense-9e418d5b",
+          "pos": "noun",
+          "meaningZh": "旗子；旗幟",
+          "definitionEn": "a piece of cloth with a design, used as a symbol of a country or group",
+          "examples": [
+            "The national flag was raised at the ceremony."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-e237cf1c",
+          "pos": "noun",
+          "meaningZh": "鳶尾花；劍葉花",
+          "definitionEn": "a type of flower with sword-shaped leaves and bright, colorful petals and sepals",
+          "examples": [
+            "I planted a row of flags along the edge of my garden, and now it's bursting with vibrant colors."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "flat",
+      "word": "flat",
+      "senses": [
+        {
+          "id": "sense-58d8e42a",
+          "pos": "adjective",
+          "meaningZh": "平坦的；無高低的",
+          "definitionEn": "having a surface without slope or tilt, in which no part is higher or lower than another",
+          "examples": [
+            "The pancakes were flat and round, just like a perfect circle."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-456b1a72",
+          "pos": "adjective",
+          "meaningZh": "水平的；平放的",
+          "definitionEn": "horizontally level",
+          "examples": [
+            "Lay the books flat on the table to measure their height accurately."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "flight",
+      "word": "flight",
+      "senses": [
+        {
+          "id": "sense-2b9a049d",
+          "pos": "noun",
+          "meaningZh": "班機；航班",
+          "definitionEn": "a scheduled trip on an airplane between two airports",
+          "examples": [
+            "I have booked a flight to Paris for my summer vacation."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-f7525d0a",
+          "pos": "noun",
+          "meaningZh": "飛行；飛翔",
+          "definitionEn": "the act or process of flying through the air",
+          "examples": [
+            "The flight attendant handed out snacks to the passengers before takeoff."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L3",
+        "textbookTitle": "龍騰 B1·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "flow",
+      "word": "flow",
+      "senses": [
+        {
+          "id": "sense-7ecc23b4",
+          "pos": "noun",
+          "meaningZh": "流動；流量",
+          "definitionEn": "the act of flowing or streaming; continuous progression",
+          "examples": [
+            "The river flowed gently, meandering through the picturesque countryside."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-ba120b4d",
+          "pos": "noun",
+          "meaningZh": "連續流；湧出",
+          "definitionEn": "any uninterrupted stream or discharge",
+          "examples": [
+            "The river flowed gently through the valley, creating a serene and peaceful atmosphere."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "flu",
+      "word": "flu",
+      "senses": [
+        {
+          "id": "sense-3a77e2d8",
+          "pos": "noun",
+          "meaningZh": "流行性感冒；流感",
+          "definitionEn": "a highly contagious viral disease that typically causes fever and respiratory symptoms such as coughing and sore throat",
+          "examples": [
+            "After being exposed to someone with the flu, Sarah experienced a high fever, coughing, and a sore throat within a few days."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "focus",
+      "word": "focus",
+      "senses": [
+        {
+          "id": "sense-53029e50",
+          "pos": "noun",
+          "meaningZh": "焦點；注意力",
+          "definitionEn": "the concentration of attention or energy on something",
+          "examples": [
+            "She needed to focus on her studies and avoid distractions."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-439523dd",
+          "pos": "verb",
+          "meaningZh": "專注；聚焦",
+          "definitionEn": "direct one’s attention on something",
+          "examples": [
+            "During the exam, she needed to focus on answering the questions accurately."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L2",
+        "textbookTitle": "龍騰 B1·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "fog",
+      "word": "fog",
+      "senses": [
+        {
+          "id": "sense-26501e19",
+          "pos": "noun",
+          "meaningZh": "霧；濃霧",
+          "definitionEn": "a cloud of water droplets suspended in the atmosphere at or near the earth’s surface",
+          "examples": [
+            "As I drove through the countryside, a dense fog enveloped the landscape, reducing visibility to just a few meters."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-95c8674c",
+          "pos": "noun",
+          "meaningZh": "迷霧；混沌狀態",
+          "definitionEn": "a state of confusion or uncertainty in which events, situations, or information are not clear",
+          "examples": [
+            "In the midst of the company's financial crisis, there was a fog of rumors and conflicting reports."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "folk",
+      "word": "folk",
+      "senses": [
+        {
+          "id": "sense-bbd105a6",
+          "pos": "noun",
+          "meaningZh": "人們；大家",
+          "definitionEn": "people in general, often used in plural form",
+          "examples": [
+            "Folk around here tend to start work early in the morning."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-904da6df",
+          "pos": "noun",
+          "meaningZh": "民族；族裔",
+          "definitionEn": "people who are descended from the same ancestors",
+          "examples": [
+            "The festival is a celebration of folk traditions passed down through generations of families."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    }
+  ]
+}

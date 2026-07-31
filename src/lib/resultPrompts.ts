@@ -13,6 +13,13 @@ export function buildQuestionExplainPrompt(
 ) {
   if (mode === 'quiz') {
     const question = entry.item.question
+    if (!question) {
+      return prompts.explainSpellingQuestion
+        .replace('{{MEANING}}', entry.item.meaning)
+        .replace('{{EXAMPLE}}', entry.item.example)
+        .replace('{{USER_ANSWER}}', record?.userAnswer ?? notAnsweredText)
+        .replace('{{CORRECT_ANSWER}}', entry.item.word)
+    }
     return prompts.explainQuestion
       .replace('{{QUESTION}}', question.prompt)
       .replace('{{OPTIONS}}', formatQuestionOptions(question))
@@ -37,6 +44,8 @@ export function buildAllWrongQuestionsPrompt(rows: ResultRow[], mode: PracticeMo
 
     if (mode === 'quiz') {
       const q = entry.item.question
+      if (!q)
+        return text
       text += `題目：${q.prompt}\n`
       text += `選項：\n${formatQuestionOptions(q)}\n`
       text += `我的答案：${record?.userAnswer ?? '未作答'}\n`

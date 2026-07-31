@@ -1,0 +1,1203 @@
+{
+  "schemaVersion": 1,
+  "kind": "questions",
+  "questionKind": "reading",
+  "questions": [
+    {
+      "id": "reading-5194-9c8b0c65",
+      "kind": "reading",
+      "title": "the night sky",
+      "passage": "On a clear, dark night far from city lights, the sky reveals far more than most people ever notice. Thousands of stars become visible, along with the faint band of pale light we call the Milky Way, our own galaxy seen edge-on. The points of light we admire are not all alike, and the differences tell a hidden story. Some appear bluish-white because they are extremely hot, while others glow with a calm reddish hue because their surfaces are cooler. Because light takes time to travel, the rays reaching our eyes left those stars long ago, so we are essentially looking into the past. A few bright objects that seem to be stars are actually planets, reflecting sunlight rather than producing their own. Sadly, artificial glow from streets and buildings now hides the faintest stars from anyone living in a large city. This loss, known as light pollution, deprives many children of a sight that once amazed every generation. Astronomers therefore encourage towns to use shielded lamps that point their light downward. With a little care, the wonder overhead can be returned to us all.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-ce4e8842",
+          "kind": "multipleChoice",
+          "prompt": "What does \"This loss\" refer to?",
+          "options": [
+            "The way artificial glow from streets and buildings hides the faintest stars from city dwellers",
+            "The fact that the rays reaching our eyes left those stars long ago",
+            "The mistaking of planets for stars in the night sky",
+            "The dimming of stars because their surfaces are cooler"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-5195-7e41dd07",
+      "kind": "reading",
+      "title": "the night sky",
+      "passage": "On a clear, dark night far from city lights, the sky reveals far more than most people ever notice. Thousands of stars become visible, along with the faint band of pale light we call the Milky Way, our own galaxy seen edge-on. The points of light we admire are not all alike, and the differences tell a hidden story. Some appear bluish-white because they are extremely hot, while others glow with a calm reddish hue because their surfaces are cooler. Because light takes time to travel, the rays reaching our eyes left those stars long ago, so we are essentially looking into the past. A few bright objects that seem to be stars are actually planets, reflecting sunlight rather than producing their own. Sadly, artificial glow from streets and buildings now hides the faintest stars from anyone living in a large city. This loss, known as light pollution, deprives many children of a sight that once amazed every generation. Astronomers therefore encourage towns to use shielded lamps that point their light downward. With a little care, the wonder overhead can be returned to us all.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-902124ba",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's attitude toward light pollution?",
+          "options": [
+            "Concerned, yet hopeful that it can be reduced",
+            "Completely indifferent to its effects",
+            "Delighted by the brightness of modern cities",
+            "Convinced that nothing can be done about it"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-5196-16a851f5",
+      "kind": "reading",
+      "title": "science communication",
+      "passage": "Scientists owe the public more than discoveries locked away in journals that only experts can read. When important findings are wrapped in difficult jargon, ordinary citizens are left unable to judge the issues that shape their daily lives. Clear science communication is therefore not a polite extra but an essential duty for any researcher funded by society. Some scholars worry that simplifying their work will make it sound shallow or inaccurate. Yet explaining an idea plainly is not the same as distorting it, and skilled communicators prove this every day. A good explanation removes unnecessary technical terms while keeping the genuine substance intact. Without such efforts, dangerous myths spread quickly, and people make decisions based on fear rather than evidence. During public debates about health or the environment, this gap can have serious consequences. Critics may claim that researchers should focus only on producing results. Even so, a discovery that no one understands can hardly guide a wiser society. By learning to speak clearly, scientists strengthen both public trust and the value of their own work.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-bb35d1bb",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's attitude toward clear science communication?",
+          "options": [
+            "Strongly supportive, treating it as a duty",
+            "Mildly skeptical of its usefulness",
+            "Wholly neutral and non-committal",
+            "Dismissive, regarding it as a waste of time"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-5197-abe90ebd",
+      "kind": "reading",
+      "title": "science communication",
+      "passage": "Scientists owe the public more than discoveries locked away in journals that only experts can read. When important findings are wrapped in difficult jargon, ordinary citizens are left unable to judge the issues that shape their daily lives. Clear science communication is therefore not a polite extra but an essential duty for any researcher funded by society. Some scholars worry that simplifying their work will make it sound shallow or inaccurate. Yet explaining an idea plainly is not the same as distorting it, and skilled communicators prove this every day. A good explanation removes unnecessary technical terms while keeping the genuine substance intact. Without such efforts, dangerous myths spread quickly, and people make decisions based on fear rather than evidence. During public debates about health or the environment, this gap can have serious consequences. Critics may claim that researchers should focus only on producing results. Even so, a discovery that no one understands can hardly guide a wiser society. By learning to speak clearly, scientists strengthen both public trust and the value of their own work.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-4427241d",
+          "kind": "multipleChoice",
+          "prompt": "What does \"this gap\" refer to?",
+          "options": [
+            "The gap between scientists' findings and the public's ability to understand them",
+            "The gap between scholars who simplify and those who refuse to",
+            "The gap between public trust and the value of researchers' work",
+            "The gap between health debates and environmental debates"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-5198-4e716436",
+      "kind": "reading",
+      "title": "space science",
+      "passage": "When a spacecraft travels far from Earth, engineers face a problem that sounds almost ordinary: how do they talk to it? Radio signals, though they move at the speed of light, still take time to cross the vast distances of space. A command sent to a probe near the outer planets may need hours to arrive, and the same delay applies to any reply. Because of this lag, controllers cannot steer a distant probe in real time the way a driver steers a car. Instead, they prepare detailed instructions in advance and trust the craft to carry them out alone. The probe must be capable of making small decisions by itself, such as adjusting its instruments or pausing a task if something seems wrong. To support this independence, designers build in layers of backup systems. If one part fails, another can take over without waiting for human help. This careful planning explains why missions are tested for years before launch. Engineers cannot simply send a repair crew once the craft has left. Every detail matters, because in deep space a tiny oversight can quietly end an entire mission.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-be53e74e",
+          "kind": "multipleChoice",
+          "prompt": "According to the passage, why can't controllers steer a distant probe in real time?",
+          "options": [
+            "Because radio signals take time to cross the vast distances of space",
+            "Because the probe's backup systems block incoming commands",
+            "Because deep-space probes are not equipped with radios",
+            "Because engineers send a repair crew instead of commands"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-5199-6db8e314",
+      "kind": "reading",
+      "title": "space science",
+      "passage": "When a spacecraft travels far from Earth, engineers face a problem that sounds almost ordinary: how do they talk to it? Radio signals, though they move at the speed of light, still take time to cross the vast distances of space. A command sent to a probe near the outer planets may need hours to arrive, and the same delay applies to any reply. Because of this lag, controllers cannot steer a distant probe in real time the way a driver steers a car. Instead, they prepare detailed instructions in advance and trust the craft to carry them out alone. The probe must be capable of making small decisions by itself, such as adjusting its instruments or pausing a task if something seems wrong. To support this independence, designers build in layers of backup systems. If one part fails, another can take over without waiting for human help. This careful planning explains why missions are tested for years before launch. Engineers cannot simply send a repair crew once the craft has left. Every detail matters, because in deep space a tiny oversight can quietly end an entire mission.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-1127f8e6",
+          "kind": "multipleChoice",
+          "prompt": "What does \"this independence\" refer to?",
+          "options": [
+            "The probe's ability to make small decisions by itself",
+            "The controllers' freedom to steer the probe in real time",
+            "The radio signals' speed across vast distances",
+            "The engineers' practice of testing missions for years"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-5200-fb3faf5e",
+      "kind": "reading",
+      "title": "the value of mistakes",
+      "passage": "Many students treat mistakes as something shameful to hide, but I believe this attitude holds them back. When learners fear errors, they avoid difficult questions and stick to tasks they already know how to do. As a result, they stop growing at exactly the point where growth would matter most. A mistake, after all, is simply evidence that someone tried something beyond their current skill. Instead of erasing that evidence, we should examine it closely. What went wrong, and why? Which step revealed a gap in understanding? These questions turn a moment of failure into a useful lesson. Of course, some argue that mistakes waste time and damage confidence. Yet confidence built on never being wrong is fragile, because it collapses the first time reality pushes back. A more lasting confidence comes from knowing you can recover from errors and learn from them. Teachers can encourage this by praising effort and honest reflection rather than only correct answers. If we want curious, resilient learners, we must stop punishing the very mistakes that make deeper learning possible. Shame teaches caution, but reflection teaches understanding.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-74085c63",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's attitude toward making mistakes in learning?",
+          "options": [
+            "Positive: mistakes are valuable opportunities to learn",
+            "Negative: mistakes should be hidden and avoided",
+            "Neutral: mistakes are neither good nor bad",
+            "Fearful: mistakes are dangerous and shameful"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-5201-a56f442c",
+      "kind": "reading",
+      "title": "the value of mistakes",
+      "passage": "Many students treat mistakes as something shameful to hide, but I believe this attitude holds them back. When learners fear errors, they avoid difficult questions and stick to tasks they already know how to do. As a result, they stop growing at exactly the point where growth would matter most. A mistake, after all, is simply evidence that someone tried something beyond their current skill. Instead of erasing that evidence, we should examine it closely. What went wrong, and why? Which step revealed a gap in understanding? These questions turn a moment of failure into a useful lesson. Of course, some argue that mistakes waste time and damage confidence. Yet confidence built on never being wrong is fragile, because it collapses the first time reality pushes back. A more lasting confidence comes from knowing you can recover from errors and learn from them. Teachers can encourage this by praising effort and honest reflection rather than only correct answers. If we want curious, resilient learners, we must stop punishing the very mistakes that make deeper learning possible. Shame teaches caution, but reflection teaches understanding.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-5b8ce04e",
+          "kind": "multipleChoice",
+          "prompt": "What does \"this attitude\" refer to?",
+          "options": [
+            "Treating mistakes as something shameful to hide",
+            "Examining mistakes closely to learn from them",
+            "Praising effort and honest reflection",
+            "Trying tasks beyond one's current skill"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-5202-4d74bb86",
+      "kind": "reading",
+      "title": "migration of animals",
+      "passage": "On the last warm evening of autumn, a young swallow named in my notebook simply as Number Twelve gripped a telephone wire and seemed to hesitate. I had watched her family all summer from my kitchen window, and now the older birds were already rising in restless circles above the field. Number Twelve was making her first long journey south, and she had no map, only instinct and the company of her flock. When the group finally lifted off, she wobbled at first, then found her rhythm among the others. For weeks afterward I imagined her crossing coastlines and mountains I would never see. Scientists still do not fully understand how such young birds navigate so far without ever having travelled the route before. Some clues point to the position of the sun, the stars, and even the Earth's magnetic field. Whatever guides them, the journey is dangerous, and not every bird returns. Yet the following spring, on an ordinary grey morning, a swallow settled on the same wire outside my window. I cannot prove it was her, but I chose to believe it was.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-65322b00",
+          "kind": "multipleChoice",
+          "prompt": "What is the narrator's attitude toward the swallow Number Twelve?",
+          "options": [
+            "Tender and affectionate, full of wonder",
+            "Cold and scientifically detached",
+            "Annoyed and impatient",
+            "Mocking and dismissive"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-5203-642bb222",
+      "kind": "reading",
+      "title": "migration of animals",
+      "passage": "On the last warm evening of autumn, a young swallow named in my notebook simply as Number Twelve gripped a telephone wire and seemed to hesitate. I had watched her family all summer from my kitchen window, and now the older birds were already rising in restless circles above the field. Number Twelve was making her first long journey south, and she had no map, only instinct and the company of her flock. When the group finally lifted off, she wobbled at first, then found her rhythm among the others. For weeks afterward I imagined her crossing coastlines and mountains I would never see. Scientists still do not fully understand how such young birds navigate so far without ever having travelled the route before. Some clues point to the position of the sun, the stars, and even the Earth's magnetic field. Whatever guides them, the journey is dangerous, and not every bird returns. Yet the following spring, on an ordinary grey morning, a swallow settled on the same wire outside my window. I cannot prove it was her, but I chose to believe it was.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-0b4b5034",
+          "kind": "multipleChoice",
+          "prompt": "In the last sentence, who does \"her\" most likely refer to?",
+          "options": [
+            "The swallow Number Twelve",
+            "The narrator's own family member",
+            "The lead bird of the flock",
+            "A scientist studying bird navigation"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-5204-ccbd2069",
+      "kind": "reading",
+      "title": "community trust",
+      "passage": "A small town in the river valley has drawn quiet attention this month after residents launched a simple lending shelf in the public square. The wooden cabinet, built by local volunteers, holds tools, umbrellas, and basic household items that anyone may borrow and return. There is no staff, no membership fee, and no record of who takes what. Organizers say the shelf depends entirely on the honesty of the people who use it. Early doubts were common, and several shopkeepers predicted that the items would vanish within days. Instead, the opposite has happened. Borrowers not only return what they take but often add new items of their own. One retired teacher said the shelf had become a daily reason to stop and chat with neighbours she had rarely spoken to before. Town officials are now studying whether similar shelves could work in other districts. They caution, however, that trust cannot be installed like a streetlight. It grows slowly, through repeated small acts that prove a community can rely on itself. For now, the modest cabinet in the square stands as a quiet experiment that is, so far, succeeding.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-0298e511",
+          "kind": "multipleChoice",
+          "prompt": "According to the passage, what did several shopkeepers predict about the lending shelf?",
+          "options": [
+            "That the items would vanish within days",
+            "That borrowers would add new items of their own",
+            "That officials would build similar shelves elsewhere",
+            "That a membership fee would soon be required"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-5205-12b0dc29",
+      "kind": "reading",
+      "title": "community trust",
+      "passage": "A small town in the river valley has drawn quiet attention this month after residents launched a simple lending shelf in the public square. The wooden cabinet, built by local volunteers, holds tools, umbrellas, and basic household items that anyone may borrow and return. There is no staff, no membership fee, and no record of who takes what. Organizers say the shelf depends entirely on the honesty of the people who use it. Early doubts were common, and several shopkeepers predicted that the items would vanish within days. Instead, the opposite has happened. Borrowers not only return what they take but often add new items of their own. One retired teacher said the shelf had become a daily reason to stop and chat with neighbours she had rarely spoken to before. Town officials are now studying whether similar shelves could work in other districts. They caution, however, that trust cannot be installed like a streetlight. It grows slowly, through repeated small acts that prove a community can rely on itself. For now, the modest cabinet in the square stands as a quiet experiment that is, so far, succeeding.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-2420e60e",
+          "kind": "multipleChoice",
+          "prompt": "In the sentence \"It grows slowly,\" what does \"It\" refer to?",
+          "options": [
+            "Trust",
+            "A streetlight",
+            "The wooden cabinet",
+            "A similar shelf in another district"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-5206-e76eac05",
+      "kind": "reading",
+      "title": "food science",
+      "passage": "Why does a loaf of bread smell so good while it bakes? The answer lies in a chemical process that occurs when food is heated. As the surface of the dough grows hot, certain sugars and proteins begin to react with one another. This reaction produces hundreds of new compounds, many of which carry rich aromas and deep brown colours. The same process explains the appealing crust on roasted meat and the golden surface of fried onions. Importantly, this browning is not the same as simple burning. Burning destroys flavour and leaves bitter ash, while controlled browning creates complexity and depth. The key difference is temperature and time. Cooks who understand this can adjust their heat to coax out flavour without crossing into a scorched, unpleasant result. Moisture also plays a role, since a wet surface cannot brown until much of its water has escaped as steam. This is why a damp pan of vegetables steams rather than browns. By paying attention to heat, time, and moisture, even a beginner can turn plain ingredients into something far more satisfying. Good cooking, in this sense, is partly applied chemistry.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-34daf229",
+          "kind": "multipleChoice",
+          "prompt": "According to the passage, why does a wet surface fail to brown at first?",
+          "options": [
+            "Because much of its water must first escape as steam",
+            "Because sugars and proteins cannot exist in water",
+            "Because moisture lowers the bitterness of the food",
+            "Because steaming destroys flavour and leaves bitter ash"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-5207-70ca4860",
+      "kind": "reading",
+      "title": "food science",
+      "passage": "Why does a loaf of bread smell so good while it bakes? The answer lies in a chemical process that occurs when food is heated. As the surface of the dough grows hot, certain sugars and proteins begin to react with one another. This reaction produces hundreds of new compounds, many of which carry rich aromas and deep brown colours. The same process explains the appealing crust on roasted meat and the golden surface of fried onions. Importantly, this browning is not the same as simple burning. Burning destroys flavour and leaves bitter ash, while controlled browning creates complexity and depth. The key difference is temperature and time. Cooks who understand this can adjust their heat to coax out flavour without crossing into a scorched, unpleasant result. Moisture also plays a role, since a wet surface cannot brown until much of its water has escaped as steam. This is why a damp pan of vegetables steams rather than browns. By paying attention to heat, time, and moisture, even a beginner can turn plain ingredients into something far more satisfying. Good cooking, in this sense, is partly applied chemistry.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-0a734212",
+          "kind": "multipleChoice",
+          "prompt": "What does \"This reaction\" refer to?",
+          "options": [
+            "Sugars and proteins reacting with one another as the dough's surface grows hot",
+            "The escape of water from a wet surface as steam",
+            "The burning that destroys flavour and leaves bitter ash",
+            "The cook adjusting heat to coax out flavour"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-5208-8122c357",
+      "kind": "reading",
+      "title": "the psychology of habits",
+      "passage": "People often promise themselves they will change through sheer willpower, but I think this strategy is bound to disappoint. Willpower is a limited resource that fades as the day wears on, especially when we are tired or stressed. Relying on it alone is like trying to hold a heavy door open with one finger. A wiser approach is to redesign the situations in which our habits form. If you want to read more, leave a book on your pillow instead of hiding it on a shelf. If you want to snack less, keep tempting food out of easy reach. These small changes work because they reduce the effort required to do the right thing and raise the effort required to do the wrong thing. Critics may say this method feels like tricking ourselves, and in a sense it is. Yet there is nothing dishonest about arranging your surroundings to support your goals. We do not blame a swimmer for using a current that flows in the right direction. Habits are shaped far more by environment than most of us admit. Change the environment, and lasting behaviour often follows.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-e09a3176",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's attitude toward relying on willpower alone to change habits?",
+          "options": [
+            "Doubtful: it is bound to disappoint",
+            "Enthusiastic: it is the surest path to change",
+            "Neutral: it works as well as any other method",
+            "Admiring: it shows great personal strength"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-5209-b4d0ac5d",
+      "kind": "reading",
+      "title": "the psychology of habits",
+      "passage": "People often promise themselves they will change through sheer willpower, but I think this strategy is bound to disappoint. Willpower is a limited resource that fades as the day wears on, especially when we are tired or stressed. Relying on it alone is like trying to hold a heavy door open with one finger. A wiser approach is to redesign the situations in which our habits form. If you want to read more, leave a book on your pillow instead of hiding it on a shelf. If you want to snack less, keep tempting food out of easy reach. These small changes work because they reduce the effort required to do the right thing and raise the effort required to do the wrong thing. Critics may say this method feels like tricking ourselves, and in a sense it is. Yet there is nothing dishonest about arranging your surroundings to support your goals. We do not blame a swimmer for using a current that flows in the right direction. Habits are shaped far more by environment than most of us admit. Change the environment, and lasting behaviour often follows.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-7791eaee",
+          "kind": "multipleChoice",
+          "prompt": "What do \"These small changes\" refer to?",
+          "options": [
+            "Leaving a book on your pillow and keeping tempting food out of easy reach",
+            "Promising yourself to change through sheer willpower",
+            "Tricking ourselves into bad habits",
+            "Blaming a swimmer for using a helpful current"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-5210-9834b51e",
+      "kind": "reading",
+      "title": "sleep and the brain",
+      "passage": "While we sleep, the brain is anything but idle. During the deepest stages of rest, networks of cells repeatedly fire in coordinated waves, replaying fragments of the day and strengthening the connections that hold a new skill or fact in place. This is one reason why students who sleep properly after studying often recall material more reliably than those who stay up cramming. Sleep also appears to act like a cleaning service for the mind. As the body rests, fluid flows more freely through the brain and helps flush out waste products that build up during waking hours. When this nightly maintenance is cut short, the effects are quickly felt. People who sleep too little tend to be more forgetful, more easily irritated, and slower to make sound decisions. Crucially, the lost hours cannot simply be repaid with a long lie-in at the weekend. Researchers therefore stress that steady, sufficient sleep is not a luxury but a basic requirement for a healthy, alert mind. Protecting it deserves the same seriousness we give to diet and exercise.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-436028dd",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's attitude toward getting sufficient sleep?",
+          "options": [
+            "It is essential and deserves to be taken seriously",
+            "It is an optional luxury one can skip",
+            "It matters less than diet and exercise",
+            "It is harmful if pursued too rigorously"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-5211-d437e378",
+      "kind": "reading",
+      "title": "sleep and the brain",
+      "passage": "While we sleep, the brain is anything but idle. During the deepest stages of rest, networks of cells repeatedly fire in coordinated waves, replaying fragments of the day and strengthening the connections that hold a new skill or fact in place. This is one reason why students who sleep properly after studying often recall material more reliably than those who stay up cramming. Sleep also appears to act like a cleaning service for the mind. As the body rests, fluid flows more freely through the brain and helps flush out waste products that build up during waking hours. When this nightly maintenance is cut short, the effects are quickly felt. People who sleep too little tend to be more forgetful, more easily irritated, and slower to make sound decisions. Crucially, the lost hours cannot simply be repaid with a long lie-in at the weekend. Researchers therefore stress that steady, sufficient sleep is not a luxury but a basic requirement for a healthy, alert mind. Protecting it deserves the same seriousness we give to diet and exercise.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-ee2ee131",
+          "kind": "multipleChoice",
+          "prompt": "What does \"this nightly maintenance\" refer to?",
+          "options": [
+            "Sleep flushing out the brain's waste products as fluid flows more freely",
+            "Students cramming late into the night before an exam",
+            "The forgetfulness and irritability of sleep-deprived people",
+            "A long lie-in taken at the weekend"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-5212-84033c04",
+      "kind": "reading",
+      "title": "digital privacy",
+      "passage": "Every time we tap a screen, we leave behind a trail of information that companies are eager to collect. Many people shrug this off, insisting they have nothing to hide. Yet privacy is not really about hiding wrongdoing. It is about keeping control over who knows what about us, and for what purpose. When a single firm can track where you go, what you read, and whom you talk to, it gains a quiet power to shape your choices without your knowledge. Targeted advertisements are only the mildest example. The same data can influence the prices you are offered, the news you see, and even the opportunities that reach you. Defenders of constant data collection argue that it makes services more convenient and often free. Convenience, however, should not require surrendering every detail of our lives. Sensible rules that limit what companies may gather, and clear choices about what we share, would protect ordinary users without destroying useful technology. Guarding our personal information is therefore not paranoia but a reasonable defense of personal freedom.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-5d956b1d",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's attitude toward companies' constant collection of personal data?",
+          "options": [
+            "Concerned and critical, urging sensible limits",
+            "Enthusiastically approving of the practice",
+            "Completely unconcerned about its effects",
+            "Lightly amused by people's worries"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-5213-ae13baad",
+      "kind": "reading",
+      "title": "digital privacy",
+      "passage": "Every time we tap a screen, we leave behind a trail of information that companies are eager to collect. Many people shrug this off, insisting they have nothing to hide. Yet privacy is not really about hiding wrongdoing. It is about keeping control over who knows what about us, and for what purpose. When a single firm can track where you go, what you read, and whom you talk to, it gains a quiet power to shape your choices without your knowledge. Targeted advertisements are only the mildest example. The same data can influence the prices you are offered, the news you see, and even the opportunities that reach you. Defenders of constant data collection argue that it makes services more convenient and often free. Convenience, however, should not require surrendering every detail of our lives. Sensible rules that limit what companies may gather, and clear choices about what we share, would protect ordinary users without destroying useful technology. Guarding our personal information is therefore not paranoia but a reasonable defense of personal freedom.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-93246853",
+          "kind": "multipleChoice",
+          "prompt": "What does \"The same data\" refer to?",
+          "options": [
+            "The information a firm gathers by tracking where you go, what you read, and whom you talk to",
+            "The targeted advertisements shown to users",
+            "The sensible rules that limit what companies may gather",
+            "The prices, news, and opportunities offered to users"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-5214-5735fb61",
+      "kind": "reading",
+      "title": "perseverance",
+      "passage": "Nadia had practised the violin for six years, yet the audition still left her hands cold. When her name was called, she walked onto the bare stage and lifted her bow, only to feel the first notes slip and wobble. A wave of panic told her to stop and apologise. Instead, she drew a slow breath and reminded herself of every quiet evening she had spent repeating the same difficult passage. She let the memory steady her, and the music gradually found its footing. By the final bars, the piece flowed as if the early stumble had never happened. The judges thanked her politely and gave nothing away. Two weeks later, a thin envelope arrived, and Nadia almost did not open it. The letter explained that she had not won a place in the orchestra, but it praised her recovery and invited her to try again the following year. She pinned the letter above her desk. To her, it was proof that the willingness to keep going mattered more than a single flawless performance.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-294a9c11",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's attitude toward Nadia and her response to the audition?",
+          "options": [
+            "Admiring of her perseverance and resilience",
+            "Disappointed by her ultimate failure",
+            "Indifferent to how she performed",
+            "Critical of her decision to keep playing"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-5215-00f0053a",
+      "kind": "reading",
+      "title": "perseverance",
+      "passage": "Nadia had practised the violin for six years, yet the audition still left her hands cold. When her name was called, she walked onto the bare stage and lifted her bow, only to feel the first notes slip and wobble. A wave of panic told her to stop and apologise. Instead, she drew a slow breath and reminded herself of every quiet evening she had spent repeating the same difficult passage. She let the memory steady her, and the music gradually found its footing. By the final bars, the piece flowed as if the early stumble had never happened. The judges thanked her politely and gave nothing away. Two weeks later, a thin envelope arrived, and Nadia almost did not open it. The letter explained that she had not won a place in the orchestra, but it praised her recovery and invited her to try again the following year. She pinned the letter above her desk. To her, it was proof that the willingness to keep going mattered more than a single flawless performance.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-deb54f96",
+          "kind": "multipleChoice",
+          "prompt": "In the last sentence, what does \"it\" refer to?",
+          "options": [
+            "The letter Nadia pinned above her desk",
+            "The audition Nadia performed in",
+            "The orchestra place she did not win",
+            "The difficult passage she had practised"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-5216-ed801873",
+      "kind": "reading",
+      "title": "coral reefs",
+      "passage": "Marine researchers along a stretch of tropical coast reported encouraging early results this week from a project aimed at rebuilding damaged coral reefs. Over the past three years, divers have attached thousands of small coral fragments to underwater frames. There the fragments could grow in sheltered conditions before being moved to the open reef. According to the team leading the work, many of these young colonies have survived and begun to spread across once-bare patches of rock. The reefs in this region had suffered badly after a period of unusually warm water. That heat caused the coral to lose the tiny organisms that give it both colour and food. Healthy reefs matter far beyond their beauty, the scientists explained, because they shelter countless fish and protect coastlines from powerful waves. The researchers were careful to temper their optimism. Restoration on this scale is slow and expensive, and it cannot succeed unless the wider problem of warming seas is also addressed. Even so, they described the survival of the transplanted corals as a hopeful sign that recovery is possible.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-3c5482e7",
+          "kind": "multipleChoice",
+          "prompt": "What does the phrase \"these young colonies\" refer to?",
+          "options": [
+            "The grown coral fragments attached to underwater frames",
+            "The teams of divers working at the site",
+            "The tiny organisms that give coral colour and food",
+            "The patches of rock left bare by warming"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-5217-7c9896a5",
+      "kind": "reading",
+      "title": "coral reefs",
+      "passage": "Marine researchers along a stretch of tropical coast reported encouraging early results this week from a project aimed at rebuilding damaged coral reefs. Over the past three years, divers have attached thousands of small coral fragments to underwater frames. There the fragments could grow in sheltered conditions before being moved to the open reef. According to the team leading the work, many of these young colonies have survived and begun to spread across once-bare patches of rock. The reefs in this region had suffered badly after a period of unusually warm water. That heat caused the coral to lose the tiny organisms that give it both colour and food. Healthy reefs matter far beyond their beauty, the scientists explained, because they shelter countless fish and protect coastlines from powerful waves. The researchers were careful to temper their optimism. Restoration on this scale is slow and expensive, and it cannot succeed unless the wider problem of warming seas is also addressed. Even so, they described the survival of the transplanted corals as a hopeful sign that recovery is possible.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-6ff09ac7",
+          "kind": "multipleChoice",
+          "prompt": "Which best describes the author's tone toward the restoration project?",
+          "options": [
+            "Hopeful yet cautious",
+            "Dismissive and skeptical",
+            "Indifferent and detached",
+            "Alarmed and despairing"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-5218-9bab24cb",
+      "kind": "reading",
+      "title": "the spread of ideas",
+      "passage": "Ideas rarely travel in a straight line. A thought that begins with one person may pass to a few friends, then to their acquaintances, until it reaches strangers who never met the original source. Researchers who study this process often compare it to the way a rumour or a song spreads through a community. The crucial factor is not always how clever an idea is, but how easily it can be repeated and how many people stand at the crossroads of different social groups. A single well-connected individual can carry a notion from one circle into another that would otherwise never have heard it. Modern communication has accelerated this movement dramatically, allowing a phrase or an image to reach millions within hours. Yet speed brings its own difficulties. Ideas that are simple and emotionally striking often spread faster than those that are careful and true. Understanding how thoughts move through a population therefore matters greatly, because the same channels that share useful knowledge can just as quickly carry misunderstandings. Studying these patterns helps us judge what we pass along.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-3d9b1b57",
+          "kind": "multipleChoice",
+          "prompt": "What does \"this process\" refer to?",
+          "options": [
+            "The way an idea travels from person to person until it reaches strangers",
+            "The way researchers compare ideas to rumours",
+            "The way modern communication reaches millions within hours",
+            "The way simple ideas spread faster than true ones"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-5219-f7132006",
+      "kind": "reading",
+      "title": "the spread of ideas",
+      "passage": "Ideas rarely travel in a straight line. A thought that begins with one person may pass to a few friends, then to their acquaintances, until it reaches strangers who never met the original source. Researchers who study this process often compare it to the way a rumour or a song spreads through a community. The crucial factor is not always how clever an idea is, but how easily it can be repeated and how many people stand at the crossroads of different social groups. A single well-connected individual can carry a notion from one circle into another that would otherwise never have heard it. Modern communication has accelerated this movement dramatically, allowing a phrase or an image to reach millions within hours. Yet speed brings its own difficulties. Ideas that are simple and emotionally striking often spread faster than those that are careful and true. Understanding how thoughts move through a population therefore matters greatly, because the same channels that share useful knowledge can just as quickly carry misunderstandings. Studying these patterns helps us judge what we pass along.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-74ab28b0",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's attitude toward the rapid spread of ideas through modern communication?",
+          "options": [
+            "Recognizing its benefits while warning of its dangers",
+            "Wholeheartedly celebrating its speed",
+            "Completely opposed to fast communication",
+            "Entirely uninterested in its effects"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-5220-c05deee4",
+      "kind": "reading",
+      "title": "renewable materials",
+      "passage": "For more than a century, much of what we build and use has depended on materials that are dug up, burned, or thrown away after a single use. This habit is becoming harder to defend. Renewable materials, grown rather than extracted, offer a more sensible path. Fast-growing plants, for instance, can be turned into strong fibres, sturdy boards, and even packaging that breaks down harmlessly once discarded. Because such crops absorb carbon as they grow, replacing some heavier materials with them can ease pressure on the environment. Critics reply that these alternatives are not yet cheap enough or strong enough to replace everything, and in certain demanding uses they are right. That objection, however, argues for steady improvement, not for giving up. With better processing and honest pricing that reflects the true cost of waste, renewable materials could supply a far larger share of our needs. Choosing what something is made of is rarely exciting, yet these quiet decisions shape the world we leave behind. We should make them with the long term firmly in mind.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-c6d43001",
+          "kind": "multipleChoice",
+          "prompt": "What does \"This habit\" refer to?",
+          "options": [
+            "Depending on materials that are dug up, burned, or thrown away after a single use",
+            "Growing renewable materials rather than extracting them",
+            "Turning fast-growing plants into strong fibres and boards",
+            "Pricing materials to reflect the true cost of waste"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-5221-881293e3",
+      "kind": "reading",
+      "title": "renewable materials",
+      "passage": "For more than a century, much of what we build and use has depended on materials that are dug up, burned, or thrown away after a single use. This habit is becoming harder to defend. Renewable materials, grown rather than extracted, offer a more sensible path. Fast-growing plants, for instance, can be turned into strong fibres, sturdy boards, and even packaging that breaks down harmlessly once discarded. Because such crops absorb carbon as they grow, replacing some heavier materials with them can ease pressure on the environment. Critics reply that these alternatives are not yet cheap enough or strong enough to replace everything, and in certain demanding uses they are right. That objection, however, argues for steady improvement, not for giving up. With better processing and honest pricing that reflects the true cost of waste, renewable materials could supply a far larger share of our needs. Choosing what something is made of is rarely exciting, yet these quiet decisions shape the world we leave behind. We should make them with the long term firmly in mind.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-b77d59a2",
+          "kind": "multipleChoice",
+          "prompt": "Which best describes the author's attitude toward renewable materials?",
+          "options": [
+            "Supportive and encouraging of their wider use",
+            "Hostile and contemptuous",
+            "Purely neutral and uncommitted",
+            "Anxious and pessimistic about their future"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-5222-fb6ab7de",
+      "kind": "reading",
+      "title": "ethics of technology",
+      "passage": "When engineers design a system that decides who receives a loan or a job interview, they are not merely writing code. They are quietly encoding judgements about fairness, risk, and human worth into machinery that will repeat those judgements at enormous scale. Defenders of automated decision-making point out that algorithms apply the same rule to everyone and never grow tired or moody. That consistency is genuine, but it is not the same as justice. A rule that is consistently applied can still be consistently wrong, especially when it has absorbed the biases hidden in the data it learned from. The deeper problem is that responsibility becomes blurred. When a person is unfairly rejected, the company can point to the model, the engineers can point to the data, and the data can point to a society no one designed on purpose. This diffusion of accountability is precisely what makes such systems dangerous. We should therefore insist that anyone deploying a consequential algorithm must be able to explain its reasoning and answer for its mistakes. Convenience and efficiency are worth having, but they must never be allowed to dissolve the simple expectation that someone, somewhere, remains answerable to the people affected.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-0e1aeaf7",
+          "kind": "multipleChoice",
+          "prompt": "What does \"That consistency\" refer to?",
+          "options": [
+            "Algorithms applying the same rule to everyone and never growing tired or moody",
+            "The judgements engineers encode about fairness and human worth",
+            "The biases hidden in the data the system learned from",
+            "The blurring of responsibility among company, engineers, and data"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-5223-da4bc506",
+      "kind": "reading",
+      "title": "ethics of technology",
+      "passage": "When engineers design a system that decides who receives a loan or a job interview, they are not merely writing code. They are quietly encoding judgements about fairness, risk, and human worth into machinery that will repeat those judgements at enormous scale. Defenders of automated decision-making point out that algorithms apply the same rule to everyone and never grow tired or moody. That consistency is genuine, but it is not the same as justice. A rule that is consistently applied can still be consistently wrong, especially when it has absorbed the biases hidden in the data it learned from. The deeper problem is that responsibility becomes blurred. When a person is unfairly rejected, the company can point to the model, the engineers can point to the data, and the data can point to a society no one designed on purpose. This diffusion of accountability is precisely what makes such systems dangerous. We should therefore insist that anyone deploying a consequential algorithm must be able to explain its reasoning and answer for its mistakes. Convenience and efficiency are worth having, but they must never be allowed to dissolve the simple expectation that someone, somewhere, remains answerable to the people affected.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-86d5e180",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's attitude toward unaccountable automated decision-making?",
+          "options": [
+            "Critical and concerned, insisting on accountability",
+            "Enthusiastic and fully approving",
+            "Amused and light-hearted",
+            "Neutral and purely descriptive"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-5224-bbba28ea",
+      "kind": "reading",
+      "title": "scientific revolutions",
+      "passage": "Science is often pictured as a steady march, with each generation adding a tidy brick to a growing wall of knowledge. The real history is messier and far more interesting. For long stretches, researchers work comfortably within a shared framework that tells them which questions are worth asking and which answers count as sensible. Awkward observations that do not fit are usually set aside as minor puzzles rather than fatal flaws. Over time, however, these anomalies can accumulate until the old framework groans under their weight. A revolution occurs when a bolder explanation arrives that not only accounts for the stubborn exceptions but reorganises the entire field around a new set of assumptions. What once looked obvious suddenly seems naive, and questions that were unthinkable become central. Crucially, such upheavals are rarely settled by evidence alone. Established scientists may resist, partly from habit and partly because their reputations are bound up with the older view. Acceptance often spreads as a younger generation, less invested in the past, finds the new picture more illuminating. Understanding this pattern reminds us that even our most confident theories are provisional, held only until something better explains the world.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-2e6f46ef",
+          "kind": "multipleChoice",
+          "prompt": "What do \"these anomalies\" refer to?",
+          "options": [
+            "Awkward observations that do not fit the shared framework",
+            "The tidy bricks added by each generation",
+            "The bolder explanations that trigger a revolution",
+            "The reputations of established scientists"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-5225-1b5408c6",
+      "kind": "reading",
+      "title": "scientific revolutions",
+      "passage": "Science is often pictured as a steady march, with each generation adding a tidy brick to a growing wall of knowledge. The real history is messier and far more interesting. For long stretches, researchers work comfortably within a shared framework that tells them which questions are worth asking and which answers count as sensible. Awkward observations that do not fit are usually set aside as minor puzzles rather than fatal flaws. Over time, however, these anomalies can accumulate until the old framework groans under their weight. A revolution occurs when a bolder explanation arrives that not only accounts for the stubborn exceptions but reorganises the entire field around a new set of assumptions. What once looked obvious suddenly seems naive, and questions that were unthinkable become central. Crucially, such upheavals are rarely settled by evidence alone. Established scientists may resist, partly from habit and partly because their reputations are bound up with the older view. Acceptance often spreads as a younger generation, less invested in the past, finds the new picture more illuminating. Understanding this pattern reminds us that even our most confident theories are provisional, held only until something better explains the world.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-70caffe8",
+          "kind": "multipleChoice",
+          "prompt": "According to the passage, why might established scientists resist a scientific revolution?",
+          "options": [
+            "Partly from habit and partly because their reputations are tied to the older view",
+            "Because they lack access to the new evidence",
+            "Because younger scientists refuse to share their findings",
+            "Because the new framework offers no new assumptions"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-5226-0f481ba6",
+      "kind": "reading",
+      "title": "curiosity and discovery",
+      "passage": "Mr. Oyelaran taught chemistry in a school where the laboratory shelves held more dust than equipment. He had long since stopped expecting wonder from his afternoon class, most of whom watched the clock more attentively than the blackboard. One Thursday a quiet student named Priya stayed behind, holding a cracked thermometer she had found in a drawer. She wanted to know why the thin column of liquid climbed when she cupped the bulb in her palm, and although he could have given the textbook answer and sent her home, he hesitated. Instead, something in her genuine puzzlement stirred a curiosity he thought he had buried years ago. They spent an hour testing the thermometer against warm water, cold tiles, and the afternoon sun, jotting numbers on the back of an old worksheet. By the end neither of them had reached a grand conclusion, yet both left changed. Priya had discovered that a question could be pursued rather than merely answered. Mr. Oyelaran, walking home through the dimming streets, realised that his weariness had been a kind of forgetting. The next morning he arrived early and dusted the shelves for the first time in a decade.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-4ed552b1",
+          "kind": "multipleChoice",
+          "prompt": "In \"something in her genuine puzzlement stirred a curiosity he thought he had buried,\" whom does \"he\" refer to?",
+          "options": [
+            "Mr. Oyelaran",
+            "Priya",
+            "A fellow chemistry teacher",
+            "A student in the afternoon class"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-5227-d6f078ed",
+      "kind": "reading",
+      "title": "curiosity and discovery",
+      "passage": "Mr. Oyelaran taught chemistry in a school where the laboratory shelves held more dust than equipment. He had long since stopped expecting wonder from his afternoon class, most of whom watched the clock more attentively than the blackboard. One Thursday a quiet student named Priya stayed behind, holding a cracked thermometer she had found in a drawer. She wanted to know why the thin column of liquid climbed when she cupped the bulb in her palm, and although he could have given the textbook answer and sent her home, he hesitated. Instead, something in her genuine puzzlement stirred a curiosity he thought he had buried years ago. They spent an hour testing the thermometer against warm water, cold tiles, and the afternoon sun, jotting numbers on the back of an old worksheet. By the end neither of them had reached a grand conclusion, yet both left changed. Priya had discovered that a question could be pursued rather than merely answered. Mr. Oyelaran, walking home through the dimming streets, realised that his weariness had been a kind of forgetting. The next morning he arrived early and dusted the shelves for the first time in a decade.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-d7082392",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's tone toward Mr. Oyelaran's change?",
+          "options": [
+            "Warm and quietly hopeful",
+            "Mocking and scornful",
+            "Cold and clinical",
+            "Bitter and resentful"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-5228-178c65b6",
+      "kind": "reading",
+      "title": "media literacy",
+      "passage": "It is tempting to believe that the cure for misinformation is simply more facts, delivered louder and faster. Decades of experience suggest the remedy is not that straightforward. People do not absorb information as empty vessels waiting to be filled. They interpret each new claim through the lens of what they already believe and whom they already trust. A correction that contradicts a cherished view can even harden the original error, because admitting the mistake feels like a small surrender of identity. This is why media literacy must go beyond teaching students to spot an obvious falsehood. The harder skill is learning to notice the pull of one's own preferences, to ask who benefits from a particular framing, and to tolerate the discomfort of suspended judgement. A literate reader does not demand certainty before forming a view, nor cling to certainty once formed. Schools that treat these habits as central, rather than as an occasional warning before an exam, prepare citizens who can navigate a flood of competing claims without drowning in cynicism. The goal is not a population that distrusts everything, which is merely a different kind of helplessness, but one capable of granting and withdrawing trust on reasonable grounds.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-f5c1d6cc",
+          "kind": "multipleChoice",
+          "prompt": "What do \"these habits\" refer to?",
+          "options": [
+            "Noticing one's own preferences, questioning framing, and tolerating suspended judgement",
+            "Delivering more facts louder and faster",
+            "Spotting an obvious falsehood",
+            "Distrusting everything one reads"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-5229-be20c12e",
+      "kind": "reading",
+      "title": "media literacy",
+      "passage": "It is tempting to believe that the cure for misinformation is simply more facts, delivered louder and faster. Decades of experience suggest the remedy is not that straightforward. People do not absorb information as empty vessels waiting to be filled. They interpret each new claim through the lens of what they already believe and whom they already trust. A correction that contradicts a cherished view can even harden the original error, because admitting the mistake feels like a small surrender of identity. This is why media literacy must go beyond teaching students to spot an obvious falsehood. The harder skill is learning to notice the pull of one's own preferences, to ask who benefits from a particular framing, and to tolerate the discomfort of suspended judgement. A literate reader does not demand certainty before forming a view, nor cling to certainty once formed. Schools that treat these habits as central, rather than as an occasional warning before an exam, prepare citizens who can navigate a flood of competing claims without drowning in cynicism. The goal is not a population that distrusts everything, which is merely a different kind of helplessness, but one capable of granting and withdrawing trust on reasonable grounds.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-42dd44a1",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's attitude toward deeper media literacy education?",
+          "options": [
+            "Earnest advocacy for it as essential",
+            "Skeptical that it could ever work",
+            "Indifferent and noncommittal",
+            "Playful and tongue-in-cheek"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-5230-910ea21a",
+      "kind": "reading",
+      "title": "the future of work",
+      "passage": "A research institute released findings this week suggesting that the spread of automated tools is reshaping the workplace in subtler ways than many predictions assumed. Rather than wiping out entire professions overnight, the report describes a quieter transformation in which particular tasks within a job are handed to machines while the role itself survives in altered form. Analysts who contributed to the study noted that workers increasingly spend less time on routine processing. Instead, they devote more energy to judgement, coordination, and the handling of unusual cases that software struggles with. The authors were careful to avoid easy optimism. They warned that the benefits of this shift are unevenly distributed. The gains flow most readily to those who can already adapt their skills, while others risk being left in roles that are steadily hollowed out. The report urged employers and governments to invest seriously in retraining rather than assuming the labour market will adjust on its own. One contributor remarked that the central question is no longer whether machines will take every job, but whether societies will share the gains broadly enough to keep work meaningful. The institute plans to track the same group of workplaces over several years to test whether these early patterns hold.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-44c43d81",
+          "kind": "multipleChoice",
+          "prompt": "What does \"this shift\" refer to?",
+          "options": [
+            "The handing of particular tasks to machines while jobs survive in altered form",
+            "The complete elimination of entire professions overnight",
+            "The plan to track the same workplaces over several years",
+            "The decision of governments to invest in retraining"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-5231-0f401d52",
+      "kind": "reading",
+      "title": "the future of work",
+      "passage": "A research institute released findings this week suggesting that the spread of automated tools is reshaping the workplace in subtler ways than many predictions assumed. Rather than wiping out entire professions overnight, the report describes a quieter transformation in which particular tasks within a job are handed to machines while the role itself survives in altered form. Analysts who contributed to the study noted that workers increasingly spend less time on routine processing. Instead, they devote more energy to judgement, coordination, and the handling of unusual cases that software struggles with. The authors were careful to avoid easy optimism. They warned that the benefits of this shift are unevenly distributed. The gains flow most readily to those who can already adapt their skills, while others risk being left in roles that are steadily hollowed out. The report urged employers and governments to invest seriously in retraining rather than assuming the labour market will adjust on its own. One contributor remarked that the central question is no longer whether machines will take every job, but whether societies will share the gains broadly enough to keep work meaningful. The institute plans to track the same group of workplaces over several years to test whether these early patterns hold.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-d63039a2",
+          "kind": "multipleChoice",
+          "prompt": "Which best describes the tone of the report as conveyed by the author?",
+          "options": [
+            "Measured and cautionary",
+            "Triumphant and celebratory",
+            "Cynical and mocking",
+            "Fearful and panicked"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-5232-eda65d7a",
+      "kind": "reading",
+      "title": "language and thought",
+      "passage": "Does the language we speak shape the way we think? The question has provoked centuries of debate, swinging between bold claims and cautious denials. In its strongest form, the idea holds that speakers of different languages inhabit genuinely different mental worlds, unable to grasp concepts their grammar does not provide. Careful research has largely deflated this extreme version, since people clearly manage to learn ideas their native tongue never named. Yet a gentler influence does appear to be real. The categories a language makes habitual can nudge attention in particular directions, making some distinctions feel obvious and others easy to overlook. Speakers whose language marks the precise direction of an object, for instance, tend to stay remarkably oriented even in unfamiliar surroundings, because their everyday speech constantly requires them to track it. Such effects are tendencies rather than prisons. They tilt the mind without confining it, which is why translation, though difficult, remains possible. The lasting value of this research lies less in any single dramatic claim than in a humbler insight. The words we inherit are not a neutral window onto reality but a set of habits, useful and limiting at once, that we can examine and, with effort, see beyond.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-99b3bab1",
+          "kind": "multipleChoice",
+          "prompt": "What does \"this extreme version\" refer to?",
+          "options": [
+            "The claim that speakers of different languages inhabit genuinely different mental worlds",
+            "The gentler influence that nudges attention in particular directions",
+            "The research that deflated bold claims",
+            "The idea that translation remains possible"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-5233-55cbdcb3",
+      "kind": "reading",
+      "title": "language and thought",
+      "passage": "Does the language we speak shape the way we think? The question has provoked centuries of debate, swinging between bold claims and cautious denials. In its strongest form, the idea holds that speakers of different languages inhabit genuinely different mental worlds, unable to grasp concepts their grammar does not provide. Careful research has largely deflated this extreme version, since people clearly manage to learn ideas their native tongue never named. Yet a gentler influence does appear to be real. The categories a language makes habitual can nudge attention in particular directions, making some distinctions feel obvious and others easy to overlook. Speakers whose language marks the precise direction of an object, for instance, tend to stay remarkably oriented even in unfamiliar surroundings, because their everyday speech constantly requires them to track it. Such effects are tendencies rather than prisons. They tilt the mind without confining it, which is why translation, though difficult, remains possible. The lasting value of this research lies less in any single dramatic claim than in a humbler insight. The words we inherit are not a neutral window onto reality but a set of habits, useful and limiting at once, that we can examine and, with effort, see beyond.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-75b22927",
+          "kind": "multipleChoice",
+          "prompt": "According to the passage, why do speakers whose language marks precise direction stay well oriented in unfamiliar surroundings?",
+          "options": [
+            "Because their everyday speech constantly requires them to track direction",
+            "Because they memorize maps before traveling",
+            "Because their grammar prevents them from getting lost",
+            "Because they avoid unfamiliar surroundings altogether"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-5234-29b15835",
+      "kind": "reading",
+      "title": "the limits of knowledge",
+      "passage": "Every map of human understanding has an edge where the labelled territory dissolves into blankness. Scientists often describe this frontier with surprising humility, conceding that each discovery tends to multiply the questions it was meant to settle. A physicist who finally measures one elusive particle soon confronts a dozen properties that remain stubbornly obscure. This pattern is not a sign of failure but a feature of inquiry itself, for genuine knowledge expands its own borders and therefore its surrounding ignorance. The philosopher who admits the boundaries of reason is not surrendering to mysticism; he is simply refusing to mistake confidence for certainty. Such intellectual modesty protects us from the arrogance that has so often distorted history. When a society believes it has grasped the whole truth, it grows intolerant of doubt and hostile to revision. By contrast, communities that treasure open questions remain flexible, curious, and willing to learn. Perhaps the deepest wisdom lies in recognising how much we still cannot see. To acknowledge a limit is not to abandon the search but to pursue it more honestly. The edge of the map, after all, is precisely where the next expedition begins.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-62ad2fec",
+          "kind": "multipleChoice",
+          "prompt": "What does \"This pattern\" refer to?",
+          "options": [
+            "The way each discovery multiplies the questions it was meant to settle",
+            "The way societies grow intolerant of doubt",
+            "The humility with which scientists describe the frontier",
+            "The way communities treasure open questions"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-5235-be8af887",
+      "kind": "reading",
+      "title": "the limits of knowledge",
+      "passage": "Every map of human understanding has an edge where the labelled territory dissolves into blankness. Scientists often describe this frontier with surprising humility, conceding that each discovery tends to multiply the questions it was meant to settle. A physicist who finally measures one elusive particle soon confronts a dozen properties that remain stubbornly obscure. This pattern is not a sign of failure but a feature of inquiry itself, for genuine knowledge expands its own borders and therefore its surrounding ignorance. The philosopher who admits the boundaries of reason is not surrendering to mysticism; he is simply refusing to mistake confidence for certainty. Such intellectual modesty protects us from the arrogance that has so often distorted history. When a society believes it has grasped the whole truth, it grows intolerant of doubt and hostile to revision. By contrast, communities that treasure open questions remain flexible, curious, and willing to learn. Perhaps the deepest wisdom lies in recognising how much we still cannot see. To acknowledge a limit is not to abandon the search but to pursue it more honestly. The edge of the map, after all, is precisely where the next expedition begins.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-3bcb87e5",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's attitude toward intellectual humility about the limits of knowledge?",
+          "options": [
+            "Admiring and approving",
+            "Disapproving and dismissive",
+            "Detached and purely neutral",
+            "Mournful and discouraged"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-5236-b3ae257a",
+      "kind": "reading",
+      "title": "attention in a digital age",
+      "passage": "We are taught to admire multitasking, yet the human mind was never built to scatter itself across a dozen glowing screens at once. Each notification, however trivial, fractures concentration and demands a small but costly recovery before deep thought can resume. The advertising industry understands this perfectly, designing applications that exploit our restlessness and reward us for staying distracted. I would argue that attention has become the most contested resource of our era, more fiercely fought over than oil or gold. To surrender it carelessly is to let strangers decide what we notice, value, and ultimately become. Some insist that constant connection makes us more informed, but information is not the same as understanding. A mind perpetually interrupted skims the surface of everything and penetrates the depth of nothing. Reclaiming attention therefore is not a nostalgic retreat from technology but an act of self-defence. We can choose when to engage and when to withdraw, cultivating stretches of unbroken focus as deliberately as an athlete trains a muscle. The capacity for sustained thought, once lost, is difficult to rebuild. Guarding it may be the quiet discipline our distracted century most urgently requires.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-00f94ea0",
+          "kind": "multipleChoice",
+          "prompt": "In \"To surrender it carelessly,\" what does \"it\" refer to?",
+          "options": [
+            "Attention",
+            "Multitasking",
+            "Information",
+            "Technology"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-5237-7e9d20aa",
+      "kind": "reading",
+      "title": "attention in a digital age",
+      "passage": "We are taught to admire multitasking, yet the human mind was never built to scatter itself across a dozen glowing screens at once. Each notification, however trivial, fractures concentration and demands a small but costly recovery before deep thought can resume. The advertising industry understands this perfectly, designing applications that exploit our restlessness and reward us for staying distracted. I would argue that attention has become the most contested resource of our era, more fiercely fought over than oil or gold. To surrender it carelessly is to let strangers decide what we notice, value, and ultimately become. Some insist that constant connection makes us more informed, but information is not the same as understanding. A mind perpetually interrupted skims the surface of everything and penetrates the depth of nothing. Reclaiming attention therefore is not a nostalgic retreat from technology but an act of self-defence. We can choose when to engage and when to withdraw, cultivating stretches of unbroken focus as deliberately as an athlete trains a muscle. The capacity for sustained thought, once lost, is difficult to rebuild. Guarding it may be the quiet discipline our distracted century most urgently requires.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-5f59ccc0",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's attitude toward applications designed to keep users distracted?",
+          "options": [
+            "Critical and concerned",
+            "Admiring and grateful",
+            "Neutral and impartial",
+            "Amused and entertained"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-5238-70dea008",
+      "kind": "reading",
+      "title": "the role of failure",
+      "passage": "The first time Mei demonstrated her engineering project, the small bridge she had spent months designing buckled and collapsed onto the workshop floor. Her classmates fell silent, and she felt heat rush to her face as the judges scribbled their disappointing notes. That evening she sat among the splintered fragments, tempted to abandon the whole pursuit. Yet as she sifted through the wreckage, she noticed exactly where the joints had given way under the load. The flaw, she realised, was not in her ambition but in a single miscalculated angle she had overlooked. Over the following weeks she rebuilt the structure, testing each section with a stubborn patience she had never known she possessed. When the second model held firm under twice the original weight, no applause greeted her, for she was alone in the quiet workshop. Still, the private satisfaction outweighed any prize. She had learned that a collapse, examined honestly, could teach what easy success never would. Failure had not defeated her; it had instructed her. Years later, mentoring younger students, she would tell them that the most useful lessons often arrive disguised as ruins.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-4f0b1c9c",
+          "kind": "multipleChoice",
+          "prompt": "In \"The flaw, she realised, was not in her ambition,\" what was \"The flaw\"?",
+          "options": [
+            "A single miscalculated angle she had overlooked",
+            "Her lack of ambition",
+            "The judges' disappointing notes",
+            "The silence of her classmates"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-5239-e20e46c2",
+      "kind": "reading",
+      "title": "the role of failure",
+      "passage": "The first time Mei demonstrated her engineering project, the small bridge she had spent months designing buckled and collapsed onto the workshop floor. Her classmates fell silent, and she felt heat rush to her face as the judges scribbled their disappointing notes. That evening she sat among the splintered fragments, tempted to abandon the whole pursuit. Yet as she sifted through the wreckage, she noticed exactly where the joints had given way under the load. The flaw, she realised, was not in her ambition but in a single miscalculated angle she had overlooked. Over the following weeks she rebuilt the structure, testing each section with a stubborn patience she had never known she possessed. When the second model held firm under twice the original weight, no applause greeted her, for she was alone in the quiet workshop. Still, the private satisfaction outweighed any prize. She had learned that a collapse, examined honestly, could teach what easy success never would. Failure had not defeated her; it had instructed her. Years later, mentoring younger students, she would tell them that the most useful lessons often arrive disguised as ruins.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-95a0a8d1",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's attitude toward Mei's failure?",
+          "options": [
+            "Affirming, treating it as valuable instruction",
+            "Pitying and sorrowful",
+            "Harshly critical of her mistake",
+            "Coolly indifferent to the outcome"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-5240-e8aba56b",
+      "kind": "reading",
+      "title": "urban futures",
+      "passage": "City officials unveiled a long-term plan this week to transform a disused railway corridor into an elevated green walkway threading through the densest district of the metropolis. Planners say the project aims to reconnect neighbourhoods that decades of industrial development had quietly severed from one another. Rather than demolish the ageing structure, designers intend to preserve its weathered framework and weave gardens, benches, and shaded paths along its length. Local residents have responded with cautious enthusiasm, welcoming the promise of open space while questioning whether rents nearby might climb beyond their reach. The lead architect acknowledged these concerns directly, noting that improvements to a district can sometimes displace the very people they were meant to serve. To address this, the council has pledged to protect existing affordable housing along the route. Construction is expected to proceed in phases over several years, with the first segment opening to the public next spring. Environmental groups have praised the design for retaining native plants and creating a refuge for birds within the concrete landscape. Whether the corridor becomes a model for other cities, officials admit, will depend less on its engineering than on how fairly its benefits are shared.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-0400a670",
+          "kind": "multipleChoice",
+          "prompt": "What do \"these concerns\" refer to?",
+          "options": [
+            "Residents' worry that nearby rents might climb beyond their reach",
+            "The plan to open the first segment next spring",
+            "Environmental groups' praise for native plants",
+            "Officials' doubt about the project's engineering"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-5241-839e377d",
+      "kind": "reading",
+      "title": "urban futures",
+      "passage": "City officials unveiled a long-term plan this week to transform a disused railway corridor into an elevated green walkway threading through the densest district of the metropolis. Planners say the project aims to reconnect neighbourhoods that decades of industrial development had quietly severed from one another. Rather than demolish the ageing structure, designers intend to preserve its weathered framework and weave gardens, benches, and shaded paths along its length. Local residents have responded with cautious enthusiasm, welcoming the promise of open space while questioning whether rents nearby might climb beyond their reach. The lead architect acknowledged these concerns directly, noting that improvements to a district can sometimes displace the very people they were meant to serve. To address this, the council has pledged to protect existing affordable housing along the route. Construction is expected to proceed in phases over several years, with the first segment opening to the public next spring. Environmental groups have praised the design for retaining native plants and creating a refuge for birds within the concrete landscape. Whether the corridor becomes a model for other cities, officials admit, will depend less on its engineering than on how fairly its benefits are shared.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-d54f1d55",
+          "kind": "multipleChoice",
+          "prompt": "Which best describes the author's tone in reporting the project?",
+          "options": [
+            "Balanced, noting both promise and concerns",
+            "Unreservedly enthusiastic",
+            "Openly hostile to the project",
+            "Bored and dismissive"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-5242-0fd28959",
+      "kind": "reading",
+      "title": "the power of stories",
+      "passage": "Long before written records, human beings gathered around fires to trade tales of journeys, dangers, and ancestors. These stories were never merely entertainment; they carried the accumulated knowledge a community needed to survive. A vivid narrative about a flood or a famine could encode practical wisdom more memorably than any list of instructions. Modern research suggests that the brain responds to a well-told story almost as if the events were unfolding in real life, engaging emotion alongside reason. This is why a single anecdote can shift an opinion that columns of statistics fail to move. Stories invite us to inhabit perspectives unlike our own, quietly stretching the boundaries of empathy. When we follow a character through hardship, we rehearse compassion without ever leaving our seats. Of course, this same power can be misused, for a persuasive tale may spread falsehood as effectively as truth. The remedy is not to distrust stories but to read them thoughtfully, asking who is telling them and why. Narrative remains one of the oldest technologies our species ever invented. It binds strangers into communities and transmits values across generations, shaping who we believe ourselves to be.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-7ee3ba1c",
+          "kind": "multipleChoice",
+          "prompt": "What do \"These stories\" refer to?",
+          "options": [
+            "The tales of journeys, dangers, and ancestors traded around fires",
+            "Modern research findings about the brain",
+            "Lists of instructions for survival",
+            "Columns of statistics that fail to move opinion"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-5243-999fb540",
+      "kind": "reading",
+      "title": "the power of stories",
+      "passage": "Long before written records, human beings gathered around fires to trade tales of journeys, dangers, and ancestors. These stories were never merely entertainment; they carried the accumulated knowledge a community needed to survive. A vivid narrative about a flood or a famine could encode practical wisdom more memorably than any list of instructions. Modern research suggests that the brain responds to a well-told story almost as if the events were unfolding in real life, engaging emotion alongside reason. This is why a single anecdote can shift an opinion that columns of statistics fail to move. Stories invite us to inhabit perspectives unlike our own, quietly stretching the boundaries of empathy. When we follow a character through hardship, we rehearse compassion without ever leaving our seats. Of course, this same power can be misused, for a persuasive tale may spread falsehood as effectively as truth. The remedy is not to distrust stories but to read them thoughtfully, asking who is telling them and why. Narrative remains one of the oldest technologies our species ever invented. It binds strangers into communities and transmits values across generations, shaping who we believe ourselves to be.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-12814551",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's attitude toward storytelling?",
+          "options": [
+            "Appreciative of its value while alert to its misuse",
+            "Wholly dismissive of its worth",
+            "Indifferent and uninvolved",
+            "Frightened of its dangers above all"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-5244-92943a11",
+      "kind": "reading",
+      "title": "biodiversity and ethics",
+      "passage": "When a species vanishes from the earth, the loss is not merely practical but moral, and we are too quick to count only the former. Defenders of conservation often emphasise the medicines we might extract from rainforests or the crops that depend on vanishing pollinators. Such arguments are valid, yet they reduce living creatures to instruments serving human convenience. I would contend that other species possess a worth that does not hinge on their usefulness to us. A creature shaped by millions of years of evolution represents an irreplaceable thread in the fabric of life, woven long before our own arrival. To unravel that thread carelessly is an act of arrogance, as if the planet existed solely for our exploitation. Recognising this does not require abandoning human interests, but it does demand humility about our place among countless other forms of life. Future generations will inherit whatever variety we choose to preserve or destroy. They may forgive our ignorance, but they will struggle to forgive our indifference. Protecting biodiversity, then, is less a matter of calculation than of conscience. The richness of the living world is a trust we hold, not a warehouse we are free to empty.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-049b4c07",
+          "kind": "multipleChoice",
+          "prompt": "In \"we are too quick to count only the former,\" what does \"the former\" refer to?",
+          "options": [
+            "The practical loss",
+            "The moral loss",
+            "The defenders of conservation",
+            "The medicines extracted from rainforests"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-5245-d796876e",
+      "kind": "reading",
+      "title": "biodiversity and ethics",
+      "passage": "When a species vanishes from the earth, the loss is not merely practical but moral, and we are too quick to count only the former. Defenders of conservation often emphasise the medicines we might extract from rainforests or the crops that depend on vanishing pollinators. Such arguments are valid, yet they reduce living creatures to instruments serving human convenience. I would contend that other species possess a worth that does not hinge on their usefulness to us. A creature shaped by millions of years of evolution represents an irreplaceable thread in the fabric of life, woven long before our own arrival. To unravel that thread carelessly is an act of arrogance, as if the planet existed solely for our exploitation. Recognising this does not require abandoning human interests, but it does demand humility about our place among countless other forms of life. Future generations will inherit whatever variety we choose to preserve or destroy. They may forgive our ignorance, but they will struggle to forgive our indifference. Protecting biodiversity, then, is less a matter of calculation than of conscience. The richness of the living world is a trust we hold, not a warehouse we are free to empty.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-4275a519",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's attitude toward the careless destruction of other species?",
+          "options": [
+            "Morally indignant and disapproving",
+            "Calmly neutral and balanced",
+            "Approving and supportive",
+            "Lightly amused and playful"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    }
+  ]
+}

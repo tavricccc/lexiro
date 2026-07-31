@@ -1,0 +1,1395 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 38,
+  "words": [
+    {
+      "wordKey": "consider",
+      "word": "consider",
+      "senses": [
+        {
+          "id": "sense-4705cfd2",
+          "pos": "verb",
+          "meaningZh": "考慮；斟酌",
+          "definitionEn": "think about carefully; weigh",
+          "examples": [
+            "I need to consider my options before making a decision."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-59685043",
+          "pos": "verb",
+          "meaningZh": "仔細思量；審慎考量",
+          "definitionEn": "give careful consideration to",
+          "examples": [
+            "Before making a decision, it is important to consider all of the potential consequences and options."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B1·L9 +1",
+        "textbookTitle": "三民 B1·L9、翰林 B1·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "consideration",
+      "word": "consideration",
+      "senses": [
+        {
+          "id": "sense-aa11f935",
+          "pos": "noun",
+          "meaningZh": "考量；斟酌",
+          "definitionEn": "the process of giving careful thought to something or someone",
+          "examples": [
+            "Before making a decision, it is important to take all factors into consideration, such as the cost, time commitment, and potential risks."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-fab34e5f",
+          "pos": "noun",
+          "meaningZh": "體諒；關懷他人",
+          "definitionEn": "kind and considerate regard for others",
+          "examples": [
+            "She showed consideration by offering to help her elderly neighbor carry groceries to her apartment."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B1·L9 +1",
+        "textbookTitle": "三民 B1·L9、翰林 B1·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "contact",
+      "word": "contact",
+      "senses": [
+        {
+          "id": "sense-5cce90fb",
+          "pos": "noun",
+          "meaningZh": "接觸；碰觸",
+          "definitionEn": "the act of physically touching someone or something",
+          "examples": [
+            "The doctor must avoid contact with the infected patients to prevent the spread of the disease."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-d6ad8177",
+          "pos": "noun",
+          "meaningZh": "近距接觸；往來",
+          "definitionEn": "the state or condition of being in direct physical proximity to someone or something",
+          "examples": [
+            "During the COVID-19 pandemic, it is recommended to avoid close contact with people who are sick."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L1",
+        "textbookTitle": "龍騰 B3·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "contain",
+      "word": "contain",
+      "senses": [
+        {
+          "id": "sense-08799589",
+          "pos": "verb",
+          "meaningZh": "包含；內有",
+          "definitionEn": "include something; have it as a component",
+          "examples": [
+            "The picnic basket contained sandwiches, fruit, and drinks for the outing."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-d8a0345d",
+          "pos": "verb",
+          "meaningZh": "裝有；容納",
+          "definitionEn": "have or hold something within; be made up of",
+          "examples": [
+            "The jar contains a hundred marbles."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L8 +2",
+        "textbookTitle": "龍騰 B2·L8、三民 B1·L6、翰林 B1·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "continue",
+      "word": "continue",
+      "senses": [
+        {
+          "id": "sense-32166cc3",
+          "pos": "verb",
+          "meaningZh": "持續；繼續",
+          "definitionEn": "to keep doing something without stopping; to maintain a particular state or condition",
+          "examples": [
+            "Despite facing numerous obstacles, she had the determination to continue pursuing her dream of becoming a doctor."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-02fcdbb6",
+          "pos": "verb",
+          "meaningZh": "不斷重複；延續",
+          "definitionEn": "to repeat an action without pause or termination",
+          "examples": [
+            "Despite the rain, the athletes continue to run in the marathon."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L4",
+        "textbookTitle": "龍騰 B2·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "contract",
+      "word": "contract",
+      "senses": [
+        {
+          "id": "sense-c287223d",
+          "pos": "noun",
+          "meaningZh": "合約；契約",
+          "definitionEn": "a formal written agreement between two or more parties",
+          "examples": [
+            "They signed a two-year contract with the company."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-dafba1a1",
+          "pos": "noun",
+          "meaningZh": "（橋牌）定約",
+          "definitionEn": "a variety of bridge in which the bidder receives points toward game only for the number of tricks he bid",
+          "examples": [
+            "John bid four on a contract but failed to make it, so the opposing team received extra points for their successful defense."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L8",
+        "textbookTitle": "三民 B4·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "control",
+      "word": "control",
+      "senses": [
+        {
+          "id": "sense-5083dd53",
+          "pos": "verb",
+          "meaningZh": "操控；操作",
+          "definitionEn": "handle and cause to function",
+          "examples": [
+            "In order to control the machine effectively, you must have a thorough understanding of its intricate workings."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-fdc379ce",
+          "pos": "noun",
+          "meaningZh": "控制權；掌控力",
+          "definitionEn": "the power to direct or determine",
+          "examples": [
+            "Lucas felt a sense of control over his life when he finally made a list of goals and started taking steps to achieve them."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L4",
+        "textbookTitle": "龍騰 B2·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "conversation",
+      "word": "conversation",
+      "senses": [
+        {
+          "id": "sense-4260aac9",
+          "pos": "noun",
+          "meaningZh": "交談；聊天",
+          "definitionEn": "an informal exchange of ideas or information between two or more people, typically between friends or family members, or within a small group of people.",
+          "examples": [
+            "Sara and Lucy were having a conversation about their childhood memories while sitting in a cozy coffee shop."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "corn",
+      "word": "corn",
+      "senses": [
+        {
+          "id": "sense-261a5b94",
+          "pos": "noun",
+          "meaningZh": "玉米粒；玉蜀黍",
+          "definitionEn": "the dried grains or kernels of corn used as animal feed or for meal",
+          "examples": [
+            "Farmers use corn as an inexpensive and nutritious feed for their livestock."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-6c7c2610",
+          "pos": "noun",
+          "meaningZh": "玉米（植株）；玉蜀黍",
+          "definitionEn": "a tall plant with large ears that grow kernels and is widely cultivated in America for human and animal consumption",
+          "examples": [
+            "The farmers harvested acres of corn and sold them to the local animal feed mill."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "countryside",
+      "word": "countryside",
+      "senses": [
+        {
+          "id": "sense-e75e315c",
+          "pos": "noun",
+          "meaningZh": "鄉村；農村地區",
+          "definitionEn": "the rural areas of a country or region, typically an agricultural or farming area",
+          "examples": [
+            "She always feels relaxed and refreshed when she goes to visit her grandparents in the countryside."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "couple",
+      "word": "couple",
+      "senses": [
+        {
+          "id": "sense-1c4e821b",
+          "pos": "noun",
+          "meaningZh": "一對；兩個",
+          "definitionEn": "two items of the same kind or a pair",
+          "examples": [
+            "I saw a couple of birds sitting on the tree branch."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-57cacfe1",
+          "pos": "noun",
+          "meaningZh": "情侶；夫妻",
+          "definitionEn": "a pair of people who are in a romantic or sexual relationship, or who are married or living together",
+          "examples": [
+            "Sarah and John have been a couple for over 10 years, and they recently got married."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "courage",
+      "word": "courage",
+      "senses": [
+        {
+          "id": "sense-f8d74d6e",
+          "pos": "noun",
+          "meaningZh": "勇氣；膽量",
+          "definitionEn": "the ability to do something that you know is difficult or dangerous",
+          "examples": [
+            "Despite the fear of heights, she had the courage to bungee jump from the highest point in the city."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L1 +1",
+        "textbookTitle": "龍騰 B2·L1、三民 B2·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "court",
+      "word": "court",
+      "senses": [
+        {
+          "id": "sense-33bd995e",
+          "pos": "noun",
+          "meaningZh": "法院；法庭",
+          "definitionEn": "an assembly of judges to conduct legal business",
+          "examples": [
+            "The court convened to hear the testimony of the witnesses and reach a verdict."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-c2ee6d3f",
+          "pos": "noun",
+          "meaningZh": "（君主的）朝廷；宮廷",
+          "definitionEn": "the governing body of a state led by the sovereign and their advisers",
+          "examples": [
+            "The court deliberated over the proposed legislation and made a decision based on the best interests of the country."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "cowboy",
+      "word": "cowboy",
+      "senses": [
+        {
+          "id": "sense-aabaa741",
+          "pos": "noun",
+          "meaningZh": "牛仔；牧牛工",
+          "definitionEn": "a person, especially a man, who is a skilled rider and often engages in working with cattle or horses on ranches",
+          "examples": [
+            "Hank grew up on a ranch and learned to ride horses and handle cattle, he was a true cowboy in every sense of the word."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-db15d915",
+          "pos": "noun",
+          "meaningZh": "莽撞者；蠻幹的人",
+          "definitionEn": "someone who is reckless or irresponsible in their behavior or actions (especially when driving vehicles)",
+          "examples": [
+            "He’s a cowboy behind the wheel, weaving in and out of traffic without any regard for other drivers."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "crayon",
+      "word": "crayon",
+      "senses": [
+        {
+          "id": "sense-b7f251b5",
+          "pos": "noun",
+          "meaningZh": "蠟筆；彩色蠟筆",
+          "definitionEn": "A writing tool made of wax and pigment, used for drawing and coloring.",
+          "examples": [
+            "She colored in the picture with different shades of crayon."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-5d402f8b",
+          "pos": "verb",
+          "meaningZh": "用蠟筆畫；塗蠟筆",
+          "definitionEn": "To create art with crayons by applying color or making marks with a crayon.",
+          "examples": [
+            "Emily loves to crayon on large sheets of paper, using vibrant colors to create beautiful drawings of flowers."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "cream",
+      "word": "cream",
+      "senses": [
+        {
+          "id": "sense-e4f042aa",
+          "pos": "noun",
+          "meaningZh": "鮮奶油；乳脂",
+          "definitionEn": "the part of milk that contains butterfat",
+          "examples": [
+            "John poured a dollop of cream into his coffee, adding a touch of richness and flavor."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-33861a02",
+          "pos": "verb",
+          "meaningZh": "加奶油；攪入奶油",
+          "definitionEn": "to add cream to something, like coffee",
+          "examples": [
+            "I like to cream my coffee with a generous amount of whipped cream and a sprinkle of cinnamon."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "create",
+      "word": "create",
+      "senses": [
+        {
+          "id": "sense-c140d10d",
+          "pos": "verb",
+          "meaningZh": "創造；創作",
+          "definitionEn": "to bring something into existence",
+          "examples": [
+            "She used her artistic talents to create a beautiful painting."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-80711af7",
+          "pos": "verb",
+          "meaningZh": "製作；打造",
+          "definitionEn": "to make something happen or exist; to cause something to be or to become",
+          "examples": [
+            "John used his woodworking skills to create a beautiful wooden sculpture."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L4 +2",
+        "textbookTitle": "龍騰 B1·L4、三民 B1·L9、翰林 B1·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "crime",
+      "word": "crime",
+      "senses": [
+        {
+          "id": "sense-26b93821",
+          "pos": "noun",
+          "meaningZh": "罪行；惡行",
+          "definitionEn": "an evil act not necessarily punishable by law",
+          "examples": [
+            "Spreading rumors about a person with the intention of defaming their character is a crime against their reputation, but not punishable by law."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-d0884723",
+          "pos": "noun",
+          "meaningZh": "刑事罪；犯罪行為",
+          "definitionEn": "(criminal law) an act punishable by law; usually considered an evil act",
+          "examples": [
+            "Committing a crime such as burglary or robbery can result in imprisonment or a hefty fine."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L9 +1",
+        "textbookTitle": "龍騰 B1·L9、三民 B4·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "crisis",
+      "word": "crisis",
+      "senses": [
+        {
+          "id": "sense-43f4e88f",
+          "pos": "noun",
+          "meaningZh": "危機；緊急狀況",
+          "definitionEn": "an unstable situation of extreme danger or difficulty",
+          "examples": [
+            "The economic crisis caused by the pandemic led to widespread unemployment and financial insecurity for millions of people."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-f3ae2fd8",
+          "pos": "noun",
+          "meaningZh": "轉折點；關鍵時刻",
+          "definitionEn": "a crucial stage or turning point in the course of something",
+          "examples": [
+            "The company is experiencing a financial crisis and needs to lay off some employees to stay afloat."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "crow",
+      "word": "crow",
+      "senses": [
+        {
+          "id": "sense-2c6d984c",
+          "pos": "noun",
+          "meaningZh": "烏鴉",
+          "definitionEn": "a large black bird with a harsh cry",
+          "examples": [
+            "A crow landed on the fence and cawed loudly."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-0a40a231",
+          "pos": "verb",
+          "meaningZh": "嘎嘎叫；發出嘈雜鳴聲",
+          "definitionEn": "to make a loud, harsh sound",
+          "examples": [
+            "The cawing crows woke me up early in the morning."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "crowd",
+      "word": "crowd",
+      "senses": [
+        {
+          "id": "sense-036177ff",
+          "pos": "noun",
+          "meaningZh": "人群；大批人",
+          "definitionEn": "a large group of things or people considered together",
+          "examples": [
+            "The crowd cheered wildly as their favorite band took the stage."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-459613da",
+          "pos": "noun",
+          "meaningZh": "一幫朋友；圈子",
+          "definitionEn": "a group of friends",
+          "examples": [
+            "Every Friday night, my crowd of friends and I gather at my place for a movie marathon."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L5",
+        "textbookTitle": "龍騰 B1·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "cultural",
+      "word": "cultural",
+      "senses": [
+        {
+          "id": "sense-105b83d2",
+          "pos": "adjective",
+          "meaningZh": "文化的；與文化相關的",
+          "definitionEn": "relating to the shared knowledge and values of a society",
+          "examples": [
+            "It is important to respect the cultural traditions of different communities."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-74d4ad67",
+          "pos": "adjective",
+          "meaningZh": "民族文化的；習俗傳承的",
+          "definitionEn": "deriving from, distinctive of, or related to the ways of living built up by a group of people",
+          "examples": [
+            "The traditional dance performed by the tribe is a cultural experience that has been handed down from generation to generation."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B1·L8",
+        "textbookTitle": "三民 B1·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "culture",
+      "word": "culture",
+      "senses": [
+        {
+          "id": "sense-248e73f0",
+          "pos": "noun",
+          "meaningZh": "文化；文明",
+          "definitionEn": "all the knowledge, beliefs, arts, morals, laws, customs, and habits shared by a society or group of people",
+          "examples": [
+            "During our trip to Japan, we immersed ourselves in the local culture by trying traditional food, visiting temples, and participating in tea ceremonies."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B1·L8",
+        "textbookTitle": "三民 B1·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "cure",
+      "word": "cure",
+      "senses": [
+        {
+          "id": "sense-9991e7c5",
+          "pos": "noun",
+          "meaningZh": "療法；治療藥物",
+          "definitionEn": "a medicine or therapy that cures disease or relieves pain",
+          "examples": [
+            "The new drug was able to _cure_ the patient’s illness within a week."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-9f934bec",
+          "pos": "verb",
+          "meaningZh": "醃製；鹽漬保存",
+          "definitionEn": "to preserve food by drying, salting, or chemical processing",
+          "examples": [
+            "The chef used a curing technique to preserve the fish for the winter months."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "curious",
+      "word": "curious",
+      "senses": [
+        {
+          "id": "sense-b3252909",
+          "pos": "adjective",
+          "meaningZh": "好奇的；求知若渴的",
+          "definitionEn": "having a strong desire to learn or know something",
+          "examples": [
+            "Emily was so curious about how the magic trick worked that she spent hours researching and practicing it."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-124ce775",
+          "pos": "adjective",
+          "meaningZh": "奇特的；不尋常的",
+          "definitionEn": "unusual; strange; unexpected",
+          "examples": [
+            "The sight of a herd of goats climbing trees in Morocco would certainly pique one's curious nature."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L3 +1",
+        "textbookTitle": "龍騰 B2·L3、翰林 B1·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "current",
+      "word": "current",
+      "senses": [
+        {
+          "id": "sense-8579d83f",
+          "pos": "adjective",
+          "meaningZh": "現在的；當前的",
+          "definitionEn": "happening or existing now; of the present time",
+          "examples": [
+            "The current price of gasoline is very high."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-4d749108",
+          "pos": "noun",
+          "meaningZh": "電流",
+          "definitionEn": "a flow of electricity through a conductor",
+          "examples": [
+            "The light was not working because there was no current flowing through the wires."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-694554a2",
+          "pos": "noun",
+          "meaningZh": "水流；氣流",
+          "definitionEn": "a steady flow of a fluid, typically water or air, in a particular direction",
+          "examples": [
+            "The current in the river was strong, making it difficult to swim across."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "curtain",
+      "word": "curtain",
+      "senses": [
+        {
+          "id": "sense-f0d678a0",
+          "pos": "noun",
+          "meaningZh": "窗簾；布簾",
+          "definitionEn": "a piece of cloth or other material that is hung to cover a window or opening",
+          "examples": [
+            "As the sun streamed into the room, Sarah pulled back the curtain to let in the light."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-3510da11",
+          "pos": "verb",
+          "meaningZh": "掛上窗簾；以簾隔開",
+          "definitionEn": "to provide or hang a curtain or curtains in a place to cover or divide it",
+          "examples": [
+            "After moving into their new apartment, they decided to curtain off the dining area to create a separate space."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "custom",
+      "word": "custom",
+      "senses": [
+        {
+          "id": "sense-7996bbeb",
+          "pos": "noun",
+          "meaningZh": "習俗；風俗",
+          "definitionEn": "a habitual or accepted practice",
+          "examples": [
+            "Wearing traditional attire during religious ceremonies is a common custom in many cultures."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-b48bc24b",
+          "pos": "noun",
+          "meaningZh": "慣例；長期沿用的做法",
+          "definitionEn": "a specific practice that has been in place for a long time",
+          "examples": [
+            "One common custom in many cultures is the act of shaking hands when greeting someone."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B1·L8",
+        "textbookTitle": "三民 B1·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "customer",
+      "word": "customer",
+      "senses": [
+        {
+          "id": "sense-948dfb4d",
+          "pos": "noun",
+          "meaningZh": "顧客；客戶",
+          "definitionEn": "a person who buys a good or service from a shop or business",
+          "examples": [
+            "The customer approached the cashier and asked about the return policy."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L8 +1",
+        "textbookTitle": "龍騰 B1·L8、三民 B2·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "cycle",
+      "word": "cycle",
+      "senses": [
+        {
+          "id": "sense-fc1023a1",
+          "pos": "noun",
+          "meaningZh": "循環；周期",
+          "definitionEn": "a series of events that happen over and over again in the same order",
+          "examples": [
+            "The water cycle, which includes evaporation, condensation, and precipitation, is a natural cycle that continuously occurs in the environment."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-578abc8a",
+          "pos": "noun",
+          "meaningZh": "一次週期；騎車一趟",
+          "definitionEn": "one complete occurrence of a regularly repeated activity or event",
+          "examples": [
+            "Every morning, I go for a cycle around the park before starting my day."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L4",
+        "textbookTitle": "龍騰 B3·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    }
+  ]
+}

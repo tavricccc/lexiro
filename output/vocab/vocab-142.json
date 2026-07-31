@@ -1,0 +1,1367 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 142,
+  "words": [
+    {
+      "wordKey": "documentary",
+      "word": "documentary",
+      "senses": [
+        {
+          "id": "sense-e1ddd9ab",
+          "pos": "noun",
+          "meaningZh": "紀錄片",
+          "definitionEn": "a film or TV program that presents factual information about a person, event, or topic",
+          "examples": [
+            "Yesterday, I watched an insightful documentary about climate change and its impact on the environment."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-63a4b610",
+          "pos": "adjective",
+          "meaningZh": "文獻的；以文件為據的",
+          "definitionEn": "relating to documents or based on written evidence",
+          "examples": [
+            "In the documentary, the filmmaker presented a compelling case by showcasing a wealth of historical documents and testimonies."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "domain",
+      "word": "domain",
+      "senses": [
+        {
+          "id": "sense-97337a87",
+          "pos": "noun",
+          "meaningZh": "領土；管轄範圍",
+          "definitionEn": "territory over which rule or control is exercised",
+          "examples": [
+            "After winning the war, the victorious king extended his domain, increasing his control over neighboring lands."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-028027a6",
+          "pos": "noun",
+          "meaningZh": "定義域；值域（數學）",
+          "definitionEn": "the set of values of the independent variable for which a function is defined (mathematics)",
+          "examples": [
+            "In the equation y = 2x + 3, the domain is all real numbers because the function is defined for any value of x."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "dome",
+      "word": "dome",
+      "senses": [
+        {
+          "id": "sense-6d31651f",
+          "pos": "noun",
+          "meaningZh": "穹頂；圓頂",
+          "definitionEn": "a concave shape with the center bulging outward, often used as a roof or for decoration",
+          "examples": [
+            "The magnificent glass dome of the building allowed natural light to flood the atrium, creating a bright and airy atmosphere."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-62510e51",
+          "pos": "noun",
+          "meaningZh": "圓形屋頂；半球形建築",
+          "definitionEn": "a hemispherical or dome-shaped roof, often found on religious or governmental buildings",
+          "examples": [
+            "The majestic dome of the cathedral loomed above the city, its intricate stained glass windows casting vibrant colors across the interior."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "donate",
+      "word": "donate",
+      "senses": [
+        {
+          "id": "sense-3f53b75f",
+          "pos": "verb",
+          "meaningZh": "捐贈；捐獻",
+          "definitionEn": "to give something, especially money, to a person or an organization in order to help them",
+          "examples": [
+            "After the devastating earthquake, many people came forward to donate money and supplies to the affected regions."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "donation",
+      "word": "donation",
+      "senses": [
+        {
+          "id": "sense-0ef84e14",
+          "pos": "noun",
+          "meaningZh": "捐款；捐贈行為",
+          "definitionEn": "the act of giving something, such as money or goods, to help a person or organization",
+          "examples": [
+            "After the devastating earthquake, many people made generous donations to provide relief and support to the affected families."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-42dcc233",
+          "pos": "noun",
+          "meaningZh": "捐贈物；捐款",
+          "definitionEn": "a gift, especially one made to a charity or public institution",
+          "examples": [
+            "After the devastating hurricane, the community came together and organized a donation drive to collect essential supplies for the local shelter."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "donor",
+      "word": "donor",
+      "senses": [
+        {
+          "id": "sense-74265f06",
+          "pos": "noun",
+          "meaningZh": "捐贈者；器官捐贈者",
+          "definitionEn": "(medicine) someone who gives blood or tissue or an organ to be used in another person (the host)",
+          "examples": [
+            "She signed up to become a donor after her brother was in an accident and needed a bone marrow transplant."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-4abf6b33",
+          "pos": "noun",
+          "meaningZh": "捐款人；贈與人",
+          "definitionEn": "a person who makes a gift of property",
+          "examples": [
+            "The donor gave a large sum of money to the charity to support their cause."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "doorway",
+      "word": "doorway",
+      "senses": [
+        {
+          "id": "sense-5939cc99",
+          "pos": "noun",
+          "meaningZh": "門洞；門廊入口",
+          "definitionEn": "the space in a wall through which you enter or leave a room or building; the entrance that can be closed by a door",
+          "examples": [
+            "She hesitated at the doorway, wondering if she should go in or stay out."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "dough",
+      "word": "dough",
+      "senses": [
+        {
+          "id": "sense-8400b467",
+          "pos": "noun",
+          "meaningZh": "麵糰",
+          "definitionEn": "a mixture of flour, water, and other ingredients, used to make bread, pastry, or other baked goods",
+          "examples": [
+            "To prepare the pizza, she carefully kneaded the dough until it was soft and elastic."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-b5a8e5ca",
+          "pos": "noun",
+          "meaningZh": "錢；鈔票（俚語）",
+          "definitionEn": "informal term for money",
+          "examples": [
+            "After winning the lottery, he was swimming in dough and could afford to buy his dream house."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "dreadful",
+      "word": "dreadful",
+      "senses": [
+        {
+          "id": "sense-d21bc910",
+          "pos": "adjective",
+          "meaningZh": "可怕的；令人恐懼的",
+          "definitionEn": "causing fear, terror, or dread",
+          "examples": [
+            "The storm was so bad, it brought dreadful news of casualties."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-9f0135e1",
+          "pos": "adjective",
+          "meaningZh": "糟透的；極差的",
+          "definitionEn": "very unpleasant",
+          "examples": [
+            "The food at the restaurant was so dreadful that we ended up leaving without eating anything."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L10",
+        "textbookTitle": "三民 B4·L10"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "driveway",
+      "word": "driveway",
+      "senses": [
+        {
+          "id": "sense-57fb25f2",
+          "pos": "noun",
+          "meaningZh": "私人車道；入宅車道",
+          "definitionEn": "a private road leading from a public road to a house or garage",
+          "examples": [
+            "I parked my car in the driveway and walked up to the front door."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "drought",
+      "word": "drought",
+      "senses": [
+        {
+          "id": "sense-281c8a14",
+          "pos": "noun",
+          "meaningZh": "乾旱；缺水",
+          "definitionEn": "a prolonged shortage or absence of something, especially water",
+          "examples": [
+            "During the summer, the region experienced a severe drought, leaving the fields barren and the rivers dry."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-b85df6e8",
+          "pos": "noun",
+          "meaningZh": "雨量不足；旱災",
+          "definitionEn": "a shortage of rainfall or precipitation",
+          "examples": [
+            "The country experienced a severe drought, causing crops to wither and water supplies to run dangerously low."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "ecological",
+      "word": "ecological",
+      "senses": [
+        {
+          "id": "sense-baa1e40e",
+          "pos": "adjective",
+          "meaningZh": "生態學的",
+          "definitionEn": "relating to the science of ecology",
+          "examples": [
+            "The ecological impact of the oil spill on the marine wildlife is devastating."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-289ce754",
+          "pos": "adjective",
+          "meaningZh": "生態平衡的；生態相互依存的",
+          "definitionEn": "characterized by the interdependence of living organisms in an environment",
+          "examples": [
+            "The ecological balance of the forest was disrupted by the introduction of non-native species."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "ecology",
+      "word": "ecology",
+      "senses": [
+        {
+          "id": "sense-2fe167af",
+          "pos": "noun",
+          "meaningZh": "生態學",
+          "definitionEn": "the branch of biology concerned with the relationships between organisms and their environment. It includes the study of how organisms interact with each other and with their non-living surroundings.",
+          "examples": [
+            "In order to understand the impact of pollution on aquatic life, ecologists study the ecology of rivers and lakes, assessing how various organisms are affected by changes in their environment."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-967242f5",
+          "pos": "noun",
+          "meaningZh": "（某地的）生態環境",
+          "definitionEn": "the environment as it relates to living organisms",
+          "examples": [
+            "The study of how pollution affects the habitats of plants and animals is an important aspect of ecology."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "ecosystem",
+      "word": "ecosystem",
+      "senses": [
+        {
+          "id": "sense-fb68dc87",
+          "pos": "noun",
+          "meaningZh": "生態系統",
+          "definitionEn": "a community of living organisms interacting with each other and their environment",
+          "examples": [
+            "The coral reef is a complex ecosystem filled with diverse marine life, from colorful fish to tiny plankton."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-12471cf6",
+          "pos": "noun",
+          "meaningZh": "生態體系",
+          "definitionEn": "a system formed by the interaction of a community of organisms with their physical and biological environment",
+          "examples": [
+            "The coral reef ecosystem is a delicate balance, where even a minor disturbance can have significant and far-reaching impacts on the entire system."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "ego",
+      "word": "ego",
+      "senses": [
+        {
+          "id": "sense-3a9985ba",
+          "pos": "noun",
+          "meaningZh": "自大；自我優越感",
+          "definitionEn": "an inflated feeling of pride in your superiority to others",
+          "examples": [
+            "John's ego was so inflated that he believed he was the smartest person in the room, dismissing any opinions or ideas from others."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-ae32695d",
+          "pos": "noun",
+          "meaningZh": "自我意識；自我認同",
+          "definitionEn": "your consciousness of your own identity",
+          "examples": [
+            "When she won the competition, her ego got inflated and she started belittling her opponents."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "elaborate",
+      "word": "elaborate",
+      "senses": [
+        {
+          "id": "sense-34711505",
+          "pos": "adjective",
+          "meaningZh": "精心製作的；繁複精緻的",
+          "definitionEn": "showing great care and attention to detail",
+          "examples": [
+            "The architect was praised for the elaborate design of the skyscraper, which featured intricate details and ornate decorations."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-c9456b1f",
+          "pos": "verb",
+          "meaningZh": "詳細說明；進一步闡述",
+          "definitionEn": "to provide additional details or explanations for something previously mentioned",
+          "examples": [
+            "During the presentation, the speaker was asked to elaborate on the data analysis methods used in the study."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L4",
+        "textbookTitle": "龍騰 B4·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "eligible",
+      "word": "eligible",
+      "senses": [
+        {
+          "id": "sense-8b370537",
+          "pos": "adjective",
+          "meaningZh": "有資格的；符合條件的",
+          "definitionEn": "having the right qualifications or fulfilling the necessary conditions to be chosen",
+          "examples": [
+            "After completing the required courses, she became eligible to apply for the scholarship."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "eloquent",
+      "word": "eloquent",
+      "senses": [
+        {
+          "id": "sense-149f611d",
+          "pos": "adjective",
+          "meaningZh": "雄辯的；口才流利的",
+          "definitionEn": "able to express oneself fluently and persuasively.",
+          "examples": [
+            "The politician delivered an eloquent speech that captivated the audience and convinced them of his stance on the issue."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-bda5db88",
+          "pos": "adjective",
+          "meaningZh": "表達清晰有力的",
+          "definitionEn": "clearly expressing or indicating something.",
+          "examples": [
+            "During her speech, the politician used eloquent language to convey her message."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L6",
+        "textbookTitle": "龍騰 B5·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "embrace",
+      "word": "embrace",
+      "senses": [
+        {
+          "id": "sense-adccbd1d",
+          "pos": "verb",
+          "meaningZh": "擁抱；緊抱",
+          "definitionEn": "Hug tightly with affection",
+          "examples": [
+            "After being away for six months, the couple embraced each other with tears in their eyes."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-5f2eeaef",
+          "pos": "noun",
+          "meaningZh": "擁抱；抱持",
+          "definitionEn": "An act of holding someone tightly in one’s arms",
+          "examples": [
+            "After a long time apart, the couple embraced each other at the train station with tears in their eyes."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L7",
+        "textbookTitle": "三民 B4·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "emission",
+      "word": "emission",
+      "senses": [
+        {
+          "id": "sense-cf95c2f5",
+          "pos": "noun",
+          "meaningZh": "排放；散發（氣體或輻射）",
+          "definitionEn": "the act of emitting or releasing something, such as gas or radiation",
+          "examples": [
+            "The emission of carbon dioxide from factories and cars contributes to climate change."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-fb37c5a6",
+          "pos": "noun",
+          "meaningZh": "（體液或氣味的）排出；分泌",
+          "definitionEn": "a bodily process by which substances are discharged from the body",
+          "examples": [
+            "The smell in the room was due to the emission of body odor from the athletes after the game."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "endorse",
+      "word": "endorse",
+      "senses": [
+        {
+          "id": "sense-7461d819",
+          "pos": "verb",
+          "meaningZh": "背書代言；公開支持",
+          "definitionEn": "to express support or approval",
+          "examples": [
+            "The famous athlete has endorsed this sports brand for several years."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-30d1845b",
+          "pos": "verb",
+          "meaningZh": "認可；贊同",
+          "definitionEn": "to give one’s approval to or support for something",
+          "examples": [
+            "The company asked the famous athlete to endorse their new product on social media, hoping his approval would increase sales."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "endorsement",
+      "word": "endorsement",
+      "senses": [
+        {
+          "id": "sense-5f212445",
+          "pos": "noun",
+          "meaningZh": "推薦語；代言詞",
+          "definitionEn": "a promotional statement, such as on the cover of a book",
+          "examples": [
+            "The endorsement from a famous author on the cover of the book helped boost its sales."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-04c2b701",
+          "pos": "noun",
+          "meaningZh": "簽署認可；背書",
+          "definitionEn": "a signature that validates or approves something",
+          "examples": [
+            "The president's endorsement of the candidate gave her campaign a significant boost."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "enterprise",
+      "word": "enterprise",
+      "senses": [
+        {
+          "id": "sense-634fed26",
+          "pos": "noun",
+          "meaningZh": "企業；商業機構",
+          "definitionEn": "a group or organization established to undertake commercial activities",
+          "examples": [
+            "During the pandemic, many small enterprises had to shut down their businesses due to decreased demand and financial losses."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-d64a3f28",
+          "pos": "noun",
+          "meaningZh": "（需勇氣的）事業；進取之舉",
+          "definitionEn": "a purposeful or industrious undertaking that requires effort or courage",
+          "examples": [
+            "Starting a new business is an enterprise that requires a lot of hard work and dedication."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L6",
+        "textbookTitle": "龍騰 B4·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "enthusiastic",
+      "word": "enthusiastic",
+      "senses": [
+        {
+          "id": "sense-5133a45f",
+          "pos": "adjective",
+          "meaningZh": "熱情的；興致勃勃的",
+          "definitionEn": "having or showing great excitement and interest",
+          "examples": [
+            "Sarah was enthusiastic about joining the hiking club and couldn't wait to explore the trails."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-d8e2a862",
+          "pos": "adjective",
+          "meaningZh": "充滿熱忱的",
+          "definitionEn": "filled with or characterized by enthusiasm",
+          "examples": [
+            "She was so enthusiastic about her new job that she woke up early every day, eager to get to work."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L9 +1",
+        "textbookTitle": "龍騰 B3·L9、三民 B4·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "entitle",
+      "word": "entitle",
+      "senses": [
+        {
+          "id": "sense-ab9e7036",
+          "pos": "verb",
+          "meaningZh": "賦予權利；使有資格",
+          "definitionEn": "give someone the right to do or have something",
+          "examples": [
+            "Winning the competition entitles her to a cash prize and a trip to Disneyland."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-d3995d51",
+          "pos": "verb",
+          "meaningZh": "命名；給予標題",
+          "definitionEn": "give a title to something or someone",
+          "examples": [
+            "The author decided to entitle his book 'The Lost City'."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "entity",
+      "word": "entity",
+      "senses": [
+        {
+          "id": "sense-decac6fb",
+          "pos": "noun",
+          "meaningZh": "實體；獨立個體",
+          "definitionEn": "something that exists as a distinct and separate unit, whether it is living or not",
+          "examples": [
+            "In the world of online gaming, each avatar is an entity that represents a player."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "entrepreneur",
+      "word": "entrepreneur",
+      "senses": [
+        {
+          "id": "sense-7133a89d",
+          "pos": "noun",
+          "meaningZh": "創業家；企業家",
+          "definitionEn": "A person who sets up a business or businesses, taking on financial risk in the hope of profit.",
+          "examples": [
+            "John quit his stable job to pursue his dream of opening a bakery. As an entrepreneur, he invested his savings into purchasing equipment, hiring staff, and marketing his products, all with the hope of turning a profit."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "envious",
+      "word": "envious",
+      "senses": [
+        {
+          "id": "sense-c62fffcc",
+          "pos": "adjective",
+          "meaningZh": "羨慕的；嫉妒的",
+          "definitionEn": "feeling or showing a desire to have what someone else possesses:",
+          "examples": [
+            "While at the party, Sarah couldn't help but feel envious of her friend's luxurious new car."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-baa4d9d6",
+          "pos": "adjective",
+          "meaningZh": "充滿妒意的",
+          "definitionEn": "characterized by envy or jealousy:",
+          "examples": [
+            "After seeing her sister win the award, Lisa couldn't hide her envious glances."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "envision",
+      "word": "envision",
+      "senses": [
+        {
+          "id": "sense-3f77177a",
+          "pos": "verb",
+          "meaningZh": "構想；想像",
+          "definitionEn": "to picture in one’s mind, to imagine possible",
+          "examples": [
+            "As a graphic designer, I always try to envision how the final product will look before starting the project."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-01d9a361",
+          "pos": "verb",
+          "meaningZh": "預見；在腦中描繪",
+          "definitionEn": "to have a mental image of something that isn’t present or hasn’t happened yet",
+          "examples": [
+            "She can envision her future as a successful businesswoman."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "epidemic",
+      "word": "epidemic",
+      "senses": [
+        {
+          "id": "sense-8ef63008",
+          "pos": "noun",
+          "meaningZh": "流行病；疫情",
+          "definitionEn": "a widespread outbreak of an infectious disease affecting many individuals at the same time",
+          "examples": [
+            "The 1918 influenza epidemic killed millions around the world."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-69d4f030",
+          "pos": "adjective",
+          "meaningZh": "流行性的；蔓延的",
+          "definitionEn": "(of a disease or something similar) attacking or affecting many individuals in a community or population at the same time, especially in a rapid and uncontrollable manner",
+          "examples": [
+            "The outbreak of Spanish Flu in 1918 was an epidemic that affected millions across the world and claimed millions of lives."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    }
+  ]
+}

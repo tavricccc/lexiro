@@ -1,0 +1,1339 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 177,
+  "words": [
+    {
+      "wordKey": "dresser",
+      "word": "dresser",
+      "senses": [
+        {
+          "id": "sense-b1a1432a",
+          "pos": "noun",
+          "meaningZh": "梳妝台；衣櫃",
+          "definitionEn": "a piece of furniture with drawers, used for storing clothes, often with a mirror on top",
+          "examples": [
+            "Sarah opened her dresser and pulled out a fresh pair of socks."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "dressing",
+      "word": "dressing",
+      "senses": [
+        {
+          "id": "sense-ff0c00e6",
+          "pos": "noun",
+          "meaningZh": "傷口敷料；繃帶",
+          "definitionEn": "a covering put on an injury, especially when there has been bleeding through the skin",
+          "examples": [
+            "After cleaning the wound, he applied a sterile dressing to prevent any infection."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-08985737",
+          "pos": "noun",
+          "meaningZh": "沙拉醬；調味醬",
+          "definitionEn": "salad dressing",
+          "examples": [
+            "She drizzled the tangy vinaigrette dressing over her fresh garden salad."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "dual",
+      "word": "dual",
+      "senses": [
+        {
+          "id": "sense-cd38e6e6",
+          "pos": "adjective",
+          "meaningZh": "雙重的；兩部分組成的",
+          "definitionEn": "Consisting of two parts or components, usually in pairs.",
+          "examples": [
+            "The dual exhaust system on the sports car enhances its performance and gives it a distinctive sound."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-0e16f475",
+          "pos": "adjective",
+          "meaningZh": "雙面的；兩種截然不同特質的",
+          "definitionEn": "Having two distinct aspects or qualities that are often diametrically opposed.",
+          "examples": [
+            "Her personality was a dual mix of sweetness and ferocity."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "dubious",
+      "word": "dubious",
+      "senses": [
+        {
+          "id": "sense-e421031f",
+          "pos": "adjective",
+          "meaningZh": "令人存疑的；可疑的",
+          "definitionEn": "causing doubt or uncertainty",
+          "examples": [
+            "The manager had a dubious expression on his face as he reviewed the suspect's alibi."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-6029e17f",
+          "pos": "adjective",
+          "meaningZh": "靠不住的；不可信賴的",
+          "definitionEn": "not to be relied upon; suspect",
+          "examples": [
+            "The salesman's dubious claims about the product's effectiveness made me hesitant to make a purchase."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "duration",
+      "word": "duration",
+      "senses": [
+        {
+          "id": "sense-99a3098b",
+          "pos": "noun",
+          "meaningZh": "持續時間；時長",
+          "definitionEn": "the period of time during which something happens or exists",
+          "examples": [
+            "The duration of the movie was two hours and thirty minutes."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-57133587",
+          "pos": "noun",
+          "meaningZh": "期間；延續長度",
+          "definitionEn": "the length of time that something continues or lasts",
+          "examples": [
+            "The duration of the concert was three hours."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L10",
+        "textbookTitle": "三民 B4·L10"
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "dusk",
+      "word": "dusk",
+      "senses": [
+        {
+          "id": "sense-114cc059",
+          "pos": "noun",
+          "meaningZh": "黃昏；薄暮",
+          "definitionEn": "the time of day immediately following sunset",
+          "examples": [
+            "The evening sky turned a deep red as the sun sank below the horizon, marking the beginning of dusk."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-fe2642ad",
+          "pos": "verb",
+          "meaningZh": "近黃昏；（眼神）變暗",
+          "definitionEn": "to approach or continue until evening, to darken (said of a person’s eyes)",
+          "examples": [
+            "The town was cast in an eerie light as dusk approached."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "dwarf",
+      "word": "dwarf",
+      "senses": [
+        {
+          "id": "sense-96aa9e5b",
+          "pos": "verb",
+          "meaningZh": "使顯得渺小；使相形見絀",
+          "definitionEn": "make something seem smaller or insignificant by comparison",
+          "examples": [
+            "Standing next to the towering skyscrapers, the small cottage was completely dwarfed in size."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-06e7d902",
+          "pos": "verb",
+          "meaningZh": "阻礙生長；使矮化",
+          "definitionEn": "prevent the growth or development of something",
+          "examples": [
+            "Excessive pruning can dwarf the growth of a young tree."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "dwell",
+      "word": "dwell",
+      "senses": [
+        {
+          "id": "sense-76b57d70",
+          "pos": "verb",
+          "meaningZh": "居住；定居",
+          "definitionEn": "to live or inhabit in a particular place",
+          "examples": [
+            "She chose to dwell in a cozy cottage nestled in the mountains."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "dwelling",
+      "word": "dwelling",
+      "senses": [
+        {
+          "id": "sense-50e5eba3",
+          "pos": "noun",
+          "meaningZh": "住所；住宅",
+          "definitionEn": "a place where someone lives; a house or apartment",
+          "examples": [
+            "Alice's small cottage nestled in the countryside is a charming dwelling."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "eccentric",
+      "word": "eccentric",
+      "senses": [
+        {
+          "id": "sense-dec4a311",
+          "pos": "adjective",
+          "meaningZh": "古怪的；與眾不同的",
+          "definitionEn": "strange or unusual, often in a funny or amusing way.",
+          "examples": [
+            "At the costume party, she showed up dressed as a unicorn, complete with a horn, rainbow-colored wig, and stilts - she's definitely the most eccentric person I know!"
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-267918d5",
+          "pos": "noun",
+          "meaningZh": "怪人；行為古怪者",
+          "definitionEn": "a person who behaves in an unconventional or peculiar manner.",
+          "examples": [
+            "At the party, everyone was wearing formal attire, but John showed up in a clown costume. He is such an eccentric."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "eclipse",
+      "word": "eclipse",
+      "senses": [
+        {
+          "id": "sense-a8d14f3f",
+          "pos": "noun",
+          "meaningZh": "日蝕；月蝕；天蝕",
+          "definitionEn": "an astronomical event that occurs when one celestial body obscures another",
+          "examples": [
+            "During the eclipse, the moon will pass between the sun and Earth and block out the sun’s light."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-2983b10b",
+          "pos": "verb",
+          "meaningZh": "遮蔽；造成蝕象",
+          "definitionEn": "to cause an eclipse of a celestial body by coming between it and its source of illumination",
+          "examples": [
+            "The moon will eclipse the sun tomorrow for just a few minutes."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "edible",
+      "word": "edible",
+      "senses": [
+        {
+          "id": "sense-0ab5d49d",
+          "pos": "adjective",
+          "meaningZh": "可食用的",
+          "definitionEn": "suitable for use as food",
+          "examples": [
+            "The chocolate cake was not only beautiful, but also delicious and completely edible."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-a53377bf",
+          "pos": "noun",
+          "meaningZh": "食物；可食之物",
+          "definitionEn": "any substance that can be used as food",
+          "examples": [
+            "The berries growing on this tree are edible and can be used to make jams and pies."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "editorial",
+      "word": "editorial",
+      "senses": [
+        {
+          "id": "sense-9cde85db",
+          "pos": "noun",
+          "meaningZh": "社論；評論文章",
+          "definitionEn": "a newspaper or magazine article that gives opinions or perspectives",
+          "examples": [
+            "The editorial in yesterday’s paper criticized the government’s handling of the pandemic."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-2d415b86",
+          "pos": "adjective",
+          "meaningZh": "表達意見的；評論性的",
+          "definitionEn": "expressing opinions or providing perspectives, typically in a newspaper or magazine",
+          "examples": [
+            "The editorial in today’s newspaper highlighted the government’s shortcomings in handling the pandemic."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "electrician",
+      "word": "electrician",
+      "senses": [
+        {
+          "id": "sense-d9153864",
+          "pos": "noun",
+          "meaningZh": "電工；電氣技師",
+          "definitionEn": "a skilled tradesperson who installs and maintains electrical systems and equipment",
+          "examples": [
+            "I need to hire an electrician to fix the wiring in my house."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-ea9a12e8",
+          "pos": "noun",
+          "meaningZh": "電路維修人員",
+          "definitionEn": "a person who installs or repairs electrical or telephone lines",
+          "examples": [
+            "My light fixture wasn’t working, so I had to call an electrician to come and fix the wiring."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "elevate",
+      "word": "elevate",
+      "senses": [
+        {
+          "id": "sense-76794c63",
+          "pos": "verb",
+          "meaningZh": "舉起；抬高",
+          "definitionEn": "to lift or raise something up from a lower position to a higher one",
+          "examples": [
+            "The workers used a crane to elevate the heavy steel beams to the top of the building."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-1c588083",
+          "pos": "verb",
+          "meaningZh": "晉升；提拔",
+          "definitionEn": "to promote someone to a higher rank or position, especially in a job or organization",
+          "examples": [
+            "After excelling in his role as a technician, John was elevated to the position of team leader."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L5",
+        "textbookTitle": "龍騰 B5·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "emigrant",
+      "word": "emigrant",
+      "senses": [
+        {
+          "id": "sense-999b1688",
+          "pos": "noun",
+          "meaningZh": "移出國者；移民（外移）",
+          "definitionEn": "a person who leaves their own country in order to settle permanently in another",
+          "examples": [
+            "After growing up in a small village, Maria became an emigrant and moved to the United States to pursue better career opportunities."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-1f97764a",
+          "pos": "noun",
+          "meaningZh": "外來移入（生物）物種",
+          "definitionEn": "a plant or animal that has established itself in an area where it is not indigenous",
+          "examples": [
+            "The invasive species of snake became an emigrant in the new ecosystem, disrupting the balance and threatening the native wildlife."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "emigrate",
+      "word": "emigrate",
+      "senses": [
+        {
+          "id": "sense-b9e8a6cb",
+          "pos": "verb",
+          "meaningZh": "移居海外；移民出境",
+          "definitionEn": "to leave a country and go to live in another one",
+          "examples": [
+            "After facing economic hardship, many people in the small town decided to emigrate to a developed country in search of better opportunities."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "emigration",
+      "word": "emigration",
+      "senses": [
+        {
+          "id": "sense-e1156be0",
+          "pos": "noun",
+          "meaningZh": "移民（出境）；外移",
+          "definitionEn": "The act of leaving one’s own country to settle permanently in another",
+          "examples": [
+            "After the severe recession, a lot of people decided to pursue emigration to other countries in search of better job opportunities."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "encyclopedia",
+      "word": "encyclopedia",
+      "senses": [
+        {
+          "id": "sense-430ed00e",
+          "pos": "noun",
+          "meaningZh": "百科全書",
+          "definitionEn": "a comprehensive reference work that contains articles on a wide range of topics or on a particular subject, often arranged alphabetically or by subject matter",
+          "examples": [
+            "When I was researching for my history essay, I turned to an encyclopedia to find detailed information about the French Revolution."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "endeavor",
+      "word": "endeavor",
+      "senses": [
+        {
+          "id": "sense-20c9862d",
+          "pos": "noun",
+          "meaningZh": "努力；盡力之舉",
+          "definitionEn": "earnest and conscientious activity intended to do or accomplish something",
+          "examples": [
+            "Despite facing multiple setbacks, she continued her endeavor to start her own business."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-cde9bdbf",
+          "pos": "verb",
+          "meaningZh": "努力嘗試；盡力",
+          "definitionEn": "attempt something by employing effort",
+          "examples": [
+            "Despite facing numerous setbacks, she continued to endeavor to reach her goal of becoming a successful entrepreneur."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "endowment",
+      "word": "endowment",
+      "senses": [
+        {
+          "id": "sense-46f73c63",
+          "pos": "noun",
+          "meaningZh": "捐款；捐贈基金（行為）",
+          "definitionEn": "the act of endowing with a permanent source of income",
+          "examples": [
+            "The university’s endowment enabled them to offer more scholarships and expand their research programs."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-dd44872b",
+          "pos": "noun",
+          "meaningZh": "基金；捐款資本",
+          "definitionEn": "the capital that provides income for an institution",
+          "examples": [
+            "The university used its endowment to fund scholarships for low-income students."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "endurance",
+      "word": "endurance",
+      "senses": [
+        {
+          "id": "sense-41aba58c",
+          "pos": "noun",
+          "meaningZh": "耐力；忍耐力",
+          "definitionEn": "the power to withstand hardship or stress",
+          "examples": [
+            "The marathon runner’s endurance was tested when she ran for over 26 miles in scorching heat without taking a single break."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-d9e3643e",
+          "pos": "noun",
+          "meaningZh": "存活；持續生存",
+          "definitionEn": "a state of surviving; remaining alive",
+          "examples": [
+            "The stranded hiker’s endurance was truly tested during the 10 day hike through the wilderness with limited food and water."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "enhance",
+      "word": "enhance",
+      "senses": [
+        {
+          "id": "sense-4e46e242",
+          "pos": "verb",
+          "meaningZh": "增強；美化",
+          "definitionEn": "make better or more attractive",
+          "examples": [
+            "Adding a fresh coat of paint can enhance the appearance of a room."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "enhancement",
+      "word": "enhancement",
+      "senses": [
+        {
+          "id": "sense-f58d53e2",
+          "pos": "noun",
+          "meaningZh": "改善；提升（過程）",
+          "definitionEn": "the process of improving something or making it better",
+          "examples": [
+            "The new software update provides an enhancement to the user interface, making it more intuitive and user-friendly."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-bca926ee",
+          "pos": "noun",
+          "meaningZh": "改良；增進之處",
+          "definitionEn": "an improvement that makes something more agreeable or valuable",
+          "examples": [
+            "Adding a new feature to the software was a great enhancement and made it more user-friendly."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "enlighten",
+      "word": "enlighten",
+      "senses": [
+        {
+          "id": "sense-e2918354",
+          "pos": "verb",
+          "meaningZh": "啟發；開導；增廣見聞",
+          "definitionEn": "to give someone greater knowledge and understanding about a subject or situation",
+          "examples": [
+            "The lecture on climate change served to enlighten the audience on the severity of this issue and its potential consequences if not addressed appropriately."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-436a16a3",
+          "pos": "verb",
+          "meaningZh": "說明；讓人易懂",
+          "definitionEn": "to explain something to someone in a way that makes it easier to understand",
+          "examples": [
+            "The teacher used creative analogies to enlighten her students about complex algebra concepts."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "enlightenment",
+      "word": "enlightenment",
+      "senses": [
+        {
+          "id": "sense-c2662175",
+          "pos": "noun",
+          "meaningZh": "頓悟；啟悟；覺醒",
+          "definitionEn": "the state of comprehending or grasping something",
+          "examples": [
+            "After years of studying philosophy, she finally reached a state of enlightenment and understood the meaning of life."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-da5e0143",
+          "pos": "noun",
+          "meaningZh": "啟蒙運動（18世紀歐洲）",
+          "definitionEn": "The Enlightenment was a historical period in 18th century Europe where influential thinkers started emphasizing the significance of science and reason over religion and tradition.",
+          "examples": [
+            "During the Enlightenment, philosophers like Voltaire and Rousseau promoted the idea that society should be governed by reason and individual freedoms rather than by the authority of kings and churches."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "enrich",
+      "word": "enrich",
+      "senses": [
+        {
+          "id": "sense-e96d09ad",
+          "pos": "verb",
+          "meaningZh": "使富裕；增加財富",
+          "definitionEn": "make wealthy or richer",
+          "examples": [
+            "Investing in stocks can help to enrich your financial portfolio."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-218b73a6",
+          "pos": "verb",
+          "meaningZh": "豐富；提升品質",
+          "definitionEn": "make better or improve in quality",
+          "examples": [
+            "Taking courses in art history can enrich your understanding and appreciation of paintings and sculptures."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "enrichment",
+      "word": "enrichment",
+      "senses": [
+        {
+          "id": "sense-823f2d29",
+          "pos": "noun",
+          "meaningZh": "充實；豐富化（行為）",
+          "definitionEn": "the act of enriching or improving something",
+          "examples": [
+            "The enrichment of the soil with nutrients increased the yield of the crops."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-37085ded",
+          "pos": "noun",
+          "meaningZh": "強化；增益過程",
+          "definitionEn": "the process of adding something that enhances value or quality to something else",
+          "examples": [
+            "The teachers provided enrichment for their students by organizing a guest speaker to come and share their experiences in the field."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "enroll",
+      "word": "enroll",
+      "senses": [
+        {
+          "id": "sense-2a75de12",
+          "pos": "verb",
+          "meaningZh": "報名；註冊；入學",
+          "definitionEn": "to officially join a course, school, or group; register as a participant or a member",
+          "examples": [
+            "Sara decided to enroll in a painting course at the community college to improve her art skills."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "enrollment",
+      "word": "enrollment",
+      "senses": [
+        {
+          "id": "sense-6e54c031",
+          "pos": "noun",
+          "meaningZh": "入學；報名；登記",
+          "definitionEn": "the act of enrolling or being enrolled",
+          "examples": [
+            "The enrollment for the new semester increased by 20% compared to the previous year."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-e3382676",
+          "pos": "noun",
+          "meaningZh": "在冊人數；學生總數",
+          "definitionEn": "the body of people (such as students) who register or enroll at the same time",
+          "examples": [
+            "The enrollment for the new semester has begun, and many students are already registering for their classes."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    }
+  ]
+}

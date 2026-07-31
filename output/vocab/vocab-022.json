@@ -1,0 +1,1395 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 22,
+  "words": [
+    {
+      "wordKey": "pie",
+      "word": "pie",
+      "senses": [
+        {
+          "id": "sense-ec3738d2",
+          "pos": "noun",
+          "meaningZh": "派；餡餅",
+          "definitionEn": "A dish typically baked in a pastry-lined dish, with a pastry top.",
+          "examples": [
+            "Emily's grandmother made a delicious apple pie for Thanksgiving dinner."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "piece",
+      "word": "piece",
+      "senses": [
+        {
+          "id": "sense-5d657c26",
+          "pos": "noun",
+          "meaningZh": "一部分；一件",
+          "definitionEn": "a separate part or section of a larger object or group",
+          "examples": [
+            "She carefully assembled the puzzle piece by piece."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-f9cb53d8",
+          "pos": "noun",
+          "meaningZh": "一塊；一份（食物）",
+          "definitionEn": "a serving of food that has been cut or separated from a larger portion",
+          "examples": [
+            "The waiter brought a piece of cake to each person at the table."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "pig",
+      "word": "pig",
+      "senses": [
+        {
+          "id": "sense-9710b8e9",
+          "pos": "noun",
+          "meaningZh": "豬",
+          "definitionEn": "a farm animal with a fat body, short legs, and a curly tail, raised for its meat",
+          "examples": [
+            "The farmer keeps pigs and chickens."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-1af3162d",
+          "pos": "verb",
+          "meaningZh": "狼吞虎嚥；暴食",
+          "definitionEn": "to eat in a greedy or sloppy manner",
+          "examples": [
+            "After a long day of fasting, John decided to pig out at the buffet, devouring plate after plate of food."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "pin",
+      "word": "pin",
+      "senses": [
+        {
+          "id": "sense-42ba7034",
+          "pos": "noun",
+          "meaningZh": "別針；大頭針",
+          "definitionEn": "a small, slender object, often pointed, used to fasten or attach things",
+          "examples": [
+            "She used a pin to secure the hem of her dress."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-1fe182f7",
+          "pos": "noun",
+          "meaningZh": "腿；腳",
+          "definitionEn": "informal terms for a leg",
+          "examples": [
+            "After a long day of hiking, my legs were so sore that I could hardly feel my pins anymore."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "pink",
+      "word": "pink",
+      "senses": [
+        {
+          "id": "sense-69ed81ab",
+          "pos": "noun",
+          "meaningZh": "粉紅色",
+          "definitionEn": "a light shade of red",
+          "examples": [
+            "She wore a beautiful pink dress to the party."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-7ed5e98e",
+          "pos": "adjective",
+          "meaningZh": "粉紅色的；粉色的",
+          "definitionEn": "of a light shade of red",
+          "examples": [
+            "She wore a beautiful pink sundress to the party."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "pipe",
+      "word": "pipe",
+      "senses": [
+        {
+          "id": "sense-ea296431",
+          "pos": "noun",
+          "meaningZh": "管道；水管",
+          "definitionEn": "a hollow cylindrical shape, typically made of metal or plastic",
+          "examples": [
+            "The plumber fixed the leak in the pipe by replacing a section with a new one."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-fda4b61c",
+          "pos": "noun",
+          "meaningZh": "管樂器；笛",
+          "definitionEn": "a tubular wind instrument, such as a flute or clarinet",
+          "examples": [
+            "During the concert, the musician skillfully played a beautiful melody on his pipe."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "place",
+      "word": "place",
+      "senses": [
+        {
+          "id": "sense-378c6e56",
+          "pos": "noun",
+          "meaningZh": "地方；地點",
+          "definitionEn": "a general vicinity",
+          "examples": [
+            "I am looking for a quiet place to study for my exams."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-944d3c91",
+          "pos": "noun",
+          "meaningZh": "位置；所在處",
+          "definitionEn": "the particular portion of space occupied by something",
+          "examples": [
+            "Please don’t leave your shoes in the middle of the hallway; put them in their proper place."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 翰林 B1·L4",
+        "textbookTitle": "翰林 B1·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "plan",
+      "word": "plan",
+      "senses": [
+        {
+          "id": "sense-cbc1ff01",
+          "pos": "noun",
+          "meaningZh": "計畫；方案",
+          "definitionEn": "a series of steps to be taken or goals to be achieved",
+          "examples": [
+            "Before starting a new project, it is important to create a detailed plan outlining the specific tasks and timeline for completion."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-93042984",
+          "pos": "noun",
+          "meaningZh": "安排；規劃",
+          "definitionEn": "an arrangement or scheme",
+          "examples": [
+            "Before going on vacation, it's important to make a plan to ensure a smooth and enjoyable trip."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "planet",
+      "word": "planet",
+      "senses": [
+        {
+          "id": "sense-7dcb70e0",
+          "pos": "noun",
+          "meaningZh": "行星",
+          "definitionEn": "any celestial body (other than comets or satellites) that revolves around a star",
+          "examples": [
+            "Jupiter is the largest planet in our solar system."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "plant",
+      "word": "plant",
+      "senses": [
+        {
+          "id": "sense-857bb79b",
+          "pos": "noun",
+          "meaningZh": "植物；花草",
+          "definitionEn": "a living organism that grows in the ground, typically has stems or leaves, and creates its own food through a process called photosynthesis",
+          "examples": [
+            "I love having potted plants in my apartment. They add color and freshness to the space, and I enjoy watching them grow and thrive."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-330c6965",
+          "pos": "noun",
+          "meaningZh": "工廠；製造廠",
+          "definitionEn": "a building or group of buildings used for producing goods, typically using machinery",
+          "examples": [
+            "The new car manufacturing plant in the suburbs is equipped with state-of-the-art machinery and technology."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "plate",
+      "word": "plate",
+      "senses": [
+        {
+          "id": "sense-7c8540b0",
+          "pos": "noun",
+          "meaningZh": "盤子；餐盤",
+          "definitionEn": "a dish used for serving or eating food",
+          "examples": [
+            "Please pass me a clean plate so I can serve myself some dinner."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-3a428d89",
+          "pos": "noun",
+          "meaningZh": "一盤（的量）",
+          "definitionEn": "the amount of food that a plate can hold",
+          "examples": [
+            "The restaurant server brought out a large plate stacked high with delicious pasta and vegetables."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "play",
+      "word": "play",
+      "senses": [
+        {
+          "id": "sense-edd5674f",
+          "pos": "verb",
+          "meaningZh": "玩；遊玩",
+          "definitionEn": "to do activities for fun and enjoyment, especially as children do",
+          "examples": [
+            "The children love to play in the park after school."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-ba325d0a",
+          "pos": "noun",
+          "meaningZh": "玩耍；遊戲",
+          "definitionEn": "activity by children that is guided more by imagination than by fixed rules",
+          "examples": [
+            "The group of children ran around the park, laughing, and engaged in all sorts of play: sword fighting with sticks, pretending to be superheroes, and building sandcastles in the sandbox."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-29a56e72",
+          "pos": "noun",
+          "meaningZh": "娛樂；消遣",
+          "definitionEn": "light-hearted recreational activity for diversion or amusement",
+          "examples": [
+            "We decided to play board games after finishing our homework."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "player",
+      "word": "player",
+      "senses": [
+        {
+          "id": "sense-bd4b0c4c",
+          "pos": "noun",
+          "meaningZh": "球員；選手",
+          "definitionEn": "a person who participates in or is skilled at a game or sport",
+          "examples": [
+            "John is an exceptional basketball player, consistently scoring high points and leading his team to victory."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-45cbfddd",
+          "pos": "noun",
+          "meaningZh": "演員；表演者",
+          "definitionEn": "a person who performs in a theatrical production or film",
+          "examples": [
+            "The actor rehearsed his lines with the other players before the start of the play."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "please",
+      "word": "please",
+      "senses": [
+        {
+          "id": "sense-a1dfdc11",
+          "pos": "verb",
+          "meaningZh": "使高興；取悅",
+          "definitionEn": "to make someone happy by doing something for them or by allowing them to do something",
+          "examples": [
+            "Please come to my party, it won’t be the same without you."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-d49061da",
+          "pos": "verb",
+          "meaningZh": "令人滿意；使滿足",
+          "definitionEn": "to satisfy someone by fulfilling their expectation or desire",
+          "examples": [
+            "He was pleased with the outcome of the negotiations."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "pleasure",
+      "word": "pleasure",
+      "senses": [
+        {
+          "id": "sense-4240f85c",
+          "pos": "noun",
+          "meaningZh": "樂趣；愉悅",
+          "definitionEn": "a fundamental feeling of enjoyment",
+          "examples": [
+            "Eating ice cream gives me great pleasure on a hot summer day."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-41651a33",
+          "pos": "noun",
+          "meaningZh": "性愉悅；肉體快感",
+          "definitionEn": "sexual gratification",
+          "examples": [
+            "The book was banned because it contained explicit scenes of pleasure."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "pocket",
+      "word": "pocket",
+      "senses": [
+        {
+          "id": "sense-86eb3528",
+          "pos": "noun",
+          "meaningZh": "口袋；衣袋",
+          "definitionEn": "a small cloth pouch attached to or inserted in a garment, used for carrying small items",
+          "examples": [
+            "Sarah reached into her pocket to retrieve her keys."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-f63b47ad",
+          "pos": "adjective",
+          "meaningZh": "口袋型的；迷你的",
+          "definitionEn": "describing something that is small enough to fit in a pocket",
+          "examples": [
+            "The miniature toy car is a perfect pocket-sized plaything."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "point",
+      "word": "point",
+      "senses": [
+        {
+          "id": "sense-21528c97",
+          "pos": "noun",
+          "meaningZh": "要點；論點",
+          "definitionEn": "a distinct part that can be specified separately in a list",
+          "examples": [
+            "Please make sure to address all of the points outlined in the meeting agenda."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-a1ba29b5",
+          "pos": "noun",
+          "meaningZh": "事實；具體項目",
+          "definitionEn": "an isolated fact",
+          "examples": [
+            "The trivia game is full of interesting points about history and science."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "police",
+      "word": "police",
+      "senses": [
+        {
+          "id": "sense-e45db178",
+          "pos": "noun",
+          "meaningZh": "警察；警方",
+          "definitionEn": "the group of people responsible for maintaining public order and safety",
+          "examples": [
+            "The police responded swiftly to the ongoing protest, ensuring that the demonstrators remained peaceful and no harm was caused to the public or property."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-e5f0ba34",
+          "pos": "verb",
+          "meaningZh": "執法維安；巡邏管理",
+          "definitionEn": "to maintain law and order by carrying out patrols and investigations",
+          "examples": [
+            "After receiving a noise complaint, the police arrived at the scene and spoke to the neighbors to resolve the situation peacefully."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "polite",
+      "word": "polite",
+      "senses": [
+        {
+          "id": "sense-a3d08bae",
+          "pos": "adjective",
+          "meaningZh": "有禮貌的；客氣的",
+          "definitionEn": "not rude; displaying adequate but not noteworthy consideration for others in social situations",
+          "examples": [
+            "When attending a formal dinner, it is important to be polite by using proper table manners and being respectful to the other guests."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-b4a2755e",
+          "pos": "adjective",
+          "meaningZh": "文雅的；有教養的",
+          "definitionEn": "marked by refinement in taste and manners",
+          "examples": [
+            "At the dinner party, John was polite and graciously complimented the chef on the delicious meal."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "pond",
+      "word": "pond",
+      "senses": [
+        {
+          "id": "sense-7d0612f2",
+          "pos": "noun",
+          "meaningZh": "池塘；小水池",
+          "definitionEn": "a body of water smaller than a lake, often artificially created for decorative or recreational purposes",
+          "examples": [
+            "The children enjoyed feeding the ducks in the pond at the park."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "pool",
+      "word": "pool",
+      "senses": [
+        {
+          "id": "sense-3020672d",
+          "pos": "noun",
+          "meaningZh": "游泳池；水池",
+          "definitionEn": "an excavation that is usually filled with water, such as a swimming pool or reflecting pool",
+          "examples": [
+            "The hot summer day prompted the kids to jump into the refreshing pool and cool off."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-947834c8",
+          "pos": "noun",
+          "meaningZh": "水坑；積水",
+          "definitionEn": "a small body of standing water, such as rainwater or other liquid",
+          "examples": [
+            "After a heavy rainfall, a pool of water formed in the backyard."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "poor",
+      "word": "poor",
+      "senses": [
+        {
+          "id": "sense-93dfa8db",
+          "pos": "adjective",
+          "meaningZh": "貧窮的；貧困的",
+          "definitionEn": "having little money or few possessions",
+          "examples": [
+            "It’s heartbreaking to see poor families sleeping on the streets during winter."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-e93010af",
+          "pos": "adjective",
+          "meaningZh": "貧乏的；惡劣的",
+          "definitionEn": "characterized by or indicating poverty",
+          "examples": [
+            "Many people in this world live in poor conditions and struggle to make ends meet."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "popcorn",
+      "word": "popcorn",
+      "senses": [
+        {
+          "id": "sense-b2ad5da8",
+          "pos": "noun",
+          "meaningZh": "爆米花",
+          "definitionEn": "Small kernels of corn that have been heated causing them to explode and become fluffy and edible.",
+          "examples": [
+            "I settled comfortably into my seat with a big tub of popcorn and a cold drink to watch the movie."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-c173b05d",
+          "pos": "noun",
+          "meaningZh": "爆裂玉米；爆米花原料",
+          "definitionEn": "A type of corn that has small kernels and can burst open when heated.",
+          "examples": [
+            "I love to eat popcorn while watching a movie."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "popular",
+      "word": "popular",
+      "senses": [
+        {
+          "id": "sense-1df40e5d",
+          "pos": "adjective",
+          "meaningZh": "受歡迎的；廣受喜愛的",
+          "definitionEn": "widely liked, enjoyed, or supported by many people",
+          "examples": [
+            "The popular song quickly became a hit, gaining millions of downloads and topping the music charts."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-b550ee6a",
+          "pos": "adjective",
+          "meaningZh": "流行的；大眾的",
+          "definitionEn": "relating to or characterized by the music, art, or culture that is favored by the majority of people, especially young people, of a society or group",
+          "examples": [
+            "The popular song played on the radio constantly and became an anthem for the youth of that generation."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "possible",
+      "word": "possible",
+      "senses": [
+        {
+          "id": "sense-9b995827",
+          "pos": "adjective",
+          "meaningZh": "可能的；可行的",
+          "definitionEn": "Capable of happening or existing.",
+          "examples": [
+            "With enough preparation and determination, it is possible for anyone to achieve their dreams."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "pot",
+      "word": "pot",
+      "senses": [
+        {
+          "id": "sense-02fd36bc",
+          "pos": "noun",
+          "meaningZh": "鍋；深鍋",
+          "definitionEn": "a deep cooking vessel usually made of metal or earthenware, often with a handle and a lid",
+          "examples": [
+            "I used a large pot to cook soup for the family."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-23ca30bf",
+          "pos": "noun",
+          "meaningZh": "一鍋（的量）",
+          "definitionEn": "the amount of something that a pot can hold",
+          "examples": [
+            "She filled the pot with water to boil pasta."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "potato",
+      "word": "potato",
+      "senses": [
+        {
+          "id": "sense-9de02d48",
+          "pos": "noun",
+          "meaningZh": "馬鈴薯；洋芋",
+          "definitionEn": "an edible tuber that grows underground and is native to South America and a staple food of Ireland",
+          "examples": [
+            "During the winter months, the farmer harvested baskets of potatoes from his fields, knowing they would serve as a hearty and nutritious staple for his family throughout the year."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-f27c5744",
+          "pos": "noun",
+          "meaningZh": "馬鈴薯植株",
+          "definitionEn": "a plant that is native to South America and is grown widely as a garden vegetable. It has underground stolons that bear edible starchy tubers, but its vines are poisonous",
+          "examples": [
+            "After harvesting a fresh batch of potatoes from the garden, she boiled them and served them as a side dish with dinner."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "power",
+      "word": "power",
+      "senses": [
+        {
+          "id": "sense-d9945920",
+          "pos": "noun",
+          "meaningZh": "能力；實力",
+          "definitionEn": "possession of the qualities (especially mental qualities) required to do something or get something done",
+          "examples": [
+            "Despite facing various obstacles, she had the power to overcome them and achieve her goals."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-7f1eb37b",
+          "pos": "noun",
+          "meaningZh": "執政；掌權",
+          "definitionEn": "(of a government or government official) holding an office means being in power",
+          "examples": [
+            "After winning the general elections, the new president was officially in power and began implementing his policies."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "practice",
+      "word": "practice",
+      "senses": [
+        {
+          "id": "sense-17aecd48",
+          "pos": "noun",
+          "meaningZh": "練習；訓練",
+          "definitionEn": "knowledge of how something is usually done",
+          "examples": [
+            "After many hours of practice, she became an expert pianist."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "prepare",
+      "word": "prepare",
+      "senses": [
+        {
+          "id": "sense-ebc1b06c",
+          "pos": "verb",
+          "meaningZh": "準備；預備",
+          "definitionEn": "to make something ready for use or a particular purpose",
+          "examples": [
+            "Before going to bed, I always prepare my clothes for the next day."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-1b6b01e1",
+          "pos": "verb",
+          "meaningZh": "籌畫；擬訂",
+          "definitionEn": "to organize something by planning and working together",
+          "examples": [
+            "We need to prepare a project plan before we start working on the project."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    }
+  ]
+}

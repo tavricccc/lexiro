@@ -1,0 +1,1367 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 130,
+  "words": [
+    {
+      "wordKey": "sprinkle",
+      "word": "sprinkle",
+      "senses": [
+        {
+          "id": "sense-7c80c32d",
+          "pos": "verb",
+          "meaningZh": "灑上；撒（少量液體或粉末）",
+          "definitionEn": "to scatter or spread liquid lightly and irregularly over (a surface) in drops or particles.",
+          "examples": [
+            "She decided to sprinkle some cinnamon on her oatmeal to add flavor."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-1ce981b7",
+          "pos": "verb",
+          "meaningZh": "下毛毛雨；飄小雨",
+          "definitionEn": "to rain lightly and intermittently",
+          "examples": [
+            "The sprinkles of rain made the leaves on the trees glitter."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "stab",
+      "word": "stab",
+      "senses": [
+        {
+          "id": "sense-e86231a5",
+          "pos": "verb",
+          "meaningZh": "刺入；戳進（尖物）",
+          "definitionEn": "to pierce or thrust with a pointed object",
+          "examples": [
+            "He picked up the knife and stabbed it into the apple to cut it in half."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-84a536c4",
+          "pos": "verb",
+          "meaningZh": "刺傷；行刺",
+          "definitionEn": "to injure with a knife or other sharp object",
+          "examples": [
+            "In a fit of rage, he stabbed his opponent with a kitchen knife."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "statistic",
+      "word": "statistic",
+      "senses": [
+        {
+          "id": "sense-35da21a0",
+          "pos": "noun",
+          "meaningZh": "統計數字；數據",
+          "definitionEn": "a numerical piece of data that provides information about a particular subject or group of subjects",
+          "examples": [
+            "The statistic showed that over 70% of the population preferred the new brand of soda over the old one."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "statistics",
+      "word": "statistics",
+      "senses": [
+        {
+          "id": "sense-2ff9d2fb",
+          "pos": "noun",
+          "meaningZh": "統計學；數據科學",
+          "definitionEn": "the practice or science of collecting, analyzing, interpreting, and presenting data",
+          "examples": [
+            "The statistics department at the university studies data on population growth and distribution in countries around the world."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-bf1ff3ac",
+          "pos": "noun",
+          "meaningZh": "統計數據；數值分析",
+          "definitionEn": "the science of gathering, analyzing, and interpreting numerical data",
+          "examples": [
+            "The use of statistics is essential for making informed decisions in many fields such as finance, medicine, and government policy."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "status",
+      "word": "status",
+      "senses": [
+        {
+          "id": "sense-63cefc1e",
+          "pos": "noun",
+          "meaningZh": "現況；狀態",
+          "definitionEn": "the current state or condition of something or someone",
+          "examples": [
+            "After completing all the tasks assigned to me, my status changed from 'in progress' to 'completed'."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-ee415cb8",
+          "pos": "noun",
+          "meaningZh": "地位；身分",
+          "definitionEn": "the relative position or standing of things or people in a society",
+          "examples": [
+            "In many cultures, wealth and power are often indicators of high status."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L1",
+        "textbookTitle": "龍騰 B4·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "stem",
+      "word": "stem",
+      "senses": [
+        {
+          "id": "sense-13060c13",
+          "pos": "noun",
+          "meaningZh": "莖；枝幹",
+          "definitionEn": "a slender structure that supports a plant or plant part",
+          "examples": [
+            "The apple tree had a strong and sturdy stem that held up all of its fruit."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-5b9d6346",
+          "pos": "noun",
+          "meaningZh": "詞幹；字根",
+          "definitionEn": "(linguistics) the base form of a word",
+          "examples": [
+            "In the sentence ’I am running’, the word ’run’ is the stem."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "stereo",
+      "word": "stereo",
+      "senses": [
+        {
+          "id": "sense-2b4c192e",
+          "pos": "noun",
+          "meaningZh": "立體聲音響系統",
+          "definitionEn": "a sound system that uses two or more speakers to create a more realistic and dimensional sound",
+          "examples": [
+            "I love listening to music on my stereo. The combination of speakers gives a full and immersive audio experience."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-3b92bb9c",
+          "pos": "noun",
+          "meaningZh": "音響；立體聲播放器",
+          "definitionEn": "a device that plays music from a radio, CD, or digital source with separate speakers for the left and right channels",
+          "examples": [
+            "John turned on his stereo and cranked up the volume, immersing himself in the rich sound of his favorite song."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "stingy",
+      "word": "stingy",
+      "senses": [
+        {
+          "id": "sense-e8928ab3",
+          "pos": "adjective",
+          "meaningZh": "吝嗇的；小氣的",
+          "definitionEn": "unwilling to spend money or resources",
+          "examples": [
+            "My uncle is so stingy that he always takes the small bottle of water from the fridge and leaves the big one for others."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-55c140ff",
+          "pos": "adjective",
+          "meaningZh": "不足的；分量少的",
+          "definitionEn": "deficient in amount or quality or extent",
+          "examples": [
+            "The restaurant must improve their service as they were so stingy with the portions of food they served."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "stocking",
+      "word": "stocking",
+      "senses": [
+        {
+          "id": "sense-cfa8b89c",
+          "pos": "noun",
+          "meaningZh": "長統絲襪；絲襪",
+          "definitionEn": "close-fitting hosiery worn over the foot and leg, usually in pairs.",
+          "examples": [
+            "She wore a pair of black stockings to the formal event, adding a touch of elegance to her outfit."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-51ef47a4",
+          "pos": "noun",
+          "meaningZh": "備貨；存貨補充",
+          "definitionEn": "the activity or process of building up a stock, especially a collection of goods or merchandise available for sale.",
+          "examples": [
+            "The manager was responsible for stocking the shelves with fresh produce every morning."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "stockings",
+      "word": "stockings",
+      "senses": [
+        {
+          "id": "sense-9f51e47d",
+          "pos": "noun",
+          "meaningZh": "長統絲襪；絲襪",
+          "definitionEn": "close-fitting hosiery worn over the foot and leg, usually in pairs.",
+          "examples": [
+            "She wore a pair of black stockings to the formal event, adding a touch of elegance to her outfit."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-5444540d",
+          "pos": "noun",
+          "meaningZh": "備貨；存貨補充",
+          "definitionEn": "the activity or process of building up a stock, especially a collection of goods or merchandise available for sale.",
+          "examples": [
+            "The manager was responsible for stocking the shelves with fresh produce every morning."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "strengthen",
+      "word": "strengthen",
+      "senses": [
+        {
+          "id": "sense-eafe6459",
+          "pos": "verb",
+          "meaningZh": "增強；強化",
+          "definitionEn": "make stronger or more powerful, especially in terms of physical or intellectual abilities",
+          "examples": [
+            "He decided to join the gym to strengthen his muscles and improve his fitness."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-5436c6b7",
+          "pos": "verb",
+          "meaningZh": "變強；增加強度",
+          "definitionEn": "become stronger or increase in strength, intensity, or quantity",
+          "examples": [
+            "Regular exercise can help strengthen muscles and improve overall health."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L1",
+        "textbookTitle": "龍騰 B2·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "stripe",
+      "word": "stripe",
+      "senses": [
+        {
+          "id": "sense-3cbdf52f",
+          "pos": "noun",
+          "meaningZh": "條紋；紋路",
+          "definitionEn": "a line on a surface that has a different color from the rest of the surface",
+          "examples": [
+            "The zebra's distinctive black and white stripes help to camouflage it in the tall grass."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-56a5dd95",
+          "pos": "noun",
+          "meaningZh": "紋路種類；條紋樣式",
+          "definitionEn": "a particular type of stripe, especially when there are many different types",
+          "examples": [
+            "The fashion designer showcased a collection featuring a variety of stripes, including pinstripes, chevron stripes, and bold, colorful stripes."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "strive",
+      "word": "strive",
+      "senses": [
+        {
+          "id": "sense-bdeb965a",
+          "pos": "verb",
+          "meaningZh": "努力；奮鬥",
+          "definitionEn": "exert much effort or energy",
+          "examples": [
+            "Despite facing many obstacles, she continued to strive for her dream of becoming a successful entrepreneur."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-a0d3e5a0",
+          "pos": "verb",
+          "meaningZh": "克服阻力；奮力爭取",
+          "definitionEn": "exert strenuous effort against opposition",
+          "examples": [
+            "She had to strive against all odds to become a successful entrepreneur."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L8",
+        "textbookTitle": "龍騰 B4·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "stroke",
+      "word": "stroke",
+      "senses": [
+        {
+          "id": "sense-d04c42da",
+          "pos": "noun",
+          "meaningZh": "中風",
+          "definitionEn": "a sudden serious illness when blood flow to the brain is blocked",
+          "examples": [
+            "His grandfather had a stroke and lost the ability to speak."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-9ea85047",
+          "pos": "noun",
+          "meaningZh": "揮拍；擊球動作",
+          "definitionEn": "(in sports) the action of hitting a ball or shuttlecock with a racket, club, or bat",
+          "examples": [
+            "She executed a flawless stroke and sent the tennis ball sailing over the net."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "vision",
+      "word": "vision",
+      "senses": [
+        {
+          "id": "sense-e2fbca27",
+          "pos": "noun",
+          "meaningZh": "視力；視覺能力",
+          "definitionEn": "the ability to see; visual faculty",
+          "examples": [
+            "In her old age, my grandmother's vision started to deteriorate, and she had to start wearing glasses."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-e8332321",
+          "pos": "noun",
+          "meaningZh": "視覺體驗；看見的感受",
+          "definitionEn": "the experience of seeing",
+          "examples": [
+            "Having perfect vision allows you to enjoy the vibrant colors of a beautiful sunset."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "vitamin",
+      "word": "vitamin",
+      "senses": [
+        {
+          "id": "sense-f9ab0db6",
+          "pos": "noun",
+          "meaningZh": "維生素；維他命",
+          "definitionEn": "a group of organic substances that are essential in small quantities for normal metabolism and growth",
+          "examples": [
+            "Our bodies need plenty of fresh fruits and vegetables to get enough vitamins for healthy living."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L4",
+        "textbookTitle": "龍騰 B5·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "vivid",
+      "word": "vivid",
+      "senses": [
+        {
+          "id": "sense-09ea45a3",
+          "pos": "adjective",
+          "meaningZh": "生動的；鮮明的",
+          "definitionEn": "having the freshness and clarity of an immediate experience",
+          "examples": [
+            "As she recounted her dream, her description was so vivid that it felt like we were living it with her."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-5d2c9fd4",
+          "pos": "adjective",
+          "meaningZh": "栩栩如生的；清晰逼真的",
+          "definitionEn": "evoking clear and lifelike images in the mind",
+          "examples": [
+            "As she described her trip to the beach, her vivid words painted a picture in my mind of white sand, turquoise water, and seagulls soaring overhead."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "vocabulary",
+      "word": "vocabulary",
+      "senses": [
+        {
+          "id": "sense-19600c71",
+          "pos": "noun",
+          "meaningZh": "詞彙量；語彙",
+          "definitionEn": "the set of all the words in a language that a particular person understands and uses",
+          "examples": [
+            "My friend has an extensive vocabulary and can easily express herself in various situations."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-92720b95",
+          "pos": "noun",
+          "meaningZh": "詞彙表；生字表",
+          "definitionEn": "a list or collection of words and their meanings, typically found at the back of a book, that are specific to a certain subject or used by a particular group of people",
+          "examples": [
+            "Before starting the lesson, the teacher asked her students to review the vocabulary section in their science textbook."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "volleyball",
+      "word": "volleyball",
+      "senses": [
+        {
+          "id": "sense-4f03718e",
+          "pos": "noun",
+          "meaningZh": "排球（球）",
+          "definitionEn": "the inflatable ball used in playing volleyball",
+          "examples": [
+            "During the game, the volleyball went out of bounds and needed to be retrieved."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "volume",
+      "word": "volume",
+      "senses": [
+        {
+          "id": "sense-4c39ae03",
+          "pos": "noun",
+          "meaningZh": "體積；容積",
+          "definitionEn": "the amount of space that a substance or object occupies, or the capacity of a container",
+          "examples": [
+            "The volume of the swimming pool was 50,000 gallons."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-b1884f17",
+          "pos": "noun",
+          "meaningZh": "音量；聲音大小",
+          "definitionEn": "the loudness or intensity of a sound",
+          "examples": [
+            "The volume of the music at the concert was so loud that it could be heard from several blocks away."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L5",
+        "textbookTitle": "龍騰 B5·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "voter",
+      "word": "voter",
+      "senses": [
+        {
+          "id": "sense-a9cd5a87",
+          "pos": "noun",
+          "meaningZh": "選民；投票者",
+          "definitionEn": "a person who is allowed to vote in an election because they are a citizen",
+          "examples": [
+            "The voter proudly displayed her ’I voted’ sticker after casting her ballot in the presidential election."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "wage",
+      "word": "wage",
+      "senses": [
+        {
+          "id": "sense-ab5115ac",
+          "pos": "noun",
+          "meaningZh": "工資；薪酬",
+          "definitionEn": "payment for work done, especially at hourly, daily, or weekly intervals",
+          "examples": [
+            "My neighbor works at a fast-food restaurant for minimum wage."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-a4303bb2",
+          "pos": "verb",
+          "meaningZh": "發動（戰爭）；進行",
+          "definitionEn": "to engage in (a war, battle, or campaign)",
+          "examples": [
+            "The two countries waged a fierce war over the disputed territory."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·R3 +1",
+        "textbookTitle": "龍騰 B3·R3、三民 B2·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "wages",
+      "word": "wages",
+      "senses": [
+        {
+          "id": "sense-f10f3eac",
+          "pos": "noun",
+          "meaningZh": "工資；工錢",
+          "definitionEn": "an amount of money paid to a worker for a specified quantity of work, usually calculated on an hourly basis",
+          "examples": [
+            "After completing a full day's work, the construction worker received his wages in cash."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-565336e5",
+          "pos": "plural noun",
+          "meaningZh": "薪資；報酬",
+          "definitionEn": "the money earned by an employee, especially when paid for the hours worked",
+          "examples": [
+            "John received his weekly wages for working 40 hours at the restaurant."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "wagon",
+      "word": "wagon",
+      "senses": [
+        {
+          "id": "sense-a548d8bc",
+          "pos": "noun",
+          "meaningZh": "馬車；貨車",
+          "definitionEn": "a type of vehicle that has four wheels and is pulled by an animal or a tractor",
+          "examples": [
+            "The pioneers loaded their belongings onto a wagon before embarking on their journey across the prairie."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-c8973f25",
+          "pos": "noun",
+          "meaningZh": "兒童玩具小車",
+          "definitionEn": "a child’s toy cart with four wheels that can be used to coast down hills",
+          "examples": [
+            "The children spent their summer days racing their wagons down the steep hill, laughing with delight as they reached the bottom."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "wander",
+      "word": "wander",
+      "senses": [
+        {
+          "id": "sense-69a28e10",
+          "pos": "verb",
+          "meaningZh": "漫遊；流浪",
+          "definitionEn": "move about aimlessly or without any destination, often in search of food or employment",
+          "examples": [
+            "After losing his job, he began to wander the streets aimlessly, hoping to find some work."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-33999dcf",
+          "pos": "verb",
+          "meaningZh": "閒逛；隨意走動",
+          "definitionEn": "go via an indirect route or at no set pace",
+          "examples": [
+            "We decided to wander through the city streets without a plan or a destination in mind."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L5",
+        "textbookTitle": "三民 B4·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "warmth",
+      "word": "warmth",
+      "senses": [
+        {
+          "id": "sense-5c8e26e9",
+          "pos": "noun",
+          "meaningZh": "溫暖感；熱感",
+          "definitionEn": "the sensation caused by heat energy",
+          "examples": [
+            "After sitting by the fire for hours, Sarah savored the warmth of the blanket wrapped around her."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-a70b0031",
+          "pos": "noun",
+          "meaningZh": "溫度；暖意",
+          "definitionEn": "the quality of having a moderate degree of heat",
+          "examples": [
+            "During the cold winter nights, the warmth of the crackling fire was a comfort to all."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L1",
+        "textbookTitle": "龍騰 B3·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "warn",
+      "word": "warn",
+      "senses": [
+        {
+          "id": "sense-e8aea0f6",
+          "pos": "verb",
+          "meaningZh": "警告；提醒危險",
+          "definitionEn": "to inform someone about a potential danger or problem, allowing them to avoid it",
+          "examples": [
+            "She warned him about the icy road ahead, preventing him from getting into an accident."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L2 +1",
+        "textbookTitle": "龍騰 B2·L2、翰林 B1·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "waterfall",
+      "word": "waterfall",
+      "senses": [
+        {
+          "id": "sense-c64d3d43",
+          "pos": "noun",
+          "meaningZh": "瀑布",
+          "definitionEn": "a natural formation where water from a river or stream flows over an edge of rock, creating a beautiful and impressive cascade down to a lower level",
+          "examples": [
+            "During our hike, we stumbled upon a magnificent waterfall, with water cascading down the rocks and creating a soothing sound."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "wax",
+      "word": "wax",
+      "senses": [
+        {
+          "id": "sense-2fd71e2b",
+          "pos": "noun",
+          "meaningZh": "蠟；蠟質物",
+          "definitionEn": "a substance that is solid at normal temperatures and insoluble in water, made of either mineral origin or derived from plants and animals",
+          "examples": [
+            "She used wax to seal the envelope before sending the letter."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-a910913a",
+          "pos": "verb",
+          "meaningZh": "上蠟；打蠟",
+          "definitionEn": "to apply a coating of wax onto a surface",
+          "examples": [
+            "To keep the antique furniture shiny, you must wax it every month."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "weaken",
+      "word": "weaken",
+      "senses": [
+        {
+          "id": "sense-d0f05e89",
+          "pos": "verb",
+          "meaningZh": "削弱；使變弱",
+          "definitionEn": "to make something less strong or powerful.",
+          "examples": [
+            "The prolonged illness weakened his immune system, making him more susceptible to infections."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-f1be25a0",
+          "pos": "verb",
+          "meaningZh": "減弱；降低強度",
+          "definitionEn": "to reduce the level, intensity, size, or scope of something.",
+          "examples": [
+            "The prolonged illness weakened her immune system, making her more susceptible to infections."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    }
+  ]
+}

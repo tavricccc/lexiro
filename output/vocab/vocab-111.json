@@ -1,0 +1,1393 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 111,
+  "words": [
+    {
+      "wordKey": "enforce",
+      "word": "enforce",
+      "senses": [
+        {
+          "id": "sense-022d5b97",
+          "pos": "verb",
+          "meaningZh": "執法；強制遵守",
+          "definitionEn": "ensure observance of laws and rules",
+          "examples": [
+            "The police officer was sent to enforce the new traffic rules in the city."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-d7e5d675",
+          "pos": "verb",
+          "meaningZh": "強制；迫使服從",
+          "definitionEn": "compel someone to behave in a certain way",
+          "examples": [
+            "The company will enforce strict disciplinary action against anyone found violating the code of conduct."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "enforcement",
+      "word": "enforcement",
+      "senses": [
+        {
+          "id": "sense-35d8e82b",
+          "pos": "noun",
+          "meaningZh": "執行；強制實施",
+          "definitionEn": "the act or process of making sure that laws, rules, or orders are obeyed",
+          "examples": [
+            "The government’s enforcement of traffic laws ensures that all drivers follow the rules of the road, preventing accidents and keeping everyone safe."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "engineering",
+      "word": "engineering",
+      "senses": [
+        {
+          "id": "sense-3afc68b2",
+          "pos": "noun",
+          "meaningZh": "工程學；工程技術",
+          "definitionEn": "the art or science of designing and building machines, structures, and systems",
+          "examples": [
+            "The engineering team utilized advanced software to design the new aircraft engine."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "enlarge",
+      "word": "enlarge",
+      "senses": [
+        {
+          "id": "sense-bc04cf27",
+          "pos": "verb",
+          "meaningZh": "放大；擴大",
+          "definitionEn": "make larger or bigger",
+          "examples": [
+            "The photograph had to be enlarged to see the details clearly."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-2416658f",
+          "pos": "verb",
+          "meaningZh": "補充詳述；展開說明",
+          "definitionEn": "add details or clarify meaning of an account or idea, usually in writing",
+          "examples": [
+            "In order to make the essay more informative, Susan decided to enlarge the details of her personal experience with the subject matter."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "enlargement",
+      "word": "enlargement",
+      "senses": [
+        {
+          "id": "sense-61db101c",
+          "pos": "noun",
+          "meaningZh": "擴大；增大（的狀態）",
+          "definitionEn": "the state of being enlarged",
+          "examples": [
+            "The surgeon recommended an enlargement of the MRI image to get a better view of the affected area."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-b53b4afd",
+          "pos": "noun",
+          "meaningZh": "（照片）放大版；放大件",
+          "definitionEn": "a photographic print that has been made larger",
+          "examples": [
+            "The photographer ordered an enlargement of her favorite picture, so she could hang it on the wall in a larger size."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "enormous",
+      "word": "enormous",
+      "senses": [
+        {
+          "id": "sense-5bc85b6b",
+          "pos": "adjective",
+          "meaningZh": "巨大的；龐大的",
+          "definitionEn": "extremely large or great",
+          "examples": [
+            "The whale surfaced, revealing its enormous size as it towered over the boat."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-0454d6a8",
+          "pos": "adjective",
+          "meaningZh": "極大的；廣闊的",
+          "definitionEn": "extraordinarily big or immense",
+          "examples": [
+            "The cruise ship was so enormous that it could accommodate thousands of passengers and had multiple swimming pools, restaurants, and entertainment venues."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "ensure",
+      "word": "ensure",
+      "senses": [
+        {
+          "id": "sense-ef45cb8c",
+          "pos": "verb",
+          "meaningZh": "確保；保證",
+          "definitionEn": "make certain that (something) will occur or be the case.",
+          "examples": [
+            "I will ensure that all the documents are properly filed and organized before the meeting."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-c5a6d88e",
+          "pos": "verb",
+          "meaningZh": "防止（問題發生）；確認無誤",
+          "definitionEn": "make sure that (a problem) does not occur.",
+          "examples": [
+            "I double-checked the locks to ensure that no one could break into the house."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L4",
+        "textbookTitle": "龍騰 B2·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "entertain",
+      "word": "entertain",
+      "senses": [
+        {
+          "id": "sense-b6c66f61",
+          "pos": "verb",
+          "meaningZh": "娛樂；逗樂",
+          "definitionEn": "provide amusement or enjoyment for",
+          "examples": [
+            "The magician performed a mesmerizing show to entertain the crowd."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-67f55ce8",
+          "pos": "verb",
+          "meaningZh": "持有；抱持（想法）",
+          "definitionEn": "hold (an idea or belief)",
+          "examples": [
+            "She entertained the notion of starting her own business."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L5 +1",
+        "textbookTitle": "龍騰 B2·L5、三民 B2·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "entertainment",
+      "word": "entertainment",
+      "senses": [
+        {
+          "id": "sense-80f80958",
+          "pos": "noun",
+          "meaningZh": "娛樂；消遣",
+          "definitionEn": "an activity that provides pleasure and relaxation",
+          "examples": [
+            "After a long week at work, Sarah decided to unwind by going to see a comedy show. The entertainment provided her with much-needed laughter and an opportunity to relax."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-0dd02f70",
+          "pos": "noun",
+          "meaningZh": "表演；節目",
+          "definitionEn": "something that amuses, pleases, or diverts, especially a performance or show",
+          "examples": [
+            "The circus provided a fantastic evening of entertainment, with acrobats, clowns, and animal acts."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L5 +1",
+        "textbookTitle": "龍騰 B2·L5、三民 B2·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "enthusiasm",
+      "word": "enthusiasm",
+      "senses": [
+        {
+          "id": "sense-52fcfdbd",
+          "pos": "noun",
+          "meaningZh": "熱情；熱忱",
+          "definitionEn": "a strong feeling of excitement and interest in something, and a desire to become involved in it",
+          "examples": [
+            "She watched the performance with enthusiasm, clapping and cheering along with the rest of the audience."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-7b29ac69",
+          "pos": "noun",
+          "meaningZh": "嗜好；興趣所在",
+          "definitionEn": "something that you are very interested in and spend a lot of time doing",
+          "examples": [
+            "John's enthusiasm for painting led him to spend hours each day in his art studio, experimenting with different techniques and colors."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L9 +1",
+        "textbookTitle": "龍騰 B3·L9、三民 B4·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "equality",
+      "word": "equality",
+      "senses": [
+        {
+          "id": "sense-adb885c2",
+          "pos": "noun",
+          "meaningZh": "平等；均等",
+          "definitionEn": "the state or quality of being equal",
+          "examples": [
+            "The principle of equality before the law is a fundamental aspect of a democratic society."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-97cd5c64",
+          "pos": "noun",
+          "meaningZh": "同等地位；相等狀態",
+          "definitionEn": "the quality of being the same in quantity, measure, value, or status",
+          "examples": [
+            "The company is committed to ensuring gender equality in the workplace by hiring an equal number of male and female employees and providing equal pay."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L4 +1",
+        "textbookTitle": "龍騰 B2·L4、三民 B2·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "equip",
+      "word": "equip",
+      "senses": [
+        {
+          "id": "sense-2a67822d",
+          "pos": "verb",
+          "meaningZh": "配備；裝備",
+          "definitionEn": "provide (someone or something) with the necessary items for a particular purpose",
+          "examples": [
+            "The hikers were equipped with sturdy boots, backpacks, and maps before embarking on the challenging trail."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-16defe04",
+          "pos": "verb",
+          "meaningZh": "使具備（技能或知識）",
+          "definitionEn": "enhance the abilities, qualities, or knowledge of someone or something",
+          "examples": [
+            "The training program is designed to equip employees with the necessary skills and knowledge to excel in their roles."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·R1",
+        "textbookTitle": "龍騰 B3·R1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "equipment",
+      "word": "equipment",
+      "senses": [
+        {
+          "id": "sense-4deb6ec5",
+          "pos": "noun",
+          "meaningZh": "設備；器材；工具",
+          "definitionEn": "the necessary tools, machines, or other items for a specific task or activity",
+          "examples": [
+            "Before starting the construction of a house, it is important to have all the right equipment such as hammers, saws, drills, and safety gear."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·R1",
+        "textbookTitle": "龍騰 B3·R1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "era",
+      "word": "era",
+      "senses": [
+        {
+          "id": "sense-9054e192",
+          "pos": "noun",
+          "meaningZh": "時代；年代",
+          "definitionEn": "a period of time characterized by a particular feature or event",
+          "examples": [],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-d33e2069",
+          "pos": "noun",
+          "meaningZh": "地質代（地質年代單位）",
+          "definitionEn": "a major division of geological time that is divided into two or more periods",
+          "examples": [
+            "The Mesozoic Era, which lasted from 252 to 66 million years ago, is known for the presence of dinosaurs and the emergence of mammals."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "essential",
+      "word": "essential",
+      "senses": [
+        {
+          "id": "sense-3f5130b1",
+          "pos": "adjective",
+          "meaningZh": "必要的；不可或缺的",
+          "definitionEn": "relating to or containing the most important requirement of a plant, etc.",
+          "examples": [
+            "Water is essential for the growth of plants."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-57569bb7",
+          "pos": "noun",
+          "meaningZh": "必需品；基本要素",
+          "definitionEn": "something that is absolutely necessary",
+          "examples": [
+            "Water is essential for human survival."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L4 +2",
+        "textbookTitle": "龍騰 B3·L4、三民 B2·L4、翰林 B1·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "establish",
+      "word": "establish",
+      "senses": [
+        {
+          "id": "sense-6a231093",
+          "pos": "verb",
+          "meaningZh": "創立；建立",
+          "definitionEn": "To bring about or make happen.",
+          "examples": [
+            "The entrepreneur worked tirelessly to establish her own business, overcoming countless obstacles along the way."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-ff9dc5c8",
+          "pos": "verb",
+          "meaningZh": "建立（關係或聲譽）；確立",
+          "definitionEn": "To create or build something that is abstract or intangible.",
+          "examples": [
+            "For the art gallery to be successful, we need to establish a strong presence in the local arts community and cultivate relationships with artists."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L4",
+        "textbookTitle": "龍騰 B2·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "establishment",
+      "word": "establishment",
+      "senses": [
+        {
+          "id": "sense-ead0e647",
+          "pos": "noun",
+          "meaningZh": "大型機構；體制",
+          "definitionEn": "any large organization",
+          "examples": [
+            "The establishment has been operating in the city for over 50 years, providing employment opportunities for thousands of people."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-b7ac4095",
+          "pos": "noun",
+          "meaningZh": "創立；設立",
+          "definitionEn": "an organization founded and united for a specific purpose",
+          "examples": [
+            "The establishment of a new political party caused a great stir in the country’s political scene."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L4",
+        "textbookTitle": "龍騰 B2·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "estimate",
+      "word": "estimate",
+      "senses": [
+        {
+          "id": "sense-6def6218",
+          "pos": "verb",
+          "meaningZh": "估計；推算",
+          "definitionEn": "judge tentatively or form an estimate of (quantities or time)",
+          "examples": [
+            "She estimated that the project would take at least 6 months to complete."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-eb7d9323",
+          "pos": "noun",
+          "meaningZh": "估價；報價",
+          "definitionEn": "a statement indicating the likely cost of some job",
+          "examples": [
+            "The contractor gave me an estimate of $500 for painting my house."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L4",
+        "textbookTitle": "龍騰 B5·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "ethnic",
+      "word": "ethnic",
+      "senses": [
+        {
+          "id": "sense-b4f88654",
+          "pos": "adjective",
+          "meaningZh": "族裔的；民族文化的",
+          "definitionEn": "denoting or relating to a particular ethnic group or their customs and culture",
+          "examples": [
+            "The festival showcased various ethnic cuisines, traditional dances, and colorful attire from different cultures around the world."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-f50e580d",
+          "pos": "noun",
+          "meaningZh": "少數族裔；族群成員",
+          "definitionEn": "a person who is a member of an ethnic group",
+          "examples": [
+            "My friend, who is of Korean descent, is proud of her ethnic heritage and celebrates it through traditional food and clothing."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "evaluate",
+      "word": "evaluate",
+      "senses": [
+        {
+          "id": "sense-a9f363d3",
+          "pos": "verb",
+          "meaningZh": "評估；評鑑",
+          "definitionEn": "form a critical opinion of",
+          "examples": [
+            "As a teacher, it’s important to evaluate the students’ performance in each exam to identify their strengths and weaknesses."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-8329d7ce",
+          "pos": "verb",
+          "meaningZh": "評量；衡量（效果或性質）",
+          "definitionEn": "evaluate or estimate the nature, quality, ability, extent, or significance of",
+          "examples": [
+            "In order to evaluate the effectiveness of our new marketing campaign, we will measure the increase in sales over the next quarter."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L2",
+        "textbookTitle": "龍騰 B5·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "evaluation",
+      "word": "evaluation",
+      "senses": [
+        {
+          "id": "sense-0c71c035",
+          "pos": "noun",
+          "meaningZh": "評估；評鑑",
+          "definitionEn": "an appraisal of the value of something",
+          "examples": [
+            "The company’s annual evaluation of its employees helps to identify areas of strengths and weaknesses and set goals for professional development."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-639eb58f",
+          "pos": "noun",
+          "meaningZh": "評量；考核",
+          "definitionEn": "the process of judging or assessing something or someone",
+          "examples": [
+            "The teacher’s evaluation of the student’s essay helped the student to improve their writing skills."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L2",
+        "textbookTitle": "龍騰 B5·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "eventual",
+      "word": "eventual",
+      "senses": [
+        {
+          "id": "sense-994f4942",
+          "pos": "adjective",
+          "meaningZh": "最終的；終究發生的",
+          "definitionEn": "likely to happen at some point in the future; following as a result of something that is already happening or exists",
+          "examples": [
+            "As the sun continued to set, the eventual darkness of nightfall seemed inevitable."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L8 +1",
+        "textbookTitle": "龍騰 B1·L8、三民 B2·L10"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "evidence",
+      "word": "evidence",
+      "senses": [
+        {
+          "id": "sense-def84fd3",
+          "pos": "noun",
+          "meaningZh": "證據；佐證",
+          "definitionEn": "In law, all the means by which any alleged matter of fact, the truth of which is investigated, is established or disproved.",
+          "examples": [
+            "The prosecution presented compelling evidence linking the defendant to the crime scene."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-39b07c79",
+          "pos": "verb",
+          "meaningZh": "提供證明；作為……的依據",
+          "definitionEn": "To provide evidence or proof.",
+          "examples": [
+            "The fingerprints found at the scene of the crime are evidence that the suspect was present."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·R2 +1",
+        "textbookTitle": "龍騰 B3·R2、三民 B4·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "evident",
+      "word": "evident",
+      "senses": [
+        {
+          "id": "sense-d4880922",
+          "pos": "adjective",
+          "meaningZh": "顯而易見的；明顯的",
+          "definitionEn": "Capable of being seen or noticed; perceptible.",
+          "examples": [
+            "The joy on her face was evident as she opened the birthday present."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-336dc6f0",
+          "pos": "adjective",
+          "meaningZh": "清楚的；確鑿的",
+          "definitionEn": "Clearly revealed to the mind, senses, or judgment; obvious.",
+          "examples": [
+            "It was evident that she was angry from the way she spoke."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·R2 +1",
+        "textbookTitle": "龍騰 B3·R2、三民 B4·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "exaggerate",
+      "word": "exaggerate",
+      "senses": [
+        {
+          "id": "sense-e1d5c48c",
+          "pos": "verb",
+          "meaningZh": "誇大；誇張",
+          "definitionEn": "To describe something as larger or greater than it really is.",
+          "examples": [
+            "During the fishing trip, Jack always tends to exaggerate the size of the fish he caught, making them sound much bigger than they actually were."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-1cf317c1",
+          "pos": "verb",
+          "meaningZh": "過度渲染；言過其實",
+          "definitionEn": "To do something to an excessive degree.",
+          "examples": [
+            "John tends to exaggerate his accomplishments when discussing them with others, making his achievements sound more impressive than they actually are."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L9 +1",
+        "textbookTitle": "龍騰 B3·L9、三民 B4·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "exception",
+      "word": "exception",
+      "senses": [
+        {
+          "id": "sense-d88db19c",
+          "pos": "noun",
+          "meaningZh": "例外；特例",
+          "definitionEn": "an instance that does not conform to a rule or generalization",
+          "examples": [
+            "Although the store has a strict no-refund policy, they made an exception for the customer with a valid receipt."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-6dbb5c53",
+          "pos": "noun",
+          "meaningZh": "排除；豁免",
+          "definitionEn": "an exclusion",
+          "examples": [
+            "The restaurant had a strict 'no animals allowed' policy, but made an exception for service animals."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L3",
+        "textbookTitle": "龍騰 B5·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "exhaust",
+      "word": "exhaust",
+      "senses": [
+        {
+          "id": "sense-b2881bef",
+          "pos": "verb",
+          "meaningZh": "使精疲力盡；耗盡體力",
+          "definitionEn": "completely wear out; tire out",
+          "examples": [
+            "After running a marathon, I was so exhausted that I could barely stand."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-36251420",
+          "pos": "verb",
+          "meaningZh": "用盡；耗光（資源）",
+          "definitionEn": "use up all of a resource or material",
+          "examples": [
+            "After running the marathon, I was completely exhausted and had used up all my energy."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L8 +1",
+        "textbookTitle": "龍騰 B3·L8、三民 B4·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "exhibit",
+      "word": "exhibit",
+      "senses": [
+        {
+          "id": "sense-f18ffef8",
+          "pos": "verb",
+          "meaningZh": "展示；展出",
+          "definitionEn": "to show or make visible",
+          "examples": [
+            "The museum will exhibit the works of Van Gogh next month."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-e954adfa",
+          "pos": "noun",
+          "meaningZh": "（法庭）物證；展示品",
+          "definitionEn": "a piece of evidence produced in court",
+          "examples": [
+            "The prosecutor presented an exhibit, a photograph of the crime scene, which provided clear evidence of the defendant’s guilt."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L7",
+        "textbookTitle": "龍騰 B3·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "expand",
+      "word": "expand",
+      "senses": [
+        {
+          "id": "sense-b6352493",
+          "pos": "verb",
+          "meaningZh": "擴大；擴充",
+          "definitionEn": "to make larger or more extensive, to increase in size or volume",
+          "examples": [
+            "To meet the growing demand, the factory decided to expand its production facilities."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-1c3beafd",
+          "pos": "verb",
+          "meaningZh": "膨脹；擴張",
+          "definitionEn": "to become larger in size or volume or quantity",
+          "examples": [
+            "Due to high demand, the company decided to expand their production capacity by building a new factory."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L8",
+        "textbookTitle": "龍騰 B4·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "expansion",
+      "word": "expansion",
+      "senses": [
+        {
+          "id": "sense-a55f4a03",
+          "pos": "noun",
+          "meaningZh": "擴大；擴張",
+          "definitionEn": "the act of increasing something in size, volume, quantity, or scope",
+          "examples": [
+            "The expansion of the company’s business operations in different countries increased its revenue."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-a4796cdc",
+          "pos": "noun",
+          "meaningZh": "發展；延伸",
+          "definitionEn": "the process of becoming larger or more extensive",
+          "examples": [
+            "The expansion of the company’s operations into new markets led to a significant increase in its profitability."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L8",
+        "textbookTitle": "龍騰 B4·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    }
+  ]
+}

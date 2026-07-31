@@ -1,0 +1,1927 @@
+{
+  "schemaVersion": 1,
+  "kind": "questions",
+  "questionKind": "multipleChoice",
+  "questions": [
+    {
+      "id": "child-3f0c0887",
+      "kind": "multipleChoice",
+      "prompt": "The ceremony will begin _____ nine o'clock sharp, so please arrive early.",
+      "options": [
+        "at",
+        "on",
+        "in",
+        "by"
+      ],
+      "answerIndex": 0,
+      "wordKey": "at",
+      "senseId": "sense-b446039d",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-e8ce2384",
+      "kind": "multipleChoice",
+      "prompt": "We always hold a family reunion _____ New Year's Day every year.",
+      "options": [
+        "at",
+        "in",
+        "on",
+        "since"
+      ],
+      "answerIndex": 2,
+      "wordKey": "on",
+      "senseId": "sense-3a23bcca",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-e082da88",
+      "kind": "multipleChoice",
+      "prompt": "My uncle was born _____ the spring of 1985, during a heavy storm.",
+      "options": [
+        "on",
+        "at",
+        "in",
+        "since"
+      ],
+      "answerIndex": 2,
+      "wordKey": "in",
+      "senseId": "sense-bfc4ec4e",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-cfe66e9d",
+      "kind": "multipleChoice",
+      "prompt": "You have to submit the application form _____ next Friday, or it will not be accepted.",
+      "options": [
+        "until",
+        "by",
+        "since",
+        "during"
+      ],
+      "answerIndex": 1,
+      "wordKey": "by",
+      "senseId": "sense-dd16399d",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-dfdadf41",
+      "kind": "multipleChoice",
+      "prompt": "The stubborn child refused to leave the playground and stayed there _____ it got completely dark.",
+      "options": [
+        "by",
+        "until",
+        "for",
+        "since"
+      ],
+      "answerIndex": 1,
+      "wordKey": "until",
+      "senseId": "sense-f5220887",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-bc1a77f3",
+      "kind": "multipleChoice",
+      "prompt": "My grandmother has lived in this quiet village _____ she retired ten years ago.",
+      "options": [
+        "for",
+        "since",
+        "during",
+        "by"
+      ],
+      "answerIndex": 1,
+      "wordKey": "since",
+      "senseId": "sense-7cd3de43",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-60a1de6b",
+      "kind": "multipleChoice",
+      "prompt": "After the long hike, the exhausted children finally arrived _____ a small village hidden deep in the mountains.",
+      "options": [
+        "at",
+        "into",
+        "onto",
+        "through"
+      ],
+      "answerIndex": 0,
+      "wordKey": "at",
+      "senseId": "sense-b446039d",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-2e5a626f",
+      "kind": "multipleChoice",
+      "prompt": "The rescue team had to crawl _____ a narrow tunnel for nearly an hour before they reached the trapped miners.",
+      "options": [
+        "across",
+        "onto",
+        "through",
+        "at"
+      ],
+      "answerIndex": 2,
+      "wordKey": "through",
+      "senseId": "sense-2e5a1f63",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-7445d0c6",
+      "kind": "multipleChoice",
+      "prompt": "Be careful when you ride your bike _____ the busy street; always look both ways first.",
+      "options": [
+        "through",
+        "across",
+        "into",
+        "in"
+      ],
+      "answerIndex": 1,
+      "wordKey": "across",
+      "senseId": "sense-bb0a3250",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-7ae83655",
+      "kind": "multipleChoice",
+      "prompt": "Startled by the sudden noise, the squirrel leaped _____ a high branch and disappeared among the leaves.",
+      "options": [
+        "into",
+        "onto",
+        "at",
+        "across"
+      ],
+      "answerIndex": 1,
+      "wordKey": "onto",
+      "senseId": "sense-161cd3cc",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-d2827c5d",
+      "kind": "multipleChoice",
+      "prompt": "My grandparents have lived _____ Taiwan for over fifty years and still speak fondly of their hometown.",
+      "options": [
+        "at",
+        "on",
+        "in",
+        "onto"
+      ],
+      "answerIndex": 2,
+      "wordKey": "in",
+      "senseId": "sense-bfc4ec4e",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-bb49aa02",
+      "kind": "multipleChoice",
+      "prompt": "The thief did not climb _____ the warehouse through the front door; instead, he sneaked in through a broken window at the back.",
+      "options": [
+        "into",
+        "across",
+        "onto",
+        "at"
+      ],
+      "answerIndex": 0,
+      "wordKey": "into",
+      "senseId": "sense-c797419a",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-cbd85e14",
+      "kind": "multipleChoice",
+      "prompt": "The outdoor concert was postponed _____ the approaching typhoon, which worried the organizers.",
+      "options": [
+        "because of",
+        "because",
+        "although",
+        "despite"
+      ],
+      "answerIndex": 0,
+      "wordKey": "of",
+      "senseId": "sense-1f312a35",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-f2b6cb2a",
+      "kind": "multipleChoice",
+      "prompt": "_____ the medicine was extremely bitter, the patient swallowed it without complaint.",
+      "options": [
+        "Despite",
+        "In spite of",
+        "Although",
+        "Because of"
+      ],
+      "answerIndex": 2,
+      "wordKey": "although",
+      "senseId": "sense-dee26472",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-7bfc48bf",
+      "kind": "multipleChoice",
+      "prompt": "The hikers reached the summit safely _____ the sudden change in weather conditions.",
+      "options": [
+        "although",
+        "because",
+        "despite",
+        "so"
+      ],
+      "answerIndex": 2,
+      "wordKey": "despite",
+      "senseId": "sense-c7c2f301",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-17ceaae0",
+      "kind": "multipleChoice",
+      "prompt": "_____ rising fuel prices, many commuters have switched from cars to public transportation.",
+      "options": [
+        "Because",
+        "Due to",
+        "Although",
+        "Whereas"
+      ],
+      "answerIndex": 1,
+      "wordKey": "to",
+      "senseId": "sense-cfb6c20b",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-dc7d14d2",
+      "kind": "multipleChoice",
+      "prompt": "The students decided to hold the debate online _____ meeting in the crowded classroom.",
+      "options": [
+        "instead of",
+        "instead",
+        "rather than that",
+        "while"
+      ],
+      "answerIndex": 0,
+      "wordKey": "of",
+      "senseId": "sense-1f312a35",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-c583635e",
+      "kind": "multipleChoice",
+      "prompt": "_____ she had practiced for months, she still felt nervous before walking onto the stage.",
+      "options": [
+        "In spite of",
+        "Despite",
+        "Even though",
+        "Because of"
+      ],
+      "answerIndex": 2,
+      "wordKey": "though",
+      "senseId": "sense-371894fa",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-2d38e147",
+      "kind": "multipleChoice",
+      "prompt": "My grandmother _____ a single English word until she moved to Canada in 1985.",
+      "options": [
+        "doesn't speak",
+        "didn't speak",
+        "hasn't spoken",
+        "wasn't speaking"
+      ],
+      "answerIndex": 1,
+      "wordKey": "speak",
+      "senseId": "sense-6b9172be",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-0bc5a459",
+      "kind": "multipleChoice",
+      "prompt": "By 2030, scientists _____ a cure for several rare diseases that puzzle us today.",
+      "options": [
+        "will have found",
+        "will be finding",
+        "have found",
+        "found"
+      ],
+      "answerIndex": 0,
+      "wordKey": "found",
+      "senseId": "sense-0c20a5c2",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-71723598",
+      "kind": "multipleChoice",
+      "prompt": "The strict coach made every player _____ ten extra laps after they lost the match.",
+      "options": [
+        "to run",
+        "run",
+        "running",
+        "ran"
+      ],
+      "answerIndex": 1,
+      "wordKey": "run",
+      "senseId": "sense-f032408b",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-107fdfd2",
+      "kind": "multipleChoice",
+      "prompt": "My parents never let me _____ out alone after dark when I was in junior high.",
+      "options": [
+        "to go",
+        "going",
+        "go",
+        "went"
+      ],
+      "answerIndex": 2,
+      "wordKey": "go",
+      "senseId": "sense-c19a599d",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-da8ac4b1",
+      "kind": "multipleChoice",
+      "prompt": "After weeks of nagging, she eventually got her stubborn brother _____ the dishes without complaining.",
+      "options": [
+        "wash",
+        "to wash",
+        "washing",
+        "washed"
+      ],
+      "answerIndex": 1,
+      "wordKey": "wash",
+      "senseId": "sense-828be0b5",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-b1a1fa8e",
+      "kind": "multipleChoice",
+      "prompt": "From the balcony, we watched the firefighters _____ into the burning building without any hesitation.",
+      "options": [
+        "rush",
+        "to rush",
+        "rushed",
+        "to rushing"
+      ],
+      "answerIndex": 0,
+      "wordKey": "rush",
+      "senseId": "sense-612c2bcc",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-0ad07268",
+      "kind": "multipleChoice",
+      "prompt": "The suspect was seen _____ the scene just minutes before the police arrived.",
+      "options": [
+        "to leave",
+        "leave",
+        "leaving from",
+        "left"
+      ],
+      "answerIndex": 0,
+      "wordKey": "leave",
+      "senseId": "sense-d2d9d19a",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-550dfaaa",
+      "kind": "multipleChoice",
+      "prompt": "I didn't notice anyone _____ the room while I was concentrating on my exam.",
+      "options": [
+        "enter",
+        "to enter",
+        "entered",
+        "to entering"
+      ],
+      "answerIndex": 0,
+      "wordKey": "enter",
+      "senseId": "sense-682eca08",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-4ab07e45",
+      "kind": "multipleChoice",
+      "prompt": "Last night the campers felt the ground _____ slightly as a small earthquake passed through the valley.",
+      "options": [
+        "shake",
+        "to shake",
+        "shaken",
+        "to shaking"
+      ],
+      "answerIndex": 0,
+      "wordKey": "shake",
+      "senseId": "sense-33bca7f4",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-a3660945",
+      "kind": "multipleChoice",
+      "prompt": "The little boy was heard _____ for help, so the neighbors immediately ran outside.",
+      "options": [
+        "to cry",
+        "cry",
+        "crying out from",
+        "cried"
+      ],
+      "answerIndex": 0,
+      "wordKey": "cry",
+      "senseId": "sense-912bfef6",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-c269318e",
+      "kind": "multipleChoice",
+      "prompt": "Many commuters now take the subway _____ avoid the heavy traffic during rush hour.",
+      "options": [
+        "in order to",
+        "in order for",
+        "for to",
+        "so that"
+      ],
+      "answerIndex": 0,
+      "wordKey": "to",
+      "senseId": "sense-cfb6c20b",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-70ae3665",
+      "kind": "multipleChoice",
+      "prompt": "The new intern wasn't sure _____ to operate the complicated coffee machine in the break room.",
+      "options": [
+        "how",
+        "what",
+        "which",
+        "that"
+      ],
+      "answerIndex": 0,
+      "wordKey": "how",
+      "senseId": "sense-17ab9c62",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-1f5c7659",
+      "kind": "multipleChoice",
+      "prompt": "What the worried mother wanted most was _____ her missing child safe and sound.",
+      "options": [
+        "to see",
+        "seeing",
+        "saw",
+        "see"
+      ],
+      "answerIndex": 0,
+      "wordKey": "see",
+      "senseId": "sense-5a4efd4d",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-93b2df37",
+      "kind": "multipleChoice",
+      "prompt": "She turned down the music _____ disturb her roommate, who was studying for the final.",
+      "options": [
+        "so as not to",
+        "so as to not",
+        "not so as to",
+        "for not"
+      ],
+      "answerIndex": 0,
+      "wordKey": "to",
+      "senseId": "sense-cfb6c20b",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-2a1be376",
+      "kind": "multipleChoice",
+      "prompt": "The committee finally decided _____ the annual sports event because of the typhoon warning.",
+      "options": [
+        "to cancel",
+        "canceling",
+        "cancel",
+        "for canceling"
+      ],
+      "answerIndex": 0,
+      "wordKey": "cancel",
+      "senseId": "sense-9d79f1b2",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-d4b95207",
+      "kind": "multipleChoice",
+      "prompt": "My grandmother, _____ lives in a small village, grows all her own vegetables.",
+      "options": [
+        "that",
+        "who",
+        "which",
+        "where"
+      ],
+      "answerIndex": 1,
+      "wordKey": "who",
+      "senseId": "sense-1f15c015",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-ccb5f609",
+      "kind": "multipleChoice",
+      "prompt": "The bridge _____ connects the two towns was built over a century ago.",
+      "options": [
+        ", which",
+        "which",
+        "that connects, which",
+        "whom"
+      ],
+      "answerIndex": 1,
+      "wordKey": "which",
+      "senseId": "sense-441760ee",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-5090f679",
+      "kind": "multipleChoice",
+      "prompt": "He arrived two hours late, _____ annoyed everyone at the meeting.",
+      "options": [
+        "that",
+        "what",
+        "which",
+        "who"
+      ],
+      "answerIndex": 2,
+      "wordKey": "which",
+      "senseId": "sense-441760ee",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-b7139e35",
+      "kind": "multipleChoice",
+      "prompt": "This is the only museum in town _____ I have never visited.",
+      "options": [
+        "that",
+        ", which",
+        "what",
+        "whom"
+      ],
+      "answerIndex": 0,
+      "wordKey": "that",
+      "senseId": "sense-862a58af",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-8b46a41e",
+      "kind": "multipleChoice",
+      "prompt": "Mr. Lin, _____ I met at the conference, later became my business partner.",
+      "options": [
+        "whom",
+        "that",
+        "ø (omitted)",
+        "which"
+      ],
+      "answerIndex": 0,
+      "wordKey": "whom",
+      "senseId": "sense-6b154cc3",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-70a463da",
+      "kind": "multipleChoice",
+      "prompt": "The book _____ I borrowed from the library is due next Monday.",
+      "options": [
+        "who",
+        "that",
+        ", that",
+        ", which"
+      ],
+      "answerIndex": 1,
+      "wordKey": "that",
+      "senseId": "sense-862a58af",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-2f2ca895",
+      "kind": "multipleChoice",
+      "prompt": "The conference room _____ the board meeting was held has been completely renovated.",
+      "options": [
+        "in which",
+        "in that",
+        "which",
+        "in who"
+      ],
+      "answerIndex": 0,
+      "wordKey": "which",
+      "senseId": "sense-441760ee",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-56b46ea0",
+      "kind": "multipleChoice",
+      "prompt": "The professor _____ I sent my application turned out to be the head of the department.",
+      "options": [
+        "to whom",
+        "to who",
+        "whom to",
+        "to that"
+      ],
+      "answerIndex": 0,
+      "wordKey": "whom",
+      "senseId": "sense-6b154cc3",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-421b825a",
+      "kind": "multipleChoice",
+      "prompt": "She gave a speech, the main point _____ was that we should never give up.",
+      "options": [
+        "of which",
+        "of that",
+        "which of",
+        "of whom"
+      ],
+      "answerIndex": 0,
+      "wordKey": "which",
+      "senseId": "sense-441760ee",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-595c9729",
+      "kind": "multipleChoice",
+      "prompt": "This is the small village _____ my grandparents spent their entire lives.",
+      "options": [
+        "in which",
+        "which in",
+        "in which in",
+        "that in"
+      ],
+      "answerIndex": 0,
+      "wordKey": "which",
+      "senseId": "sense-441760ee",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-2bd551f5",
+      "kind": "multipleChoice",
+      "prompt": "He is a generous man _____ many local families depend for support.",
+      "options": [
+        "on whom",
+        "on which",
+        "whom on",
+        "on who"
+      ],
+      "answerIndex": 0,
+      "wordKey": "whom",
+      "senseId": "sense-6b154cc3",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-6b836c94",
+      "kind": "multipleChoice",
+      "prompt": "The method _____ the ancient builders moved such heavy stones remains a mystery.",
+      "options": [
+        "by which",
+        "by that",
+        "by what",
+        "which by"
+      ],
+      "answerIndex": 0,
+      "wordKey": "which",
+      "senseId": "sense-441760ee",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-ef2de5d4",
+      "kind": "multipleChoice",
+      "prompt": "_____ he said at the meeting completely changed the board's final decision.",
+      "options": [
+        "What",
+        "That",
+        "Which",
+        "The thing what"
+      ],
+      "answerIndex": 0,
+      "wordKey": "what",
+      "senseId": "sense-3be416e4",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-ee15c09a",
+      "kind": "multipleChoice",
+      "prompt": "Volunteers may take _____ they need from the supply room before the event starts.",
+      "options": [
+        "whatever",
+        "what the thing",
+        "that which they",
+        "whichever thing what"
+      ],
+      "answerIndex": 0,
+      "wordKey": "whatever",
+      "senseId": "sense-330b632c",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-8973c422",
+      "kind": "multipleChoice",
+      "prompt": "_____ finishes the exam first may leave the classroom quietly.",
+      "options": [
+        "Whoever",
+        "Who",
+        "Whomever",
+        "The one whoever"
+      ],
+      "answerIndex": 0,
+      "wordKey": "whoever",
+      "senseId": "sense-d24d301d",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-fc4b0ed1",
+      "kind": "multipleChoice",
+      "prompt": "The committee did not understand _____ the speaker was actually trying to suggest.",
+      "options": [
+        "what",
+        "that",
+        "the thing what",
+        "which that"
+      ],
+      "answerIndex": 0,
+      "wordKey": "what",
+      "senseId": "sense-3be416e4",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-dd6b51c4",
+      "kind": "multipleChoice",
+      "prompt": "No matter how busy she is, she always remembers _____ truly matters to her family.",
+      "options": [
+        "what",
+        "that which is what",
+        "the thing that what",
+        "whatever that"
+      ],
+      "answerIndex": 0,
+      "wordKey": "what",
+      "senseId": "sense-3be416e4",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-501d9e9c",
+      "kind": "multipleChoice",
+      "prompt": "All employees _____ in the new training program must register before Friday.",
+      "options": [
+        "interested",
+        "interesting",
+        "interest",
+        "are interested"
+      ],
+      "answerIndex": 0,
+      "wordKey": "interested",
+      "senseId": "sense-2f06a810",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-c394ec91",
+      "kind": "multipleChoice",
+      "prompt": "Not until she received the acceptance letter _____ that her months of hard work had finally paid off.",
+      "options": [
+        "she believed",
+        "did she believe",
+        "she did believe",
+        "believed she"
+      ],
+      "answerIndex": 1,
+      "wordKey": "believe",
+      "senseId": "sense-91ea3be1",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-93c9f278",
+      "kind": "multipleChoice",
+      "prompt": "Hardly had the manager finished his speech _____ the entire audience burst into applause.",
+      "options": [
+        "than",
+        "when",
+        "then",
+        "as"
+      ],
+      "answerIndex": 1,
+      "wordKey": "when",
+      "senseId": "sense-d8ba5d6c",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-e9a699a9",
+      "kind": "multipleChoice",
+      "prompt": "Only after the storm had passed _____ to assess the damage to their coastal village.",
+      "options": [
+        "the residents began",
+        "began the residents",
+        "did the residents begin",
+        "the residents did begin"
+      ],
+      "answerIndex": 2,
+      "wordKey": "begin",
+      "senseId": "sense-184e0798",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-571fafba",
+      "kind": "multipleChoice",
+      "prompt": "\"I really enjoyed the concert last night.\" \"_____ did my sister; she couldn't stop talking about it.\"",
+      "options": [
+        "So",
+        "Neither",
+        "So do",
+        "Such"
+      ],
+      "answerIndex": 0,
+      "wordKey": "so",
+      "senseId": "sense-1a9f1cb3",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-a6b3eb21",
+      "kind": "multipleChoice",
+      "prompt": "\"My parents support my decision to study art.\" \"So _____ mine.\"",
+      "options": [
+        "do",
+        "are",
+        "did",
+        "does"
+      ],
+      "answerIndex": 0,
+      "wordKey": "do",
+      "senseId": "sense-29dc1bcb",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-f31e00b8",
+      "kind": "multipleChoice",
+      "prompt": "Look! _____ comes the bus we've been waiting for over half an hour.",
+      "options": [
+        "Here",
+        "Here it",
+        "It here",
+        "There it"
+      ],
+      "answerIndex": 0,
+      "wordKey": "here",
+      "senseId": "sense-8f70ef91",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-e915d3d9",
+      "kind": "multipleChoice",
+      "prompt": "\"I won't be attending the meeting tomorrow.\" \"_____ will I, since I have a doctor's appointment.\"",
+      "options": [
+        "Nor",
+        "So",
+        "Neither do",
+        "Not"
+      ],
+      "answerIndex": 0,
+      "wordKey": "nor",
+      "senseId": "sense-9d6c99c7",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-1264a427",
+      "kind": "multipleChoice",
+      "prompt": "She finished the marathon in under four hours, and _____, breaking his personal record.",
+      "options": [
+        "so did her coach",
+        "so her coach did",
+        "neither did her coach",
+        "so does her coach"
+      ],
+      "answerIndex": 0,
+      "wordKey": "coach",
+      "senseId": "sense-d99b8408",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-1e6696b6",
+      "kind": "multipleChoice",
+      "prompt": "A number of volunteers _____ already signed up to help clean the beach this weekend.",
+      "options": [
+        "has",
+        "is",
+        "have",
+        "was"
+      ],
+      "answerIndex": 2,
+      "wordKey": "have",
+      "senseId": "sense-f26e39bd",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-562aeb46",
+      "kind": "multipleChoice",
+      "prompt": "_____ is essential to all forms of life, yet many people waste it every day.",
+      "options": [
+        "A water",
+        "The water",
+        "Water",
+        "An water"
+      ],
+      "answerIndex": 2,
+      "wordKey": "water",
+      "senseId": "sense-8c4080f5",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-94b078e4",
+      "kind": "multipleChoice",
+      "prompt": "After dinner we went outside to look at _____ moon, which was unusually bright.",
+      "options": [
+        "a",
+        "an",
+        "the",
+        "(no article)"
+      ],
+      "answerIndex": 2,
+      "wordKey": "the",
+      "senseId": "sense-14a58442",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-5d50444c",
+      "kind": "multipleChoice",
+      "prompt": "I bought a novel and a magazine yesterday, but I have only read _____ novel so far.",
+      "options": [
+        "a",
+        "an",
+        "the",
+        "(no article)"
+      ],
+      "answerIndex": 2,
+      "wordKey": "the",
+      "senseId": "sense-14a58442",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-804844c6",
+      "kind": "multipleChoice",
+      "prompt": "Although the new café just opened, it already has _____ loyal customers who visit every single morning.",
+      "options": [
+        "a few",
+        "few",
+        "a little",
+        "little"
+      ],
+      "answerIndex": 0,
+      "wordKey": "few",
+      "senseId": "sense-9075adbf",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-147918c1",
+      "kind": "multipleChoice",
+      "prompt": "The remote village is so isolated that the residents have _____ contact with the outside world.",
+      "options": [
+        "little",
+        "a little",
+        "few",
+        "a few"
+      ],
+      "answerIndex": 0,
+      "wordKey": "little",
+      "senseId": "sense-b79e0355",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-a5daa3d4",
+      "kind": "multipleChoice",
+      "prompt": "I'd love to help you move this weekend, but unfortunately I have _____ free time these days.",
+      "options": [
+        "very little",
+        "a little",
+        "very few",
+        "a few"
+      ],
+      "answerIndex": 0,
+      "wordKey": "little",
+      "senseId": "sense-b79e0355",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-56b3aff7",
+      "kind": "multipleChoice",
+      "prompt": "How _____ money do you think we will need to cover all the travel expenses for the trip?",
+      "options": [
+        "much",
+        "many",
+        "few",
+        "little"
+      ],
+      "answerIndex": 0,
+      "wordKey": "much",
+      "senseId": "sense-28fdfdac",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-427522a4",
+      "kind": "multipleChoice",
+      "prompt": "She owns two pairs of glasses: one is for reading, and _____ is for driving.",
+      "options": [
+        "the other",
+        "another",
+        "other",
+        "others"
+      ],
+      "answerIndex": 0,
+      "wordKey": "other",
+      "senseId": "sense-ffce62ed",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-b363b05f",
+      "kind": "multipleChoice",
+      "prompt": "Although the lecture lasted two hours, none of the students felt _____; they kept asking thoughtful questions until the very end.",
+      "options": [
+        "boring",
+        "bore",
+        "bored",
+        "boredom"
+      ],
+      "answerIndex": 2,
+      "wordKey": "bored",
+      "senseId": "sense-43f56a81",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-cc0a5dbd",
+      "kind": "multipleChoice",
+      "prompt": "Solar panels and recycled paper are good examples of how _____ products can reduce our impact on nature.",
+      "options": [
+        "eco-friendly",
+        "eco-friend",
+        "eco-friendliness",
+        "eco-friended"
+      ],
+      "answerIndex": 0,
+      "wordKey": "friendly",
+      "senseId": "sense-e10c7f4c",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-248a5b90",
+      "kind": "multipleChoice",
+      "prompt": "She was not at all _____ in the politician's speech, since she found his repeated promises empty and dull.",
+      "options": [
+        "interesting",
+        "interested",
+        "interest",
+        "interestingly"
+      ],
+      "answerIndex": 1,
+      "wordKey": "interested",
+      "senseId": "sense-2f06a810",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-3a2e1057",
+      "kind": "multipleChoice",
+      "prompt": "My roommate told me last night that she _____ to the recycling center the following morning, so I left the bottles by the door.",
+      "options": [
+        "would go",
+        "will go",
+        "goes",
+        "is going"
+      ],
+      "answerIndex": 0,
+      "wordKey": "go",
+      "senseId": "sense-c19a599d",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-f7fd2116",
+      "kind": "multipleChoice",
+      "prompt": "The flight attendant kindly asked the passengers _____ they would like something to drink before takeoff.",
+      "options": [
+        "whether",
+        "that",
+        "what",
+        "why"
+      ],
+      "answerIndex": 0,
+      "wordKey": "whether",
+      "senseId": "sense-62c8c723",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-99bb931c",
+      "kind": "multipleChoice",
+      "prompt": "The tour guide reminded us that the museum _____ closed the next day, so we shouldn't plan to visit then.",
+      "options": [
+        "would be",
+        "will be",
+        "is",
+        "was being"
+      ],
+      "answerIndex": 0,
+      "wordKey": "be",
+      "senseId": "sense-f9d2ff7b",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-83990004",
+      "kind": "multipleChoice",
+      "prompt": "_____ your timely warning, we would have driven straight into the flooded road last night.",
+      "options": [
+        "But for",
+        "Because of",
+        "Thanks to",
+        "In spite of"
+      ],
+      "answerIndex": 0,
+      "wordKey": "for",
+      "senseId": "sense-fedeffb2",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-fa5afc91",
+      "kind": "multipleChoice",
+      "prompt": "_____ the support of countless volunteers, the charity could not have rebuilt the entire village so quickly.",
+      "options": [
+        "Without",
+        "Despite",
+        "Besides",
+        "Regarding"
+      ],
+      "answerIndex": 0,
+      "wordKey": "without",
+      "senseId": "sense-7657f424",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-561d0f2a",
+      "kind": "multipleChoice",
+      "prompt": "The new sports stadium can hold three times _____ spectators as the old one did.",
+      "options": [
+        "as many",
+        "as much",
+        "more",
+        "as many as"
+      ],
+      "answerIndex": 0,
+      "wordKey": "many",
+      "senseId": "sense-3f6f962d",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-27309a84",
+      "kind": "multipleChoice",
+      "prompt": "According to the report, this region receives twice _____ rainfall as the desert to the south.",
+      "options": [
+        "as much",
+        "as many",
+        "more",
+        "much more"
+      ],
+      "answerIndex": 0,
+      "wordKey": "much",
+      "senseId": "sense-28fdfdac",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-16d695b6",
+      "kind": "multipleChoice",
+      "prompt": "Their latest factory is reported to be five times _____ the one they built a decade ago.",
+      "options": [
+        "larger than",
+        "as larger as",
+        "larger as",
+        "as large than"
+      ],
+      "answerIndex": 0,
+      "wordKey": "than",
+      "senseId": "sense-902bcdfe",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-f3f657a2",
+      "kind": "multipleChoice",
+      "prompt": "Passengers hurried to get _____ before the horn blew.",
+      "options": [
+        "aboard",
+        "ashore",
+        "abroad",
+        "afloat"
+      ],
+      "answerIndex": 0,
+      "wordKey": "aboard",
+      "senseId": "sense-52d438e3",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-0e657738",
+      "kind": "multipleChoice",
+      "prompt": "The driver rushed back inside and quickly reached for the _____.",
+      "options": [
+        "brake",
+        "mirror",
+        "gear",
+        "radio"
+      ],
+      "answerIndex": 0,
+      "wordKey": "brake",
+      "senseId": "sense-3f0dc0fa",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-bbe44b04",
+      "kind": "multipleChoice",
+      "prompt": "Based on her findings, she finally reached a clear _____ about the results.",
+      "options": [
+        "guess",
+        "excuse",
+        "conclusion",
+        "argument"
+      ],
+      "answerIndex": 2,
+      "wordKey": "conclusion",
+      "senseId": "sense-5c75740c",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-4e9b4301",
+      "kind": "multipleChoice",
+      "prompt": "A thick layer of _____ covered every piece of furniture inside.",
+      "options": [
+        "ash",
+        "dust",
+        "dirt",
+        "sand"
+      ],
+      "answerIndex": 1,
+      "wordKey": "dust",
+      "senseId": "sense-3e29b383",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-57916a41",
+      "kind": "multipleChoice",
+      "prompt": "Everyone understood his _____ and left the room quietly.",
+      "options": [
+        "gesture",
+        "warning",
+        "comment",
+        "order"
+      ],
+      "answerIndex": 0,
+      "wordKey": "gesture",
+      "senseId": "sense-edf23c73",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-61eaa509",
+      "kind": "multipleChoice",
+      "prompt": "She is printing colorful _____ to hand out at school this week.",
+      "options": [
+        "certificates",
+        "receipts",
+        "invitations",
+        "announcements"
+      ],
+      "answerIndex": 2,
+      "wordKey": "invitation",
+      "senseId": "sense-7bfa44fc",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-c89eb6a4",
+      "kind": "multipleChoice",
+      "prompt": "When rescuers found him alive and unharmed, everyone called it nothing short of a _____.",
+      "options": [
+        "miracle",
+        "mystery",
+        "disaster",
+        "coincidence"
+      ],
+      "answerIndex": 0,
+      "wordKey": "miracle",
+      "senseId": "sense-a7f11544",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-3c38bbcb",
+      "kind": "multipleChoice",
+      "prompt": "He had just one shiny _____ left after buying the newspaper.",
+      "options": [
+        "euro",
+        "penny",
+        "dime",
+        "dollar"
+      ],
+      "answerIndex": 1,
+      "wordKey": "penny",
+      "senseId": "sense-9cf638f2",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-e337153f",
+      "kind": "multipleChoice",
+      "prompt": "Whenever something goes wrong, she knows she can always _____ on her best friend now.",
+      "options": [
+        "insist",
+        "comment",
+        "focus",
+        "rely"
+      ],
+      "answerIndex": 3,
+      "wordKey": "rely",
+      "senseId": "sense-6bd806bb",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-50df839b",
+      "kind": "multipleChoice",
+      "prompt": "His _____ hands moved quickly and precisely as he carved the small wooden bird.",
+      "options": [
+        "eager",
+        "skillful",
+        "gentle",
+        "curious"
+      ],
+      "answerIndex": 1,
+      "wordKey": "skillful",
+      "senseId": "sense-9a707d85",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-15c95efd",
+      "kind": "multipleChoice",
+      "prompt": "Everyone agreed that the soup was incredibly _____ and asked for a second bowl.",
+      "options": [
+        "tasty",
+        "spicy",
+        "colorful",
+        "expensive"
+      ],
+      "answerIndex": 0,
+      "wordKey": "tasty",
+      "senseId": "sense-9aae1b79",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-17f3d14d",
+      "kind": "multipleChoice",
+      "prompt": "David felt a strong _____ and almost lost his balance.",
+      "options": [
+        "urge",
+        "chill",
+        "shock",
+        "tug"
+      ],
+      "answerIndex": 3,
+      "wordKey": "tug",
+      "senseId": "sense-26e53f02",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-84aaf6f6",
+      "kind": "multipleChoice",
+      "prompt": "Within minutes, they had to _____ the vessel completely.",
+      "options": [
+        "measure",
+        "repair",
+        "abandon",
+        "decorate"
+      ],
+      "answerIndex": 2,
+      "wordKey": "abandon",
+      "senseId": "sense-94620ce4",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-633a9e73",
+      "kind": "multipleChoice",
+      "prompt": "The castle has become the region's most famous _____.",
+      "options": [
+        "attraction",
+        "expense",
+        "concern",
+        "mystery"
+      ],
+      "answerIndex": 0,
+      "wordKey": "attraction",
+      "senseId": "sense-b472420b",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-42a19542",
+      "kind": "multipleChoice",
+      "prompt": "Critics couldn't agree on how to classify the film; some called it pure _____.",
+      "options": [
+        "mystery",
+        "tragedy",
+        "comedy",
+        "documentary"
+      ],
+      "answerIndex": 2,
+      "wordKey": "comedy",
+      "senseId": "sense-773b5ab4",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-9fa98b59",
+      "kind": "multipleChoice",
+      "prompt": "The professor did not hesitate to _____ the student's work in front of the class.",
+      "options": [
+        "publish",
+        "criticize",
+        "praise",
+        "ignore"
+      ],
+      "answerIndex": 1,
+      "wordKey": "criticize",
+      "senseId": "sense-45e58065",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-f8a4c021",
+      "kind": "multipleChoice",
+      "prompt": "Please review this _____ before we send it to the manager.",
+      "options": [
+        "draft",
+        "notice",
+        "receipt",
+        "letter"
+      ],
+      "answerIndex": 0,
+      "wordKey": "draft",
+      "senseId": "sense-fcbbf8ca",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-adc1a3d6",
+      "kind": "multipleChoice",
+      "prompt": "The coach said the _____ conditions made a big difference in the match.",
+      "options": [
+        "extreme",
+        "gloomy",
+        "harsh",
+        "favorable"
+      ],
+      "answerIndex": 3,
+      "wordKey": "favorable",
+      "senseId": "sense-d500b1bd",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-1b5f8e79",
+      "kind": "multipleChoice",
+      "prompt": "Ships sailed into the calm _____ to escape the storm.",
+      "options": [
+        "strait",
+        "channel",
+        "reef",
+        "gulf"
+      ],
+      "answerIndex": 3,
+      "wordKey": "gulf",
+      "senseId": "sense-eed5c423",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-be39867a",
+      "kind": "multipleChoice",
+      "prompt": "They had to _____ well in order to finish the project on time.",
+      "options": [
+        "negotiate",
+        "compete",
+        "argue",
+        "interact"
+      ],
+      "answerIndex": 3,
+      "wordKey": "interact",
+      "senseId": "sense-5297a969",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-53eb6905",
+      "kind": "multipleChoice",
+      "prompt": "The king sent a _____ to deliver the news quickly.",
+      "options": [
+        "messenger",
+        "farmer",
+        "teacher",
+        "guard"
+      ],
+      "answerIndex": 0,
+      "wordKey": "messenger",
+      "senseId": "sense-cba26c11",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-940ca000",
+      "kind": "multipleChoice",
+      "prompt": "His _____ attitude frustrated his teammates during brainstorming.",
+      "options": [
+        "active",
+        "creative",
+        "passive",
+        "confident"
+      ],
+      "answerIndex": 2,
+      "wordKey": "passive",
+      "senseId": "sense-f362783f",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-0c5dee1c",
+      "kind": "multipleChoice",
+      "prompt": "Her _____ finally paid off when she signed the lease.",
+      "options": [
+        "generosity",
+        "pursuit",
+        "hesitation",
+        "complaint"
+      ],
+      "answerIndex": 1,
+      "wordKey": "pursuit",
+      "senseId": "sense-a3c74496",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-4494c8bc",
+      "kind": "multipleChoice",
+      "prompt": "The _____ he felt lasted for weeks after the exam.",
+      "options": [
+        "confusion",
+        "satisfaction",
+        "anxiety",
+        "regret"
+      ],
+      "answerIndex": 1,
+      "wordKey": "satisfaction",
+      "senseId": "sense-235a2d3b",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-8a4a18ac",
+      "kind": "multipleChoice",
+      "prompt": "Her _____ pushed her to study medicine for ten years.",
+      "options": [
+        "ambition",
+        "routine",
+        "complaint",
+        "memory"
+      ],
+      "answerIndex": 0,
+      "wordKey": "ambition",
+      "senseId": "sense-3c61d2b4",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-60c1c2cd",
+      "kind": "multipleChoice",
+      "prompt": "Tom picked a _____ of grapes to share with his classmates.",
+      "options": [
+        "batch",
+        "bunch",
+        "heap",
+        "stack"
+      ],
+      "answerIndex": 1,
+      "wordKey": "bunch",
+      "senseId": "sense-3b0d32e4",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-618d2205",
+      "kind": "multipleChoice",
+      "prompt": "Her boss described her as very _____ during the meeting.",
+      "options": [
+        "creative",
+        "punctual",
+        "cautious",
+        "patient"
+      ],
+      "answerIndex": 0,
+      "wordKey": "creative",
+      "senseId": "sense-29633d13",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-2cba9ffe",
+      "kind": "multipleChoice",
+      "prompt": "Many families in the town _____ in this activity together.",
+      "options": [
+        "believe",
+        "invest",
+        "engage",
+        "specialize"
+      ],
+      "answerIndex": 2,
+      "wordKey": "engage",
+      "senseId": "sense-e877e5af",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-9cda16c5",
+      "kind": "multipleChoice",
+      "prompt": "He grabbed a _____ from the toolbox and got to work.",
+      "options": [
+        "ruler",
+        "drill",
+        "wrench",
+        "hammer"
+      ],
+      "answerIndex": 3,
+      "wordKey": "hammer",
+      "senseId": "sense-b3d3c9ae",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-df85a8e3",
+      "kind": "multipleChoice",
+      "prompt": "Amy has attended _____ for two years now.",
+      "options": [
+        "hospital",
+        "kindergarten",
+        "college",
+        "university"
+      ],
+      "answerIndex": 1,
+      "wordKey": "kindergarten",
+      "senseId": "sense-396c0654",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-f078842f",
+      "kind": "multipleChoice",
+      "prompt": "He knew he had used a lot of _____ during the race.",
+      "options": [
+        "paper",
+        "courage",
+        "muscle",
+        "patience"
+      ],
+      "answerIndex": 2,
+      "wordKey": "muscle",
+      "senseId": "sense-7cce42f3",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-a055b72f",
+      "kind": "multipleChoice",
+      "prompt": "She realized she needed to replace the _____ before the lamp would work again.",
+      "options": [
+        "switch",
+        "plug",
+        "socket",
+        "battery"
+      ],
+      "answerIndex": 1,
+      "wordKey": "plug",
+      "senseId": "sense-d7736af2",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-9672aee9",
+      "kind": "multipleChoice",
+      "prompt": "The constant _____ of the water filled the air near the waterfall.",
+      "options": [
+        "murmur",
+        "roar",
+        "whisper",
+        "hiss"
+      ],
+      "answerIndex": 1,
+      "wordKey": "roar",
+      "senseId": "sense-3d3f5b84",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-4246253f",
+      "kind": "multipleChoice",
+      "prompt": "Before anyone could react, the camel turned and seemed about to _____ on his shirt.",
+      "options": [
+        "sneeze",
+        "cough",
+        "drool",
+        "spit"
+      ],
+      "answerIndex": 3,
+      "wordKey": "spit",
+      "senseId": "sense-900beb91",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-b247c381",
+      "kind": "multipleChoice",
+      "prompt": "The organizers _____ decided to move the show to a smaller venue.",
+      "options": [
+        "however",
+        "moreover",
+        "meanwhile",
+        "therefore"
+      ],
+      "answerIndex": 3,
+      "wordKey": "therefore",
+      "senseId": "sense-3a74e4bf",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-f4ef99c1",
+      "kind": "multipleChoice",
+      "prompt": "Some classmates could not _____ their files until the connection came back.",
+      "options": [
+        "upload",
+        "delete",
+        "download",
+        "save"
+      ],
+      "answerIndex": 0,
+      "wordKey": "upload",
+      "senseId": "sense-3da6afcd",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-a322413b",
+      "kind": "multipleChoice",
+      "prompt": "She decided to _____ the camera's exposure settings instead.",
+      "options": [
+        "ignore",
+        "replace",
+        "adjust",
+        "memorize"
+      ],
+      "answerIndex": 2,
+      "wordKey": "adjust",
+      "senseId": "sense-0feb1150",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-8d7f2b3d",
+      "kind": "multipleChoice",
+      "prompt": "Everyone began to _____ several times without saying a word.",
+      "options": [
+        "wave",
+        "blink",
+        "shrug",
+        "nod"
+      ],
+      "answerIndex": 1,
+      "wordKey": "blink",
+      "senseId": "sense-82c23601",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-b1f39bbb",
+      "kind": "multipleChoice",
+      "prompt": "The hotel staff had to prepare extra rooms for the _____ each morning.",
+      "options": [
+        "funeral",
+        "festival",
+        "wedding",
+        "conference"
+      ],
+      "answerIndex": 3,
+      "wordKey": "conference",
+      "senseId": "sense-03b7899a",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-8bdf17a7",
+      "kind": "multipleChoice",
+      "prompt": "We still don't have a _____ date for the opening.",
+      "options": [
+        "recent",
+        "definite",
+        "flexible",
+        "popular"
+      ],
+      "answerIndex": 1,
+      "wordKey": "definite",
+      "senseId": "sense-77072b11",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    },
+    {
+      "id": "child-1b50a0d5",
+      "kind": "multipleChoice",
+      "prompt": "The math taught here is considered quite _____.",
+      "options": [
+        "abstract",
+        "complex",
+        "technical",
+        "elementary"
+      ],
+      "answerIndex": 3,
+      "wordKey": "elementary",
+      "senseId": "sense-a1fc9806",
+      "source": "import",
+      "sourceType": "multipleChoice"
+    }
+  ]
+}

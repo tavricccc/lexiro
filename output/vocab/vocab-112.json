@@ -1,0 +1,1406 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 112,
+  "words": [
+    {
+      "wordKey": "experimental",
+      "word": "experimental",
+      "senses": [
+        {
+          "id": "sense-b44d4650",
+          "pos": "adjective",
+          "meaningZh": "試驗性的；暫行的",
+          "definitionEn": "tentative, provisional, or experimental in nature",
+          "examples": [
+            "The scientist conducted an experimental study to determine the effects of the new drug on the patients."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B1·L10",
+        "textbookTitle": "三民 B1·L10"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "explanation",
+      "word": "explanation",
+      "senses": [
+        {
+          "id": "sense-baefa486",
+          "pos": "noun",
+          "meaningZh": "解說；說明",
+          "definitionEn": "the act of explaining something and making it easier to understand",
+          "examples": [
+            "The teacher gave a clear explanation of the math problem, and it helped the students to understand it better."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-d54ac02a",
+          "pos": "noun",
+          "meaningZh": "解釋；闡述",
+          "definitionEn": "a statement that makes a complex or confusing thing clear by providing details or describing its function or context",
+          "examples": [
+            "The teacher’s explanation of the math problem helped the students understand how to solve it."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L3",
+        "textbookTitle": "龍騰 B2·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "explosion",
+      "word": "explosion",
+      "senses": [
+        {
+          "id": "sense-a7a66049",
+          "pos": "noun",
+          "meaningZh": "爆炸；爆破",
+          "definitionEn": "the act of exploding or bursting",
+          "examples": [
+            "The explosion shattered all the windows in the building."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-8f0cf27a",
+          "pos": "noun",
+          "meaningZh": "沙坑爆出球（高爾夫術語）",
+          "definitionEn": "a golf shot from a bunker that typically moves sand as well as the golf ball",
+          "examples": [
+            "His powerful explosion out of the bunker sent a shower of sand flying through the air, effortlessly landing the ball on the green."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L9",
+        "textbookTitle": "龍騰 B3·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "explosive",
+      "word": "explosive",
+      "senses": [
+        {
+          "id": "sense-0c272a63",
+          "pos": "noun",
+          "meaningZh": "爆炸物；炸藥",
+          "definitionEn": "a substance that can rapidly release gas and energy when heated or struck",
+          "examples": [
+            "The demolition expert carefully placed the explosive charges around the old building before triggering the controlled explosion."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-0e47ffce",
+          "pos": "adjective",
+          "meaningZh": "易爆的；爆炸性的",
+          "definitionEn": "capable of exploding or tending to cause explosions or sudden outbursts",
+          "examples": [
+            "The pyrotechnician handles various types of explosives to create dazzling fireworks displays."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L9",
+        "textbookTitle": "龍騰 B3·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "expose",
+      "word": "expose",
+      "senses": [
+        {
+          "id": "sense-5be6143e",
+          "pos": "verb",
+          "meaningZh": "使暴露；使接觸",
+          "definitionEn": "to make something accessible to some action or influence",
+          "examples": [
+            "After removing the cover, the circuit board was exposed and vulnerable to dust and moisture."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-1aa26027",
+          "pos": "verb",
+          "meaningZh": "揭露；揭發",
+          "definitionEn": "to show or make something visible or apparent",
+          "examples": [
+            "The documentary will expose the corruption within the government."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L4 +1",
+        "textbookTitle": "龍騰 B1·L4、三民 B2·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "exposure",
+      "word": "exposure",
+      "senses": [
+        {
+          "id": "sense-ba748574",
+          "pos": "noun",
+          "meaningZh": "接觸；暴露",
+          "definitionEn": "the act of subjecting someone to an influencing experience",
+          "examples": [
+            "The company’s sponsorship of the event gave exposure to the brand and increased its popularity among the attendees."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-1765c8f5",
+          "pos": "noun",
+          "meaningZh": "曝光；公開展示",
+          "definitionEn": "presentation to view in an open or public manner",
+          "examples": [
+            "The photographer is seeking exposure for his work by exhibiting his photos in a well-known gallery."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L4",
+        "textbookTitle": "龍騰 B1·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "extend",
+      "word": "extend",
+      "senses": [
+        {
+          "id": "sense-2dcf186a",
+          "pos": "verb",
+          "meaningZh": "延伸；伸展",
+          "definitionEn": "stretch out over a distance, space, time, or scope; run or extend between two points or beyond a certain point",
+          "examples": [
+            "She extended her arm to reach the book on the top shelf."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-7743dc78",
+          "pos": "verb",
+          "meaningZh": "給予；提供",
+          "definitionEn": "offer or make available",
+          "examples": [
+            "Let me know if you can extend a hand in helping me with my project."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L2 +1",
+        "textbookTitle": "龍騰 B5·L2、三民 B4·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "extent",
+      "word": "extent",
+      "senses": [
+        {
+          "id": "sense-03b58c57",
+          "pos": "noun",
+          "meaningZh": "程度；限度",
+          "definitionEn": "the point or degree to which something extends",
+          "examples": [
+            "She was not aware of the full extent of the damage until she saw the entire neighborhood in ruins."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-be5e2b5a",
+          "pos": "noun",
+          "meaningZh": "範圍；面積",
+          "definitionEn": "the distance or area or volume over which something extends",
+          "examples": [
+            "The extent of the damage caused by the hurricane was evident as entire towns were reduced to rubble."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L8",
+        "textbookTitle": "龍騰 B4·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "facial",
+      "word": "facial",
+      "senses": [
+        {
+          "id": "sense-c00e2c18",
+          "pos": "adjective",
+          "meaningZh": "臉部的；面部的",
+          "definitionEn": "relating to the face",
+          "examples": [
+            "She went to the spa to get a facial to improve her skin’s appearance."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-c77a4e9c",
+          "pos": "noun",
+          "meaningZh": "臉部護理；護膚療程",
+          "definitionEn": "a beauty treatment for the face that often involves cleaning, massaging, and applying creams to improve appearance",
+          "examples": [
+            "After a long week at work, Lisa decided to treat herself to a relaxing facial at the spa to help rejuvenate her skin."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 翰林 B1·L5",
+        "textbookTitle": "翰林 B1·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "facility",
+      "word": "facility",
+      "senses": [
+        {
+          "id": "sense-cfce063f",
+          "pos": "noun",
+          "meaningZh": "設施；場館",
+          "definitionEn": "a building, place, or structure that is designed to provide a particular service or to be used for a specific industry.",
+          "examples": [
+            "The new sports facility includes a state-of-the-art gym, indoor swimming pool, and several tennis courts."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-d7562017",
+          "pos": "noun",
+          "meaningZh": "設備；服務設施",
+          "definitionEn": "an object or area that has been created to serve a particular function or provide a convenient service.",
+          "examples": [
+            "The university provides a facility for students to access the internet, print documents, and study in a quiet environment."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L9 +1",
+        "textbookTitle": "龍騰 B3·L9、三民 B4·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "faithful",
+      "word": "faithful",
+      "senses": [
+        {
+          "id": "sense-e1e0cdac",
+          "pos": "adjective",
+          "meaningZh": "忠誠的；忠實的",
+          "definitionEn": "loyal and steadfast in affection or allegiance",
+          "examples": [
+            "Even though they were apart for years, John remained faithful to his wife and never wavered in his love for her."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-80161e59",
+          "pos": "noun",
+          "meaningZh": "信徒；教眾",
+          "definitionEn": "a group of people who share a common faith and attend a given church regularly",
+          "examples": [
+            "Every Sunday, the faithful gathered at the local church for their weekly worship service."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L5 +1",
+        "textbookTitle": "龍騰 B2·L5、三民 B2·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "fame",
+      "word": "fame",
+      "senses": [
+        {
+          "id": "sense-fc5f6832",
+          "pos": "noun",
+          "meaningZh": "名聲；盛名",
+          "definitionEn": "the state or quality of being widely honored and acclaimed",
+          "examples": [
+            "His fame grew rapidly after winning the Oscar award for Best Actor."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-1cb9561e",
+          "pos": "noun",
+          "meaningZh": "聲譽；知名度",
+          "definitionEn": "favorable public reputation",
+          "examples": [
+            "The actress gained worldwide fame after her award-winning performance in the movie."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L1 +1",
+        "textbookTitle": "龍騰 B5·L1、三民 B4·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "fantastic",
+      "word": "fantastic",
+      "senses": [
+        {
+          "id": "sense-86de6552",
+          "pos": "adjective",
+          "meaningZh": "極好的；很棒的",
+          "definitionEn": "extremely good; wonderful",
+          "examples": [
+            "We had a fantastic time at the beach yesterday."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-5b0d8580",
+          "pos": "adjective",
+          "meaningZh": "奇異的；怪誕的",
+          "definitionEn": "bizarre or unusual in appearance, design, or manner",
+          "examples": [
+            "The carnival had a fantastic display of creatures from another world that left all the visitors in awe."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "fantasy",
+      "word": "fantasy",
+      "senses": [
+        {
+          "id": "sense-8d84f74e",
+          "pos": "noun",
+          "meaningZh": "幻想；想像",
+          "definitionEn": "imagination that is not limited by reality",
+          "examples": [
+            "In her fantasy, she imagines herself as a powerful sorceress who can control the elements and cast spells."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-d95c48ce",
+          "pos": "noun",
+          "meaningZh": "奇幻文學；幻想小說",
+          "definitionEn": "fiction that involves a great amount of imagination",
+          "examples": [
+            "In the fantasy novel, knights and dragons roam the enchanted land, engaging in epic quests and magical battles."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "farewell",
+      "word": "farewell",
+      "senses": [
+        {
+          "id": "sense-8965a7d9",
+          "pos": "noun",
+          "meaningZh": "告別；道別",
+          "definitionEn": "the act of departing politely",
+          "examples": [
+            "After graduation, the students gathered in front of the school and said their farewells to each other before going off to different universities."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-bc5c5145",
+          "pos": "noun",
+          "meaningZh": "惜別之語；餞別",
+          "definitionEn": "an acknowledgment or expression of goodwill at parting",
+          "examples": [
+            "As her colleagues gathered around her desk to bid farewell, she handed out small gifts and thanked them for their support."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "fasten",
+      "word": "fasten",
+      "senses": [
+        {
+          "id": "sense-8ce8b102",
+          "pos": "verb",
+          "meaningZh": "扣緊；繫緊",
+          "definitionEn": "make tight or tighter, especially a garment or belt around the waist",
+          "examples": [
+            "She asked her friend to fasten the buttons of her dress as they were too tight for her to do it on her own."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-bb2dcd31",
+          "pos": "verb",
+          "meaningZh": "固定；附著",
+          "definitionEn": "attach to or join securely in position",
+          "examples": [
+            "She used a hammer and nails to fasten the picture frame to the wall."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "fatal",
+      "word": "fatal",
+      "senses": [
+        {
+          "id": "sense-413fb3c3",
+          "pos": "adjective",
+          "meaningZh": "致命的；致死的",
+          "definitionEn": "Causing death, especially in terms of illness or accidents.",
+          "examples": [
+            "The car crash was so severe that it resulted in a fatal injury to the driver."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-2b9daab9",
+          "pos": "adjective",
+          "meaningZh": "災難性的；造成嚴重後果的",
+          "definitionEn": "Also refers to something severe enough to result in extremely negative consequences.",
+          "examples": [
+            "Driving under the influence of alcohol is not only illegal but also fatal, as it can lead to deadly accidents."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "favorable",
+      "word": "favorable",
+      "senses": [
+        {
+          "id": "sense-d500b1bd",
+          "pos": "adjective",
+          "meaningZh": "有利的；令人滿意的",
+          "definitionEn": "encouraging or approving or pleasing",
+          "examples": [
+            "After a long day of hard work, receiving a promotion was a favorable outcome."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-74918216",
+          "pos": "adjective",
+          "meaningZh": "支持的；友善的",
+          "definitionEn": "inclined to help or support; not antagonistic or hostile",
+          "examples": [
+            "The company's decision to donate a portion of its profits to charity was seen as a favorable move by the public."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "fax",
+      "word": "fax",
+      "senses": [
+        {
+          "id": "sense-fcf26f17",
+          "pos": "noun",
+          "meaningZh": "傳真機",
+          "definitionEn": "a machine that duplicates and transmits documents or images via wire or radio",
+          "examples": [
+            "I need to send the signed contract to my colleague, so I will fax it to him instead of mailing it."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-1144793f",
+          "pos": "verb",
+          "meaningZh": "傳真；以傳真機發送",
+          "definitionEn": "to send a document or image via a facsimile machine",
+          "examples": [
+            "I need to fax the signed contract to the client."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "feast",
+      "word": "feast",
+      "senses": [
+        {
+          "id": "sense-445f392f",
+          "pos": "noun",
+          "meaningZh": "盛宴；宴席",
+          "definitionEn": "a ceremonial dinner party that involves a large number of people",
+          "examples": [
+            "The royal family hosted a grand feast to celebrate the coronation of their new king, inviting nobles, dignitaries, and thousands of citizens to join in the festivities."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-38ca3a57",
+          "pos": "noun",
+          "meaningZh": "豐盛餐點；大餐",
+          "definitionEn": "a very enjoyable and well-prepared meal",
+          "examples": [
+            "The whole family gathered around the table for a feast to celebrate Thanksgiving, enjoying a delicious spread of roasted turkey, mashed potatoes, gravy, and pumpkin pie."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L4",
+        "textbookTitle": "龍騰 B3·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "feedback",
+      "word": "feedback",
+      "senses": [
+        {
+          "id": "sense-148957b0",
+          "pos": "noun",
+          "meaningZh": "回應；反饋",
+          "definitionEn": "response to an inquiry or experiment",
+          "examples": [
+            "After receiving feedback from my boss, I made the necessary changes to my presentation."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-bce48dee",
+          "pos": "noun",
+          "meaningZh": "意見回饋；評價",
+          "definitionEn": "the process of giving and receiving information about the performance or quality of a product or service",
+          "examples": [
+            "After implementing the changes suggested by customer feedback, the company saw a significant increase in sales."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L2",
+        "textbookTitle": "龍騰 B3·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "ferry",
+      "word": "ferry",
+      "senses": [
+        {
+          "id": "sense-35669f2d",
+          "pos": "noun",
+          "meaningZh": "渡輪；擺渡船",
+          "definitionEn": "a boat that regularly carries passengers or vehicles across a body of water",
+          "examples": [
+            "During peak tourist season, the ferry shuttles visitors from the mainland to the island resort and back."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-4123dfac",
+          "pos": "noun",
+          "meaningZh": "渡運；渡船服務",
+          "definitionEn": "the act of transporting by boat or aircraft",
+          "examples": [
+            "We decided to take the ferry across the river to reach the island."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "fertile",
+      "word": "fertile",
+      "senses": [
+        {
+          "id": "sense-ad67657c",
+          "pos": "adjective",
+          "meaningZh": "肥沃的；豐饒的",
+          "definitionEn": "marked by great fruitfulness",
+          "examples": [
+            "The fertile soil allowed the crops to grow abundantly, resulting in a bountiful harvest."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-0f0c8ad8",
+          "pos": "adjective",
+          "meaningZh": "能生育的；可繁殖的",
+          "definitionEn": "capable of reproducing",
+          "examples": [
+            "The soil in this area is very fertile, making it perfect for growing a wide variety of crops."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "fetch",
+      "word": "fetch",
+      "senses": [
+        {
+          "id": "sense-136b9b56",
+          "pos": "verb",
+          "meaningZh": "去取回；去拿來",
+          "definitionEn": "to go or come after and bring or take back",
+          "examples": [
+            "She asked her dog to fetch the ball and it obediently brought it back to her."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-ceb635f4",
+          "pos": "verb",
+          "meaningZh": "取得；獲取",
+          "definitionEn": "to retrieve; to go and get something",
+          "examples": [],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "fiction",
+      "word": "fiction",
+      "senses": [
+        {
+          "id": "sense-d3b3eb92",
+          "pos": "noun",
+          "meaningZh": "小說；虛構文學",
+          "definitionEn": "a literary work based on the author’s imagination and not necessarily on fact",
+          "examples": [
+            "She spent the weekend curled up on the couch, engrossed in a gripping fiction novel."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-b3bbceec",
+          "pos": "noun",
+          "meaningZh": "虛構故事；幻想",
+          "definitionEn": "an invented or imagined story, especially one dealing with the supernatural or extraordinary",
+          "examples": [
+            "In the fictional town of Woodville, a group of teenagers stumble upon a portal that transports them to a magical realm."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L7",
+        "textbookTitle": "龍騰 B2·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "fierce",
+      "word": "fierce",
+      "senses": [
+        {
+          "id": "sense-f41d1e95",
+          "pos": "adjective",
+          "meaningZh": "兇猛；凶暴",
+          "definitionEn": "having or displaying an intense or ferocious aggressiveness.",
+          "examples": [
+            "The lion's roar was fierce, causing the other animals to scatter in fear."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-e3c1ac0d",
+          "pos": "adjective",
+          "meaningZh": "強烈；熾熱",
+          "definitionEn": "showing a heartfelt and powerful intensity.",
+          "examples": [
+            "The fierce determination of the athletes propelled them to victory."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L8 +1",
+        "textbookTitle": "龍騰 B2·L8、翰林 B1·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "finance",
+      "word": "finance",
+      "senses": [
+        {
+          "id": "sense-bee97c60",
+          "pos": "noun",
+          "meaningZh": "財務；金融學",
+          "definitionEn": "the branch of economics that studies the management of money and other assets",
+          "examples": [
+            "Sarah decided to pursue a degree in finance so she could learn how to effectively manage her personal budget and investments."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-104027f6",
+          "pos": "noun",
+          "meaningZh": "資金；融資",
+          "definitionEn": "the commercial activity of providing funds and capital",
+          "examples": [
+            "The company sought external finance to expand their operations and increase production capacity."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L2 +1",
+        "textbookTitle": "龍騰 B4·L2、三民 B2·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "financial",
+      "word": "financial",
+      "senses": [
+        {
+          "id": "sense-dee6d380",
+          "pos": "adjective",
+          "meaningZh": "財務的；金融的",
+          "definitionEn": "relating to finance or money matters, typically in business or commerce",
+          "examples": [
+            "The company hired a financial advisor to help them manage their investments and develop a strategic financial plan."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L2 +1",
+        "textbookTitle": "龍騰 B4·L2、三民 B2·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "fireplace",
+      "word": "fireplace",
+      "senses": [
+        {
+          "id": "sense-c6d3c633",
+          "pos": "noun",
+          "meaningZh": "壁爐",
+          "definitionEn": "a structure made of brick, stone, or metal surrounding an open recess in a wall at the base of a chimney where a fire can be built and burned for heating or cooking",
+          "examples": [
+            "As the winter weather set in, the family gathered around the fireplace, roasting marshmallows and enjoying the warmth."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "flatter",
+      "word": "flatter",
+      "senses": [
+        {
+          "id": "sense-e008c39f",
+          "pos": "verb",
+          "meaningZh": "奉承；諂媚",
+          "definitionEn": "to compliment someone excessively or insincerely in order to gain their favor",
+          "examples": [
+            "During the job interview, Sarah flattered the hiring manager by continuously praising his accomplishments and skills, hoping to improve her chances of being hired."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-540e4597",
+          "pos": "verb",
+          "meaningZh": "使顯得更好看；襯托",
+          "definitionEn": "to make someone or something appear more attractive or desirable than they really are",
+          "examples": [
+            "James's new haircut really flattered his face shape, making him look more handsome than before."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    }
+  ]
+}

@@ -1,0 +1,1927 @@
+{
+  "schemaVersion": 1,
+  "kind": "questions",
+  "questionKind": "multipleChoice",
+  "questions": [
+    {
+      "id": "child-ec10dd52",
+      "kind": "multipleChoice",
+      "prompt": "Sarah was very interested _____ astronomy and would spend hours stargazing every night.",
+      "options": [
+        "in",
+        "about",
+        "from",
+        "through"
+      ],
+      "answerIndex": 0,
+      "wordKey": "interested",
+      "senseId": "sense-2f06a810",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-42f38255",
+      "kind": "multipleChoice",
+      "prompt": "The university provides a facility _____ students to access the internet, print documents, and study in a quiet environment.",
+      "options": [
+        "about",
+        "in",
+        "with",
+        "for"
+      ],
+      "answerIndex": 3,
+      "wordKey": "facility",
+      "senseId": "sense-cfce063f",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-2defb295",
+      "kind": "multipleChoice",
+      "prompt": "_____ his grandmother passed away, he was able to inherit her antique jewelry collection.",
+      "options": [
+        "unless",
+        "because",
+        "while",
+        "after"
+      ],
+      "answerIndex": 3,
+      "wordKey": "inherit",
+      "senseId": "sense-6f8757f2",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-a39d51b4",
+      "kind": "multipleChoice",
+      "prompt": "Which book would you like to borrow _____ the library?",
+      "options": [
+        "from",
+        "by",
+        "during",
+        "about"
+      ],
+      "answerIndex": 0,
+      "wordKey": "which",
+      "senseId": "sense-441760ee",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-703bb89a",
+      "kind": "multipleChoice",
+      "prompt": "_____ the party convention yesterday, the incumbent’s nomination was challenged by a young, charismatic politician putting himself forward as a better candidate.",
+      "options": [
+        "at",
+        "beneath",
+        "beyond",
+        "despite"
+      ],
+      "answerIndex": 0,
+      "wordKey": "nomination",
+      "senseId": "sense-e88b2c09",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-4f353f24",
+      "kind": "multipleChoice",
+      "prompt": "The helicopter can hover over the building _____ extended periods of time.",
+      "options": [
+        "for",
+        "in",
+        "with",
+        "through"
+      ],
+      "answerIndex": 0,
+      "wordKey": "hover",
+      "senseId": "sense-625e5589",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-06accc95",
+      "kind": "multipleChoice",
+      "prompt": "The horror movie was so terrifying that I had trouble sleeping _____ days after watching it.",
+      "options": [
+        "for",
+        "on",
+        "in",
+        "into"
+      ],
+      "answerIndex": 0,
+      "wordKey": "terrify",
+      "senseId": "sense-4f7182fe",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-3f0a4e73",
+      "kind": "multipleChoice",
+      "prompt": "John decided to hang the painting _____ the wall using a sturdy hook.",
+      "options": [
+        "on",
+        "from",
+        "by",
+        "at"
+      ],
+      "answerIndex": 0,
+      "wordKey": "hang",
+      "senseId": "sense-5fbe9cc3",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-fd6bd9ec",
+      "kind": "multipleChoice",
+      "prompt": "When reading a book, some people tend to skip _____ the boring parts.",
+      "options": [
+        "at",
+        "by",
+        "over",
+        "with"
+      ],
+      "answerIndex": 2,
+      "wordKey": "skip",
+      "senseId": "sense-7af0c6da",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-c727525e",
+      "kind": "multipleChoice",
+      "prompt": "_____ months of training and preparation, her motivation to win the race propelled her across the finish line.",
+      "options": [
+        "although",
+        "after",
+        "while",
+        "when"
+      ],
+      "answerIndex": 1,
+      "wordKey": "motivation",
+      "senseId": "sense-945d796b",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-2e524fa1",
+      "kind": "multipleChoice",
+      "prompt": "Sarah's dedication and hard work led her to achieve excellence _____ her chosen field.",
+      "options": [
+        "by",
+        "in",
+        "on",
+        "at"
+      ],
+      "answerIndex": 1,
+      "wordKey": "excellence",
+      "senseId": "sense-b30c6ac1",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-ffdd7a1e",
+      "kind": "multipleChoice",
+      "prompt": "In chemistry, the formula _____ calculating the molar mass of a compound is to sum the atomic masses of all its constituent elements.",
+      "options": [
+        "by",
+        "from",
+        "at",
+        "for"
+      ],
+      "answerIndex": 3,
+      "wordKey": "formula",
+      "senseId": "sense-b5ec756b",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-7398eb39",
+      "kind": "multipleChoice",
+      "prompt": "The postage _____ sending a letter within the country is $1.",
+      "options": [
+        "in",
+        "for",
+        "from",
+        "through"
+      ],
+      "answerIndex": 1,
+      "wordKey": "postage",
+      "senseId": "sense-44178433",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-62a4045f",
+      "kind": "multipleChoice",
+      "prompt": "The army was called _____ to help during the natural disaster.",
+      "options": [
+        "through",
+        "in",
+        "for",
+        "with"
+      ],
+      "answerIndex": 1,
+      "wordKey": "army",
+      "senseId": "sense-65f221ff",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-d35f3d62",
+      "kind": "multipleChoice",
+      "prompt": "The explosion was so loud that it temporarily deafened everyone _____ the vicinity.",
+      "options": [
+        "in",
+        "with",
+        "for",
+        "from"
+      ],
+      "answerIndex": 0,
+      "wordKey": "deafen",
+      "senseId": "sense-c2bf9438",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-fa5071f1",
+      "kind": "multipleChoice",
+      "prompt": "The military personnel were equipped _____ various arms including rifles, grenades, and combat knives.",
+      "options": [
+        "by",
+        "with",
+        "over",
+        "through"
+      ],
+      "answerIndex": 1,
+      "wordKey": "arms",
+      "senseId": "sense-40b09b4f",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-ab684c6c",
+      "kind": "multipleChoice",
+      "prompt": "The farmers harvested a bountiful crop of yams from the fields in preparation _____ the upcoming festival.",
+      "options": [
+        "under",
+        "about",
+        "over",
+        "for"
+      ],
+      "answerIndex": 3,
+      "wordKey": "yam",
+      "senseId": "sense-05835ffb",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-8dd5e915",
+      "kind": "multipleChoice",
+      "prompt": "Despite her allergy to cats, she chose to live _____ her new roommate who owned three felines.",
+      "options": [
+        "by",
+        "through",
+        "with",
+        "over"
+      ],
+      "answerIndex": 2,
+      "wordKey": "live",
+      "senseId": "sense-07a23948",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-8af365c9",
+      "kind": "multipleChoice",
+      "prompt": "_____ her commencement speech, the guest speaker imparted some valuable life lessons to the graduating class.",
+      "options": [
+        "on",
+        "about",
+        "in",
+        "by"
+      ],
+      "answerIndex": 2,
+      "wordKey": "speech",
+      "senseId": "sense-a6268b89",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-72a85b29",
+      "kind": "multipleChoice",
+      "prompt": "She is truly a jewel, _____ her exceptional intelligence and radiant personality.",
+      "options": [
+        "under",
+        "into",
+        "about",
+        "with"
+      ],
+      "answerIndex": 3,
+      "wordKey": "jewel",
+      "senseId": "sense-b858c2be",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-876e8e7c",
+      "kind": "multipleChoice",
+      "prompt": "Samantha always dresses in a stylish manner, wearing trendy clothes and accessorizing _____ fashionable accessories.",
+      "options": [
+        "on",
+        "from",
+        "with",
+        "over"
+      ],
+      "answerIndex": 2,
+      "wordKey": "stylish",
+      "senseId": "sense-f30fd536",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-8b45cdea",
+      "kind": "multipleChoice",
+      "prompt": "The underlying cause of their argument was a difference _____ values.",
+      "options": [
+        "over",
+        "in",
+        "with",
+        "about"
+      ],
+      "answerIndex": 1,
+      "wordKey": "underlying",
+      "senseId": "sense-4a8f73e7",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-424be070",
+      "kind": "multipleChoice",
+      "prompt": "The oppression of minorities _____ many countries around the world is a significant issue that needs to be addressed and resolved.",
+      "options": [
+        "about",
+        "in",
+        "during",
+        "with"
+      ],
+      "answerIndex": 1,
+      "wordKey": "oppression",
+      "senseId": "sense-7882de39",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-6bc930e4",
+      "kind": "multipleChoice",
+      "prompt": "The farmers wanted to reproduce their best crops _____ order to increase their yields and profits.",
+      "options": [
+        "for",
+        "in",
+        "through",
+        "about"
+      ],
+      "answerIndex": 1,
+      "wordKey": "reproduce",
+      "senseId": "sense-e5a77a54",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-7a7c15c4",
+      "kind": "multipleChoice",
+      "prompt": "Despite feeling angry, she tried to suppress her emotions and maintain a calm facade _____ the argument.",
+      "options": [
+        "at",
+        "under",
+        "during",
+        "over"
+      ],
+      "answerIndex": 2,
+      "wordKey": "suppress",
+      "senseId": "sense-1e23aba5",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-46c5c02b",
+      "kind": "multipleChoice",
+      "prompt": "The queen attended the state reception _____ her regal attire, representing the royal family.",
+      "options": [
+        "during",
+        "for",
+        "about",
+        "in"
+      ],
+      "answerIndex": 3,
+      "wordKey": "queen",
+      "senseId": "sense-65290dff",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-367de1f3",
+      "kind": "multipleChoice",
+      "prompt": "She hesitated at the doorway, wondering if she should go _____ or stay out.",
+      "options": [
+        "from",
+        "for",
+        "in",
+        "about"
+      ],
+      "answerIndex": 2,
+      "wordKey": "doorway",
+      "senseId": "sense-5939cc99",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-19236213",
+      "kind": "multipleChoice",
+      "prompt": "After starting her own business, Sarah began to prosper and soon became one of the wealthiest entrepreneurs _____ the industry.",
+      "options": [
+        "in",
+        "for",
+        "into",
+        "with"
+      ],
+      "answerIndex": 0,
+      "wordKey": "prosper",
+      "senseId": "sense-6382b621",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-7e8597aa",
+      "kind": "multipleChoice",
+      "prompt": "As the fire spread rapidly _____ the building, the panicked crowd began to flee in all directions.",
+      "options": [
+        "on",
+        "in",
+        "through",
+        "from"
+      ],
+      "answerIndex": 2,
+      "wordKey": "flee",
+      "senseId": "sense-bcec2de2",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-15861682",
+      "kind": "multipleChoice",
+      "prompt": "After the earthquake, the relief organization took _____ an orphan and provided them with a safe and caring environment.",
+      "options": [
+        "over",
+        "with",
+        "by",
+        "in"
+      ],
+      "answerIndex": 3,
+      "wordKey": "orphan",
+      "senseId": "sense-56f2a7cb",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-173ba4bc",
+      "kind": "multipleChoice",
+      "prompt": "John drove the car _____ the tunnel.",
+      "options": [
+        "into",
+        "under",
+        "through",
+        "at"
+      ],
+      "answerIndex": 2,
+      "wordKey": "through",
+      "senseId": "sense-2e5a1f63",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-66f57c58",
+      "kind": "multipleChoice",
+      "prompt": "After excelling _____ his role as a technician, John was elevated to the position of team leader.",
+      "options": [
+        "by",
+        "over",
+        "under",
+        "in"
+      ],
+      "answerIndex": 3,
+      "wordKey": "elevate",
+      "senseId": "sense-76794c63",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-66500724",
+      "kind": "multipleChoice",
+      "prompt": "John is a mechanical engineer. He has a lot of experience designing and building machines _____ different industries.",
+      "options": [
+        "during",
+        "for",
+        "at",
+        "through"
+      ],
+      "answerIndex": 1,
+      "wordKey": "mechanic",
+      "senseId": "sense-394634b7",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-701a451f",
+      "kind": "multipleChoice",
+      "prompt": "He came up _____ a weak excuse for being late, claiming that his alarm clock didn't go off.",
+      "options": [
+        "by",
+        "during",
+        "with",
+        "from"
+      ],
+      "answerIndex": 2,
+      "wordKey": "excuse",
+      "senseId": "sense-c988a74f",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-eb3e4cee",
+      "kind": "multipleChoice",
+      "prompt": "After heavy rain, the swamp adjacent to the river filled with water, creating a thriving habitat _____ various aquatic species.",
+      "options": [
+        "with",
+        "over",
+        "under",
+        "for"
+      ],
+      "answerIndex": 3,
+      "wordKey": "swamp",
+      "senseId": "sense-b8f7075d",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-24fb3f71",
+      "kind": "multipleChoice",
+      "prompt": "The winery's vineyard stretches across acres of land, covered _____ rows of meticulously maintained grapevines.",
+      "options": [
+        "in",
+        "for",
+        "through",
+        "by"
+      ],
+      "answerIndex": 0,
+      "wordKey": "vineyard",
+      "senseId": "sense-96ca0c1a",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-aa2555e4",
+      "kind": "multipleChoice",
+      "prompt": "The students must obey the school's dress code _____ wearing their uniform.",
+      "options": [
+        "on",
+        "from",
+        "by",
+        "in"
+      ],
+      "answerIndex": 2,
+      "wordKey": "obey",
+      "senseId": "sense-528a7c4a",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-17c1574c",
+      "kind": "multipleChoice",
+      "prompt": "The wedding ceremony was held at a picturesque beach _____ the bride wearing a white gown and the groom in a classic black suit.",
+      "options": [
+        "through",
+        "in",
+        "under",
+        "with"
+      ],
+      "answerIndex": 3,
+      "wordKey": "wedding",
+      "senseId": "sense-16aeb073",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-0e6a89d8",
+      "kind": "multipleChoice",
+      "prompt": "Make sure you renew your driver’s license _____ it expires or you won’t be able to drive legally.",
+      "options": [
+        "although",
+        "while",
+        "before",
+        "when"
+      ],
+      "answerIndex": 2,
+      "wordKey": "expire",
+      "senseId": "sense-446bb88c",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-e1e07862",
+      "kind": "multipleChoice",
+      "prompt": "In the circus, there was a freak show featuring individuals _____ unique physical characteristics.",
+      "options": [
+        "from",
+        "in",
+        "over",
+        "with"
+      ],
+      "answerIndex": 3,
+      "wordKey": "freak",
+      "senseId": "sense-418a1324",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-754e1f61",
+      "kind": "multipleChoice",
+      "prompt": "_____ the meeting, John misunderstood Sarah's instructions and ended up doing the opposite of what was intended.",
+      "options": [
+        "with",
+        "during",
+        "over",
+        "through"
+      ],
+      "answerIndex": 1,
+      "wordKey": "misunderstand",
+      "senseId": "sense-d71081fd",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-df7a57f9",
+      "kind": "multipleChoice",
+      "prompt": "_____ painting the walls, it is essential to apply a coat of size to ensure a smooth and even finish.",
+      "options": [
+        "while",
+        "since",
+        "before",
+        "if"
+      ],
+      "answerIndex": 2,
+      "wordKey": "size",
+      "senseId": "sense-c5bd79f5",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-4bb818cf",
+      "kind": "multipleChoice",
+      "prompt": "The construction company started a new project to build a hospital _____ the remote area.",
+      "options": [
+        "in",
+        "through",
+        "over",
+        "on"
+      ],
+      "answerIndex": 0,
+      "wordKey": "project",
+      "senseId": "sense-46ca0c28",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-24f91a24",
+      "kind": "multipleChoice",
+      "prompt": "I bought a carton of milk _____ the store.",
+      "options": [
+        "into",
+        "from",
+        "in",
+        "through"
+      ],
+      "answerIndex": 1,
+      "wordKey": "carton",
+      "senseId": "sense-8b0a8860",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-bbf8bfa6",
+      "kind": "multipleChoice",
+      "prompt": "The recipe _____ chocolate cake involves mixing butter, sugar, eggs, and cocoa powder.",
+      "options": [
+        "by",
+        "on",
+        "for",
+        "at"
+      ],
+      "answerIndex": 2,
+      "wordKey": "involve",
+      "senseId": "sense-8270136e",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-bf075aaa",
+      "kind": "multipleChoice",
+      "prompt": "It is legal to drive only _____ you have a valid license.",
+      "options": [
+        "when",
+        "because",
+        "unless",
+        "whether"
+      ],
+      "answerIndex": 0,
+      "wordKey": "legal",
+      "senseId": "sense-5d74c2bf",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-038a2dcb",
+      "kind": "multipleChoice",
+      "prompt": "After working non-stop _____ a year, she finally took a much-needed vacation to Hawaii.",
+      "options": [
+        "during",
+        "about",
+        "for",
+        "from"
+      ],
+      "answerIndex": 2,
+      "wordKey": "vacation",
+      "senseId": "sense-0e277021",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-7bd5a0fd",
+      "kind": "multipleChoice",
+      "prompt": "_____ my sister was younger, she couldn't pronounce my full name properly, so she started calling me 'Lil Sis' as a nickname.",
+      "options": [
+        "whereas",
+        "although",
+        "unless",
+        "when"
+      ],
+      "answerIndex": 3,
+      "wordKey": "nickname",
+      "senseId": "sense-5292bddf",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-40478772",
+      "kind": "multipleChoice",
+      "prompt": "The conference was attended by international delegates _____ over 50 different countries.",
+      "options": [
+        "in",
+        "into",
+        "for",
+        "from"
+      ],
+      "answerIndex": 3,
+      "wordKey": "international",
+      "senseId": "sense-2f2eb5f2",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-6c758cb6",
+      "kind": "multipleChoice",
+      "prompt": "_____ weeks of non-stop studying, Sarah's energy levels were completely depleted.",
+      "options": [
+        "after",
+        "since",
+        "though",
+        "before"
+      ],
+      "answerIndex": 0,
+      "wordKey": "deplete",
+      "senseId": "sense-855943e1",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-e771d935",
+      "kind": "multipleChoice",
+      "prompt": "The longitude of New York City is approximately 74 degrees west of the prime meridian _____ Greenwich, England.",
+      "options": [
+        "at",
+        "beneath",
+        "beyond",
+        "despite"
+      ],
+      "answerIndex": 0,
+      "wordKey": "longitude",
+      "senseId": "sense-efbaabb5",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-72e83ac8",
+      "kind": "multipleChoice",
+      "prompt": "_____ purchasing a new car, John had a significant debt to the bank that would take years to repay.",
+      "options": [
+        "whereas",
+        "after",
+        "because",
+        "unless"
+      ],
+      "answerIndex": 1,
+      "wordKey": "debt",
+      "senseId": "sense-fd9180b1",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-57247a28",
+      "kind": "multipleChoice",
+      "prompt": "Attendance _____ the conference was mandatory for all employees.",
+      "options": [
+        "at",
+        "during",
+        "with",
+        "on"
+      ],
+      "answerIndex": 0,
+      "wordKey": "attendance",
+      "senseId": "sense-3b30240c",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-d1dda918",
+      "kind": "multipleChoice",
+      "prompt": "Due to high demand, the company decided to expand their production capacity _____ building a new factory.",
+      "options": [
+        "by",
+        "under",
+        "with",
+        "during"
+      ],
+      "answerIndex": 0,
+      "wordKey": "expand",
+      "senseId": "sense-b6352493",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-2808cef8",
+      "kind": "multipleChoice",
+      "prompt": "The management team of the company held a meeting to discuss the budget _____ the next quarter.",
+      "options": [
+        "from",
+        "through",
+        "for",
+        "with"
+      ],
+      "answerIndex": 2,
+      "wordKey": "management",
+      "senseId": "sense-3bad18b8",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-1ab728f0",
+      "kind": "multipleChoice",
+      "prompt": "_____ careful consideration, she thought that starting her own business would be a good idea.",
+      "options": [
+        "before",
+        "since",
+        "after",
+        "if"
+      ],
+      "answerIndex": 2,
+      "wordKey": "think",
+      "senseId": "sense-920c269a",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-482b8b06",
+      "kind": "multipleChoice",
+      "prompt": "She meticulously paged _____ the manuscript, carefully numbering each page.",
+      "options": [
+        "by",
+        "through",
+        "at",
+        "from"
+      ],
+      "answerIndex": 1,
+      "wordKey": "page",
+      "senseId": "sense-b915a22f",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-d51fbcb3",
+      "kind": "multipleChoice",
+      "prompt": "She used a famous quote _____ Shakespeare to emphasize her point.",
+      "options": [
+        "from",
+        "with",
+        "during",
+        "by"
+      ],
+      "answerIndex": 0,
+      "wordKey": "quote",
+      "senseId": "sense-b02151a1",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-02ab7f12",
+      "kind": "multipleChoice",
+      "prompt": "I would like to thank my parents _____ their unwavering support throughout my life.",
+      "options": [
+        "during",
+        "for",
+        "with",
+        "about"
+      ],
+      "answerIndex": 1,
+      "wordKey": "thank",
+      "senseId": "sense-f22669e9",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-0477d58a",
+      "kind": "multipleChoice",
+      "prompt": "I spend my evenings curled up on the couch _____ a good book.",
+      "options": [
+        "through",
+        "by",
+        "with",
+        "from"
+      ],
+      "answerIndex": 2,
+      "wordKey": "book",
+      "senseId": "sense-558b187b",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-f9ff8864",
+      "kind": "multipleChoice",
+      "prompt": "The manager had a dubious expression _____ his face as he reviewed the suspect's alibi.",
+      "options": [
+        "under",
+        "during",
+        "in",
+        "on"
+      ],
+      "answerIndex": 3,
+      "wordKey": "dubious",
+      "senseId": "sense-e421031f",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-b07ce2de",
+      "kind": "multipleChoice",
+      "prompt": "_____ reviewing the application, the university sent a letter of acceptance to the student.",
+      "options": [
+        "unless",
+        "after",
+        "since",
+        "if"
+      ],
+      "answerIndex": 1,
+      "wordKey": "acceptance",
+      "senseId": "sense-d3c369f6",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-21fb35c8",
+      "kind": "multipleChoice",
+      "prompt": "The support group provides a safe space for individuals to connect _____ others who share their gender.",
+      "options": [
+        "through",
+        "during",
+        "at",
+        "with"
+      ],
+      "answerIndex": 3,
+      "wordKey": "gender",
+      "senseId": "sense-d5b9b312",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-64bf95cc",
+      "kind": "multipleChoice",
+      "prompt": "The meteorologist has forecasted heavy rainfall _____ the next two days.",
+      "options": [
+        "for",
+        "beneath",
+        "beyond",
+        "despite"
+      ],
+      "answerIndex": 0,
+      "wordKey": "forecast",
+      "senseId": "sense-21172be0",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-8f3ebeaa",
+      "kind": "multipleChoice",
+      "prompt": "When giving directions, turn left _____ the traffic light.",
+      "options": [
+        "in",
+        "for",
+        "at",
+        "over"
+      ],
+      "answerIndex": 2,
+      "wordKey": "left",
+      "senseId": "sense-d557eaee",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-ee4c097c",
+      "kind": "multipleChoice",
+      "prompt": "The main objective of the conference is to promote global cooperation _____ addressing climate change.",
+      "options": [
+        "in",
+        "from",
+        "over",
+        "beneath"
+      ],
+      "answerIndex": 0,
+      "wordKey": "main",
+      "senseId": "sense-c5a9e1a4",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-13d9223b",
+      "kind": "multipleChoice",
+      "prompt": "Our hotel is located just a few miles away _____ the airport.",
+      "options": [
+        "during",
+        "from",
+        "over",
+        "about"
+      ],
+      "answerIndex": 1,
+      "wordKey": "mile",
+      "senseId": "sense-0b4936e0",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-5cd59bb5",
+      "kind": "multipleChoice",
+      "prompt": "I received a significant addition to my salary _____ the promotion.",
+      "options": [
+        "since",
+        "unless",
+        "before",
+        "after"
+      ],
+      "answerIndex": 3,
+      "wordKey": "addition",
+      "senseId": "sense-10abe6ff",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-458608c9",
+      "kind": "multipleChoice",
+      "prompt": "The lioness crept up silently behind its prey before pouncing _____ it with lightning-fast reflexes.",
+      "options": [
+        "on",
+        "at",
+        "for",
+        "from"
+      ],
+      "answerIndex": 0,
+      "wordKey": "prey",
+      "senseId": "sense-96a2e1b9",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-5f0ac07b",
+      "kind": "multipleChoice",
+      "prompt": "During the class, the little boy couldn't resist being naughty and kept throwing paper airplanes _____ his classmates.",
+      "options": [
+        "at",
+        "into",
+        "in",
+        "during"
+      ],
+      "answerIndex": 0,
+      "wordKey": "naughty",
+      "senseId": "sense-363ea937",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-60669acf",
+      "kind": "multipleChoice",
+      "prompt": "After the marathon, the runner collapsed straight _____ the arms of the medical team.",
+      "options": [
+        "over",
+        "for",
+        "at",
+        "into"
+      ],
+      "answerIndex": 3,
+      "wordKey": "straight",
+      "senseId": "sense-24686548",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-1404cd63",
+      "kind": "multipleChoice",
+      "prompt": "Ellie stood _____ the dock as the boat slowly rocked and shook in the rough waves.",
+      "options": [
+        "through",
+        "about",
+        "on",
+        "in"
+      ],
+      "answerIndex": 2,
+      "wordKey": "shake",
+      "senseId": "sense-33bca7f4",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-76f3e4f6",
+      "kind": "multipleChoice",
+      "prompt": "_____ the spider suddenly crawled up her leg, she let out a blood-curdling scream.",
+      "options": [
+        "before",
+        "when",
+        "unless",
+        "though"
+      ],
+      "answerIndex": 1,
+      "wordKey": "scream",
+      "senseId": "sense-1da036bf",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-f92f2215",
+      "kind": "multipleChoice",
+      "prompt": "The organization provides support and resources _____ the blind to help them navigate the world around them.",
+      "options": [
+        "for",
+        "in",
+        "by",
+        "about"
+      ],
+      "answerIndex": 0,
+      "wordKey": "blind",
+      "senseId": "sense-aa055e2f",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-2f1fb00f",
+      "kind": "multipleChoice",
+      "prompt": "The train followed the track _____ the mountains.",
+      "options": [
+        "for",
+        "during",
+        "through",
+        "in"
+      ],
+      "answerIndex": 2,
+      "wordKey": "track",
+      "senseId": "sense-df5173af",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-3156779d",
+      "kind": "multipleChoice",
+      "prompt": "Alex constructed a sentence _____ his trip to New York City, expressing the subject ’he,’ and the predicate ’traveled to New York City’.",
+      "options": [
+        "through",
+        "in",
+        "by",
+        "about"
+      ],
+      "answerIndex": 3,
+      "wordKey": "sentence",
+      "senseId": "sense-2e75f8a7",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-005b52b6",
+      "kind": "multipleChoice",
+      "prompt": "During the pandemic, the family decided to rent a private isle _____ their vacation, ensuring complete isolation from others.",
+      "options": [
+        "into",
+        "under",
+        "for",
+        "through"
+      ],
+      "answerIndex": 2,
+      "wordKey": "isle",
+      "senseId": "sense-79aa42dd",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-63ba557e",
+      "kind": "multipleChoice",
+      "prompt": "The normal distribution is often used _____ statistics to describe the norm or average behavior of a population.",
+      "options": [
+        "in",
+        "with",
+        "by",
+        "into"
+      ],
+      "answerIndex": 0,
+      "wordKey": "norm",
+      "senseId": "sense-1b93aeac",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-56eec61e",
+      "kind": "multipleChoice",
+      "prompt": "_____ starting the exam, she made sure to read all of the instructions carefully.",
+      "options": [
+        "if",
+        "although",
+        "before",
+        "when"
+      ],
+      "answerIndex": 2,
+      "wordKey": "before",
+      "senseId": "sense-e9823796",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-2aa949b9",
+      "kind": "multipleChoice",
+      "prompt": "The students _____ the classroom come from various backgrounds and cultures.",
+      "options": [
+        "with",
+        "under",
+        "in",
+        "by"
+      ],
+      "answerIndex": 2,
+      "wordKey": "various",
+      "senseId": "sense-91f31746",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-2a471961",
+      "kind": "multipleChoice",
+      "prompt": "_____ I stepped outside, the scorching sun made the temperature rise rapidly.",
+      "options": [
+        "when",
+        "although",
+        "after",
+        "if"
+      ],
+      "answerIndex": 0,
+      "wordKey": "temperature",
+      "senseId": "sense-d4263c07",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-d5c82ce3",
+      "kind": "multipleChoice",
+      "prompt": "_____ the camping trip, we had to be cautious of ticks and other bugs that could carry diseases.",
+      "options": [
+        "under",
+        "during",
+        "by",
+        "through"
+      ],
+      "answerIndex": 1,
+      "wordKey": "bug",
+      "senseId": "sense-eea64de7",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-512f618f",
+      "kind": "multipleChoice",
+      "prompt": "Shipping companies play a crucial role _____ the transportation of goods around the world.",
+      "options": [
+        "from",
+        "over",
+        "on",
+        "in"
+      ],
+      "answerIndex": 3,
+      "wordKey": "transportation",
+      "senseId": "sense-c6a748f4",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-56320bab",
+      "kind": "multipleChoice",
+      "prompt": "She joined the company at an early stage of its development and played a significant role _____ shaping its success.",
+      "options": [
+        "about",
+        "at",
+        "with",
+        "in"
+      ],
+      "answerIndex": 3,
+      "wordKey": "early",
+      "senseId": "sense-e4bae404",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-6b396c23",
+      "kind": "multipleChoice",
+      "prompt": "_____ the word 'banana', there are three syllables: ba-na-na.",
+      "options": [
+        "with",
+        "over",
+        "in",
+        "by"
+      ],
+      "answerIndex": 2,
+      "wordKey": "syllable",
+      "senseId": "sense-68af2ae9",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-05f6bba1",
+      "kind": "multipleChoice",
+      "prompt": "The plumber replaced the old faucet _____ a brand new one to stop the leak.",
+      "options": [
+        "about",
+        "with",
+        "during",
+        "from"
+      ],
+      "answerIndex": 1,
+      "wordKey": "faucet",
+      "senseId": "sense-31763dd9",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-557f4926",
+      "kind": "multipleChoice",
+      "prompt": "My husband and I have been doing our best to raise his stepchild as our own son _____ we got married.",
+      "options": [
+        "if",
+        "before",
+        "since",
+        "though"
+      ],
+      "answerIndex": 2,
+      "wordKey": "stepchild",
+      "senseId": "sense-4e7cf251",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-46c786fc",
+      "kind": "multipleChoice",
+      "prompt": "The Mona Lisa is a famous painting _____ Leonardo da Vinci.",
+      "options": [
+        "under",
+        "by",
+        "during",
+        "in"
+      ],
+      "answerIndex": 1,
+      "wordKey": "famous",
+      "senseId": "sense-bc4a9b4e",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-9b5520dd",
+      "kind": "multipleChoice",
+      "prompt": "After the picnic, they left their litter scattered all _____ the park.",
+      "options": [
+        "into",
+        "on",
+        "over",
+        "in"
+      ],
+      "answerIndex": 2,
+      "wordKey": "litter",
+      "senseId": "sense-bffe389d",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-f2a81b3b",
+      "kind": "multipleChoice",
+      "prompt": "_____ the car accident, she suffered a fracture in her backbone, but luckily her spinal cord was not damaged.",
+      "options": [
+        "during",
+        "beneath",
+        "beyond",
+        "despite"
+      ],
+      "answerIndex": 0,
+      "wordKey": "backbone",
+      "senseId": "sense-6c0aedb2",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-7cd20c2e",
+      "kind": "multipleChoice",
+      "prompt": "She needed to focus _____ her studies and avoid distractions",
+      "options": [
+        "in",
+        "into",
+        "under",
+        "on"
+      ],
+      "answerIndex": 3,
+      "wordKey": "focus",
+      "senseId": "sense-53029e50",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-2a48ed21",
+      "kind": "multipleChoice",
+      "prompt": "I knew the dog was coming around the corner _____ I could hear its loud bark.",
+      "options": [
+        "if",
+        "although",
+        "because",
+        "whether"
+      ],
+      "answerIndex": 2,
+      "wordKey": "bark",
+      "senseId": "sense-1e560096",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-0537990e",
+      "kind": "multipleChoice",
+      "prompt": "_____ the political thriller, the protagonist uncovers an intricate web of intrigue involving corruption and espionage.",
+      "options": [
+        "for",
+        "into",
+        "in",
+        "under"
+      ],
+      "answerIndex": 2,
+      "wordKey": "intrigue",
+      "senseId": "sense-896b787d",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-bc28778e",
+      "kind": "multipleChoice",
+      "prompt": "Eating a well-balanced diet _____ plenty of fruits and vegetables is a healthful habit.",
+      "options": [
+        "under",
+        "with",
+        "by",
+        "over"
+      ],
+      "answerIndex": 1,
+      "wordKey": "healthful",
+      "senseId": "sense-1be00aad",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-bea1440e",
+      "kind": "multipleChoice",
+      "prompt": "The moon is _____ its last phase before a new moon.",
+      "options": [
+        "for",
+        "over",
+        "about",
+        "in"
+      ],
+      "answerIndex": 3,
+      "wordKey": "phase",
+      "senseId": "sense-d488a5b5",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-ffddb705",
+      "kind": "multipleChoice",
+      "prompt": "The documentary provided informative insights _____ the history and culture of the indigenous tribe.",
+      "options": [
+        "for",
+        "into",
+        "in",
+        "under"
+      ],
+      "answerIndex": 1,
+      "wordKey": "informative",
+      "senseId": "sense-2f548ac8",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-80ca7e9b",
+      "kind": "multipleChoice",
+      "prompt": "Let me give you an instance of what I mean. _____ instance, I can show you a picture of my dog to give you a better idea of what a Great Dane looks like.",
+      "options": [
+        "about",
+        "over",
+        "from",
+        "for"
+      ],
+      "answerIndex": 3,
+      "wordKey": "instance",
+      "senseId": "sense-30cc9af7",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-a201bd5a",
+      "kind": "multipleChoice",
+      "prompt": "The detective noticed a small detail _____ the crime scene that everyone else had missed, leading them to solve the case.",
+      "options": [
+        "about",
+        "through",
+        "during",
+        "in"
+      ],
+      "answerIndex": 3,
+      "wordKey": "detail",
+      "senseId": "sense-494602d8",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-fe494fc4",
+      "kind": "multipleChoice",
+      "prompt": "The board of directors is responsible _____ the disposal of the company’s assets.",
+      "options": [
+        "over",
+        "for",
+        "from",
+        "with"
+      ],
+      "answerIndex": 1,
+      "wordKey": "disposal",
+      "senseId": "sense-cc03dbc4",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-7b2e8820",
+      "kind": "multipleChoice",
+      "prompt": "For dinner, we had roasted pork _____ mashed sweet potatoes.",
+      "options": [
+        "on",
+        "about",
+        "with",
+        "at"
+      ],
+      "answerIndex": 2,
+      "wordKey": "pork",
+      "senseId": "sense-ca84b20e",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-32d858da",
+      "kind": "multipleChoice",
+      "prompt": "The sun began to emerge _____ behind the clouds.",
+      "options": [
+        "in",
+        "into",
+        "from",
+        "about"
+      ],
+      "answerIndex": 2,
+      "wordKey": "emerge",
+      "senseId": "sense-f4b1df06",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-5e843e25",
+      "kind": "multipleChoice",
+      "prompt": "May I ask _____ a favor?",
+      "options": [
+        "on",
+        "for",
+        "during",
+        "with"
+      ],
+      "answerIndex": 1,
+      "wordKey": "ask",
+      "senseId": "sense-90138a26",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-39ec6873",
+      "kind": "multipleChoice",
+      "prompt": "The sky was dull and gloomy, _____ thick clouds covering the horizon.",
+      "options": [
+        "by",
+        "with",
+        "on",
+        "for"
+      ],
+      "answerIndex": 1,
+      "wordKey": "dull",
+      "senseId": "sense-90b3f182",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-e72826c0",
+      "kind": "multipleChoice",
+      "prompt": "After pulling an all-nighter studying _____ exams, Emily finally got a good night's sleep.",
+      "options": [
+        "by",
+        "for",
+        "on",
+        "at"
+      ],
+      "answerIndex": 1,
+      "wordKey": "sleep",
+      "senseId": "sense-b4fa7cf9",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-e2cb5b6f",
+      "kind": "multipleChoice",
+      "prompt": "Down syndrome is a genetic syndrome caused _____ the presence of an extra chromosome.",
+      "options": [
+        "during",
+        "by",
+        "from",
+        "for"
+      ],
+      "answerIndex": 1,
+      "wordKey": "syndrome",
+      "senseId": "sense-258a0492",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-05026c7d",
+      "kind": "multipleChoice",
+      "prompt": "She was so thin that people often mistook her _____ a model.",
+      "options": [
+        "into",
+        "about",
+        "during",
+        "for"
+      ],
+      "answerIndex": 3,
+      "wordKey": "thin",
+      "senseId": "sense-e09a0ff8",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-c5109f10",
+      "kind": "multipleChoice",
+      "prompt": "She proudly displayed her bowling trophy _____ the mantelpiece.",
+      "options": [
+        "on",
+        "through",
+        "with",
+        "under"
+      ],
+      "answerIndex": 0,
+      "wordKey": "trophy",
+      "senseId": "sense-c42ba2c2",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-a36bb280",
+      "kind": "multipleChoice",
+      "prompt": "During our trip to Rome, we visited the ancient ruins of the Colosseum and marveled _____ its grandeur.",
+      "options": [
+        "by",
+        "at",
+        "over",
+        "about"
+      ],
+      "answerIndex": 1,
+      "wordKey": "ancient",
+      "senseId": "sense-22e78900",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-5e7e6beb",
+      "kind": "multipleChoice",
+      "prompt": "It is important to wear a helmet when riding a motorcycle to protect yourself _____ the danger of head injuries.",
+      "options": [
+        "from",
+        "by",
+        "through",
+        "over"
+      ],
+      "answerIndex": 0,
+      "wordKey": "danger",
+      "senseId": "sense-b0e4f2a5",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-58d93b4f",
+      "kind": "multipleChoice",
+      "prompt": "The Hollywood star walked down the red carpet, exuding glamour _____ every step, capturing the attention of the crowd and the cameras.",
+      "options": [
+        "during",
+        "with",
+        "from",
+        "by"
+      ],
+      "answerIndex": 1,
+      "wordKey": "glamour",
+      "senseId": "sense-7474b343",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-9fb90992",
+      "kind": "multipleChoice",
+      "prompt": "Alice and Sarah have been friends _____ they were in kindergarten. They have been through thick and thin together, supporting each other in both good times and bad times.",
+      "options": [
+        "since",
+        "unless",
+        "whereas",
+        "while"
+      ],
+      "answerIndex": 0,
+      "wordKey": "friend",
+      "senseId": "sense-6e34b580",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-207d5d30",
+      "kind": "multipleChoice",
+      "prompt": "She was sitting between her two friends _____ the cinema.",
+      "options": [
+        "at",
+        "during",
+        "into",
+        "over"
+      ],
+      "answerIndex": 0,
+      "wordKey": "between",
+      "senseId": "sense-b4b35c02",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-1d1c2738",
+      "kind": "multipleChoice",
+      "prompt": "At the office, my colleague and I collaborate _____ various projects.",
+      "options": [
+        "through",
+        "over",
+        "on",
+        "about"
+      ],
+      "answerIndex": 2,
+      "wordKey": "colleague",
+      "senseId": "sense-306217eb",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-7a3dc8ff",
+      "kind": "multipleChoice",
+      "prompt": "The sharp blade of grass cut _____ the air as the lawnmower passed over it.",
+      "options": [
+        "through",
+        "about",
+        "by",
+        "in"
+      ],
+      "answerIndex": 0,
+      "wordKey": "blade",
+      "senseId": "sense-f68064fc",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-63a9ec3e",
+      "kind": "multipleChoice",
+      "prompt": "After completing her medical degree, Dr. Smith established a successful practice _____ her hometown.",
+      "options": [
+        "by",
+        "in",
+        "with",
+        "through"
+      ],
+      "answerIndex": 1,
+      "wordKey": "medical",
+      "senseId": "sense-4f368df6",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-281d1618",
+      "kind": "multipleChoice",
+      "prompt": "Everyone was invited to the party except _____ John.",
+      "options": [
+        "for",
+        "at",
+        "over",
+        "under"
+      ],
+      "answerIndex": 0,
+      "wordKey": "except",
+      "senseId": "sense-9911b64c",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-0e53500a",
+      "kind": "multipleChoice",
+      "prompt": "The students performed badly on the exam despite studying _____ weeks.",
+      "options": [
+        "under",
+        "for",
+        "about",
+        "through"
+      ],
+      "answerIndex": 1,
+      "wordKey": "badly",
+      "senseId": "sense-c82531b0",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-6392cf7b",
+      "kind": "multipleChoice",
+      "prompt": "He was punished _____ stealing money after breaking into his neighbor’s house.",
+      "options": [
+        "under",
+        "with",
+        "for",
+        "by"
+      ],
+      "answerIndex": 2,
+      "wordKey": "violation",
+      "senseId": "sense-31b0e112",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-9d2dfeb6",
+      "kind": "multipleChoice",
+      "prompt": "At the party, he was too shy to approach anyone and spent most of the night standing alone _____ the corner.",
+      "options": [
+        "at",
+        "from",
+        "in",
+        "into"
+      ],
+      "answerIndex": 2,
+      "wordKey": "shy",
+      "senseId": "sense-59a31e46",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-1eecabd3",
+      "kind": "multipleChoice",
+      "prompt": "_____ I asked him where he had been all night, he just shrugged his shoulders, leaving me even more suspicious.",
+      "options": [
+        "whereas",
+        "when",
+        "since",
+        "before"
+      ],
+      "answerIndex": 1,
+      "wordKey": "shrug",
+      "senseId": "sense-17aa6035",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    }
+  ]
+}

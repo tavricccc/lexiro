@@ -1,0 +1,1328 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 169,
+  "words": [
+    {
+      "wordKey": "amplify",
+      "word": "amplify",
+      "senses": [
+        {
+          "id": "sense-331a02ab",
+          "pos": "verb",
+          "meaningZh": "放大（聲音）；擴音",
+          "definitionEn": "to increase the strength of a sound; make it louder",
+          "examples": [
+            "The DJ used a powerful speaker system to amplify the music and get the crowd dancing."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-984ccbc8",
+          "pos": "verb",
+          "meaningZh": "補充說明；擴大闡述",
+          "definitionEn": "to add to the information given in something",
+          "examples": [
+            "During the presentation, the speaker used visual aids to amplify the key points and make them easier to understand."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "analogy",
+      "word": "analogy",
+      "senses": [
+        {
+          "id": "sense-44f835da",
+          "pos": "noun",
+          "meaningZh": "類比；比喻",
+          "definitionEn": "a comparison that highlights a similarity between two things",
+          "examples": [
+            "To explain the concept humorously, he used the analogy of a child wiping off his mouth and hands after eating ice cream, which is similar to computer cleaning up its memory space."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-9f206cd1",
+          "pos": "noun",
+          "meaningZh": "類推；相似推論",
+          "definitionEn": "an idea that if two things are alike in some ways they are probably alike in other ways",
+          "examples": [
+            "Drawing an analogy between the human mind and a computer, it can be said that just as a computer can easily filter out unnecessary data, we can train our mind to reject harmful thoughts."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "analytical",
+      "word": "analytical",
+      "senses": [
+        {
+          "id": "sense-8bf7bb87",
+          "pos": "adjective",
+          "meaningZh": "分析性的；邏輯性的",
+          "definitionEn": "using a logical method of thinking about something in order to understand it, especially by examining all the individual parts",
+          "examples": [
+            "When solving a complex math problem, it is best to approach it in an analytical manner, breaking it down into smaller steps to comprehend and solve it effectively."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-30099faf",
+          "pos": "adjective",
+          "meaningZh": "科學分析的；系統性的",
+          "definitionEn": "using scientific analysis in order to find out about something",
+          "examples": [
+            "The forensic investigator used analytical techniques to analyze the evidence found at the crime scene."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "anchor",
+      "word": "anchor",
+      "senses": [
+        {
+          "id": "sense-277054ac",
+          "pos": "noun",
+          "meaningZh": "船錨；錨",
+          "definitionEn": "a mechanical device that is dropped from a boat to prevent it from moving",
+          "examples": [
+            "The sailor dropped the anchor into the water to keep the boat from drifting away."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-8aaa7b07",
+          "pos": "verb",
+          "meaningZh": "拋錨；固定停泊",
+          "definitionEn": "to use an anchor to prevent a boat from moving",
+          "examples": [
+            "Before heading out to sea, the captain dropped the anchor to ensure the boat stayed in place."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L5",
+        "textbookTitle": "三民 B4·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "animate",
+      "word": "animate",
+      "senses": [
+        {
+          "id": "sense-1d92ca43",
+          "pos": "verb",
+          "meaningZh": "使生動；賦予活力",
+          "definitionEn": "to make someone or something more active or lively",
+          "examples": [
+            "The energetic music animated the crowd, and everyone started dancing."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-8560f85f",
+          "pos": "adjective",
+          "meaningZh": "有生命的；活著的",
+          "definitionEn": "having the qualities of life; alive or living",
+          "examples": [
+            "The children were excitedly watching the parade as the floats, filled with colorful animated characters, passed by."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "annoyance",
+      "word": "annoyance",
+      "senses": [
+        {
+          "id": "sense-c2c34a21",
+          "pos": "noun",
+          "meaningZh": "惱怒；不耐煩",
+          "definitionEn": "the psychological state of being irritated or annoyed",
+          "examples": [
+            "After multiple phone calls from telemarketers during dinner, Samantha couldn’t hide her annoyance and yelled at the next caller."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-84c0ed6c",
+          "pos": "noun",
+          "meaningZh": "討厭的人；令人煩惱的事",
+          "definitionEn": "an unpleasant person who is annoying or exasperating",
+          "examples": [
+            "My co-worker is always interrupting me when I’m trying to work, making him a great annoyance."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "anthem",
+      "word": "anthem",
+      "senses": [
+        {
+          "id": "sense-29dd7ab3",
+          "pos": "noun",
+          "meaningZh": "會歌；校歌；國歌",
+          "definitionEn": "a song of loyalty or devotion, often to a nation or school",
+          "examples": [
+            "The students sang the national anthem passionately during the flag-raising ceremony."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-03cc16d5",
+          "pos": "noun",
+          "meaningZh": "讚美歌；聖歌",
+          "definitionEn": "a song of praise, especially to God, a saint, or a nation",
+          "examples": [
+            "The national anthem of the United States is ’The Star-Spangled Banner’."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "antibiotic",
+      "word": "antibiotic",
+      "senses": [
+        {
+          "id": "sense-606b0af7",
+          "pos": "noun",
+          "meaningZh": "抗生素",
+          "definitionEn": "a medication that is used to kill harmful bacteria and cure bacterial infections",
+          "examples": [
+            "After being prescribed a course of antibiotics, John's ear infection cleared up within a week."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-f9c72f1e",
+          "pos": "adjective",
+          "meaningZh": "抗生素的；抗菌的",
+          "definitionEn": "relating to or involving the use of antibiotics",
+          "examples": [
+            "After being prescribed an antibiotic for his sinus infection, John felt much better within a few days."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "anticipation",
+      "word": "anticipation",
+      "senses": [
+        {
+          "id": "sense-f6fe04d8",
+          "pos": "noun",
+          "meaningZh": "期待；興奮期盼",
+          "definitionEn": "a feeling of excitement about something that is going to happen in the near future",
+          "examples": [
+            "The anticipation was palpable as the crowd waited for the concert to begin."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-631e1a4d",
+          "pos": "noun",
+          "meaningZh": "預期；預料",
+          "definitionEn": "the act of predicting or expecting something",
+          "examples": [
+            "In anticipation of the upcoming storm, the residents of the coastal town were urged to evacuate the area."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L4",
+        "textbookTitle": "龍騰 B3·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "antonym",
+      "word": "antonym",
+      "senses": [
+        {
+          "id": "sense-0b6a8e6f",
+          "pos": "noun",
+          "meaningZh": "反義詞",
+          "definitionEn": "a word that means the opposite of another word",
+          "examples": [
+            "Hot is the antonym of cold."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "applaud",
+      "word": "applaud",
+      "senses": [
+        {
+          "id": "sense-faf1f5df",
+          "pos": "verb",
+          "meaningZh": "鼓掌；拍手",
+          "definitionEn": "to clap one’s hands or shout after a performance in approval",
+          "examples": [
+            "The audience erupted in applause as the musician finished her extraordinary piano solo."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-c637bf8c",
+          "pos": "verb",
+          "meaningZh": "讚揚；稱許",
+          "definitionEn": "to express approval or admiration",
+          "examples": [
+            "The audience erupted in applause as the performer took a bow after his incredible piano solo."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "applicable",
+      "word": "applicable",
+      "senses": [
+        {
+          "id": "sense-f8ce749b",
+          "pos": "adjective",
+          "meaningZh": "適用的；相關的",
+          "definitionEn": "relevant or appropriate",
+          "examples": [
+            "The safety guidelines were not applicable to the hazardous chemicals being used in the laboratory."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "apprentice",
+      "word": "apprentice",
+      "senses": [
+        {
+          "id": "sense-6b725b47",
+          "pos": "noun",
+          "meaningZh": "學徒；見習生",
+          "definitionEn": "A person who is learning a trade from a skilled employer, having agreed to work for a fixed period at low wages",
+          "examples": [
+            "As an apprentice carpenter, Jake spends his days learning from a master craftsman and gaining practical experience in woodworking."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-e9bf03a4",
+          "pos": "verb",
+          "meaningZh": "當學徒；拜師學藝",
+          "definitionEn": "To work for someone in order to learn their trade",
+          "examples": [
+            "As an aspiring chef, Thomas took a job as an apprentice at a prestigious restaurant, where he learned culinary techniques from the experienced chefs."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "approximate",
+      "word": "approximate",
+      "senses": [
+        {
+          "id": "sense-3c40c831",
+          "pos": "adjective",
+          "meaningZh": "大約的；約略的",
+          "definitionEn": "not quite exact or correct, but close enough to be useful",
+          "examples": [
+            "I don't have the exact measurements, but I can give you an approximate estimate of the costs."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-c84ad585",
+          "pos": "adjective",
+          "meaningZh": "相近的；鄰近的",
+          "definitionEn": "located or situated close together in time or space",
+          "examples": [
+            "The two houses are approximate to each other, making it easy for the neighbors to interact and socialize."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "archaeology",
+      "word": "archaeology",
+      "senses": [
+        {
+          "id": "sense-43cce81e",
+          "pos": "noun",
+          "meaningZh": "考古學",
+          "definitionEn": "the study of human history and prehistory through the excavation of sites and the analysis of artifacts and other physical remains",
+          "examples": [
+            "The archaeology team unearthed ancient pottery and tools at the dig site, providing valuable insights into the daily lives of our ancestors."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "archive",
+      "word": "archive",
+      "senses": [
+        {
+          "id": "sense-496e645a",
+          "pos": "noun",
+          "meaningZh": "檔案館；史料庫",
+          "definitionEn": "a place where historical records and documents are stored",
+          "examples": [
+            "The national archive is responsible for preserving and organizing important historical records, such as government documents, photographs, and manuscripts, for future generations to study and learn from."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-6b4ed30b",
+          "pos": "verb",
+          "meaningZh": "存檔；歸檔",
+          "definitionEn": "to store or place something in an archive",
+          "examples": [
+            "The museum decided to archive the antique documents to ensure their preservation for future generations."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "arithmetic",
+      "word": "arithmetic",
+      "senses": [
+        {
+          "id": "sense-1eb0036c",
+          "pos": "noun",
+          "meaningZh": "算術；四則運算",
+          "definitionEn": "the branch of mathematics that deals with the properties and manipulation of numbers",
+          "examples": [
+            "Sally used her knowledge of arithmetic to calculate the total cost of the groceries she had purchased."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-9ee3a4e3",
+          "pos": "adjective",
+          "meaningZh": "算術的；四則運算的",
+          "definitionEn": "pertaining to or involving basic mathematical operations",
+          "examples": [
+            "In order to solve the equation, you need to use arithmetic operations such as addition, subtraction, multiplication, and division."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "ascend",
+      "word": "ascend",
+      "senses": [
+        {
+          "id": "sense-7b3dca15",
+          "pos": "verb",
+          "meaningZh": "上升；攀登",
+          "definitionEn": "to go or move up; to climb",
+          "examples": [
+            "The hikers slowly ascended the steep mountain trail."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-48d1fa3b",
+          "pos": "verb",
+          "meaningZh": "晉升；升遷",
+          "definitionEn": "move to a better position in life or job",
+          "examples": [
+            "After years of hard work and dedication, she finally ascended to the position of CEO in the company."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-7cd5c802",
+          "pos": "verb",
+          "meaningZh": "登基；即位",
+          "definitionEn": "become a king or queen",
+          "examples": [
+            "After years of training and preparation, Prince William ascended to the throne as the rightful king."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "aspire",
+      "word": "aspire",
+      "senses": [
+        {
+          "id": "sense-aef1a471",
+          "pos": "verb",
+          "meaningZh": "渴望；立志；抱有志向",
+          "definitionEn": "to have a strong desire or hope to achieve something, especially something grand or great in value",
+          "examples": [
+            "As a young girl, she aspired to become a top-class ballerina and thus, worked tirelessly towards achieving that dream."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "assassinate",
+      "word": "assassinate",
+      "senses": [
+        {
+          "id": "sense-60b9efaf",
+          "pos": "verb",
+          "meaningZh": "暗殺；刺殺",
+          "definitionEn": "to kill suddenly and often by surprise, especially of an important person; murder",
+          "examples": [
+            "The undercover agent was tasked with the mission to assassinate the corrupt dictator and bring justice to the war-torn country."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-43d5b5d3",
+          "pos": "verb",
+          "meaningZh": "中傷；詆毀（名譽）",
+          "definitionEn": "to damage someone’s character or reputation severely",
+          "examples": [
+            "Spreading false rumors about a person to ruin their career is a clear attempt to assassinate their character."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "asthma",
+      "word": "asthma",
+      "senses": [
+        {
+          "id": "sense-d3d67133",
+          "pos": "noun",
+          "meaningZh": "氣喘；哮喘",
+          "definitionEn": "A medical condition that affect the respiratory system, causing difficulty in breathing, chest tightness and shortness of breath; usually caused by allergies or exercise.",
+          "examples": [
+            "After playing basketball, Michael’s asthma acted up and he had to use his inhaler to breathe properly."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "astray",
+      "word": "astray",
+      "senses": [
+        {
+          "id": "sense-73cc4953",
+          "pos": "adverb",
+          "meaningZh": "偏離方向；迷失",
+          "definitionEn": "far from the intended target",
+          "examples": [
+            "After missing the exit, we were led astray and lost for hours before finding our way back to the main road."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-e85045cc",
+          "pos": "adverb",
+          "meaningZh": "走錯路；誤入歧途",
+          "definitionEn": "away from the right path or direction",
+          "examples": [
+            "The hiker lost his way and wandered astray from the marked trail."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "astronaut",
+      "word": "astronaut",
+      "senses": [
+        {
+          "id": "sense-43afa021",
+          "pos": "noun",
+          "meaningZh": "太空人；宇航員",
+          "definitionEn": "a person who is trained to travel in a spacecraft and work in space",
+          "examples": [
+            "The astronaut gracefully floated through the space station, conducting experiments and observing the Earth from above."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "astronomer",
+      "word": "astronomer",
+      "senses": [
+        {
+          "id": "sense-2c8fb18d",
+          "pos": "noun",
+          "meaningZh": "天文學家",
+          "definitionEn": "a person who studies the stars, planets, and other celestial objects",
+          "examples": [
+            "The astronomer used the telescope to observe the movement of the stars and planets."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "astronomy",
+      "word": "astronomy",
+      "senses": [
+        {
+          "id": "sense-0cdd177b",
+          "pos": "noun",
+          "meaningZh": "天文學",
+          "definitionEn": "the scientific study of stars, planets, and other celestial objects",
+          "examples": [
+            "As an astronomy enthusiast, Sarah spends her nights stargazing through her telescope and noting the movements of the planets."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "attain",
+      "word": "attain",
+      "senses": [
+        {
+          "id": "sense-fd2579f7",
+          "pos": "verb",
+          "meaningZh": "達成；取得",
+          "definitionEn": "achieve or accomplish something after some effort or struggle",
+          "examples": [
+            "After years of hard work and dedication, I was finally able to attain my dream job."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-c56ea9a1",
+          "pos": "verb",
+          "meaningZh": "達到；抵達（某程度）",
+          "definitionEn": "reach a certain point in time, level or condition",
+          "examples": [
+            "After years of hard work, Jenna finally attained her dream of becoming a doctor."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "attainment",
+      "word": "attainment",
+      "senses": [
+        {
+          "id": "sense-7fa9178d",
+          "pos": "noun",
+          "meaningZh": "成就；達成目標",
+          "definitionEn": "the act of achieving an aim",
+          "examples": [
+            "Her graduation from college was a remarkable attainment."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "attendant",
+      "word": "attendant",
+      "senses": [
+        {
+          "id": "sense-553ca289",
+          "pos": "noun",
+          "meaningZh": "服務員；侍應人員",
+          "definitionEn": "someone who waits on, tends to, or attends to the needs of another person",
+          "examples": [
+            "The flight attendant served refreshments to the passengers during the flight."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-d630baa5",
+          "pos": "adjective",
+          "meaningZh": "出席的；在場的",
+          "definitionEn": "being present at a meeting, event, etc. attendant members of the congregation",
+          "examples": [
+            "During the board meeting, the CEO's personal assistant acted as the attendant, ensuring that all documents were distributed to the attendees and taking notes on behalf of the CEO."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "audit",
+      "word": "audit",
+      "senses": [
+        {
+          "id": "sense-20cd33b5",
+          "pos": "noun",
+          "meaningZh": "（財務）稽核；查帳",
+          "definitionEn": "an inspection of the accounting procedures and records by a trained accountant or CPA",
+          "examples": [
+            "The company’s accounting department was audited by an external CPA to ensure they were complying with accounting standards."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-6d881a6c",
+          "pos": "noun",
+          "meaningZh": "審核；審查",
+          "definitionEn": "a methodical examination or review of a condition or situation",
+          "examples": [
+            "The company conducts an annual audit of its financial statements to ensure accuracy and compliance with industry regulations."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "auditorium",
+      "word": "auditorium",
+      "senses": [
+        {
+          "id": "sense-e8cf629e",
+          "pos": "noun",
+          "meaningZh": "禮堂；大會堂；演講廳",
+          "definitionEn": "a large room or hall used for performance or presentations, typically equipped with seating for an audience",
+          "examples": [
+            "The school's auditorium was packed with excited parents and students for the annual talent show."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    }
+  ]
+}

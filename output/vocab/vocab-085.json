@@ -1,0 +1,1381 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 85,
+  "words": [
+    {
+      "wordKey": "portion",
+      "word": "portion",
+      "senses": [
+        {
+          "id": "sense-fc04ce29",
+          "pos": "noun",
+          "meaningZh": "一份（食物）；份量",
+          "definitionEn": "an individual amount of food or drink consumed as part of a meal",
+          "examples": [
+            "I only ate a small portion of the lasagna because it was so filling."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-6aa07d9c",
+          "pos": "noun",
+          "meaningZh": "財產份額；分配額",
+          "definitionEn": "assets or money belonging to an individual or group",
+          "examples": [
+            "The elderly couple split their life savings into equal portions for their children."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "portrait",
+      "word": "portrait",
+      "senses": [
+        {
+          "id": "sense-f0a61f21",
+          "pos": "noun",
+          "meaningZh": "肖像；人像",
+          "definitionEn": "any likeness of a person, in any medium",
+          "examples": [
+            "She commissioned a portrait of her parents to give them as a gift on their anniversary."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-9f96c72b",
+          "pos": "noun",
+          "meaningZh": "人物描寫；文字肖像",
+          "definitionEn": "a word picture of a person’s appearance and character",
+          "examples": [
+            "The artist painted a beautiful portrait of the queen that captured her regal presence and serene expression."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "poster",
+      "word": "poster",
+      "senses": [
+        {
+          "id": "sense-77c5f7c1",
+          "pos": "noun",
+          "meaningZh": "海報；宣傳單",
+          "definitionEn": "a sign posted in a public place as an advertisement",
+          "examples": [
+            "The concert poster was displayed on every street corner in the city, announcing the date, time, and location of the highly anticipated event."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-0e5c069c",
+          "pos": "noun",
+          "meaningZh": "張貼廣告的人",
+          "definitionEn": "someone who puts up bills or signs on walls or billboards as an occupation",
+          "examples": [
+            "The poster was busy hanging up advertisements for the concert all around the city."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "postpone",
+      "word": "postpone",
+      "senses": [
+        {
+          "id": "sense-6d888ace",
+          "pos": "verb",
+          "meaningZh": "延期；推遲",
+          "definitionEn": "to delay an event or activity until a later date or time",
+          "examples": [
+            "We will have to postpone the meeting until next week due to scheduling conflicts."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-440e6b83",
+          "pos": "verb",
+          "meaningZh": "延後；展期",
+          "definitionEn": "to put off doing something; to defer",
+          "examples": [
+            "I will postpone my dentist appointment until next week."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "postponement",
+      "word": "postponement",
+      "senses": [
+        {
+          "id": "sense-a498d353",
+          "pos": "noun",
+          "meaningZh": "延期；推遲",
+          "definitionEn": "act of putting off to a future time",
+          "examples": [
+            "The postponement of the meeting allowed for more time to prepare."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-a5c89e55",
+          "pos": "noun",
+          "meaningZh": "延後期間；等待時間",
+          "definitionEn": "time during which some action is awaited",
+          "examples": [
+            "The postponement of the meeting allowed the team members to prepare more thoroughly."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "pottery",
+      "word": "pottery",
+      "senses": [
+        {
+          "id": "sense-bcd38a21",
+          "pos": "noun",
+          "meaningZh": "陶器；陶製品",
+          "definitionEn": "dishes, bowls, and other objects made from baked clay",
+          "examples": [
+            "My friend took a pottery class and made a beautiful vase."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-b60f029d",
+          "pos": "noun",
+          "meaningZh": "陶藝；製陶工藝",
+          "definitionEn": "the art or craft of making objects from baked clay, such as vases or figurines",
+          "examples": [
+            "Susan spent hours in her studio, carefully shaping and molding the baked clay into beautiful pottery pieces."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "pour",
+      "word": "pour",
+      "senses": [
+        {
+          "id": "sense-64661622",
+          "pos": "verb",
+          "meaningZh": "倒；傾注（液體）",
+          "definitionEn": "to cause a liquid or other substance to flow from a container in a steady stream or spurt",
+          "examples": [
+            "She carefully poured the hot coffee into the cup without spilling it."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-07d088f4",
+          "pos": "verb",
+          "meaningZh": "傾盆大雨；下大雨",
+          "definitionEn": "to rain heavily and steadily",
+          "examples": [
+            "It was pouring outside so heavily that we had to cancel our outdoor picnic plan."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "poverty",
+      "word": "poverty",
+      "senses": [
+        {
+          "id": "sense-cc409c07",
+          "pos": "noun",
+          "meaningZh": "貧窮；貧困",
+          "definitionEn": "the state of being extremely poor and lacking the basic necessities of life such as food, shelter and clothing.",
+          "examples": [
+            "Growing up in poverty, she often went to bed hungry and shivered in the cold weather due to lack of proper clothing and shelter."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L5 +2",
+        "textbookTitle": "龍騰 B2·L5、三民 B2·L2、翰林 B1·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "powder",
+      "word": "powder",
+      "senses": [
+        {
+          "id": "sense-f195ab2d",
+          "pos": "noun",
+          "meaningZh": "粉末；粉狀物",
+          "definitionEn": "a substance that consists of very small and loose particles; a solid substance that has been ground into fine particles",
+          "examples": [
+            "I applied a touch of powder to my face before leaving the house."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-fc2fa5a3",
+          "pos": "noun",
+          "meaningZh": "粉劑；化妝粉",
+          "definitionEn": "a type of cosmetic or medicine that is sold in the form of a fine, loose powder",
+          "examples": [
+            "She applied powder on her face to hide blemishes and even out skin tone."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B1·L7",
+        "textbookTitle": "三民 B1·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "practical",
+      "word": "practical",
+      "senses": [
+        {
+          "id": "sense-7d3f49c4",
+          "pos": "adjective",
+          "meaningZh": "實用的；講求實際的",
+          "definitionEn": "concerned with actual use or practice",
+          "examples": [
+            "In order to test their design, the engineers built a practical prototype."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-abef2282",
+          "pos": "adjective",
+          "meaningZh": "實際的；事實上的",
+          "definitionEn": "being actually such in almost every respect",
+          "examples": [
+            "John is a practical person; he always finds simple and effective solutions to problems."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L2",
+        "textbookTitle": "龍騰 B4·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "precious",
+      "word": "precious",
+      "senses": [
+        {
+          "id": "sense-ab2cecf4",
+          "pos": "adjective",
+          "meaningZh": "珍愛的；寶貝的",
+          "definitionEn": "showing affection towards someone or something",
+          "examples": [
+            "As she hugged her precious baby tight, tears of joy streamed down her face."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-bfaa4f22",
+          "pos": "adjective",
+          "meaningZh": "矯揉造作的；刻意討好的",
+          "definitionEn": "artificially made to be attractive or charming",
+          "examples": [
+            "The precious necklace sparkled under the light, but it was evident that it was artificially created."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·R1 +1",
+        "textbookTitle": "龍騰 B3·R1、三民 B4·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "preparation",
+      "word": "preparation",
+      "senses": [
+        {
+          "id": "sense-e8e0ac83",
+          "pos": "noun",
+          "meaningZh": "準備；籌備",
+          "definitionEn": "the activity of putting things in order in advance of a purpose or action",
+          "examples": [
+            "Before the camping trip, we made thorough preparations by packing the tents, sleeping bags, and cooking equipment."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-ab7b3cb4",
+          "pos": "noun",
+          "meaningZh": "訓練；練習",
+          "definitionEn": "activity that leads to skilled behavior",
+          "examples": [
+            "Before the performance, the dancers spent hours in preparation, rehearsing their moves and perfecting their routines."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "presence",
+      "word": "presence",
+      "senses": [
+        {
+          "id": "sense-a10b4600",
+          "pos": "noun",
+          "meaningZh": "在場；出席",
+          "definitionEn": "the act or condition of being in a particular place or location",
+          "examples": [
+            "Her presence at the conference was appreciated by everyone."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-61447a1d",
+          "pos": "noun",
+          "meaningZh": "存在；當前狀態",
+          "definitionEn": "the state or fact of being present or existing; current existence",
+          "examples": [
+            "Sarah's presence at the meeting made everyone feel more at ease."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 翰林 B1·L6",
+        "textbookTitle": "翰林 B1·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "pretend",
+      "word": "pretend",
+      "senses": [
+        {
+          "id": "sense-f675b0a8",
+          "pos": "verb",
+          "meaningZh": "假裝；裝作",
+          "definitionEn": "behave in an unnatural or affected way",
+          "examples": [
+            "She pretended to be interested in his story, but really she was just bored."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-350e0a41",
+          "pos": "verb",
+          "meaningZh": "扮演；虛構",
+          "definitionEn": "represent fictitiously, as in a play, or pretend to be or act like someone",
+          "examples": [
+            "She likes to pretend she is a superhero and save the day."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L6",
+        "textbookTitle": "龍騰 B2·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "prevent",
+      "word": "prevent",
+      "senses": [
+        {
+          "id": "sense-6426bd11",
+          "pos": "verb",
+          "meaningZh": "防止；預防",
+          "definitionEn": "to stop something from happening or arising; to make it impossible",
+          "examples": [
+            "Taking regular exercise can help prevent the onset of disease."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-5939641f",
+          "pos": "verb",
+          "meaningZh": "阻止；妨礙",
+          "definitionEn": "to stop someone or something from doing something or being in a certain state",
+          "examples": [
+            "Wearing a seatbelt can help prevent serious injuries in a car accident."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B1·L7 +1",
+        "textbookTitle": "三民 B1·L7、翰林 B1·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "previous",
+      "word": "previous",
+      "senses": [
+        {
+          "id": "sense-119f20e9",
+          "pos": "adjective",
+          "meaningZh": "之前的；先前的",
+          "definitionEn": "occurring or happening before a specified event",
+          "examples": [
+            "In the previous chapter of the novel, the protagonist's true identity is revealed."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-84c56307",
+          "pos": "adjective",
+          "meaningZh": "前一個的；在前的",
+          "definitionEn": "having occurred or been situated before something else in time or order",
+          "examples": [
+            "Before starting the new project, let's review the previous one to see what worked well."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L5",
+        "textbookTitle": "龍騰 B3·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "probable",
+      "word": "probable",
+      "senses": [
+        {
+          "id": "sense-ba239a65",
+          "pos": "adjective",
+          "meaningZh": "可能的；大概的",
+          "definitionEn": "likely to happen or be true, although not completely certain",
+          "examples": [
+            "It is probable that it will rain today, as there are dark clouds in the sky."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-e180907d",
+          "pos": "noun",
+          "meaningZh": "可能當選者；熱門人選",
+          "definitionEn": "a person or thing that is likely to be chosen or succeed",
+          "examples": [
+            "Out of all the candidates, John is the most probable choice for the role of team captain."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "process",
+      "word": "process",
+      "senses": [
+        {
+          "id": "sense-ef975537",
+          "pos": "noun",
+          "meaningZh": "過程；程序；步驟",
+          "definitionEn": "a series of actions or steps taken to achieve a result",
+          "examples": [
+            "Learning a language is a slow process that takes patience."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-203b5d48",
+          "pos": "noun",
+          "meaningZh": "法院傳票；司法令狀",
+          "definitionEn": "a legal order or writ issued by authority of law that compels someone to attend court or face legal consequences",
+          "examples": [
+            "After repeatedly ignoring the court summons, John received a process that required him to appear in court or risk facing legal consequences."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B2·L8 +1",
+        "textbookTitle": "三民 B2·L8、翰林 B1·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "producer",
+      "word": "producer",
+      "senses": [
+        {
+          "id": "sense-688c080b",
+          "pos": "noun",
+          "meaningZh": "生產商；製造者",
+          "definitionEn": "a person or company that makes goods or provides services for sale",
+          "examples": [
+            "The producer of this TV series has won many awards for their excellent work."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-5b528a87",
+          "pos": "noun",
+          "meaningZh": "製作人；監製",
+          "definitionEn": "a person or company responsible for the financial and managerial aspects of making a movie, play, or broadcast program",
+          "examples": [
+            "The producer of the new Hollywood blockbuster had to secure funding, hire the cast and crew, negotiate contracts, and oversee the overall production of the movie."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "product",
+      "word": "product",
+      "senses": [
+        {
+          "id": "sense-5932bee3",
+          "pos": "noun",
+          "meaningZh": "產品；商品",
+          "definitionEn": "something that is manufactured or grown in large quantities to be sold",
+          "examples": [
+            "The company's latest product is a cutting-edge smartphone with a sleek design and advanced features."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-6b6b2f78",
+          "pos": "noun",
+          "meaningZh": "販售商品；上架品",
+          "definitionEn": "something that is available for sale",
+          "examples": [
+            "The new smartphone is a popular product among tech enthusiasts."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L5 +2",
+        "textbookTitle": "龍騰 B1·L5、三民 B1·L6、翰林 B1·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "professor",
+      "word": "professor",
+      "senses": [
+        {
+          "id": "sense-aa84a713",
+          "pos": "noun",
+          "meaningZh": "教授；大學教師",
+          "definitionEn": "A professor is a teacher at a college or university. They have a high level of knowledge in their subject and are experts in their field.",
+          "examples": [
+            "Ms. Johnson has been a professor of mathematics at the university for over 20 years, during which she has inspired countless students and guided them through their studies."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "profit",
+      "word": "profit",
+      "senses": [
+        {
+          "id": "sense-8a97e287",
+          "pos": "noun",
+          "meaningZh": "利潤；盈餘",
+          "definitionEn": "the excess of revenues over outlays in a given period of time (including depreciation and other non-cash expenses)",
+          "examples": [
+            "The company reported a profit of $1 million for the fiscal year."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-61aeab3e",
+          "pos": "noun",
+          "meaningZh": "獲益；好處",
+          "definitionEn": "the advantageous quality of being beneficial",
+          "examples": [
+            "After careful budgeting and cost-cutting measures, the company saw a significant increase in profit."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L8 +1",
+        "textbookTitle": "龍騰 B1·L8、三民 B2·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "promote",
+      "word": "promote",
+      "senses": [
+        {
+          "id": "sense-73bc237f",
+          "pos": "verb",
+          "meaningZh": "晉升；推動；宣傳",
+          "definitionEn": "support or contribute to the progress and growth of someone or something",
+          "examples": [
+            "John's manager decided to promote him to a higher position in recognition of his hard work and dedication."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "pronounce",
+      "word": "pronounce",
+      "senses": [
+        {
+          "id": "sense-78bdb8f5",
+          "pos": "verb",
+          "meaningZh": "發音；唸出",
+          "definitionEn": "to make the sound of a word or letter known, especially in a clear or standard way",
+          "examples": [
+            "The teacher asked the students to pronounce each word clearly during the spelling bee competition."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-2d6139a8",
+          "pos": "verb",
+          "meaningZh": "宣告；裁定",
+          "definitionEn": "to judge or declare the result of an official decision or process",
+          "examples": [
+            "The jury will pronounce the verdict tomorrow."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "proof",
+      "word": "proof",
+      "senses": [
+        {
+          "id": "sense-44c9a968",
+          "pos": "noun",
+          "meaningZh": "證明；證據",
+          "definitionEn": "any factual evidence that helps to establish the truth of something",
+          "examples": [
+            "The DNA evidence served as proof that he was at the scene of the crime."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B1·L8",
+        "textbookTitle": "三民 B1·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "property",
+      "word": "property",
+      "senses": [
+        {
+          "id": "sense-2f84a2cc",
+          "pos": "noun",
+          "meaningZh": "財產；所有物",
+          "definitionEn": "something that a person or group owns or has as their possession",
+          "examples": [
+            "The millionaire’s extensive property portfolio includes several luxury mansions and apartment complexes."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-5d4cfcbc",
+          "pos": "noun",
+          "meaningZh": "房地產；地產",
+          "definitionEn": "a piece of land or other area that is owned or used for a particular purpose",
+          "examples": [
+            "The large property by the lake is owned by a wealthy businessman."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "protection",
+      "word": "protection",
+      "senses": [
+        {
+          "id": "sense-28e39cc5",
+          "pos": "noun",
+          "meaningZh": "保護；防護措施",
+          "definitionEn": "something that is used to keep someone or something safe from harm or damage",
+          "examples": [
+            "Wearing a helmet provides protection for your head while riding a bike or participating in a sport."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-d8095a20",
+          "pos": "noun",
+          "meaningZh": "貿易保護；進口限制",
+          "definitionEn": "the act of putting restrictions on the amount or entry of goods into a country in order to give an advantage to local industries",
+          "examples": [
+            "The government implemented protection measures to limit the number of foreign cars that can be imported, in order to promote local automobile manufacturers."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L7 +1",
+        "textbookTitle": "龍騰 B1·L7、三民 B1·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "pub",
+      "word": "pub",
+      "senses": [
+        {
+          "id": "sense-806fc109",
+          "pos": "noun",
+          "meaningZh": "酒吧；英式小酒館",
+          "definitionEn": "A building that contains a bar and public areas that often provide light meals. It is a popular place to meet people and socialize.",
+          "examples": [
+            "Let’s meet at the pub after work for some drinks and food."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "pump",
+      "word": "pump",
+      "senses": [
+        {
+          "id": "sense-e02c2c7d",
+          "pos": "noun",
+          "meaningZh": "幫浦；抽水機",
+          "definitionEn": "a mechanical device that moves fluid or gas by pressure or suction",
+          "examples": [
+            "To fill up the inflatable swimming pool, you will need to use a pump to move the water from the hose into the pool."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-4caa583c",
+          "pos": "verb",
+          "meaningZh": "抽（水）；用幫浦抽送",
+          "definitionEn": "to draw or pour with a pump",
+          "examples": [
+            "The gardener needs to pump water from the well to water the plants."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "punch",
+      "word": "punch",
+      "senses": [
+        {
+          "id": "sense-c9054694",
+          "pos": "verb",
+          "meaningZh": "用拳打；猛擊",
+          "definitionEn": "to hit someone or something hard with your fist",
+          "examples": [
+            "The boxer punched his opponent in the jaw."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-231c8a16",
+          "pos": "noun",
+          "meaningZh": "賓治酒；果汁調酒",
+          "definitionEn": "an iced mixed drink containing alcohol, served in a punch bowl for multiple servings",
+          "examples": [
+            "At the party, the guests enjoyed sipping on a refreshing fruit punch while mingling and socializing."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    }
+  ]
+}

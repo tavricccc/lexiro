@@ -1,0 +1,1389 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 74,
+  "words": [
+    {
+      "wordKey": "flash",
+      "word": "flash",
+      "senses": [
+        {
+          "id": "sense-9c43323e",
+          "pos": "noun",
+          "meaningZh": "閃光；強光",
+          "definitionEn": "a sudden intense burst of radiant energy",
+          "examples": [
+            "The sudden flash of lightning outside the window startled her and illuminated the entire room for a split second."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-c33168a5",
+          "pos": "noun",
+          "meaningZh": "瞬間光亮；一閃",
+          "definitionEn": "a momentary brightness",
+          "examples": [
+            "The flash of lightning illuminated the dark sky for a split second."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "flashlight",
+      "word": "flashlight",
+      "senses": [
+        {
+          "id": "sense-dac50b55",
+          "pos": "noun",
+          "meaningZh": "手電筒；電筒",
+          "definitionEn": "a portable handheld electric lamp, typically powered by batteries",
+          "examples": [
+            "When the power went out during the storm, Sarah used her flashlight to navigate through the dark house."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "flavor",
+      "word": "flavor",
+      "senses": [
+        {
+          "id": "sense-e46e16e9",
+          "pos": "noun",
+          "meaningZh": "味道；風味",
+          "definitionEn": "the taste of something, especially a particular taste or smell",
+          "examples": [
+            "I love the flavor of fresh-baked bread; it has a comforting aroma and a delicious flavor that always makes me happy."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-e78427f7",
+          "pos": "verb",
+          "meaningZh": "調味；增添風味",
+          "definitionEn": "to add a particular taste to food or drink",
+          "examples": [
+            "She uses a blend of herbs and spices to flavor her dishes."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L2 +1",
+        "textbookTitle": "龍騰 B2·L2、三民 B1·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "flesh",
+      "word": "flesh",
+      "senses": [
+        {
+          "id": "sense-64d4cdb0",
+          "pos": "noun",
+          "meaningZh": "肉；肌肉組織",
+          "definitionEn": "the soft tissue of a vertebrate animal body, especially when it is used for food or considered as an object of horror, pity, etc.",
+          "examples": [],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-4f975c01",
+          "pos": "noun",
+          "meaningZh": "肉體；軀體",
+          "definitionEn": "the physical body of a human being",
+          "examples": [
+            "After the accident, he had numerous injuries to his flesh."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "float",
+      "word": "float",
+      "senses": [
+        {
+          "id": "sense-f7e41506",
+          "pos": "verb",
+          "meaningZh": "漂浮；浮動",
+          "definitionEn": "to stay or move on the surface of a liquid without sinking",
+          "examples": [
+            "The wooden boat floated gently on the lake."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-696a21cd",
+          "pos": "verb",
+          "meaningZh": "試探性提出；試水溫",
+          "definitionEn": "circulate or discuss tentatively; test the waters with",
+          "examples": [
+            "Before announcing the new policy, the management decided to float the idea among the employees to see how they would react."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L3 +1",
+        "textbookTitle": "龍騰 B1·L3、三民 B1·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "flock",
+      "word": "flock",
+      "senses": [
+        {
+          "id": "sense-7af3e0e5",
+          "pos": "noun",
+          "meaningZh": "畜群；羊群",
+          "definitionEn": "a group of sheep or goats",
+          "examples": [
+            "As the sun began to set, the shepherd led his flock of sheep back to the barn for the night."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-f9edda58",
+          "pos": "noun",
+          "meaningZh": "大群；一大批",
+          "definitionEn": "(often followed by ’of’) a large number or amount or extent",
+          "examples": [
+            "A flock of seagulls flew overhead, filling the sky with their graceful movements."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L8 +1",
+        "textbookTitle": "龍騰 B4·L8、三民 B2·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "flood",
+      "word": "flood",
+      "senses": [
+        {
+          "id": "sense-4777b511",
+          "pos": "noun",
+          "meaningZh": "洪水；氾濫",
+          "definitionEn": "the rising of a body of water and its overflowing onto normally dry land",
+          "examples": [
+            "After heavy rainfall, the river began to flood, causing nearby homes to be submerged in water."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-121f89ee",
+          "pos": "noun",
+          "meaningZh": "大量湧入；漲潮",
+          "definitionEn": "filling to overflowing; an overwhelming number or amount; a large flow; the occurrence of incoming water between a low tide and the following high tide",
+          "examples": [
+            "After heavy rainfall, the river burst its banks and caused a flood, submerging nearby homes and roads."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L2 +1",
+        "textbookTitle": "龍騰 B4·L2、三民 B4·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "flour",
+      "word": "flour",
+      "senses": [
+        {
+          "id": "sense-96a2f35a",
+          "pos": "noun",
+          "meaningZh": "麵粉；粉末",
+          "definitionEn": "The finely ground or powdered meal of any grain.",
+          "examples": [
+            "I used flour to make pancakes for breakfast this morning."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-03837a11",
+          "pos": "verb",
+          "meaningZh": "撒粉；裹麵粉",
+          "definitionEn": "To cover something with flour.",
+          "examples": [
+            "To make fried chicken, you should first flour the chicken before dipping it into the egg mixture."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "flute",
+      "word": "flute",
+      "senses": [
+        {
+          "id": "sense-3bf99cbd",
+          "pos": "noun",
+          "meaningZh": "長笛",
+          "definitionEn": "a high-pitched woodwind instrument consisting of a slender tube closed at one end, with finger holes on the side and an opening near the closed end across which the player blows air to produce sound",
+          "examples": [
+            "At the concert, the musician played a beautiful melody on her flute."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-9a34e007",
+          "pos": "noun",
+          "meaningZh": "香檳杯；細高腳杯",
+          "definitionEn": "a tall, narrow wineglass, often used for serving champagne",
+          "examples": [
+            "She raised her flute to toast the newlyweds."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "foggy",
+      "word": "foggy",
+      "senses": [
+        {
+          "id": "sense-8cbcd73b",
+          "pos": "adjective",
+          "meaningZh": "霧濛濛的；被霧籠罩",
+          "definitionEn": "obscured by fog",
+          "examples": [
+            "The city was enveloped in a thick foggy blanket, making it difficult to see more than a few feet ahead."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-3c4c33d0",
+          "pos": "adjective",
+          "meaningZh": "多霧的；雲霧瀰漫的",
+          "definitionEn": "filled or abounding with fog or mist",
+          "examples": [
+            "As I walked through the dense forest, the air became increasingly foggy, making it difficult to see beyond a few feet ahead."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "fold",
+      "word": "fold",
+      "senses": [
+        {
+          "id": "sense-e161388d",
+          "pos": "verb",
+          "meaningZh": "折疊；對折",
+          "definitionEn": "to become folded or folded up",
+          "examples": [
+            "He folded the letter in half before putting it in the envelope."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-403cded9",
+          "pos": "noun",
+          "meaningZh": "折痕；折法",
+          "definitionEn": "the act of folding something",
+          "examples": [
+            "I always make sure to fold my clothes neatly before putting them away in my dresser."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "follower",
+      "word": "follower",
+      "senses": [
+        {
+          "id": "sense-7b78f263",
+          "pos": "noun",
+          "meaningZh": "追隨者；信徒",
+          "definitionEn": "a person who accepts the leadership of another",
+          "examples": [],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-d4c3865b",
+          "pos": "noun",
+          "meaningZh": "跟蹤者；隨行者",
+          "definitionEn": "someone who travels behind or pursues another",
+          "examples": [
+            "The paparazzi were following the actor’s car, hoping to get a glimpse of him."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "fond",
+      "word": "fond",
+      "senses": [
+        {
+          "id": "sense-64915d0b",
+          "pos": "adjective",
+          "meaningZh": "喜愛的；溫情的",
+          "definitionEn": "having or showing a warm or affectionate nature",
+          "examples": [],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-8087daed",
+          "pos": "adjective",
+          "meaningZh": "溺愛的；過分寵愛的",
+          "definitionEn": "indulging or doting excessively on someone, often to an absurd degree",
+          "examples": [
+            "Maria is so fond of her little dog that she dresses it up in cute outfits and carries it everywhere she goes."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "forever",
+      "word": "forever",
+      "senses": [
+        {
+          "id": "sense-b1e278d2",
+          "pos": "adverb",
+          "meaningZh": "永遠；永久",
+          "definitionEn": "for an infinite amount of time",
+          "examples": [
+            "They vowed to be together forever, even through the toughest times."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-42297f17",
+          "pos": "adverb",
+          "meaningZh": "老是；沒完沒了",
+          "definitionEn": "for a very long period of time, or seemingly without end",
+          "examples": [
+            "After waiting in line for what felt like forever, they finally reached the front of the concert venue."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "fortune",
+      "word": "fortune",
+      "senses": [
+        {
+          "id": "sense-ee090589",
+          "pos": "noun",
+          "meaningZh": "命運；際遇",
+          "definitionEn": "your overall circumstances or condition in life (including everything that happens to you)",
+          "examples": [
+            "Despite facing many challenges, she was able to turn her fortune around and build a successful business."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-ab3f9bf5",
+          "pos": "noun",
+          "meaningZh": "運氣；好運",
+          "definitionEn": "an unknown and unpredictable phenomenon that leads to a favorable outcome",
+          "examples": [
+            "She took a different route to work and, by sheer fortune, avoided the massive traffic jam."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B1·L10 +1",
+        "textbookTitle": "三民 B1·L10、三民 B2·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "fountain",
+      "word": "fountain",
+      "senses": [
+        {
+          "id": "sense-f3a6c6fb",
+          "pos": "noun",
+          "meaningZh": "噴泉；噴水池",
+          "definitionEn": "a structure from which an artificially produced jet of water arises",
+          "examples": [
+            "The grand, ornate fountain at the park created an impressive display of water shooting high into the air."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-d1ed683a",
+          "pos": "noun",
+          "meaningZh": "泉水；天然湧泉",
+          "definitionEn": "a natural flow of ground water",
+          "examples": [
+            "The hikers were able to quench their thirst by drinking from the cold fountain of water that was flowing from beneath the rocks."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "frank",
+      "word": "frank",
+      "senses": [
+        {
+          "id": "sense-52a02a23",
+          "pos": "adjective",
+          "meaningZh": "坦白的；直率的",
+          "definitionEn": "honest and direct in what you say, even when it is difficult",
+          "examples": [
+            "To be frank, I don't think your plan will work."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-c25a921d",
+          "pos": "verb",
+          "meaningZh": "蓋郵戳；加蓋免費郵資印",
+          "definitionEn": "to mark a letter or package with a postmark indicating the date and time of mailing",
+          "examples": [
+            "Don’t forget to frank the package before sending it out."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "freeze",
+      "word": "freeze",
+      "senses": [
+        {
+          "id": "sense-361af10b",
+          "pos": "verb",
+          "meaningZh": "結冰；凍結",
+          "definitionEn": "change from a liquid to a solid when the temperature decreases",
+          "examples": [
+            "When winter arrived, the pond water began to freeze, forming a thick layer of ice."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-43cb83c5",
+          "pos": "verb",
+          "meaningZh": "（用冷劑）麻醉；使麻木",
+          "definitionEn": "anesthetize or numb (a part of the body) with cold",
+          "examples": [
+            "After the dental procedure, the dentist used a cold spray to freeze my gums before injecting anesthesia."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L3 +1",
+        "textbookTitle": "龍騰 B3·L3、三民 B4·L10"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "freezer",
+      "word": "freezer",
+      "senses": [
+        {
+          "id": "sense-82c2ffad",
+          "pos": "noun",
+          "meaningZh": "冷凍庫；冷凍箱",
+          "definitionEn": "a device, usually powered by electricity, used to freeze and store food for extended periods of time. The brand name for one type of freezer is Deepfreeze.",
+          "examples": [
+            "I put the ice cream in the freezer to keep it from melting before the party."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "frequent",
+      "word": "frequent",
+      "senses": [
+        {
+          "id": "sense-1a38fb82",
+          "pos": "adjective",
+          "meaningZh": "頻繁的；經常的",
+          "definitionEn": "happening or occurring at short intervals or regularly",
+          "examples": [
+            "Alice and Bob are frequent travelers, they go on trips almost every month."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-a04f6bdd",
+          "pos": "adjective",
+          "meaningZh": "常見的；習以為常的",
+          "definitionEn": "commonly encountered or experienced",
+          "examples": [
+            "Sarah and John visit the local cafe so frequently that the barista knows their orders by heart."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B2·L8 +1",
+        "textbookTitle": "三民 B2·L8、翰林 B1·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "fright",
+      "word": "fright",
+      "senses": [
+        {
+          "id": "sense-6bb4ad95",
+          "pos": "noun",
+          "meaningZh": "恐懼；驚嚇",
+          "definitionEn": "a feeling of fear or anxiety associated with a possible threat, danger or harm (often leads to fight or flight response)",
+          "examples": [
+            "As she turned the corner, she was overcome with fright when she saw a dark figure lurking in the shadows."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-807648c1",
+          "pos": "verb",
+          "meaningZh": "使害怕；嚇唬",
+          "definitionEn": "to make someone feel afraid or scared",
+          "examples": [
+            "The sudden scream from the haunted house filled her with fright."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L1",
+        "textbookTitle": "龍騰 B3·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "frighten",
+      "word": "frighten",
+      "senses": [
+        {
+          "id": "sense-b23ea27a",
+          "pos": "verb",
+          "meaningZh": "嚇到；使害怕",
+          "definitionEn": "to make someone feel afraid or nervous",
+          "examples": [
+            "The loud thunder and lightning during the storm frightened the young child."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-ff673ff0",
+          "pos": "verb",
+          "meaningZh": "嚇跑；驅趕",
+          "definitionEn": "to scare someone so badly that they leave a place or stop doing something",
+          "examples": [
+            "The sudden loud crash frightened the birds away from the trees."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L1 +1",
+        "textbookTitle": "龍騰 B3·L1、三民 B4·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "fuel",
+      "word": "fuel",
+      "senses": [
+        {
+          "id": "sense-6f028b66",
+          "pos": "noun",
+          "meaningZh": "燃料；燃油",
+          "definitionEn": "a substance that can be burned to produce energy",
+          "examples": [
+            "Gasoline is a common fuel used in cars."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-824489af",
+          "pos": "verb",
+          "meaningZh": "加油；提供燃料",
+          "definitionEn": "provide with a combustible substance that provides energy",
+          "examples": [
+            "The diesel fuel was added to the truck’s tank to power the engine for their long journey."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L5",
+        "textbookTitle": "龍騰 B5·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "fund",
+      "word": "fund",
+      "senses": [
+        {
+          "id": "sense-efe782be",
+          "pos": "noun",
+          "meaningZh": "基金；專款",
+          "definitionEn": "a reserve of money set aside for a specific purpose",
+          "examples": [
+            "The school established a fund to provide scholarships for underprivileged students."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-3c5094b3",
+          "pos": "noun",
+          "meaningZh": "儲備；蓄積",
+          "definitionEn": "a supply of something that can be used in the future",
+          "examples": [
+            "She has a fund of knowledge that she uses to answer any question."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L6",
+        "textbookTitle": "三民 B4·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "fur",
+      "word": "fur",
+      "senses": [
+        {
+          "id": "sense-35d5dde5",
+          "pos": "noun",
+          "meaningZh": "毛皮；皮草",
+          "definitionEn": "the soft, thick hair that covers the bodies of some animals, or the hair-covered skin of animals, when it is removed from their bodies",
+          "examples": [
+            "The polar bear's fur kept it warm in the freezing Arctic temperatures."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L3",
+        "textbookTitle": "龍騰 B3·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "gallon",
+      "word": "gallon",
+      "senses": [
+        {
+          "id": "sense-b3e3657d",
+          "pos": "noun",
+          "meaningZh": "加侖（美制液量單位）",
+          "definitionEn": "A unit of liquid measure in the US and some other countries, equal to 4 quarts (approximately 3.785 liters)",
+          "examples": [
+            "She purchased a gallon of milk from the grocery store."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "gamble",
+      "word": "gamble",
+      "senses": [
+        {
+          "id": "sense-6ba54f3f",
+          "pos": "noun",
+          "meaningZh": "冒險；賭注",
+          "definitionEn": "an enterprise undertaken or attempted with a possibility of success or a favorable outcome; a risk",
+          "examples": [
+            "He decided to gamble all of his savings on the stock market, hoping to make a quick profit."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-e3bc032b",
+          "pos": "noun",
+          "meaningZh": "賭博所下的注；所賭之物",
+          "definitionEn": "money or something else risked on the outcome of a game or other unpredictable event",
+          "examples": [
+            "Andrew took a huge gamble by investing all of his savings in cryptocurrency."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "gang",
+      "word": "gang",
+      "senses": [
+        {
+          "id": "sense-5f6e468b",
+          "pos": "noun",
+          "meaningZh": "幫派；犯罪集團",
+          "definitionEn": "a group of people, especially young people, who often do illegal or harmful things together",
+          "examples": [
+            "The police arrested a suspected gang of teenagers who had robbed a convenience store."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-022cc06d",
+          "pos": "verb",
+          "meaningZh": "結夥行動；集體犯罪",
+          "definitionEn": "to work or act together, especially for criminal purposes",
+          "examples": [
+            "The police caught a gang of thieves red-handed while they were trying to rob a jewelry store."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "gap",
+      "word": "gap",
+      "senses": [
+        {
+          "id": "sense-744473a1",
+          "pos": "noun",
+          "meaningZh": "缺口；間隙",
+          "definitionEn": "an open or empty space in or between things",
+          "examples": [
+            "There was a small gap in the fence where the dog managed to squeeze through."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-daf8da38",
+          "pos": "noun",
+          "meaningZh": "縫隙；狹口",
+          "definitionEn": "a narrow opening",
+          "examples": [
+            "The hiker squeezed through a narrow gap between the rocks."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L7",
+        "textbookTitle": "龍騰 B4·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "garage",
+      "word": "garage",
+      "senses": [
+        {
+          "id": "sense-93395f51",
+          "pos": "noun",
+          "meaningZh": "車庫；停車間",
+          "definitionEn": "an outbuilding, often attached to a house, used for storing a car or other vehicle",
+          "examples": [
+            "I parked my car in the garage to keep it safe from the rain."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-c31a773e",
+          "pos": "noun",
+          "meaningZh": "汽車修理廠；車行",
+          "definitionEn": "a place where cars and trucks are repaired and serviced",
+          "examples": [
+            "I need to take my car to the garage to get the brakes checked."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    }
+  ]
+}

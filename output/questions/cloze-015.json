@@ -1,0 +1,1927 @@
+{
+  "schemaVersion": 1,
+  "kind": "questions",
+  "questionKind": "cloze",
+  "questions": [
+    {
+      "id": "child-f9da5818",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"giving or showing attention to avoid harm or mistakes\"?",
+      "options": [
+        "several",
+        "careful",
+        "handsome",
+        "under"
+      ],
+      "answerIndex": 1,
+      "wordKey": "careful",
+      "senseId": "sense-1b347fd0",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-8dbb6145",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"A widely cultivated plant often grown as an annual, having long, conical, orange-edible roots. It is grown in temperate and tropical regions.\"?",
+      "options": [
+        "carrot",
+        "button",
+        "silver",
+        "medium"
+      ],
+      "answerIndex": 0,
+      "wordKey": "carrot",
+      "senseId": "sense-e22bc1b3",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-0949b96b",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"move while supporting, either in a vehicle or in one’s hands or on one’s body\"?",
+      "options": [
+        "sweep",
+        "touch",
+        "raise",
+        "carry"
+      ],
+      "answerIndex": 3,
+      "wordKey": "carry",
+      "senseId": "sense-02731bbd",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-3cab2b02",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"a particular situation or instance of something\"?",
+      "options": [
+        "shop",
+        "rose",
+        "ball",
+        "case"
+      ],
+      "answerIndex": 3,
+      "wordKey": "case",
+      "senseId": "sense-8c637f61",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-b70e52dc",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"a small domesticated carnivorous mammal with soft fur, a short snout, and retractable claws\"?",
+      "options": [
+        "bag",
+        "ape",
+        "pot",
+        "cat"
+      ],
+      "answerIndex": 3,
+      "wordKey": "cat",
+      "senseId": "sense-8bd7e2b8",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-3234b87d",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"contract an illness or disease\"?",
+      "options": [
+        "shake",
+        "touch",
+        "catch",
+        "goose"
+      ],
+      "answerIndex": 2,
+      "wordKey": "catch",
+      "senseId": "sense-24a39e7b",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-aaaa7181",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"to recognize and give importance to a significant event, person or achievement\"?",
+      "options": [
+        "encourage",
+        "introduce",
+        "condition",
+        "celebrate"
+      ],
+      "answerIndex": 3,
+      "wordKey": "celebrate",
+      "senseId": "sense-db06b095",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-e241bac1",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"a phone that you can carry with you and use anywhere; a mobile phone\"?",
+      "options": [
+        "cellphone",
+        "furniture",
+        "bookstore",
+        "discovery"
+      ],
+      "answerIndex": 0,
+      "wordKey": "cellphone",
+      "senseId": "sense-a2186125",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-fd333dba",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"a fractional monetary unit of several countries\"?",
+      "options": [
+        "slip",
+        "lamb",
+        "cent",
+        "rain"
+      ],
+      "answerIndex": 2,
+      "wordKey": "cent",
+      "senseId": "sense-e6f5c26c",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-bc2ed5f9",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"an area located in the middle or approximately central within a larger region\"?",
+      "options": [
+        "gather",
+        "center",
+        "single",
+        "factor"
+      ],
+      "answerIndex": 1,
+      "wordKey": "center",
+      "senseId": "sense-1ee5416c",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-57e66022",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"to become different, while still maintaining some of the original qualities\"?",
+      "options": [
+        "praise",
+        "change",
+        "please",
+        "handle"
+      ],
+      "answerIndex": 1,
+      "wordKey": "change",
+      "senseId": "sense-350edc8d",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-19af928a",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"charging low prices; inexpensive\"?",
+      "options": [
+        "every",
+        "very",
+        "under",
+        "cheap"
+      ],
+      "answerIndex": 3,
+      "wordKey": "cheap",
+      "senseId": "sense-55c0c912",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-a0ded7f2",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"make sure or investigate\"?",
+      "options": [
+        "raise",
+        "check",
+        "ahead",
+        "bathe"
+      ],
+      "answerIndex": 1,
+      "wordKey": "check",
+      "senseId": "sense-3ec8d870",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-cff18626",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"a domestic fowl bred for its meat or eggs, believed to have originated from the red junglefowl\"?",
+      "options": [
+        "weather",
+        "program",
+        "chicken",
+        "contact"
+      ],
+      "answerIndex": 2,
+      "wordKey": "chicken",
+      "senseId": "sense-19c95838",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-de64de9b",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"a person from the time of birth until he or she becomes an adult\"?",
+      "options": [
+        "store",
+        "child",
+        "block",
+        "pound"
+      ],
+      "answerIndex": 1,
+      "wordKey": "child",
+      "senseId": "sense-e2ea0efd",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-68d2b754",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"a food made from roasted and ground cacao beans, often sweetened and used in candy, desserts, and baked goods.\"?",
+      "options": [
+        "chopstick",
+        "surprised",
+        "chocolate",
+        "president"
+      ],
+      "answerIndex": 2,
+      "wordKey": "chocolate",
+      "senseId": "sense-e13157e4",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-10b6d9f8",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"the act of selecting something\"?",
+      "options": [
+        "cereal",
+        "soccer",
+        "policy",
+        "choice"
+      ],
+      "answerIndex": 3,
+      "wordKey": "choice",
+      "senseId": "sense-b9a65650",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-223fbe30",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"to pick out or select from a number of alternatives, typically after careful consideration or deliberation\"?",
+      "options": [
+        "simply",
+        "pillow",
+        "priest",
+        "choose"
+      ],
+      "answerIndex": 3,
+      "wordKey": "choose",
+      "senseId": "sense-db648352",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-d5a2793b",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"a building where Christian religious activities take place\"?",
+      "options": [
+        "beauty",
+        "family",
+        "health",
+        "church"
+      ],
+      "answerIndex": 3,
+      "wordKey": "church",
+      "senseId": "sense-117c74e0",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-5ef25d4c",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"a large and densely populated urban area that may include several independent administrative districts\"?",
+      "options": [
+        "dove",
+        "ball",
+        "base",
+        "city"
+      ],
+      "answerIndex": 3,
+      "wordKey": "city",
+      "senseId": "sense-df4e148d",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-9ee87ba1",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"easily understood; not vague or ambiguous\"?",
+      "options": [
+        "clear",
+        "every",
+        "under",
+        "absent"
+      ],
+      "answerIndex": 0,
+      "wordKey": "clear",
+      "senseId": "sense-cc1c58d5",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-d1ce660e",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"to ascend or move upwards with effort or difficulty by using one’s hands and feet\"?",
+      "options": [
+        "bring",
+        "raise",
+        "climb",
+        "means"
+      ],
+      "answerIndex": 2,
+      "wordKey": "climb",
+      "senseId": "sense-9d5a2e80",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-e0e9c22f",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"a timepiece that shows the time of day\"?",
+      "options": [
+        "cocoa",
+        "noise",
+        "white",
+        "clock"
+      ],
+      "answerIndex": 3,
+      "wordKey": "clock",
+      "senseId": "sense-ea556df7",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-9749af00",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"at or within a short distance in space or time or having elements near each other\"?",
+      "options": [
+        "close",
+        "under",
+        "every",
+        "beat"
+      ],
+      "answerIndex": 0,
+      "wordKey": "close",
+      "senseId": "sense-6a4d97ec",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-e0ea7f8a",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"items worn to cover the body\"?",
+      "options": [
+        "opinion",
+        "clothes",
+        "speaker",
+        "control"
+      ],
+      "answerIndex": 1,
+      "wordKey": "clothes",
+      "senseId": "sense-a061172e",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-c56a343a",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"a formal association of people with similar interests\"?",
+      "options": [
+        "work",
+        "care",
+        "club",
+        "hill"
+      ],
+      "answerIndex": 2,
+      "wordKey": "club",
+      "senseId": "sense-13c3c117",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-4ea4f28e",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"the absence of heat\"?",
+      "options": [
+        "note",
+        "cold",
+        "town",
+        "king"
+      ],
+      "answerIndex": 1,
+      "wordKey": "cold",
+      "senseId": "sense-e255129e",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-629f8c31",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"a machine for performing calculations automatically\"?",
+      "options": [
+        "teenager",
+        "computer",
+        "beginner",
+        "headache"
+      ],
+      "answerIndex": 1,
+      "wordKey": "computer",
+      "senseId": "sense-089cec1b",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-80ba9c65",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"suited to your comfort, purpose, or needs\"?",
+      "options": [
+        "interested",
+        "convenient",
+        "several",
+        "interesting"
+      ],
+      "answerIndex": 1,
+      "wordKey": "convenient",
+      "senseId": "sense-e1e66414",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-b451dc8a",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"matter to be printed, exclusive of graphical materials\"?",
+      "options": [
+        "play",
+        "calm",
+        "ring",
+        "copy"
+      ],
+      "answerIndex": 3,
+      "wordKey": "copy",
+      "senseId": "sense-4599ef75",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-68cbf0d2",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"a projecting part where two sides or edges meet\"?",
+      "options": [
+        "excuse",
+        "member",
+        "season",
+        "corner"
+      ],
+      "answerIndex": 3,
+      "wordKey": "corner",
+      "senseId": "sense-e4ca6d6f",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-b8cf2174",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"Accurate; free from errors, mistakes, or flaws\"?",
+      "options": [
+        "handsome",
+        "several",
+        "absent",
+        "correct"
+      ],
+      "answerIndex": 3,
+      "wordKey": "correct",
+      "senseId": "sense-97c01561",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-50c9597c",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"the total spent for goods or services including money, time, and labor\"?",
+      "options": [
+        "cost",
+        "cent",
+        "leaf",
+        "load"
+      ],
+      "answerIndex": 0,
+      "wordKey": "cost",
+      "senseId": "sense-ec7414a8",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-281b9c31",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"an upholstered seat, typically for more than one person to sit on\"?",
+      "options": [
+        "favor",
+        "couch",
+        "hello",
+        "total"
+      ],
+      "answerIndex": 1,
+      "wordKey": "couch",
+      "senseId": "sense-fbafb6e1",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-f2f2f01c",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"determine the number or amount of\"?",
+      "options": [
+        "state",
+        "count",
+        "least",
+        "empty"
+      ],
+      "answerIndex": 1,
+      "wordKey": "count",
+      "senseId": "sense-548498d9",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-8b5a2a64",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"the territory occupied by a nation\"?",
+      "options": [
+        "hundred",
+        "balloon",
+        "freedom",
+        "country"
+      ],
+      "answerIndex": 3,
+      "wordKey": "country",
+      "senseId": "sense-c8c91d9b",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-1cea15d3",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"the child of your aunt or uncle\"?",
+      "options": [
+        "couple",
+        "cousin",
+        "insect",
+        "garlic"
+      ],
+      "answerIndex": 1,
+      "wordKey": "cousin",
+      "senseId": "sense-2e8e0037",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-8832ee4c",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"to include as part of something broader\"?",
+      "options": [
+        "share",
+        "peach",
+        "cream",
+        "cover"
+      ],
+      "answerIndex": 3,
+      "wordKey": "cover",
+      "senseId": "sense-2a578820",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-ab92ab1a",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"a female domesticated bovine animal. It provides milk, meat, and other products for humans.\"?",
+      "options": [
+        "ant",
+        "row",
+        "cow",
+        "shy"
+      ],
+      "answerIndex": 2,
+      "wordKey": "cow",
+      "senseId": "sense-efd63b67",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-3185031c",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"intensely enthusiastic about or preoccupied with\"?",
+      "options": [
+        "under",
+        "every",
+        "beat",
+        "crazy"
+      ],
+      "answerIndex": 3,
+      "wordKey": "crazy",
+      "senseId": "sense-b8e2479f",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-ce8d05b0",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"an organism that is produced by breeding two different varieties or species\"?",
+      "options": [
+        "snail",
+        "being",
+        "cross",
+        "organ"
+      ],
+      "answerIndex": 2,
+      "wordKey": "cross",
+      "senseId": "sense-48c1ba25",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-ac4fc956",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"a wound made by cutting\"?",
+      "options": [
+        "end",
+        "mug",
+        "cut",
+        "fry"
+      ],
+      "answerIndex": 2,
+      "wordKey": "cut",
+      "senseId": "sense-fa705287",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-62dd8daa",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"attractive because of smallness, prettiness, or quaintness\"?",
+      "options": [
+        "beat",
+        "very",
+        "some",
+        "cute"
+      ],
+      "answerIndex": 3,
+      "wordKey": "cute",
+      "senseId": "sense-87b619b8",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-70d1e705",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"a series of rhythmical steps and movements to music\"?",
+      "options": [
+        "plate",
+        "nerve",
+        "light",
+        "dance"
+      ],
+      "answerIndex": 3,
+      "wordKey": "dance",
+      "senseId": "sense-e602148e",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-ea2f099c",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"devoid of light or brightness; shadowed or black\"?",
+      "options": [
+        "beat",
+        "very",
+        "iron",
+        "dark"
+      ],
+      "answerIndex": 3,
+      "wordKey": "dark",
+      "senseId": "sense-4b4de7cf",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-26311bf6",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"a particular but unspecified point in time\"?",
+      "options": [
+        "desk",
+        "link",
+        "tape",
+        "date"
+      ],
+      "answerIndex": 3,
+      "wordKey": "date",
+      "senseId": "sense-0d9f8b33",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-fedd4444",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"a female child of a parent or parents\"?",
+      "options": [
+        "business",
+        "daughter",
+        "restroom",
+        "thousand"
+      ],
+      "answerIndex": 1,
+      "wordKey": "daughter",
+      "senseId": "sense-f81baac2",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-31b29907",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"the period of time taken by a planet to make a complete rotation\"?",
+      "options": [
+        "bar",
+        "fee",
+        "air",
+        "day"
+      ],
+      "answerIndex": 3,
+      "wordKey": "day",
+      "senseId": "sense-e9114337",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-bb7d9e2d",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"no longer alive\"?",
+      "options": [
+        "dead",
+        "goal",
+        "shot",
+        "post"
+      ],
+      "answerIndex": 0,
+      "wordKey": "dead",
+      "senseId": "sense-68d6345d",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-4eb211b9",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"dispose of; take action with respect to someone or something; administer or bestow; offer for sale as for livelihood; sell\"?",
+      "options": [
+        "deal",
+        "bear",
+        "exit",
+        "roll"
+      ],
+      "answerIndex": 0,
+      "wordKey": "deal",
+      "senseId": "sense-35ae0df7",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-943bb0be",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"the fact of someone dying; the end of life\"?",
+      "options": [
+        "basis",
+        "death",
+        "image",
+        "clock"
+      ],
+      "answerIndex": 1,
+      "wordKey": "death",
+      "senseId": "sense-d250b02b",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-763df594",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"to choose between one possibility or another\"?",
+      "options": [
+        "branch",
+        "change",
+        "decide",
+        "forget"
+      ],
+      "answerIndex": 2,
+      "wordKey": "decide",
+      "senseId": "sense-fc1e7e65",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-8f8eeac4",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"going far down or in from the surface or further back or away from a central point; sometimes used with other words to describe the extent or direction\"?",
+      "options": [
+        "beat",
+        "iron",
+        "deep",
+        "very"
+      ],
+      "answerIndex": 2,
+      "wordKey": "deep",
+      "senseId": "sense-05abcc8d",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-3e0b6896",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"determine the essential quality of\"?",
+      "options": [
+        "handle",
+        "belong",
+        "define",
+        "always"
+      ],
+      "answerIndex": 2,
+      "wordKey": "define",
+      "senseId": "sense-819d9a85",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-09654964",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"A piece of furniture typically having a flat or sloping top for writing, reading, or using a computer, and often drawers or compartments.\"?",
+      "options": [
+        "desk",
+        "both",
+        "pain",
+        "lamp"
+      ],
+      "answerIndex": 0,
+      "wordKey": "desk",
+      "senseId": "sense-3357e91f",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-66e500ea",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"a reference book containing an alphabetical list of words with information about them, typically with definitions, etymologies, pronunciations, and other information\"?",
+      "options": [
+        "dictionary",
+        "punishment",
+        "discussion",
+        "chopsticks"
+      ],
+      "answerIndex": 0,
+      "wordKey": "dictionary",
+      "senseId": "sense-4b6ad439",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-e54d9d15",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"to stop operating or functioning\"?",
+      "options": [
+        "off",
+        "sit",
+        "die",
+        "set"
+      ],
+      "answerIndex": 2,
+      "wordKey": "die",
+      "senseId": "sense-79ece3e9",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-f82d0277",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"hard to control\"?",
+      "options": [
+        "interested",
+        "difficult",
+        "interesting",
+        "handsome"
+      ],
+      "answerIndex": 1,
+      "wordKey": "difficult",
+      "senseId": "sense-4a08a118",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-96ab5e1e",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"to break up and move earth, or to make a hole in the ground\"?",
+      "options": [
+        "fry",
+        "dig",
+        "hop",
+        "ham"
+      ],
+      "answerIndex": 1,
+      "wordKey": "dig",
+      "senseId": "sense-27aa55ea",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-30eda3d2",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"the main meal of the day served in the evening or at midday\"?",
+      "options": [
+        "prison",
+        "dinner",
+        "speech",
+        "praise"
+      ],
+      "answerIndex": 1,
+      "wordKey": "dinner",
+      "senseId": "sense-ff7cedb5",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-80119905",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"soiled or covered in dirt or grime\"?",
+      "options": [
+        "dirty",
+        "every",
+        "iron",
+        "under"
+      ],
+      "answerIndex": 0,
+      "wordKey": "dirty",
+      "senseId": "sense-90dd72d6",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-76e9357e",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"a container with a raised edge, used for serving or holding food\"?",
+      "options": [
+        "dish",
+        "pain",
+        "face",
+        "bath"
+      ],
+      "answerIndex": 0,
+      "wordKey": "dish",
+      "senseId": "sense-836ba908",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-a0df0424",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"to cause something to happen or be the cause of something happening; perform or have a part in an activity\"?",
+      "options": [
+        "as",
+        "be",
+        "so",
+        "do"
+      ],
+      "answerIndex": 3,
+      "wordKey": "do",
+      "senseId": "sense-29dc1bcb",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-8ae53847",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"a domesticated mammal and a common household pet that is descended from wolves; comes in various breeds and is kept for companionship, guarding, and hunting\"?",
+      "options": [
+        "eve",
+        "dog",
+        "arm",
+        "mug"
+      ],
+      "answerIndex": 1,
+      "wordKey": "dog",
+      "senseId": "sense-7322eb05",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-d204dd25",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"the unit of currency in the U.S., Canada, Australia, and several other countries\"?",
+      "options": [
+        "heaven",
+        "refuse",
+        "dollar",
+        "common"
+      ],
+      "answerIndex": 2,
+      "wordKey": "dollar",
+      "senseId": "sense-fd0dd928",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-baac1208",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"a swinging or sliding barrier that closes off an entrance to a room, building, or vehicle\"?",
+      "options": [
+        "sofa",
+        "bill",
+        "side",
+        "door"
+      ],
+      "answerIndex": 3,
+      "wordKey": "door",
+      "senseId": "sense-406d3ac9",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-db8b04cc",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"being or moving lower in position or less in some value\"?",
+      "options": [
+        "down",
+        "iron",
+        "very",
+        "beat"
+      ],
+      "answerIndex": 0,
+      "wordKey": "down",
+      "senseId": "sense-ef8b878a",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-851a61a2",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"consisting of 12 items or units\"?",
+      "options": [
+        "absent",
+        "dozen",
+        "under",
+        "beat"
+      ],
+      "answerIndex": 1,
+      "wordKey": "dozen",
+      "senseId": "sense-4a784b4b",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-12ea733f",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"pull something towards oneself or another specified location\"?",
+      "options": [
+        "grow",
+        "blue",
+        "draw",
+        "cook"
+      ],
+      "answerIndex": 2,
+      "wordKey": "draw",
+      "senseId": "sense-e6ce0d4d",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-2ce1b806",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"a series of mental images and emotions that occur during sleep\"?",
+      "options": [
+        "score",
+        "video",
+        "dream",
+        "ready"
+      ],
+      "answerIndex": 2,
+      "wordKey": "dream",
+      "senseId": "sense-179e3fed",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-e8a78d2e",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"operate or control a vehicle\"?",
+      "options": [
+        "drive",
+        "equal",
+        "share",
+        "brown"
+      ],
+      "answerIndex": 0,
+      "wordKey": "drive",
+      "senseId": "sense-d811f57c",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-6eb04b61",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"the operator of a motor vehicle\"?",
+      "options": [
+        "belief",
+        "change",
+        "degree",
+        "driver"
+      ],
+      "answerIndex": 3,
+      "wordKey": "driver",
+      "senseId": "sense-55808521",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-ae8bd0ad",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"a percussion instrument made of a hollow cylinder with a skin stretched tightly across each end that is played with sticks or the hands\"?",
+      "options": [
+        "drum",
+        "wife",
+        "line",
+        "ring"
+      ],
+      "answerIndex": 0,
+      "wordKey": "drum",
+      "senseId": "sense-19496162",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-8928cf10",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"having no water or moisture\"?",
+      "options": [
+        "fee",
+        "dry",
+        "row",
+        "lip"
+      ],
+      "answerIndex": 1,
+      "wordKey": "dry",
+      "senseId": "sense-a3aa34e3",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-2c5f0edd",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"a common water bird with webbed feet and a broad, flat bill\"?",
+      "options": [
+        "full",
+        "duck",
+        "kill",
+        "else"
+      ],
+      "answerIndex": 1,
+      "wordKey": "duck",
+      "senseId": "sense-fdb28b5d",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-78c47090",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"at any point within (a specific period of time)\"?",
+      "options": [
+        "without",
+        "during",
+        "against",
+        "into"
+      ],
+      "answerIndex": 1,
+      "wordKey": "during",
+      "senseId": "sense-91048f41",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-954f5eea",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"considered individually and regarded as separate items\"?",
+      "options": [
+        "each",
+        "under",
+        "absent",
+        "beat"
+      ],
+      "answerIndex": 0,
+      "wordKey": "each",
+      "senseId": "sense-ec9956fb",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-763a802b",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"the sense organ responsible for hearing and balance in humans and other vertebrates\"?",
+      "options": [
+        "few",
+        "ear",
+        "sky",
+        "age"
+      ],
+      "answerIndex": 1,
+      "wordKey": "ear",
+      "senseId": "sense-ac85917b",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-dfe87e7d",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"the 3rd planet from the sun, the planet we inhabit\"?",
+      "options": [
+        "camel",
+        "metal",
+        "earth",
+        "topic"
+      ],
+      "answerIndex": 2,
+      "wordKey": "earth",
+      "senseId": "sense-de2bc408",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-eb7c3e49",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"not difficult; able to be done without much effort\"?",
+      "options": [
+        "iron",
+        "beat",
+        "easy",
+        "very"
+      ],
+      "answerIndex": 2,
+      "wordKey": "easy",
+      "senseId": "sense-425f8562",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-49b587cf",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"take in solid food; consume food through the mouth\"?",
+      "options": [
+        "yet",
+        "dot",
+        "see",
+        "eat"
+      ],
+      "answerIndex": 3,
+      "wordKey": "eat",
+      "senseId": "sense-ac51cc2d",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-227be67a",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"an oval, rounded object with a hard shell produced by female birds and certain female reptiles, from which a baby animal is hatched when it is fully formed\"?",
+      "options": [
+        "bun",
+        "man",
+        "kid",
+        "egg"
+      ],
+      "answerIndex": 3,
+      "wordKey": "egg",
+      "senseId": "sense-fac62e2f",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-4980a28b",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"a large mammal with a long trunk and tusks, five toes, and often gray skin, native to Africa and Asia\"?",
+      "options": [
+        "appetite",
+        "building",
+        "elephant",
+        "sidewalk"
+      ],
+      "answerIndex": 2,
+      "wordKey": "elephant",
+      "senseId": "sense-b94ff79a",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-55b1db02",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"in addition to what has been mentioned, other, another, different\"?",
+      "options": [
+        "tool",
+        "else",
+        "lose",
+        "slip"
+      ],
+      "answerIndex": 1,
+      "wordKey": "else",
+      "senseId": "sense-8dc1dcb6",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-bda753a6",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"A system of electronic communication that allows a computer user to send and receive messages globally, which can be retrieved at the recipient’s terminal once they log in.\"?",
+      "options": [
+        "stage",
+        "hobby",
+        "email",
+        "crowd"
+      ],
+      "answerIndex": 2,
+      "wordKey": "email",
+      "senseId": "sense-2cb21500",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-f7943c45",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"either extremity of something that has length\"?",
+      "options": [
+        "toy",
+        "fat",
+        "end",
+        "day"
+      ],
+      "answerIndex": 2,
+      "wordKey": "end",
+      "senseId": "sense-22abf832",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-c9692b58",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"a person who uses scientific knowledge to solve practical problems\"?",
+      "options": [
+        "engineer",
+        "teenager",
+        "baseball",
+        "anything"
+      ],
+      "answerIndex": 0,
+      "wordKey": "engineer",
+      "senseId": "sense-88f00d55",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-c27f7400",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"The act or state of receiving pleasure or joy from something\"?",
+      "options": [
+        "challenge",
+        "somewhere",
+        "enjoyment",
+        "cellphone"
+      ],
+      "answerIndex": 2,
+      "wordKey": "enjoyment",
+      "senseId": "sense-b4b8ea82",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-67d23c64",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"a small, rubber tool used to remove pencil marks from paper or other surfaces\"?",
+      "options": [
+        "eraser",
+        "double",
+        "master",
+        "medium"
+      ],
+      "answerIndex": 0,
+      "wordKey": "eraser",
+      "senseId": "sense-96c152c4",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-9f119d2e",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"an action that is wrong because of bad judgment, ignorance, or lack of attention\"?",
+      "options": [
+        "queen",
+        "error",
+        "cycle",
+        "chain"
+      ],
+      "answerIndex": 1,
+      "wordKey": "error",
+      "senseId": "sense-1cf0fd8e",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-4d2159e8",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"having a flat, smooth, or uniform surface or shape; or located at the same height or level as something else\"?",
+      "options": [
+        "even",
+        "beat",
+        "iron",
+        "some"
+      ],
+      "answerIndex": 0,
+      "wordKey": "even",
+      "senseId": "sense-37a33731",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-01483439",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"the period of time between late afternoon and nightfall\"?",
+      "options": [
+        "evening",
+        "teacher",
+        "history",
+        "haircut"
+      ],
+      "answerIndex": 0,
+      "wordKey": "evening",
+      "senseId": "sense-dcef342b",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-0b197186",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"an occurrence of something\"?",
+      "options": [
+        "example",
+        "fashion",
+        "biscuit",
+        "highway"
+      ],
+      "answerIndex": 0,
+      "wordKey": "example",
+      "senseId": "sense-adc406a0",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-fe1f6a5f",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"of the highest quality; outstandingly good\"?",
+      "options": [
+        "interested",
+        "interesting",
+        "excellent",
+        "handsome"
+      ],
+      "answerIndex": 2,
+      "wordKey": "excellent",
+      "senseId": "sense-c600c5cf",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-cd710b46",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"arousing great enthusiasm or eagerness\"?",
+      "options": [
+        "absent",
+        "handsome",
+        "exciting",
+        "several"
+      ],
+      "answerIndex": 2,
+      "wordKey": "exciting",
+      "senseId": "sense-dc5ca49e",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-38dd6917",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"the activity of exerting muscles to keep fit\"?",
+      "options": [
+        "spelling",
+        "exercise",
+        "struggle",
+        "painting"
+      ],
+      "answerIndex": 1,
+      "wordKey": "exercise",
+      "senseId": "sense-a9df0315",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-e3d0fb1d",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"have firsthand knowledge of states, situations, emotions, or sensations; undergo; live through; go through mental or physical states or experiences; feel an emotional sensation or be in a particular state of mind\"?",
+      "options": [
+        "experience",
+        "downstairs",
+        "appreciate",
+        "altogether"
+      ],
+      "answerIndex": 0,
+      "wordKey": "experience",
+      "senseId": "sense-9495c37c",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-cab9d21c",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"make something clear\"?",
+      "options": [
+        "succeed",
+        "soldier",
+        "swallow",
+        "explain"
+      ],
+      "answerIndex": 3,
+      "wordKey": "explain",
+      "senseId": "sense-0c63c68e",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-31a171c1",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"the organ that you use to see things\"?",
+      "options": [
+        "nut",
+        "eye",
+        "pin",
+        "fee"
+      ],
+      "answerIndex": 1,
+      "wordKey": "eye",
+      "senseId": "sense-68663922",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-eb2ae082",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"the front part of an animal’s head\"?",
+      "options": [
+        "face",
+        "fire",
+        "mood",
+        "rest"
+      ],
+      "answerIndex": 0,
+      "wordKey": "face",
+      "senseId": "sense-b3f1fc7c",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-289b3d3f",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"a piece of information about events or circumstances that exist\"?",
+      "options": [
+        "fact",
+        "kiss",
+        "coal",
+        "plus"
+      ],
+      "answerIndex": 0,
+      "wordKey": "fact",
+      "senseId": "sense-7923a837",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-897c5e8d",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"a building or group of buildings where goods are made\"?",
+      "options": [
+        "popcorn",
+        "factory",
+        "giraffe",
+        "subject"
+      ],
+      "answerIndex": 1,
+      "wordKey": "factory",
+      "senseId": "sense-d4f5825a",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-0c97e271",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"stop operating or functioning\"?",
+      "options": [
+        "jump",
+        "fail",
+        "deny",
+        "wave"
+      ],
+      "answerIndex": 1,
+      "wordKey": "fail",
+      "senseId": "sense-c5eaecb6",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-5a47e137",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"a person who runs a farm\"?",
+      "options": [
+        "farmer",
+        "region",
+        "notice",
+        "toilet"
+      ],
+      "answerIndex": 0,
+      "wordKey": "farmer",
+      "senseId": "sense-ec05dadf",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-04e721e3",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"food for domestic animals\"?",
+      "options": [
+        "rope",
+        "feed",
+        "sore",
+        "folk"
+      ],
+      "answerIndex": 1,
+      "wordKey": "feed",
+      "senseId": "sense-807a86f2",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-a932fa14",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"be aware of a physical, mental, or emotional state\"?",
+      "options": [
+        "glue",
+        "just",
+        "jump",
+        "feel"
+      ],
+      "answerIndex": 3,
+      "wordKey": "feel",
+      "senseId": "sense-7b18c085",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-b2643028",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"make something full, also in a figurative sense\"?",
+      "options": [
+        "soap",
+        "blow",
+        "stay",
+        "fill"
+      ],
+      "answerIndex": 3,
+      "wordKey": "fill",
+      "senseId": "sense-4f96b47e",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-0f7d632f",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"at last; after a long time or some difficulty; ultimately\"?",
+      "options": [
+        "finally",
+        "cartoon",
+        "surface",
+        "nothing"
+      ],
+      "answerIndex": 0,
+      "wordKey": "finally",
+      "senseId": "sense-9e6bd2a5",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-b51346db",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"discover or determine the existence, presence, or fact of\"?",
+      "options": [
+        "duck",
+        "find",
+        "load",
+        "grow"
+      ],
+      "answerIndex": 1,
+      "wordKey": "find",
+      "senseId": "sense-d4db5a52",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-0b388502",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"being satisfactory or in satisfactory condition\"?",
+      "options": [
+        "fine",
+        "very",
+        "iron",
+        "some"
+      ],
+      "answerIndex": 0,
+      "wordKey": "fine",
+      "senseId": "sense-58291bb5",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-8e140315",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"any of the digits at the end of the hand, except the thumb\"?",
+      "options": [
+        "heaven",
+        "finger",
+        "circle",
+        "phrase"
+      ],
+      "answerIndex": 1,
+      "wordKey": "finger",
+      "senseId": "sense-82f03d40",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-b48ed64b",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"to bring something to a completion or an end\"?",
+      "options": [
+        "accept",
+        "excite",
+        "finish",
+        "except"
+      ],
+      "answerIndex": 2,
+      "wordKey": "finish",
+      "senseId": "sense-ca275973",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-9d0602b0",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"the process of burning materials producing heat, light, and smoke\"?",
+      "options": [
+        "idea",
+        "diet",
+        "fire",
+        "soda"
+      ],
+      "answerIndex": 2,
+      "wordKey": "fire",
+      "senseId": "sense-bd07ceb4",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-562f7d2d",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"Coming before all others in order, time, amount, quality, or importance.\"?",
+      "options": [
+        "under",
+        "beat",
+        "absent",
+        "first"
+      ],
+      "answerIndex": 3,
+      "wordKey": "first",
+      "senseId": "sense-dedf728d",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-abf0485d",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"two-winged insects characterized by active flight\"?",
+      "options": [
+        "fly",
+        "box",
+        "ape",
+        "lid"
+      ],
+      "answerIndex": 0,
+      "wordKey": "fly",
+      "senseId": "sense-5b2cd3b2",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-f7be8252",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"go after, travel behind, or come after someone or something\"?",
+      "options": [
+        "borrow",
+        "punish",
+        "follow",
+        "manage"
+      ],
+      "answerIndex": 2,
+      "wordKey": "follow",
+      "senseId": "sense-e5a5a36c",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-ff5ed43d",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"any solid or liquid substance that living organisms consume in order to sustain life and growth.\"?",
+      "options": [
+        "lady",
+        "drum",
+        "food",
+        "wake"
+      ],
+      "answerIndex": 2,
+      "wordKey": "food",
+      "senseId": "sense-640816c2",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-6d5df3aa",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"a person who lacks good judgment or sense\"?",
+      "options": [
+        "meal",
+        "mask",
+        "fool",
+        "gift"
+      ],
+      "answerIndex": 2,
+      "wordKey": "fool",
+      "senseId": "sense-3666f50d",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-3959aa6c",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"the part of the leg below the ankle that touches the ground when you stand or walk\"?",
+      "options": [
+        "nail",
+        "mile",
+        "song",
+        "foot"
+      ],
+      "answerIndex": 3,
+      "wordKey": "foot",
+      "senseId": "sense-55d337be",
+      "source": "import",
+      "sourceType": "def_to_word"
+    },
+    {
+      "id": "child-5846c150",
+      "kind": "multipleChoice",
+      "prompt": "Which word means: \"To dismiss from the mind; stop remembering.\"?",
+      "options": [
+        "forget",
+        "burden",
+        "depend",
+        "praise"
+      ],
+      "answerIndex": 0,
+      "wordKey": "forget",
+      "senseId": "sense-d9448e12",
+      "source": "import",
+      "sourceType": "def_to_word"
+    }
+  ]
+}

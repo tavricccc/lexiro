@@ -1,0 +1,1395 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 119,
+  "words": [
+    {
+      "wordKey": "lawful",
+      "word": "lawful",
+      "senses": [
+        {
+          "id": "sense-6ce543e2",
+          "pos": "adjective",
+          "meaningZh": "合法的；守法的",
+          "definitionEn": "conforming to the law",
+          "examples": [
+            "The police officer made a lawful arrest after the suspect committed a crime."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-acd913fd",
+          "pos": "adjective",
+          "meaningZh": "法律許可的",
+          "definitionEn": "authorized or allowed by the law",
+          "examples": [
+            "It is not lawful to drive without a license."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "lean",
+      "word": "lean",
+      "senses": [
+        {
+          "id": "sense-3845480c",
+          "pos": "adjective",
+          "meaningZh": "精瘦的；少脂肪的",
+          "definitionEn": "containing little or no excess",
+          "examples": [
+            "The chef preferred to cook with lean meat for a healthier meal."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-1b2fb4ab",
+          "pos": "verb",
+          "meaningZh": "傾斜；倚靠",
+          "definitionEn": "to incline or bend away from a vertical position",
+          "examples": [
+            "The tower was leaning dangerously after the earthquake."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L1 +1",
+        "textbookTitle": "龍騰 B4·L1、三民 B2·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "learned",
+      "word": "learned",
+      "senses": [
+        {
+          "id": "sense-48bddf5b",
+          "pos": "adjective",
+          "meaningZh": "博學的；學識淵博的",
+          "definitionEn": "highly educated; having extensive knowledge or understanding",
+          "examples": [
+            "The learned professor was able to answer every question asked in the lecture."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-2618866c",
+          "pos": "adjective",
+          "meaningZh": "有學問的；受過教育的",
+          "definitionEn": "having gained knowledge or skill through study, experience, or being taught; knowledgeable",
+          "examples": [
+            "The professor was very learned in the subject, and his lectures were always informative and thought-provoking."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "lecture",
+      "word": "lecture",
+      "senses": [
+        {
+          "id": "sense-0f7c475f",
+          "pos": "noun",
+          "meaningZh": "演講；授課",
+          "definitionEn": "a speech or talk given to an audience, especially for teaching purposes",
+          "examples": [
+            "The professor gave a lecture on the importance of biodiversity to the ecology students."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-e99301e1",
+          "pos": "verb",
+          "meaningZh": "講課；演講",
+          "definitionEn": "give a lecture or a talk to an audience",
+          "examples": [
+            "The professor will lecture  on the history of architecture tomorrow."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B2·L10",
+        "textbookTitle": "三民 B2·L10"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "lecturer",
+      "word": "lecturer",
+      "senses": [
+        {
+          "id": "sense-5d7e336e",
+          "pos": "noun",
+          "meaningZh": "大學講師",
+          "definitionEn": "a person who teaches at a college or university",
+          "examples": [
+            "The lecturer captivated the students with her engaging lecture on Shakespearean literature."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-fa10675e",
+          "pos": "noun",
+          "meaningZh": "演講者；講員",
+          "definitionEn": "someone who gives lectures or presentations",
+          "examples": [
+            "The university invited a renowned lecturer to speak about the latest advancements in robotics."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "legend",
+      "word": "legend",
+      "senses": [
+        {
+          "id": "sense-0af6a073",
+          "pos": "noun",
+          "meaningZh": "傳說；神話故事",
+          "definitionEn": "a story about mythical or supernatural beings or events",
+          "examples": [
+            "In the ancient village, there's a legend of a hidden treasure guarded by a dragon."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-e44c0466",
+          "pos": "noun",
+          "meaningZh": "圖例；說明文字",
+          "definitionEn": "brief description accompanying an illustration",
+          "examples": [
+            "The legend below the map provided key information about the different symbols used to represent landmarks and points of interest."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "leisurely",
+      "word": "leisurely",
+      "senses": [
+        {
+          "id": "sense-8a3c5d9d",
+          "pos": "adjective",
+          "meaningZh": "從容的；不慌不忙的",
+          "definitionEn": "done at a relaxed pace and without hurry or stress",
+          "examples": [
+            "After a hectic week at work, Sarah decided to take a leisurely stroll in the park on Sunday morning, enjoying the beautiful weather and the peaceful surroundings."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-a9fc158b",
+          "pos": "adverb",
+          "meaningZh": "悠閒地；從容不迫地",
+          "definitionEn": "in an unhurried way or in one’s own time",
+          "examples": [
+            "After finishing his work for the day, John took a leisurely walk in the park, enjoying the sunshine and fresh air."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L5",
+        "textbookTitle": "龍騰 B3·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "lengthen",
+      "word": "lengthen",
+      "senses": [
+        {
+          "id": "sense-48f61a0e",
+          "pos": "verb",
+          "meaningZh": "加長；延長",
+          "definitionEn": "to make something longer than it was before",
+          "examples": [
+            "The tailor used extra fabric to lengthen the hem of the dress."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-8eba591c",
+          "pos": "verb",
+          "meaningZh": "變長；增長",
+          "definitionEn": "to become or grow longer in length or duration",
+          "examples": [
+            "As winter approaches, the nights gradually lengthen, and the days become shorter."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "liar",
+      "word": "liar",
+      "senses": [
+        {
+          "id": "sense-26283ae6",
+          "pos": "noun",
+          "meaningZh": "說謊者；騙子",
+          "definitionEn": "a person who has lied or who lies repeatedly and intentionally",
+          "examples": [
+            "I caught him in several lies, and now I know he’s a liar."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "librarian",
+      "word": "librarian",
+      "senses": [
+        {
+          "id": "sense-90ad99a4",
+          "pos": "noun",
+          "meaningZh": "圖書館員；館員",
+          "definitionEn": "a person who helps people find and borrow books from a library",
+          "examples": [
+            "When I visited the library, the librarian greeted me warmly and offered to help me find a book on ancient history."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "license",
+      "word": "license",
+      "senses": [
+        {
+          "id": "sense-d0e46c88",
+          "pos": "noun",
+          "meaningZh": "執照；許可證",
+          "definitionEn": "a legal document that permits someone to do something or use something",
+          "examples": [
+            "He received a license to operate a small business in the city."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-77a5a69a",
+          "pos": "verb",
+          "meaningZh": "發給執照；授權",
+          "definitionEn": "to give someone official permission to do something or to allow something to be done",
+          "examples": [
+            "Before he could drive a car legally, he had to obtain a driver’s license from the Department of Motor Vehicles."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L8",
+        "textbookTitle": "龍騰 B4·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "lifeguard",
+      "word": "lifeguard",
+      "senses": [
+        {
+          "id": "sense-8775a02b",
+          "pos": "noun",
+          "meaningZh": "救生員",
+          "definitionEn": "a person who is trained to protect swimmers from drowning or other accidents in the water, typically at a beach or pool",
+          "examples": [
+            "The lifeguard quickly jumped into the water to rescue a struggling swimmer."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "limitation",
+      "word": "limitation",
+      "senses": [
+        {
+          "id": "sense-87df5269",
+          "pos": "noun",
+          "meaningZh": "限制；約束",
+          "definitionEn": "an act or process of limiting or restricting (as by regulation)",
+          "examples": [
+            "The limitation on the number of attendees for the event was set by local authorities due to COVID-19 restrictions."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-cc63286c",
+          "pos": "noun",
+          "meaningZh": "侷限性；受限狀態",
+          "definitionEn": "the quality or state of being limited or restricted",
+          "examples": [
+            "The limitation of our budget forced us to cut back on our expenses."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "linen",
+      "word": "linen",
+      "senses": [
+        {
+          "id": "sense-0c0a0ea4",
+          "pos": "noun",
+          "meaningZh": "亞麻布；麻料",
+          "definitionEn": "a type of fabric made from fibers of the flax plant, often used for bedding and clothing",
+          "examples": [
+            "She spent a luxurious night sleeping on crisp, freshly laundered linen sheets."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-103394dc",
+          "pos": "noun",
+          "meaningZh": "亞麻紙；仿麻紋紙",
+          "definitionEn": "a high-quality paper made from linen fibers or finished to resemble linen",
+          "examples": [
+            "The invitation was printed on a beautiful linen cardstock, giving it an elegant and sophisticated feel."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "lipstick",
+      "word": "lipstick",
+      "senses": [
+        {
+          "id": "sense-fb057dc5",
+          "pos": "noun",
+          "meaningZh": "口紅；唇膏",
+          "definitionEn": "A cosmetic product used to color the lips.",
+          "examples": [
+            "She applied her favorite red lipstick before the party."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-0586c95c",
+          "pos": "verb",
+          "meaningZh": "塗口紅；抹唇膏",
+          "definitionEn": "To apply lipstick to (the lips).",
+          "examples": [
+            "Samantha took out her favorite shade of lipstick and carefully applied it to her lips before leaving for the party."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "liquor",
+      "word": "liquor",
+      "senses": [
+        {
+          "id": "sense-e5f402b6",
+          "pos": "noun",
+          "meaningZh": "烈酒；蒸餾酒",
+          "definitionEn": "an alcoholic beverage that is distilled rather than fermented",
+          "examples": [
+            "After a long day at work, he poured himself a glass of fine liquor and savored it slowly."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-34e2af3a",
+          "pos": "noun",
+          "meaningZh": "肉（菜）汁；燉煮湯汁",
+          "definitionEn": "the liquid in which vegetables or meat have been cooked",
+          "examples": [
+            "After boiling the vegetables, strain the liquor and use it as a flavorful base for soups and stews."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "literary",
+      "word": "literary",
+      "senses": [
+        {
+          "id": "sense-fe2d0dae",
+          "pos": "adjective",
+          "meaningZh": "文學的；文學性的",
+          "definitionEn": "related to literature or typical of literature",
+          "examples": [
+            "Her writing style is very literary, with rich descriptions and complex metaphors."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-4d0e8fd3",
+          "pos": "adjective",
+          "meaningZh": "有文學素養的；通曉文學的",
+          "definitionEn": "having knowledge or appreciation of literature",
+          "examples": [
+            "Sarah's extensive collection of classic novels and her ability to discuss them in depth showcased her literary prowess."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L5",
+        "textbookTitle": "龍騰 B3·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "literature",
+      "word": "literature",
+      "senses": [
+        {
+          "id": "sense-e40d08b0",
+          "pos": "noun",
+          "meaningZh": "文學；文學創作",
+          "definitionEn": "the art of written works",
+          "examples": [
+            "She studied literature in college and became a professor of English."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-8e5293e7",
+          "pos": "noun",
+          "meaningZh": "文學作品；文學著作",
+          "definitionEn": "written works, especially those considered of superior or lasting artistic merit",
+          "examples": [
+            "The Nobel Prize in literature is awarded annually to authors who have produced outstanding literary works that have a strong impact on the development of world literature."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L5",
+        "textbookTitle": "龍騰 B3·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "loan",
+      "word": "loan",
+      "senses": [
+        {
+          "id": "sense-9f7d71bb",
+          "pos": "noun",
+          "meaningZh": "貸款；借款",
+          "definitionEn": "the act of loaning something, especially money, for temporary use; a sum of money that is lent to be repaid with interest",
+          "examples": [
+            "I had to take out a loan from the bank to buy my car."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-5842f842",
+          "pos": "verb",
+          "meaningZh": "借出；貸予",
+          "definitionEn": "to lend something, especially money, to someone for a temporary period of time; to provide something that will be returned",
+          "examples": [
+            "I had to take out a loan to buy a car."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "lobster",
+      "word": "lobster",
+      "senses": [
+        {
+          "id": "sense-228d13a2",
+          "pos": "noun",
+          "meaningZh": "龍蝦（動物）",
+          "definitionEn": "a sea animal that has a shell-like covering on its body, two large claws, eight legs, and is often used as food",
+          "examples": [
+            "We went to the fancy seafood restaurant and ordered a delicious lobster for dinner."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-4f5a9e14",
+          "pos": "noun",
+          "meaningZh": "龍蝦肉",
+          "definitionEn": "the flesh of a lobster, used as food",
+          "examples": [
+            "For our anniversary dinner, we indulged in a decadent meal of grilled lobster with drawn butter."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "logic",
+      "word": "logic",
+      "senses": [
+        {
+          "id": "sense-fdedf178",
+          "pos": "noun",
+          "meaningZh": "邏輯；推理原則",
+          "definitionEn": "a particular system of reasoning or a set of principles underlying it.",
+          "examples": [
+            "In order to solve the complex mathematical problem, the student applied the principles of logic to break it down into smaller, manageable steps."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-46a24cba",
+          "pos": "noun",
+          "meaningZh": "邏輯學；論理學",
+          "definitionEn": "the study of reasoning and argument, especially in philosophy.",
+          "examples": [
+            "In his philosophy class, Tom found himself fascinated by the complexities of logic and the various ways in which it could be applied to real-world scenarios."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B1·L8",
+        "textbookTitle": "三民 B1·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "logical",
+      "word": "logical",
+      "senses": [
+        {
+          "id": "sense-23340b72",
+          "pos": "adjective",
+          "meaningZh": "合理的；符合邏輯的",
+          "definitionEn": "based on known statements, events, or conditions; reasonable and sensible",
+          "examples": [
+            "It’s not logical to go outside without a coat in freezing weather."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-5acd5ec6",
+          "pos": "adjective",
+          "meaningZh": "邏輯正確的；推論嚴謹的",
+          "definitionEn": "capable of or reflecting correct and valid reasoning",
+          "examples": [
+            "It’s not logical to believe that aliens are living among us without evidence."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B1·L8",
+        "textbookTitle": "三民 B1·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "loosen",
+      "word": "loosen",
+      "senses": [
+        {
+          "id": "sense-70faf39d",
+          "pos": "verb",
+          "meaningZh": "放鬆；解開（使變鬆）",
+          "definitionEn": "to cause something to become less tight or taut",
+          "examples": [
+            "He loosened the knot on the rope, allowing it to unwind easily."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-292da065",
+          "pos": "verb",
+          "meaningZh": "鬆開；鬆弛",
+          "definitionEn": "to make something less tight or taut",
+          "examples": [
+            "After a long day of hiking, I loosened my shoelaces to provide some relief to my feet."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "lousy",
+      "word": "lousy",
+      "senses": [
+        {
+          "id": "sense-fc4361a0",
+          "pos": "adjective",
+          "meaningZh": "糟糕的；差勁的",
+          "definitionEn": "very bad",
+          "examples": [
+            "The food at that restaurant was lousy - it was undercooked and tasted awful."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "loyal",
+      "word": "loyal",
+      "senses": [
+        {
+          "id": "sense-7c936903",
+          "pos": "adjective",
+          "meaningZh": "忠誠的；忠心耿耿的",
+          "definitionEn": "devoted to someone or something, often to the point of being unwavering",
+          "examples": [
+            "During tough times, John remained loyal to his company and never considered leaving for another job."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-eace9c1f",
+          "pos": "adjective",
+          "meaningZh": "盡職的；守信的",
+          "definitionEn": "faithful to one’s allegiance or duty",
+          "examples": [
+            "Even in difficult times, Sarah remained loyal to her friends and stood by them."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B2·L1",
+        "textbookTitle": "三民 B2·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "loyalty",
+      "word": "loyalty",
+      "senses": [
+        {
+          "id": "sense-2d6d90c6",
+          "pos": "noun",
+          "meaningZh": "忠誠；效忠之情",
+          "definitionEn": "feelings of allegiance",
+          "examples": [
+            "The soldier showed his loyalty to his country by risking his life in the line of duty."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-a7b1a360",
+          "pos": "noun",
+          "meaningZh": "忠心；忠貞品質",
+          "definitionEn": "the quality of being loyal",
+          "examples": [
+            "Emma’s loyalty towards her country was reflected in her decision to defend it against all threats."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B2·L1",
+        "textbookTitle": "三民 B2·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "luxurious",
+      "word": "luxurious",
+      "senses": [
+        {
+          "id": "sense-c70b1531",
+          "pos": "adjective",
+          "meaningZh": "豪華的；舒適奢侈的",
+          "definitionEn": "providing great comfort and elegance, especially through expensive and beautiful possessions",
+          "examples": [
+            "The luxurious penthouse suite had a stunning panoramic view of the city skyline, a private swimming pool, and a state-of-the-art sound system."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-5726eac0",
+          "pos": "adjective",
+          "meaningZh": "奢華的；極盡享受的",
+          "definitionEn": "of great expense, sumptuousness, or comfort; lavish",
+          "examples": [
+            "The hotel had a luxurious spa, complete with marble floors, a hot tub, and massage treatments."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 翰林 B1·L5",
+        "textbookTitle": "翰林 B1·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "luxury",
+      "word": "luxury",
+      "senses": [
+        {
+          "id": "sense-cd65e8d2",
+          "pos": "noun",
+          "meaningZh": "奢侈品；享受之物",
+          "definitionEn": "something that is not essential but provides pleasure and comfort",
+          "examples": [
+            "After a long and tiring day of work, she treated herself to a luxurious bubble bath filled with scented oils and candles."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-01100b8f",
+          "pos": "noun",
+          "meaningZh": "奢華；極端富裕",
+          "definitionEn": "the state of being extremely expensive and exclusive",
+          "examples": [
+            "After winning the lottery, she indulged in a life of luxury, buying extravagant mansions and traveling in private jets."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 翰林 B1·L5",
+        "textbookTitle": "翰林 B1·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "machinery",
+      "word": "machinery",
+      "senses": [
+        {
+          "id": "sense-76dca1e0",
+          "pos": "noun",
+          "meaningZh": "機械設備；機器系統",
+          "definitionEn": "machines or machine systems as a whole",
+          "examples": [
+            "In the factory, the machinery hummed with activity as the production line churned out hundreds of products per hour."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-e9c2b638",
+          "pos": "noun",
+          "meaningZh": "運作機制；組織體制",
+          "definitionEn": "a system of means and activities by which a social institution functions",
+          "examples": [
+            "The government's machinery ensures the smooth running of the country by coordinating various departments and implementing policies."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "magnetic",
+      "word": "magnetic",
+      "senses": [
+        {
+          "id": "sense-cbb278a7",
+          "pos": "adjective",
+          "meaningZh": "磁性的；與磁力有關的",
+          "definitionEn": "relating to or caused by magnetism, which is the force that pulls or repels certain materials, such as iron or steel",
+          "examples": [
+            "The compass needle was drawn to the magnetic pole."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-b800143f",
+          "pos": "adjective",
+          "meaningZh": "可被磁化的；能受磁場影響的",
+          "definitionEn": "capable of being magnetized or affected by a magnetic field",
+          "examples": [
+            "The metal filings were drawn to the magnetic pole."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    }
+  ]
+}

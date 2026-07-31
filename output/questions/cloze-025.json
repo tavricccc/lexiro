@@ -1,0 +1,1575 @@
+{
+  "schemaVersion": 1,
+  "kind": "questions",
+  "questionKind": "cloze",
+  "questions": [
+    {
+      "id": "child-1c2e339d",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "She always arrives late to meetings"
+      ],
+      "wordKey": "late",
+      "senseId": "sense-9836886a",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-22c06e6a",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "The little boy was born deaf and dumb"
+      ],
+      "wordKey": "dumb",
+      "senseId": "sense-92dae9bb",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-b4bbec87",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "I'm sorry I accidentally broke your favorite mug"
+      ],
+      "wordKey": "sorry",
+      "senseId": "sense-a233eb56",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-f0fe7c61",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "My breakfast was just ordinary, nothing special"
+      ],
+      "wordKey": "ordinary",
+      "senseId": "sense-64fed687",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-7fa75ee1",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "We grilled some fresh fish for dinner tonight"
+      ],
+      "wordKey": "fish",
+      "senseId": "sense-77292563",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-79708066",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "Wait a moment while I finish my sentence"
+      ],
+      "wordKey": "moment",
+      "senseId": "sense-a1b2a623",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-3603d905",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "Can you supply more information about the issue"
+      ],
+      "wordKey": "supply",
+      "senseId": "sense-1dfe20bb",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-5d5b6f44",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "A scalpel is a crucial instrument in surgery"
+      ],
+      "wordKey": "instrument",
+      "senseId": "sense-818e45d8",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-f75a1a23",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "I have less sugar than you do"
+      ],
+      "wordKey": "less",
+      "senseId": "sense-d0e846bd",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-b813c469",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "In biology, mammals are a type of vertebrate"
+      ],
+      "wordKey": "type",
+      "senseId": "sense-39b51b45",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-f16ffe9d",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "Would you like tea or coffee"
+      ],
+      "wordKey": "or",
+      "senseId": "sense-56ad2630",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-aa81d487",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "Regular exercise is a benefit to overall health"
+      ],
+      "wordKey": "benefit",
+      "senseId": "sense-f6229376",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-423fc26a",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "The caterpillar will eventually become a butterfly"
+      ],
+      "wordKey": "become",
+      "senseId": "sense-a15d5254",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-3b8bf919",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "My grandmother ate the entire cake by herself"
+      ],
+      "wordKey": "entire",
+      "senseId": "sense-f8b0012c",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-15fb8d43",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "The tail of the dog wagged happily"
+      ],
+      "wordKey": "of",
+      "senseId": "sense-1f312a35",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-1cba4b72",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "She bites her lip when she’s nervous"
+      ],
+      "wordKey": "lip",
+      "senseId": "sense-32a007e1",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-b4479ce4",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "The vase wobbled on its unstable base"
+      ],
+      "wordKey": "base",
+      "senseId": "sense-3d2ca7bd",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-7a18e499",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "Yesterday, I watched a movie with my friends"
+      ],
+      "wordKey": "yesterday",
+      "senseId": "sense-2104cc1e",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-0d8d2ebb",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "I will never forget my first kiss"
+      ],
+      "wordKey": "never",
+      "senseId": "sense-04cb55e5",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-104b31dc",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "Lisa wants neither pizza nor pasta for dinner"
+      ],
+      "wordKey": "nor",
+      "senseId": "sense-9d6c99c7",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-59da4c14",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "I need to finish this report by now"
+      ],
+      "wordKey": "now",
+      "senseId": "sense-a09698a3",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-469e0d4b",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "Please sit down before the movie starts"
+      ],
+      "wordKey": "sit",
+      "senseId": "sense-e8399e27",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-2badbe8c",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "Spreading false information can have serious consequences"
+      ],
+      "wordKey": "false",
+      "senseId": "sense-a0c11a87",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-1d14e9b4",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "The child seemed innocent of any wrongdoing"
+      ],
+      "wordKey": "innocent",
+      "senseId": "sense-26f87b20",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-b029156c",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "The being of a unicorn is purely fictional"
+      ],
+      "wordKey": "being",
+      "senseId": "sense-b5bef2b2",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-371c459f",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "You can return the books anytime before Friday"
+      ],
+      "wordKey": "anytime",
+      "senseId": "sense-d13aa556",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-33a63847",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "Having a tutor can help improve your grades"
+      ],
+      "wordKey": "help",
+      "senseId": "sense-91e6a3bd",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-ec1fea9a",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "May I ask for a favor"
+      ],
+      "wordKey": "ask",
+      "senseId": "sense-90138a26",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-d0ba918e",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "The children went sledding on the snowy hill"
+      ],
+      "wordKey": "snowy",
+      "senseId": "sense-e6d2baa2",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-c25a06c8",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "I believe that honesty is the best policy"
+      ],
+      "wordKey": "believe",
+      "senseId": "sense-91ea3be1",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-cefa4d01",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "Tom’s monthly income from his job is $4000"
+      ],
+      "wordKey": "income",
+      "senseId": "sense-28c002a9",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-f664e497",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "She cradled the baby in her lap"
+      ],
+      "wordKey": "lap",
+      "senseId": "sense-dad2e321",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-844709a5",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "I have a meeting tomorrow with my boss"
+      ],
+      "wordKey": "tomorrow",
+      "senseId": "sense-ba94f37d",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-3520eb46",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "He showed me how to solve the puzzle"
+      ],
+      "wordKey": "how",
+      "senseId": "sense-17ab9c62",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-7c43c55c",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "Please pass me the salt"
+      ],
+      "wordKey": "the",
+      "senseId": "sense-14a58442",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-24acd205",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "She had nothing to wear for the party"
+      ],
+      "wordKey": "nothing",
+      "senseId": "sense-9c605caa",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-b1b798fa",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "The planet Earth is a global object"
+      ],
+      "wordKey": "global",
+      "senseId": "sense-0d18a4ec",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-89ca2dcd",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "I have a book on my shelf"
+      ],
+      "wordKey": "have",
+      "senseId": "sense-f26e39bd",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-94db7f5d",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "Please stand at the front of the line"
+      ],
+      "wordKey": "front",
+      "senseId": "sense-9bb184b0",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-3b9241e9",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "Please bring the cake to the party tonight"
+      ],
+      "wordKey": "bring",
+      "senseId": "sense-b860f687",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-ce1a6881",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "Please give me half of the pizza"
+      ],
+      "wordKey": "half",
+      "senseId": "sense-8bb61f56",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-9f60b607",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "Water is the most common drink people consume"
+      ],
+      "wordKey": "drink",
+      "senseId": "sense-0cbd6c18",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-c5c5baba",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "I opened a can of soup for lunch"
+      ],
+      "wordKey": "can",
+      "senseId": "sense-009337b8",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-227605f4",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "There are several taxis available outside the airport"
+      ],
+      "wordKey": "available",
+      "senseId": "sense-e76a3b8c",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-b101c6f8",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "I topped my pizza with melted cheese"
+      ],
+      "wordKey": "cheese",
+      "senseId": "sense-deb9c2f5",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-290cbd6a",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "I go to school every morning"
+      ],
+      "wordKey": "go",
+      "senseId": "sense-c19a599d",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-70d8a9ba",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "The bicycle barely fit through the narrow alleyway"
+      ],
+      "wordKey": "narrow",
+      "senseId": "sense-ba5b29b6",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-9d268b30",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "The rapid stream carried the canoe downstream"
+      ],
+      "wordKey": "rapid",
+      "senseId": "sense-a718ba2f",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-cbbae163",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "I felt much better after taking a nap"
+      ],
+      "wordKey": "better",
+      "senseId": "sense-5c6eb7a9",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-c286dc75",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "She raised her flute to toast the newlyweds"
+      ],
+      "wordKey": "flute",
+      "senseId": "sense-3bf99cbd",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-cc05d621",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "Please set the table for dinner"
+      ],
+      "wordKey": "set",
+      "senseId": "sense-aa714481",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-538b86fd",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "He simply refused to listen to her explanation"
+      ],
+      "wordKey": "simply",
+      "senseId": "sense-7e8d38ab",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-4c237252",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "He bumped his noodle on the low-hanging branch"
+      ],
+      "wordKey": "noodle",
+      "senseId": "sense-1030479e",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-1969af94",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "Studying every day will improve your grades"
+      ],
+      "wordKey": "improve",
+      "senseId": "sense-4c36c538",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-848b90a6",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "Whose book is this"
+      ],
+      "wordKey": "whose",
+      "senseId": "sense-da9c5b1c",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-8b69bbce",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "We barbecued buffalo burgers for dinner last night"
+      ],
+      "wordKey": "buffalo",
+      "senseId": "sense-6bff0963",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-7c620ed2",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "John drove the car through the tunnel"
+      ],
+      "wordKey": "through",
+      "senseId": "sense-2e5a1f63",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-a4aa6ca1",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "She carefully assembled the puzzle piece by piece"
+      ],
+      "wordKey": "piece",
+      "senseId": "sense-5d657c26",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-bc5e0102",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "If it rains, we will stay indoors"
+      ],
+      "wordKey": "if",
+      "senseId": "sense-283b6618",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-4bb1171b",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "We will meet tomorrow after the conference"
+      ],
+      "wordKey": "after",
+      "senseId": "sense-77c1847b",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-635f15a5",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "I am just exhausted after running the marathon"
+      ],
+      "wordKey": "just",
+      "senseId": "sense-3786a049",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-d48ea740",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "I haven't seen her in recent months"
+      ],
+      "wordKey": "recent",
+      "senseId": "sense-549e8582",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-6210f5cd",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "Goodbye! See you at school tomorrow"
+      ],
+      "wordKey": "goodbye",
+      "senseId": "sense-22899729",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-716f7427",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "The security guard’s watch ended at midnight"
+      ],
+      "wordKey": "watch",
+      "senseId": "sense-809bf42d",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-4504b7c9",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "Her bad mood affected the entire team’s productivity"
+      ],
+      "wordKey": "mood",
+      "senseId": "sense-13e6d33c",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-221c0362",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "Who is the new employee in the office"
+      ],
+      "wordKey": "who",
+      "senseId": "sense-1f15c015",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-951c89d9",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "She brushed her hair before going to bed"
+      ],
+      "wordKey": "hair",
+      "senseId": "sense-74ac1bfe",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-94037c22",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "This is the least expensive option available"
+      ],
+      "wordKey": "least",
+      "senseId": "sense-b3e2e948",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-5bf42f5c",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "She made the cake especially for you"
+      ],
+      "wordKey": "especially",
+      "senseId": "sense-7affdca1",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-1aa51391",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "She read the poem aloud to the audience"
+      ],
+      "wordKey": "aloud",
+      "senseId": "sense-b2f4901c",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-7a80ed3d",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "The two sides of the equation are equal"
+      ],
+      "wordKey": "equal",
+      "senseId": "sense-01e77ff3",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-c1f54329",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "The letter was delivered by courier"
+      ],
+      "wordKey": "by",
+      "senseId": "sense-dd16399d",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-86495a91",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "The pitcher threw the baseball with incredible speed"
+      ],
+      "wordKey": "baseball",
+      "senseId": "sense-a83f5bcf",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-1063e1b0",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "The assignment is due by 5 PM tomorrow"
+      ],
+      "wordKey": "due",
+      "senseId": "sense-2bdc9ba6",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-3798878b",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "I dislike the taste of mushrooms"
+      ],
+      "wordKey": "dislike",
+      "senseId": "sense-3358cdd3",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-9a06f3b0",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "He got wet because it was raining"
+      ],
+      "wordKey": "because",
+      "senseId": "sense-8aa08405",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-dfc79732",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "She jumped into the pool with great enthusiasm"
+      ],
+      "wordKey": "into",
+      "senseId": "sense-c797419a",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-23d96a5b",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "The course in Economics consists of 60 students"
+      ],
+      "wordKey": "course",
+      "senseId": "sense-d4e6e0ef",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-320ec0dd",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "Participants formed a file and marched in unison"
+      ],
+      "wordKey": "file",
+      "senseId": "sense-b9c8463d",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-d977ef17",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "I am not going to the party tonight"
+      ],
+      "wordKey": "not",
+      "senseId": "sense-411efd1f",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-3c5bce95",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "Gasoline is a common fuel used in cars"
+      ],
+      "wordKey": "fuel",
+      "senseId": "sense-6f028b66",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-67ea27ed",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "The fellow standing over there is my brother"
+      ],
+      "wordKey": "fellow",
+      "senseId": "sense-abcc2143",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-0ac56134",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "His proposal was not acceptable to the committee"
+      ],
+      "wordKey": "acceptable",
+      "senseId": "sense-ae2f18e0",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-df2b1d67",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "We will soon reach our destination"
+      ],
+      "wordKey": "soon",
+      "senseId": "sense-62a78458",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-7296398a",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "I can’t read the board without my glasses"
+      ],
+      "wordKey": "glasses",
+      "senseId": "sense-851a1792",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-afd4201f",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "Let's meet next week to discuss our project"
+      ],
+      "wordKey": "week",
+      "senseId": "sense-5034f667",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-d04f868e",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "I am currently standing right here"
+      ],
+      "wordKey": "here",
+      "senseId": "sense-8f70ef91",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-692730ac",
+      "kind": "cloze",
+      "prompt": "請把下列字詞重組成正確句子：",
+      "answers": [
+        "I saw several cats sitting on the fence"
+      ],
+      "wordKey": "several",
+      "senseId": "sense-d7630509",
+      "source": "import",
+      "sourceType": "reorder"
+    },
+    {
+      "id": "child-3e908222",
+      "kind": "multipleChoice",
+      "prompt": "National parks are set up to _____ rare animals from hunters and keep their habitats safe.",
+      "options": [
+        "protect",
+        "inspect",
+        "respect",
+        "collect"
+      ],
+      "answerIndex": 0,
+      "wordKey": "protect",
+      "senseId": "sense-22a7dfd3",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-44bbd196",
+      "kind": "multipleChoice",
+      "prompt": "Students may _____ up to five books from the school library and return them within two weeks.",
+      "options": [
+        "borrow",
+        "lend",
+        "rent",
+        "owe"
+      ],
+      "answerIndex": 0,
+      "wordKey": "borrow",
+      "senseId": "sense-f8705afd",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-e12ca30c",
+      "kind": "multipleChoice",
+      "prompt": "The soup my grandmother cooks is so _____ that I always ask for a second bowl.",
+      "options": [
+        "delicious",
+        "delicate",
+        "delightful",
+        "dramatic"
+      ],
+      "answerIndex": 0,
+      "wordKey": "delicious",
+      "senseId": "sense-36549899",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-10813b89",
+      "kind": "multipleChoice",
+      "prompt": "Reading English news every day can help you _____ your vocabulary and writing skills over time.",
+      "options": [
+        "improve",
+        "inform",
+        "invent",
+        "inspire"
+      ],
+      "answerIndex": 0,
+      "wordKey": "improve",
+      "senseId": "sense-4c36c538",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-ac25f7df",
+      "kind": "multipleChoice",
+      "prompt": "Texting while crossing the street is extremely _____, because drivers may not be able to stop in time.",
+      "options": [
+        "dangerous",
+        "generous",
+        "mysterious",
+        "curious"
+      ],
+      "answerIndex": 0,
+      "wordKey": "dangerous",
+      "senseId": "sense-f74b84e6",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-49597380",
+      "kind": "multipleChoice",
+      "prompt": "The picnic was cancelled because the _____ suddenly changed and it began to pour with rain.",
+      "options": [
+        "weather",
+        "climate",
+        "temperature",
+        "atmosphere"
+      ],
+      "answerIndex": 0,
+      "wordKey": "weather",
+      "senseId": "sense-f44532cb",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-8c76e545",
+      "kind": "multipleChoice",
+      "prompt": "Even when the customer was rude, the young waiter stayed _____ and answered every question with a smile.",
+      "options": [
+        "polite",
+        "clumsy",
+        "lonely",
+        "greedy"
+      ],
+      "answerIndex": 0,
+      "wordKey": "polite",
+      "senseId": "sense-a3d08bae",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-637821ca",
+      "kind": "multipleChoice",
+      "prompt": "My parents always remind me to _____ the truth, even when admitting a mistake feels difficult.",
+      "options": [
+        "tell",
+        "say",
+        "speak",
+        "talk"
+      ],
+      "answerIndex": 0,
+      "wordKey": "tell",
+      "senseId": "sense-a171aab8",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-1970be4f",
+      "kind": "multipleChoice",
+      "prompt": "Remember to wear a warm coat, or you might _____ a cold in this freezing weather.",
+      "options": [
+        "catch",
+        "get",
+        "take",
+        "feel"
+      ],
+      "answerIndex": 0,
+      "wordKey": "catch",
+      "senseId": "sense-24a39e7b",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-b72a2746",
+      "kind": "multipleChoice",
+      "prompt": "By eating less sugar and exercising daily, my uncle managed to _____ weight before the summer.",
+      "options": [
+        "lose",
+        "drop",
+        "fall",
+        "decrease"
+      ],
+      "answerIndex": 0,
+      "wordKey": "lose",
+      "senseId": "sense-2c5575f9",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-64fb9d1d",
+      "kind": "multipleChoice",
+      "prompt": "On rainy afternoons, I like to _____ time reading comic books in my cozy bedroom.",
+      "options": [
+        "spend",
+        "cost",
+        "use",
+        "pass"
+      ],
+      "answerIndex": 0,
+      "wordKey": "spend",
+      "senseId": "sense-ed799aa6",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-81a03a3b",
+      "kind": "multipleChoice",
+      "prompt": "If the team keeps practicing this hard, they have a good chance to _____ first prize in the contest.",
+      "options": [
+        "win",
+        "earn",
+        "reach",
+        "receive"
+      ],
+      "answerIndex": 0,
+      "wordKey": "win",
+      "senseId": "sense-dbfb20ca",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-5a64c052",
+      "kind": "multipleChoice",
+      "prompt": "Switching off the air conditioner when no one is home is an easy way to _____ energy at school.",
+      "options": [
+        "save",
+        "store",
+        "collect",
+        "gather"
+      ],
+      "answerIndex": 0,
+      "wordKey": "save",
+      "senseId": "sense-1d2ecc92",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-1a22a093",
+      "kind": "multipleChoice",
+      "prompt": "Scientists warn that throwing batteries into rivers can _____ serious damage to the water and the fish living in it.",
+      "options": [
+        "cause",
+        "create",
+        "form",
+        "build"
+      ],
+      "answerIndex": 0,
+      "wordKey": "cause",
+      "senseId": "sense-b41f620f",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-039e593d",
+      "kind": "multipleChoice",
+      "prompt": "During the summer camp, students will _____ a nearby cave to learn how it was formed.",
+      "options": [
+        "explore",
+        "expose",
+        "explode",
+        "expand"
+      ],
+      "answerIndex": 0,
+      "wordKey": "explore",
+      "senseId": "sense-e36963d6",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-7d793e0e",
+      "kind": "multipleChoice",
+      "prompt": "It took the patient several weeks to fully _____ from the operation before she could return to work.",
+      "options": [
+        "recover",
+        "remove",
+        "remind",
+        "remain"
+      ],
+      "answerIndex": 0,
+      "wordKey": "recover",
+      "senseId": "sense-4943eb25",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-d113dba0",
+      "kind": "multipleChoice",
+      "prompt": "Turning off the lights when you leave a room is a simple way to _____ the amount of energy you waste.",
+      "options": [
+        "reduce",
+        "repeat",
+        "release",
+        "reflect"
+      ],
+      "answerIndex": 0,
+      "wordKey": "reduce",
+      "senseId": "sense-6bd2afaa",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-cbf7baa4",
+      "kind": "multipleChoice",
+      "prompt": "Doctors warn that too much screen time before bed can be _____ to children's sleep and eyesight.",
+      "options": [
+        "harmful",
+        "helpful",
+        "harmless",
+        "hopeful"
+      ],
+      "answerIndex": 0,
+      "wordKey": "harmful",
+      "senseId": "sense-c46c1837",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-4f1d5864",
+      "kind": "multipleChoice",
+      "prompt": "The museum displays tools made by people who lived in this region thousands of years ago, in _____ times.",
+      "options": [
+        "ancient",
+        "modern",
+        "instant",
+        "frequent"
+      ],
+      "answerIndex": 0,
+      "wordKey": "ancient",
+      "senseId": "sense-22e78900",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-1b2840cd",
+      "kind": "multipleChoice",
+      "prompt": "After months without rain, the city faced a serious water _____ and had to limit how much each family could use.",
+      "options": [
+        "shortage",
+        "storage",
+        "passage",
+        "package"
+      ],
+      "answerIndex": 0,
+      "wordKey": "shortage",
+      "senseId": "sense-71044de8",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-660cc631",
+      "kind": "multipleChoice",
+      "prompt": "If you keep practicing every day, you are sure to _____ great progress in your spoken English.",
+      "options": [
+        "make",
+        "do",
+        "take",
+        "give"
+      ],
+      "answerIndex": 0,
+      "wordKey": "make",
+      "senseId": "sense-a4045382",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-7637f7de",
+      "kind": "multipleChoice",
+      "prompt": "The teacher reminded the class to _____ attention to the road signs during the field trip.",
+      "options": [
+        "pay",
+        "give",
+        "make",
+        "put"
+      ],
+      "answerIndex": 0,
+      "wordKey": "pay",
+      "senseId": "sense-182a4672",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-2e003704",
+      "kind": "multipleChoice",
+      "prompt": "Many young people are now willing to _____ action to protect the environment by joining beach clean-ups.",
+      "options": [
+        "take",
+        "do",
+        "bring",
+        "give"
+      ],
+      "answerIndex": 0,
+      "wordKey": "take",
+      "senseId": "sense-e8a590ea",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-bc835889",
+      "kind": "multipleChoice",
+      "prompt": "Because of the _____ traffic this morning, the school bus arrived nearly twenty minutes late.",
+      "options": [
+        "heavy",
+        "strong",
+        "thick",
+        "deep"
+      ],
+      "answerIndex": 0,
+      "wordKey": "heavy",
+      "senseId": "sense-6f083217",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-d8be0e18",
+      "kind": "multipleChoice",
+      "prompt": "The coach told the players to _____ calm even when they were losing, so they could focus on the next point.",
+      "options": [
+        "keep",
+        "hold",
+        "stay",
+        "get"
+      ],
+      "answerIndex": 0,
+      "wordKey": "keep",
+      "senseId": "sense-3864815f",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-2a35eacb",
+      "kind": "multipleChoice",
+      "prompt": "Scientists are working hard to find new technologies that can help _____ the problem of plastic pollution in the oceans.",
+      "options": [
+        "solve",
+        "answer",
+        "reply",
+        "respond"
+      ],
+      "answerIndex": 0,
+      "wordKey": "solve",
+      "senseId": "sense-c3ef85f6",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-c286f12d",
+      "kind": "multipleChoice",
+      "prompt": "To _____ the growing demand for clean energy, the government plans to build more solar power plants.",
+      "options": [
+        "meet",
+        "reach",
+        "fit",
+        "match"
+      ],
+      "answerIndex": 0,
+      "wordKey": "meet",
+      "senseId": "sense-89a3e6fc",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-d55c0e6b",
+      "kind": "multipleChoice",
+      "prompt": "By studying past weather records, scientists can now _____ when a typhoon is likely to hit the island.",
+      "options": [
+        "predict",
+        "produce",
+        "provide",
+        "prepare"
+      ],
+      "answerIndex": 0,
+      "wordKey": "predict",
+      "senseId": "sense-0b9e0ab6",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-fdca300d",
+      "kind": "multipleChoice",
+      "prompt": "Washing your hands often is one of the easiest ways to _____ the spread of germs at school.",
+      "options": [
+        "prevent",
+        "present",
+        "pretend",
+        "prefer"
+      ],
+      "answerIndex": 0,
+      "wordKey": "prevent",
+      "senseId": "sense-6426bd11",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-883799a8",
+      "kind": "multipleChoice",
+      "prompt": "When the heavy snow made the roads too dangerous, the climbers had to _____ their plan to reach the top.",
+      "options": [
+        "abandon",
+        "approve",
+        "announce",
+        "appoint"
+      ],
+      "answerIndex": 0,
+      "wordKey": "abandon",
+      "senseId": "sense-94620ce4",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-2f63e750",
+      "kind": "multipleChoice",
+      "prompt": "The detective searched the room carefully, hoping to find some _____ that would prove who had broken in.",
+      "options": [
+        "evidence",
+        "incident",
+        "audience",
+        "entrance"
+      ],
+      "answerIndex": 0,
+      "wordKey": "evidence",
+      "senseId": "sense-def84fd3",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    },
+    {
+      "id": "child-a357d870",
+      "kind": "multipleChoice",
+      "prompt": "Although she had never taken a single lesson, the girl showed a remarkable _____ for playing the piano.",
+      "options": [
+        "talent",
+        "habit",
+        "favor",
+        "manner"
+      ],
+      "answerIndex": 0,
+      "wordKey": "talent",
+      "senseId": "sense-43f1f2c9",
+      "source": "import",
+      "sourceType": "grammar_cloze"
+    }
+  ]
+}

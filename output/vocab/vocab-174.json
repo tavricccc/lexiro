@@ -1,0 +1,1326 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 174,
+  "words": [
+    {
+      "wordKey": "convene",
+      "word": "convene",
+      "senses": [
+        {
+          "id": "sense-b49a3afa",
+          "pos": "verb",
+          "meaningZh": "召開（會議）；召集",
+          "definitionEn": "call together (a meeting)",
+          "examples": [
+            "The committee will convene a meeting next week to discuss the new project."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-b599a35c",
+          "pos": "verb",
+          "meaningZh": "正式集會；開會",
+          "definitionEn": "meet formally",
+          "examples": [
+            "The board of directors convene every month to discuss company strategies and make important decisions."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "coral",
+      "word": "coral",
+      "senses": [
+        {
+          "id": "sense-13df309d",
+          "pos": "noun",
+          "meaningZh": "珊瑚；珊瑚蟲",
+          "definitionEn": "a marine animal that has a hard, calcium carbonate skeleton and lives in a colony of individuals that can form reefs in warm oceans",
+          "examples": [
+            "While scuba diving, we were amazed by the vibrant colors and intricate structures of the coral reefs."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-ff5c606b",
+          "pos": "noun",
+          "meaningZh": "珊瑚色；橘粉紅色",
+          "definitionEn": "a deep pink color",
+          "examples": [
+            "She wore a stunning coral dress to the wedding."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "corpse",
+      "word": "corpse",
+      "senses": [
+        {
+          "id": "sense-faa1a9f7",
+          "pos": "noun",
+          "meaningZh": "屍體；遺體",
+          "definitionEn": "The dead body of a human being.",
+          "examples": [
+            "The detectives arrived at the crime scene and found the corpse of the victim hidden behind the bushes."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "correspondence",
+      "word": "correspondence",
+      "senses": [
+        {
+          "id": "sense-f6fdda2e",
+          "pos": "noun",
+          "meaningZh": "書信往來；通信",
+          "definitionEn": "communication by the exchange of letters",
+          "examples": [],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-fc3a7397",
+          "pos": "noun",
+          "meaningZh": "對應關係；一致性",
+          "definitionEn": "the relation of corresponding in degree or size or amount",
+          "examples": [
+            "The length of the pencil and the distance it can write on paper have a direct correspondence."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "cosmetic",
+      "word": "cosmetic",
+      "senses": [
+        {
+          "id": "sense-366082bb",
+          "pos": "adjective",
+          "meaningZh": "美容的；修飾外表的",
+          "definitionEn": "serving an aesthetic purpose in beautifying the body",
+          "examples": [
+            "She applied a layer of cosmetic foundation to her face before going out for the party."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "cosmetics",
+      "word": "cosmetics",
+      "senses": [
+        {
+          "id": "sense-9d3d293e",
+          "pos": "noun",
+          "meaningZh": "化妝品；美容用品",
+          "definitionEn": "a toiletry designed to beautify the body",
+          "examples": [
+            "She uses cosmetic products like lipstick, foundation, and eyeshadow to enhance her appearance."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-1ef4af1e",
+          "pos": "adjective",
+          "meaningZh": "美容的；修飾外表的",
+          "definitionEn": "serving an aesthetic purpose in beautifying the body",
+          "examples": [
+            "She applied a layer of cosmetic foundation to her face before going out for the party."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "counterpart",
+      "word": "counterpart",
+      "senses": [
+        {
+          "id": "sense-69dfe549",
+          "pos": "noun",
+          "meaningZh": "對應人員；對等職位者",
+          "definitionEn": "a person or thing having the same function or characteristics as another",
+          "examples": [
+            "In our human resources department, Bob's counterpart in the marketing team is Jane. They both oversee recruitment and employee development."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-f05347a9",
+          "pos": "noun",
+          "meaningZh": "副本；對應物",
+          "definitionEn": "a duplicate copy",
+          "examples": [
+            "My colleague in the other office is essentially my counterpart, as we have the same role and responsibilities."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "coupon",
+      "word": "coupon",
+      "senses": [
+        {
+          "id": "sense-2f6a792e",
+          "pos": "noun",
+          "meaningZh": "折扣券；兌換券",
+          "definitionEn": "a negotiable certificate that can be detached and redeemed as needed",
+          "examples": [
+            "I used a coupon for 20% off my purchase at the store."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-41653ffd",
+          "pos": "noun",
+          "meaningZh": "試用品券；樣品贈券",
+          "definitionEn": "a sample of a product given to customers to encourage future purchases",
+          "examples": [
+            "I received a coupon for a free bottle of shampoo at the store, which I plan to use on my next purchase."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L2",
+        "textbookTitle": "三民 B4·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "courtyard",
+      "word": "courtyard",
+      "senses": [
+        {
+          "id": "sense-8ca0e24e",
+          "pos": "noun",
+          "meaningZh": "庭院；天井",
+          "definitionEn": "A partially or entirely enclosed outdoor area, typically paved and surrounded by buildings or walls.",
+          "examples": [
+            "The hotel's courtyard was adorned with beautiful flowers and had a fountain in the center."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "cowardly",
+      "word": "cowardly",
+      "senses": [
+        {
+          "id": "sense-8383fc59",
+          "pos": "adjective",
+          "meaningZh": "懦弱的；膽小的",
+          "definitionEn": "timid and easily frightened; lacking bravery or courage",
+          "examples": [
+            "When faced with danger, the cowardly mouse hid in its hole instead of confronting the threat."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "cozy",
+      "word": "cozy",
+      "senses": [
+        {
+          "id": "sense-d8f734f7",
+          "pos": "adjective",
+          "meaningZh": "舒適溫暖的；溫馨的",
+          "definitionEn": "warm, comfortable, and pleasant",
+          "examples": [
+            "We sat in a cozy little café out of the rain."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-3cd35a97",
+          "pos": "noun",
+          "meaningZh": "茶壺保溫套",
+          "definitionEn": "a cover made of padded cloth used to keep a teapot warm",
+          "examples": [
+            "As the rain poured outside, Sarah wrapped the cozy around the teapot, ensuring the warm tea stayed hot for our afternoon chat."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "crackdown",
+      "word": "crackdown",
+      "senses": [
+        {
+          "id": "sense-1f9dacd2",
+          "pos": "noun",
+          "meaningZh": "強力取締；嚴厲打壓",
+          "definitionEn": "strong and forceful action to stop illegal or inappropriate activities",
+          "examples": [
+            "The government launched a crackdown on drug trafficking, arresting several key players and seizing large quantities of narcotics."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "cracker",
+      "word": "cracker",
+      "senses": [
+        {
+          "id": "sense-683b86cf",
+          "pos": "noun",
+          "meaningZh": "薄脆餅乾；蘇打餅",
+          "definitionEn": "a thin, crispy biscuit made from flour, water, and often shortening; can be sweetened or unsweetened",
+          "examples": [
+            "We enjoyed eating plain crackers with cheese and wine."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "cram",
+      "word": "cram",
+      "senses": [
+        {
+          "id": "sense-de9fcc7a",
+          "pos": "verb",
+          "meaningZh": "擠滿；塞滿",
+          "definitionEn": "crowd or pack tightly together; fill to overflowing",
+          "examples": [
+            "The students had to cram into the small lecture hall as it was the only available venue for the guest speaker’s talk."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-28903630",
+          "pos": "verb",
+          "meaningZh": "臨時抱佛腳；死記硬背",
+          "definitionEn": "prepare hastily for an exam",
+          "examples": [
+            "Due to poor time management, John had to cram for his final exams in just one night."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "cramp",
+      "word": "cramp",
+      "senses": [
+        {
+          "id": "sense-27ca6227",
+          "pos": "noun",
+          "meaningZh": "抽筋；痙攣",
+          "definitionEn": "a painful and involuntary muscular contraction",
+          "examples": [
+            "She screamed in agony as a cramp suddenly seized her leg during the marathon."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-df067f18",
+          "pos": "verb",
+          "meaningZh": "使抽筋；使痙攣",
+          "definitionEn": "to affect with or as if with a cramp",
+          "examples": [
+            "After running for miles, he started to cramp up in his legs."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "crater",
+      "word": "crater",
+      "senses": [
+        {
+          "id": "sense-fb4d506b",
+          "pos": "noun",
+          "meaningZh": "撞擊坑；彈坑",
+          "definitionEn": "a bowl-shaped depression formed by the impact of a meteorite or bomb",
+          "examples": [
+            "After the explosion, the bomb created a massive crater in the ground."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-c510683e",
+          "pos": "noun",
+          "meaningZh": "火山口；噴火口",
+          "definitionEn": "a bowl-shaped geological formation at the top of a volcano",
+          "examples": [
+            "During the volcanic eruption, lava flowed out and created a massive crater at the summit of the volcano."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "credible",
+      "word": "credible",
+      "senses": [
+        {
+          "id": "sense-e60fe9d9",
+          "pos": "adjective",
+          "meaningZh": "可信的；令人信服的",
+          "definitionEn": "worthy of belief; convincing",
+          "examples": [
+            "The detective gathered credible evidence that pointed to the suspect's guilt."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-0fc9372f",
+          "pos": "adjective",
+          "meaningZh": "有公信力的；可靠的",
+          "definitionEn": "having the quality of being believable or trustworthy",
+          "examples": [
+            "The scientist presented a credible theory backed by extensive research."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L2",
+        "textbookTitle": "龍騰 B5·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "crocodile",
+      "word": "crocodile",
+      "senses": [
+        {
+          "id": "sense-6756605d",
+          "pos": "noun",
+          "meaningZh": "鱷魚；河鱷",
+          "definitionEn": "A large, aquatic reptile with a long snout, massive jaws, sharp teeth, and a body covered in bony plates. They inhabit sluggish tropical waters and are highly voracious.",
+          "examples": [
+            "While canoeing down the river, we spotted a massive crocodile sunning itself on the riverbank."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "crossing",
+      "word": "crossing",
+      "senses": [
+        {
+          "id": "sense-1cef3895",
+          "pos": "noun",
+          "meaningZh": "交叉點；路口",
+          "definitionEn": "a point where two lines intersect",
+          "examples": [],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-326eb5f9",
+          "pos": "noun",
+          "meaningZh": "橫渡；跨海航行",
+          "definitionEn": "a voyage across a body of water, usually the Atlantic Ocean",
+          "examples": [
+            "After months of preparation, the sailors embarked on a daring crossing of the Atlantic Ocean."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "crutch",
+      "word": "crutch",
+      "senses": [
+        {
+          "id": "sense-fb04bba2",
+          "pos": "noun",
+          "meaningZh": "柺杖；助行架",
+          "definitionEn": "a device used to support a person’s weight when walking, typically consisting of a wooden or metal frame that fits under the armpit and reaches to the ground",
+          "examples": [
+            "After breaking his leg, John relied on a crutch to help him get around."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-523ed478",
+          "pos": "noun",
+          "meaningZh": "依賴物；心理支柱",
+          "definitionEn": "something that is relied on for support or help, especially excessively",
+          "examples": [
+            "She had become so dependent on alcohol as a crutch to cope with her problems."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "cub",
+      "word": "cub",
+      "senses": [
+        {
+          "id": "sense-cbfc4b74",
+          "pos": "noun",
+          "meaningZh": "幼獸；熊崽；獅崽",
+          "definitionEn": "the young of certain carnivorous mammals such as bears, wolves, or lions",
+          "examples": [
+            "The mother bear was fiercely protective of her cubs as they played by the river."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-fdea3026",
+          "pos": "verb",
+          "meaningZh": "產下幼獸；生崽",
+          "definitionEn": "to give birth to cubs, usually said of a large carnivorous mammal",
+          "examples": [
+            "The female bear cubbed two cubs in her den."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 翰林 B1·L4",
+        "textbookTitle": "翰林 B1·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "cucumber",
+      "word": "cucumber",
+      "senses": [
+        {
+          "id": "sense-b2706419",
+          "pos": "noun",
+          "meaningZh": "黃瓜；小黃瓜",
+          "definitionEn": "the cylindrical fruit of the cucumber plant, with a green skin and white flesh, commonly used as a vegetable in salads and sandwiches",
+          "examples": [
+            "Lisa decided to make a refreshing salad by combining crisp lettuce, juicy tomatoes, and crunchy cucumber slices."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-a7fcb06f",
+          "pos": "noun",
+          "meaningZh": "黃瓜植株；胡瓜藤",
+          "definitionEn": "a vine plant of the Cucurbitaceae family, extensively cultivated for its green elongated fruit with a thin skin and seeds inside",
+          "examples": [
+            "I added some sliced cucumbers to my salad for a refreshing crunch."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "cultivate",
+      "word": "cultivate",
+      "senses": [
+        {
+          "id": "sense-436d839c",
+          "pos": "verb",
+          "meaningZh": "耕種；開墾農地",
+          "definitionEn": "prepare land for crops",
+          "examples": [
+            "The farmers cultivate their fields with great care to ensure successful harvests."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-49fbb12b",
+          "pos": "verb",
+          "meaningZh": "培育；促進成長",
+          "definitionEn": "foster the growth or development of something",
+          "examples": [
+            "The gardener decided to cultivate the tomatoes by providing them with the right amount of water and sunlight."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "cumulative",
+      "word": "cumulative",
+      "senses": [
+        {
+          "id": "sense-bda2a5e4",
+          "pos": "adjective",
+          "meaningZh": "累積的；漸增的",
+          "definitionEn": "increasing as a result of addition or accumulation",
+          "examples": [
+            "The cumulative effect of eating unhealthy food is weight gain over time."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "curb",
+      "word": "curb",
+      "senses": [
+        {
+          "id": "sense-d64b716f",
+          "pos": "verb",
+          "meaningZh": "抑制；約束",
+          "definitionEn": "to control or limit something, especially something harmful",
+          "examples": [
+            "The new law aims to curb air pollution in the city."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-6f2a5e05",
+          "pos": "noun",
+          "meaningZh": "馬嚼扣鏈；馬勒",
+          "definitionEn": "a horse’s bit with an attached chain or strap to check the horse",
+          "examples": [
+            "She used a curb on her horse during the competition to keep it from going too fast."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L5",
+        "textbookTitle": "龍騰 B5·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "curfew",
+      "word": "curfew",
+      "senses": [
+        {
+          "id": "sense-f73dae91",
+          "pos": "noun",
+          "meaningZh": "宵禁令；禁夜令",
+          "definitionEn": "an order prohibiting certain activities, such as being outside on the streets, after a specific time",
+          "examples": [
+            "The city implemented a curfew to ensure the safety of its residents during the protests."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-58f0221c",
+          "pos": "noun",
+          "meaningZh": "宵禁鐘聲；報時鐘響",
+          "definitionEn": "a bell or other signal announcing the start of curfew restrictions",
+          "examples": [
+            "As the sun set, the curfew bell chimed throughout the village, prompting everyone to head back home."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "curry",
+      "word": "curry",
+      "senses": [
+        {
+          "id": "sense-aba98cfc",
+          "pos": "noun",
+          "meaningZh": "咖哩料理；咖哩菜",
+          "definitionEn": "a dish made with meat, vegetables, or both, that is cooked in or flavored with a sauce containing curry powder",
+          "examples": [
+            "I am going to cook a delicious chicken curry for dinner tonight."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-84343569",
+          "pos": "verb",
+          "meaningZh": "用咖哩調味；加咖哩粉烹調",
+          "definitionEn": "to season food with a blend of spices, particularly curry powder, used in Indian cuisine",
+          "examples": [
+            "I like to curry my chicken by rubbing a mixture of curry powder, salt, and oil over it before grilling."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "customary",
+      "word": "customary",
+      "senses": [
+        {
+          "id": "sense-dcc1c099",
+          "pos": "adjective",
+          "meaningZh": "依照習俗的；傳統的",
+          "definitionEn": "following common beliefs or traditions; conventional",
+          "examples": [
+            "It is customary to exchange gifts during Christmas."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-2b8c64bb",
+          "pos": "adjective",
+          "meaningZh": "慣常的；一般通行的",
+          "definitionEn": "usual or common; typically done or practiced",
+          "examples": [
+            "It is customary to give a gift to the host when visiting someone’s house for the first time."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "cynical",
+      "word": "cynical",
+      "senses": [
+        {
+          "id": "sense-b35818c6",
+          "pos": "adjective",
+          "meaningZh": "憤世嫉俗的；對人不信任的",
+          "definitionEn": "having or showing a distrustful or negative outlook, often regarding others’ motives or intentions",
+          "examples": [
+            "After witnessing numerous political scandals, she became cynical about the honesty of politicians."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "dazzle",
+      "word": "dazzle",
+      "senses": [
+        {
+          "id": "sense-0cbb523c",
+          "pos": "verb",
+          "meaningZh": "使讚嘆折服；以才華令人瞠目",
+          "definitionEn": "amaze or bewilder with brilliant wit, intellect, or skill",
+          "examples": [
+            "The magician’s tricks dazzled the crowd and kept them on the edge of their seats."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-053caaf8",
+          "pos": "noun",
+          "meaningZh": "炫目強光；令人目眩的亮度",
+          "definitionEn": "brightness enough to blind partially and temporarily",
+          "examples": [
+            "The sun’s rays were so bright, they dazzled her eyes and made her momentarily blind."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    }
+  ]
+}

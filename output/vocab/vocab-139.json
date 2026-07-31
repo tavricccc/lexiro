@@ -1,0 +1,1421 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 139,
+  "words": [
+    {
+      "wordKey": "contend",
+      "word": "contend",
+      "senses": [
+        {
+          "id": "sense-d547ed8f",
+          "pos": "verb",
+          "meaningZh": "競爭；角逐",
+          "definitionEn": "compete for something; engage in a contest; measure oneself against others",
+          "examples": [
+            "In order to secure the promotion, Sarah will have to contend with several other qualified candidates."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-cb932252",
+          "pos": "verb",
+          "meaningZh": "搏鬥；對抗",
+          "definitionEn": "be engaged in a fight; carry on a fight",
+          "examples": [
+            "The two boxers will contend for the championship title tonight."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L5",
+        "textbookTitle": "龍騰 B5·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "continental",
+      "word": "continental",
+      "senses": [
+        {
+          "id": "sense-6d200d92",
+          "pos": "adjective",
+          "meaningZh": "大陸的；洲際的",
+          "definitionEn": "of, relating to, or typical of a continent",
+          "examples": [
+            "The Himalaya mountain range is the longest and highest continental mountain range in the world."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-c1c7ef6f",
+          "pos": "adjective",
+          "meaningZh": "歐洲大陸的；北美大陸的",
+          "definitionEn": "limited to the continents of North America or Europe",
+          "examples": [
+            "The restaurant only serves cuisine from the continental region, which excludes dishes from islands and other landmasses surrounded by water."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "contractor",
+      "word": "contractor",
+      "senses": [
+        {
+          "id": "sense-a7a1e33b",
+          "pos": "noun",
+          "meaningZh": "承包商；包工廠商",
+          "definitionEn": "a person or firm who agrees to complete a project or provide a service in exchange for payment",
+          "examples": [
+            "After receiving multiple bids from different contractors, we finally hired a reputable contractor to remodel our kitchen."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-72286a1c",
+          "pos": "noun",
+          "meaningZh": "（法律）締約方",
+          "definitionEn": "(law) a party who enters into a legally binding agreement",
+          "examples": [
+            "The contractor was hired to build the new bridge as per the terms of the agreement."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "contradiction",
+      "word": "contradiction",
+      "senses": [
+        {
+          "id": "sense-7636cf06",
+          "pos": "noun",
+          "meaningZh": "矛盾；前後不一致",
+          "definitionEn": "a situation in which ideas or actions are opposed to one another, resulting in a lack of consistency or logical coherence",
+          "examples": [
+            "The politician’s actions were a contradiction to his promises during the election campaign."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-f59ea0b1",
+          "pos": "noun",
+          "meaningZh": "（邏輯）矛盾命題",
+          "definitionEn": "(logic) a proposition that cannot simultaneously be true",
+          "examples": [
+            "She is both married and single at the same time, which is a clear contradiction."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "controversial",
+      "word": "controversial",
+      "senses": [
+        {
+          "id": "sense-578226ed",
+          "pos": "adjective",
+          "meaningZh": "有爭議的；引發論戰的",
+          "definitionEn": "causing disagreement or argument",
+          "examples": [
+            "The new policy on gun control is highly controversial, with some people strongly supporting it and others vehemently opposed to it."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "controversy",
+      "word": "controversy",
+      "senses": [
+        {
+          "id": "sense-b972c5ef",
+          "pos": "noun",
+          "meaningZh": "爭議；公眾論戰",
+          "definitionEn": "a prolonged public disagreement or heated discussion between opposing parties",
+          "examples": [
+            "The controversy surrounding the proposed construction of a new highway has sparked intense debates among environmentalists, local residents, and government officials."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-08a8292c",
+          "pos": "noun",
+          "meaningZh": "爭論；辯論",
+          "definitionEn": "a contentious speech act; a dispute where there is strong disagreement",
+          "examples": [
+            "During the debate, the controversial topic of gun control sparked a heated controversy, with passionate arguments on both sides."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "conversion",
+      "word": "conversion",
+      "senses": [
+        {
+          "id": "sense-913ce93d",
+          "pos": "noun",
+          "meaningZh": "改建；改用；轉換用途",
+          "definitionEn": "the act of changing something from one use or function or purpose to another",
+          "examples": [
+            "The conversion of the old warehouse into a modern office space was a significant undertaking, involving extensive renovations and updating of the infrastructure."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-e6ab5737",
+          "pos": "noun",
+          "meaningZh": "轉化；變形",
+          "definitionEn": "an event that results in a transformation",
+          "examples": [
+            "The conversion of a caterpillar into a butterfly is a remarkable process of metamorphosis."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "convert",
+      "word": "convert",
+      "senses": [
+        {
+          "id": "sense-dc7e79be",
+          "pos": "verb",
+          "meaningZh": "改建；轉變用途",
+          "definitionEn": "to change the nature, purpose, or function of something",
+          "examples": [
+            "The factory was converted into a museum and became a cultural hub for the city."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-a7b27662",
+          "pos": "verb",
+          "meaningZh": "轉化；變換",
+          "definitionEn": "to undergo a chemical change or change in nature, purpose, or function",
+          "examples": [
+            "When the heat is applied, the solid substance will convert into a liquid state."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "convict",
+      "word": "convict",
+      "senses": [
+        {
+          "id": "sense-fb7e0c50",
+          "pos": "verb",
+          "meaningZh": "判…有罪；定罪",
+          "definitionEn": "to officially decide in a court of law that someone is guilty of a crime",
+          "examples": [
+            "The jury convicted him of theft."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-8f3d11b9",
+          "pos": "noun",
+          "meaningZh": "服刑人；囚犯",
+          "definitionEn": "a person serving a sentence in a jail or prison",
+          "examples": [
+            "The police finally caught the robber who had been on the run for months. He was convicted of theft and sentenced to 5 years in prison."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-75fba490",
+          "pos": "noun",
+          "meaningZh": "定罪者；罪犯",
+          "definitionEn": "a person who has been convicted of a criminal offense",
+          "examples": [
+            "The police arrested the convict who had just escaped from prison."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L4",
+        "textbookTitle": "三民 B4·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "conviction",
+      "word": "conviction",
+      "senses": [
+        {
+          "id": "sense-d506ba2b",
+          "pos": "noun",
+          "meaningZh": "信念；堅定看法",
+          "definitionEn": "a strong belief or opinion about something, often without proof or evidence",
+          "examples": [
+            "Although he had no concrete proof, John’s conviction that his neighbor was stealing his mail led him to set up a hidden camera to catch him in the act."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-65b40bbf",
+          "pos": "noun",
+          "meaningZh": "定罪；有罪判決",
+          "definitionEn": "a legal determination made by a court, finding an individual guilty of a criminal offense and imposing punishment",
+          "examples": [
+            "The conviction of the accused for armed robbery was based on several pieces of solid evidence that were presented in court."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "coordinate",
+      "word": "coordinate",
+      "senses": [
+        {
+          "id": "sense-b04efc4b",
+          "pos": "verb",
+          "meaningZh": "協調；統籌",
+          "definitionEn": "to organize different people or things so that they work well together",
+          "examples": [
+            "She coordinated the efforts of all the volunteers."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-5743a8d1",
+          "pos": "noun",
+          "meaningZh": "座標",
+          "definitionEn": "a number that identifies a position relative to an axis",
+          "examples": [
+            "In order to plot the graph, you must provide the coordinates of each point."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-1d0dda46",
+          "pos": "adjective",
+          "meaningZh": "同等的；平等的",
+          "definitionEn": "having equal importance, rank, or degree",
+          "examples": [
+            "In a team project, it is important that every member coordinate with each other and contribute equally."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "copyright",
+      "word": "copyright",
+      "senses": [
+        {
+          "id": "sense-92990bae",
+          "pos": "noun",
+          "meaningZh": "著作權；版權",
+          "definitionEn": "the exclusive legal right, given to an originator or an assignee, to print, publish, perform, film, or record literary, artistic, or musical material, and to authorize others to do the same",
+          "examples": [
+            "The author asserted her copyright over her latest novel, preventing others from publishing the book without her permission."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-48edf124",
+          "pos": "verb",
+          "meaningZh": "取得版權；申請著作權",
+          "definitionEn": "obtain the exclusive legal right to print, publish, perform, film, or record (literary, artistic, or musical material) and to authorize others to do the same",
+          "examples": [
+            "In order to protect their intellectual property, the authors of newly published books often apply for a copyright, granting them the exclusive right to reproduce and distribute their work."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "core",
+      "word": "core",
+      "senses": [
+        {
+          "id": "sense-5dbeaf5b",
+          "pos": "noun",
+          "meaningZh": "核心；精髓",
+          "definitionEn": "the choicest, most essential, or most vital part of an idea or experience",
+          "examples": [
+            "Her leadership and innovative ideas were the core of the company's success."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-8f0c743f",
+          "pos": "noun",
+          "meaningZh": "地球核心；地核",
+          "definitionEn": "the central part of the Earth",
+          "examples": [
+            "Scientists believe that studying the core of the Earth can provide important insights into its formation and geological processes."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L3",
+        "textbookTitle": "龍騰 B5·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "corporate",
+      "word": "corporate",
+      "senses": [
+        {
+          "id": "sense-b5a3e6c6",
+          "pos": "adjective",
+          "meaningZh": "企業的；公司的",
+          "definitionEn": "having a physical body or form",
+          "examples": [
+            "The corporate headquarters of the company are located in a spacious building in the heart of the city."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-9a149b6b",
+          "pos": "adjective",
+          "meaningZh": "法人的；集體的",
+          "definitionEn": "belonging to a corporation or a group of individuals authorized to act as a single entity",
+          "examples": [
+            "The corporate team was able to close the deal because they had the backing of the entire company."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L1",
+        "textbookTitle": "龍騰 B3·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "corporation",
+      "word": "corporation",
+      "senses": [
+        {
+          "id": "sense-68f0ee24",
+          "pos": "noun",
+          "meaningZh": "大企業；跨國集團",
+          "definitionEn": "a large company or group of companies authorized to act as a single entity",
+          "examples": [
+            "The multinational corporation acquired several smaller companies to expand their global reach."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-63e7eded",
+          "pos": "noun",
+          "meaningZh": "公司法人；股份公司",
+          "definitionEn": "a business firm whose articles of incorporation have been approved in some state",
+          "examples": [
+            "After years of hard work, they finally formed a corporation to launch their innovative technology product."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L1",
+        "textbookTitle": "龍騰 B3·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "correlation",
+      "word": "correlation",
+      "senses": [
+        {
+          "id": "sense-792a36fc",
+          "pos": "noun",
+          "meaningZh": "相互關係；關聯性",
+          "definitionEn": "a reciprocal relation or connection between two or more things",
+          "examples": [
+            "There is a strong correlation between the number of hours students spend studying and their grades on exams."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-b44347b5",
+          "pos": "noun",
+          "meaningZh": "（統計）相關係數；相關性",
+          "definitionEn": "a statistical measure that shows how strongly two or more variables are related; if one variable increases or decreases, the other tends to increase or decrease as well",
+          "examples": [
+            "There is a positive correlation between exercise and weight loss, which means that the more you exercise, the more weight you are likely to lose."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "correspondent",
+      "word": "correspondent",
+      "senses": [
+        {
+          "id": "sense-51ccae05",
+          "pos": "noun",
+          "meaningZh": "記者；特派員",
+          "definitionEn": "a person who reports news for newspapers, magazines, or broadcast media",
+          "examples": [
+            "The correspondent was on the ground reporting live from the war zone."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-9bafce4a",
+          "pos": "noun",
+          "meaningZh": "通信者；聯絡人",
+          "definitionEn": "a person who is in communication with another",
+          "examples": [
+            "As a foreign correspondent, she reported on events in multiple countries."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "corridor",
+      "word": "corridor",
+      "senses": [
+        {
+          "id": "sense-3006a8c7",
+          "pos": "noun",
+          "meaningZh": "走廊；長廊",
+          "definitionEn": "a long narrow passage in a building, with rooms on either side that usually open onto it.",
+          "examples": [
+            "As Alice walked down the corridor, she noticed the various doors leading to classrooms and offices."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "corrupt",
+      "word": "corrupt",
+      "senses": [
+        {
+          "id": "sense-d462555a",
+          "pos": "adjective",
+          "meaningZh": "腐敗的；貪污的",
+          "definitionEn": "Dishonest or morally wrong; not following ethical standards.",
+          "examples": [
+            "The politician was found guilty of accepting bribes and was accused of corrupt behavior during his time in office."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-b8dffe3d",
+          "pos": "adjective",
+          "meaningZh": "腐爛的；變質的",
+          "definitionEn": "Decomposed or spoiled due to decay.",
+          "examples": [
+            "The fruit had been sitting in the hot sun for days and had become corrupt, with a foul smell and a slimy texture."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L6",
+        "textbookTitle": "三民 B4·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "corruption",
+      "word": "corruption",
+      "senses": [
+        {
+          "id": "sense-8370d65c",
+          "pos": "noun",
+          "meaningZh": "貪污；賄賂",
+          "definitionEn": "The lack of honesty or integrity, especially when influenced by bribes; the use of one’s position of trust for dishonest gain.",
+          "examples": [
+            "The corruption in the government was uncovered by the investigative journalist, who found evidence of bribes being taken by public officials in exchange for granting contracts to private companies."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-2ce6d534",
+          "pos": "noun",
+          "meaningZh": "腐化；道德墮落",
+          "definitionEn": "Undermining moral integrity; destroying someone’s or some group’s honesty or loyalty.",
+          "examples": [
+            "The corruption scandal involving the high-ranking officials of the company left many investors feeling betrayed and skeptical about its future performance."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L6",
+        "textbookTitle": "三民 B4·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "counsel",
+      "word": "counsel",
+      "senses": [
+        {
+          "id": "sense-7f4be534",
+          "pos": "noun",
+          "meaningZh": "顧問；諮詢者",
+          "definitionEn": "a person or group that provides direction or advice as to a decision or course of action",
+          "examples": [
+            "After losing her job, Mary sought the counsel of a career coach to help her navigate her next steps."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-cb063f60",
+          "pos": "verb",
+          "meaningZh": "建議；輔導",
+          "definitionEn": "to give advice or guidance to someone",
+          "examples": [
+            "I sought the counsel of a career advisor before making a major decision about my future."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "counselor",
+      "word": "counselor",
+      "senses": [
+        {
+          "id": "sense-c02646a4",
+          "pos": "noun",
+          "meaningZh": "輔導員；諮商師",
+          "definitionEn": "someone who gives advice about problems or personal matters",
+          "examples": [
+            "After my parents divorced, I saw a counselor to help me deal with my feelings."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-4571518e",
+          "pos": "noun",
+          "meaningZh": "律師；辯護人",
+          "definitionEn": "a lawyer who pleads cases in court",
+          "examples": [
+            "During the trial, the counselor eloquently presented evidence to the jury in support of his client’s defense."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "courteous",
+      "word": "courteous",
+      "senses": [
+        {
+          "id": "sense-afd80296",
+          "pos": "adjective",
+          "meaningZh": "有禮貌的；彬彬有禮的",
+          "definitionEn": "having or showing good manners; polite and respectful",
+          "examples": [
+            "When visiting a foreign country, it is important to be courteous to the locals by learning a few basic phrases in their language and respecting their customs."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-a9558713",
+          "pos": "adjective",
+          "meaningZh": "體貼的；尊重他人的",
+          "definitionEn": "marked by respect for and consideration of others; well-mannered",
+          "examples": [
+            "In a crowded elevator, John held the door open for others and offered a courteous smile."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "coverage",
+      "word": "coverage",
+      "senses": [
+        {
+          "id": "sense-bf7e72fe",
+          "pos": "noun",
+          "meaningZh": "新聞報導；媒體報導",
+          "definitionEn": "the news as presented by reporters for newspapers, radio, or television",
+          "examples": [
+            "The coverage of the election was extensive, with reporters stationed at polling stations and campaign rallies across the country."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-0321b97b",
+          "pos": "noun",
+          "meaningZh": "涵蓋範圍；保障範圍",
+          "definitionEn": "the extent to which something is covered",
+          "examples": [
+            "The health insurance plan provides comprehensive coverage for all necessary medical expenses."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "credibility",
+      "word": "credibility",
+      "senses": [
+        {
+          "id": "sense-dead310a",
+          "pos": "noun",
+          "meaningZh": "可信度；公信力",
+          "definitionEn": "the quality of being believable or trustworthy",
+          "examples": [
+            "The CEO’s credibility was called into question after evidence of embezzlement was uncovered."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L2",
+        "textbookTitle": "龍騰 B5·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "creek",
+      "word": "creek",
+      "senses": [
+        {
+          "id": "sense-c4d77016",
+          "pos": "noun",
+          "meaningZh": "小溪；溪流",
+          "definitionEn": "a small, natural stream of water that is often a tributary of a river",
+          "examples": [
+            "The children played by the creek, skipping stones and catching tadpoles."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "cripple",
+      "word": "cripple",
+      "senses": [
+        {
+          "id": "sense-92c7338e",
+          "pos": "noun",
+          "meaningZh": "行動不便者；殘障者",
+          "definitionEn": "someone who is unable to walk normally because of an injury or disability to the legs or back",
+          "examples": [
+            "With a sudden back injury, the athlete feared that they would be a cripple and never play their beloved sport again."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-bd28846e",
+          "pos": "verb",
+          "meaningZh": "使殘廢；使喪失行動能力",
+          "definitionEn": "deprive of the use of a limb, especially a leg",
+          "examples": [
+            "The accident crippled him for life, leaving him unable to walk without assistance."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L6",
+        "textbookTitle": "龍騰 B5·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "crucial",
+      "word": "crucial",
+      "senses": [
+        {
+          "id": "sense-3e7de104",
+          "pos": "adjective",
+          "meaningZh": "至關重要的；關鍵的",
+          "definitionEn": "extremely important; essential to the resolution of a crisis",
+          "examples": [
+            "Having a reliable communication system is crucial during a natural disaster."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-d5c25a23",
+          "pos": "adjective",
+          "meaningZh": "決定性的；舉足輕重的",
+          "definitionEn": "of the greatest importance; critical",
+          "examples": [
+            "In a medical emergency, the availability of trained paramedics is crucial."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "crude",
+      "word": "crude",
+      "senses": [
+        {
+          "id": "sense-0e6975cb",
+          "pos": "adjective",
+          "meaningZh": "粗糙的；未精製的",
+          "definitionEn": "not carefully or expertly made; rough or unpolished",
+          "examples": [
+            "His crude drawings lacked finesse and attention to detail."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-bf459bcf",
+          "pos": "adjective",
+          "meaningZh": "粗俗的；低俗的",
+          "definitionEn": "lacking sophistication or good taste",
+          "examples": [
+            "The comedian's jokes were so crude that they offended many of the audience members."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "cruise",
+      "word": "cruise",
+      "senses": [
+        {
+          "id": "sense-8d07d88e",
+          "pos": "verb",
+          "meaningZh": "遊輪旅行；巡航",
+          "definitionEn": "to sail or travel about, especially for pleasure or sightseeing",
+          "examples": [
+            "We planned to cruise around the Caribbean for two weeks to enjoy the sunny beaches and explore different cultures."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-33736516",
+          "pos": "noun",
+          "meaningZh": "郵輪之旅；海上遊覽",
+          "definitionEn": "a voyage on a ship or boat taken for pleasure or as a vacation and usually calling in at several places",
+          "examples": [
+            "For their anniversary, they decided to go on a week-long Caribbean cruise where they could enjoy the warm weather and visit different islands."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    }
+  ]
+}

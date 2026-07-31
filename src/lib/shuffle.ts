@@ -11,6 +11,8 @@ function shuffleArray<T>(items: T[]): T[] {
 
 /** Session-local option shuffle; does not mutate the source set. */
 export function shuffleQuizEntry(entry: SessionEntry): SessionEntry {
+  if (!entry.item.question)
+    return entry
   const opts = entry.item.question.opts
   const correct = opts[entry.item.question.ans]
   const shuffled = shuffleArray(opts)

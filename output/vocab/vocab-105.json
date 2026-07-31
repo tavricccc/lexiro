@@ -1,0 +1,1406 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 105,
+  "words": [
+    {
+      "wordKey": "concentrate",
+      "word": "concentrate",
+      "senses": [
+        {
+          "id": "sense-109f2daf",
+          "pos": "verb",
+          "meaningZh": "專注；集中（注意力）",
+          "definitionEn": "to give all your attention to one thing",
+          "examples": [
+            "It's hard to concentrate when the room is noisy."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-c30c9e37",
+          "pos": "verb",
+          "meaningZh": "濃縮；壓縮",
+          "definitionEn": "compress or concentrate",
+          "examples": [
+            "In order to fit all my clothes in the suitcase, I had to carefully concentrate and compress them."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L8",
+        "textbookTitle": "龍騰 B4·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "concentration",
+      "word": "concentration",
+      "senses": [
+        {
+          "id": "sense-3c129c4a",
+          "pos": "noun",
+          "meaningZh": "專注；集中精神",
+          "definitionEn": "great and constant diligence and attention",
+          "examples": [
+            "Due to his lack of concentration during the lecture, he failed to understand the important concepts that the professor was explaining."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-804876b4",
+          "pos": "noun",
+          "meaningZh": "濃度；濃縮程度",
+          "definitionEn": "the strength of a solution, measured by the number of molecules of a substance in a given volume",
+          "examples": [
+            "The concentration of the sugar solution was so high that it made the drink too sweet."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L8",
+        "textbookTitle": "龍騰 B4·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "concept",
+      "word": "concept",
+      "senses": [
+        {
+          "id": "sense-06d23554",
+          "pos": "noun",
+          "meaningZh": "概念；觀念",
+          "definitionEn": "a general notion formed by combining different aspects",
+          "examples": [
+            "The concept of identity involves not only one’s name and physical appearance, but also one’s upbringing, experiences, and beliefs."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-19f67932",
+          "pos": "noun",
+          "meaningZh": "構想；意念",
+          "definitionEn": "an intention or plan",
+          "examples": [
+            "The concept for the new product line was to create a luxurious and eco-friendly brand that would appeal to millennial consumers."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L4",
+        "textbookTitle": "龍騰 B3·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "concerning",
+      "word": "concerning",
+      "senses": [
+        {
+          "id": "sense-0692030f",
+          "pos": "preposition",
+          "meaningZh": "關於；有關",
+          "definitionEn": "about or related to something",
+          "examples": [
+            "The professor gave a lecture concerning the impact of climate change on the economy."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L4",
+        "textbookTitle": "龍騰 B5·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "concrete",
+      "word": "concrete",
+      "senses": [
+        {
+          "id": "sense-790fd1c3",
+          "pos": "adjective",
+          "meaningZh": "具體的；明確的",
+          "definitionEn": "definite and specific; based on facts rather than ideas",
+          "examples": [
+            "We need concrete evidence before making accusations."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-3596e2a9",
+          "pos": "noun",
+          "meaningZh": "混凝土；水泥",
+          "definitionEn": "a strong and hard building material made of cement, sand, gravel, and water",
+          "examples": [
+            "The workers poured the concrete into the foundation, forming the base for the new skyscraper."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "conductor",
+      "word": "conductor",
+      "senses": [
+        {
+          "id": "sense-c27e7f4d",
+          "pos": "noun",
+          "meaningZh": "導體；導電材料",
+          "definitionEn": "a substance that readily conducts e.g. electricity and heat",
+          "examples": [
+            "Copper is a common conductor of electricity, making it useful for electrical wiring."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-6aa638cd",
+          "pos": "noun",
+          "meaningZh": "指揮家；樂團指揮",
+          "definitionEn": "the person who leads a musical group",
+          "examples": [
+            "The conductor picked up his baton and confidently led the orchestra through a powerful symphony."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "conference",
+      "word": "conference",
+      "senses": [
+        {
+          "id": "sense-03b7899a",
+          "pos": "noun",
+          "meaningZh": "會議；研討會",
+          "definitionEn": "a prearranged meeting for consultation, exchange of information, or discussion, especially one with a formal agenda.",
+          "examples": [
+            "The international conference on climate change brought together scientists, policymakers, and activists from all over the world to discuss strategies for reducing carbon emissions."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-29d4f8ea",
+          "pos": "noun",
+          "meaningZh": "討論；協商",
+          "definitionEn": "a discussion between participants on an agreed-upon (serious) topic.",
+          "examples": [
+            "The research conference brought together scientists from around the world to share their findings and exchange ideas."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L7",
+        "textbookTitle": "龍騰 B2·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "confess",
+      "word": "confess",
+      "senses": [
+        {
+          "id": "sense-13ea1e82",
+          "pos": "verb",
+          "meaningZh": "坦承；認罪",
+          "definitionEn": "admit to a crime or offense, usually under pressure from authority",
+          "examples": [
+            "After being confronted with evidence, the suspect decided to confess to the robbery."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-48343b40",
+          "pos": "verb",
+          "meaningZh": "告解；懺悔（宗教）",
+          "definitionEn": "admit or acknowledge something to a higher authority or in a religious context, as in the Catholic faith",
+          "examples": [
+            "After hiding the truth for so long, John finally decided to confess his mistakes to the priest during his confession."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B1·L5",
+        "textbookTitle": "三民 B1·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "confidence",
+      "word": "confidence",
+      "senses": [
+        {
+          "id": "sense-f4c96a49",
+          "pos": "noun",
+          "meaningZh": "自信；信心",
+          "definitionEn": "belief in oneself and one’s abilities, without doubt or fear",
+          "examples": [],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-6cfa7866",
+          "pos": "noun",
+          "meaningZh": "信心；把握感",
+          "definitionEn": "a feeling of assurance or hopefulness about the future",
+          "examples": [
+            "With her vast experience and excellent preparation, the speaker stood at the podium with confidence and delivered an inspiring speech that left everyone in the audience feeling hopeful about the future."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B2·L1 +1",
+        "textbookTitle": "三民 B2·L1、翰林 B1·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "confusion",
+      "word": "confusion",
+      "senses": [
+        {
+          "id": "sense-d4f24108",
+          "pos": "noun",
+          "meaningZh": "困惑；茫然",
+          "definitionEn": "a mental state characterized by a lack of clear and orderly thought and behavior",
+          "examples": [
+            "After studying for hours without a break, Sarah experienced confusion and couldn't recall any of the information she had just learned."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-f45feac3",
+          "pos": "noun",
+          "meaningZh": "混亂；不知所措",
+          "definitionEn": "a feeling of embarrassment or lack of understanding that leaves you unsure or unable to think clearly",
+          "examples": [
+            "As the professor explained the complex theory, Thomas's confusion grew, and he struggled to follow along with the lecture."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L3 +2",
+        "textbookTitle": "龍騰 B2·L3、三民 B4·L2、翰林 B1·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "congratulate",
+      "word": "congratulate",
+      "senses": [
+        {
+          "id": "sense-c5d354a4",
+          "pos": "verb",
+          "meaningZh": "恭賀；祝賀",
+          "definitionEn": "express praise or admiration for someone’s achievement or good fortune",
+          "examples": [
+            "After winning the championship, all his teammates gathered around to congratulate him with a round of applause."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-6834b2a5",
+          "pos": "verb",
+          "meaningZh": "道喜；慶賀",
+          "definitionEn": "express congratulations to someone for an achievement or joyous occasion",
+          "examples": [
+            "After seeing her stunning performance, we all gathered to congratulate Lily on winning the singing competition."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "congress",
+      "word": "congress",
+      "senses": [
+        {
+          "id": "sense-b01a6fd3",
+          "pos": "noun",
+          "meaningZh": "國會；議會",
+          "definitionEn": "a national legislative assembly",
+          "examples": [
+            "The congress meets twice a year to pass laws and discuss important issues."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-5b15e07e",
+          "pos": "noun",
+          "meaningZh": "代表大會；代議機構",
+          "definitionEn": "a meeting of elected or appointed representatives",
+          "examples": [
+            "The members of Congress gathered to vote on the new legislation."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "conquer",
+      "word": "conquer",
+      "senses": [
+        {
+          "id": "sense-78e27be0",
+          "pos": "verb",
+          "meaningZh": "征服；占領",
+          "definitionEn": "to take control of a place or people by force or warfare",
+          "examples": [
+            "Alexander the Great conquered much of the known world through his military campaigns."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-fd567b4d",
+          "pos": "verb",
+          "meaningZh": "克服；戰勝（困難）",
+          "definitionEn": "to successfully complete or overcome a challenge or difficulty",
+          "examples": [
+            "Despite facing numerous obstacles, she was able to conquer her fear of public speaking and deliver a captivating speech."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B1·L9",
+        "textbookTitle": "三民 B1·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "conscience",
+      "word": "conscience",
+      "senses": [
+        {
+          "id": "sense-52d81c07",
+          "pos": "noun",
+          "meaningZh": "良知；是非之心",
+          "definitionEn": "the inner sense of what is right or wrong in one’s conduct or motives",
+          "examples": [
+            "Even though nobody saw him, his conscience was bothering him about taking the money from the lost wallet."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-90904fe7",
+          "pos": "noun",
+          "meaningZh": "道德感；責任感",
+          "definitionEn": "a sense of moral responsibility and obligation",
+          "examples": [
+            "Even though nobody saw her taking the extra money from the drawer, her conscience bothered her so much that she returned it to the owner."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L6 +1",
+        "textbookTitle": "龍騰 B5·L6、三民 B4·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "consequence",
+      "word": "consequence",
+      "senses": [
+        {
+          "id": "sense-5b1b1a7f",
+          "pos": "noun",
+          "meaningZh": "結果；後果",
+          "definitionEn": "the outcome of an event, especially as relative to an individual",
+          "examples": [
+            "The consequence of staying up all night was that he fell asleep at work the next day."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-da2a3797",
+          "pos": "noun",
+          "meaningZh": "不良後果；代價",
+          "definitionEn": "a result or effect of an action or decision, especially when it is bad or unwelcome",
+          "examples": [
+            "The consequence of skipping class regularly is failing the course."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L4 +1",
+        "textbookTitle": "龍騰 B4·L4、三民 B1·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "consequent",
+      "word": "consequent",
+      "senses": [
+        {
+          "id": "sense-fac14a66",
+          "pos": "adjective",
+          "meaningZh": "隨之而來的；因此產生的",
+          "definitionEn": "following as a result or effect",
+          "examples": [
+            "The heavy rain and consequent flooding caused severe damage to the buildings."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L4 +1",
+        "textbookTitle": "龍騰 B4·L4、三民 B1·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "conservative",
+      "word": "conservative",
+      "senses": [
+        {
+          "id": "sense-e4c033e5",
+          "pos": "adjective",
+          "meaningZh": "保守的；守舊的",
+          "definitionEn": "resistant to change and holding traditional values",
+          "examples": [
+            "My grandparents are very conservative and believe in traditional gender roles and family structures."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-bbecd757",
+          "pos": "adjective",
+          "meaningZh": "謹慎的；穩健的",
+          "definitionEn": "avoiding risky or extreme behavior and opinions",
+          "examples": [
+            "The investment advisor suggested a more conservative approach to the stock market given the current economic uncertainty."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "consist",
+      "word": "consist",
+      "senses": [
+        {
+          "id": "sense-059d5272",
+          "pos": "verb",
+          "meaningZh": "由……組成；構成",
+          "definitionEn": "to be composed or constituted of",
+          "examples": [
+            "The cake consists of flour, sugar, eggs, and milk."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-22d62811",
+          "pos": "verb",
+          "meaningZh": "包含；以……為主要成分",
+          "definitionEn": "to have as an essential part or comprise; be made up of",
+          "examples": [
+            "The sandwich consists of bread, meat, lettuce, and tomato."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "consistent",
+      "word": "consistent",
+      "senses": [
+        {
+          "id": "sense-811e268f",
+          "pos": "adjective",
+          "meaningZh": "一貫的；始終如一的",
+          "definitionEn": "always happening or behaving in a similar way",
+          "examples": [
+            "Even during challenging times, she remained consistent in her dedication to her studies."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-47a8e120",
+          "pos": "adjective",
+          "meaningZh": "符合的；前後一致的",
+          "definitionEn": "agreeing with something said or done previously",
+          "examples": [
+            "Kara's consistent effort in her studies resulted in top grades throughout the school year."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L5 +1",
+        "textbookTitle": "龍騰 B2·L5、三民 B1·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "constitute",
+      "word": "constitute",
+      "senses": [
+        {
+          "id": "sense-1d6b1064",
+          "pos": "verb",
+          "meaningZh": "構成；組成",
+          "definitionEn": "to form or compose something",
+          "examples": [
+            "The three colors, red, blue, and yellow, constitute the primary colors."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-0a2c5d21",
+          "pos": "verb",
+          "meaningZh": "形成；構成要素",
+          "definitionEn": "to be or make up the parts of something",
+          "examples": [
+            "In order to have a well-rounded meal, protein, whole grains, and vegetables must all constitute a balanced plate."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "constitution",
+      "word": "constitution",
+      "senses": [
+        {
+          "id": "sense-96fe0a6e",
+          "pos": "noun",
+          "meaningZh": "憲法；根本法",
+          "definitionEn": "law determining the fundamental political principles of a government",
+          "examples": [
+            "The constitution of the country guarantees the rights and freedoms of its citizens, ensuring that no one is above the law."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-57bdc4a6",
+          "pos": "noun",
+          "meaningZh": "構成；組成方式",
+          "definitionEn": "the way in which someone or something is composed",
+          "examples": [
+            "The constitution of a country outlines the fundamental principles and laws that govern its citizens."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "construct",
+      "word": "construct",
+      "senses": [
+        {
+          "id": "sense-60f9c870",
+          "pos": "verb",
+          "meaningZh": "建造；構築",
+          "definitionEn": "To make something by combining different materials or parts.",
+          "examples": [
+            "The team of builders constructed a beautiful and sturdy house using bricks, cement, and wood."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-c880fc66",
+          "pos": "noun",
+          "meaningZh": "抽象概念；建構物",
+          "definitionEn": "An abstract idea that is inferred from specific instances.",
+          "examples": [
+            "The concept of respect is a construct that can be observed through acts of kindness and consideration."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L2 +1",
+        "textbookTitle": "龍騰 B3·L2、三民 B2·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "construction",
+      "word": "construction",
+      "senses": [
+        {
+          "id": "sense-df4cb7dd",
+          "pos": "noun",
+          "meaningZh": "建造；施工",
+          "definitionEn": "the act or process of building or creating something",
+          "examples": [
+            "The construction of the new bridge began last week and is expected to be completed in two years."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-b30f799f",
+          "pos": "noun",
+          "meaningZh": "建築物；工程",
+          "definitionEn": "something that has been built or created, especially a large structure",
+          "examples": [
+            "The construction of the new skyscraper will bring more business and jobs to the city."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L2 +1",
+        "textbookTitle": "龍騰 B3·L2、三民 B2·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "constructive",
+      "word": "constructive",
+      "senses": [
+        {
+          "id": "sense-e2d68c28",
+          "pos": "adjective",
+          "meaningZh": "建設性的；有助益的",
+          "definitionEn": "tending to promote development or improvement",
+          "examples": [
+            "During the team meeting, Sarah provided constructive feedback which helped the group come up with a more effective solution to the problem."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-262b05fe",
+          "pos": "adjective",
+          "meaningZh": "積極正面的；鼓勵性的",
+          "definitionEn": "emphasizing the positive aspects or possibilities of a situation",
+          "examples": [
+            "During the team meeting, Sarah offered a constructive suggestion to improve the project's efficiency."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L2 +1",
+        "textbookTitle": "龍騰 B3·L2、三民 B2·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "consult",
+      "word": "consult",
+      "senses": [
+        {
+          "id": "sense-61e1db6d",
+          "pos": "verb",
+          "meaningZh": "諮詢；請教",
+          "definitionEn": "to seek information or advice from someone",
+          "examples": [
+            "She decided to consult with her doctor before starting a new exercise routine."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-64f0d045",
+          "pos": "verb",
+          "meaningZh": "提供建議；問診",
+          "definitionEn": "to provide professional advice to someone",
+          "examples": [
+            "After conducting various tests, the doctor consulted the patient on the best treatment options."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "consultant",
+      "word": "consultant",
+      "senses": [
+        {
+          "id": "sense-0524859d",
+          "pos": "noun",
+          "meaningZh": "顧問；諮詢專家",
+          "definitionEn": "a person who provides professional or expert advice",
+          "examples": [
+            "Our company hired a consultant to help us improve our business operations and increase efficiency."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "consume",
+      "word": "consume",
+      "senses": [
+        {
+          "id": "sense-065d179f",
+          "pos": "verb",
+          "meaningZh": "消耗；用盡",
+          "definitionEn": "use up (resources or materials)",
+          "examples": [
+            "John consumed all of the fuel in his car during the long road trip."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-c247d896",
+          "pos": "verb",
+          "meaningZh": "吞噬；摧毀",
+          "definitionEn": "destroy completely",
+          "examples": [
+            "The raging fire consumed the entire forest, leaving nothing but charred remains."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L5 +1",
+        "textbookTitle": "龍騰 B1·L5、三民 B1·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "consumer",
+      "word": "consumer",
+      "senses": [
+        {
+          "id": "sense-534dea70",
+          "pos": "noun",
+          "meaningZh": "消費者；用戶",
+          "definitionEn": "a person or organization that purchases goods or services for their own use or to resell",
+          "examples": [
+            "The consumer bought a new smartphone for personal use and also purchased additional phones to resell at a higher price."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-ef528621",
+          "pos": "noun",
+          "meaningZh": "消費者（生態）；掠食者",
+          "definitionEn": "an organism that feeds on other organisms or organic matter",
+          "examples": [
+            "In the ocean, the shark is a powerful consumer, preying on smaller fish and keeping the ecosystem in balance."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L5 +1",
+        "textbookTitle": "龍騰 B1·L5、三民 B1·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "container",
+      "word": "container",
+      "senses": [
+        {
+          "id": "sense-d41d3f0e",
+          "pos": "noun",
+          "meaningZh": "容器；容具",
+          "definitionEn": "any object that can be used to hold things",
+          "examples": [
+            "She used a glass jar as a container for her homemade jam."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-2435b2a9",
+          "pos": "noun",
+          "meaningZh": "貨櫃；貨箱",
+          "definitionEn": "a large metal boxlike object of standardized dimensions that can be loaded from one form of transport to another",
+          "examples": [
+            "The cargo ship was full of containers, each filled with goods waiting to be transported to different parts of the world."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L8 +2",
+        "textbookTitle": "龍騰 B2·L8、三民 B1·L6、翰林 B1·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "content",
+      "word": "content",
+      "senses": [
+        {
+          "id": "sense-af2013c0",
+          "pos": "noun",
+          "meaningZh": "內容；內容物",
+          "definitionEn": "the things that are contained in something, or the subject matter",
+          "examples": [
+            "The content of the book was both useful and interesting."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-4d2e1934",
+          "pos": "adjective",
+          "meaningZh": "滿意的；知足的",
+          "definitionEn": "satisfied or showing satisfaction with things as they are",
+          "examples": [
+            "After finishing the marathon, she was content with her time and didn’t feel the need to push herself harder."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B1·L7",
+        "textbookTitle": "三民 B1·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    }
+  ]
+}

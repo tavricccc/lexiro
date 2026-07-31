@@ -1,0 +1,1368 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 180,
+  "words": [
+    {
+      "wordKey": "fuse",
+      "word": "fuse",
+      "senses": [
+        {
+          "id": "sense-cb455b28",
+          "pos": "noun",
+          "meaningZh": "引信；導火線",
+          "definitionEn": "an igniter that sets off the burning of a propellant",
+          "examples": [
+            "Make sure to light the fuse before running away from the fireworks."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-93648292",
+          "pos": "noun",
+          "meaningZh": "保險絲；斷路器",
+          "definitionEn": "an electrical safety device that breaks the flow of current when there is too much electricity flowing through the circuit; a circuit breaker",
+          "examples": [
+            "When the circuit became overloaded, the fuse blew and cut off the power to the entire house."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "fuss",
+      "word": "fuss",
+      "senses": [
+        {
+          "id": "sense-a89985bb",
+          "pos": "noun",
+          "meaningZh": "大驚小怪；騷動",
+          "definitionEn": "an excited state of agitation",
+          "examples": [
+            "The parents were in a fuss as they prepared their child’s birthday party."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-f696d708",
+          "pos": "verb",
+          "meaningZh": "過度關心；細心照料",
+          "definitionEn": "take great care of somebody",
+          "examples": [
+            "When my grandma comes to visit, she always fusses over me, making sure I have enough to eat and that I’m warm enough at night."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "gallop",
+      "word": "gallop",
+      "senses": [
+        {
+          "id": "sense-b6560e2f",
+          "pos": "verb",
+          "meaningZh": "縱馬疾馳；使快跑",
+          "definitionEn": "to cause something or someone to move at a full gallop",
+          "examples": [
+            "The farmers galloped their horses across the field to catch up with the escaped cattle."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-10d02a73",
+          "pos": "noun",
+          "meaningZh": "全速奔馳；馬的疾奔步法",
+          "definitionEn": "a fast manner of movement for a horse characterized by having all four feet off the ground simultaneously during each two-beat stride",
+          "examples": [
+            "The horse galloped across the field, kicking up dust with each stride."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "gangster",
+      "word": "gangster",
+      "senses": [
+        {
+          "id": "sense-ab063385",
+          "pos": "noun",
+          "meaningZh": "幫派份子；黑道分子",
+          "definitionEn": "a member of a gang, especially one who participates in organized crime and violence",
+          "examples": [
+            "The gangster strutted into the room, wearing a sharp suit and brandishing a weapon."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "garment",
+      "word": "garment",
+      "senses": [
+        {
+          "id": "sense-5aee0928",
+          "pos": "noun",
+          "meaningZh": "衣物；服裝",
+          "definitionEn": "a piece of clothing",
+          "examples": [
+            "She carefully folded the delicate silk garment and placed it in her suitcase for the trip."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-63d83a51",
+          "pos": "noun",
+          "meaningZh": "衣著；衣件",
+          "definitionEn": "an article of clothing that covers the body",
+          "examples": [
+            "She wore a beautiful silk garment to the award ceremony."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "gauge",
+      "word": "gauge",
+      "senses": [
+        {
+          "id": "sense-1c513e0a",
+          "pos": "noun",
+          "meaningZh": "量規；測量儀器",
+          "definitionEn": "an instrument used for measuring and showing the quantity of something, such as the thickness of wire or the amount of rain that falls",
+          "examples": [
+            "The electrician used a gauge to measure the thickness of the wire before installing it."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-8b3382ac",
+          "pos": "verb",
+          "meaningZh": "精確量測；評估",
+          "definitionEn": "measure something precisely against a standard",
+          "examples": [
+            "To gauge the amount of rainfall we received, we used a rain gauge."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "gay",
+      "word": "gay",
+      "senses": [
+        {
+          "id": "sense-819c46fe",
+          "pos": "adjective",
+          "meaningZh": "同性戀的",
+          "definitionEn": "relating to homosexuality or having a sexual attraction to people of one’s own gender",
+          "examples": [
+            "As an LGBTQ+ advocate, he understood the importance of using inclusive language and supporting gay rights."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-6f62a309",
+          "pos": "adjective",
+          "meaningZh": "歡快的；輕鬆愉快的",
+          "definitionEn": "lighthearted and carefree; characterized by gaiety and fun",
+          "examples": [
+            "The festival was a gay and colorful event, with live music, dancing and fireworks."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "geographical",
+      "word": "geographical",
+      "senses": [
+        {
+          "id": "sense-66883ab5",
+          "pos": "adjective",
+          "meaningZh": "地理的；地理學上的",
+          "definitionEn": "related to geography, which is the study of the surface features of the Earth and its atmosphere, including topography, climate, and vegetation",
+          "examples": [
+            "The geographical location of the island made it difficult to reach by boat."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-bf76dd4f",
+          "pos": "adjective",
+          "meaningZh": "受地理因素影響的",
+          "definitionEn": "determined or influenced by geography, such as geographical distribution",
+          "examples": [
+            "The geographical distribution of plants and animals on the island is heavily influenced by the mountain ranges and climate patterns."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L2",
+        "textbookTitle": "龍騰 B4·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "geometry",
+      "word": "geometry",
+      "senses": [
+        {
+          "id": "sense-45eae9c0",
+          "pos": "noun",
+          "meaningZh": "幾何學",
+          "definitionEn": "the branch of mathematics concerned with the properties and relations of points, lines, angles, and figures in space",
+          "examples": [
+            "In geometry class, the students were learning how to calculate the area of different shapes."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "glacier",
+      "word": "glacier",
+      "senses": [
+        {
+          "id": "sense-b1c17ad3",
+          "pos": "noun",
+          "meaningZh": "冰河；冰川",
+          "definitionEn": "a slowly moving mass of ice that forms over many years, often in mountainous areas",
+          "examples": [
+            "The hikers were in awe as they stood at the base of the colossal glacier, watching chunks of ice slowly break off and crash into the glacial lake below."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "glamorous",
+      "word": "glamorous",
+      "senses": [
+        {
+          "id": "sense-877213e1",
+          "pos": "adjective",
+          "meaningZh": "迷人的；耀眼的",
+          "definitionEn": "Having an attractive or exciting quality that is associated with fame or celebrity",
+          "examples": [
+            "Jenny felt glamorous as she walked down the red carpet, posing for the cameras in her stunning designer gown."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-e57ac74e",
+          "pos": "adjective",
+          "meaningZh": "魅力十足的；光鮮亮麗的",
+          "definitionEn": "full of glamour; charmingly or fascinatingly attractive, especially in a mysterious or magical way",
+          "examples": [
+            "She walked into the room wearing a stunning, glittering gown that made her look like a glamorous movie star."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "glamour",
+      "word": "glamour",
+      "senses": [
+        {
+          "id": "sense-7474b343",
+          "pos": "noun",
+          "meaningZh": "魅力；迷人風采",
+          "definitionEn": "an attractive or exciting quality that makes certain people or things seem appealing",
+          "examples": [
+            "The Hollywood starlet exuded glamour as she walked down the red carpet in her designer gown and diamond jewelry."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "gleam",
+      "word": "gleam",
+      "senses": [
+        {
+          "id": "sense-201dedd6",
+          "pos": "noun",
+          "meaningZh": "閃光；反射光",
+          "definitionEn": "a sudden or brief flash of light, especially reflected light",
+          "examples": [
+            "As we walked through the forest, I caught a gleam of light bouncing off a distant lake."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-8ec86413",
+          "pos": "noun",
+          "meaningZh": "微光；隱約亮光",
+          "definitionEn": "a faint or gentle light that appears and disappears",
+          "examples": [
+            "She saw a gleam of hope in her husband’s eyes when he returned from work."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "glide",
+      "word": "glide",
+      "senses": [
+        {
+          "id": "sense-0459ba3d",
+          "pos": "verb",
+          "meaningZh": "滑行；平滑移動",
+          "definitionEn": "to cause to move or pass silently, smoothly, or imperceptibly",
+          "examples": [
+            "The figure skater seemed to effortlessly glide across the ice, her movements smooth and graceful."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-abdfa215",
+          "pos": "noun",
+          "meaningZh": "滑行；滑翔",
+          "definitionEn": "the act of moving smoothly along a surface while remaining in contact with it",
+          "examples": [
+            "The ice skater gracefully performed a glide across the rink, effortlessly gliding across the smooth ice."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "glitter",
+      "word": "glitter",
+      "senses": [
+        {
+          "id": "sense-85225a70",
+          "pos": "noun",
+          "meaningZh": "閃光；亮片",
+          "definitionEn": "the occurrence of a small flash or spark",
+          "examples": [
+            "As the fireworks burst overhead, specks of glitter filled the night sky, creating a magical and sparkling display."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-b87f64ca",
+          "pos": "noun",
+          "meaningZh": "浮華；表面光彩",
+          "definitionEn": "an attractive or exciting but superficial quality",
+          "examples": [
+            "The party seemed glamorous and full of glitter, but behind the scenes, it was actually quite disorganized and chaotic."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "gloom",
+      "word": "gloom",
+      "senses": [
+        {
+          "id": "sense-5b26641a",
+          "pos": "noun",
+          "meaningZh": "昏暗；幽暗",
+          "definitionEn": "a state of partial or total darkness; dimness",
+          "examples": [
+            "The gloom of the stormy night made it hard to see the path ahead."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-240602d8",
+          "pos": "noun",
+          "meaningZh": "憂鬱；愁悶",
+          "definitionEn": "a feeling of melancholy apprehension",
+          "examples": [
+            "Diana couldn’t shake off the gloom she felt after hearing the saddening news of her grandfather’s passing away."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L4",
+        "textbookTitle": "三民 B4·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "goalkeeper",
+      "word": "goalkeeper",
+      "senses": [
+        {
+          "id": "sense-03418a9f",
+          "pos": "noun",
+          "meaningZh": "守門員",
+          "definitionEn": "a player in sports such as soccer, hockey, or lacrosse who is positioned in front of the goal and tries to prevent the opposing team from scoring",
+          "examples": [
+            "The opposing team had multiple scoring opportunities, but the skilled goalkeeper made several impressive saves, denying them any goals."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-4583a54f",
+          "pos": "noun",
+          "meaningZh": "守門員；門將",
+          "definitionEn": "the defensive player stationed at the goal to prevent the other team from scoring, as in soccer or hockey",
+          "examples": [
+            "In the soccer game, the goalkeeper made a spectacular save, diving to block a powerful shot from the opposing team."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "goodwill",
+      "word": "goodwill",
+      "senses": [
+        {
+          "id": "sense-ebd4b8ab",
+          "pos": "noun",
+          "meaningZh": "善意；仁慈",
+          "definitionEn": "Kindness and compassion towards others.",
+          "examples": [
+            "Jennifer showed great goodwill by organizing a charity event to raise funds for the homeless."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-5ba5e75f",
+          "pos": "noun",
+          "meaningZh": "友好情誼；祝願",
+          "definitionEn": "A feeling of friendliness and hope that something will be successful.",
+          "examples": [
+            "The newly opened bakery received a lot of goodwill from the local community, who were excited to support a small business venture."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "gorilla",
+      "word": "gorilla",
+      "senses": [
+        {
+          "id": "sense-60ed6288",
+          "pos": "noun",
+          "meaningZh": "大猩猩",
+          "definitionEn": "A large and powerful anthropoid ape native to the forests of central and West Africa, having a stocky body and coarse hair.",
+          "examples": [
+            "During my trip to the Congo rainforest, I caught a glimpse of a magnificent gorilla, beating its chest and roaring."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "gospel",
+      "word": "gospel",
+      "senses": [
+        {
+          "id": "sense-c1f66784",
+          "pos": "noun",
+          "meaningZh": "福音；福音書",
+          "definitionEn": "the teaching of Jesus Christ, or any of the first four books of the New Testament",
+          "examples": [
+            "The priest read a passage from the Gospel."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-b43e939c",
+          "pos": "noun",
+          "meaningZh": "福音音樂；黑人靈歌",
+          "definitionEn": "a style of religious music with strong rhythms, originating in African American churches",
+          "examples": [
+            "The choir sang gospel at the Sunday service."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "grapefruit",
+      "word": "grapefruit",
+      "senses": [
+        {
+          "id": "sense-2aa593d3",
+          "pos": "noun",
+          "meaningZh": "葡萄柚；西柚",
+          "definitionEn": "a large, yellow fruit with juicy, somewhat sour pulp; commonly served halved",
+          "examples": [
+            "She squeezed fresh grapefruit juice for breakfast."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-2abd544f",
+          "pos": "noun",
+          "meaningZh": "葡萄柚樹；西柚樹",
+          "definitionEn": "a citrus tree that produces large round fruit with thick yellow rind and juicy, somewhat sour pulp",
+          "examples": [
+            "I love having grapefruit for breakfast because it is a great source of vitamin C."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "graze",
+      "word": "graze",
+      "senses": [
+        {
+          "id": "sense-9587a61d",
+          "pos": "verb",
+          "meaningZh": "吃草；放牧",
+          "definitionEn": "feed on growing grasses or herbage",
+          "examples": [
+            "The cattle grazed peacefully in the pasture, enjoying the lush green grass."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-fc5ad0d5",
+          "pos": "verb",
+          "meaningZh": "擦過；輕觸而過",
+          "definitionEn": "touch or scrape lightly in passing",
+          "examples": [
+            "As the car drove past, a tree branch grazed against the windshield."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "grease",
+      "word": "grease",
+      "senses": [
+        {
+          "id": "sense-7e97d6c7",
+          "pos": "noun",
+          "meaningZh": "潤滑油脂；機油",
+          "definitionEn": "a thick fatty oil used to lubricate machinery",
+          "examples": [
+            "The mechanic applied grease to the gears in order to ensure smooth operation."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-448e53fd",
+          "pos": "verb",
+          "meaningZh": "塗抹潤滑油；上油",
+          "definitionEn": "to lubricate with grease",
+          "examples": [
+            "Before starting the bicycle race, make sure to grease the chain to ensure smooth pedaling."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "groan",
+      "word": "groan",
+      "senses": [
+        {
+          "id": "sense-af3e2ba5",
+          "pos": "noun",
+          "meaningZh": "呻吟聲；低沉的抱怨聲",
+          "definitionEn": "a low, inarticulate sound that expresses intense pain or disapproval",
+          "examples": [
+            "The patient let out a groan when the doctor touched his broken arm."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-24778bc9",
+          "pos": "verb",
+          "meaningZh": "呻吟；發出低沉聲",
+          "definitionEn": "to make a deep sound expressing pain, discomfort, or dissatisfaction",
+          "examples": [
+            "After a long day at work, John would groan in relief when he finally sat down on his couch."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "growl",
+      "word": "growl",
+      "senses": [
+        {
+          "id": "sense-c17e332c",
+          "pos": "verb",
+          "meaningZh": "低吼；咆哮",
+          "definitionEn": "to make a low, guttural sound, especially in anger or hostility",
+          "examples": [
+            "As the dog approached the intruder, it began to growl menacingly."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-86d38897",
+          "pos": "noun",
+          "meaningZh": "低吼聲；咆哮聲",
+          "definitionEn": "the low, guttural sound made by an animal when angry or hostile",
+          "examples": [
+            "As the dog approached, it started to growl, warning us to keep our distance."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "grumble",
+      "word": "grumble",
+      "senses": [
+        {
+          "id": "sense-22a2be39",
+          "pos": "verb",
+          "meaningZh": "抱怨；嘟囔",
+          "definitionEn": "to complain in a quiet or muted manner",
+          "examples": [
+            "Jane grumbled to herself about the long lines at the grocery store."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-da642809",
+          "pos": "verb",
+          "meaningZh": "發出隆隆聲；低鳴",
+          "definitionEn": "to make a low, continuous sound",
+          "examples": [
+            "The distant thunder began to grumble ominously."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "hacker",
+      "word": "hacker",
+      "senses": [
+        {
+          "id": "sense-ce9e029f",
+          "pos": "noun",
+          "meaningZh": "駭客；非法入侵者",
+          "definitionEn": "a person who uses computers to gain unauthorized access to data, typically for financial gain or other nefarious purposes",
+          "examples": [
+            "Despite the increased security measures, the company's financial records were compromised by a skilled hacker who gained access to sensitive information."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-e161c5d7",
+          "pos": "noun",
+          "meaningZh": "電腦高手；程式愛好者",
+          "definitionEn": "a person who enjoys exploring the details of programmable systems and how to extend their capabilities, as opposed to most users who prefer to learn only the minimum necessary",
+          "examples": [
+            "Alex is a skilled hacker who loves delving into computer networks to find vulnerabilities and improve security measures."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "hail",
+      "word": "hail",
+      "senses": [
+        {
+          "id": "sense-495a0cb6",
+          "pos": "noun",
+          "meaningZh": "冰雹",
+          "definitionEn": "a type of frozen precipitation that falls as ice pellets when there are strong rising air currents",
+          "examples": [
+            "During the severe storm, the hail came down hard, bouncing off car windshields and causing damage to property."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-472aee9e",
+          "pos": "verb",
+          "meaningZh": "下冰雹",
+          "definitionEn": "to fall as small ice particles",
+          "examples": [
+            "During the winter storm, the hailstones hailed down from the sky, covering the ground in a blanket of ice."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "hamper",
+      "word": "hamper",
+      "senses": [
+        {
+          "id": "sense-4326979b",
+          "pos": "verb",
+          "meaningZh": "阻礙；妨礙",
+          "definitionEn": "hinder or impede someone’s actions or state of mind",
+          "examples": [
+            "The heavy rainfall hampered the progress of the construction workers."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "handicap",
+      "word": "handicap",
+      "senses": [
+        {
+          "id": "sense-8949dd55",
+          "pos": "noun",
+          "meaningZh": "障礙；殘疾",
+          "definitionEn": "the condition of being unable to perform as a consequence of physical or mental unfitness",
+          "examples": [
+            "The athlete had a severe back injury, which became a handicap to her performance."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-a46ecae5",
+          "pos": "noun",
+          "meaningZh": "讓分；讓步優勢",
+          "definitionEn": "advantage given to a competitor to equalize chances of winning",
+          "examples": [
+            "The experienced player gave his opponent a two-point handicap to make the game more fair and exciting."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    }
+  ]
+}

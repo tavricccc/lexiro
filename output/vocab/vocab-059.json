@@ -1,0 +1,1408 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 59,
+  "words": [
+    {
+      "wordKey": "somewhat",
+      "word": "somewhat",
+      "senses": [
+        {
+          "id": "sense-04da25cd",
+          "pos": "adverb",
+          "meaningZh": "有些；相當程度上",
+          "definitionEn": "to a moderately sufficient extent or degree",
+          "examples": [
+            "He was somewhat disappointed when his favorite team lost the game by one point."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-5a50d5a0",
+          "pos": "adverb",
+          "meaningZh": "稍微；有一點",
+          "definitionEn": "to a small degree or extent",
+          "examples": [
+            "I was somewhat disappointed by the ending of the movie."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L4",
+        "textbookTitle": "龍騰 B5·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "sort",
+      "word": "sort",
+      "senses": [
+        {
+          "id": "sense-75b6da65",
+          "pos": "noun",
+          "meaningZh": "種類；類型；類別",
+          "definitionEn": "a category or group of things sharing a common characteristic",
+          "examples": [
+            "In the library, books are sorted by genre, making it easier for readers to find their preferred types of books."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-a7092777",
+          "pos": "noun",
+          "meaningZh": "大概；某種程度的例子",
+          "definitionEn": "an approximation or example used for explanation",
+          "examples": [
+            "Imagine you are teaching someone how to organize their closet. You can say, 'To give you a better idea of how to sort your clothes, let's start with categorizing them by type, such as t-shirts, pants, and dresses.'"
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L6 +2",
+        "textbookTitle": "龍騰 B4·L6、三民 B1·L8、翰林 B1·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "soul",
+      "word": "soul",
+      "senses": [
+        {
+          "id": "sense-2aa9c652",
+          "pos": "noun",
+          "meaningZh": "靈魂；心靈",
+          "definitionEn": "the spiritual part of a person that many believe continues after death",
+          "examples": [
+            "She prayed for the souls of the departed."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-f2242cfb",
+          "pos": "noun",
+          "meaningZh": "人；人類",
+          "definitionEn": "a person; a human being",
+          "examples": [
+            "Every soul in the room was captivated by the speaker's heartfelt words."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-9fdf6a8d",
+          "pos": "noun",
+          "meaningZh": "靈魂樂；Soul 音樂",
+          "definitionEn": "a genre of Black music that originated in the United States in the 1950s and 1960s, characterized by strong vocals and a lively, rhythmic accompaniment",
+          "examples": [
+            "The live band played soulful tunes, filling the room with the sweet sound of soul."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 翰林 B1·L8",
+        "textbookTitle": "翰林 B1·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "sour",
+      "word": "sour",
+      "senses": [
+        {
+          "id": "sense-1318efd4",
+          "pos": "adjective",
+          "meaningZh": "酸的；酸澀的",
+          "definitionEn": "having a sharp, biting taste; like the taste of vinegar or lemons",
+          "examples": [
+            "The fruit salad tasted sour due to the addition of unripe pineapples."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-213cecbf",
+          "pos": "noun",
+          "meaningZh": "酸味；酸性",
+          "definitionEn": "the property of being acidic",
+          "examples": [
+            "I added too much lemon juice to the salad and now it’s too sour to eat."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "source",
+      "word": "source",
+      "senses": [
+        {
+          "id": "sense-127f7012",
+          "pos": "noun",
+          "meaningZh": "來源；資料出處；資訊來源",
+          "definitionEn": "a person, book, or document that provides information or evidence:",
+          "examples": [
+            "In order to write a research paper, it is essential to cite reliable sources such as academic journals and reputable websites."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-2c9dacef",
+          "pos": "verb",
+          "meaningZh": "採購；取得（原料）",
+          "definitionEn": "to obtain something, especially products or materials, from a specific place:",
+          "examples": [
+            "The company sources its raw materials from sustainable suppliers."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 翰林 B1·L3",
+        "textbookTitle": "翰林 B1·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "southern",
+      "word": "southern",
+      "senses": [
+        {
+          "id": "sense-70ba3448",
+          "pos": "adjective",
+          "meaningZh": "南方的；南部的",
+          "definitionEn": "coming from regions of the south",
+          "examples": [
+            "She spoke with a distinct southern accent, indicating that she hailed from Georgia."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-29a715d1",
+          "pos": "adjective",
+          "meaningZh": "（風）來自南方的",
+          "definitionEn": "coming from the south; used especially of wind",
+          "examples": [
+            "As the sailboat rounded the cape, a strong southern wind carried them swiftly northward."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "soybean",
+      "word": "soybean",
+      "senses": [
+        {
+          "id": "sense-b1a5fff7",
+          "pos": "noun",
+          "meaningZh": "大豆；黃豆",
+          "definitionEn": "The fruit of the soybean plant, which is used in a variety of foods and as fodder, especially as a replacement for animal protein.",
+          "examples": [
+            "The farmer grew soybeans to sell to the local tofu factory."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-adbb6ef1",
+          "pos": "noun",
+          "meaningZh": "大豆植株；黃豆作物",
+          "definitionEn": "A highly proteinaceous vegetable, widely cultivated for its nutritious, oil-rich seeds and for forage and soil improvement. The plant is erect, bushy, hairy, and an annual herb that has trifoliate leaves and purple to pink flowers. It is native to Asia.",
+          "examples": [
+            "My uncle is a farmer who cultivates soybeans on his farm for both its nutritious seeds and as a method of soil improvement."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "speaker",
+      "word": "speaker",
+      "senses": [
+        {
+          "id": "sense-369ec8d0",
+          "pos": "noun",
+          "meaningZh": "演講者；發言人；主講人",
+          "definitionEn": "a person who communicates through speech; someone who talks, especially someone who presents or delivers a public address",
+          "examples": [
+            "The speaker delivered an inspiring speech that motivated the audience."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-596269cb",
+          "pos": "noun",
+          "meaningZh": "喇叭；揚聲器",
+          "definitionEn": "an electronic device that converts electrical signals into sound waves loud enough to be heard at a distance",
+          "examples": [
+            "I bought a new speaker to amplify the sound from my phone."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "speech",
+      "word": "speech",
+      "senses": [
+        {
+          "id": "sense-a6268b89",
+          "pos": "noun",
+          "meaningZh": "演講；致詞",
+          "definitionEn": "the exchange of spoken words",
+          "examples": [
+            "His speech at the conference was both informative and inspiring."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-d034ad87",
+          "pos": "noun",
+          "meaningZh": "言語；口語表達",
+          "definitionEn": "communication by spoken words",
+          "examples": [
+            "In her commencement speech, the guest speaker imparted some valuable life lessons to the graduating class."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "speed",
+      "word": "speed",
+      "senses": [
+        {
+          "id": "sense-5063109c",
+          "pos": "noun",
+          "meaningZh": "速度；速率",
+          "definitionEn": "the rate at which something moves or operates",
+          "examples": [
+            "The race car driver pushed the accelerator to increase the speed of his car."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-ad1d5f2d",
+          "pos": "noun",
+          "meaningZh": "速度（距離除以時間）",
+          "definitionEn": "distance traveled over a specified period of time",
+          "examples": [
+            "The car was traveling at a speed of 100 kilometers per hour on the highway, covering a distance of 250 kilometers in just 2.5 hours."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L5",
+        "textbookTitle": "三民 B4·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "spelling",
+      "word": "spelling",
+      "senses": [
+        {
+          "id": "sense-2c0f34ae",
+          "pos": "noun",
+          "meaningZh": "拼字；拼寫",
+          "definitionEn": "The act, process, or method of forming words with letters in the correct sequence according to the accepted usage of a language.",
+          "examples": [
+            "In the spelling bee, the contestants were required to correctly spell words like 'encyclopedia' and 'mnemonic'."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "spider",
+      "word": "spider",
+      "senses": [
+        {
+          "id": "sense-9657c08f",
+          "pos": "noun",
+          "meaningZh": "蜘蛛",
+          "definitionEn": "a predatory arachnid that has eight legs, typically produces silk, and may have venomous fangs",
+          "examples": [
+            "Last night, I found a spider crawling in my bedroom, scared me to death."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-b725a90a",
+          "pos": "noun",
+          "meaningZh": "網路爬蟲（程式）",
+          "definitionEn": "a computer program that automatically searches the internet for data, typically for the purpose of web indexing",
+          "examples": [
+            "The company used a spider to browse the internet and gather information about their competitors’ pricing."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "spirit",
+      "word": "spirit",
+      "senses": [
+        {
+          "id": "sense-2edeecf1",
+          "pos": "noun",
+          "meaningZh": "精神；生命力；活力",
+          "definitionEn": "the vital principle or animating force within living things",
+          "examples": [
+            "The spirit of a marathon runner surged as they approached the finish line, fueling them to sprint with all their remaining energy."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-3e22a2ff",
+          "pos": "noun",
+          "meaningZh": "意志；心志；精神力",
+          "definitionEn": "a fundamental emotional and activating principle determining one’s character",
+          "examples": [
+            "After facing multiple setbacks, he found the spirit to persevere and achieve his goals."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L8 +1",
+        "textbookTitle": "龍騰 B2·L8、三民 B2·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "spoon",
+      "word": "spoon",
+      "senses": [
+        {
+          "id": "sense-93ed632c",
+          "pos": "noun",
+          "meaningZh": "湯匙；匙",
+          "definitionEn": "a utensil with a small shallow bowl for eating or drinking from, and a handle",
+          "examples": [
+            "She scooped up a spoonful of soup and brought it to her mouth."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-59ecc589",
+          "pos": "verb",
+          "meaningZh": "用湯匙舀取",
+          "definitionEn": "to move or pick up with a spoon",
+          "examples": [
+            "She spooned some sugar into her tea."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "sport",
+      "word": "sport",
+      "senses": [
+        {
+          "id": "sense-8b593304",
+          "pos": "noun",
+          "meaningZh": "運動；體育活動",
+          "definitionEn": "an activity that involves physical exertion and competition",
+          "examples": [
+            "I enjoy participating in sports such as basketball and soccer because they allow me to challenge myself physically and compete against others."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-237f1d00",
+          "pos": "noun",
+          "meaningZh": "運動員；運動者",
+          "definitionEn": "a person who participates in sports",
+          "examples": [
+            "When the coach announced the team lineup, John felt relieved that he was among the sports who would represent their school in the inter-school football tournament."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "spot",
+      "word": "spot",
+      "senses": [
+        {
+          "id": "sense-eb157d6f",
+          "pos": "noun",
+          "meaningZh": "地點；地方",
+          "definitionEn": "a particular place or position",
+          "examples": [
+            "This is the perfect spot for a picnic."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-16819e8a",
+          "pos": "verb",
+          "meaningZh": "出現斑點；長斑",
+          "definitionEn": "become spotted",
+          "examples": [
+            "After spending too much time in the sun, her skin began to spot."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B2·L1",
+        "textbookTitle": "三民 B2·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "spread",
+      "word": "spread",
+      "senses": [
+        {
+          "id": "sense-54c23d33",
+          "pos": "verb",
+          "meaningZh": "蔓延；擴散；傳播",
+          "definitionEn": "to cause something to cover a large area and affect a lot of people or things",
+          "examples": [
+            "The flu spread quickly throughout the school, affecting dozens of students and teachers."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-b40250f5",
+          "pos": "verb",
+          "meaningZh": "撒播；分散（至各處）",
+          "definitionEn": "to scatter or disperse something over an area",
+          "examples": [
+            "She spread the seeds evenly across the garden, ensuring that they would grow in various areas."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B1·L9",
+        "textbookTitle": "三民 B1·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "stage",
+      "word": "stage",
+      "senses": [
+        {
+          "id": "sense-1d50d1ea",
+          "pos": "noun",
+          "meaningZh": "舞台；表演台",
+          "definitionEn": "a large platform for performers to be seen by an audience",
+          "examples": [
+            "The band took to the stage and played their latest hits to the screaming crowd."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-9ac8b4ad",
+          "pos": "noun",
+          "meaningZh": "舞台劇；戲劇業",
+          "definitionEn": "the profession of acting; the theater",
+          "examples": [
+            "She pursued a career in stage acting and landed her first big role in a Broadway play."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B2·L7",
+        "textbookTitle": "三民 B2·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "stamp",
+      "word": "stamp",
+      "senses": [
+        {
+          "id": "sense-d621d0cb",
+          "pos": "noun",
+          "meaningZh": "郵票",
+          "definitionEn": "a small piece of paper you stick on a letter or parcel to show you have paid for postage",
+          "examples": [
+            "He put a stamp on the envelope before mailing it."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-392c4901",
+          "pos": "verb",
+          "meaningZh": "用重器壓碎；錘打",
+          "definitionEn": "crush or grind with a heavy instrument",
+          "examples": [
+            "The blacksmith used a sledgehammer to stamp the metal into shape."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L4",
+        "textbookTitle": "三民 B4·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "standard",
+      "word": "standard",
+      "senses": [
+        {
+          "id": "sense-3e3ae082",
+          "pos": "adjective",
+          "meaningZh": "符合規格的；標準的",
+          "definitionEn": "conforming to established rules or measurements",
+          "examples": [
+            "In order to ensure safety, the construction industry follows standard measurements for building materials."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-45265994",
+          "pos": "adjective",
+          "meaningZh": "通用的；普遍使用的",
+          "definitionEn": "commonly used by many people",
+          "examples": [
+            "In most countries, the metric system is the standard for measuring length, weight, and volume."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L9",
+        "textbookTitle": "龍騰 B2·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "state",
+      "word": "state",
+      "senses": [
+        {
+          "id": "sense-96533df6",
+          "pos": "noun",
+          "meaningZh": "狀態；情況",
+          "definitionEn": "the condition that someone or something is in at a particular time",
+          "examples": [
+            "The old house was in a terrible state of disrepair."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-a5a14137",
+          "pos": "verb",
+          "meaningZh": "正式陳述；宣布",
+          "definitionEn": "present or declare formally",
+          "examples": [
+            "The senator will state her opinion about the new policy during tomorrow’s session."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 翰林 B1·L3",
+        "textbookTitle": "翰林 B1·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "statement",
+      "word": "statement",
+      "senses": [
+        {
+          "id": "sense-740d1ea2",
+          "pos": "noun",
+          "meaningZh": "聲明；表述；發言",
+          "definitionEn": "an act of expressing something in words or actions",
+          "examples": [
+            "She made a statement to the press after winning the election."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-d41b5ce6",
+          "pos": "noun",
+          "meaningZh": "陳述；訊息；公告",
+          "definitionEn": "a message that gives information or an opinion",
+          "examples": [
+            "In his statement, the CEO announced the company’s upcoming projects and plans."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "steak",
+      "word": "steak",
+      "senses": [
+        {
+          "id": "sense-f4ae91b2",
+          "pos": "noun",
+          "meaningZh": "牛排；肉排",
+          "definitionEn": "A slice of meat, typically beef, that is cooked by grilling, frying, or broiling",
+          "examples": [
+            "I ordered a medium-rare steak for dinner at the restaurant."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "steel",
+      "word": "steel",
+      "senses": [
+        {
+          "id": "sense-cfd2f698",
+          "pos": "noun",
+          "meaningZh": "鋼；鋼鐵",
+          "definitionEn": "a strong, hard metal made from iron and carbon",
+          "examples": [
+            "The bridge is built from steel and concrete."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-17bc9dbe",
+          "pos": "verb",
+          "meaningZh": "鼓起勇氣；振作心理",
+          "definitionEn": "prepare (oneself) to do or face something difficult or unpleasant",
+          "examples": [
+            "He had to steel himself before jumping off the high dive."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B2·L3",
+        "textbookTitle": "三民 B2·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "step",
+      "word": "step",
+      "senses": [
+        {
+          "id": "sense-598bfdfb",
+          "pos": "noun",
+          "meaningZh": "步伐；步驟",
+          "definitionEn": "the act of moving one foot in front of the other to walk or move from one place to another",
+          "examples": [
+            "She took a step back when she saw the spider crawling towards her."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-eb141812",
+          "pos": "noun",
+          "meaningZh": "腳步聲；踏步聲",
+          "definitionEn": "the sound made by someone walking or running, or the sound of each movement made when you walk or run",
+          "examples": [
+            "The only sound in the silent forest was the loud step of the hunter as he searched for deer."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "stick",
+      "word": "stick",
+      "senses": [
+        {
+          "id": "sense-f97c0fae",
+          "pos": "noun",
+          "meaningZh": "棒；杖",
+          "definitionEn": "an implement consisting of a length of wood, used for specific purposes",
+          "examples": [
+            "He grabbed a stick from the ground to poke the fire."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "stomachache",
+      "word": "stomachache",
+      "senses": [
+        {
+          "id": "sense-599f5745",
+          "pos": "noun",
+          "meaningZh": "胃痛；肚子痛",
+          "definitionEn": "a pain in your stomach",
+          "examples": [
+            "I had a terrible stomachache after eating too much hot pot last night."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "stone",
+      "word": "stone",
+      "senses": [
+        {
+          "id": "sense-c29984da",
+          "pos": "noun",
+          "meaningZh": "石頭；石塊",
+          "definitionEn": "a lump or mass of hard consolidated mineral matter",
+          "examples": [
+            "He threw a stone at the window."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-12c262ab",
+          "pos": "noun",
+          "meaningZh": "石材；建築石料",
+          "definitionEn": "building material consisting of a piece of rock hewn in a definite shape for a special purpose",
+          "examples": [
+            "The mason used a chisel and hammer to shape the rough stone into a perfect rectangle for the foundation of the building."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "storm",
+      "word": "storm",
+      "senses": [
+        {
+          "id": "sense-9f107f99",
+          "pos": "noun",
+          "meaningZh": "暴風雨；風暴",
+          "definitionEn": "a violent weather condition with very strong winds, heavy rain or snow, thunder, and lightning",
+          "examples": [
+            "The storm last night knocked down several trees and caused widespread power outages."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-f2b2bce3",
+          "pos": "noun",
+          "meaningZh": "動盪局面；混亂情況",
+          "definitionEn": "a highly disturbing and chaotic situation",
+          "examples": [
+            "The sudden loss of their jobs created a severe storm of emotions among the employees."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "stranger",
+      "word": "stranger",
+      "senses": [
+        {
+          "id": "sense-a8d61fc1",
+          "pos": "noun",
+          "meaningZh": "陌生人；素不相識者",
+          "definitionEn": "a person whom one does not know or has not met before.",
+          "examples": [
+            "I struck up a conversation with a stranger while waiting for the bus."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-998dd972",
+          "pos": "noun",
+          "meaningZh": "外來者；對環境不熟悉的人",
+          "definitionEn": "a person who is in an unfamiliar or new environment and does not know the customs, culture, or language.",
+          "examples": [
+            "When traveling to a foreign country, I felt like a stranger as I didn't speak the local language and wasn't familiar with their customs."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    }
+  ]
+}

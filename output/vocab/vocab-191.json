@@ -1,0 +1,1338 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 191,
+  "words": [
+    {
+      "wordKey": "procession",
+      "word": "procession",
+      "senses": [
+        {
+          "id": "sense-57f91cc2",
+          "pos": "noun",
+          "meaningZh": "前進；行進",
+          "definitionEn": "the act of moving forward, especially in an orderly and formal way",
+          "examples": [
+            "The wedding procession made its way down the aisle, with the bride and groom leading the way."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-6f10dc8b",
+          "pos": "noun",
+          "meaningZh": "遊行隊伍；列隊行進",
+          "definitionEn": "a group of people or vehicles moving forward in a formal and organized way, especially as part of a ceremony or festival",
+          "examples": [
+            "The bride and groom led the procession down the aisle, followed by their bridal party and family."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "proficiency",
+      "word": "proficiency",
+      "senses": [
+        {
+          "id": "sense-695493ba",
+          "pos": "noun",
+          "meaningZh": "熟練；精通",
+          "definitionEn": "skillfulness in the command of fundamentals deriving from practice and familiarity",
+          "examples": [
+            "After years of training and practice, she achieved a high level of proficiency in playing the piano."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-6c0b23f8",
+          "pos": "noun",
+          "meaningZh": "能力；嫻熟程度",
+          "definitionEn": "the quality of having great facility and competence",
+          "examples": [
+            "After years of practice and study, she achieved a high level of proficiency in playing the piano."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "prohibition",
+      "word": "prohibition",
+      "senses": [
+        {
+          "id": "sense-b21f9345",
+          "pos": "noun",
+          "meaningZh": "禁止；禁令",
+          "definitionEn": "the act of officially forbidding something, or an order that forbids it",
+          "examples": [
+            "There is a strict prohibition on smoking inside the building."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-d5a4c7a8",
+          "pos": "noun",
+          "meaningZh": "禁酒時代（1920–1933年）",
+          "definitionEn": "the period from 1920 to 1933 when the sale of alcoholic beverages was prohibited in the United States by a constitutional amendment",
+          "examples": [
+            "During the era of prohibition, many people resorted to making their own alcohol at home in order to bypass the ban on alcohol sales."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "propel",
+      "word": "propel",
+      "senses": [
+        {
+          "id": "sense-9bd0beb7",
+          "pos": "verb",
+          "meaningZh": "推進；驅動",
+          "definitionEn": "to push or drive forward with force",
+          "examples": [
+            "The strong winds propelled the sailboat across the lake."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-6c36d772",
+          "pos": "verb",
+          "meaningZh": "激勵；驅使",
+          "definitionEn": "to provide motivation or an incentive for action",
+          "examples": [
+            "The promise of a promotion at work propelled him to work harder and exceed expectations."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "prose",
+      "word": "prose",
+      "senses": [
+        {
+          "id": "sense-70cd0d01",
+          "pos": "noun",
+          "meaningZh": "散文；散文體",
+          "definitionEn": "Ordinary writing, often characterized by a lack of poetic language or imagery, as distinguished from the more rhythmic and often rhymed verses of poetry.",
+          "examples": [
+            "In her latest novel, the author employs beautifully descriptive prose to bring the setting to life."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-5377e098",
+          "pos": "noun",
+          "meaningZh": "枯燥文字；平淡文風",
+          "definitionEn": "Matter-of-fact writing or speech that lacks imagination, creativity, or excitement; dull expression.",
+          "examples": [
+            "The article was written in such a dry and tedious prose that it failed to engage the audience."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "prosecute",
+      "word": "prosecute",
+      "senses": [
+        {
+          "id": "sense-f376b7bd",
+          "pos": "verb",
+          "meaningZh": "起訴；提出控訴",
+          "definitionEn": "bring a criminal action against (in a trial)",
+          "examples": [
+            "The district attorney decided to prosecute the suspect for the robbery."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-0aff13cb",
+          "pos": "verb",
+          "meaningZh": "擔任檢察官；進行公訴",
+          "definitionEn": "conduct a prosecution in a court of law",
+          "examples": [
+            "The attorney will prosecute the defendant in the upcoming trial, presenting evidence and arguments to prove their guilt."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "prospective",
+      "word": "prospective",
+      "senses": [
+        {
+          "id": "sense-befe5352",
+          "pos": "adjective",
+          "meaningZh": "預期的；未來的",
+          "definitionEn": "likely or expected to happen or become",
+          "examples": [
+            "John is considering several prospective job offers after graduation."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "prototype",
+      "word": "prototype",
+      "senses": [
+        {
+          "id": "sense-c6a3b012",
+          "pos": "noun",
+          "meaningZh": "原型；雛型",
+          "definitionEn": "the first functional model of some new design or product",
+          "examples": [
+            "The engineers created a prototype of the new electric car to test its performance and features."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-25f8fbe5",
+          "pos": "noun",
+          "meaningZh": "典型；標準樣本",
+          "definitionEn": "a standard or typical example",
+          "examples": [
+            "In order to test the new design, they created a prototype of the product."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "proverb",
+      "word": "proverb",
+      "senses": [
+        {
+          "id": "sense-015476fa",
+          "pos": "noun",
+          "meaningZh": "諺語；格言",
+          "definitionEn": "a short and pithy saying that expresses a well-known truth or wise thought",
+          "examples": [
+            "As the proverb says, ’practice makes perfect,’ so if you want to become a skilled musician, you need to put in the time and effort to practice every day."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "provincial",
+      "word": "provincial",
+      "senses": [
+        {
+          "id": "sense-d174ecab",
+          "pos": "adjective",
+          "meaningZh": "省級的；省份的",
+          "definitionEn": "relating to a province, which is a division of a country or empire",
+          "examples": [
+            "The provincial government announced new infrastructure projects to improve transportation within the region."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-fac8a12c",
+          "pos": "adjective",
+          "meaningZh": "地方性的；鄉土的",
+          "definitionEn": "typical of the people or customs of the regions outside the capital city",
+          "examples": [
+            "As a born and raised city girl, Sarah found the provincial lifestyle in the countryside to be refreshingly tranquil and slow-paced."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "provisional",
+      "word": "provisional",
+      "senses": [
+        {
+          "id": "sense-c7e82388",
+          "pos": "adjective",
+          "meaningZh": "臨時的；暫定的",
+          "definitionEn": "temporary or subject to change for the present time",
+          "examples": [
+            "The committee has made a provisional decision, but it could change based on further discussion."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "psychiatry",
+      "word": "psychiatry",
+      "senses": [
+        {
+          "id": "sense-1055415e",
+          "pos": "noun",
+          "meaningZh": "精神醫學；精神科",
+          "definitionEn": "the branch of medicine that focuses on the study, diagnosis, and treatment of mental illnesses",
+          "examples": [
+            "After years of struggling with anxiety, Sarah finally sought help from a psychiatrist who provided her with therapy and medication to manage her symptoms."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "psychic",
+      "word": "psychic",
+      "senses": [
+        {
+          "id": "sense-75b6dc07",
+          "pos": "adjective",
+          "meaningZh": "超自然的；通靈的",
+          "definitionEn": "relating to or denoting abilities that are apparently inexplicable by natural laws, especially involving telepathy or clairvoyance",
+          "examples": [
+            "During the psychic reading, the clairvoyant accurately predicted specific details about my future that seemed impossible to know."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "psychotherapy",
+      "word": "psychotherapy",
+      "senses": [
+        {
+          "id": "sense-8e2c7aa6",
+          "pos": "noun",
+          "meaningZh": "心理治療；精神療法",
+          "definitionEn": "the branch of psychiatry concerned with psychological methods",
+          "examples": [
+            "After years of struggling with anxiety, Sarah sought psychotherapy to learn coping techniques and address the underlying causes of her distress."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-65e836d8",
+          "pos": "noun",
+          "meaningZh": "心理治療（以心理方法處理情緒問題）",
+          "definitionEn": "the treatment of mental or emotional problems by psychological means",
+          "examples": [
+            "After experiencing a traumatic event, Sarah sought psychotherapy to help her work through her anxiety and PTSD symptoms."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "publicize",
+      "word": "publicize",
+      "senses": [
+        {
+          "id": "sense-e004636c",
+          "pos": "verb",
+          "meaningZh": "宣傳；公開推廣",
+          "definitionEn": "to make something known to many people, especially through the media",
+          "examples": [
+            "The company hired a PR agency to publicize their new product launch through press releases, social media campaigns, and targeted advertising."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-7bc1b73a",
+          "pos": "verb",
+          "meaningZh": "宣傳；為…造勢",
+          "definitionEn": "to give publicity to; attempt to publicize",
+          "examples": [
+            "The company hired a renowned PR firm to publicize the launch of their new product."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L9",
+        "textbookTitle": "三民 B4·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "puff",
+      "word": "puff",
+      "senses": [
+        {
+          "id": "sense-cd171d9c",
+          "pos": "noun",
+          "meaningZh": "一陣微風；輕吹",
+          "definitionEn": "a short, light gust of air",
+          "examples": [
+            "The gentle puff of wind blew the dandelion seeds across the field."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-a04268f2",
+          "pos": "noun",
+          "meaningZh": "一口（菸）；吸入",
+          "definitionEn": "a slow inhalation, as of tobacco smoke",
+          "examples": [
+            "After a stressful day, he sat in the balcony and took a long, satisfying puff from his pipe."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "punctual",
+      "word": "punctual",
+      "senses": [
+        {
+          "id": "sense-873c3f1d",
+          "pos": "adjective",
+          "meaningZh": "準時的；守時的",
+          "definitionEn": "being on time; prompt and reliable in meeting appointments",
+          "examples": [
+            "Sarah always arrives at work five minutes early. She is very punctual."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "purify",
+      "word": "purify",
+      "senses": [
+        {
+          "id": "sense-2a3bea4e",
+          "pos": "verb",
+          "meaningZh": "淨化；潔淨（心靈）",
+          "definitionEn": "to make something pure or free from sin or guilt",
+          "examples": [
+            "The ritual bath was believed to purify the soul and cleanse it from all sins."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-64f5e5ed",
+          "pos": "verb",
+          "meaningZh": "提純；蒸餾去除雜質",
+          "definitionEn": "to remove impurities from something by using a process of distillation to increase the concentration and separate them",
+          "examples": [
+            "The chemist purified the water by distilling it, removing all impurities and increasing its concentration."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "purity",
+      "word": "purity",
+      "senses": [
+        {
+          "id": "sense-36b3b86f",
+          "pos": "noun",
+          "meaningZh": "純度；純淨",
+          "definitionEn": "the state of being undiluted or unmixed with extraneous material",
+          "examples": [
+            "The purity of the gold was evident as it sparkled in the sunlight."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-594e3a2f",
+          "pos": "noun",
+          "meaningZh": "純潔；無瑕",
+          "definitionEn": "the state of being unsullied by sin or moral wrong; lacking a knowledge of evil",
+          "examples": [
+            "The pure heart of the child was evident in his innocent and heartfelt prayer before going to bed."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "quake",
+      "word": "quake",
+      "senses": [
+        {
+          "id": "sense-f2e74be4",
+          "pos": "noun",
+          "meaningZh": "地震；震動",
+          "definitionEn": "shaking and vibration at the surface of the earth resulting from underground movement along a fault plane of from volcanic activity",
+          "examples": [
+            "The earthquake caused a powerful quake that shook the entire city and knocked over several buildings."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-a74dc139",
+          "pos": "verb",
+          "meaningZh": "震動；搖晃",
+          "definitionEn": "shake with seismic vibrations",
+          "examples": [
+            "The earthquake caused buildings to quake and windows to shatter."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "qualification",
+      "word": "qualification",
+      "senses": [
+        {
+          "id": "sense-aa5c323c",
+          "pos": "noun",
+          "meaningZh": "資格；條件；能力",
+          "definitionEn": "an ability, characteristic, or experience that makes you suitable for a particular job or activity",
+          "examples": [
+            "Having a master's degree in business administration is a valuable qualification for a high-level management position."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-6209b91b",
+          "pos": "noun",
+          "meaningZh": "資格證書；執照",
+          "definitionEn": "an official record showing that you have successfully completed a course of training or study, and have the necessary skills to do something",
+          "examples": [
+            "After completing her medical degree and passing all the necessary exams, she obtained her qualification as a doctor."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "radiant",
+      "word": "radiant",
+      "senses": [
+        {
+          "id": "sense-5d551ac4",
+          "pos": "adjective",
+          "meaningZh": "發光的；閃耀的",
+          "definitionEn": "emitting light or reflecting light or glowing",
+          "examples": [
+            "The radiant sun illuminated the entire room, making it bright and cheerful."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-128b35c7",
+          "pos": "adjective",
+          "meaningZh": "容光煥發的；喜悅洋溢的",
+          "definitionEn": "showing great joy or happiness; jubilant",
+          "examples": [],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "radiate",
+      "word": "radiate",
+      "senses": [
+        {
+          "id": "sense-15879594",
+          "pos": "verb",
+          "meaningZh": "輻射；散發（光熱）",
+          "definitionEn": "to send out rays or waves of energy, such as light or heat",
+          "examples": [
+            "The sun radiates heat and light to warm and light up the Earth."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-3a29094a",
+          "pos": "verb",
+          "meaningZh": "向四周放射；發散",
+          "definitionEn": "to project or emit something in all directions like rays of light or heat",
+          "examples": [
+            "The sun radiates heat and light in all directions."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "radioactive",
+      "word": "radioactive",
+      "senses": [
+        {
+          "id": "sense-e3fd8625",
+          "pos": "adjective",
+          "meaningZh": "放射性的；具輻射的",
+          "definitionEn": "emitting radiation or particles due to the presence of an unstable nucleus",
+          "examples": [
+            "After the nuclear accident, the area surrounding the power plant became highly radioactive, and residents were evacuated for their safety."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 翰林 B1·L3",
+        "textbookTitle": "翰林 B1·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "radish",
+      "word": "radish",
+      "senses": [
+        {
+          "id": "sense-308ccea4",
+          "pos": "noun",
+          "meaningZh": "小紅蘿蔔；辣蘿蔔",
+          "definitionEn": "A type of plant with a small, edible root that has a spicy taste and is often eaten raw in salads.",
+          "examples": [
+            "I love to add thinly sliced radish to my green salad for an extra crunch and a pop of flavor."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-78a4e94f",
+          "pos": "noun",
+          "meaningZh": "白蘿蔔（亞洲種）",
+          "definitionEn": "A type of plant with a large, white root that is commonly eaten raw or cooked in Asia.",
+          "examples": [
+            "I like to slice up some radishes and add them to my salad for an extra crunch."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "radius",
+      "word": "radius",
+      "senses": [
+        {
+          "id": "sense-c87d2ea0",
+          "pos": "noun",
+          "meaningZh": "半徑",
+          "definitionEn": "the length of a straight line from the center of a circle to its edge",
+          "examples": [
+            "To measure the size of the park, we started from the center statue and walked the radius of the circle until we reached the edge."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-04094810",
+          "pos": "noun",
+          "meaningZh": "（輪子的）輻條；輪輻",
+          "definitionEn": "a supporting part of a wheel that connects the center to the outer edge",
+          "examples": [
+            "The mechanic checked the radius of the tire to ensure it was evenly connected from the hub to the outer edge."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "rap",
+      "word": "rap",
+      "senses": [
+        {
+          "id": "sense-7174ce74",
+          "pos": "noun",
+          "meaningZh": "饒舌（音樂）",
+          "definitionEn": "a type of popular music in which words are spoken rhythmically over a beat",
+          "examples": [
+            "He listens to rap on his way to school every day."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-b119b5bb",
+          "pos": "noun",
+          "meaningZh": "閒聊；長談",
+          "definitionEn": "voluble conversation",
+          "examples": [
+            "As I walked past their table, I overheard a rap between two friends discussing their weekend plans."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "rash",
+      "word": "rash",
+      "senses": [
+        {
+          "id": "sense-9621c222",
+          "pos": "noun",
+          "meaningZh": "皮疹；疹子",
+          "definitionEn": "any red eruption of the skin",
+          "examples": [
+            "After coming in contact with the poison ivy plant, she developed a rash on her skin."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-c27c4773",
+          "pos": "noun",
+          "meaningZh": "一連串（不愉快的事）",
+          "definitionEn": "a series of unexpected and unpleasant occurrences",
+          "examples": [],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "ratify",
+      "word": "ratify",
+      "senses": [
+        {
+          "id": "sense-99c19f79",
+          "pos": "verb",
+          "meaningZh": "批准；正式認可",
+          "definitionEn": "to give formal approval, consent, or confirmation to",
+          "examples": [
+            "At the shareholders’ meeting, they voted to ratify the decision of the board of directors."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "realization",
+      "word": "realization",
+      "senses": [
+        {
+          "id": "sense-59fba9f8",
+          "pos": "noun",
+          "meaningZh": "實現；達成",
+          "definitionEn": "the act of making something real or giving the appearance of reality",
+          "examples": [
+            "The realization of her dream of becoming a doctor was a great achievement."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-0bf58657",
+          "pos": "noun",
+          "meaningZh": "實現的成果；達成的目標",
+          "definitionEn": "something that has been made real or concrete",
+          "examples": [
+            "The realization of her dream of becoming a doctor came true after years of hard work and dedication."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    }
+  ]
+}

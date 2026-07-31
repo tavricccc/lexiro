@@ -1,0 +1,1406 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 89,
+  "words": [
+    {
+      "wordKey": "seal",
+      "word": "seal",
+      "senses": [
+        {
+          "id": "sense-ee74db7e",
+          "pos": "noun",
+          "meaningZh": "海豹",
+          "definitionEn": "a sea animal that eats fish and lives mainly in cold waters",
+          "examples": [
+            "A group of seals was resting on the rocks near the shore."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-5f1c3ce8",
+          "pos": "noun",
+          "meaningZh": "封蠟；印泥；封印",
+          "definitionEn": "fastener consisting of a resinous composition that is plastic when warm; used for sealing documents and parcels and letters",
+          "examples": [
+            "After putting the contents in the envelope, he applied the seal on the flap to ensure that the letter stays safely sealed during transit."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-c32ab426",
+          "pos": "verb",
+          "meaningZh": "封緘；密封",
+          "definitionEn": "close with or as if with a seal",
+          "examples": [
+            "Please seal the envelope before you put it in the mailbox so that it doesn’t accidentally open in transit."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L5 +1",
+        "textbookTitle": "龍騰 B4·L5、三民 B4·L10"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "security",
+      "word": "security",
+      "senses": [
+        {
+          "id": "sense-1bd8825d",
+          "pos": "noun",
+          "meaningZh": "安全感；安心感",
+          "definitionEn": "freedom from worries, anxiety, or fear",
+          "examples": [
+            "After installing a state-of-the-art security system in her house, Maria felt a sense of security and could sleep peacefully at night."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-c89b70bd",
+          "pos": "noun",
+          "meaningZh": "安全措施；保全",
+          "definitionEn": "measures taken to protect against theft, espionage, sabotage, and other harm",
+          "examples": [
+            "The company hired a team of security experts to install surveillance cameras, access control systems, and alarms to ensure the security of their premises."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L10",
+        "textbookTitle": "三民 B4·L10"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "semester",
+      "word": "semester",
+      "senses": [
+        {
+          "id": "sense-f75909c8",
+          "pos": "noun",
+          "meaningZh": "學期",
+          "definitionEn": "one of two divisions of an academic year",
+          "examples": [
+            "In my freshman year, I took a biology class during the fall semester."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-6b274660",
+          "pos": "noun",
+          "meaningZh": "半年；六個月",
+          "definitionEn": "a period of 6 months",
+          "examples": [
+            "I will be studying abroad for a semester in Europe."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "senior",
+      "word": "senior",
+      "senses": [
+        {
+          "id": "sense-b77e1186",
+          "pos": "adjective",
+          "meaningZh": "資深的；年長的",
+          "definitionEn": "advanced in age or higher in rank",
+          "examples": [],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-37eb1de9",
+          "pos": "adjective",
+          "meaningZh": "資歷較深的；年資較高的",
+          "definitionEn": "having served for a longer time compared to others",
+          "examples": [
+            "John has worked at the company for 25 years and is now a senior member of the team."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B1·L1",
+        "textbookTitle": "三民 B1·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "sensible",
+      "word": "sensible",
+      "senses": [
+        {
+          "id": "sense-80ed7223",
+          "pos": "adjective",
+          "meaningZh": "明智的；理性的",
+          "definitionEn": "showing good judgement",
+          "examples": [
+            "Her decision to save money for the future instead of splurging on expensive vacations was quite sensible."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-ccc51209",
+          "pos": "adjective",
+          "meaningZh": "可感知的；可察覺的",
+          "definitionEn": "perceptible by the senses",
+          "examples": [
+            "The aroma of freshly baked bread wafting through the kitchen was a sensible reminder that it was time for breakfast."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L9",
+        "textbookTitle": "龍騰 B4·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "separation",
+      "word": "separation",
+      "senses": [
+        {
+          "id": "sense-f5876441",
+          "pos": "noun",
+          "meaningZh": "分離；疏遠",
+          "definitionEn": "the state of being apart or detached from someone or something",
+          "examples": [
+            "After their breakup, there was a clear separation between John and Mary. They wouldn't speak or even make eye contact."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "sexual",
+      "word": "sexual",
+      "senses": [
+        {
+          "id": "sense-282f6923",
+          "pos": "adjective",
+          "meaningZh": "性的；與性有關的",
+          "definitionEn": "relating to or involving sex; sexual arousal or activity",
+          "examples": [
+            "The movie contains strong sexual content and is not suitable for children."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "sexy",
+      "word": "sexy",
+      "senses": [
+        {
+          "id": "sense-0318e80b",
+          "pos": "adjective",
+          "meaningZh": "性感的；迷人的",
+          "definitionEn": "sexually attractive or appealing",
+          "examples": [
+            "She walked into the room in a little black dress, turning heads and exuding an undeniable sexy confidence."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "shadow",
+      "word": "shadow",
+      "senses": [
+        {
+          "id": "sense-c0f227d1",
+          "pos": "noun",
+          "meaningZh": "影子；暗影",
+          "definitionEn": "a dark shape created by an object that blocks a source of light",
+          "examples": [
+            "As the sun began to set, the shadow of the tree grew longer and gradually covered the entire bench."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-2d4a646b",
+          "pos": "noun",
+          "meaningZh": "黑暗處；陰暗角落",
+          "definitionEn": "an area without light",
+          "examples": [
+            "I saw a shadow lurking behind the tree in the dark."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "shallow",
+      "word": "shallow",
+      "senses": [
+        {
+          "id": "sense-1472dadb",
+          "pos": "adjective",
+          "meaningZh": "淺的；膚淺的",
+          "definitionEn": "not having much depth; not deep or profound",
+          "examples": [
+            "The pond near my house is very shallow, I can easily see the bottom."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-2cf3cd41",
+          "pos": "verb",
+          "meaningZh": "使變淺",
+          "definitionEn": "make (something) less deep.",
+          "examples": [
+            "The gardener used a shovel to shallow the hole for planting the saplings."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L4 +1",
+        "textbookTitle": "龍騰 B4·L4、三民 B4·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "shampoo",
+      "word": "shampoo",
+      "senses": [
+        {
+          "id": "sense-8d9d32eb",
+          "pos": "noun",
+          "meaningZh": "洗髮精",
+          "definitionEn": "a liquid soap used for washing your hair",
+          "examples": [
+            "She bought a new bottle of shampoo at the drugstore."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-d6c53afb",
+          "pos": "verb",
+          "meaningZh": "洗頭；用洗髮精清洗",
+          "definitionEn": "To clean (hair) with a shampoo.",
+          "examples": [
+            "After a long day at the beach, I washed away the sand and salt by shampooing my hair."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-8a6ed1ba",
+          "pos": "noun",
+          "meaningZh": "洗頭；洗髮",
+          "definitionEn": "An act of washing one’s hair with shampoo.",
+          "examples": [
+            "After a long day at the beach, she used a clarifying shampoo to remove the salt and sand from her hair."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "shepherd",
+      "word": "shepherd",
+      "senses": [
+        {
+          "id": "sense-9ce9cd97",
+          "pos": "noun",
+          "meaningZh": "牧羊人；牧人",
+          "definitionEn": "a person who herds and tends to sheep, especially on an open range",
+          "examples": [
+            "The shepherd led his flock of sheep through the vast green meadows with his faithful dog by his side."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-72530d92",
+          "pos": "noun",
+          "meaningZh": "（宗教）牧師；靈魂牧者",
+          "definitionEn": "a member of the clergy who provides spiritual guidance and care for a particular congregation or group of people",
+          "examples": [
+            "The shepherd of the local church provides emotional and spiritual counseling to the members of the congregation during difficult times."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "shiny",
+      "word": "shiny",
+      "senses": [
+        {
+          "id": "sense-a681cdce",
+          "pos": "adjective",
+          "meaningZh": "光亮的；閃亮的",
+          "definitionEn": "having a smooth and bright surface that reflects light",
+          "examples": [
+            "The new silver watch was so shiny that it caught everyone’s attention in the room."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-65b0880f",
+          "pos": "adjective",
+          "meaningZh": "拋光的；打亮的",
+          "definitionEn": "made shiny by rubbing; polished to a smooth and bright appearance",
+          "examples": [
+            "The newly polished car looked very shiny under the bright sun."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 翰林 B1·L3",
+        "textbookTitle": "翰林 B1·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "shorten",
+      "word": "shorten",
+      "senses": [
+        {
+          "id": "sense-600fb08e",
+          "pos": "verb",
+          "meaningZh": "縮短；削減",
+          "definitionEn": "to reduce the length or duration of something more than originally intended",
+          "examples": [
+            "The director had to shorten the movie to less than two hours to keep the audience engaged."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-91a37bea",
+          "pos": "verb",
+          "meaningZh": "變短；縮短（自身）",
+          "definitionEn": "to become shorter in length or duration",
+          "examples": [
+            "I’m going to shorten this dress so it fits me better."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "shortly",
+      "word": "shortly",
+      "senses": [
+        {
+          "id": "sense-b3475817",
+          "pos": "adverb",
+          "meaningZh": "不久；馬上",
+          "definitionEn": "in the near future",
+          "examples": [
+            "I will be leaving for my appointment shortly."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-64f86973",
+          "pos": "adverb",
+          "meaningZh": "短暫地；片刻",
+          "definitionEn": "for a short time",
+          "examples": [
+            "The baby cried shortly after being put to bed."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "shovel",
+      "word": "shovel",
+      "senses": [
+        {
+          "id": "sense-0e2c8287",
+          "pos": "noun",
+          "meaningZh": "鏟子；鐵鍬",
+          "definitionEn": "a tool with a curved scoop for lifting loose material; it has a handle to hold onto",
+          "examples": [
+            "I used a shovel to dig a hole for the plant."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-6c818fa9",
+          "pos": "noun",
+          "meaningZh": "壁爐鏟；火鏟",
+          "definitionEn": "a small shovel that is used to scoop coals or ashes in a fireplace; it is a type of fire iron",
+          "examples": [
+            "I used the shovel to scoop the hot coals out of the fireplace and into the metal bucket."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "shrimp",
+      "word": "shrimp",
+      "senses": [
+        {
+          "id": "sense-edfda18a",
+          "pos": "noun",
+          "meaningZh": "蝦；蝦仁",
+          "definitionEn": "any of various edible decapod crustaceans, typically with a long tail and single pair of pincers",
+          "examples": [
+            "John ordered a plate of garlic butter shrimp at the seafood restaurant."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "shrink",
+      "word": "shrink",
+      "senses": [
+        {
+          "id": "sense-c8addcc1",
+          "pos": "verb",
+          "meaningZh": "縮小；收縮",
+          "definitionEn": "to become smaller in size or amount, or to make something smaller in size or amount",
+          "examples": [
+            "The sweater shrank in the wash and now it doesn’t fit me properly."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·R2",
+        "textbookTitle": "龍騰 B3·R2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "sigh",
+      "word": "sigh",
+      "senses": [
+        {
+          "id": "sense-53671134",
+          "pos": "verb",
+          "meaningZh": "嘆氣；嘆息",
+          "definitionEn": "heave or utter a sigh; breathe deeply and heavily",
+          "examples": [
+            "After hearing the bad news, she couldn’t help but sigh deeply."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-12cbeeed",
+          "pos": "noun",
+          "meaningZh": "嘆息聲",
+          "definitionEn": "a sound like a person sighing",
+          "examples": [
+            "After a long day of work, he let out a tired sigh."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L5",
+        "textbookTitle": "龍騰 B4·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "signal",
+      "word": "signal",
+      "senses": [
+        {
+          "id": "sense-812dc45f",
+          "pos": "noun",
+          "meaningZh": "信號；手勢",
+          "definitionEn": "a gesture, action, or sound that encodes a message",
+          "examples": [
+            "He gave me a signal to turn off my cell phone during the presentation."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-1f261bdf",
+          "pos": "verb",
+          "meaningZh": "預示；顯示徵兆",
+          "definitionEn": "to indicate or serve as a symptom of something",
+          "examples": [
+            "The dark clouds signal that a storm is approaching."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "significant",
+      "word": "significant",
+      "senses": [
+        {
+          "id": "sense-2dbd59b5",
+          "pos": "adjective",
+          "meaningZh": "重要的；有意義的",
+          "definitionEn": "important in effect or meaning",
+          "examples": [
+            "The invention of the internet was a significant milestone in human history."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-3b90b3e0",
+          "pos": "adjective",
+          "meaningZh": "意義深遠的；具深意的",
+          "definitionEn": "rich in significance or implication",
+          "examples": [
+            "The discovery of a cure for cancer would be a significant breakthrough in medical science."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L7 +1",
+        "textbookTitle": "龍騰 B3·L7、三民 B2·L10"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "silk",
+      "word": "silk",
+      "senses": [
+        {
+          "id": "sense-e825f889",
+          "pos": "noun",
+          "meaningZh": "蠶絲；絲線",
+          "definitionEn": "Animal fibers produced by silkworms and other larvae that spin cocoons and by most spiders.",
+          "examples": [
+            "The bride wore a beautiful silk wedding dress that shimmered in the sunlight."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-9bb8e140",
+          "pos": "noun",
+          "meaningZh": "絲綢；絲織品",
+          "definitionEn": "A fabric made from the fine threads produced by certain insect larvae",
+          "examples": [
+            "She wore a beautiful silk dress to the wedding."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "similarity",
+      "word": "similarity",
+      "senses": [
+        {
+          "id": "sense-72934114",
+          "pos": "noun",
+          "meaningZh": "相似；相似處",
+          "definitionEn": "the state or fact of being alike",
+          "examples": [
+            "The twins had such a striking similarity that people often mistook them for each other."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-639c8e35",
+          "pos": "noun",
+          "meaningZh": "相似性；類似程度",
+          "definitionEn": "the quality or condition of being similar",
+          "examples": [
+            "The similarity between the two paintings is striking, with both artists using vibrant colors and bold brushstrokes."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L8 +1",
+        "textbookTitle": "龍騰 B1·L8、三民 B2·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "sin",
+      "word": "sin",
+      "senses": [
+        {
+          "id": "sense-abfb8863",
+          "pos": "noun",
+          "meaningZh": "罪；宗教上的罪孽",
+          "definitionEn": "an act of breaking a religious law, or such acts considered together",
+          "examples": [
+            "In the story, the character was overcome with guilt after committing a sin by stealing from the church's donation box."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-01d62f62",
+          "pos": "noun",
+          "meaningZh": "過錯；惡行",
+          "definitionEn": "anything considered wrong",
+          "examples": [
+            "Lying is a sin according to many religious beliefs."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L9 +1",
+        "textbookTitle": "龍騰 B4·L9、三民 B4·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "sincere",
+      "word": "sincere",
+      "senses": [
+        {
+          "id": "sense-f0e57efb",
+          "pos": "adjective",
+          "meaningZh": "真誠的；誠實的",
+          "definitionEn": "not deceitful; genuine and honest",
+          "examples": [
+            "John’s sincere apologies made it easier for me to forgive him."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-2affe475",
+          "pos": "adjective",
+          "meaningZh": "誠懇的；衷心的",
+          "definitionEn": "having a firm and serious belief in the truth or importance of something; earnest",
+          "examples": [
+            "She gave him a sincere apology for her mistake."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L1",
+        "textbookTitle": "三民 B4·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "sink",
+      "word": "sink",
+      "senses": [
+        {
+          "id": "sense-6379288c",
+          "pos": "noun",
+          "meaningZh": "洗手台；水槽",
+          "definitionEn": "a plumbing fixture consisting of a basin for washing hands, with a faucet and a drainpipe",
+          "examples": [
+            "I need to fix the leak under the sink in my bathroom."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-a695b7a0",
+          "pos": "noun",
+          "meaningZh": "排水槽；污水槽",
+          "definitionEn": "a covered container for waste water and sewage",
+          "examples": [
+            "John needs to fix the sink because it has been overflowing for days."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "sip",
+      "word": "sip",
+      "senses": [
+        {
+          "id": "sense-3487be41",
+          "pos": "verb",
+          "meaningZh": "小口飲；啜飲",
+          "definitionEn": "to drink (a liquid) slowly in small amounts, taking tiny mouthfuls",
+          "examples": [
+            "As the sun set, she sat on the porch, sipping a hot cup of tea."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-c533fd61",
+          "pos": "noun",
+          "meaningZh": "一小口；小啜",
+          "definitionEn": "a small drink",
+          "examples": [
+            "She took a sip of her hot coffee before heading off to work."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "situation",
+      "word": "situation",
+      "senses": [
+        {
+          "id": "sense-5c1b0c8d",
+          "pos": "noun",
+          "meaningZh": "情勢；局面；狀況",
+          "definitionEn": "the general state of things; the combination of circumstances at a given time",
+          "examples": [
+            "The situation became tense as the two countries continued to disagree on the border agreement."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-30997919",
+          "pos": "noun",
+          "meaningZh": "處境；窘境",
+          "definitionEn": "a condition or position in which you find yourself",
+          "examples": [
+            "I was in an awkward situation when I accidentally spilled my drink on my boss at the office party."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·R3 +1",
+        "textbookTitle": "龍騰 B3·R3、三民 B1·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "skate",
+      "word": "skate",
+      "senses": [
+        {
+          "id": "sense-f8661453",
+          "pos": "noun",
+          "meaningZh": "溜冰鞋；滑冰鞋",
+          "definitionEn": "Sports equipment worn on the feet for gliding and propelled by the alternate actions of the legs.",
+          "examples": [
+            "After lacing up her skates, Emily gracefully glided across the smooth ice, twirling and performing elegant jumps."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-adef23ea",
+          "pos": "verb",
+          "meaningZh": "溜冰；滑冰",
+          "definitionEn": "To glide along on skates.",
+          "examples": [
+            "I love to skate on the frozen lake, feeling the chilly wind on my face as I glide effortlessly across the ice."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "ski",
+      "word": "ski",
+      "senses": [
+        {
+          "id": "sense-9eb42900",
+          "pos": "verb",
+          "meaningZh": "滑雪",
+          "definitionEn": "to move across snow on skis",
+          "examples": [
+            "During the winter vacation, Jessica learned to ski for the first time and had a blast swooshing down the mountain."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-2e3c25c6",
+          "pos": "noun",
+          "meaningZh": "滑雪板",
+          "definitionEn": "a pair of narrow runners made of wood, metal, or plastic that are used for gliding over snow",
+          "examples": [
+            "I love to ski down the tall mountains in Colorado during the winter."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    }
+  ]
+}

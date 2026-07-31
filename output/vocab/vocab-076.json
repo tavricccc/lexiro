@@ -1,0 +1,1408 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 76,
+  "words": [
+    {
+      "wordKey": "harvest",
+      "word": "harvest",
+      "senses": [
+        {
+          "id": "sense-55672d70",
+          "pos": "noun",
+          "meaningZh": "收穫季節；農收時期",
+          "definitionEn": "the season for gathering crops",
+          "examples": [
+            "During the harvest, the farmers worked long hours to collect all the crops before the first frost."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-81f97355",
+          "pos": "noun",
+          "meaningZh": "收割；農作物收穫",
+          "definitionEn": "the gathering of a ripened crop",
+          "examples": [
+            "After months of hard work, it was finally time for the farmers to harvest the golden wheat fields."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L4 +1",
+        "textbookTitle": "龍騰 B4·L4、三民 B1·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "hasty",
+      "word": "hasty",
+      "senses": [
+        {
+          "id": "sense-6469bc30",
+          "pos": "adjective",
+          "meaningZh": "倉促的；草率的",
+          "definitionEn": "done with very great haste and without due deliberation",
+          "examples": [
+            "In his hasty decision to take the job offer, he didn't consider the long hours and low pay."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-fd8e0d9a",
+          "pos": "adjective",
+          "meaningZh": "過於急躁的；急忙的",
+          "definitionEn": "excessively quick",
+          "examples": [
+            "John made a hasty decision and booked the flight without checking the dates, only to realize later that he had chosen the wrong day."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "hatch",
+      "word": "hatch",
+      "senses": [
+        {
+          "id": "sense-4cb70815",
+          "pos": "noun",
+          "meaningZh": "孵化；破殼而出",
+          "definitionEn": "the production of young from an egg",
+          "examples": [
+            "The baby bird began to chirp excitedly from inside its shell as it prepared to hatch."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-54e7df2e",
+          "pos": "verb",
+          "meaningZh": "孵出；破殼",
+          "definitionEn": "emerge from the eggs",
+          "examples": [
+            "The baby chicks will hatch from their eggs in a week."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "hateful",
+      "word": "hateful",
+      "senses": [
+        {
+          "id": "sense-f78a8ed0",
+          "pos": "adjective",
+          "meaningZh": "令人憎恨的；可惡的",
+          "definitionEn": "causing strong dislike or hatred",
+          "examples": [
+            "His hateful comments towards others only served to create further divisions."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-e7e535da",
+          "pos": "adjective",
+          "meaningZh": "充滿敵意的；憎恨的",
+          "definitionEn": "filled with strong dislike or hostility",
+          "examples": [
+            "After the breakup, he couldn't help but feel hateful towards his ex-partner."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "hay",
+      "word": "hay",
+      "senses": [
+        {
+          "id": "sense-9c0bd45d",
+          "pos": "noun",
+          "meaningZh": "乾草；牧草",
+          "definitionEn": "grass that is cut and dried for use as animal food",
+          "examples": [
+            "The farmer stacked the hay in the barn for the cows to eat during the winter."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-a40b79f0",
+          "pos": "verb",
+          "meaningZh": "割草晾乾；製作乾草",
+          "definitionEn": "to cut and dry grass for use as animal food",
+          "examples": [
+            "The farmer used his tractor to hay the pasture for his cows."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "headline",
+      "word": "headline",
+      "senses": [
+        {
+          "id": "sense-95cdd8f5",
+          "pos": "noun",
+          "meaningZh": "新聞標題；頭條",
+          "definitionEn": "the title or heading of a newspaper article that summarizes its main points",
+          "examples": [
+            "The headline of the breaking news article read: 'Earthquake Strikes City, Leaving Destruction in Its Wake'."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-c61fa983",
+          "pos": "verb",
+          "meaningZh": "為文章撰寫標題",
+          "definitionEn": "to write or add a headline to a news article",
+          "examples": [
+            "The editor asked the journalist to come up with a catchy headline that would grab the readers' attention."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L2",
+        "textbookTitle": "三民 B4·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "headquarters",
+      "word": "headquarters",
+      "senses": [
+        {
+          "id": "sense-c991cd11",
+          "pos": "noun",
+          "meaningZh": "總部；總公司",
+          "definitionEn": "The main office or center of control of an organization or company, usually with branches or departments in other locations.",
+          "examples": [
+            "The CEO of the company usually works at the headquarters in the city, where all the major decisions are made."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-8b95c62f",
+          "pos": "noun",
+          "meaningZh": "指揮總部；軍事司令部",
+          "definitionEn": "The military unit commanding a group of other units or all forces within a particular area.",
+          "examples": [
+            "The headquarters of the United Nations Peacekeeping Force is located in New York City, and it oversees all the peacekeeping operations around the world."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "heal",
+      "word": "heal",
+      "senses": [
+        {
+          "id": "sense-8c357139",
+          "pos": "verb",
+          "meaningZh": "康復；痊癒",
+          "definitionEn": "get healthy again",
+          "examples": [
+            "After a week of rest and medication, Sarah was able to heal from her illness and return to work."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-9313a2f7",
+          "pos": "verb",
+          "meaningZh": "治癒；恢復",
+          "definitionEn": "heal or recover",
+          "examples": [
+            "After a month of physical therapy, Sarah was finally able to heal her injured knee and continue playing soccer."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L6 +1",
+        "textbookTitle": "三民 B4·L6、翰林 B1·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "heap",
+      "word": "heap",
+      "senses": [
+        {
+          "id": "sense-6558f369",
+          "pos": "noun",
+          "meaningZh": "堆；一大堆",
+          "definitionEn": "a collection of objects laid on top of each other",
+          "examples": [
+            "After hours of shopping, she came home with a heap of clothes."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-d050af78",
+          "pos": "verb",
+          "meaningZh": "堆滿；大量給予",
+          "definitionEn": "fill to overflowing",
+          "examples": [
+            "After winning the championship, the team's fans heaped praise and adoration upon them."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "heater",
+      "word": "heater",
+      "senses": [
+        {
+          "id": "sense-d11118f3",
+          "pos": "noun",
+          "meaningZh": "暖氣；加熱器",
+          "definitionEn": "a device that supplies warmth to a room or heats up water",
+          "examples": [
+            "During the winter, we rely on the heater to keep our house warm and cozy."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "heel",
+      "word": "heel",
+      "senses": [
+        {
+          "id": "sense-1aad2943",
+          "pos": "noun",
+          "meaningZh": "腳跟；後腳",
+          "definitionEn": "the back part of the human foot",
+          "examples": [
+            "She twisted her ankle and it hurt her heel."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-c063a884",
+          "pos": "verb",
+          "meaningZh": "踩腳跟舞步",
+          "definitionEn": "perform (a dance or similar movement) on the heels of the feet",
+          "examples": [
+            "She impressed everyone with her ability to heel dance, effortlessly gliding and spinning on the balls of her feet."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "hell",
+      "word": "hell",
+      "senses": [
+        {
+          "id": "sense-ee06ba48",
+          "pos": "noun",
+          "meaningZh": "地獄",
+          "definitionEn": "in some religions, the place where bad people are believed to go and suffer after death",
+          "examples": [
+            "In the old story, sinners were sent to hell as punishment."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-56f0f082",
+          "pos": "noun",
+          "meaningZh": "胡鬧；吵鬧喧囂",
+          "definitionEn": "noisy and unrestrained mischief",
+          "examples": [
+            "During the Halloween party, the children caused hell by running around, screaming, and throwing confetti everywhere."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-699f6f92",
+          "pos": "noun",
+          "meaningZh": "痛苦折磨；煎熬",
+          "definitionEn": "a cause of difficulty and suffering",
+          "examples": [
+            "Going through a messy divorce can be a hell of emotional turmoil and financial stress."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "helmet",
+      "word": "helmet",
+      "senses": [
+        {
+          "id": "sense-e3e6b801",
+          "pos": "noun",
+          "meaningZh": "安全帽；防護頭盔",
+          "definitionEn": "a hard protective headgear designed to resist blows",
+          "examples": [
+            "The bicycle rider wore a helmet to protect her head in case of a fall."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-54aea73e",
+          "pos": "noun",
+          "meaningZh": "頭盔；護頭甲",
+          "definitionEn": "an armor plate that protects the head",
+          "examples": [
+            "The football player wore a sturdy helmet during the game to protect himself from head injuries."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L7",
+        "textbookTitle": "龍騰 B1·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "hesitate",
+      "word": "hesitate",
+      "senses": [
+        {
+          "id": "sense-248867d5",
+          "pos": "verb",
+          "meaningZh": "猶豫；遲疑不決",
+          "definitionEn": "delay in taking action or making a decision",
+          "examples": [
+            "Tom hesitated to accept the job offer because he wasn’t sure if he was ready to relocate."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-bd6d8aca",
+          "pos": "verb",
+          "meaningZh": "躊躇；猶豫不前",
+          "definitionEn": "hold back or pause in uncertainty, doubt or unwillingness",
+          "examples": [
+            "Sam hesitated before jumping off the cliff despite his friends’ encouragement."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L1 +1",
+        "textbookTitle": "龍騰 B3·L1、三民 B2·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "hint",
+      "word": "hint",
+      "senses": [
+        {
+          "id": "sense-46cdcdbc",
+          "pos": "noun",
+          "meaningZh": "暗示；提示",
+          "definitionEn": "a slight indication",
+          "examples": [
+            "He dropped hints about the surprise party, trying to give a slight indication without revealing too much."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-eb952ca2",
+          "pos": "noun",
+          "meaningZh": "微量；一絲",
+          "definitionEn": "a just detectable amount",
+          "examples": [
+            "She gave him a subtle hint that she liked him, but he didn't pick up on it."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "hire",
+      "word": "hire",
+      "senses": [
+        {
+          "id": "sense-066c28a6",
+          "pos": "verb",
+          "meaningZh": "聘用；雇用",
+          "definitionEn": "to formally engage someone for service under a contract",
+          "examples": [
+            "After reviewing all the resumes, the company decided to hire Jennifer as their new marketing manager."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-fe46034e",
+          "pos": "verb",
+          "meaningZh": "租用；租賃",
+          "definitionEn": "to rent or lease goods and services",
+          "examples": [
+            "John decided to hire a moving truck to transport his furniture to his new home."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "historian",
+      "word": "historian",
+      "senses": [
+        {
+          "id": "sense-e2b611ea",
+          "pos": "noun",
+          "meaningZh": "歷史學家；史學家",
+          "definitionEn": "a person who studies, researches, writes, and speaks about the past, and is considered to be an expert in the field of history",
+          "examples": [
+            "The historian delivered a captivating lecture on ancient Rome’s political structure."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L5",
+        "textbookTitle": "龍騰 B3·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "historic",
+      "word": "historic",
+      "senses": [
+        {
+          "id": "sense-ca0962ec",
+          "pos": "adjective",
+          "meaningZh": "具歷史意義的；歷史性的",
+          "definitionEn": "important in history",
+          "examples": [
+            "The historic battle of Waterloo marked the end of Napoleon’s reign."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-c88503ed",
+          "pos": "adjective",
+          "meaningZh": "歷史上著名的；史上重要的",
+          "definitionEn": "belonging to the past; of what is important or famous in the past",
+          "examples": [
+            "This museum houses many historic artifacts from the 18th century, including paintings, furniture, and clothing."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L5",
+        "textbookTitle": "龍騰 B3·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "holder",
+      "word": "holder",
+      "senses": [
+        {
+          "id": "sense-43981a23",
+          "pos": "noun",
+          "meaningZh": "持有者；擁有人",
+          "definitionEn": "a person or thing that holds something or someone",
+          "examples": [
+            "The basket is a perfect holder for the fresh fruits and vegetables."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-93b52888",
+          "pos": "noun",
+          "meaningZh": "支架；固定裝置",
+          "definitionEn": "a device or object used for holding something",
+          "examples": [
+            "John used a phone holder to keep his phone secure while driving."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "hollow",
+      "word": "hollow",
+      "senses": [
+        {
+          "id": "sense-01c9980e",
+          "pos": "adjective",
+          "meaningZh": "中空的；空心的",
+          "definitionEn": "having an empty space or cavity inside",
+          "examples": [
+            "The Halloween pumpkin was carved into a spooky face, leaving a hollow space inside for the candle to glow through."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-ebe8ff62",
+          "pos": "adjective",
+          "meaningZh": "空洞的；毫無意義的",
+          "definitionEn": "without any real value or meaning",
+          "examples": [
+            "The advertising campaign was full of hollow promises that were never fulfilled."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L3",
+        "textbookTitle": "龍騰 B3·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "holy",
+      "word": "holy",
+      "senses": [
+        {
+          "id": "sense-dbd8efd5",
+          "pos": "adjective",
+          "meaningZh": "神聖的；聖潔的",
+          "definitionEn": "connected with God or a religion; very sacred",
+          "examples": [
+            "The Holy Bible is a sacred text for Christians."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-98cd84f2",
+          "pos": "noun",
+          "meaningZh": "聖地；神聖場所",
+          "definitionEn": "a place that is considered to be sacred because it is connected with a particular religion or person who is respected",
+          "examples": [
+            "The Western Wall in Jerusalem is a holy site for Jews as it is believed to be the last remnant of the Second Temple."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "homesick",
+      "word": "homesick",
+      "senses": [
+        {
+          "id": "sense-f03d9bed",
+          "pos": "adjective",
+          "meaningZh": "想家的；思鄉的",
+          "definitionEn": "experiencing a longing for one’s home during a period of absence from it",
+          "examples": [
+            "After being away for months, Jenny felt homesick and couldn't wait to return to her cozy bed and familiar surroundings."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-0578ba2c",
+          "pos": "adjective",
+          "meaningZh": "懷念故鄉的；鄉愁的",
+          "definitionEn": "missing one’s own country or home place",
+          "examples": [
+            "After moving to a different country, Sarah felt homesick and longed for the familiar sights and sounds of her hometown. She found comfort in looking at old photographs and chatting with her family through video calls."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "hometown",
+      "word": "hometown",
+      "senses": [
+        {
+          "id": "sense-7e013260",
+          "pos": "noun",
+          "meaningZh": "故鄉；家鄉",
+          "definitionEn": "the town or city where a person was born and/or raised and considers to be their home",
+          "examples": [
+            "After living in different cities for years, Sarah finally returned to her peaceful hometown where she could reconnect with her childhood friends and embrace her roots."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "honesty",
+      "word": "honesty",
+      "senses": [
+        {
+          "id": "sense-577649db",
+          "pos": "noun",
+          "meaningZh": "誠實；正直",
+          "definitionEn": "the quality of being honest or truthful",
+          "examples": [
+            "She showed honesty by admitting she made a mistake and taking responsibility for it."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-1e3de276",
+          "pos": "noun",
+          "meaningZh": "銀扇草（一種觀賞植物）",
+          "definitionEn": "a southeastern European plant, cultivated for its fragrant purplish flowers and round, flat papery silver-white seedpods that are used for indoor decoration",
+          "examples": [
+            "In her living room, Sarah showcased a beautiful vase filled with honesty flowers and seedpods, adding an elegant touch to the space."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L1 +1",
+        "textbookTitle": "龍騰 B5·L1、三民 B2·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "honor",
+      "word": "honor",
+      "senses": [
+        {
+          "id": "sense-87c43b76",
+          "pos": "verb",
+          "meaningZh": "尊崇；表揚",
+          "definitionEn": "show admiration and respect towards someone",
+          "examples": [
+            "The soldier was awarded a medal of honor for his bravery during the war."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-702b9d1f",
+          "pos": "noun",
+          "meaningZh": "榮譽獎章；殊榮象徵",
+          "definitionEn": "a tangible symbol or object that signifies approval, appreciation, or distinction",
+          "examples": [
+            "The Olympic gold medal is a symbol of honor and achievement for any athlete."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L4 +1",
+        "textbookTitle": "龍騰 B2·L4、三民 B2·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "hopeful",
+      "word": "hopeful",
+      "senses": [
+        {
+          "id": "sense-35c55766",
+          "pos": "adjective",
+          "meaningZh": "有希望的；樂觀的",
+          "definitionEn": "promising or likely to lead to success or improvement",
+          "examples": [
+            "Despite facing many challenges, Sarah remained hopeful that she would find a job soon."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-9feb3e88",
+          "pos": "noun",
+          "meaningZh": "懷抱大志者；有志之士",
+          "definitionEn": "a person who has high aspirations for their future",
+          "examples": [
+            "After years of hard work and studying, Maria became a medical student, full of hope and determination to become a successful doctor."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "horn",
+      "word": "horn",
+      "senses": [
+        {
+          "id": "sense-28932bab",
+          "pos": "noun",
+          "meaningZh": "喇叭；汽車鳴笛",
+          "definitionEn": "a noise produced by the driver of an automobile to warn",
+          "examples": [
+            "The driver honked the horn loudly to alert the pedestrian crossing the road."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-c53ec52c",
+          "pos": "noun",
+          "meaningZh": "法國號；銅管樂器",
+          "definitionEn": "a brass musical instrument, coiled into a spiral with a conical tube and played through valves",
+          "examples": [
+            "The symphony began with a powerful solo from the French horn, filling the concert hall with its rich and melodious sound."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "horrible",
+      "word": "horrible",
+      "senses": [
+        {
+          "id": "sense-3a1103f6",
+          "pos": "adjective",
+          "meaningZh": "可怕的；令人恐懼的",
+          "definitionEn": "causing horror or fear; very unpleasant",
+          "examples": [
+            "The haunted house was filled with horrible sights and eerie sounds, sending chills down our spines."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L9 +2",
+        "textbookTitle": "龍騰 B1·L9、三民 B1·L10、翰林 B1·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "horror",
+      "word": "horror",
+      "senses": [
+        {
+          "id": "sense-343c6bb2",
+          "pos": "noun",
+          "meaningZh": "極度恐懼；驚駭",
+          "definitionEn": "intense and profound fear",
+          "examples": [
+            "As the haunted house came into view, a feeling of horror overcame me, and I hesitated to go inside."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-3a17ca32",
+          "pos": "noun",
+          "meaningZh": "恐怖（類型）；驚悚",
+          "definitionEn": "a genre of fiction that evokes suspense and feelings of fear",
+          "examples": [
+            "The horror movie had the audience on the edge of their seats, gripping their armrests in anticipation of the next terrifying scene."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L9 +2",
+        "textbookTitle": "龍騰 B1·L9、三民 B1·L10、翰林 B1·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "hourly",
+      "word": "hourly",
+      "senses": [
+        {
+          "id": "sense-6e23bbb2",
+          "pos": "adverb",
+          "meaningZh": "每小時；按時計",
+          "definitionEn": "happening every hour or once an hour; hourly pay is an amount of money that is paid for each hour of work",
+          "examples": [
+            "During the event, buses run hourly from the train station to the concert venue. John’s been working an hourly shift at the factory for three years now."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-8d07725c",
+          "pos": "adjective",
+          "meaningZh": "每小時的；按時薪計算的",
+          "definitionEn": "happening every hour or done every hour; paid by the hour",
+          "examples": [
+            "The parking rates are charged hourly."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    }
+  ]
+}

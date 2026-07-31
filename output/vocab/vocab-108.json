@@ -1,0 +1,1382 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 108,
+  "words": [
+    {
+      "wordKey": "delight",
+      "word": "delight",
+      "senses": [
+        {
+          "id": "sense-bffd6629",
+          "pos": "noun",
+          "meaningZh": "喜悅；歡樂",
+          "definitionEn": "something or someone that brings happiness or joy",
+          "examples": [
+            "The sight of blooming flowers in the spring brings great delight."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-3c8eb385",
+          "pos": "verb",
+          "meaningZh": "感到高興；享受",
+          "definitionEn": "to take great pleasure in something",
+          "examples": [
+            "She was filled with delight as she unwrapped the gift her best friend had given her."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L1",
+        "textbookTitle": "三民 B4·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "delightful",
+      "word": "delightful",
+      "senses": [
+        {
+          "id": "sense-d9fbd7b4",
+          "pos": "adjective",
+          "meaningZh": "令人愉快的；迷人的",
+          "definitionEn": "causing delight or pleasure; very pleasant; enjoyable",
+          "examples": [
+            "The cupcakes she made for the party were absolutely delightful; everyone loved them."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L1",
+        "textbookTitle": "三民 B4·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "demand",
+      "word": "demand",
+      "senses": [
+        {
+          "id": "sense-f7e6bfd3",
+          "pos": "verb",
+          "meaningZh": "強烈要求；迫切要求",
+          "definitionEn": "request urgently and forcefully",
+          "examples": [
+            "The workers went on strike to demand higher wages from the company."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-439b3ad0",
+          "pos": "verb",
+          "meaningZh": "需要；要求",
+          "definitionEn": "require as useful, just, or proper",
+          "examples": [
+            "The manager demanded that the employees work overtime to meet the deadline."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L8 +1",
+        "textbookTitle": "龍騰 B3·L8、三民 B1·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "demonstrate",
+      "word": "demonstrate",
+      "senses": [
+        {
+          "id": "sense-1f39d1ff",
+          "pos": "verb",
+          "meaningZh": "示範；演示",
+          "definitionEn": "to show something, or show someone how to do something, or how a system or product works",
+          "examples": [
+            "During the science fair, Alex used a model volcano to demonstrate the process of an erupting volcano."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-7d163a88",
+          "pos": "verb",
+          "meaningZh": "證明；提供佐證",
+          "definitionEn": "to provide evidence or proof of something",
+          "examples": [
+            "The scientist conducted a series of experiments to demonstrate the effectiveness of the new drug."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L7 +1",
+        "textbookTitle": "龍騰 B3·L7、三民 B2·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "demonstration",
+      "word": "demonstration",
+      "senses": [
+        {
+          "id": "sense-90a328c3",
+          "pos": "noun",
+          "meaningZh": "示威遊行；展示",
+          "definitionEn": "the act of presenting something to sight or view; a show or display",
+          "examples": [
+            "The students organized a peaceful demonstration to protest against the increase in tuition fees."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-973b9824",
+          "pos": "noun",
+          "meaningZh": "（軍事）演習；示威武力",
+          "definitionEn": "a show of military force or readiness",
+          "examples": [
+            "The military organized a demonstration to display their new weapons and equipment to the public."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L7 +1",
+        "textbookTitle": "龍騰 B3·L7、三民 B2·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "dense",
+      "word": "dense",
+      "senses": [
+        {
+          "id": "sense-1da3ac63",
+          "pos": "adjective",
+          "meaningZh": "密度高的；緻密的",
+          "definitionEn": "having high relative density or specific gravity",
+          "examples": [
+            "The dense rock sank to the bottom of the ocean."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-f36096aa",
+          "pos": "adjective",
+          "meaningZh": "濃密的；不透光的",
+          "definitionEn": "permitting little if any light to pass through because of denseness of matter",
+          "examples": [
+            "The thick fog was so dense that I couldn't see more than a few feet in front of me."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L3",
+        "textbookTitle": "龍騰 B5·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "depart",
+      "word": "depart",
+      "senses": [
+        {
+          "id": "sense-f64e3fa0",
+          "pos": "verb",
+          "meaningZh": "出發；離開",
+          "definitionEn": "to leave or go away from a place, especially on a journey.",
+          "examples": [
+            "She is set to depart for her hometown tomorrow morning."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-7c37abf8",
+          "pos": "verb",
+          "meaningZh": "離職；辭去",
+          "definitionEn": "to stop attending or working at a particular place.",
+          "examples": [
+            "He decided to depart from the company after working there for ten years."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L3 +2",
+        "textbookTitle": "龍騰 B2·L3、三民 B4·L4、翰林 B1·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "departure",
+      "word": "departure",
+      "senses": [
+        {
+          "id": "sense-a266b586",
+          "pos": "noun",
+          "meaningZh": "離去；離職",
+          "definitionEn": "an action or decision to stop doing something; the fact of someone or something no longer existing or happening",
+          "examples": [
+            "John’s departure from the company has left a significant gap that has been hard to fill."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-8af89686",
+          "pos": "noun",
+          "meaningZh": "偏離；與常規不同",
+          "definitionEn": "a deviation or difference from a particular thing or standard",
+          "examples": [
+            "The departure from his usual style of dressing surprised his colleagues."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L3 +2",
+        "textbookTitle": "龍騰 B2·L3、三民 B4·L4、翰林 B1·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "dependent",
+      "word": "dependent",
+      "senses": [
+        {
+          "id": "sense-1425ea98",
+          "pos": "adjective",
+          "meaningZh": "依賴的；依靠的",
+          "definitionEn": "relying on someone or something else for support, supply, or what is needed",
+          "examples": [
+            "As a young child, James was completely dependent on his parents for food, shelter, and love."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-deec7e0e",
+          "pos": "noun",
+          "meaningZh": "受撫養者；依賴他人者",
+          "definitionEn": "a person who relies on another, especially financially",
+          "examples": [
+            "The unemployed single mother was dependent on government assistance to support herself and her children."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L6 +1",
+        "textbookTitle": "三民 B4·L6、翰林 B1·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "depression",
+      "word": "depression",
+      "senses": [
+        {
+          "id": "sense-1991c0c9",
+          "pos": "noun",
+          "meaningZh": "抑鬱症；憂鬱症",
+          "definitionEn": "a mental state of sadness and hopelessness that affects a person’s thoughts, feelings, and behaviors",
+          "examples": [
+            "When Janet lost her job, she fell into a deep depression and could not bring herself to leave the house for weeks."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-0c7da5a5",
+          "pos": "noun",
+          "meaningZh": "沮喪；消沉",
+          "definitionEn": "a state of feeling low and discouraged",
+          "examples": [
+            "After losing his job and ending his relationship, Bob fell into a deep depression and had difficulty finding joy in everyday activities."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L1 +1",
+        "textbookTitle": "龍騰 B1·L1、翰林 B1·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "deserve",
+      "word": "deserve",
+      "senses": [
+        {
+          "id": "sense-4a8f60de",
+          "pos": "verb",
+          "meaningZh": "應得；值得",
+          "definitionEn": "To be worthy or deserving of something, typically as a result of one’s actions or abilities.",
+          "examples": [
+            "After studying diligently and putting in long hours of preparation, Sarah deserved the top score on the exam."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·R2 +1",
+        "textbookTitle": "龍騰 B3·R2、翰林 B1·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "desperate",
+      "word": "desperate",
+      "senses": [
+        {
+          "id": "sense-e63e0050",
+          "pos": "adjective",
+          "meaningZh": "迫切的；極度需要的",
+          "definitionEn": "showing extreme urgency or intensity, especially because of great need or desire",
+          "examples": [
+            "The stranded hiker was desperate for help after being lost for two days with no food or water."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-0b71f9dc",
+          "pos": "adjective",
+          "meaningZh": "走投無路的；不顧一切的",
+          "definitionEn": "arising from or marked by despair or loss of hope",
+          "examples": [
+            "After being stranded on the deserted island for weeks, the survivors became desperate for basic necessities like food and water."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L3 +1",
+        "textbookTitle": "龍騰 B2·L3、三民 B2·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "despite",
+      "word": "despite",
+      "senses": [
+        {
+          "id": "sense-c7c2f301",
+          "pos": "preposition",
+          "meaningZh": "儘管；雖然",
+          "definitionEn": "without being affected by; in spite of",
+          "examples": [
+            "Despite the heavy rain, they continued the game."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-d4e77103",
+          "pos": "noun",
+          "meaningZh": "蔑視；藐視",
+          "definitionEn": "contemptuous disregard",
+          "examples": [
+            "Despite his reputation as a skilled athlete, he approached the game with a lazy and disinterested attitude."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "destruction",
+      "word": "destruction",
+      "senses": [
+        {
+          "id": "sense-0d6684c1",
+          "pos": "noun",
+          "meaningZh": "破壞；毀損",
+          "definitionEn": "the complete or partial damage or ruin of something",
+          "examples": [
+            "The destruction caused by the hurricane left the city in ruins."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-ab7af432",
+          "pos": "noun",
+          "meaningZh": "摧毀；毀滅",
+          "definitionEn": "the act of destroying something completely",
+          "examples": [
+            "The hurricane caused widespread destruction in the coastal town, leaving many homes flattened and destroyed."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L9 +2",
+        "textbookTitle": "龍騰 B1·L9、三民 B1·L10、翰林 B1·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "detective",
+      "word": "detective",
+      "senses": [
+        {
+          "id": "sense-7e9f4517",
+          "pos": "noun",
+          "meaningZh": "偵探；刑警",
+          "definitionEn": "a police officer who investigates crimes",
+          "examples": [
+            "The detective tirelessly searched for evidence at the crime scene to identify the suspect."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-95dacff4",
+          "pos": "noun",
+          "meaningZh": "私家偵探；調查人員",
+          "definitionEn": "an investigator engaged or employed in obtaining information not easily available to the public",
+          "examples": [
+            "The detective was hired to gather information about the suspect’s whereabouts and associates."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B2·L10",
+        "textbookTitle": "三民 B2·L10"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "determination",
+      "word": "determination",
+      "senses": [
+        {
+          "id": "sense-b15794cc",
+          "pos": "noun",
+          "meaningZh": "決心；毅力",
+          "definitionEn": "deciding or controlling something’s outcome or nature",
+          "examples": [
+            "Sarah's determination to finish her college degree led her to study late into the night and work multiple jobs to pay for tuition."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-55373b9a",
+          "pos": "noun",
+          "meaningZh": "堅毅；不屈不撓",
+          "definitionEn": "the quality of being determined to do or achieve something; firmness of purpose",
+          "examples": [
+            "Despite facing numerous setbacks and obstacles, Jenny's determination to finish her degree never wavered."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L7 +2",
+        "textbookTitle": "龍騰 B3·L7、三民 B2·L9、翰林 B1·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "device",
+      "word": "device",
+      "senses": [
+        {
+          "id": "sense-611216e7",
+          "pos": "noun",
+          "meaningZh": "裝置；設備",
+          "definitionEn": "an instrument or tool invented for a particular purpose",
+          "examples": [
+            "One example of a device is a smartphone which can be used for communication, entertainment, and information retrieval."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-60125b47",
+          "pos": "noun",
+          "meaningZh": "（文學）手法；技巧",
+          "definitionEn": "something in an artistic or literary work designed to achieve a particular effect",
+          "examples": [
+            "In the poem, the author uses a metaphor as a literary device to convey the depth of the speaker’s emotions."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 翰林 B1·L5",
+        "textbookTitle": "翰林 B1·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "devise",
+      "word": "devise",
+      "senses": [
+        {
+          "id": "sense-317bc5f2",
+          "pos": "verb",
+          "meaningZh": "設計；構思",
+          "definitionEn": "to come up with an idea, plan, explanation, theory, or principle after a mental effort",
+          "examples": [
+            "After much brainstorming, the engineering team was able to devise a new system for reducing energy consumption in the building."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-83e3dd24",
+          "pos": "verb",
+          "meaningZh": "策劃；籌謀",
+          "definitionEn": "to arrange something by systematic planning and united effort",
+          "examples": [
+            "The team of engineers must devise a plan to fix the broken bridge."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L5",
+        "textbookTitle": "三民 B4·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "devote",
+      "word": "devote",
+      "senses": [
+        {
+          "id": "sense-c75ef2a4",
+          "pos": "verb",
+          "meaningZh": "奉獻；投入",
+          "definitionEn": "to dedicate or commit oneself to a particular undertaking",
+          "examples": [
+            "She decided to devote her life to helping underprivileged children by starting a non-profit organization."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-6461c947",
+          "pos": "verb",
+          "meaningZh": "專用；撥出（時間）",
+          "definitionEn": "to set apart or assign for a particular purpose or use",
+          "examples": [
+            "She decided to devote her weekends to volunteering at the local animal shelter."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L6",
+        "textbookTitle": "龍騰 B3·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "dew",
+      "word": "dew",
+      "senses": [
+        {
+          "id": "sense-04a6da4c",
+          "pos": "noun",
+          "meaningZh": "露水；露珠",
+          "definitionEn": "Water that has condensed from the air onto a cool surface, especially overnight.",
+          "examples": [
+            "When I woke up early in the morning, I went out to the garden to see the dew on the leaves of plants."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "diagram",
+      "word": "diagram",
+      "senses": [
+        {
+          "id": "sense-dcab6fa7",
+          "pos": "noun",
+          "meaningZh": "圖解；示意圖",
+          "definitionEn": "a drawing that shows the relationship between different things or parts",
+          "examples": [
+            "The teacher used a diagram to explain the complex cellular structure to the students."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-9b855b3f",
+          "pos": "noun",
+          "meaningZh": "圖表；說明圖",
+          "definitionEn": "a drawing or plan that outlines and explains the parts, operation, etc., of something",
+          "examples": [
+            "The math teacher used a diagram to illustrate how to solve the complex equation step by step."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "differ",
+      "word": "differ",
+      "senses": [
+        {
+          "id": "sense-d6a14e0f",
+          "pos": "verb",
+          "meaningZh": "不同；有差異",
+          "definitionEn": "be different",
+          "examples": [
+            "The twins have identical features, but their personalities differ greatly."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-4f278ee1",
+          "pos": "verb",
+          "meaningZh": "意見相左；持不同看法",
+          "definitionEn": "be of different opinions",
+          "examples": [
+            "During the meeting, the team members started to differ on the best approach for the project."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L3",
+        "textbookTitle": "龍騰 B5·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "digest",
+      "word": "digest",
+      "senses": [
+        {
+          "id": "sense-2f369cb5",
+          "pos": "verb",
+          "meaningZh": "消化（食物）",
+          "definitionEn": "To break down food in the body so that it can be taken in as nutrients and energy.",
+          "examples": [
+            "After enjoying a delicious meal, the body starts to digest the food, breaking it down into smaller molecules for absorption and energy production."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-f5a1b868",
+          "pos": "verb",
+          "meaningZh": "被吸收；消化吸收",
+          "definitionEn": "To be absorbed into the body.",
+          "examples": [
+            "After eating a meal, the food will start to digest in the stomach."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "digital",
+      "word": "digital",
+      "senses": [
+        {
+          "id": "sense-ee3ec1a9",
+          "pos": "adjective",
+          "meaningZh": "數位的；數字的",
+          "definitionEn": "relating to or using signals or information represented by discrete values (digits) rather than a continuous range of values",
+          "examples": [
+            "The clock on my bedside table is digital and displays the time in discrete digits, unlike the old analog clock that had a continuous sweeping hand."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-a3b42121",
+          "pos": "adjective",
+          "meaningZh": "數位技術的；電腦操作的",
+          "definitionEn": "relating to the fingers or digits, especially in reference to manipulations and movements typical of computer technology",
+          "examples": [
+            "She used her digital skills to create a stunning webpage for her company."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L9",
+        "textbookTitle": "龍騰 B2·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "dignity",
+      "word": "dignity",
+      "senses": [
+        {
+          "id": "sense-1cc9d41e",
+          "pos": "noun",
+          "meaningZh": "尊嚴；體面",
+          "definitionEn": "the state or quality of being worthy of honor and respect",
+          "examples": [
+            "Despite losing the game, he maintained his dignity and congratulated the other team."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-7effd554",
+          "pos": "noun",
+          "meaningZh": "端莊；莊重",
+          "definitionEn": "seriousness or a sense of propriety in speech or behavior",
+          "examples": [
+            "Even though he was angry, he maintained his dignity and spoke politely."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L6",
+        "textbookTitle": "龍騰 B5·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "diligence",
+      "word": "diligence",
+      "senses": [
+        {
+          "id": "sense-832be0a3",
+          "pos": "noun",
+          "meaningZh": "勤勉；認真",
+          "definitionEn": "the quality of being careful and thorough in your work or duties",
+          "examples": [
+            "The student’s diligence in studying for the exam paid off when she received an A."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-708dfe22",
+          "pos": "noun",
+          "meaningZh": "堅持；努力不懈",
+          "definitionEn": "the perseverance and determination in carrying out tasks in a focused manner",
+          "examples": [
+            "Samantha’s diligence in completing her work ahead of deadline earned her a promotion at her job."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L2",
+        "textbookTitle": "龍騰 B5·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "diligent",
+      "word": "diligent",
+      "senses": [
+        {
+          "id": "sense-d266b39e",
+          "pos": "adjective",
+          "meaningZh": "勤勉的；認真的",
+          "definitionEn": "characterized by care and perseverance in carrying out tasks",
+          "examples": [
+            "Despite working long hours, Sarah remained diligent and never missed a deadline."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-1c3068b1",
+          "pos": "adjective",
+          "meaningZh": "孜孜不倦的；不懈的",
+          "definitionEn": "quietly and steadily persevering, especially in detail or exactness",
+          "examples": [
+            "Despite the long hours and tedious work, Sarah remained diligent in completing the project accurately and efficiently."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L2",
+        "textbookTitle": "龍騰 B5·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "diploma",
+      "word": "diploma",
+      "senses": [
+        {
+          "id": "sense-8cd8c91e",
+          "pos": "noun",
+          "meaningZh": "文憑；畢業證書",
+          "definitionEn": "a certificate awarded by an educational institution, typically after completing a course of study",
+          "examples": [
+            "After completing her undergraduate studies, she received her diploma which allowed her to pursue her dream career."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "diplomat",
+      "word": "diplomat",
+      "senses": [
+        {
+          "id": "sense-4be0ab69",
+          "pos": "noun",
+          "meaningZh": "外交官；外交人員",
+          "definitionEn": "an official engaged in international negotiations",
+          "examples": [
+            "As a diplomat, he played a key role in brokering the peace agreement between the two countries."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-421dfab8",
+          "pos": "noun",
+          "meaningZh": "處事圓滑者；善於交涉的人",
+          "definitionEn": "a person who deals tactfully with others",
+          "examples": [
+            "As a diplomat, she successfully negotiated a peace treaty between two warring nations."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "disability",
+      "word": "disability",
+      "senses": [
+        {
+          "id": "sense-4655b0a1",
+          "pos": "noun",
+          "meaningZh": "身心障礙；殘疾",
+          "definitionEn": "a physical or mental condition that limits someone’s movements, senses, or activities",
+          "examples": [
+            "Despite her disability, Sarah has successfully pursued a career in graphic design, using special software and adaptive technology to create her artwork."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 翰林 B1·L8",
+        "textbookTitle": "翰林 B1·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    }
+  ]
+}

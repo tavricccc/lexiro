@@ -1,0 +1,1443 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 18,
+  "words": [
+    {
+      "wordKey": "map",
+      "word": "map",
+      "senses": [
+        {
+          "id": "sense-fa54aaad",
+          "pos": "noun",
+          "meaningZh": "地圖",
+          "definitionEn": "a representation of an area, usually on a flat surface, showing the positions of geographical features like cities, rivers, and mountains",
+          "examples": [
+            "Before planning our road trip, we studied a map to determine the best route and identify interesting landmarks along the way."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-744867e6",
+          "pos": "noun",
+          "meaningZh": "映射函數；對應關係（數學）",
+          "definitionEn": "a function between two sets, where every element of the first set is connected to a unique element in the second set",
+          "examples": [
+            "In a game of treasure hunt, the map acts as a map function that connects the locations of the hidden treasures (first set) to specific coordinates (unique element) on the game board (second set)."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "mark",
+      "word": "mark",
+      "senses": [
+        {
+          "id": "sense-df80d23d",
+          "pos": "noun",
+          "meaningZh": "分數；成績",
+          "definitionEn": "a number or letter that shows how well someone has done in a test or piece of work",
+          "examples": [
+            "She got a high mark on the math exam."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-99b88c96",
+          "pos": "noun",
+          "meaningZh": "損傷痕跡；刮痕",
+          "definitionEn": "an indication of damage",
+          "examples": [
+            "After the car accident, there was a visible mark on the front bumper."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-59385a43",
+          "pos": "noun",
+          "meaningZh": "跡象；線索（某事發生的可見證據）",
+          "definitionEn": "a perceptible indication of something not immediately apparent (as a visible clue that something has happened)",
+          "examples": [
+            "The tire tracks left on the muddy road were a mark that a car had recently passed by."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "market",
+      "word": "market",
+      "senses": [
+        {
+          "id": "sense-9efd17a4",
+          "pos": "noun",
+          "meaningZh": "市場；集市",
+          "definitionEn": "an area in a town or city where trade is conducted, typically outdoors and with stalls or stands.",
+          "examples": [
+            "I went to the market to buy fresh fruits and vegetables."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-f3db93d8",
+          "pos": "noun",
+          "meaningZh": "商業市場；交易市場",
+          "definitionEn": "the world of commercial activity where goods and services are bought and sold.",
+          "examples": [
+            "On Saturdays, the farmers' market is bustling with vendors selling fresh produce and homemade goods."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "married",
+      "word": "married",
+      "senses": [
+        {
+          "id": "sense-2adb812e",
+          "pos": "adjective",
+          "meaningZh": "已婚的；婚姻的",
+          "definitionEn": "of or relating to the state of marriage",
+          "examples": [
+            "On their tenth wedding anniversary, the married couple renewed their vows and celebrated with a romantic dinner."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "matter",
+      "word": "matter",
+      "senses": [
+        {
+          "id": "sense-8469ff8e",
+          "pos": "noun",
+          "meaningZh": "事情；問題",
+          "definitionEn": "a situation or subject that is being dealt with or considered",
+          "examples": [
+            "This is a serious matter that we must discuss."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-528d40ef",
+          "pos": "verb",
+          "meaningZh": "重要；有意義",
+          "definitionEn": "to be important or significant",
+          "examples": [
+            "In the job interview, your relevant experience will matter the most."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "may",
+      "word": "may",
+      "senses": [
+        {
+          "id": "sense-68e23abe",
+          "pos": "verb",
+          "meaningZh": "可能；也許",
+          "definitionEn": "express possibility; might (used to indicate possibility or probability)",
+          "examples": [
+            "It may rain later today, so bring an umbrella just in case."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "maybe",
+      "word": "maybe",
+      "senses": [
+        {
+          "id": "sense-802e1775",
+          "pos": "adverb",
+          "meaningZh": "也許；或許",
+          "definitionEn": "perhaps; possibly",
+          "examples": [
+            "Maybe we'll go to the beach if the weather is nice."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-463b8c78",
+          "pos": "adverb",
+          "meaningZh": "說不定；有可能",
+          "definitionEn": "by chance",
+          "examples": [
+            "I was running late for my flight, but maybe I'll still make it if there's no traffic."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "meal",
+      "word": "meal",
+      "senses": [
+        {
+          "id": "sense-83e52841",
+          "pos": "noun",
+          "meaningZh": "一餐；一頓飯",
+          "definitionEn": "the food served and eaten at one time",
+          "examples": [
+            "We had a delicious meal consisting of grilled salmon, roasted vegetables and mashed potatoes."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-613ed0c1",
+          "pos": "noun",
+          "meaningZh": "用餐時間；餐次",
+          "definitionEn": "any of the occasions for eating food that occur at fixed times, such as breakfast, lunch, or dinner",
+          "examples": [
+            "I had a healthy meal of salad and grilled chicken for lunch."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "mean",
+      "word": "mean",
+      "senses": [
+        {
+          "id": "sense-00442f50",
+          "pos": "verb",
+          "meaningZh": "意指；表示",
+          "definitionEn": "intend to express or convey",
+          "examples": [
+            "I didn’t mean to offend you; I only spoke my truth."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-69d131d3",
+          "pos": "verb",
+          "meaningZh": "打算；意圖",
+          "definitionEn": "have in mind as a purpose",
+          "examples": [
+            "I don’t mean to offend you, but your actions are irresponsible."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "meat",
+      "word": "meat",
+      "senses": [
+        {
+          "id": "sense-aee056fb",
+          "pos": "noun",
+          "meaningZh": "肉；肉類食物",
+          "definitionEn": "the flesh of animals (including fish, birds, and snails), used as food",
+          "examples": [
+            "I grilled a juicy steak for dinner last night, it was the most tender meat I've ever tasted!"
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-fb40c05b",
+          "pos": "noun",
+          "meaningZh": "核心；精髓",
+          "definitionEn": "the choicest or most essential or most vital part of some idea or experience",
+          "examples": [
+            "In this article, the author gets straight to the meat of the issue by addressing the core problems that need to be solved."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "media",
+      "word": "media",
+      "senses": [
+        {
+          "id": "sense-b597688b",
+          "pos": "noun",
+          "meaningZh": "媒體；大眾傳播",
+          "definitionEn": "the systems and organizations used for the mass communication of information, including publishing, broadcasting, and the internet",
+          "examples": [
+            "During the press conference, the media played a crucial role in disseminating the latest updates to the public."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-97d6dfa6",
+          "pos": "noun",
+          "meaningZh": "媒體從業人員；新聞界",
+          "definitionEn": "the journalists and other professionals who make up the mass communication industry",
+          "examples": [
+            "The media played a crucial role in reporting on the political unrest and providing accurate information to the public."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "medicine",
+      "word": "medicine",
+      "senses": [
+        {
+          "id": "sense-e5abaa01",
+          "pos": "noun",
+          "meaningZh": "藥；藥物",
+          "definitionEn": "a substance used for treating or preventing disease or for alleviating pain",
+          "examples": [
+            "I had a headache and took some medicine to relieve the pain."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-0216ce40",
+          "pos": "noun",
+          "meaningZh": "應有的懲罰；報應",
+          "definitionEn": "punishment inflicted on someone as vengeance for a wrong or criminal act",
+          "examples": [],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "medium",
+      "word": "medium",
+      "senses": [
+        {
+          "id": "sense-a80722ac",
+          "pos": "adjective",
+          "meaningZh": "中等的；中號的",
+          "definitionEn": "of middle size, amount, or degree; between large and small",
+          "examples": [
+            "I'd like a medium coffee, please."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-d1e9ea69",
+          "pos": "noun",
+          "meaningZh": "培養基；培養液",
+          "definitionEn": "a substance that is used as a means for cultivating microorganisms or preserving specimens",
+          "examples": [
+            "Before conducting the experiment, the scientist prepared the culture medium by mixing various nutrients and minerals."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "meet",
+      "word": "meet",
+      "senses": [
+        {
+          "id": "sense-89a3e6fc",
+          "pos": "verb",
+          "meaningZh": "接觸；相遇",
+          "definitionEn": "be in direct physical contact with; touch or join",
+          "examples": [
+            "I will meet you at the coffee shop in an hour."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-31e208c0",
+          "pos": "verb",
+          "meaningZh": "聚集；集合",
+          "definitionEn": "come together; assemble in one place",
+          "examples": [
+            "Let’s meet at the coffee shop at 2 PM to discuss the project."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "meeting",
+      "word": "meeting",
+      "senses": [
+        {
+          "id": "sense-734bb211",
+          "pos": "noun",
+          "meaningZh": "會議；聚會",
+          "definitionEn": "a formal or informal gathering of people for a specific purpose, such as discussion, decision-making, or socializing.",
+          "examples": [
+            "The project team scheduled a meeting to discuss the progress and address any issues that had arisen during the week."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-b42d2780",
+          "pos": "noun",
+          "meaningZh": "集會；約好的會面",
+          "definitionEn": "an arranged assembly or gathering of people, especially for a particular purpose",
+          "examples": [
+            "The team had a meeting to discuss the new project and set goals for the upcoming month."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "member",
+      "word": "member",
+      "senses": [
+        {
+          "id": "sense-abfc2c71",
+          "pos": "noun",
+          "meaningZh": "成員；會員",
+          "definitionEn": "a person who belongs to a group or organization",
+          "examples": [
+            "She is a member of the school choir."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-3e2ab325",
+          "pos": "noun",
+          "meaningZh": "肢體；突出的身體部位",
+          "definitionEn": "a body part that sticks out from the body",
+          "examples": [
+            "He injured his arm and had to wear a cast to support his damaged member."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "menu",
+      "word": "menu",
+      "senses": [
+        {
+          "id": "sense-4384f559",
+          "pos": "noun",
+          "meaningZh": "菜單；點餐單",
+          "definitionEn": "a list of dishes available at a restaurant",
+          "examples": [
+            "As I perused the menu, my eyes were immediately drawn to the mouthwatering photos of the chef's specialties, making it hard to decide what to order."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-77afde16",
+          "pos": "noun",
+          "meaningZh": "菜色；套餐內容",
+          "definitionEn": "the dishes making up a meal",
+          "examples": [
+            "After browsing through the extensive menu, I decided to order the steak with mashed potatoes."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "middle",
+      "word": "middle",
+      "senses": [
+        {
+          "id": "sense-93b586dc",
+          "pos": "adjective",
+          "meaningZh": "中間的；中期的",
+          "definitionEn": "occurring between an earlier and later period of time",
+          "examples": [
+            "The middle of the year is typically when people take their vacations."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-eaf40654",
+          "pos": "adjective",
+          "meaningZh": "中期的（語言發展階段）",
+          "definitionEn": "of a stage in the development of a language or literature between earlier and later stages",
+          "examples": [
+            "The works of Shakespeare are considered to be in the middle stage of English literature, bridging the gap between Chaucer's Middle English and the modern English we use today."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "milk",
+      "word": "milk",
+      "senses": [
+        {
+          "id": "sense-b1699220",
+          "pos": "noun",
+          "meaningZh": "牛奶；乳汁",
+          "definitionEn": "a white nutritious liquid produced by female mammals and used as food by human beings",
+          "examples": [
+            "Sarah poured a glass of cold milk and paired it with warm cookies for a delicious snack."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-90fa36fe",
+          "pos": "noun",
+          "meaningZh": "乳狀液體；植物奶",
+          "definitionEn": "any of several nutritive liquid resembling milk",
+          "examples": [
+            "The almond milk was a tasty dairy alternative."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "million",
+      "word": "million",
+      "senses": [
+        {
+          "id": "sense-97859e0f",
+          "pos": "noun",
+          "meaningZh": "百萬",
+          "definitionEn": "a number equal to one thousand multiplied by one thousand",
+          "examples": [
+            "The company made a million dollars in profit last year."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-e571df5b",
+          "pos": "noun",
+          "meaningZh": "無數；大量（誇張用法）",
+          "definitionEn": "an extremely large amount, often used as an exaggeration",
+          "examples": [
+            "He must have a million things on his to-do list!"
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "mind",
+      "word": "mind",
+      "senses": [
+        {
+          "id": "sense-3d901eef",
+          "pos": "noun",
+          "meaningZh": "心智；思維",
+          "definitionEn": "the seat of one’s thoughts and feelings and the source of conscious experiences; the faculty of consciousness and thought",
+          "examples": [
+            "As she sat in meditation, she cleared her mind of all distractions and found a sense of inner peace."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-f20bba12",
+          "pos": "noun",
+          "meaningZh": "記憶力；記性",
+          "definitionEn": "the ability to remember things",
+          "examples": [
+            "She has an exceptional mind for remembering names and faces at networking events."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "mine",
+      "word": "mine",
+      "senses": [
+        {
+          "id": "sense-940f4f43",
+          "pos": "pronoun",
+          "meaningZh": "我的（東西）",
+          "definitionEn": "used to refer to something that belongs to or is connected with the speaker",
+          "examples": [
+            "That book is mine, not yours."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-bc29d312",
+          "pos": "verb",
+          "meaningZh": "開採；挖礦",
+          "definitionEn": "to dig coal or another substance out of the ground",
+          "examples": [
+            "The miners used heavy machinery to mine for precious minerals deep underground."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-4c9f3f60",
+          "pos": "noun",
+          "meaningZh": "礦場；礦坑",
+          "definitionEn": "an excavation in the earth from which ores, minerals, or coal are extracted",
+          "examples": [
+            "The miners descended into the deep shafts of the mine, equipped with all the necessary tools and equipment to extract valuable minerals."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L6",
+        "textbookTitle": "龍騰 B3·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "minute",
+      "word": "minute",
+      "senses": [
+        {
+          "id": "sense-9140d8c6",
+          "pos": "noun",
+          "meaningZh": "分鐘；六十秒",
+          "definitionEn": "a unit of time equal to 60 seconds or 1/60th of an hour",
+          "examples": [
+            "She arrived at the meeting just a minute before it started."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-f1857be3",
+          "pos": "noun",
+          "meaningZh": "片刻；一會兒",
+          "definitionEn": "an indefinitely short time",
+          "examples": [
+            "I'll be ready in a minute, just give me a moment to finish getting dressed."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "miss",
+      "word": "miss",
+      "senses": [
+        {
+          "id": "sense-fb23d205",
+          "pos": "verb",
+          "meaningZh": "沒察覺；沒聽到；錯過",
+          "definitionEn": "fail to perceive or understand with the senses or the mind",
+          "examples": [
+            "I missed what she said because I was busy on my phone."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-f9629355",
+          "pos": "verb",
+          "meaningZh": "缺席；未出席",
+          "definitionEn": "fail to attend an event or activity",
+          "examples": [
+            "I am going to miss the party because I have a doctor’s appointment at the same time."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "mistake",
+      "word": "mistake",
+      "senses": [
+        {
+          "id": "sense-424f2114",
+          "pos": "noun",
+          "meaningZh": "錯誤；失誤",
+          "definitionEn": "an action or decision that is wrong, caused by bad judgment, ignorance, or lack of attention",
+          "examples": [
+            "Making a mistake while performing a surgery can be disastrous and cost someone their life."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-9e7548ae",
+          "pos": "noun",
+          "meaningZh": "誤解；錯誤認知",
+          "definitionEn": "a misunderstanding or incorrect belief about something",
+          "examples": [
+            "I made a mistake by assuming that the meeting was at 2 pm instead of 3 pm."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "modern",
+      "word": "modern",
+      "senses": [
+        {
+          "id": "sense-154f9c3b",
+          "pos": "adjective",
+          "meaningZh": "現代的；近代的",
+          "definitionEn": "Relating to the present time or the recent past, as opposed to the remote past.",
+          "examples": [
+            "The museum’s art collection focuses mainly on modern artists and their works from the last century."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-0ce82fcb",
+          "pos": "adjective",
+          "meaningZh": "新式的；先進的",
+          "definitionEn": "Of or relating to a recently developed or advanced style, technique, or technology.",
+          "examples": [
+            "The modern smartphone has replaced the need for multiple gadgets."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "moment",
+      "word": "moment",
+      "senses": [
+        {
+          "id": "sense-a1b2a623",
+          "pos": "noun",
+          "meaningZh": "片刻；一會兒",
+          "definitionEn": "an indefinitely short period of time",
+          "examples": [
+            "Wait a moment while I finish my sentence."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-adc33722",
+          "pos": "noun",
+          "meaningZh": "時刻；瞬間",
+          "definitionEn": "a specific point in time",
+          "examples": [
+            "At that moment, the fireworks lit up the sky."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "money",
+      "word": "money",
+      "senses": [
+        {
+          "id": "sense-183dbb19",
+          "pos": "noun",
+          "meaningZh": "錢；金錢",
+          "definitionEn": "the most commonly used medium of exchange; legal tender",
+          "examples": [
+            "I need to withdraw some money from the ATM to pay for my groceries."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-a054f2dd",
+          "pos": "noun",
+          "meaningZh": "貨幣；通貨",
+          "definitionEn": "official currency issued by a government or national bank",
+          "examples": [
+            "I need to exchange my dollars for the local money so I can buy food and souvenirs."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "monkey",
+      "word": "monkey",
+      "senses": [
+        {
+          "id": "sense-4e94f6fe",
+          "pos": "noun",
+          "meaningZh": "猴子；猿猴",
+          "definitionEn": "any of various primates that typically have a long tail and are not prosimians",
+          "examples": [
+            "The monkey swung from tree to tree using its long tail to grab onto branches."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-522dd914",
+          "pos": "noun",
+          "meaningZh": "淘氣鬼；惡作劇的人",
+          "definitionEn": "a mischievous person who enjoys playing pranks",
+          "examples": [
+            "My little brother is always pulling pranks on me and my friends. He’s such a monkey!"
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "month",
+      "word": "month",
+      "senses": [
+        {
+          "id": "sense-d981be1a",
+          "pos": "noun",
+          "meaningZh": "約三十天；一個月",
+          "definitionEn": "a time unit of approximately 30 days",
+          "examples": [
+            "She traveled to a new country every month to experience different cultures."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-48f2b240",
+          "pos": "noun",
+          "meaningZh": "月份（十二個月之一）",
+          "definitionEn": "one of the twelve divisions of the calendar year",
+          "examples": [
+            "In July, we will be celebrating my birthday, which is my favorite month of the year."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    }
+  ]
+}

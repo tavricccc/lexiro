@@ -1,0 +1,1406 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 150,
+  "words": [
+    {
+      "wordKey": "mode",
+      "word": "mode",
+      "senses": [
+        {
+          "id": "sense-46f8e4cf",
+          "pos": "noun",
+          "meaningZh": "模式；方式",
+          "definitionEn": "a way or manner in which something is done or happens",
+          "examples": [
+            "In order to save energy, the washing machine should be set to eco mode."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "modify",
+      "word": "modify",
+      "senses": [
+        {
+          "id": "sense-8da0ff85",
+          "pos": "verb",
+          "meaningZh": "修改；改變",
+          "definitionEn": "cause to change; make different; cause a transformation",
+          "examples": [
+            "The tailor suggested that he could modify my dress to make it fit perfectly."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-6b616250",
+          "pos": "verb",
+          "meaningZh": "緩和；修改（使更溫和）",
+          "definitionEn": "make less severe or harsh or extreme",
+          "examples": [
+            "The company agreed to modify the contract terms to make them more favorable for the client."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L9",
+        "textbookTitle": "龍騰 B2·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "molecule",
+      "word": "molecule",
+      "senses": [
+        {
+          "id": "sense-cc8bb221",
+          "pos": "noun",
+          "meaningZh": "分子",
+          "definitionEn": "the simplest structural unit of an element or compound, typically consisting of two or more atoms bonded together.",
+          "examples": [
+            "In the laboratory, scientists are studying how molecules interact with each other to develop new medicines."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-66aa06c0",
+          "pos": "noun",
+          "meaningZh": "微粒；最小化學單位",
+          "definitionEn": "a very small particle or piece of any substance that still has the chemical properties of that substance",
+          "examples": [
+            "In the chemistry lab, the students observed the interaction between different molecules in a solution."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "monopoly",
+      "word": "monopoly",
+      "senses": [
+        {
+          "id": "sense-561ea0cf",
+          "pos": "noun",
+          "meaningZh": "壟斷；獨佔",
+          "definitionEn": "exclusive control or possession of something",
+          "examples": [
+            "The company had a monopoly on the technology, which meant no other companies could compete with them."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-f4a43a09",
+          "pos": "noun",
+          "meaningZh": "壟斷市場；獨家經營",
+          "definitionEn": "(economics) a market situation in which there is only one seller for a particular good or service",
+          "examples": [
+            "In the small town, the local water company held a monopoly, providing the only source of clean water for the residents."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "morality",
+      "word": "morality",
+      "senses": [
+        {
+          "id": "sense-47f4bfed",
+          "pos": "noun",
+          "meaningZh": "道德品格；道德性",
+          "definitionEn": "Moral quality or character.",
+          "examples": [
+            "The novel explores the morality of the protagonist as he navigates through difficult moral dilemmas."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-97d62612",
+          "pos": "noun",
+          "meaningZh": "倫理原則；是非標準",
+          "definitionEn": "The principles concerning the distinction between good and evil or right and wrong behavior; the principles of right conduct.",
+          "examples": [
+            "The morality of stealing is universally condemned as wrong and unethical."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L9",
+        "textbookTitle": "龍騰 B4·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "mortality",
+      "word": "mortality",
+      "senses": [
+        {
+          "id": "sense-9fe8c3df",
+          "pos": "noun",
+          "meaningZh": "死亡率",
+          "definitionEn": "the ratio of deaths in an area to the population of that area; expressed per 1000 per year",
+          "examples": [
+            "In 2020, the mortality rate in the United States was 8.3 deaths per 1,000 people according to the Centers for Disease Control and Prevention."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-c4f3abbc",
+          "pos": "noun",
+          "meaningZh": "必死性；凡人身分",
+          "definitionEn": "the quality or state of being mortal",
+          "examples": [
+            "The mortality of all living creatures is something that cannot be denied."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "mortgage",
+      "word": "mortgage",
+      "senses": [
+        {
+          "id": "sense-6f3df773",
+          "pos": "noun",
+          "meaningZh": "房屋貸款；抵押貸款",
+          "definitionEn": "a type of loan specifically used to purchase a home or piece of property; the property itself serves as collateral for the loan",
+          "examples": [
+            "After Adam saved up enough money for a down payment, he went to the bank to apply for a mortgage so he could buy a house."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "motive",
+      "word": "motive",
+      "senses": [
+        {
+          "id": "sense-e6705e27",
+          "pos": "noun",
+          "meaningZh": "動機；原因",
+          "definitionEn": "a reason for doing something; that which gives purpose and direction to behavior",
+          "examples": [
+            "His desire to provide a better life for his family was the motive behind his decision to start his own business."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-e8c4f6f2",
+          "pos": "noun",
+          "meaningZh": "裝飾圖案；紋飾",
+          "definitionEn": "a repeating design in architecture or decoration",
+          "examples": [
+            "The walls of the ancient temple were adorned with intricate motives of lotus flowers and swirling vines."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "mount",
+      "word": "mount",
+      "senses": [
+        {
+          "id": "sense-caed92ab",
+          "pos": "noun",
+          "meaningZh": "山；高山",
+          "definitionEn": "a land mass that projects well above its surroundings; higher than a hill",
+          "examples": [
+            "The mountaineers attempted to conquer the steep slopes of the Himalayan mount."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-4f0d5622",
+          "pos": "noun",
+          "meaningZh": "坐騎；供騎乘的馬",
+          "definitionEn": "a lightweight horse kept for riding only",
+          "examples": [
+            "The ranchers in the western area prefer to ride a mount instead of walk to cover more ground."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L3",
+        "textbookTitle": "三民 B4·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "mumble",
+      "word": "mumble",
+      "senses": [
+        {
+          "id": "sense-c905cbb3",
+          "pos": "verb",
+          "meaningZh": "喃喃自語；含糊說話",
+          "definitionEn": "to speak quietly and unclearly",
+          "examples": [
+            "During the interview, John was so nervous that he would mumble his responses, making it difficult for the interviewer to understand him."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-650e67eb",
+          "pos": "noun",
+          "meaningZh": "低語聲；不清楚的話",
+          "definitionEn": "an indistinct or low utterance or sound",
+          "examples": [
+            "The tired toddler started to mumble as he dozed off to sleep."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "municipal",
+      "word": "municipal",
+      "senses": [
+        {
+          "id": "sense-b7a43226",
+          "pos": "adjective",
+          "meaningZh": "市政的；城市的",
+          "definitionEn": "relating to a city or town or its governing body",
+          "examples": [
+            "The municipal government implemented new policies to improve public transportation in the city."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-66beb66d",
+          "pos": "adjective",
+          "meaningZh": "地方政府的；市轄的",
+          "definitionEn": "belonging to a city or town or its local government",
+          "examples": [
+            "The municipal government decided to invest in new infrastructure projects to improve the city's roads and bridges."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "muscular",
+      "word": "muscular",
+      "senses": [
+        {
+          "id": "sense-ca97d5a9",
+          "pos": "adjective",
+          "meaningZh": "肌肉的；與肌肉有關的",
+          "definitionEn": "relating to or consisting of muscle",
+          "examples": [
+            "After months of intense training, he had transformed his formerly slender frame into a well-defined and muscular physique."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-b13c4bbc",
+          "pos": "adjective",
+          "meaningZh": "肌肉發達的；強壯的",
+          "definitionEn": "possessing physical strength and weight; robust and powerful, with a predominance of bone, muscle, and connective tissue developed from the embryonic mesodermal layer",
+          "examples": [
+            "The bodybuilder's muscular physique impressed everyone at the competition."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "mustard",
+      "word": "mustard",
+      "senses": [
+        {
+          "id": "sense-acebc6b0",
+          "pos": "noun",
+          "meaningZh": "芥末；芥末醬",
+          "definitionEn": "a pungent powder or paste made from ground mustard seeds, typically mixed with vinegar or water and used as a condiment or a seasoning",
+          "examples": [
+            "I spread a small amount of mustard on my sandwich to add some flavor."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-ea28f66d",
+          "pos": "noun",
+          "meaningZh": "芥菜（十字花科植物）",
+          "definitionEn": "a plant of the cabbage family with yellow flowers, growing typically in cool climates. Many kinds of mustard are grown for food, oil, or medicine",
+          "examples": [
+            "The sandwich was made with freshly baked bread and homemade mustard."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "myth",
+      "word": "myth",
+      "senses": [
+        {
+          "id": "sense-91206f16",
+          "pos": "noun",
+          "meaningZh": "神話；神話故事",
+          "definitionEn": "a traditional story, especially one concerning the early history of a people or explaining some natural or social phenomenon, and typically involving supernatural beings or events.",
+          "examples": [
+            "The myth of Persephone explains the changing of the seasons as a result of her descent into and return from the underworld."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-b3bfcdf8",
+          "pos": "noun",
+          "meaningZh": "迷思；錯誤觀念",
+          "definitionEn": "a widely-held but false belief or idea",
+          "examples": [
+            "The idea that spiders are insects is a myth."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "naive",
+      "word": "naive",
+      "senses": [
+        {
+          "id": "sense-18ae9735",
+          "pos": "adjective",
+          "meaningZh": "缺乏經驗的；天真的",
+          "definitionEn": "inexperienced; not having had much experience of life or a particular activity",
+          "examples": [
+            "She was so naive that she believed everything the salesman told her."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-f0cb7a1e",
+          "pos": "adjective",
+          "meaningZh": "幼稚的；不懂世故的",
+          "definitionEn": "lacking worldly experience or common sense; showing a simple and trusting view of the world",
+          "examples": [
+            "Her naive approach to investing in the stock market cost her a lot of money."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "narrative",
+      "word": "narrative",
+      "senses": [
+        {
+          "id": "sense-159c0a54",
+          "pos": "noun",
+          "meaningZh": "敘事；故事；記述",
+          "definitionEn": "a spoken or written account of connected events, a story; a message that tells the particulars of an act or occurrence or course of events; presented in writing, drama, cinema, or as a radio or television program",
+          "examples": [
+            "The novelist skillfully wove a narrative of love and loss that enthralled readers till the very end."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-5f479444",
+          "pos": "adjective",
+          "meaningZh": "敘事的；以故事形式的",
+          "definitionEn": "in the form of or concerned with narration; consisting of or characterized by the telling of a story",
+          "examples": [
+            "The novel had an intricate narrative structure, with multiple storylines and perspectives that converged in an unexpected way."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "nasty",
+      "word": "nasty",
+      "senses": [
+        {
+          "id": "sense-27d883db",
+          "pos": "adjective",
+          "meaningZh": "棘手的；令人不快的",
+          "definitionEn": "difficult to handle or deal with, especially because of unpleasantness or complexity",
+          "examples": [
+            "Dealing with a nasty customer complaint can be challenging, especially when there are multiple issues to address."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-81b0c253",
+          "pos": "adjective",
+          "meaningZh": "惡意的；刻薄的",
+          "definitionEn": "offensive or even malicious, especially in character or disposition",
+          "examples": [
+            "James has a nasty habit of spreading rumors about his co-workers."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "negotiation",
+      "word": "negotiation",
+      "senses": [
+        {
+          "id": "sense-ef53487b",
+          "pos": "noun",
+          "meaningZh": "談判；磋商",
+          "definitionEn": "the activity or business of negotiating an agreement; coming to terms",
+          "examples": [
+            "The labor union and management held a negotiation to settle the disputes over the workers’ salaries and benefits."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-904eef8d",
+          "pos": "noun",
+          "meaningZh": "協商；洽談",
+          "definitionEn": "a discussion between two or more parties with the aim of reaching a mutually acceptable agreement",
+          "examples": [
+            "The two companies were able to come to a successful negotiation, in which they both agreed on the terms of the partnership."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L8",
+        "textbookTitle": "三民 B4·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "neutral",
+      "word": "neutral",
+      "senses": [
+        {
+          "id": "sense-e750a1e9",
+          "pos": "adjective",
+          "meaningZh": "中立的；不偏頗的",
+          "definitionEn": "having no personal preference or bias towards something",
+          "examples": [
+            "During the interview, the hiring manager remained neutral and did not show any favoritism towards any of the candidates."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-79d35f63",
+          "pos": "adjective",
+          "meaningZh": "中性色調的；無色彩的",
+          "definitionEn": "having no particular color or hue",
+          "examples": [
+            "The living room walls were painted in a neutral shade of beige."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "nominate",
+      "word": "nominate",
+      "senses": [
+        {
+          "id": "sense-c5b17a68",
+          "pos": "verb",
+          "meaningZh": "提名；推薦候選",
+          "definitionEn": "to suggest someone’s name for a job or position or for an award/honor",
+          "examples": [
+            "I would like to nominate my colleague for the Employee of the Year award, as she has consistently delivered outstanding results."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-6d5f8f58",
+          "pos": "verb",
+          "meaningZh": "正式提名；指定",
+          "definitionEn": "to officially suggest someone for a job or position or for an award/honor",
+          "examples": [
+            "He was nominated for the Best Actor award for his outstanding performance in the film."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "nomination",
+      "word": "nomination",
+      "senses": [
+        {
+          "id": "sense-e88b2c09",
+          "pos": "noun",
+          "meaningZh": "提名；任命",
+          "definitionEn": "the act of officially naming a candidate",
+          "examples": [
+            "After careful consideration, the committee made their nomination for the new CEO."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-1dd90481",
+          "pos": "noun",
+          "meaningZh": "提名演說；提名（政治）",
+          "definitionEn": "an address proposing the name of a candidate to run for election, usually at a political convention",
+          "examples": [
+            "At the party convention yesterday, the incumbent’s nomination was challenged by a young, charismatic politician putting himself forward as a better candidate."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "nominee",
+      "word": "nominee",
+      "senses": [
+        {
+          "id": "sense-8f529358",
+          "pos": "noun",
+          "meaningZh": "被提名人；候選人",
+          "definitionEn": "someone who is considered for something (for an office or prize or honor etc.)",
+          "examples": [
+            "Tommy was thrilled to learn that he was selected as a nominee for the Employee of the Year award at his company’s annual banquet."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-fb62ab49",
+          "pos": "noun",
+          "meaningZh": "候選人；參選者（政治）",
+          "definitionEn": "a politician who is running for public office",
+          "examples": [
+            "The nominee gave a rousing speech at the campaign rally, urging voters to support him in the upcoming election."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "nonprofit",
+      "word": "nonprofit",
+      "senses": [
+        {
+          "id": "sense-2d42b434",
+          "pos": "noun",
+          "meaningZh": "非營利組織",
+          "definitionEn": "an organization chartered for other than profit-making activities",
+          "examples": [
+            "The nonprofit organization provides free meals to those in need."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-a6f3612e",
+          "pos": "adjective",
+          "meaningZh": "非營利的；非以盈利為目的",
+          "definitionEn": "not commercially motivated",
+          "examples": [
+            "The organization is a nonprofit dedicated to providing free education for underprivileged children."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "norm",
+      "word": "norm",
+      "senses": [
+        {
+          "id": "sense-1b93aeac",
+          "pos": "noun",
+          "meaningZh": "常規；規範",
+          "definitionEn": "a standard or typical example",
+          "examples": [
+            "Wearing formal clothes to a wedding is the norm."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-056a6040",
+          "pos": "noun",
+          "meaningZh": "平均值；常態分布中心",
+          "definitionEn": "a statistic that describes the average or central tendency of a distribution",
+          "examples": [
+            "The normal distribution is often used in statistics to describe the norm or average behavior of a population."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L2 +1",
+        "textbookTitle": "龍騰 B2·L2、三民 B1·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "noticeable",
+      "word": "noticeable",
+      "senses": [
+        {
+          "id": "sense-7209c64b",
+          "pos": "adjective",
+          "meaningZh": "顯眼的；惹人注目的",
+          "definitionEn": "undesirably prominent or strikingly visible",
+          "examples": [
+            "The tear on her shirt was very noticeable and made her self-conscious throughout the entire party."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-572c8da7",
+          "pos": "adjective",
+          "meaningZh": "明顯的；容易察覺的",
+          "definitionEn": "easily seen or noticed; capable of being detected",
+          "examples": [
+            "The bright red paint on the wall is very noticeable and makes the room feel more vibrant."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "notify",
+      "word": "notify",
+      "senses": [
+        {
+          "id": "sense-81b4531a",
+          "pos": "verb",
+          "meaningZh": "通知；告知",
+          "definitionEn": "to inform someone about something",
+          "examples": [
+            "Please notify me if there are any changes to the schedule."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "notion",
+      "word": "notion",
+      "senses": [
+        {
+          "id": "sense-760b84dd",
+          "pos": "noun",
+          "meaningZh": "概念；觀念",
+          "definitionEn": "a general concept that includes many different specific ideas",
+          "examples": [
+            "Let me give you a notion of what I mean."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-4b835752",
+          "pos": "noun",
+          "meaningZh": "模糊想法；念頭",
+          "definitionEn": "a vague idea that someone has confidence in",
+          "examples": [
+            "Although she had a notion of what her dream job might look like, she was open to exploring different career paths."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "nowhere",
+      "word": "nowhere",
+      "senses": [
+        {
+          "id": "sense-0ef7fa37",
+          "pos": "adverb",
+          "meaningZh": "哪裡也不；無處",
+          "definitionEn": "not anywhere; in or at or to no place",
+          "examples": [
+            "I searched everywhere for my keys, but they were nowhere to be found."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-3c66e699",
+          "pos": "noun",
+          "meaningZh": "荒僻之地；不知名之處",
+          "definitionEn": "an insignificant place",
+          "examples": [
+            "After getting lost on the back roads, they found themselves in the middle of nowhere."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "nutrient",
+      "word": "nutrient",
+      "senses": [
+        {
+          "id": "sense-ed1fad78",
+          "pos": "noun",
+          "meaningZh": "營養素；養分",
+          "definitionEn": "any substance, such as a chemical element or inorganic compound, that can be taken in by a green plant and used in organic synthesis",
+          "examples": [
+            "Plants require various nutrients such as nitrogen, phosphorus, and potassium in order to grow and develop properly."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-5d02c6cd",
+          "pos": "adjective",
+          "meaningZh": "提供營養的；滋養的",
+          "definitionEn": "providing nourishment or necessary substances for growth, health, and good condition",
+          "examples": [
+            "Consuming a balanced diet rich in various nutrients such as vitamins, minerals, and proteins is essential for maintaining good health."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "nutrition",
+      "word": "nutrition",
+      "senses": [
+        {
+          "id": "sense-b06b6c75",
+          "pos": "noun",
+          "meaningZh": "營養；滋養物質",
+          "definitionEn": "Any substance that contains the necessary elements required for growth and development.",
+          "examples": [
+            "Proper nutrition is essential for a healthy lifestyle. A balanced diet that includes fruits, vegetables, and proteins is crucial for maintaining good nutrition."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-8d8ac063",
+          "pos": "noun",
+          "meaningZh": "營養學；飲食科學",
+          "definitionEn": "The scientific study of food and beverage consumption, particularly in humans.",
+          "examples": [
+            "A balanced diet consisting of the right amounts of protein, carbohydrates, and vitamins is important for proper nutrition."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L2",
+        "textbookTitle": "龍騰 B4·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    }
+  ]
+}

@@ -1,0 +1,1432 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 42,
+  "words": [
+    {
+      "wordKey": "encouragement",
+      "word": "encouragement",
+      "senses": [
+        {
+          "id": "sense-02bb59c3",
+          "pos": "noun",
+          "meaningZh": "鼓勵；支持",
+          "definitionEn": "the act of giving hope or support to someone",
+          "examples": [
+            "After a long day of auditions, the director gave each actor personalized feedback and words of encouragement to lift their spirits."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-bfd3173a",
+          "pos": "noun",
+          "meaningZh": "受到鼓舞的感受",
+          "definitionEn": "the feeling of being encouraged",
+          "examples": [
+            "As she struggled to finish the marathon, the crowd's cheers provided her with much-needed encouragement."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L9 +2",
+        "textbookTitle": "龍騰 B4·L9、三民 B1·L1、翰林 B1·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "ending",
+      "word": "ending",
+      "senses": [
+        {
+          "id": "sense-be1fcacf",
+          "pos": "noun",
+          "meaningZh": "結局；終點",
+          "definitionEn": "the point in time at which something ends",
+          "examples": [
+            "The ending of the book was so unexpected and left readers in awe."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-b5270eed",
+          "pos": "noun",
+          "meaningZh": "（文法）字尾；詞尾變化",
+          "definitionEn": "a group of letters added to the end of a word that changes its meaning or function",
+          "examples": [
+            "Adding the -ing ending turns the verb ’run’ into ’running’, indicating that the action is currently happening or ongoing."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "enemy",
+      "word": "enemy",
+      "senses": [
+        {
+          "id": "sense-8116d205",
+          "pos": "noun",
+          "meaningZh": "敵人；仇敵",
+          "definitionEn": "a person or group that one is hostile to or feels hatred for",
+          "examples": [
+            "During the war, Sam considered the soldiers from the opposing side as his enemy."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-28f93125",
+          "pos": "noun",
+          "meaningZh": "敵軍；對立武裝力量",
+          "definitionEn": "an opposing military force",
+          "examples": [
+            "The troops engaged in fierce combat with the enemy during the battle."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "energy",
+      "word": "energy",
+      "senses": [
+        {
+          "id": "sense-b4f6b049",
+          "pos": "noun",
+          "meaningZh": "精力；活力",
+          "definitionEn": "the strength and vitality needed for activity",
+          "examples": [
+            "After a good night's sleep, I had lots of energy."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-6c2a9ddf",
+          "pos": "noun",
+          "meaningZh": "（物理）能量；做功能力",
+          "definitionEn": "(physics) a thermodynamic quantity equivalent to the capacity of a physical system to do work; the units of energy are joules or ergs",
+          "examples": [
+            "The energy from the sun provides the Earth with heat and light, which supports life."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-6b102cc3",
+          "pos": "noun",
+          "meaningZh": "能源；動力來源",
+          "definitionEn": "any source of usable power",
+          "examples": [
+            "Renewable energy like solar and wind are becoming increasingly important in reducing our reliance on fossil fuels."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 翰林 B1·L8",
+        "textbookTitle": "翰林 B1·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "engine",
+      "word": "engine",
+      "senses": [
+        {
+          "id": "sense-a986ba69",
+          "pos": "noun",
+          "meaningZh": "引擎；發動機",
+          "definitionEn": "a motor that uses heat energy to produce mechanical energy",
+          "examples": [
+            "The engineer examined the engine of the car to determine the cause of the breakdown."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-cfdee9ae",
+          "pos": "noun",
+          "meaningZh": "火車頭；機車頭",
+          "definitionEn": "a vehicle with an engine that pulls trains on railroad tracks",
+          "examples": [
+            "The powerful engine pulled the freight train up the steep hill with ease."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "entire",
+      "word": "entire",
+      "senses": [
+        {
+          "id": "sense-f8b0012c",
+          "pos": "adjective",
+          "meaningZh": "全部的；完整的",
+          "definitionEn": "constituting the full quantity or extent; complete",
+          "examples": [
+            "My grandmother ate the entire cake by herself."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "entrance",
+      "word": "entrance",
+      "senses": [
+        {
+          "id": "sense-fbe12b47",
+          "pos": "noun",
+          "meaningZh": "入口；通道",
+          "definitionEn": "an opening or passage that allows access into a place or to get in or out of a place",
+          "examples": [
+            "The grand entrance to the theater was adorned with sparkling chandeliers and a red carpet."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-603a41cc",
+          "pos": "noun",
+          "meaningZh": "門口；入口處",
+          "definitionEn": "a place of entering, such as a door or gate",
+          "examples": [
+            "She stood nervously in front of the grand entrance of the palace, waiting to be welcomed inside."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L5",
+        "textbookTitle": "龍騰 B3·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "environment",
+      "word": "environment",
+      "senses": [
+        {
+          "id": "sense-b6634efd",
+          "pos": "noun",
+          "meaningZh": "環境；自然環境",
+          "definitionEn": "the totality of surrounding conditions",
+          "examples": [
+            "The lush green forest with diverse wildlife is a perfect example of a thriving environment."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-1a406039",
+          "pos": "noun",
+          "meaningZh": "生態環境；棲息地",
+          "definitionEn": "the area or place in which something exists or lives",
+          "examples": [
+            "The rainforest is a unique environment filled with diverse species of plants and animals."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L5 +1",
+        "textbookTitle": "龍騰 B1·L5、三民 B1·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "environmental",
+      "word": "environmental",
+      "senses": [
+        {
+          "id": "sense-535223f1",
+          "pos": "adjective",
+          "meaningZh": "環境的；與環境有關的",
+          "definitionEn": "of or relating to the external conditions or surroundings",
+          "examples": [
+            "The environmental impact of industrial pollution on the surrounding ecosystem is a cause for concern."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-dcb36f54",
+          "pos": "adjective",
+          "meaningZh": "環保的；生態保護的",
+          "definitionEn": "concerned with the ecological effects of altering the environment",
+          "examples": [
+            "The environmental organization organized a clean-up campaign to remove litter from the local park and raise awareness about the importance of preserving natural habitats."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B1·L4",
+        "textbookTitle": "三民 B1·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "equal",
+      "word": "equal",
+      "senses": [
+        {
+          "id": "sense-01e77ff3",
+          "pos": "adjective",
+          "meaningZh": "相等的；同等的",
+          "definitionEn": "having the same quantity, value, or measure as something else",
+          "examples": [
+            "The two sides of the equation are equal."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-7baf0f68",
+          "pos": "verb",
+          "meaningZh": "使平等；均等",
+          "definitionEn": "make something equal, uniform, corresponding, or matching",
+          "examples": [
+            "Before the game, the coach made sure all the players had equal opportunity to play.  He ensured that all team members received the same number of minutes on the court."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L4",
+        "textbookTitle": "龍騰 B2·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "escape",
+      "word": "escape",
+      "senses": [
+        {
+          "id": "sense-0900aa80",
+          "pos": "verb",
+          "meaningZh": "逃跑；脫逃",
+          "definitionEn": "run away from confinement",
+          "examples": [
+            "The prisoner managed to ESCAPE from the jail by climbing over the fence."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-8e270437",
+          "pos": "verb",
+          "meaningZh": "逃離（日常）；喘口氣",
+          "definitionEn": "remove oneself from a familiar environment, usually for pleasure or diversion",
+          "examples": [
+            "After working hard for months, Tim decided to escape to a tropical island for a week-long vacation."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L4 +1",
+        "textbookTitle": "龍騰 B3·L4、三民 B1·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "especially",
+      "word": "especially",
+      "senses": [
+        {
+          "id": "sense-7affdca1",
+          "pos": "adverb",
+          "meaningZh": "尤其；格外",
+          "definitionEn": "to a great extent or degree",
+          "examples": [
+            "She was especially excited to see her favorite band perform live for the first time."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-298f436b",
+          "pos": "adverb",
+          "meaningZh": "特別；專門",
+          "definitionEn": "in a special manner",
+          "examples": [
+            "She made the cake especially for you."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B1·L9",
+        "textbookTitle": "三民 B1·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "essay",
+      "word": "essay",
+      "senses": [
+        {
+          "id": "sense-faf7734f",
+          "pos": "noun",
+          "meaningZh": "論文；文章",
+          "definitionEn": "a literary composition that presents an in-depth analysis or interpretation of a topic, usually requiring research and evidence",
+          "examples": [
+            "In order to demonstrate his understanding of the subject matter, John spent weeks researching and analyzing various sources before writing a thought-provoking essay on the causes and effects of climate change."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-441e45a8",
+          "pos": "verb",
+          "meaningZh": "嘗試；試著做",
+          "definitionEn": "attempt or try to do something, usually with the goal of achieving success",
+          "examples": [
+            "She decided to essay a career change and enrolled in a coding bootcamp to learn programming."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "eve",
+      "word": "eve",
+      "senses": [
+        {
+          "id": "sense-9ba032c3",
+          "pos": "noun",
+          "meaningZh": "前夕；前一晚",
+          "definitionEn": "the day or evening before an important event or holiday",
+          "examples": [
+            "We had dinner together on Christmas Eve."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "event",
+      "word": "event",
+      "senses": [
+        {
+          "id": "sense-938c2797",
+          "pos": "noun",
+          "meaningZh": "事件；活動",
+          "definitionEn": "something that happens at a specific time and place",
+          "examples": [
+            "The music festival was the biggest event of the summer, drawing a huge crowd of music lovers from all over the country."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-cdcb85f5",
+          "pos": "noun",
+          "meaningZh": "結果；後續事件",
+          "definitionEn": "something that occurs as a result of a previous action or occurrence",
+          "examples": [
+            "The cancelled flight was an event that caused all customers to have to reschedule their travel plans."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L8 +1",
+        "textbookTitle": "龍騰 B2·L8、三民 B1·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "evil",
+      "word": "evil",
+      "senses": [
+        {
+          "id": "sense-14a47d6d",
+          "pos": "adjective",
+          "meaningZh": "邪惡的；惡毒的",
+          "definitionEn": "morally bad or wrong",
+          "examples": [
+            "Committing an act of theft is considered an evil deed."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-71ff3c08",
+          "pos": "adjective",
+          "meaningZh": "有害的；凶惡的",
+          "definitionEn": "having a harmful influence",
+          "examples": [
+            "The evil witch cast a spell on the princess to make her fall into an endless sleep."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L4 +1",
+        "textbookTitle": "三民 B4·L4、翰林 B1·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "exact",
+      "word": "exact",
+      "senses": [
+        {
+          "id": "sense-95a0962d",
+          "pos": "adjective",
+          "meaningZh": "精確的；確切的",
+          "definitionEn": "precise, accurate, and correct in all details",
+          "examples": [
+            "The architect drew an exact blueprint for the house, showing the precise location of every room, window, and door."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-00fcf60b",
+          "pos": "verb",
+          "meaningZh": "強求；索取",
+          "definitionEn": "be the cause of something; happen by necessity",
+          "examples": [
+            "The scientist’s predictions were exact, as the experiment resulted in the expected outcome."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L9 +1",
+        "textbookTitle": "龍騰 B3·L9、三民 B1·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "examine",
+      "word": "examine",
+      "senses": [
+        {
+          "id": "sense-61352ed0",
+          "pos": "verb",
+          "meaningZh": "仔細檢查；審視",
+          "definitionEn": "To observe or look over something very carefully",
+          "examples": [
+            "The doctor will examine the patient thoroughly to determine the cause of their symptoms."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-b4cda8bc",
+          "pos": "verb",
+          "meaningZh": "深入分析；探究",
+          "definitionEn": "To analyze something deeply to discover its features and meanings",
+          "examples": [
+            "The detective will examine the evidence from the scene of the crime to find clues."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "excite",
+      "word": "excite",
+      "senses": [
+        {
+          "id": "sense-ea489cda",
+          "pos": "verb",
+          "meaningZh": "使興奮；使激動",
+          "definitionEn": "to make someone feel very enthusiastic and eager",
+          "examples": [
+            "The news of the trip excited the whole class."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-0c35fe17",
+          "pos": "verb",
+          "meaningZh": "激發磁場；激勵（物理）",
+          "definitionEn": "produce a magnetic field in",
+          "examples": [
+            "The powerful electromagnet excites the particles, causing them to align and generate a magnetic field."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "excitement",
+      "word": "excitement",
+      "senses": [
+        {
+          "id": "sense-6455efe1",
+          "pos": "noun",
+          "meaningZh": "興奮；激動",
+          "definitionEn": "a state of strong emotion",
+          "examples": [
+            "There was so much excitement in the air as the crowd cheered for the winning team."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-a6982119",
+          "pos": "noun",
+          "meaningZh": "熱情；雀躍",
+          "definitionEn": "a feeling of great enthusiasm and eagerness",
+          "examples": [
+            "The excitement of the crowd was palpable as the famous musician took to the stage."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "excuse",
+      "word": "excuse",
+      "senses": [
+        {
+          "id": "sense-c988a74f",
+          "pos": "noun",
+          "meaningZh": "藉口；辯解",
+          "definitionEn": "a defense of some offensive behavior or some failure to keep a promise.",
+          "examples": [
+            "He came up with a weak excuse for being late, claiming that his alarm clock didn't go off."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-82742100",
+          "pos": "verb",
+          "meaningZh": "原諒；寬恕",
+          "definitionEn": "accept an excuse for",
+          "examples": [
+            "As a teacher, I must sometimes excuse students for being late if they have a valid reason."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "exist",
+      "word": "exist",
+      "senses": [
+        {
+          "id": "sense-97ae222b",
+          "pos": "verb",
+          "meaningZh": "存在；實際存在",
+          "definitionEn": "have an existence; be alive or present",
+          "examples": [
+            "Aliens may or may not exist in outer space."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L9 +1",
+        "textbookTitle": "龍騰 B2·L9、三民 B2·L10"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "existence",
+      "word": "existence",
+      "senses": [
+        {
+          "id": "sense-fd96731e",
+          "pos": "noun",
+          "meaningZh": "存在；實存",
+          "definitionEn": "the state or fact of existing",
+          "examples": [
+            "The existence of unicorns is debatable as there is no concrete evidence to prove their existence."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-650d5d20",
+          "pos": "noun",
+          "meaningZh": "萬物；宇宙一切",
+          "definitionEn": "everything that exists anywhere",
+          "examples": [],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L9 +1",
+        "textbookTitle": "龍騰 B2·L9、三民 B2·L10"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "exit",
+      "word": "exit",
+      "senses": [
+        {
+          "id": "sense-99438e45",
+          "pos": "noun",
+          "meaningZh": "出口；緊急出口",
+          "definitionEn": "an opening that allows you to leave or escape from a place",
+          "examples": [
+            "In case of fire, make sure you locate the nearest exit and leave the building immediately."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-92cfbdb0",
+          "pos": "verb",
+          "meaningZh": "離開；退出",
+          "definitionEn": "to leave or go out of a place",
+          "examples": [
+            "Please use the emergency exit in case of a fire."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "expense",
+      "word": "expense",
+      "senses": [
+        {
+          "id": "sense-077f2c31",
+          "pos": "noun",
+          "meaningZh": "開銷；費用",
+          "definitionEn": "the amount of money spent on something",
+          "examples": [
+            "John carefully tracks his monthly expenses by keeping all his receipts and recording each purchase in a spreadsheet."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-062a2cd5",
+          "pos": "verb",
+          "meaningZh": "記帳；列入費用",
+          "definitionEn": "to record or show the full cost of something in a company’s accounts",
+          "examples": [
+            "The accountant carefully expenses all the receipts to ensure accurate financial reporting."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "expert",
+      "word": "expert",
+      "senses": [
+        {
+          "id": "sense-e17f63c6",
+          "pos": "noun",
+          "meaningZh": "專家；行家",
+          "definitionEn": "a person who has a high level of knowledge or skill in a particular subject or activity",
+          "examples": [
+            "After years of studying and practicing, Jane became an expert in astrophysics and could confidently explain complex theories to her colleagues."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-d2945aa0",
+          "pos": "adjective",
+          "meaningZh": "精通的；專業的",
+          "definitionEn": "having or showing a lot of knowledge or skill",
+          "examples": [
+            "The surgeon was an expert at performing complex operations."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L3 +1",
+        "textbookTitle": "龍騰 B1·L3、三民 B1·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "express",
+      "word": "express",
+      "senses": [
+        {
+          "id": "sense-ed68c06b",
+          "pos": "verb",
+          "meaningZh": "表達；表示",
+          "definitionEn": "to convey a thought, feeling, or idea in words or actions",
+          "examples": [
+            "She found it hard to express her feelings."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-61e67a12",
+          "pos": "adjective",
+          "meaningZh": "明確的；直接的",
+          "definitionEn": "said or given in a clear, direct, and simple way; not ambiguous",
+          "examples": [
+            "She expressed her disappointment with the service in a clear and direct manner."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-aec4923d",
+          "pos": "adverb",
+          "meaningZh": "快遞；快速運送",
+          "definitionEn": "by express delivery or transport",
+          "examples": [
+            "I need to express my urgency by using express delivery for this package."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L9 +1",
+        "textbookTitle": "龍騰 B1·L9、三民 B1·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "expression",
+      "word": "expression",
+      "senses": [
+        {
+          "id": "sense-674be0b5",
+          "pos": "noun",
+          "meaningZh": "表情；表達",
+          "definitionEn": "the look on someone's face that shows their feelings; the act of conveying thoughts",
+          "examples": [
+            "A puzzled expression crossed his face."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-558c56c7",
+          "pos": "noun",
+          "meaningZh": "慣用語；用語",
+          "definitionEn": "a word or phrase particular to a situation or group of people",
+          "examples": [
+            "In the world of computer programming, 'bug' is a commonly used expression to describe an error in the code."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-0fe3d089",
+          "pos": "noun",
+          "meaningZh": "片語；詞組",
+          "definitionEn": "a group of words that function as a single unit within a sentence",
+          "examples": [
+            "In the sentence 'I can't believe how much you've grown', the phrase 'I can't believe' is an example of an expression."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L9 +1",
+        "textbookTitle": "龍騰 B1·L9、三民 B1·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "extra",
+      "word": "extra",
+      "senses": [
+        {
+          "id": "sense-2f896572",
+          "pos": "adjective",
+          "meaningZh": "額外的；多餘的",
+          "definitionEn": "more than is needed, desired, or required",
+          "examples": [
+            "She ordered an extra-large pizza for herself, but couldn’t finish it."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-896f6ef9",
+          "pos": "adjective",
+          "meaningZh": "附加的；另外的",
+          "definitionEn": "further or added",
+          "examples": [
+            "Due to the extra workload, John had to work overtime to complete the project."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "factor",
+      "word": "factor",
+      "senses": [
+        {
+          "id": "sense-10cb39f6",
+          "pos": "noun",
+          "meaningZh": "因素；要素",
+          "definitionEn": "something that helps or causes something else to happen or exist",
+          "examples": [
+            "One factor that contributed to the success of their business was their strong marketing strategy."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·R2 +1",
+        "textbookTitle": "龍騰 B3·R2、三民 B2·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    }
+  ]
+}

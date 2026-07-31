@@ -1,0 +1,1434 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 25,
+  "words": [
+    {
+      "wordKey": "salad",
+      "word": "salad",
+      "senses": [
+        {
+          "id": "sense-ac5266be",
+          "pos": "noun",
+          "meaningZh": "沙拉",
+          "definitionEn": "A dish made up of a mixture of different foods, often including vegetables and/or fruits, that are typically raw or cold. The ingredients are either arranged on a plate or tossed together and served with a moist dressing.",
+          "examples": [
+            "At the picnic, we enjoyed a refreshing salad of mixed greens, cherry tomatoes, cucumbers, and avocado, topped with a tangy vinaigrette dressing."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "sale",
+      "word": "sale",
+      "senses": [
+        {
+          "id": "sense-d7e81226",
+          "pos": "noun",
+          "meaningZh": "銷售；促銷活動",
+          "definitionEn": "the general activity of selling",
+          "examples": [
+            "The clothing store is having a huge sale this weekend, with discounts of up to 50% off on all items."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-10baf416",
+          "pos": "noun",
+          "meaningZh": "販售狀態；出售中",
+          "definitionEn": "the state of being available for purchase",
+          "examples": [
+            "The store advertised a clearance sale with discounts of up to 50% off."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "salt",
+      "word": "salt",
+      "senses": [
+        {
+          "id": "sense-03e8685f",
+          "pos": "noun",
+          "meaningZh": "鹽；食鹽",
+          "definitionEn": "a white crystalline substance, especially sodium chloride, used for seasoning and preserving food",
+          "examples": [
+            "I sprinkled a pinch of salt on my scrambled eggs for added flavor."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-0a8a2eed",
+          "pos": "noun",
+          "meaningZh": "鹽類；化學鹽化合物",
+          "definitionEn": "a compound formed by replacing hydrogen in an acid with a metal or metal-like element",
+          "examples": [
+            "I added a pinch of salt to the soup to enhance the flavor."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "same",
+      "word": "same",
+      "senses": [
+        {
+          "id": "sense-0629124b",
+          "pos": "adjective",
+          "meaningZh": "相同的；同一的",
+          "definitionEn": "having the identical characteristics",
+          "examples": [
+            "The twins have the same eye color and hair texture."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-380356d4",
+          "pos": "adjective",
+          "meaningZh": "一樣的；相似的",
+          "definitionEn": "very similar in nature, kind, quality, quantity, or degree",
+          "examples": [
+            "The twin sisters wore the same dress to the party."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "save",
+      "word": "save",
+      "senses": [
+        {
+          "id": "sense-1d2ecc92",
+          "pos": "verb",
+          "meaningZh": "拯救；挽救",
+          "definitionEn": "to rescue or prevent from ruin or destruction",
+          "examples": [
+            "The firefighters worked quickly to save the family from the burning building."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "say",
+      "word": "say",
+      "senses": [
+        {
+          "id": "sense-1eaeff5c",
+          "pos": "verb",
+          "meaningZh": "說；發聲",
+          "definitionEn": "utter aloud or articulate sounds, words, or set of words",
+          "examples": [
+            "She had so much she wanted to say, but she bit her tongue and remained silent."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-9e165dcb",
+          "pos": "verb",
+          "meaningZh": "表達；陳述",
+          "definitionEn": "express something in words, state or declare something",
+          "examples": [
+            "I need you to say how you feel about this situation."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 翰林 B1·L2",
+        "textbookTitle": "翰林 B1·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "school",
+      "word": "school",
+      "senses": [
+        {
+          "id": "sense-40e5a2ea",
+          "pos": "noun",
+          "meaningZh": "學校；教育機構",
+          "definitionEn": "An educational institution where young people receive formal instruction and training.",
+          "examples": [
+            "After finishing high school, Alice enrolled in a culinary school to pursue her dream of becoming a chef."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-fc57fb1a",
+          "pos": "noun",
+          "meaningZh": "學校建築；校舍",
+          "definitionEn": "The building or campus where an educational institution is located.",
+          "examples": [
+            "Every morning, the students go to school to attend their classes."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "science",
+      "word": "science",
+      "senses": [
+        {
+          "id": "sense-4dbf5b94",
+          "pos": "noun",
+          "meaningZh": "科學；自然科學",
+          "definitionEn": "the study of the natural world based on facts that can be proved and tested",
+          "examples": [
+            "In order to discover a cure for cancer, researchers in the field of science conduct experiments and analyze the results to find a treatment."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-7ecbb84f",
+          "pos": "noun",
+          "meaningZh": "理科；科學學科",
+          "definitionEn": "the branch of knowledge which deals with the physical world and its phenomena",
+          "examples": [
+            "My son is studying science in school, and he loves conducting experiments in his chemistry lab."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "sea",
+      "word": "sea",
+      "senses": [
+        {
+          "id": "sense-0f7b3fee",
+          "pos": "noun",
+          "meaningZh": "海；海洋",
+          "definitionEn": "a large body of salt water that is part of an ocean and is partially enclosed by land",
+          "examples": [
+            "After a long day of hiking, I love to relax and watch the waves crash on the shore of the sea."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-01e01195",
+          "pos": "noun",
+          "meaningZh": "洶湧大浪；波濤",
+          "definitionEn": "rough water with large waves",
+          "examples": [
+            "During the storm, the sea was so rough that the sailors had trouble navigating their ship."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "season",
+      "word": "season",
+      "senses": [
+        {
+          "id": "sense-38ed7a4c",
+          "pos": "noun",
+          "meaningZh": "季節；節令",
+          "definitionEn": "a period of time in a year characterized by particular conditions or activities, such as spring or harvest time",
+          "examples": [
+            "I love the fall season because of the beautiful colors of the leaves and the cooler weather."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-46140c69",
+          "pos": "noun",
+          "meaningZh": "賽季；播出季",
+          "definitionEn": "a period when a particular activity or event happens, such as a sports season or television season",
+          "examples": [
+            "I always look forward to basketball season because my favorite team plays every week."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "seat",
+      "word": "seat",
+      "senses": [
+        {
+          "id": "sense-7c5f3e70",
+          "pos": "noun",
+          "meaningZh": "座位；椅子",
+          "definitionEn": "furniture designed for sitting on",
+          "examples": [
+            "The comfortable seat in the movie theater made the film even more enjoyable."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-7ff2f759",
+          "pos": "noun",
+          "meaningZh": "坐墊；坐面",
+          "definitionEn": "any support for sitting, especially the part of a chair or bench where one sits",
+          "examples": [
+            "He found a comfortable seat at the back of the theater."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "second",
+      "word": "second",
+      "senses": [
+        {
+          "id": "sense-fc5c29d6",
+          "pos": "noun",
+          "meaningZh": "秒；秒鐘",
+          "definitionEn": "1/60 of a minute; the basic unit of time adopted under the Systeme International d’Unites",
+          "examples": [
+            "She finished the race in second place, just a fraction of a second behind the winner."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-59bb69db",
+          "pos": "noun",
+          "meaningZh": "第二；第二名",
+          "definitionEn": "following the first in an ordering or series",
+          "examples": [
+            "After the race, Sarah crossed the finish line in second place."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "secretary",
+      "word": "secretary",
+      "senses": [
+        {
+          "id": "sense-e307887f",
+          "pos": "noun",
+          "meaningZh": "秘書",
+          "definitionEn": "a person who does office work such as typing, answering calls, and arranging meetings",
+          "examples": [
+            "The secretary scheduled the meeting for Monday."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-00742a0a",
+          "pos": "noun",
+          "meaningZh": "書桌；寫字台",
+          "definitionEn": "a desk used for writing",
+          "examples": [
+            "The secretary sat behind her antique writing desk, managing correspondence and drafting important documents."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "see",
+      "word": "see",
+      "senses": [
+        {
+          "id": "sense-5a4efd4d",
+          "pos": "verb",
+          "meaningZh": "看見；看到",
+          "definitionEn": "perceive by sight or have the power to perceive by sight",
+          "examples": [
+            "She strained her eyes to see the tiny bird perched on a branch."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-81c670fb",
+          "pos": "verb",
+          "meaningZh": "察看；仔細觀察",
+          "definitionEn": "observe, check out, and look over carefully or inspect",
+          "examples": [
+            "The detective asked the witness to see the crime scene for any potential clues."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "seed",
+      "word": "seed",
+      "senses": [
+        {
+          "id": "sense-dca6961c",
+          "pos": "noun",
+          "meaningZh": "種子",
+          "definitionEn": "a small object produced by a plant from which a new plant can grow",
+          "examples": [
+            "She planted the seeds in the garden."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-c9f910ab",
+          "pos": "verb",
+          "meaningZh": "去除種子；去籽",
+          "definitionEn": "to remove the seeds from a fruit or vegetable",
+          "examples": [
+            "She seeded the cucumber before slicing it for the salad."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-25a815f1",
+          "pos": "noun",
+          "meaningZh": "起點；萌芽",
+          "definitionEn": "something that serves as the starting point for future development or inspiration",
+          "examples": [
+            "The team’s win in the championship game was the seed of their future success."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "sell",
+      "word": "sell",
+      "senses": [
+        {
+          "id": "sense-428beda6",
+          "pos": "verb",
+          "meaningZh": "賣；出售",
+          "definitionEn": "exchange something for money or its equivalent",
+          "examples": [
+            "I decided to sell my old bicycle to make some extra cash."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-89fc6f7a",
+          "pos": "verb",
+          "meaningZh": "販售；以賣東西維生",
+          "definitionEn": "offer goods or services for sale in order to make a living",
+          "examples": [
+            "John decided to sell his handmade jewelry at the local craft fair to earn money."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "send",
+      "word": "send",
+      "senses": [
+        {
+          "id": "sense-da3969a0",
+          "pos": "verb",
+          "meaningZh": "寄送；傳送",
+          "definitionEn": "to cause or order to be taken, directed, or transmitted to another place",
+          "examples": [
+            "I will send the package by express mail so that it will arrive on time."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-1cd4e369",
+          "pos": "verb",
+          "meaningZh": "派遣；送往",
+          "definitionEn": "cause to go somewhere",
+          "examples": [
+            "I will send this document to you by email."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "sentence",
+      "word": "sentence",
+      "senses": [
+        {
+          "id": "sense-2e75f8a7",
+          "pos": "noun",
+          "meaningZh": "句子；語句",
+          "definitionEn": "a group of words that express a complete thought and contain a subject and a predicate",
+          "examples": [
+            "Alex constructed a sentence about his trip to New York City, expressing the subject ’he,’ and the predicate ’traveled to New York City’."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-a9fac7ef",
+          "pos": "noun",
+          "meaningZh": "判決；刑期",
+          "definitionEn": "a judgment given by a court of law, declaring someone guilty or innocent of a crime and determining the punishment",
+          "examples": [
+            "The judge read out the sentence for the convicted criminal, stating that he would spend 10 years in prison."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "serious",
+      "word": "serious",
+      "senses": [
+        {
+          "id": "sense-cbd5fb04",
+          "pos": "adjective",
+          "meaningZh": "認真的；嚴肅的",
+          "definitionEn": "concerned with work or important matters rather than play or trivialities",
+          "examples": [
+            "The business meeting was very serious and focused on discussing financial strategies."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-35dd8230",
+          "pos": "adjective",
+          "meaningZh": "費心的；複雜難解的",
+          "definitionEn": "requiring effort or concentration; complex and not easy to answer or solve",
+          "examples": [
+            "Solving a Rubik’s cube may seem like a serious task, but it becomes easier with practice."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "service",
+      "word": "service",
+      "senses": [
+        {
+          "id": "sense-6514d64b",
+          "pos": "noun",
+          "meaningZh": "服務；幫助",
+          "definitionEn": "an act of assistance or help",
+          "examples": [
+            "The waiter provided excellent service by attending to our needs promptly and with a smile."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-c61c07c8",
+          "pos": "noun",
+          "meaningZh": "任職；服務期",
+          "definitionEn": "the state of being employed or working for another person or organization",
+          "examples": [
+            "After completing his education, he began his service at the law firm as a junior lawyer."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "set",
+      "word": "set",
+      "senses": [
+        {
+          "id": "sense-aa714481",
+          "pos": "verb",
+          "meaningZh": "放置；擺放",
+          "definitionEn": "put or place (something) in a particular location or arrangement",
+          "examples": [
+            "Please set the table for dinner."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-17ab0fca",
+          "pos": "verb",
+          "meaningZh": "種植；移植",
+          "definitionEn": "put or plant (seeds, seedlings, or plants) into the ground",
+          "examples": [
+            "The gardener set the seedlings carefully into the prepared soil."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "several",
+      "word": "several",
+      "senses": [
+        {
+          "id": "sense-d7630509",
+          "pos": "adjective",
+          "meaningZh": "幾個；數個",
+          "definitionEn": "Not many but more than two or three, when used with countable nouns.",
+          "examples": [
+            "The teacher handed out several worksheets for the students to complete."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-4f34fad6",
+          "pos": "adjective",
+          "meaningZh": "各別的；個別的",
+          "definitionEn": "Being separate and distinct from others, as individual items of a group.",
+          "examples": [
+            "I saw several cats sitting on the fence."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "shake",
+      "word": "shake",
+      "senses": [
+        {
+          "id": "sense-33bca7f4",
+          "pos": "verb",
+          "meaningZh": "搖動；震動",
+          "definitionEn": "move back and forth or sideways",
+          "examples": [
+            "Ellie stood on the dock as the boat slowly rocked and shook in the rough waves."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-79b709e7",
+          "pos": "verb",
+          "meaningZh": "震撼；動搖（情緒）",
+          "definitionEn": "stir the feelings, emotions, or peace of",
+          "examples": [
+            "The heartbreaking news of his brother's accident shook him to his core."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "shall",
+      "word": "shall",
+      "senses": [
+        {
+          "id": "sense-d5728303",
+          "pos": "modal verb",
+          "meaningZh": "（表將來）將要；要不要",
+          "definitionEn": "used to talk about the future instead of using \"will\", especially in questions",
+          "examples": [
+            "Shall we go to the movies tonight?"
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-19862970",
+          "pos": "modal verb",
+          "meaningZh": "（表命令）必須；應當",
+          "definitionEn": "used to express a command or a strong intention",
+          "examples": [
+            "You shall not pass!"
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "shape",
+      "word": "shape",
+      "senses": [
+        {
+          "id": "sense-2e4147f1",
+          "pos": "noun",
+          "meaningZh": "形狀；外形",
+          "definitionEn": "the visual appearance of something or someone",
+          "examples": [
+            "The artist carefully molded the clay into the shape of a dolphin."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-9f455f03",
+          "pos": "noun",
+          "meaningZh": "空間排列；佈局",
+          "definitionEn": "the spatial arrangement of something",
+          "examples": [
+            "The furniture in the living room was arranged in a way that created a welcoming and functional shape."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "share",
+      "word": "share",
+      "senses": [
+        {
+          "id": "sense-c2e8618b",
+          "pos": "verb",
+          "meaningZh": "共用；共享",
+          "definitionEn": "to use or occupy something jointly or in conjunction with others",
+          "examples": [
+            "My sister and I always share the bedroom when we go on vacation."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-a27a9ef9",
+          "pos": "noun",
+          "meaningZh": "份額；應得部分",
+          "definitionEn": "assets that belong to, are due to, or have been contributed by an individual person or group",
+          "examples": [
+            "Tom and Jerry decided to share the profits of their business equally."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "sharp",
+      "word": "sharp",
+      "senses": [
+        {
+          "id": "sense-ea51378c",
+          "pos": "adjective",
+          "meaningZh": "鋒利的；銳利的",
+          "definitionEn": "having a thin, pointed edge or tip that can cut or easily pierce",
+          "examples": [
+            "Carefully hold the knife by the sharp edge when slicing the tomatoes."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-9569e26f",
+          "pos": "adjective",
+          "meaningZh": "尖的；有尖端的",
+          "definitionEn": "ending abruptly in a pointed tip",
+          "examples": [
+            "Carefully hold the knife with the sharp end facing away from you."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "sheep",
+      "word": "sheep",
+      "senses": [
+        {
+          "id": "sense-45f92367",
+          "pos": "noun",
+          "meaningZh": "綿羊",
+          "definitionEn": "a farm animal that has thick curly hair, eats grass, and is raised for its wool, skin, and meat.",
+          "examples": [
+            "The farmer herded the sheep into the pen to shear their wool and then to sell it for knitting and weaving purposes."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-cd1b0ff1",
+          "pos": "noun",
+          "meaningZh": "盲從者；隨波逐流的人",
+          "definitionEn": "a dumb or stupid person.",
+          "examples": [
+            "John was acting like a sheep, blindly following whatever his friends told him to do."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "ship",
+      "word": "ship",
+      "senses": [
+        {
+          "id": "sense-db93b0a0",
+          "pos": "noun",
+          "meaningZh": "船；輪船",
+          "definitionEn": "a large boat used for carrying passengers or goods across the sea or ocean",
+          "examples": [
+            "The cargo ship was filled with various goods from different countries and was heading to the port of Los Angeles."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-9ce44ee3",
+          "pos": "verb",
+          "meaningZh": "海運；運送",
+          "definitionEn": "to transport goods or materials by ship",
+          "examples": [
+            "The company decided to ship the raw materials by sea to reduce transportation costs."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "shirt",
+      "word": "shirt",
+      "senses": [
+        {
+          "id": "sense-63fd042d",
+          "pos": "noun",
+          "meaningZh": "襯衫；上衣",
+          "definitionEn": "a piece of clothing worn on the upper body that covers the chest, shoulders, and arms",
+          "examples": [
+            "I bought a new shirt for the job interview."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-0be5bfa9",
+          "pos": "verb",
+          "meaningZh": "穿上襯衫",
+          "definitionEn": "to put on a shirt or dress oneself in a shirt",
+          "examples": [
+            "After taking a shower, she picked up a clean shirt and put it on before heading to work."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    }
+  ]
+}

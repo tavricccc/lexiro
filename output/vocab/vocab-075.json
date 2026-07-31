@@ -1,0 +1,1341 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 75,
+  "words": [
+    {
+      "wordKey": "geography",
+      "word": "geography",
+      "senses": [
+        {
+          "id": "sense-0199685a",
+          "pos": "noun",
+          "meaningZh": "地理學；地理",
+          "definitionEn": "The study of the earth’s surface, including the distribution of its physical and cultural features, and the interactions between human beings and their environment.",
+          "examples": [
+            "Studying geography can help us understand how and why climate change is affecting different regions of the world."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L2 +1",
+        "textbookTitle": "龍騰 B4·L2、三民 B2·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "gesture",
+      "word": "gesture",
+      "senses": [
+        {
+          "id": "sense-edf23c73",
+          "pos": "noun",
+          "meaningZh": "手勢；姿勢",
+          "definitionEn": "a particular way of using movements to communicate a familiar or pre-arranged signal",
+          "examples": [
+            "His gesture to put his index finger on his lips was a signal for everyone to be quiet during the class."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-1ced6da2",
+          "pos": "noun",
+          "meaningZh": "表示；象徵性舉動",
+          "definitionEn": "an action taken to indicate intention or feelings",
+          "examples": [
+            "He made a gesture of apology by sending her flowers."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L7",
+        "textbookTitle": "龍騰 B3·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "glance",
+      "word": "glance",
+      "senses": [
+        {
+          "id": "sense-64f79422",
+          "pos": "noun",
+          "meaningZh": "一瞥；匆匆一看",
+          "definitionEn": "a quick look",
+          "examples": [
+            "She took a quick glance at her watch to check the time."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L7 +1",
+        "textbookTitle": "龍騰 B3·L7、三民 B4·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "global",
+      "word": "global",
+      "senses": [
+        {
+          "id": "sense-0d18a4ec",
+          "pos": "adjective",
+          "meaningZh": "全球的；世界性的",
+          "definitionEn": "involving the entire earth; not limited or provincial in scope",
+          "examples": [
+            "The COVID-19 pandemic is a global crisis that has affected nations all around the world."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L5",
+        "textbookTitle": "三民 B4·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "glory",
+      "word": "glory",
+      "senses": [
+        {
+          "id": "sense-16502cc4",
+          "pos": "noun",
+          "meaningZh": "榮耀；榮譽",
+          "definitionEn": "a state of high honor or distinction",
+          "examples": [
+            "The soldier received a medal for his heroic actions, bringing glory to himself and his country."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-09c9e466",
+          "pos": "noun",
+          "meaningZh": "光輝；壯麗之美",
+          "definitionEn": "brilliant or radiant beauty",
+          "examples": [
+            "As the sun rose above the mountain peaks, its rays reflected off the pristine snow, enveloping the entire landscape in a breathtaking glory."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L1",
+        "textbookTitle": "龍騰 B4·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "glow",
+      "word": "glow",
+      "senses": [
+        {
+          "id": "sense-2a5066e9",
+          "pos": "noun",
+          "meaningZh": "柔和光芒；穩定光輝",
+          "definitionEn": "a steady even light without flames",
+          "examples": [
+            "The moon cast a soft glow on the lake."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-1be4a71a",
+          "pos": "noun",
+          "meaningZh": "灼熱發光；高溫輝光",
+          "definitionEn": "the phenomenon of light emission by a body as its temperature is raised",
+          "examples": [
+            "The bonfire was so hot that the logs began to glow, emitting a warm and comforting light into the dark night."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "golf",
+      "word": "golf",
+      "senses": [
+        {
+          "id": "sense-bdf2b908",
+          "pos": "noun",
+          "meaningZh": "高爾夫球（運動）",
+          "definitionEn": "A game played on a large open course with 9 or 18 holes. The player’s objective is to complete each hole with as few strokes as possible.",
+          "examples": [
+            "John grabbed his golf clubs and headed to the golf course early Saturday morning."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-8e19a97f",
+          "pos": "verb",
+          "meaningZh": "打高爾夫球",
+          "definitionEn": "To play golf.",
+          "examples": [
+            "The sun was shining as John headed to the golf course to enjoy a round of golf with his friends."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "gossip",
+      "word": "gossip",
+      "senses": [
+        {
+          "id": "sense-ddfc6427",
+          "pos": "noun",
+          "meaningZh": "閒話；八卦",
+          "definitionEn": "casual or light conversation, especially about other people’s lives or affairs",
+          "examples": [
+            "At the coffee shop, a group of people engaged in lively gossip about their favorite celebrities."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-21969fb0",
+          "pos": "noun",
+          "meaningZh": "愛說閒話的人；長舌婦",
+          "definitionEn": "a person who enjoys talking about other people’s private lives or affairs",
+          "examples": [
+            "At the coffee shop, Susan was known as the gossip, always eager to share juicy details about her coworkers' relationships and scandals."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L9",
+        "textbookTitle": "龍騰 B2·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "governor",
+      "word": "governor",
+      "senses": [
+        {
+          "id": "sense-070d8f53",
+          "pos": "noun",
+          "meaningZh": "州長；行政長官",
+          "definitionEn": "the highest-ranking official in charge of a state’s government",
+          "examples": [
+            "The governor held a press conference to announce new policies and initiatives for the state."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-8a186bd0",
+          "pos": "noun",
+          "meaningZh": "調速器；限速裝置",
+          "definitionEn": "a device or mechanism that controls or regulates a machine’s speed or operation (such as by controlling the flow of fuel)",
+          "examples": [
+            "The car's governor ensures that the maximum speed is limited to 100 miles per hour."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "grab",
+      "word": "grab",
+      "senses": [
+        {
+          "id": "sense-c398e843",
+          "pos": "verb",
+          "meaningZh": "抓住；牢牢握住",
+          "definitionEn": "to take hold of or seize quickly and firmly",
+          "examples": [
+            "As the baseball soared through the air, the outfielder sprinted and leaped to grab the ball just before it sailed over the fence."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-255fb7ee",
+          "pos": "verb",
+          "meaningZh": "迅速拿取；奪取",
+          "definitionEn": "to take or grasp suddenly",
+          "examples": [
+            "She quickly grabbed the remote control to change the channel."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B2·L7",
+        "textbookTitle": "三民 B2·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "graduate",
+      "word": "graduate",
+      "senses": [
+        {
+          "id": "sense-9ed70c34",
+          "pos": "verb",
+          "meaningZh": "授予學位；畢業",
+          "definitionEn": "to confer an academic degree upon someone",
+          "examples": [
+            "After four years of hard work, Sarah will finally graduate with her Bachelor’s degree from the University."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-57415593",
+          "pos": "adjective",
+          "meaningZh": "研究生的；大學畢業後的",
+          "definitionEn": "relating to studies beyond a bachelor’s degree",
+          "examples": [
+            "After completing her undergraduate degree, she enrolled in a graduate program to pursue her passion for research."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L2",
+        "textbookTitle": "龍騰 B3·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "grasp",
+      "word": "grasp",
+      "senses": [
+        {
+          "id": "sense-65d1873c",
+          "pos": "noun",
+          "meaningZh": "理解力；掌握",
+          "definitionEn": "an intellectual hold or understanding",
+          "examples": [
+            "After attending several history lectures, he finally grasped the concept of feudalism."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-477ce4f0",
+          "pos": "noun",
+          "meaningZh": "領悟；認知",
+          "definitionEn": "understanding of the nature, meaning, quality, or magnitude of something",
+          "examples": [
+            "It took him several days to grasp the concept of quantum physics."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B1·L2",
+        "textbookTitle": "三民 B1·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "grasshopper",
+      "word": "grasshopper",
+      "senses": [
+        {
+          "id": "sense-af850768",
+          "pos": "noun",
+          "meaningZh": "蚱蜢；蝗蟲",
+          "definitionEn": "An insect with long back legs that can jump very high and often makes a chirping noise.",
+          "examples": [
+            "On a hot summer day, we sat in the field listening to the rhythmic chirping of the grasshoppers."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "grassy",
+      "word": "grassy",
+      "senses": [
+        {
+          "id": "sense-025f8884",
+          "pos": "adjective",
+          "meaningZh": "長滿草的；多草的",
+          "definitionEn": "covered with grass or containing a lot of grass",
+          "examples": [
+            "The children ran barefoot on the grassy field and enjoyed the soft texture of the blades under their feet."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "greedy",
+      "word": "greedy",
+      "senses": [
+        {
+          "id": "sense-dc1d7c18",
+          "pos": "adjective",
+          "meaningZh": "貪婪的；貪心的",
+          "definitionEn": "having or showing an excessive desire or appetite for something, especially wealth",
+          "examples": [
+            "The greedy businessman took advantage of his employees by paying them low wages."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-6966646a",
+          "pos": "adjective",
+          "meaningZh": "貪得無厭的；過分索取的",
+          "definitionEn": "wanting more than one needs or deserves, especially in terms of material wealth",
+          "examples": [
+            "The landlord was so greedy that he increased the rent every six months, even though the apartments were in poor condition."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "greenhouse",
+      "word": "greenhouse",
+      "senses": [
+        {
+          "id": "sense-fcc18919",
+          "pos": "noun",
+          "meaningZh": "溫室；玻璃暖房",
+          "definitionEn": "a building made of glass or transparent material, used for growing plants that need warmth and protection",
+          "examples": [
+            "The tomato plants thrived in the greenhouse, benefiting from the controlled environment and ample sunlight."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "grin",
+      "word": "grin",
+      "senses": [
+        {
+          "id": "sense-e718ee95",
+          "pos": "noun",
+          "meaningZh": "咧嘴笑；露齒而笑",
+          "definitionEn": "a facial expression characterized by turning up the corners of the mouth; usually showing pleasure or amusement",
+          "examples": [],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-dc9f8a0c",
+          "pos": "verb",
+          "meaningZh": "露齒而笑；咧嘴笑",
+          "definitionEn": "to draw back the lips and reveal the teeth, in a smile, grimace, or snarl",
+          "examples": [
+            "He couldn’t help but grin when his favorite song started playing on the radio."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "grocery",
+      "word": "grocery",
+      "senses": [
+        {
+          "id": "sense-f0000819",
+          "pos": "noun",
+          "meaningZh": "食品雜貨；日用品",
+          "definitionEn": "Consumer goods, typically food and household items, sold by a grocer",
+          "examples": [
+            "I need to go to the grocery store to pick up some milk and bread."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-923ba2b3",
+          "pos": "noun",
+          "meaningZh": "雜貨店；超市",
+          "definitionEn": "A shop or store that sells groceries",
+          "examples": [
+            "I need to go to the grocery store to buy some milk and bread."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "guidance",
+      "word": "guidance",
+      "senses": [
+        {
+          "id": "sense-f58b9697",
+          "pos": "noun",
+          "meaningZh": "指導；建議方向",
+          "definitionEn": "something that provides direction or advice as to a decision or course of action",
+          "examples": [
+            "Before starting a new business, it is crucial to seek the guidance of a seasoned entrepreneur."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-f269fe8e",
+          "pos": "noun",
+          "meaningZh": "引導；帶路",
+          "definitionEn": "the act of guiding or showing the way",
+          "examples": [
+            "The hiker relied on the park ranger's guidance to navigate through the dense forest."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "gum",
+      "word": "gum",
+      "senses": [
+        {
+          "id": "sense-2d8dbe06",
+          "pos": "noun",
+          "meaningZh": "口香糖",
+          "definitionEn": "a sweet, sticky substance that you chew but do not swallow",
+          "examples": [
+            "She offered me a piece of chewing gum."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-83afe074",
+          "pos": "noun",
+          "meaningZh": "桉樹木材；樹膠木",
+          "definitionEn": "the wood of certain trees, such as the eucalyptus, liquidambar, or sweet gum",
+          "examples": [
+            "The carpenter selected a piece of gum for the project because of its durability and beautiful grain pattern."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "hairdresser",
+      "word": "hairdresser",
+      "senses": [
+        {
+          "id": "sense-7c1aae1e",
+          "pos": "noun",
+          "meaningZh": "美髮師；理髮師",
+          "definitionEn": "a person who cuts, styles, or colors hair as a profession",
+          "examples": [
+            "My hairdresser knows exactly how to cut my hair to make it look good."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "hallway",
+      "word": "hallway",
+      "senses": [
+        {
+          "id": "sense-51d1e3f5",
+          "pos": "noun",
+          "meaningZh": "走廊；門廳",
+          "definitionEn": "a long, narrow passage inside a building, with rooms on one or both sides that you can enter through doors",
+          "examples": [
+            "As he walked down the hallway, he could hear the faint sound of music coming from one of the rooms."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "hammer",
+      "word": "hammer",
+      "senses": [
+        {
+          "id": "sense-b3d3c9ae",
+          "pos": "noun",
+          "meaningZh": "鐵鎚；榔頭",
+          "definitionEn": "a hand tool with a heavy head and handle, used for hitting things to make them move or to shape them",
+          "examples": [
+            "John used a hammer to drive a nail into the wall."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-6db97ec8",
+          "pos": "verb",
+          "meaningZh": "用鎚敲打；錘擊",
+          "definitionEn": "to hit something hard with a hammer",
+          "examples": [
+            "He used a hammer to nail the pictures to the wall."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "handful",
+      "word": "handful",
+      "senses": [
+        {
+          "id": "sense-bc803f6e",
+          "pos": "noun",
+          "meaningZh": "少數；一小撮",
+          "definitionEn": "a small number or amount",
+          "examples": [
+            "He only gave me a handful of chips to eat."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-b8fd2e9e",
+          "pos": "noun",
+          "meaningZh": "一把；手能握的量",
+          "definitionEn": "the quantity that can be held in the hand",
+          "examples": [
+            "He only wanted a handful of peanuts from the bowl."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "handkerchief",
+      "word": "handkerchief",
+      "senses": [
+        {
+          "id": "sense-586bb33f",
+          "pos": "noun",
+          "meaningZh": "手帕；面紙巾",
+          "definitionEn": "a square piece of cloth used for wiping the eyes or nose or as a costume accessory",
+          "examples": [
+            "During the funeral, she used her handkerchief to wipe away her tears."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-b527b825",
+          "pos": "noun",
+          "meaningZh": "手帕；擦鼻巾",
+          "definitionEn": "a small, usually square piece of cloth that is used for wiping your face or nose",
+          "examples": [
+            "When she sneezed, she reached for her handkerchief to wipe away the mucus."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "handy",
+      "word": "handy",
+      "senses": [
+        {
+          "id": "sense-047870f8",
+          "pos": "adjective",
+          "meaningZh": "方便的；有用的",
+          "definitionEn": "useful or convenient",
+          "examples": [
+            "Having a Swiss Army knife is handy when you're camping and need to open cans or cut ropes."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-98075adc",
+          "pos": "adjective",
+          "meaningZh": "易操作的；順手的",
+          "definitionEn": "easy to use or operate",
+          "examples": [
+            "The new smartphone comes with a handy user interface that makes it simple for anyone to navigate and access all the features."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "hanger",
+      "word": "hanger",
+      "senses": [
+        {
+          "id": "sense-a90e6423",
+          "pos": "noun",
+          "meaningZh": "衣架；掛鉤",
+          "definitionEn": "an object used for hanging clothes or other items",
+          "examples": [
+            "I hung my freshly washed dress on the hanger in my closet."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-f837077d",
+          "pos": "noun",
+          "meaningZh": "張掛者；裱掛工",
+          "definitionEn": "a person who hangs something, such as wallpaper or curtains",
+          "examples": [
+            "The hanger carefully measured and hung the beautiful new curtains in the living room."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "harbor",
+      "word": "harbor",
+      "senses": [
+        {
+          "id": "sense-652f3ecc",
+          "pos": "noun",
+          "meaningZh": "港口；海港",
+          "definitionEn": "an area of water by the coast where ships are kept safe",
+          "examples": [
+            "Several fishing boats were anchored in the harbor."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-45983541",
+          "pos": "noun",
+          "meaningZh": "避難所；庇護處",
+          "definitionEn": "a place of refuge and comfort and security",
+          "examples": [
+            "During the hurricane, the coastal townspeople sought harbor in the sturdy brick building."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-6358e4a7",
+          "pos": "verb",
+          "meaningZh": "窩藏；私自收容",
+          "definitionEn": "keep in one’s possession; of animals",
+          "examples": [
+            "It is illegal to harbor wild animals without a permit."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "harm",
+      "word": "harm",
+      "senses": [
+        {
+          "id": "sense-13bf3f22",
+          "pos": "noun",
+          "meaningZh": "傷害；損害",
+          "definitionEn": "physical or mental injury or damage",
+          "examples": [
+            "It is never acceptable to cause intentional harm to another person or animal."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-9cb6ec5c",
+          "pos": "noun",
+          "meaningZh": "不良後果；危害",
+          "definitionEn": "a negative outcome or consequence",
+          "examples": [
+            "Playing with matches can cause harm to the children and others around them."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L5 +2",
+        "textbookTitle": "龍騰 B1·L5、三民 B1·L6、翰林 B1·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "harmful",
+      "word": "harmful",
+      "senses": [
+        {
+          "id": "sense-c46c1837",
+          "pos": "adjective",
+          "meaningZh": "有害的；危險的",
+          "definitionEn": "likely to cause harm or injury",
+          "examples": [
+            "It’s important to read the label on cleaning products to ensure they are not harmful if ingested or inhaled."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L5 +2",
+        "textbookTitle": "龍騰 B1·L5、三民 B1·L6、翰林 B1·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    }
+  ]
+}

@@ -1,0 +1,1355 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 78,
+  "words": [
+    {
+      "wordKey": "invitation",
+      "word": "invitation",
+      "senses": [
+        {
+          "id": "sense-7bfa44fc",
+          "pos": "noun",
+          "meaningZh": "邀請函；請帖",
+          "definitionEn": "a written or printed notice or request to participate or be present in something, usually sent by mail",
+          "examples": [
+            "The couple sent out beautiful invitations to all of their family and friends for their wedding."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-bd965908",
+          "pos": "noun",
+          "meaningZh": "邀請；邀約",
+          "definitionEn": "a request (spoken or written) to participate or be present or take part in something",
+          "examples": [
+            "Julia received an invitation to her best friend's wedding."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "ivory",
+      "word": "ivory",
+      "senses": [
+        {
+          "id": "sense-b9cc3862",
+          "pos": "noun",
+          "meaningZh": "象牙",
+          "definitionEn": "the hard, white substance that forms the tusks of elephants",
+          "examples": [
+            "The trade in ivory is now banned to protect elephants."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-f222cdff",
+          "pos": "noun",
+          "meaningZh": "象牙色；米白色",
+          "definitionEn": "a pale yellow-brown color resembling the tusks of an elephant",
+          "examples": [
+            "The walls of the elegant living room were painted in a soothing ivory, creating a sophisticated and timeless ambiance."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-869fcb23",
+          "pos": "noun",
+          "meaningZh": "淺灰黃色",
+          "definitionEn": "a light grayish-yellow color resembling ivory",
+          "examples": [
+            "She painted her bedroom walls a calming shade of ivory."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "jail",
+      "word": "jail",
+      "senses": [
+        {
+          "id": "sense-39976564",
+          "pos": "noun",
+          "meaningZh": "監獄；牢房",
+          "definitionEn": "a place where criminals are kept",
+          "examples": [
+            "He was sentenced to 10 years in jail for his crimes."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-6848ce97",
+          "pos": "noun",
+          "meaningZh": "拘留所；羈押設施",
+          "definitionEn": "a correctional institution used to detain persons who are in the lawful custody of the government (either accused persons awaiting trial or convicted persons serving a sentence)",
+          "examples": [
+            "After being found guilty of robbery, he was sentenced to six months in jail."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L1 +1",
+        "textbookTitle": "龍騰 B4·L1、三民 B4·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "jar",
+      "word": "jar",
+      "senses": [
+        {
+          "id": "sense-5664f981",
+          "pos": "noun",
+          "meaningZh": "廣口瓶；罐子",
+          "definitionEn": "a cylindrical container without handles, typically with a wide mouth",
+          "examples": [
+            "I opened the jar of pickles and the smell filled the room."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-d8731d79",
+          "pos": "noun",
+          "meaningZh": "一罐的量",
+          "definitionEn": "the amount that a jar can contain",
+          "examples": [
+            "She filled the jar with coins until it reached its maximum capacity."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B1·L7",
+        "textbookTitle": "三民 B1·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "jaw",
+      "word": "jaw",
+      "senses": [
+        {
+          "id": "sense-bb6399a3",
+          "pos": "noun",
+          "meaningZh": "下顎；顎部",
+          "definitionEn": "the part of the skull that holds the teeth and forms the mouth",
+          "examples": [
+            "The boxer's powerful punch landed square on his opponent's jaw, knocking him out cold."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-26242551",
+          "pos": "noun",
+          "meaningZh": "顎骨",
+          "definitionEn": "either of the bones of the skull that frame the mouth and hold the teeth in place",
+          "examples": [
+            "The dentist examined her jaw to determine the cause of her toothache."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "jazz",
+      "word": "jazz",
+      "senses": [
+        {
+          "id": "sense-c692db62",
+          "pos": "noun",
+          "meaningZh": "爵士樂",
+          "definitionEn": "a genre of popular music that originated in New Orleans around 1900 and developed into increasingly complex styles",
+          "examples": [
+            "As the live jazz band played in the background, the audience couldn't resist tapping their feet and swaying to the infectious rhythm."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "jealous",
+      "word": "jealous",
+      "senses": [
+        {
+          "id": "sense-f630c09e",
+          "pos": "adjective",
+          "meaningZh": "嫉妒的；羨慕的",
+          "definitionEn": "feeling or showing envy of someone or their achievements, possessions, or perceived advantages",
+          "examples": [
+            "Samantha couldn't help but feel jealous when she saw her coworker receive a promotion that she had been working towards for years."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-6bf84539",
+          "pos": "adjective",
+          "meaningZh": "猜疑的；忌妒的",
+          "definitionEn": "feeling or showing suspicion and/or resentment toward someone’s perceived advantages",
+          "examples": [
+            "Samantha couldn't help but feel jealous when she saw her co-worker receive a promotion she had been working towards for years."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "jeep",
+      "word": "jeep",
+      "senses": [
+        {
+          "id": "sense-e9dcfdf8",
+          "pos": "noun",
+          "meaningZh": "吉普車",
+          "definitionEn": "a small, sturdy motor vehicle with four-wheel drive, suited for both on-road and off-road driving",
+          "examples": [
+            "John took his jeep on a thrilling off-road adventure through the rugged mountains."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "jelly",
+      "word": "jelly",
+      "senses": [
+        {
+          "id": "sense-6471ff71",
+          "pos": "noun",
+          "meaningZh": "果凍；果醬",
+          "definitionEn": "a fruit preserve made from fruit juice set with gelatin.",
+          "examples": [
+            "My favorite way to have toast is with a layer of peanut butter and a dollop of grape jelly on top."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-026db61f",
+          "pos": "verb",
+          "meaningZh": "使凝成果凍狀",
+          "definitionEn": "to make something into a jelly-like substance.",
+          "examples": [
+            "I used pectin to jelly the fresh strawberries, turning them into a delicious spread."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "jet",
+      "word": "jet",
+      "senses": [
+        {
+          "id": "sense-2f245a7d",
+          "pos": "noun",
+          "meaningZh": "噴射機",
+          "definitionEn": "an airplane powered by one or more jet engines",
+          "examples": [
+            "I traveled to London in a luxurious jet."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-5900f469",
+          "pos": "noun",
+          "meaningZh": "噴水柱；水柱",
+          "definitionEn": "an artificially produced flow of water",
+          "examples": [
+            "The fountain in the park shot water jets into the air, delighting the children playing nearby."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "jewel",
+      "word": "jewel",
+      "senses": [
+        {
+          "id": "sense-b858c2be",
+          "pos": "noun",
+          "meaningZh": "寶石；珠寶",
+          "definitionEn": "a precious or semi-precious stone incorporated into a piece of jewelry",
+          "examples": [
+            "She wore a stunning diamond jewel around her neck to the gala."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-cdf03272",
+          "pos": "noun",
+          "meaningZh": "珍貴的人；瑰寶",
+          "definitionEn": "a person who is as brilliant and precious as a piece of jewelry",
+          "examples": [
+            "She is truly a jewel, with her exceptional intelligence and radiant personality."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "jewelry",
+      "word": "jewelry",
+      "senses": [
+        {
+          "id": "sense-ccea38e4",
+          "pos": "noun",
+          "meaningZh": "珠寶；首飾",
+          "definitionEn": "decorative objects worn on the body, typically made of precious metals and gems, but can also include artificial materials",
+          "examples": [
+            "She adorned herself with a stunning set of diamond jewelry for the red carpet event."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "journey",
+      "word": "journey",
+      "senses": [
+        {
+          "id": "sense-4fdceb9d",
+          "pos": "noun",
+          "meaningZh": "旅程；行程",
+          "definitionEn": "the act of traveling from one place to another",
+          "examples": [
+            "After months of planning, they embarked on a journey around the world, visiting exotic destinations and immersing themselves in different cultures."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-33f8ed4e",
+          "pos": "verb",
+          "meaningZh": "旅行；踏上旅途",
+          "definitionEn": "undertake a journey or trip",
+          "examples": [
+            "After saving up for years, Sarah finally had enough money to journey across Europe."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L3",
+        "textbookTitle": "龍騰 B1·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "joyful",
+      "word": "joyful",
+      "senses": [
+        {
+          "id": "sense-9b48339f",
+          "pos": "adjective",
+          "meaningZh": "令人喜悅的；歡欣的",
+          "definitionEn": "producing or causing great happiness and joy",
+          "examples": [
+            "The birth of their daughter brought a wave of joyful celebration into their lives."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-125e0d2c",
+          "pos": "adjective",
+          "meaningZh": "充滿喜悅的；興高采烈的",
+          "definitionEn": "full of high-spirited delight",
+          "examples": [
+            "After months of rehearsing, the cast and crew were joyful when the audience erupted in thunderous applause at the end of their successful opening night."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L4",
+        "textbookTitle": "龍騰 B3·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "juicy",
+      "word": "juicy",
+      "senses": [
+        {
+          "id": "sense-8acfd5f7",
+          "pos": "adjective",
+          "meaningZh": "多汁的",
+          "definitionEn": "full of juice or liquid",
+          "examples": [
+            "The ripe watermelon was juicy, with each bite releasing a burst of sweet, refreshing juice."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "jungle",
+      "word": "jungle",
+      "senses": [
+        {
+          "id": "sense-feb9a332",
+          "pos": "noun",
+          "meaningZh": "熱帶叢林；密林",
+          "definitionEn": "an impenetrable forest in the tropics",
+          "examples": [
+            "The guide led the tourists through the dense jungle, pointing out different species of birds and monkeys along the way."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-36e318fb",
+          "pos": "noun",
+          "meaningZh": "弱肉強食之地；叢林",
+          "definitionEn": "a location characterized by a fierce competition and struggle for survival",
+          "examples": [
+            "The corporate world can be like a jungle as employees compete fiercely for job promotions."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "junior",
+      "word": "junior",
+      "senses": [
+        {
+          "id": "sense-3864804c",
+          "pos": "adjective",
+          "meaningZh": "資淺的；職位較低的",
+          "definitionEn": "having a low rank or position; younger or less experienced",
+          "examples": [
+            "She started as a junior employee but was soon promoted."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-7e7f5d01",
+          "pos": "adjective",
+          "meaningZh": "青少年的；少年適用的",
+          "definitionEn": "intended or suitable for young people",
+          "examples": [
+            "The junior section of the library offers a wide variety of books for children and teenagers."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-51026aa9",
+          "pos": "adjective",
+          "meaningZh": "大三的；三年級的",
+          "definitionEn": "relating to the third year of study in a four-year college or high school program",
+          "examples": [
+            "As a junior in college, he was excited to begin taking more specialized courses in his major."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "junk",
+      "word": "junk",
+      "senses": [
+        {
+          "id": "sense-25f633e6",
+          "pos": "noun",
+          "meaningZh": "廢物；廢料",
+          "definitionEn": "the leftover or discarded pieces of something that has been destroyed or broken up",
+          "examples": [
+            "After watching the demolition of the old building, all that remained was a pile of junk."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-655c732c",
+          "pos": "verb",
+          "meaningZh": "丟棄；廢置",
+          "definitionEn": "to get rid of something old or useless, especially items which take up space",
+          "examples": [
+            "After cleaning out the garage, I decided to junk all the broken bicycles and unused furniture."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "kangaroo",
+      "word": "kangaroo",
+      "senses": [
+        {
+          "id": "sense-1b8b4c12",
+          "pos": "noun",
+          "meaningZh": "袋鼠",
+          "definitionEn": "Any of several herbivorous, leaping marsupials of Australia and New Guinea. They are known for their large, powerful hind legs and long, thick tails.",
+          "examples": [
+            "When I visited Australia, I saw a group of kangaroos hopping in the vast grassland."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "keyboard",
+      "word": "keyboard",
+      "senses": [
+        {
+          "id": "sense-01cca217",
+          "pos": "noun",
+          "meaningZh": "鍵盤",
+          "definitionEn": "a device consisting of a set of keys, used to input data into a computer or other electronic device",
+          "examples": [
+            "She typed her essay on the keyboard, quickly and efficiently."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-aeb98a64",
+          "pos": "noun",
+          "meaningZh": "鍵盤裝置",
+          "definitionEn": "a set of keys used for operating a typewriter, computer, or other electronic device",
+          "examples": [
+            "She typed on her keyboard, furiously trying to finish her essay before the deadline."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "kidney",
+      "word": "kidney",
+      "senses": [
+        {
+          "id": "sense-d7a4153c",
+          "pos": "noun",
+          "meaningZh": "腎臟",
+          "definitionEn": "Either of two bean-shaped organs in the body that remove waste products from the blood and produce urine.",
+          "examples": [
+            "After his car accident, Tim had to undergo surgery to remove one of his kidneys."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-6c410048",
+          "pos": "noun",
+          "meaningZh": "腰子料理",
+          "definitionEn": "A dish made of cooked kidneys usually served for breakfast.",
+          "examples": [
+            "For a hearty breakfast, I ordered a plate of kidney, which was perfectly cooked and seasoned."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "kilometer",
+      "word": "kilometer",
+      "senses": [
+        {
+          "id": "sense-98f922bc",
+          "pos": "noun",
+          "meaningZh": "公里；千米",
+          "definitionEn": "a unit of measurement equal to 1000 meters (0.62 miles) that is used to measure distance",
+          "examples": [
+            "The nearest gas station is several kilometers away from here."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "kindergarten",
+      "word": "kindergarten",
+      "senses": [
+        {
+          "id": "sense-396c0654",
+          "pos": "noun",
+          "meaningZh": "幼稚園；幼兒園",
+          "definitionEn": "a school or class that provides education and care for children usually between the ages of four and six",
+          "examples": [
+            "Jenny loved going to kindergarten every morning, where she learned how to read, write, and make new friends."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "kingdom",
+      "word": "kingdom",
+      "senses": [
+        {
+          "id": "sense-f329c0be",
+          "pos": "noun",
+          "meaningZh": "王國",
+          "definitionEn": "a country or state having a monarch as head of state",
+          "examples": [
+            "The royal family ruled over the kingdom for centuries, ensuring stability and prosperity for its citizens."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-8e0e53c8",
+          "pos": "noun",
+          "meaningZh": "領域；王朝",
+          "definitionEn": "a domain in which something is preeminent or has control",
+          "examples": [
+            "In the realm of fashion, Coco Chanel’s kingdom is unquestionable."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "kit",
+      "word": "kit",
+      "senses": [
+        {
+          "id": "sense-a1104119",
+          "pos": "noun",
+          "meaningZh": "套組；工具組",
+          "definitionEn": "a set of things, such as tools or equipment, that are used together for a particular activity or purpose",
+          "examples": [
+            "When I bought my new camera, it came with a kit that included different lenses, a tripod, and a carrying case."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-b1af6385",
+          "pos": "noun",
+          "meaningZh": "工具盒；收納盒",
+          "definitionEn": "a container or case used for holding a set of articles or tools",
+          "examples": [
+            "She opened her sewing kit and laid out all the threads and needles."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "knight",
+      "word": "knight",
+      "senses": [
+        {
+          "id": "sense-948d71a1",
+          "pos": "noun",
+          "meaningZh": "騎士",
+          "definitionEn": "a person of noble birth who is trained in fighting on horseback and upholding chivalric values",
+          "examples": [
+            "The young squire hoped to one day become a knight and fight for his kingdom’s honor."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-51ca6311",
+          "pos": "noun",
+          "meaningZh": "馬（西洋棋棋子）",
+          "definitionEn": "a chess piece that looks like a horse’s head and moves two squares horizontally and one square vertically or two squares vertically and one square horizontally",
+          "examples": [
+            "He moved his knight to put his opponent’s king in check."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "knit",
+      "word": "knit",
+      "senses": [
+        {
+          "id": "sense-58894ba6",
+          "pos": "verb",
+          "meaningZh": "編織；針織",
+          "definitionEn": "to make cloth or clothing by connecting yarn into rows using two long needles or a machine.",
+          "examples": [
+            "My grandmother taught me how to knit, and now I can make my own scarves and sweaters."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-1c2342c2",
+          "pos": "verb",
+          "meaningZh": "聯結；結合",
+          "definitionEn": "to join or unite together.",
+          "examples": [
+            "She used her knitting needles to knit together a cozy blanket."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "knot",
+      "word": "knot",
+      "senses": [
+        {
+          "id": "sense-712088e9",
+          "pos": "noun",
+          "meaningZh": "結；繩結",
+          "definitionEn": "a fastening made by tying a rope or cord upon itself or to another object",
+          "examples": [
+            "Before we set sail, make sure to double-knot the ropes to secure them tightly."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "koala",
+      "word": "koala",
+      "senses": [
+        {
+          "id": "sense-5eddee10",
+          "pos": "noun",
+          "meaningZh": "無尾熊；樹熊",
+          "definitionEn": "A koala is a type of Australian animal. It has thick gray fur, large ears, and no tail.",
+          "examples": [
+            "During my visit to Australia, I had the opportunity to see a koala up close in a wildlife sanctuary. It was incredibly adorable and its thick gray fur was so soft to the touch."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "label",
+      "word": "label",
+      "senses": [
+        {
+          "id": "sense-f8cfc9b5",
+          "pos": "noun",
+          "meaningZh": "標籤；標示貼紙",
+          "definitionEn": "an identifying marker that is attached to an object",
+          "examples": [
+            "The label on the back of the book helps identify the author and title."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-6b529f74",
+          "pos": "noun",
+          "meaningZh": "標記；簡短描述",
+          "definitionEn": "a brief description used for identification",
+          "examples": [
+            "The label on the front of the package clearly states the ingredients and nutritional information."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L8 +1",
+        "textbookTitle": "三民 B4·L8、翰林 B1·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    }
+  ]
+}

@@ -1,0 +1,1356 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 200,
+  "words": [
+    {
+      "wordKey": "villain",
+      "word": "villain",
+      "senses": [
+        {
+          "id": "sense-e6717263",
+          "pos": "noun",
+          "meaningZh": "壞人；惡棍",
+          "definitionEn": "someone who does evil deliberately; a wicked or evil person",
+          "examples": [
+            "In the movie, the villain devised an elaborate plan to take over the world."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-846d9ebc",
+          "pos": "noun",
+          "meaningZh": "反派人物；反角",
+          "definitionEn": "the principal bad character in a film or work of fiction",
+          "examples": [
+            "In the movie, the villain plotted an elaborate scheme to take over the world."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "vine",
+      "word": "vine",
+      "senses": [
+        {
+          "id": "sense-115a1139",
+          "pos": "noun",
+          "meaningZh": "藤蔓；蔓生植物",
+          "definitionEn": "a plant that usually climbs, creeps, or twines around objects for support",
+          "examples": [
+            "My grandma’s garden is filled with different types of vines that climb up the trellis and create a beautiful wall of greenery."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "vineyard",
+      "word": "vineyard",
+      "senses": [
+        {
+          "id": "sense-96ca0c1a",
+          "pos": "noun",
+          "meaningZh": "葡萄園",
+          "definitionEn": "A farm where grapes are grown to be used in winemaking.",
+          "examples": [
+            "The winery's vineyard stretches across acres of land, covered in rows of meticulously maintained grapevines."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "violinist",
+      "word": "violinist",
+      "senses": [
+        {
+          "id": "sense-0e94d3ec",
+          "pos": "noun",
+          "meaningZh": "小提琴手；小提琴演奏者",
+          "definitionEn": "a person who plays the violin professionally or as a hobby",
+          "examples": [
+            "The talented violinist performed a beautiful solo at the concert last night."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "virgin",
+      "word": "virgin",
+      "senses": [
+        {
+          "id": "sense-1e076970",
+          "pos": "adjective",
+          "meaningZh": "未使用的；原始完好的",
+          "definitionEn": "unused, pristine, mint condition",
+          "examples": [
+            "The antique car was in virgin condition, with its original paint and no signs of wear and tear."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "vitality",
+      "word": "vitality",
+      "senses": [
+        {
+          "id": "sense-7b6def05",
+          "pos": "noun",
+          "meaningZh": "生命力；活力",
+          "definitionEn": "the ability to survive and grow, especially in difficult conditions",
+          "examples": [
+            "Despite facing numerous challenges, her vitality and determination allowed her to overcome every obstacle and achieve her goals."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-f35cceb2",
+          "pos": "noun",
+          "meaningZh": "朝氣；熱情",
+          "definitionEn": "energy and enthusiasm in the way a person behaves or expresses themselves",
+          "examples": [
+            "Despite being in her 80s, Jane's vitality is apparent as she dances and laughs with the younger members of the community."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "vocation",
+      "word": "vocation",
+      "senses": [
+        {
+          "id": "sense-2dfc48fd",
+          "pos": "noun",
+          "meaningZh": "職業；天職",
+          "definitionEn": "the particular occupation for which you are trained",
+          "examples": [
+            "After years of training, she found her true vocation as a heart surgeon."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-31da03b7",
+          "pos": "noun",
+          "meaningZh": "聖召；宗教使命",
+          "definitionEn": "a group of people doing the same kind of work, especially in a religious order",
+          "examples": [
+            "The nuns who lived together and dedicated their lives to prayer and serving the community displayed a strong sense of vocation."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "vocational",
+      "word": "vocational",
+      "senses": [
+        {
+          "id": "sense-cb20af53",
+          "pos": "adjective",
+          "meaningZh": "職業訓練的；職業技術的",
+          "definitionEn": "providing or undergoing training in special skills, typically for a specific job or occupation",
+          "examples": [
+            "After high school, Tom pursued vocational training in auto mechanics so he could become a skilled mechanic and eventually open his own auto repair shop."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-6f628178",
+          "pos": "adjective",
+          "meaningZh": "職業相關的；就業導向的",
+          "definitionEn": "relating to an occupation or employment",
+          "examples": [
+            "After graduating from high school, Sarah decided to attend a vocational school to learn a trade that would help her start a career."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "vowel",
+      "word": "vowel",
+      "senses": [
+        {
+          "id": "sense-f3bc9831",
+          "pos": "noun",
+          "meaningZh": "母音；元音",
+          "definitionEn": "a speech sound made with the vocal tract open",
+          "examples": [
+            "The letter 'A' is a vowel in the English alphabet."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-f26e7b31",
+          "pos": "noun",
+          "meaningZh": "元音字母；母音字母",
+          "definitionEn": "a letter of the alphabet standing for a spoken vowel",
+          "examples": [
+            "In the word 'apple', the letter 'a' is a vowel."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "wag",
+      "word": "wag",
+      "senses": [
+        {
+          "id": "sense-db3d2e3c",
+          "pos": "verb",
+          "meaningZh": "搖擺；左右擺動",
+          "definitionEn": "move from side to side",
+          "examples": [
+            "The dog’s tail will wag excitedly when he sees his owner."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-55f0f2d2",
+          "pos": "noun",
+          "meaningZh": "搖擺；擺動",
+          "definitionEn": "causing something to move repeatedly from side to side",
+          "examples": [
+            "The dog’s tail would wag excitedly whenever his owner came home."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "walnut",
+      "word": "walnut",
+      "senses": [
+        {
+          "id": "sense-fa83dacc",
+          "pos": "noun",
+          "meaningZh": "核桃；胡桃",
+          "definitionEn": "the edible nut of a walnut tree which has a hard shell and a wrinkled seed",
+          "examples": [
+            "She cracked open the walnut to reveal the delicious, wrinkled seed inside."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-0253b95a",
+          "pos": "noun",
+          "meaningZh": "核桃樹；胡桃樹",
+          "definitionEn": "a type of tree that produces a nut",
+          "examples": [
+            "In her backyard, Linda has a beautiful walnut tree that provides shade and also yields delicious nuts each year."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "ward",
+      "word": "ward",
+      "senses": [
+        {
+          "id": "sense-481530a1",
+          "pos": "noun",
+          "meaningZh": "病房",
+          "definitionEn": "a separate room or area in a hospital for patients with similar needs",
+          "examples": [
+            "She was moved to the children's ward after the operation."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-29e8915b",
+          "pos": "noun",
+          "meaningZh": "監護人；被監護人",
+          "definitionEn": "a person, especially a child, under the care and protection of someone else",
+          "examples": [
+            "The young boy was made a ward of the state after his parents were deemed unfit to care for him."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-daefb4d0",
+          "pos": "verb",
+          "meaningZh": "防守；抵禦",
+          "definitionEn": "guard or protect someone or something against danger or harm",
+          "examples": [
+            "The security guard was hired to ward off potential thieves from the museum during night hours."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "wardrobe",
+      "word": "wardrobe",
+      "senses": [
+        {
+          "id": "sense-02043caf",
+          "pos": "noun",
+          "meaningZh": "衣櫃；大衣櫥",
+          "definitionEn": "a piece of furniture that is used for storing clothes, typically a tall cupboard or closet with rails or hooks and one or two doors",
+          "examples": [
+            "I need to organize my clothes so I will buy a new wardrobe with shelves and drawers."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-9a522d97",
+          "pos": "noun",
+          "meaningZh": "服裝道具；戲服",
+          "definitionEn": "a collection of costumes, especially those used in a theatrical production",
+          "examples": [
+            "The wardrobe department of the theater was busy preparing the costumes for the upcoming play."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "warrant",
+      "word": "warrant",
+      "senses": [
+        {
+          "id": "sense-7f0e874e",
+          "pos": "noun",
+          "meaningZh": "授權令；搜查令",
+          "definitionEn": "formal approval expressed explicitly",
+          "examples": [
+            "The police officers had to get a warrant from a judge before they could search the suspect’s house."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-ef0cff44",
+          "pos": "verb",
+          "meaningZh": "正當化；有充分理由",
+          "definitionEn": "show to be reasonable or provide adequate ground for",
+          "examples": [
+            "The evidence produced by the prosecutor was enough to warrant an arrest."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "warranty",
+      "word": "warranty",
+      "senses": [
+        {
+          "id": "sense-7ee95984",
+          "pos": "noun",
+          "meaningZh": "保固；品質保證書",
+          "definitionEn": "a guarantee, usually in writing, that a product or service will perform as promised or that any defects will be repaired or replaced for a certain period of time.",
+          "examples": [
+            "When Mike bought his new mobile phone, the company gave him a one-year warranty, which ensured that if the phone stopped working properly, it would be repaired or replaced free of charge."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "waterproof",
+      "word": "waterproof",
+      "senses": [
+        {
+          "id": "sense-141a6479",
+          "pos": "noun",
+          "meaningZh": "防水材料；防水布",
+          "definitionEn": "a type of fabric or material that is designed to be impervious to water",
+          "examples": [
+            "I wore my waterproof jacket during the storm, and it kept me completely dry."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-c3bc2fc2",
+          "pos": "verb",
+          "meaningZh": "使防水；塗防水層",
+          "definitionEn": "to make an object or material watertight or impervious to water",
+          "examples": [
+            "She applied a waterproof coating to her shoes before going hiking in the rain."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "weary",
+      "word": "weary",
+      "senses": [
+        {
+          "id": "sense-05721102",
+          "pos": "adjective",
+          "meaningZh": "疲倦的；筋疲力盡的",
+          "definitionEn": "feeling or showing fatigue or exhaustion, often as a result of prolonged and/or strenuous activity",
+          "examples": [
+            "After climbing the mountain for four hours, the hikers were weary and needed to rest before proceeding further."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-c2872392",
+          "pos": "verb",
+          "meaningZh": "使疲憊；精疲力竭",
+          "definitionEn": "to exhaust or become exhausted from overuse, strain, or stress",
+          "examples": [
+            "After working continuously for 12 hours, I was too weary to do anything else."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "wharf",
+      "word": "wharf",
+      "senses": [
+        {
+          "id": "sense-73f7baa6",
+          "pos": "noun",
+          "meaningZh": "碼頭；停泊站",
+          "definitionEn": "a platform built from the shore into the water and supported by piles, used for loading and unloading ships",
+          "examples": [
+            "The cargo ship pulled into the busy harbor and docked at the wharf, where workers immediately started unloading the containers."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-10215606",
+          "pos": "verb",
+          "meaningZh": "靠碼頭停泊；入港",
+          "definitionEn": "to bring a boat or ship to a wharf; dock",
+          "examples": [
+            "After a long journey at sea, the captain skillfully maneuvered the ship to the wharf, where it could be unloaded and prepared for the next voyage."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "wholesale",
+      "word": "wholesale",
+      "senses": [
+        {
+          "id": "sense-353afa27",
+          "pos": "noun",
+          "meaningZh": "批發；批發業",
+          "definitionEn": "the business of selling goods to be resold by others",
+          "examples": [
+            "Her family business involves wholesale of clothing to retailers across the country."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-0a052abf",
+          "pos": "verb",
+          "meaningZh": "批發出售；大量供貨",
+          "definitionEn": "to sell goods in large quantities to be resold by others",
+          "examples": [
+            "The company specializes in wholesale distribution of electronics to retailers across the country."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "wholesome",
+      "word": "wholesome",
+      "senses": [
+        {
+          "id": "sense-cb63e36e",
+          "pos": "adjective",
+          "meaningZh": "有益健康的；健全的",
+          "definitionEn": "beneficial for physical or moral well-being",
+          "examples": [
+            "Eating a balanced diet and engaging in regular exercise is crucial for maintaining a wholesome lifestyle."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-9ac45d5a",
+          "pos": "adjective",
+          "meaningZh": "身心健全的；純正的",
+          "definitionEn": "having soundness in body or mind",
+          "examples": [
+            "After a long day of hiking in the fresh mountain air, I felt wholesome and rejuvenated."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "withhold",
+      "word": "withhold",
+      "senses": [
+        {
+          "id": "sense-236dd0ea",
+          "pos": "verb",
+          "meaningZh": "扣留；保留",
+          "definitionEn": "keep back; retain; hold back from action; control",
+          "examples": [
+            "The manager decided to withhold the bonus until the employee completed all of their assigned tasks."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-30249fcf",
+          "pos": "verb",
+          "meaningZh": "拒絕給予；拖延發放",
+          "definitionEn": "refuse to give (something that is due to or is desired by another)",
+          "examples": [
+            "The company decided to withhold the employee's bonus until his performance improved."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "woe",
+      "word": "woe",
+      "senses": [
+        {
+          "id": "sense-52779cab",
+          "pos": "noun",
+          "meaningZh": "悲痛；苦惱",
+          "definitionEn": "great sadness or distress, often caused by misfortune or afflictions",
+          "examples": [
+            "The sudden death of her husband brought great woe to her."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-66b71c48",
+          "pos": "noun",
+          "meaningZh": "悲哀；深切哀痛",
+          "definitionEn": "intense grief or mourning",
+          "examples": [
+            "She was overcome with woe when she heard the news of her mother’s passing."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "woodpecker",
+      "word": "woodpecker",
+      "senses": [
+        {
+          "id": "sense-69bedbb9",
+          "pos": "noun",
+          "meaningZh": "啄木鳥",
+          "definitionEn": "A type of bird with strong claws and a stiff tail adapted for climbing trees, and a hard, chisel-like bill for boring into wood to find insects.",
+          "examples": [
+            "As I walked through the forest, I could hear the distinct tapping sound of a woodpecker as it drilled into a tree trunk searching for insects."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "workforce",
+      "word": "workforce",
+      "senses": [
+        {
+          "id": "sense-4135b692",
+          "pos": "noun",
+          "meaningZh": "全體員工；工作人員",
+          "definitionEn": "all the people who work for a particular company or organization",
+          "examples": [
+            "The factory cut its workforce by ten percent after orders dropped."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-dd0fa78c",
+          "pos": "noun",
+          "meaningZh": "勞動力；勞動人口",
+          "definitionEn": "all the people in a country or area who are able and available to work",
+          "examples": [
+            "As the population ages, a growing share of the workforce will be over fifty."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "worship",
+      "word": "worship",
+      "senses": [
+        {
+          "id": "sense-f9500f12",
+          "pos": "verb",
+          "meaningZh": "崇拜；敬拜神明",
+          "definitionEn": "show devotion to (a deity)",
+          "examples": [
+            "Every Sunday morning, the community gathers at the church to worship and praise God."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-eadda2f3",
+          "pos": "verb",
+          "meaningZh": "做禮拜；參加宗教儀式",
+          "definitionEn": "attend religious services",
+          "examples": [
+            "Every Sunday, the devout congregation gathers in the church to worship and praise their God."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "worthwhile",
+      "word": "worthwhile",
+      "senses": [
+        {
+          "id": "sense-a44b80ca",
+          "pos": "adjective",
+          "meaningZh": "值得的；有意義的",
+          "definitionEn": "worth the time, money, or effort spent; sufficiently rewarding or valuable",
+          "examples": [
+            "Spending quality time with loved ones is always a worthwhile endeavor."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L7",
+        "textbookTitle": "三民 B4·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "worthy",
+      "word": "worthy",
+      "senses": [
+        {
+          "id": "sense-40076919",
+          "pos": "adjective",
+          "meaningZh": "有價值的；值得尊敬的",
+          "definitionEn": "having worth, merit, or value; honorable and admirable",
+          "examples": [
+            "She dedicated years to volunteering at the homeless shelter, making her a truly worthy individual."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-0b5bcc90",
+          "pos": "adjective",
+          "meaningZh": "夠格的；有資格的",
+          "definitionEn": "having qualities or abilities that deserve recognition",
+          "examples": [
+            "After years of hard work and dedication, she finally received the award, proving that she is worthy of praise."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "wrestle",
+      "word": "wrestle",
+      "senses": [
+        {
+          "id": "sense-399bb13c",
+          "pos": "noun",
+          "meaningZh": "摔跤；扭打",
+          "definitionEn": "the act of engaging in close hand-to-hand combat",
+          "examples": [
+            "The two wrestlers were in a heated match, trying to wrestle each other to the ground."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-4c06a452",
+          "pos": "verb",
+          "meaningZh": "角力；比摔跤",
+          "definitionEn": "engage in a wrestling match",
+          "examples": [
+            "John loves to wrestle with his friends on weekends."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "wrinkle",
+      "word": "wrinkle",
+      "senses": [
+        {
+          "id": "sense-7de5f605",
+          "pos": "noun",
+          "meaningZh": "皺紋；皺摺",
+          "definitionEn": "a small line in the skin, or a small fold in cloth",
+          "examples": [
+            "As she looked in the mirror, she noticed a wrinkle forming near her eyes, reminding her of the passage of time."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "yacht",
+      "word": "yacht",
+      "senses": [
+        {
+          "id": "sense-9cccc06d",
+          "pos": "noun",
+          "meaningZh": "遊艇；帆船",
+          "definitionEn": "a high-priced recreational boat propelled by sail or motor and utilized for cruising or racing",
+          "examples": [
+            "After a long week at work, John decided to unwind by renting a luxurious yacht and sailing along the coastline with his friends."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-fc604b7f",
+          "pos": "verb",
+          "meaningZh": "乘遊艇旅行",
+          "definitionEn": "to travel in a yacht",
+          "examples": [
+            "During their luxurious vacation, the wealthy couple decided to yacht along the French Riviera."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    }
+  ]
+}

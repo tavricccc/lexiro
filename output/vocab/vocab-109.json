@@ -1,0 +1,1433 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 109,
+  "words": [
+    {
+      "wordKey": "disadvantage",
+      "word": "disadvantage",
+      "senses": [
+        {
+          "id": "sense-f258a777",
+          "pos": "noun",
+          "meaningZh": "不利條件；劣勢",
+          "definitionEn": "a condition or circumstance that places one in an inferior or less favorable position",
+          "examples": [
+            "Having a language barrier can be a disadvantage when applying for jobs in a country where a different language is spoken."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-ba179fd2",
+          "pos": "verb",
+          "meaningZh": "使處於不利；阻礙",
+          "definitionEn": "to put someone in a less favorable position; hinder or harm",
+          "examples": [
+            "The lack of access to quality education puts children from low-income families at a disadvantage when applying for higher education opportunities."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L5 +1",
+        "textbookTitle": "龍騰 B2·L5、三民 B2·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "disappoint",
+      "word": "disappoint",
+      "senses": [
+        {
+          "id": "sense-1bf311cd",
+          "pos": "verb",
+          "meaningZh": "使失望；辜負期望",
+          "definitionEn": "to fail to meet someone’s hopes or expectations",
+          "examples": [
+            "I felt disappointed when the hotel did not provide clean towels despite promising to do so."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L2",
+        "textbookTitle": "龍騰 B1·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "disappointment",
+      "word": "disappointment",
+      "senses": [
+        {
+          "id": "sense-6645668d",
+          "pos": "noun",
+          "meaningZh": "失望；沮喪",
+          "definitionEn": "a feeling of dissatisfaction or sadness that occurs when your hopes, desires or expectations are not fulfilled.",
+          "examples": [
+            "After months of anticipation, Mary experienced profound disappointment when her favorite band cancelled their concert at the last minute."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-35fc418f",
+          "pos": "noun",
+          "meaningZh": "令人失望的事；憾事",
+          "definitionEn": "an act (or failure to act) that disappoints someone",
+          "examples": [
+            "It was a great disappointment when the concert was canceled due to bad weather."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L2",
+        "textbookTitle": "龍騰 B1·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "disaster",
+      "word": "disaster",
+      "senses": [
+        {
+          "id": "sense-e68947b5",
+          "pos": "noun",
+          "meaningZh": "災難；災禍",
+          "definitionEn": "an event that causes great damage, destruction, or loss",
+          "examples": [
+            "The earthquake left behind a trail of disaster, destroying entire towns and causing widespread devastation."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-791eb473",
+          "pos": "noun",
+          "meaningZh": "慘況；嚴重破壞",
+          "definitionEn": "a state of extreme distress or destruction",
+          "examples": [
+            "The earthquake left behind a trail of disaster, with buildings collapsing and people stranded in the rubble."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B1·L6",
+        "textbookTitle": "三民 B1·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "discipline",
+      "word": "discipline",
+      "senses": [
+        {
+          "id": "sense-cb575e40",
+          "pos": "noun",
+          "meaningZh": "紀律；自律",
+          "definitionEn": "the trait of being well-behaved and showing control over your actions",
+          "examples": [
+            "John’s discipline allowed him to wake up every day at 5 am to go to the gym before work."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-ea9716a9",
+          "pos": "noun",
+          "meaningZh": "訓練；磨練",
+          "definitionEn": "training that helps to improve someone’s strength or self-control",
+          "examples": [
+            "John’s daily meditation is part of his discipline to improve his self-control."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "discourage",
+      "word": "discourage",
+      "senses": [
+        {
+          "id": "sense-48770333",
+          "pos": "verb",
+          "meaningZh": "使洩氣；打消念頭",
+          "definitionEn": "deprive of courage or hope; take away hope from; cause to feel discouraged",
+          "examples": [
+            "Her constant criticism discouraged him from pursuing his dreams."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-b7905133",
+          "pos": "verb",
+          "meaningZh": "勸阻；告誡不要",
+          "definitionEn": "admonish or counsel in terms of someone’s behavior",
+          "examples": [
+            "After hearing about the difficulties of starting a small business, the bank manager tried to discourage them from taking out a loan."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L9",
+        "textbookTitle": "龍騰 B4·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "discouragement",
+      "word": "discouragement",
+      "senses": [
+        {
+          "id": "sense-378b200b",
+          "pos": "noun",
+          "meaningZh": "洩氣；灰心",
+          "definitionEn": "the feeling of despair in the face of obstacles",
+          "examples": [
+            "After failing multiple times to find a job, Sarah began to experience discouragement and questioned her abilities."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-325fc02e",
+          "pos": "noun",
+          "meaningZh": "阻撓；反對",
+          "definitionEn": "the expression of opposition and disapproval",
+          "examples": [
+            "After receiving multiple rejections, she continued to pursue her dreams despite the discouragement of others."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "disguise",
+      "word": "disguise",
+      "senses": [
+        {
+          "id": "sense-ce0bfe23",
+          "pos": "noun",
+          "meaningZh": "偽裝；掩飾身分",
+          "definitionEn": "the act of changing the appearance or behavior to hide the identity of someone or something",
+          "examples": [
+            "In the spy movie, the protagonist had to wear a clever disguise to blend in with the enemy agents and gather information without being detected."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-8b56f671",
+          "pos": "noun",
+          "meaningZh": "偽裝服飾；變裝",
+          "definitionEn": "attire worn to conceal the identity of the wearer",
+          "examples": [
+            "In order to infiltrate the enemy's headquarters undetected, the spy donned a clever disguise, complete with a wig, glasses, and a fake mustache."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "disgust",
+      "word": "disgust",
+      "senses": [
+        {
+          "id": "sense-d2cad662",
+          "pos": "noun",
+          "meaningZh": "厭惡；噁心；反感",
+          "definitionEn": "strong feelings of dislike",
+          "examples": [
+            "The sight of the moldy bread in the fridge filled me with disgust."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-40ee2759",
+          "pos": "verb",
+          "meaningZh": "使反感；令人作嘔",
+          "definitionEn": "cause aversion; offend the moral sense of",
+          "examples": [
+            "The sight and smell of rotting garbage disgusts most people."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L1",
+        "textbookTitle": "龍騰 B1·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "dismiss",
+      "word": "dismiss",
+      "senses": [
+        {
+          "id": "sense-50e075e0",
+          "pos": "verb",
+          "meaningZh": "解雇；開除",
+          "definitionEn": "to remove someone from their job, especially because they have done something wrong.",
+          "examples": [
+            "The company had to dismiss the employee after discovering that they had been stealing from the company funds."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-e322f441",
+          "pos": "verb",
+          "meaningZh": "（法院）撤案；不受理",
+          "definitionEn": "to formally stop a trial in a court of law, often because there is not enough proof that someone is guilty.",
+          "examples": [
+            "After carefully reviewing the evidence, the judge decided to dismiss the case due to lack of concrete proof."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L4",
+        "textbookTitle": "三民 B4·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "disorder",
+      "word": "disorder",
+      "senses": [
+        {
+          "id": "sense-76005896",
+          "pos": "noun",
+          "meaningZh": "混亂；雜亂無章",
+          "definitionEn": "a lack of system or planned organization, where objects or conditions are not in any specific order",
+          "examples": [
+            "Her desk was a perfect example of disorder, with papers and books scattered all over and no discernible organization."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-6abda973",
+          "pos": "noun",
+          "meaningZh": "騷亂；暴亂",
+          "definitionEn": "a situation where some individuals behave in a manner that endangers the safety of others or disrupts the peace of a neighborhood",
+          "examples": [
+            "During the protest, the disorder escalated as people started vandalizing property and throwing objects at the police."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "dispute",
+      "word": "dispute",
+      "senses": [
+        {
+          "id": "sense-17b2c830",
+          "pos": "noun",
+          "meaningZh": "爭議；糾紛",
+          "definitionEn": "a disagreement or argument about something important",
+          "examples": [
+            "The two neighbors had a heated dispute over the property boundaries."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-728a6d8a",
+          "pos": "noun",
+          "meaningZh": "衝突；對立",
+          "definitionEn": "coming into conflict with",
+          "examples": [
+            "Two neighbors disputing over a property boundary."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "distinct",
+      "word": "distinct",
+      "senses": [
+        {
+          "id": "sense-60730eb3",
+          "pos": "adjective",
+          "meaningZh": "清晰的；明顯的",
+          "definitionEn": "Clear and sharply defined to the mind",
+          "examples": [
+            "Even from a distance, her distinct laughter stood out in the crowd."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-59ef6eff",
+          "pos": "adjective",
+          "meaningZh": "不同的；各別的",
+          "definitionEn": "Not alike; different in nature or quality",
+          "examples": [
+            "The twins have distinct personalities, with one being outgoing and the other being introverted."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L5",
+        "textbookTitle": "龍騰 B3·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "distinguish",
+      "word": "distinguish",
+      "senses": [
+        {
+          "id": "sense-b4ddc253",
+          "pos": "verb",
+          "meaningZh": "區分；辨別",
+          "definitionEn": "to recognize or notice a difference between people or things",
+          "examples": [
+            "I couldn’t distinguish the two twins because they looked exactly the same."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-8a75c24c",
+          "pos": "verb",
+          "meaningZh": "使顯眼；使突出",
+          "definitionEn": "to make someone or something noticeable or special in some way",
+          "examples": [
+            "Her red hat helped her to distinguish herself from the crowd."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L2",
+        "textbookTitle": "龍騰 B2·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "distinguished",
+      "word": "distinguished",
+      "senses": [
+        {
+          "id": "sense-1326bccb",
+          "pos": "adjective",
+          "meaningZh": "傑出的；聲名卓著的",
+          "definitionEn": "Standing above others in character, attainment, or reputation",
+          "examples": [
+            "The distinguished professor received numerous awards for his groundbreaking research and contributions to the field of physics."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-9c61310e",
+          "pos": "adjective",
+          "meaningZh": "氣度不凡的；儀表堂堂的",
+          "definitionEn": "Befitting an eminent person, used to describe a person’s appearance or behavior",
+          "examples": [
+            "The distinguished professor entered the lecture hall, wearing a tailored suit and exuding an air of confidence."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "distribute",
+      "word": "distribute",
+      "senses": [
+        {
+          "id": "sense-bbbc16d5",
+          "pos": "verb",
+          "meaningZh": "分發；分配",
+          "definitionEn": "give out to several people",
+          "examples": [
+            "The teacher distributed the test papers to the students."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-9b7cc627",
+          "pos": "verb",
+          "meaningZh": "散布；流通",
+          "definitionEn": "cause to be spread or circulated",
+          "examples": [
+            "The company plans to distribute their new product to stores nationwide."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L3",
+        "textbookTitle": "龍騰 B3·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "distribution",
+      "word": "distribution",
+      "senses": [
+        {
+          "id": "sense-e14ea1b1",
+          "pos": "noun",
+          "meaningZh": "分配；配送",
+          "definitionEn": "the act of distributing, spreading or sharing things among people or places",
+          "examples": [
+            "The distribution of food to the affected areas during a natural disaster is crucial for ensuring everyone has access to basic necessities."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-f0a8c697",
+          "pos": "noun",
+          "meaningZh": "分布；散布",
+          "definitionEn": "the state of being spread out or scattered over a particular area or volume",
+          "examples": [
+            "The distribution of flyers helped promote the upcoming concert to a wider audience."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L3",
+        "textbookTitle": "龍騰 B3·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "district",
+      "word": "district",
+      "senses": [
+        {
+          "id": "sense-49011290",
+          "pos": "noun",
+          "meaningZh": "區域；行政區",
+          "definitionEn": "a specific area or region marked off for administrative or other purposes, often with its own governing body",
+          "examples": [
+            "The school district passed a new policy on dress code."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-c07cf95b",
+          "pos": "verb",
+          "meaningZh": "劃分區域；分區",
+          "definitionEn": "to divide an area into districts or to arrange in districts",
+          "examples": [
+            "To improve their operations, the city council decided to district the city into four main areas for a better distribution of resources."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "disturb",
+      "word": "disturb",
+      "senses": [
+        {
+          "id": "sense-25c9c307",
+          "pos": "verb",
+          "meaningZh": "打擾；干擾",
+          "definitionEn": "to interrupt someone when they are trying to work, sleep, etc.",
+          "examples": [
+            "Please try not to disturb me while I am studying for my exams."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-121379f6",
+          "pos": "verb",
+          "meaningZh": "使不安；使煩惱",
+          "definitionEn": "to make someone worry",
+          "examples": [
+            "The loud noise from the construction site disturbed her concentration while studying."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L4 +2",
+        "textbookTitle": "龍騰 B4·L4、三民 B4·L4、翰林 B1·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "diverse",
+      "word": "diverse",
+      "senses": [
+        {
+          "id": "sense-b6f13217",
+          "pos": "adjective",
+          "meaningZh": "多樣的；種類繁多的",
+          "definitionEn": "consisting of many different types or forms",
+          "examples": [
+            "The class was incredibly diverse, with students from over 20 different countries."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-75825731",
+          "pos": "adjective",
+          "meaningZh": "各不相同的；迥異的",
+          "definitionEn": "different from each other",
+          "examples": [
+            "The group of friends was incredibly diverse, representing a range of different races, religions, and cultures."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "diversity",
+      "word": "diversity",
+      "senses": [
+        {
+          "id": "sense-0f7cadd3",
+          "pos": "noun",
+          "meaningZh": "多樣性；多元性",
+          "definitionEn": "the quality or state of having many different forms, types, ideas, etc.",
+          "examples": [
+            "The diversity of cultures represented at the international food festival showcased a wide range of cuisines from around the world."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-8fc1bd42",
+          "pos": "noun",
+          "meaningZh": "多元共融；包容差異",
+          "definitionEn": "the inclusion of individuals representing more than one national origin, color, religion, socioeconomic stratum, sexual orientation, etc.",
+          "examples": [
+            "The company prides itself on promoting diversity by actively hiring individuals from different cultural backgrounds."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·R2",
+        "textbookTitle": "龍騰 B3·R2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "divine",
+      "word": "divine",
+      "senses": [
+        {
+          "id": "sense-1097f1e6",
+          "pos": "adjective",
+          "meaningZh": "神聖的；神明的",
+          "definitionEn": "being or having the nature of a god or deity",
+          "examples": [
+            "The majestic sunset painted the sky with divine hues, as if a celestial artist had brushed it with golden light."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-8ee0911e",
+          "pos": "adjective",
+          "meaningZh": "絕妙的；超凡的",
+          "definitionEn": "of such surpassing excellence as to suggest inspiration by the gods",
+          "examples": [
+            "The sunset over the ocean was a divine sight, with vibrant hues of pink, orange, and gold painting the sky."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "divorce",
+      "word": "divorce",
+      "senses": [
+        {
+          "id": "sense-72c5d5ea",
+          "pos": "noun",
+          "meaningZh": "離婚；婚姻解除",
+          "definitionEn": "the legal ending of a marriage",
+          "examples": [
+            "After years of fighting and unhappiness, John and Jane decided to pursue a divorce and start their lives anew."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-ce19af4f",
+          "pos": "verb",
+          "meaningZh": "離婚；解除婚姻",
+          "definitionEn": "to legally end a marriage and officially stop being married to each other",
+          "examples": [
+            "After years of arguments and unhappiness, John and Sarah decided to get a divorce and move on with their lives separately."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "dodge",
+      "word": "dodge",
+      "senses": [
+        {
+          "id": "sense-0efe5ddf",
+          "pos": "noun",
+          "meaningZh": "閃躲；快速躲避",
+          "definitionEn": "a quick and sudden movement to avoid something",
+          "examples": [
+            "She had to dodge a falling branch while running in the forest."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-952db4d6",
+          "pos": "noun",
+          "meaningZh": "推託之詞；迴避答覆",
+          "definitionEn": "a clever or tricky statement that avoids answering a question",
+          "examples": [
+            "During the press conference, the politician used a dodge to avoid answering a sensitive question about their campaign finances."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "dominant",
+      "word": "dominant",
+      "senses": [
+        {
+          "id": "sense-47de4ce9",
+          "pos": "adjective",
+          "meaningZh": "佔主導地位的；支配的",
+          "definitionEn": "more important, powerful, or noticeable than others",
+          "examples": [
+            "The company is the dominant player in the smartphone market."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-adf2eda6",
+          "pos": "adjective",
+          "meaningZh": "顯性的（遺傳學）",
+          "definitionEn": "(of genes) producing the same phenotype whether allele is identical or dissimilar",
+          "examples": [
+            "In Mendelian genetics, if a plant with the dominant allele for flower color (purple) is crossed with a plant with the recessive allele (white), all the offspring will have purple flowers, demonstrating the dominant nature of the purple allele."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·R3",
+        "textbookTitle": "龍騰 B3·R3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "dominate",
+      "word": "dominate",
+      "senses": [
+        {
+          "id": "sense-98952f39",
+          "pos": "verb",
+          "meaningZh": "支配；掌控",
+          "definitionEn": "to have control or power over someone or something",
+          "examples": [
+            "The champion boxer was able to dominate his opponent in the ring."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-ca5e5a52",
+          "pos": "verb",
+          "meaningZh": "稱霸；獨占鰲頭",
+          "definitionEn": "to be the most numerous or powerful in a particular group or area",
+          "examples": [
+            "The NBA team dominated the playoffs and won the championship for the third consecutive year."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·R3",
+        "textbookTitle": "龍騰 B3·R3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "draft",
+      "word": "draft",
+      "senses": [
+        {
+          "id": "sense-fcbbf8ca",
+          "pos": "noun",
+          "meaningZh": "草稿；草圖",
+          "definitionEn": "a preliminary sketch of a design or picture",
+          "examples": [
+            "The artist quickly sketched a rough draft of her painting before starting the final piece."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-eb24df80",
+          "pos": "noun",
+          "meaningZh": "桶裝生啤；生啤酒",
+          "definitionEn": "a serving of drink (usually alcoholic) drawn from a keg",
+          "examples": [
+            "At the party, the bartender poured me a refreshing draft of beer from the keg."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "dread",
+      "word": "dread",
+      "senses": [
+        {
+          "id": "sense-0d315b03",
+          "pos": "noun",
+          "meaningZh": "恐懼；極度害怕",
+          "definitionEn": "a strong feeling of fear or terror",
+          "examples": [
+            "She felt a sense of dread wash over her as she realized she had forgotten her passport at home and was about to board a flight."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-9e586199",
+          "pos": "verb",
+          "meaningZh": "畏懼；極不願面對",
+          "definitionEn": "to fear greatly or be very reluctant to face or meet",
+          "examples": [
+            "She always dreads going to the dentist."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "drift",
+      "word": "drift",
+      "senses": [
+        {
+          "id": "sense-4aa9eda4",
+          "pos": "verb",
+          "meaningZh": "漂流；漂移",
+          "definitionEn": "to be carried slowly along by water or air",
+          "examples": [
+            "The empty boat drifted out to sea."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-e44339bd",
+          "pos": "noun",
+          "meaningZh": "語言演變；語音漂移",
+          "definitionEn": "a process of linguistic change over a period of time",
+          "examples": [
+            "The English language has undergone a slow drift in pronunciation and meaning over the centuries."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L5 +1",
+        "textbookTitle": "龍騰 B1·L5、三民 B2·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "drill",
+      "word": "drill",
+      "senses": [
+        {
+          "id": "sense-5d2900d8",
+          "pos": "verb",
+          "meaningZh": "鑽孔；打洞",
+          "definitionEn": "make a hole, especially using a pointed power or hand tool",
+          "examples": [
+            "The construction worker used a drill to make holes in the wall for hanging pictures."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-b2d5c1d0",
+          "pos": "verb",
+          "meaningZh": "反覆練習；操練",
+          "definitionEn": "teach or practice something by repeating it",
+          "examples": [
+            "The coach made the players drill the same play over and over again until they perfected it."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    }
+  ]
+}

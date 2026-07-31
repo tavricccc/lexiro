@@ -1,0 +1,1365 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 10,
+  "words": [
+    {
+      "wordKey": "excellent",
+      "word": "excellent",
+      "senses": [
+        {
+          "id": "sense-c600c5cf",
+          "pos": "adjective",
+          "meaningZh": "優秀的；出色的",
+          "definitionEn": "of the highest quality; outstandingly good",
+          "examples": [
+            "The new restaurant in town received excellent reviews for its exceptional food and impeccable service."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L6",
+        "textbookTitle": "龍騰 B4·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "except",
+      "word": "except",
+      "senses": [
+        {
+          "id": "sense-9911b64c",
+          "pos": "verb",
+          "meaningZh": "排除；除外",
+          "definitionEn": "prevent from being included or considered or accepted",
+          "examples": [
+            "Everyone was invited to the party except for John."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "excited",
+      "word": "excited",
+      "senses": [
+        {
+          "id": "sense-9d62977e",
+          "pos": "adjective",
+          "meaningZh": "興奮的；激動的",
+          "definitionEn": "having strong feelings of anticipation or excitement",
+          "examples": [
+            "She was so excited to go to Disney World for the first time that she could hardly sleep the night before."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-147fa574",
+          "pos": "adjective",
+          "meaningZh": "雀躍的；熱切的",
+          "definitionEn": "showing enthusiasm or eagerness about something",
+          "examples": [
+            "The children were excited to see the fireworks on the Fourth of July."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "exciting",
+      "word": "exciting",
+      "senses": [
+        {
+          "id": "sense-dc5ca49e",
+          "pos": "adjective",
+          "meaningZh": "令人興奮的；刺激的",
+          "definitionEn": "arousing great enthusiasm or eagerness",
+          "examples": [
+            "The exciting news about the launch of a new product increased the sales of the company."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-e3a4a5e0",
+          "pos": "adjective",
+          "meaningZh": "精彩的；引人入勝的",
+          "definitionEn": "causing excitement; producing strong feelings of anticipation, happiness or eagerness",
+          "examples": [
+            "The suspenseful plot of the novel made it an exciting read."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "exercise",
+      "word": "exercise",
+      "senses": [
+        {
+          "id": "sense-a9df0315",
+          "pos": "noun",
+          "meaningZh": "運動；鍛鍊",
+          "definitionEn": "the activity of exerting muscles to keep fit",
+          "examples": [
+            "John goes to the gym every morning to get some exercise and stay healthy."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-21e65d91",
+          "pos": "noun",
+          "meaningZh": "練習；訓練",
+          "definitionEn": "systematic training by repetition",
+          "examples": [
+            "She diligently practiced her dance routine every day, engaging in hours of exercise to perfect her technique."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "expect",
+      "word": "expect",
+      "senses": [
+        {
+          "id": "sense-d41d0677",
+          "pos": "verb",
+          "meaningZh": "預期；料想",
+          "definitionEn": "to think that something will happen because it is likely, or because you have been told it will happen",
+          "examples": [
+            "I expect the package to arrive tomorrow since the tracking information shows that it is out for delivery."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-bb6b21e8",
+          "pos": "verb",
+          "meaningZh": "期待；滿懷信心等待",
+          "definitionEn": "to feel excited and confident about something that is going to happen",
+          "examples": [
+            "After weeks of studying for the exam, Sarah expects to get a high score."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L8",
+        "textbookTitle": "龍騰 B2·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "expensive",
+      "word": "expensive",
+      "senses": [
+        {
+          "id": "sense-2390ec09",
+          "pos": "adjective",
+          "meaningZh": "昂貴的；高價的",
+          "definitionEn": "costing a lot of money or very high in price",
+          "examples": [
+            "The luxury sports car was too expensive for the average person to afford."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "experience",
+      "word": "experience",
+      "senses": [
+        {
+          "id": "sense-9495c37c",
+          "pos": "verb",
+          "meaningZh": "經歷；體驗",
+          "definitionEn": "have firsthand knowledge of states, situations, emotions, or sensations; undergo; live through; go through mental or physical states or experiences; feel an emotional sensation or be in a particular state of mind",
+          "examples": [
+            "After traveling solo around the world, Sarah gained a wealth of experience and developed a deep understanding of different cultures."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-e6368d90",
+          "pos": "noun",
+          "meaningZh": "經驗；閱歷",
+          "definitionEn": "direct observation or participation in events or activities; knowledge or skill gained from such events or activities",
+          "examples": [
+            "After years of studying music theory, Sarah finally gained the experience she needed by joining a professional orchestra and performing live concerts."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "explain",
+      "word": "explain",
+      "senses": [
+        {
+          "id": "sense-0c63c68e",
+          "pos": "verb",
+          "meaningZh": "解釋；說明",
+          "definitionEn": "make something clear",
+          "examples": [
+            "Can you please explain the instructions one more time?"
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L3",
+        "textbookTitle": "龍騰 B2·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "eye",
+      "word": "eye",
+      "senses": [
+        {
+          "id": "sense-68663922",
+          "pos": "noun",
+          "meaningZh": "眼睛；眼",
+          "definitionEn": "the organ that you use to see things",
+          "examples": [
+            "She blinked her eyes to clear away the dust."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-a567e2cc",
+          "pos": "noun",
+          "meaningZh": "眼光；洞察力",
+          "definitionEn": "the ability to notice and understand things",
+          "examples": [
+            "Despite being tired, the detective's keen eye spotted a small clue that led to the resolution of the mysterious case."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "face",
+      "word": "face",
+      "senses": [
+        {
+          "id": "sense-b3f1fc7c",
+          "pos": "noun",
+          "meaningZh": "臉；面孔",
+          "definitionEn": "the front part of a person's head, including the eyes, nose, and mouth",
+          "examples": [
+            "She washed her face before bed."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-dc542fb7",
+          "pos": "noun",
+          "meaningZh": "（動物）臉部；面部",
+          "definitionEn": "the front part of an animal’s head",
+          "examples": [
+            "The cat had a mischievous expression on its face as it knocked over the vase."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-20eeec6b",
+          "pos": "noun",
+          "meaningZh": "面部表情；神情",
+          "definitionEn": "the emotions or expressions shown on a person’s face",
+          "examples": [
+            "When she saw the surprise party, her face lit up with a wide smile."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "fact",
+      "word": "fact",
+      "senses": [
+        {
+          "id": "sense-7923a837",
+          "pos": "noun",
+          "meaningZh": "事實；事件資訊",
+          "definitionEn": "a piece of information about events or circumstances that exist",
+          "examples": [
+            "It is a well-known fact that the Earth revolves around the Sun."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-4d24aaac",
+          "pos": "noun",
+          "meaningZh": "真實陳述；確實情況",
+          "definitionEn": "a verified and true statement about something that has happened or is the case",
+          "examples": [
+            "The fact that the sun rises in the east and sets in the west is a basic astronomical principle."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "factory",
+      "word": "factory",
+      "senses": [
+        {
+          "id": "sense-d4f5825a",
+          "pos": "noun",
+          "meaningZh": "工廠；製造廠",
+          "definitionEn": "a building or group of buildings where goods are made",
+          "examples": [
+            "The car factory produces hundreds of vehicles every day."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "fail",
+      "word": "fail",
+      "senses": [
+        {
+          "id": "sense-c5eaecb6",
+          "pos": "verb",
+          "meaningZh": "失敗；不及格",
+          "definitionEn": "be unsuccessful",
+          "examples": [
+            "After studying hard, she still failed her math test."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-595e573d",
+          "pos": "verb",
+          "meaningZh": "故障；停止運作",
+          "definitionEn": "stop operating or functioning",
+          "examples": [
+            "The engine failed to start this morning."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L5",
+        "textbookTitle": "龍騰 B2·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "fall",
+      "word": "fall",
+      "senses": [
+        {
+          "id": "sense-92c377b4",
+          "pos": "noun",
+          "meaningZh": "墜落；下落",
+          "definitionEn": "a free and rapid descent by the force of gravity",
+          "examples": [
+            "The leaves fall from the trees in autumn."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-acdefe2a",
+          "pos": "noun",
+          "meaningZh": "衰落；垮台",
+          "definitionEn": "a sudden decline in strength or number or importance",
+          "examples": [
+            "The fall of the Roman Empire was a significant event in world history."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "family",
+      "word": "family",
+      "senses": [
+        {
+          "id": "sense-6173b472",
+          "pos": "noun",
+          "meaningZh": "家庭；家族",
+          "definitionEn": "The basic unit of society, consisting of one or two parents and their children, who live together and share resources.",
+          "examples": [
+            "I love spending time with my family on weekends, we always have a great time together."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-40c8f804",
+          "pos": "noun",
+          "meaningZh": "家人；親屬",
+          "definitionEn": "A group of people who are related to each other, especially a group consisting of parents and their children.",
+          "examples": [
+            "During holidays, my family likes to gather at my grandparents’ house and spend quality time together."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "famous",
+      "word": "famous",
+      "senses": [
+        {
+          "id": "sense-bc4a9b4e",
+          "pos": "adjective",
+          "meaningZh": "著名的；知名的",
+          "definitionEn": "widely known and highly respected.",
+          "examples": [
+            "The Mona Lisa is a famous painting by Leonardo da Vinci."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "fan",
+      "word": "fan",
+      "senses": [
+        {
+          "id": "sense-589c063c",
+          "pos": "noun",
+          "meaningZh": "粉絲；球迷",
+          "definitionEn": "someone who is very interested in a particular sports team, musician, or famous person",
+          "examples": [
+            "The soccer stadium was filled with excited fans, all wearing their team’s colors and waving flags."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-d2aa1956",
+          "pos": "verb",
+          "meaningZh": "搧風；吹涼",
+          "definitionEn": "to move air around, often with a device or by using your hand",
+          "examples": [
+            "It was so hot in the room that I had to use the fan to cool down."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "far",
+      "word": "far",
+      "senses": [
+        {
+          "id": "sense-5e1a0cc7",
+          "pos": "adverb",
+          "meaningZh": "遠處；在遠方",
+          "definitionEn": "at or from a great distance in space or time",
+          "examples": [
+            "The ancient ruins stood far in the distance, silhouetted against the setting sun."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-a81866b7",
+          "pos": "adverb",
+          "meaningZh": "大大地；遠遠地",
+          "definitionEn": "to a considerable degree; very much",
+          "examples": [
+            "The marathon runner had trained for months, so he was able to run far without getting tired."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "farm",
+      "word": "farm",
+      "senses": [
+        {
+          "id": "sense-7513a418",
+          "pos": "noun",
+          "meaningZh": "農場；農莊",
+          "definitionEn": "A place where crops and livestock are raised for food or other products.",
+          "examples": [
+            "John's family owns a farm where they grow vegetables and raise chickens for eggs and meat."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-69b6bd88",
+          "pos": "verb",
+          "meaningZh": "務農；從事農耕",
+          "definitionEn": "To work on a farm or as a farmer.",
+          "examples": [
+            "John grew up on a farm and learned how to farm from his parents."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "farmer",
+      "word": "farmer",
+      "senses": [
+        {
+          "id": "sense-ec05dadf",
+          "pos": "noun",
+          "meaningZh": "農夫；農民",
+          "definitionEn": "a person who runs a farm",
+          "examples": [
+            "My uncle wakes up early every day to tend to his crops, as he is a dedicated farmer."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "fast",
+      "word": "fast",
+      "senses": [
+        {
+          "id": "sense-2db15101",
+          "pos": "adjective",
+          "meaningZh": "快速的；迅速的",
+          "definitionEn": "moving quickly or able to move quickly",
+          "examples": [
+            "The hare runs fast and leaves the tortoise behind."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-488287cb",
+          "pos": "adjective",
+          "meaningZh": "快的；疾速的",
+          "definitionEn": "quick or rapid",
+          "examples": [
+            "He drove fast to catch the train."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "fat",
+      "word": "fat",
+      "senses": [
+        {
+          "id": "sense-9a9ab362",
+          "pos": "noun",
+          "meaningZh": "脂肪；油脂",
+          "definitionEn": "a soft and greasy substance found in organic tissue and consisting mainly of triglycerides (a type of fat)",
+          "examples": [
+            "After eating a lot of junk food, the fat in his body began to accumulate."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-2b3b3082",
+          "pos": "noun",
+          "meaningZh": "脂肪組織；油脂",
+          "definitionEn": "a type of tissue that stores fat and serves as a source of energy, as well as cushioning and insulating vital organs",
+          "examples": [
+            "Excessive fat can increase the risk of heart disease."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "father",
+      "word": "father",
+      "senses": [
+        {
+          "id": "sense-bf931af4",
+          "pos": "noun",
+          "meaningZh": "父親；爸爸",
+          "definitionEn": "a male parent or someone who fulfills the typical role of a male parent, such as a stepfather or adoptive father (also used as a term of address to your own father)",
+          "examples": [
+            "My father is always there for me whenever I need him."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-00417d9c",
+          "pos": "noun",
+          "meaningZh": "祖先；先祖",
+          "definitionEn": "the male ancestor from whom a person, family, or tribe is descended",
+          "examples": [
+            "My father always tells stories about our family’s history and our ancestors."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "feed",
+      "word": "feed",
+      "senses": [
+        {
+          "id": "sense-807a86f2",
+          "pos": "verb",
+          "meaningZh": "餵食；供給食物",
+          "definitionEn": "to provide food for someone or something",
+          "examples": [
+            "I always feed my cat in the morning and evening."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-88544f75",
+          "pos": "noun",
+          "meaningZh": "（動物）飼料；飼糧",
+          "definitionEn": "food for domestic animals",
+          "examples": [
+            "The farmer went to the barn to provide fresh feed for the cows."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "feel",
+      "word": "feel",
+      "senses": [
+        {
+          "id": "sense-7b18c085",
+          "pos": "verb",
+          "meaningZh": "感覺；體驗",
+          "definitionEn": "be aware of a physical, mental, or emotional state",
+          "examples": [],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-e29bfbc8",
+          "pos": "verb",
+          "meaningZh": "觸感；感知",
+          "definitionEn": "perceive through physical sensation, e.g. from the skin or muscles",
+          "examples": [
+            "I can feel the warmth of the sun on my face."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "festival",
+      "word": "festival",
+      "senses": [
+        {
+          "id": "sense-ed14dee5",
+          "pos": "noun",
+          "meaningZh": "節慶；節日慶典",
+          "definitionEn": "a day or period of time set aside for feasting and celebration",
+          "examples": [
+            "The town held a festival in honor of their patron saint, complete with parades, music, dancing, and lots of food."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-a1265623",
+          "pos": "noun",
+          "meaningZh": "藝術節；音樂節",
+          "definitionEn": "an organized series of acts and performances (usually in one place)",
+          "examples": [
+            "Thousands of music enthusiasts flock to the Glastonbury festival every year, where they are treated to a diverse lineup of artists."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "few",
+      "word": "few",
+      "senses": [
+        {
+          "id": "sense-9075adbf",
+          "pos": "adjective",
+          "meaningZh": "少數的；幾個",
+          "definitionEn": "referring to a small number, often preceded by the article ’a’",
+          "examples": [
+            "There were only a few tickets left for the concert."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-72038c80",
+          "pos": "noun",
+          "meaningZh": "少數人；精英",
+          "definitionEn": "a small group, typically referring to an elite or exclusive membership",
+          "examples": [
+            "The exclusive club only admitted a few members each year, ensuring a highly selective and distinguished group."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "fight",
+      "word": "fight",
+      "senses": [
+        {
+          "id": "sense-c3609083",
+          "pos": "noun",
+          "meaningZh": "戰鬥；交戰",
+          "definitionEn": "a hostile meeting of opposing military forces in the course of a war",
+          "examples": [
+            "During World War II, the soldiers engaged in a fierce fight on the battlefield."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-d99e6bfb",
+          "pos": "noun",
+          "meaningZh": "搏鬥；競爭",
+          "definitionEn": "the act of fighting; any contest or struggle",
+          "examples": [
+            "In order to settle their differences, the two friends decided to have a friendly arm-wrestling fight."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "file",
+      "word": "file",
+      "senses": [
+        {
+          "id": "sense-b9c8463d",
+          "pos": "noun",
+          "meaningZh": "檔案；文件",
+          "definitionEn": "a collection of papers or computer data kept together",
+          "examples": [
+            "Please save the file before closing the program."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-ee8aa26c",
+          "pos": "noun",
+          "meaningZh": "縱列；排隊",
+          "definitionEn": "a line of persons or things ranged one behind the other",
+          "examples": [
+            "Participants formed a file and marched in unison."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 import type { User } from 'firebase/auth'
 import type { Unsubscribe } from 'firebase/firestore'
-import type { FirestoreDailyStatsDoc, FirestoreProgressDoc, FirestoreSetDoc, FirestoreStatsDoc, SetSyncConflict, SyncStatus } from '@/types'
+import type { FirestoreDailyStatsDoc, FirestoreLibraryChunk, FirestoreProgressDoc, FirestoreSetDoc, FirestoreStatsDoc, LibraryState, SetSyncConflict, SyncStatus, VocabFolder, VocabSetMember, WordEntry } from '@/types'
 import { useDocumentVisibility, useOnline } from '@vueuse/core'
 import { GoogleAuthProvider, onAuthStateChanged, signInWithCredential, signOut } from 'firebase/auth'
 import { collection, deleteDoc, doc, onSnapshot, setDoc } from 'firebase/firestore'
@@ -12,10 +12,12 @@ import { estimateJsonBytes, stableHash } from '@/lib/hash'
 import { deduplicateSetsByName, isRemoteSetNewer } from '@/lib/set-utils'
 import { useAccountStore } from './account'
 import { useLearningStore } from './learning'
+import { useLibraryStore } from './library'
 import { useSetsStore } from './sets'
 
-const SCHEMA_VERSION = 1
+const SCHEMA_VERSION = 2
 const MAX_SET_BYTES = 700 * 1024
+const MAX_LIBRARY_CHUNK_BYTES = 420 * 1024
 
 export const useCloudSyncStore = defineStore('cloudSync', () => {
   const configured = ref(isFirebaseConfigured())
@@ -29,10 +31,12 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
   const conflicts = ref<SetSyncConflict[]>([])
 
   let setsUnsubscribe: Unsubscribe | null = null
+  let libraryUnsubscribe: Unsubscribe | null = null
   let progressUnsubscribe: Unsubscribe | null = null
   let statsUnsubscribe: Unsubscribe | null = null
   let setSyncTimer: ReturnType<typeof setTimeout> | null = null
   let learningSyncTimer: ReturnType<typeof setTimeout> | null = null
+  let librarySyncTimer: ReturnType<typeof setTimeout> | null = null
   let started = false
   let activeUid = ''
   let realtimeUid = ''
@@ -42,6 +46,7 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
   const knownProgressHashes = new Map<string, string>()
   let knownStatsHash = ''
   let knownDailyHash = ''
+  const knownLibraryHashes = new Map<string, string>()
   const isOnline = useOnline()
   const visibility = useDocumentVisibility()
 
@@ -71,9 +76,11 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
 
   function clearListeners() {
     setsUnsubscribe?.()
+    libraryUnsubscribe?.()
     progressUnsubscribe?.()
     statsUnsubscribe?.()
     setsUnsubscribe = null
+    libraryUnsubscribe = null
     progressUnsubscribe = null
     statsUnsubscribe = null
     realtimeUid = ''
@@ -107,12 +114,90 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
     }
   }
 
+  type LibrarySection = FirestoreLibraryChunk['section']
+
+  function buildLibraryChunks(uid: string, library: LibraryState): FirestoreLibraryChunk[] {
+    const sections: { section: LibrarySection, items: unknown[] }[] = [
+      { section: 'words', items: Object.values(library.words) },
+      { section: 'memberships', items: Object.entries(library.memberships).map(([setId, members]) => ({ setId, members })) },
+      { section: 'folders', items: library.folders },
+      { section: 'questions', items: library.questions },
+    ]
+    const chunks: FirestoreLibraryChunk[] = []
+    for (const { section, items } of sections) {
+      let current: unknown[] = []
+      let sectionIndex = 0
+      for (const item of items) {
+        const candidate = { ownerId: uid, schemaVersion: SCHEMA_VERSION, chunkId: '', updatedAt: library.updatedAt, checksum: '', section, items: [...current, item] } as FirestoreLibraryChunk
+        if (current.length && estimateJsonBytes(candidate) > MAX_LIBRARY_CHUNK_BYTES) {
+          chunks.push(candidateForSection(uid, library, section, current, sectionIndex))
+          sectionIndex += 1
+          current = []
+        }
+        current.push(item)
+      }
+      if (current.length || !items.length)
+        chunks.push(candidateForSection(uid, library, section, current, sectionIndex))
+    }
+    return chunks
+  }
+
+  function candidateForSection(uid: string, library: LibraryState, section: LibrarySection, items: unknown[], index: number): FirestoreLibraryChunk {
+    const base = { ownerId: uid, schemaVersion: SCHEMA_VERSION, chunkId: `${section}-${String(index + 1).padStart(3, '0')}`, updatedAt: library.updatedAt, section, items } as FirestoreLibraryChunk
+    return { ...base, checksum: stableHash(base) }
+  }
+
+  function combineLibraryChunks(chunks: FirestoreLibraryChunk[]): LibraryState {
+    const words: Record<string, WordEntry> = {}
+    const memberships: Record<string, VocabSetMember[]> = {}
+    const folders: VocabFolder[] = []
+    const questions: LibraryState['questions'] = []
+    let updatedAt = ''
+    for (const chunk of chunks) {
+      updatedAt = chunk.updatedAt > updatedAt ? chunk.updatedAt : updatedAt
+      if (chunk.section === 'words') {
+        for (const word of chunk.items)
+          words[word.wordKey] = word
+      }
+      else if (chunk.section === 'memberships') {
+        for (const entry of chunk.items)
+          memberships[entry.setId] = entry.members
+      }
+      else if (chunk.section === 'folders') {
+        folders.push(...chunk.items)
+      }
+      else {
+        questions.push(...chunk.items)
+      }
+    }
+    return { version: SCHEMA_VERSION, words, memberships, folders, questions, updatedAt: updatedAt || new Date().toISOString() }
+  }
+
   async function writeSet(uid: string, set: FirestoreSetDoc) {
     const payload = toSetDoc(uid, set)
     if (estimateJsonBytes(payload) > MAX_SET_BYTES)
       throw new Error(`「${payload.setName}」資料過大，請拆成較小的單字集。`)
     await setDoc(userDocument(uid, 'sets', payload.id), payload)
     knownSetHashes.set(payload.id, payload.checksum)
+  }
+
+  async function writeLibraryChunks(uid: string, library: LibraryState) {
+    const chunks = buildLibraryChunks(uid, library)
+    const liveIds = new Set(chunks.map(chunk => chunk.chunkId))
+    const writes = chunks
+      .filter(chunk => knownLibraryHashes.get(chunk.chunkId) !== chunk.checksum)
+      .map((chunk) => {
+        knownLibraryHashes.set(chunk.chunkId, chunk.checksum)
+        return setDoc(userDocument(uid, 'library', chunk.chunkId), chunk)
+      })
+    for (const oldId of knownLibraryHashes.keys()) {
+      if (!liveIds.has(oldId)) {
+        knownLibraryHashes.delete(oldId)
+        writes.push(deleteDoc(userDocument(uid, 'library', oldId)).then(() => undefined))
+      }
+    }
+    if (writes.length)
+      await Promise.all(writes)
   }
 
   function applyRemoteSetChanges(uid: string) {
@@ -172,6 +257,34 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
       previousSetIds = new Set(canonicalNextSets.map(set => set.id))
       if (writes.length)
         void Promise.all(writes).catch(syncError => setError((syncError as Error).message))
+      markSynced()
+    }, snapshotError => setError(snapshotError.message))
+  }
+
+  function applyRemoteLibraryChanges(uid: string) {
+    libraryUnsubscribe = onSnapshot(userCollection(uid, 'library'), (snapshot) => {
+      if (!snapshot.docs.length)
+        return
+      const chunks = snapshot.docs
+        .map(item => item.data() as FirestoreLibraryChunk)
+        .filter(item => item.section && Array.isArray(item.items))
+      if (!chunks.length)
+        return
+      const libraryStore = useLibraryStore()
+      const remote = combineLibraryChunks(chunks)
+      const remoteHash = stableHash(remote)
+      const localHash = stableHash(libraryStore.state)
+      if (remoteHash === localHash)
+        return
+      applyingRemote = true
+      try {
+        libraryStore.replaceState(remote)
+        for (const chunk of chunks)
+          knownLibraryHashes.set(chunk.chunkId, chunk.checksum)
+      }
+      finally {
+        applyingRemote = false
+      }
       markSynced()
     }, snapshotError => setError(snapshotError.message))
   }
@@ -289,12 +402,35 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
     }
   }
 
+  async function flushLibrary() {
+    if (!user.value || applyingRemote)
+      return
+    const libraryStore = useLibraryStore()
+    pendingWrites.value += 1
+    setStatus('syncing')
+    try {
+      await writeLibraryChunks(user.value.uid, libraryStore.state)
+      markSynced()
+    }
+    catch (syncError) {
+      setError((syncError as Error).message)
+    }
+  }
+
   function scheduleLearningSync() {
     if (!user.value)
       return
     if (learningSyncTimer)
       clearTimeout(learningSyncTimer)
     learningSyncTimer = setTimeout(() => void flushLearning(), 1200)
+  }
+
+  function scheduleLibrarySync() {
+    if (!user.value || applyingRemote)
+      return
+    if (librarySyncTimer)
+      clearTimeout(librarySyncTimer)
+    librarySyncTimer = setTimeout(() => void flushLibrary(), 1200)
   }
 
   function scheduleSetSync(nextSets: FirestoreSetDoc[]) {
@@ -325,13 +461,14 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
   }
 
   async function startRealtime(uid: string) {
-    if (realtimeUid === uid && setsUnsubscribe && progressUnsubscribe && statsUnsubscribe)
+    if (realtimeUid === uid && setsUnsubscribe && libraryUnsubscribe && progressUnsubscribe && statsUnsubscribe)
       return
     clearListeners()
     realtimeUid = uid
     setStatus('connecting')
     try {
       applyRemoteSetChanges(uid)
+      applyRemoteLibraryChanges(uid)
       applyRemoteLearningChanges(uid)
     }
     catch (syncError) {
@@ -363,6 +500,7 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
         knownProgressHashes.clear()
         knownStatsHash = ''
         knownDailyHash = ''
+        knownLibraryHashes.clear()
         previousSetIds = new Set()
       }
       activeUid = nextUser?.uid || ''
@@ -450,6 +588,8 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
       scheduleSetSync(nextSets as FirestoreSetDoc[])
   }, { deep: true })
   watch(() => [learningStore.progressBySet, learningStore.stats], () => scheduleLearningSync(), { deep: true })
+  const libraryStore = useLibraryStore()
+  watch(() => libraryStore.state, () => scheduleLibrarySync(), { deep: true })
 
   return {
     configured,

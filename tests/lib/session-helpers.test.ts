@@ -49,9 +49,9 @@ describe('shuffleQuizEntry', () => {
     }
 
     const shuffled = shuffleQuizEntry(entry)
-    const correct = entry.item.question.opts[entry.item.question.ans]
-    expect(shuffled.item.question.opts[shuffled.item.question.ans]).toBe(correct)
-    expect(shuffled.item.question.opts).toHaveLength(4)
-    expect(new Set(shuffled.item.question.opts)).toEqual(new Set(entry.item.question.opts))
+    const correct = entry.item.question!.opts[entry.item.question!.ans]
+    expect(shuffled.item.question!.opts[shuffled.item.question!.ans]).toBe(correct)
+    expect(shuffled.item.question!.opts).toHaveLength(4)
+    expect(new Set(shuffled.item.question!.opts)).toEqual(new Set(entry.item.question!.opts))
   })
 })

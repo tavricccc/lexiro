@@ -148,18 +148,18 @@ describe('normalizeItem', () => {
     expect(() => normalizeItem(rest, 0)).toThrow('缺少 meaning')
   })
 
-  it('throws when example is missing', () => {
+  it('allows example to be completed later', () => {
     const { example: _, ...rest } = validItem
-    expect(() => normalizeItem(rest, 0)).toThrow('缺少 example')
+    expect(normalizeItem(rest, 0).example).toBe('')
   })
 
-  it('throws when question is missing', () => {
+  it('allows question to be added later', () => {
     const { question: _, ...rest } = validItem
-    expect(() => normalizeItem(rest, 0)).toThrow('缺少 question')
+    expect(normalizeItem(rest, 0).question).toBeUndefined()
   })
 
-  it('throws when question is null', () => {
-    expect(() => normalizeItem({ ...validItem, question: null }, 0)).toThrow('缺少 question')
+  it('allows a null question', () => {
+    expect(normalizeItem({ ...validItem, question: null }, 0).question).toBeUndefined()
   })
 
   it('normalized question is validated through normalizeQuestion', () => {

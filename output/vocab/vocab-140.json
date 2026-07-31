@@ -1,0 +1,1365 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 140,
+  "words": [
+    {
+      "wordKey": "crystal",
+      "word": "crystal",
+      "senses": [
+        {
+          "id": "sense-7ffe8e98",
+          "pos": "noun",
+          "meaningZh": "水晶；結晶體",
+          "definitionEn": "a solid material that is formed by a substance becoming hard or stiff and that has a highly organized and repeating atomic structure",
+          "examples": [
+            "The jewelry store displayed a beautiful crystal necklace in the window."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-89facd08",
+          "pos": "noun",
+          "meaningZh": "天然礦晶；晶石",
+          "definitionEn": "a rock that is made of a substance that has a regularly repeating internal structure and external plane faces",
+          "examples": [
+            "The hiker marveled at the beauty of the crystal she found, with its perfectly formed planes and sparkling internal structure."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "cuisine",
+      "word": "cuisine",
+      "senses": [
+        {
+          "id": "sense-0d291bf8",
+          "pos": "noun",
+          "meaningZh": "料理；烹飪風格",
+          "definitionEn": "the style or way of cooking food, especially in a specific region or culture",
+          "examples": [
+            "The French cuisine is best known for its delicate flavors and use of sophisticated techniques like sous-vide cooking."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "currency",
+      "word": "currency",
+      "senses": [
+        {
+          "id": "sense-4bcd35b6",
+          "pos": "noun",
+          "meaningZh": "貨幣；通貨",
+          "definitionEn": "the metal or paper medium of exchange that is presently used",
+          "examples": [
+            "I exchanged my dollars for the local currency at the airport."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-7e65d95c",
+          "pos": "noun",
+          "meaningZh": "通用；廣泛流通",
+          "definitionEn": "general acceptance or use",
+          "examples": [
+            "The euro is a common currency used by many countries in Europe."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "curriculum",
+      "word": "curriculum",
+      "senses": [
+        {
+          "id": "sense-9259662a",
+          "pos": "noun",
+          "meaningZh": "課程；學科安排",
+          "definitionEn": "the lessons and materials that are taught by a school, college, etc.",
+          "examples": [
+            "A high school curriculum typically includes subjects such as math, science, English, and history."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-d914268b",
+          "pos": "noun",
+          "meaningZh": "課程綱要；學習計畫",
+          "definitionEn": "an integrated course of academic studies",
+          "examples": [
+            "In our science curriculum, students are taught a wide range of topics such as biology, chemistry, and physics."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "custody",
+      "word": "custody",
+      "senses": [
+        {
+          "id": "sense-c25f371b",
+          "pos": "noun",
+          "meaningZh": "監護權；保管權",
+          "definitionEn": "the legal right to manage and look after another person’s money, investments, or belongings.",
+          "examples": [
+            "After the elderly woman was deemed incapable of managing her own finances, her daughter was granted custody of her assets."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "customs",
+      "word": "customs",
+      "senses": [
+        {
+          "id": "sense-f2432ab2",
+          "pos": "noun",
+          "meaningZh": "海關；入境查驗處",
+          "definitionEn": "an area at an airport or port where officials check people and goods entering a country",
+          "examples": [
+            "As soon as we stepped off the plane, we went through customs, where our luggage was thoroughly inspected."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-47283f49",
+          "pos": "noun",
+          "meaningZh": "關稅；進出口稅",
+          "definitionEn": "the money collected by a government on imported or exported items",
+          "examples": [
+            "The customs office at the airport is responsible for collecting customs duties from passengers who bring in goods from abroad."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "deadly",
+      "word": "deadly",
+      "senses": [
+        {
+          "id": "sense-c52d395e",
+          "pos": "adjective",
+          "meaningZh": "致命的；可造成死亡的",
+          "definitionEn": "capable of causing death",
+          "examples": [
+            "The snake’s venom is deadly and can kill a human in minutes."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-6a8f65c3",
+          "pos": "adjective",
+          "meaningZh": "危及生命的；極可能致死的",
+          "definitionEn": "likely to cause death",
+          "examples": [
+            "The snake’s venomous bite can be deadly if not treated quickly."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "debris",
+      "word": "debris",
+      "senses": [
+        {
+          "id": "sense-24ccaf28",
+          "pos": "noun",
+          "meaningZh": "殘骸；碎片；廢墟",
+          "definitionEn": "the scattered pieces of something that has been destroyed or broken up",
+          "examples": [
+            "After the tornado, the debris from the houses littered the entire neighborhood."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "debut",
+      "word": "debut",
+      "senses": [
+        {
+          "id": "sense-77aac9ee",
+          "pos": "noun",
+          "meaningZh": "初次登場；出道",
+          "definitionEn": "the act of starting something new or embarking on a new venture",
+          "examples": [
+            "The young singer’s debut album topped the charts and brought her overnight success."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-594455bc",
+          "pos": "noun",
+          "meaningZh": "初入社交界；成年亮相",
+          "definitionEn": "the introduction of a young woman to society",
+          "examples": [
+            "The debutante was adorned in a beautiful gown and gloves as she made her first entrance into high society."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "decay",
+      "word": "decay",
+      "senses": [
+        {
+          "id": "sense-9ae13f07",
+          "pos": "noun",
+          "meaningZh": "衰敗過程；腐朽",
+          "definitionEn": "the process of gradually becoming inferior",
+          "examples": [
+            "The once beautiful mansion now stands in a state of decay, with peeling paint, broken windows, and overgrown weeds."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-a7e4a1e1",
+          "pos": "noun",
+          "meaningZh": "頹廢狀態；破敗景象",
+          "definitionEn": "an inferior state resulting from the process of decaying",
+          "examples": [
+            "After years of neglect, the once glorious mansion fell into decay, with crumbling walls and overgrown gardens."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L8 +1",
+        "textbookTitle": "三民 B4·L8、翰林 B1·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "deceive",
+      "word": "deceive",
+      "senses": [
+        {
+          "id": "sense-ca875e8d",
+          "pos": "verb",
+          "meaningZh": "欺騙；蒙騙",
+          "definitionEn": "cause someone to believe something that is not true",
+          "examples": [
+            "The fraudulent telemarketer deceived the elderly woman into giving him her credit card information."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-094e0fe3",
+          "pos": "verb",
+          "meaningZh": "行騙；故意誤導",
+          "definitionEn": "engage in deliberately misleading or dishonest behavior",
+          "examples": [
+            "The salesman tried to deceive the customer by promising a high-quality product, but delivered a low-quality one instead."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L2 +1",
+        "textbookTitle": "龍騰 B5·L2、三民 B4·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "decent",
+      "word": "decent",
+      "senses": [
+        {
+          "id": "sense-e3275abe",
+          "pos": "adjective",
+          "meaningZh": "得體；正派；有禮",
+          "definitionEn": "appropriate and socially acceptable; having good morals or behavior",
+          "examples": [
+            "It is important to dress decently in a professional environment."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-ca0aedb9",
+          "pos": "adjective",
+          "meaningZh": "像樣；合乎禮俗",
+          "definitionEn": "following accepted standards or customs",
+          "examples": [
+            "He wore a decent suit to the job interview."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "declaration",
+      "word": "declaration",
+      "senses": [
+        {
+          "id": "sense-4c03bc9c",
+          "pos": "noun",
+          "meaningZh": "正式聲明；公告",
+          "definitionEn": "a formal public statement",
+          "examples": [
+            "The mayor made a declaration that all public events would be cancelled due to the weather forecast."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-377de7f7",
+          "pos": "noun",
+          "meaningZh": "（會議）決議；宣言",
+          "definitionEn": "a formal expression by a meeting; agreed to by a vote",
+          "examples": [
+            "After a lengthy discussion, the city council made a declaration to ban plastic bags, which was unanimously agreed upon by the members."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L3",
+        "textbookTitle": "龍騰 B2·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "decline",
+      "word": "decline",
+      "senses": [
+        {
+          "id": "sense-f0543a4e",
+          "pos": "noun",
+          "meaningZh": "（逐漸）減少；衰減",
+          "definitionEn": "a gradual decrease; as of stored charge or current",
+          "examples": [
+            "The battery’s decline in charge was noticeable as the device became slower."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-1d9561ab",
+          "pos": "noun",
+          "meaningZh": "衰退；每況愈下",
+          "definitionEn": "a condition inferior to an earlier condition; a gradual falling off from a better state",
+          "examples": [
+            "With the decline of his health, he couldn’t climb stairs as quickly as he used to."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L8",
+        "textbookTitle": "龍騰 B4·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "dedicate",
+      "word": "dedicate",
+      "senses": [
+        {
+          "id": "sense-a6980bb6",
+          "pos": "verb",
+          "meaningZh": "投入；獻身",
+          "definitionEn": "give entirely to a specific person, activity, or cause",
+          "examples": [
+            "The athlete decided to dedicate her win to her coach, who had worked tirelessly to train her for the competition."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-ca291bcf",
+          "pos": "verb",
+          "meaningZh": "（教堂）奉獻；祝聖",
+          "definitionEn": "set apart to sacred uses with solemn rites, of a church",
+          "examples": [
+            "The bishop will dedicate the new church building with a special Mass and ceremony."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L1",
+        "textbookTitle": "龍騰 B2·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "defendant",
+      "word": "defendant",
+      "senses": [
+        {
+          "id": "sense-f1ecca41",
+          "pos": "noun",
+          "meaningZh": "被告",
+          "definitionEn": "a person or company accused of doing something illegal or harming someone in a law case.",
+          "examples": [
+            "In the courtroom, the defendant pleaded not guilty to the charges brought against him."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "deficit",
+      "word": "deficit",
+      "senses": [
+        {
+          "id": "sense-ad552370",
+          "pos": "noun",
+          "meaningZh": "赤字；虧空",
+          "definitionEn": "the property of being an amount by which something is less than expected or required",
+          "examples": [
+            "The country’s spending exceeded its revenue resulting in a significant budget deficit."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-f13f392d",
+          "pos": "noun",
+          "meaningZh": "（財務）虧損；逆差",
+          "definitionEn": "an excess of liabilities over assets, especially over a certain period of time",
+          "examples": [
+            "The company had been running a deficit for the past three years, and it was unlikely to turn a profit anytime soon without some major changes to its business model."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "defy",
+      "word": "defy",
+      "senses": [
+        {
+          "id": "sense-bd713dce",
+          "pos": "verb",
+          "meaningZh": "挑戰；反抗",
+          "definitionEn": "challenge, resist or confront with resistance",
+          "examples": [
+            "Despite facing adversity, she defied all odds and became a successful entrepreneur."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "delegate",
+      "word": "delegate",
+      "senses": [
+        {
+          "id": "sense-040ee573",
+          "pos": "noun",
+          "meaningZh": "代表；代表人",
+          "definitionEn": "a person who is chosen to speak, act, or vote for others",
+          "examples": [
+            "During the meeting, John was selected as the delegate for the team and presented their ideas to the board."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-f232c936",
+          "pos": "verb",
+          "meaningZh": "授權；委派",
+          "definitionEn": "to give a task or responsibility to someone else",
+          "examples": [
+            "The CEO decided to delegate the management of the project to her trusted employee while she focused on other important tasks."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "delegation",
+      "word": "delegation",
+      "senses": [
+        {
+          "id": "sense-b7729cda",
+          "pos": "noun",
+          "meaningZh": "代表團；代表群",
+          "definitionEn": "a group of individuals appointed or elected to represent others or make decisions on their behalf",
+          "examples": [
+            "The CEO of the company decided to form a delegation to attend the conference on behalf of the entire organization."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-9342db3b",
+          "pos": "noun",
+          "meaningZh": "授權；委任",
+          "definitionEn": "the act of authorizing subordinates to make certain decisions",
+          "examples": [
+            "As the CEO of the company, she was responsible for delegation of tasks to her team in order to ensure the smooth functioning of the organization."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "deliberate",
+      "word": "deliberate",
+      "senses": [
+        {
+          "id": "sense-bc1c08d9",
+          "pos": "adjective",
+          "meaningZh": "故意的；蓄意的",
+          "definitionEn": "done on purpose; intentional",
+          "examples": [
+            "John made a deliberate decision to stay late at work in order to finish the project on time."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-bb51bdb6",
+          "pos": "verb",
+          "meaningZh": "深思熟慮；審慎考量",
+          "definitionEn": "to think carefully or discuss with care and thoughtfulness",
+          "examples": [
+            "Before making a decision, it is important to deliberate all the possible outcomes and consider the opinions of others."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L5",
+        "textbookTitle": "龍騰 B3·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "democrat",
+      "word": "democrat",
+      "senses": [
+        {
+          "id": "sense-ef922681",
+          "pos": "noun",
+          "meaningZh": "民主主義者",
+          "definitionEn": "a person who believes in or supports democracy",
+          "examples": [],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-fc886c3c",
+          "pos": "noun",
+          "meaningZh": "民主黨員；民主黨人",
+          "definitionEn": "a member or supporter of the Democratic Party",
+          "examples": [
+            "My friend is a democrat and always volunteers for political campaigns."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "denial",
+      "word": "denial",
+      "senses": [
+        {
+          "id": "sense-0e951a18",
+          "pos": "noun",
+          "meaningZh": "否認；否定",
+          "definitionEn": "the act of asserting that something alleged is not true",
+          "examples": [
+            "Despite all the evidence presented, the suspect continued to maintain his innocence, displaying an unwavering denial of the charges."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-8bafe96f",
+          "pos": "noun",
+          "meaningZh": "（法律）否認答辯",
+          "definitionEn": "a defendant’s answer or plea denying the truth of the charges against him",
+          "examples": [
+            "During the trial, the defendant entered a firm denial, claiming that he was not present at the crime scene."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "density",
+      "word": "density",
+      "senses": [
+        {
+          "id": "sense-b803a85f",
+          "pos": "noun",
+          "meaningZh": "密度；緻密度",
+          "definitionEn": "the degree of compactness of a substance or object",
+          "examples": [
+            "The density of water is 1 gram per cubic centimeter."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-df22d309",
+          "pos": "noun",
+          "meaningZh": "（人口）密集程度；稠密度",
+          "definitionEn": "the amount of people or things in a particular area or space",
+          "examples": [
+            "The density of the population in the city center is much higher than in the suburbs."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L3",
+        "textbookTitle": "龍騰 B5·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "depict",
+      "word": "depict",
+      "senses": [
+        {
+          "id": "sense-5e4c60d8",
+          "pos": "verb",
+          "meaningZh": "描繪；畫出",
+          "definitionEn": "show in a picture",
+          "examples": [
+            "The artist used vivid colors to depict a beautiful sunset over the ocean."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-b732db6e",
+          "pos": "verb",
+          "meaningZh": "刻畫；呈現",
+          "definitionEn": "make a portrait",
+          "examples": [
+            "The artist used vibrant colors and intricate brushstrokes to depict the beauty of the sunset."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "deploy",
+      "word": "deploy",
+      "senses": [
+        {
+          "id": "sense-9f966258",
+          "pos": "verb",
+          "meaningZh": "部署；調配",
+          "definitionEn": "to distribute systematically or strategically",
+          "examples": [
+            "The army decided to deploy its troops across the border to ensure the safety of the country."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-d0af8ac1",
+          "pos": "verb",
+          "meaningZh": "（軍隊）展開；佈陣",
+          "definitionEn": "place troops or weapons in battle formation",
+          "examples": [
+            "The general planned to deploy the tanks ahead of the infantry in order to gain an advantage on the battlefield."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "depress",
+      "word": "depress",
+      "senses": [
+        {
+          "id": "sense-496dfaaa",
+          "pos": "verb",
+          "meaningZh": "使沮喪；使消沉",
+          "definitionEn": "make someone feel sad and lacking energy",
+          "examples": [
+            "The loss of her beloved pet depressed her, leaving her feeling incredibly sad and with no motivation to do anything."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-ea1a8708",
+          "pos": "verb",
+          "meaningZh": "壓低；往下壓",
+          "definitionEn": "cause something to drop or sink to a lower position",
+          "examples": [
+            "When you press the lever, it will depress the button and cause the elevator to descend."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L1 +1",
+        "textbookTitle": "龍騰 B1·L1、翰林 B1·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "deputy",
+      "word": "deputy",
+      "senses": [
+        {
+          "id": "sense-4c888b64",
+          "pos": "noun",
+          "meaningZh": "副手；代理人",
+          "definitionEn": "a person appointed to represent or act on behalf of others",
+          "examples": [
+            "After the manager resigned, the deputy manager took over his duties."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "derive",
+      "word": "derive",
+      "senses": [
+        {
+          "id": "sense-f0b2ef37",
+          "pos": "verb",
+          "meaningZh": "源自；起源於",
+          "definitionEn": "to come from a particular source or origin",
+          "examples": [],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-446c592f",
+          "pos": "verb",
+          "meaningZh": "獲得；汲取",
+          "definitionEn": "to obtain something from a specified source",
+          "examples": [
+            "She was able to derive great inspiration from her travels around the world."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L9",
+        "textbookTitle": "龍騰 B2·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    },
+    {
+      "wordKey": "descend",
+      "word": "descend",
+      "senses": [
+        {
+          "id": "sense-b4380ba4",
+          "pos": "verb",
+          "meaningZh": "下降；往下走",
+          "definitionEn": "to move downwards or go down from a higher level to a lower one",
+          "examples": [
+            "The hikers decided to descend the mountain after reaching the summit."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        },
+        {
+          "id": "sense-65ba20ec",
+          "pos": "verb",
+          "meaningZh": "傳承；出身於",
+          "definitionEn": "come down from a source or origin; originate from a particular ancestor",
+          "examples": [
+            "She is proud to be able to trace her lineage and descend from royalty."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-5.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "5"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.722Z"
+    }
+  ]
+}

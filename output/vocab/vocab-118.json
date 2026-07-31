@@ -1,0 +1,1420 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 118,
+  "words": [
+    {
+      "wordKey": "interact",
+      "word": "interact",
+      "senses": [
+        {
+          "id": "sense-5297a969",
+          "pos": "verb",
+          "meaningZh": "互動；溝通",
+          "definitionEn": "to communicate or work together with someone or something",
+          "examples": [
+            "During group projects, students need to interact with each other to complete the tasks successfully."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L7",
+        "textbookTitle": "龍騰 B3·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "interaction",
+      "word": "interaction",
+      "senses": [
+        {
+          "id": "sense-2cbaa975",
+          "pos": "noun",
+          "meaningZh": "互動；相互作用",
+          "definitionEn": "the process of two or more things affecting each other or having an effect on each other",
+          "examples": [
+            "The interaction between the two chemicals resulted in a violent explosion."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-faf60ced",
+          "pos": "noun",
+          "meaningZh": "（物理）交互作用",
+          "definitionEn": "(physics) the exchange of energy or particles between particles or systems of particles",
+          "examples": [
+            "In a chemical reaction, the interaction between different atoms leads to the formation of new substances."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L7",
+        "textbookTitle": "龍騰 B3·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "interfere",
+      "word": "interfere",
+      "senses": [
+        {
+          "id": "sense-108665c6",
+          "pos": "verb",
+          "meaningZh": "干涉；多管閒事",
+          "definitionEn": "to get involved in or meddle in the affairs of others",
+          "examples": [
+            "I don’t want to interfere in their relationship."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-7f4be9fb",
+          "pos": "verb",
+          "meaningZh": "妨礙；阻擾",
+          "definitionEn": "to hinder or obstruct progress or an activity by meddling or getting in the way",
+          "examples": [
+            "When the manager interfered with the project, it caused delays and confusion among the team members."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L6",
+        "textbookTitle": "三民 B4·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "intermediate",
+      "word": "intermediate",
+      "senses": [
+        {
+          "id": "sense-22821c62",
+          "pos": "adjective",
+          "meaningZh": "中級；中間程度",
+          "definitionEn": "being between two extremes in terms of time, space, or state",
+          "examples": [
+            "She has an intermediate level of proficiency in Spanish, not a beginner but not yet fluent."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-2bb6877c",
+          "pos": "adjective",
+          "meaningZh": "居中的；中等的",
+          "definitionEn": "having an average level or position on a scale of evaluation",
+          "examples": [
+            "The teacher assigned an intermediate-level math problem to test the students' understanding."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "interpret",
+      "word": "interpret",
+      "senses": [
+        {
+          "id": "sense-99a8cd70",
+          "pos": "verb",
+          "meaningZh": "詮釋；解讀",
+          "definitionEn": "To understand and explain the significance or importance of something.",
+          "examples": [
+            "During the trial, the defense attorney skillfully interprets the defendant's actions, presenting a plausible alternative explanation."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-9d63e121",
+          "pos": "verb",
+          "meaningZh": "理解；賦予含義",
+          "definitionEn": "To assign or give a meaning to something.",
+          "examples": [
+            "In a courtroom, it is crucial for the judge to accurately interpret the law in order to make a fair and just decision."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L7",
+        "textbookTitle": "龍騰 B3·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "interruption",
+      "word": "interruption",
+      "senses": [
+        {
+          "id": "sense-7e132851",
+          "pos": "noun",
+          "meaningZh": "打岔；突然中斷",
+          "definitionEn": "a sudden break or pause in an activity",
+          "examples": [
+            "I was in the middle of giving a presentation when an interruption occurred, causing me to lose my train of thought."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-03026768",
+          "pos": "noun",
+          "meaningZh": "暫時停頓；中止",
+          "definitionEn": "a temporary stoppage of something that has been ongoing",
+          "examples": [
+            "The phone rang, causing an interruption in our conversation."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "intimate",
+      "word": "intimate",
+      "senses": [
+        {
+          "id": "sense-7e8ccb88",
+          "pos": "adjective",
+          "meaningZh": "親密的；熟悉的",
+          "definitionEn": "marked by close acquaintance, association, or familiarity",
+          "examples": [
+            "During the intimate dinner, they shared their deepest secrets and aspirations."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-10224dcb",
+          "pos": "adjective",
+          "meaningZh": "關係深厚；要好",
+          "definitionEn": "having mutual interests or affections; of established friendship",
+          "examples": [
+            "Jane and Susan have been best friends since childhood, they share everything with each other and have an intimate bond."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "intuition",
+      "word": "intuition",
+      "senses": [
+        {
+          "id": "sense-85627d85",
+          "pos": "noun",
+          "meaningZh": "直覺；第六感",
+          "definitionEn": "An instinctive ability to understand or know something immediately without the need for consciously reasoning.",
+          "examples": [
+            "Her intuition told her that something was wrong with the project, even though all the data seemed fine."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-ebe2618e",
+          "pos": "noun",
+          "meaningZh": "直覺感受；預感",
+          "definitionEn": "An impression or feeling that something might be the case.",
+          "examples": [
+            "As she walked down the dark alley, her intuition told her that she was being followed."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "invade",
+      "word": "invade",
+      "senses": [
+        {
+          "id": "sense-5e24d97e",
+          "pos": "verb",
+          "meaningZh": "入侵；占領",
+          "definitionEn": "enter into another’s territory by military force with the intention of taking control or occupying it",
+          "examples": [
+            "The neighboring country decided to invade our land, and we had to defend ourselves with all our might."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-ed5ff0e8",
+          "pos": "verb",
+          "meaningZh": "蔓延；侵襲",
+          "definitionEn": "spread quickly and noticeably throughout an area or place",
+          "examples": [
+            "With the outbreak of the pandemic, fear and panic started to invade the hearts and minds of people from all over the world."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L8",
+        "textbookTitle": "龍騰 B4·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "invasion",
+      "word": "invasion",
+      "senses": [
+        {
+          "id": "sense-e4a517c5",
+          "pos": "noun",
+          "meaningZh": "大批湧入；入侵",
+          "definitionEn": "an incursion by a large number of people or things into a place or sphere of activity",
+          "examples": [
+            "The invasion of tourists flooded the small town, causing crowded streets and busy restaurants."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-d954059d",
+          "pos": "noun",
+          "meaningZh": "（醫）細胞擴散；侵潤",
+          "definitionEn": "the spread of pathogenic microorganisms or malignant cells from one part of the body to another",
+          "examples": [
+            "Invasion of cancer cells from the colon to the liver can result in metastatic liver cancer."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L8",
+        "textbookTitle": "龍騰 B4·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "invention",
+      "word": "invention",
+      "senses": [
+        {
+          "id": "sense-4d087fdd",
+          "pos": "noun",
+          "meaningZh": "發明品；創新物",
+          "definitionEn": "an original idea, concept, or creation that comes from someone’s mind and is usually novel or unique",
+          "examples": [
+            "The invention of the printing press revolutionized the way information was disseminated across the world."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-125ca34e",
+          "pos": "noun",
+          "meaningZh": "發明；創造過程",
+          "definitionEn": "the act or process of inventing something new",
+          "examples": [
+            "The invention of the printing press revolutionized the way knowledge was disseminated and books were produced."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B2·L7 +1",
+        "textbookTitle": "三民 B2·L7、翰林 B1·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "invest",
+      "word": "invest",
+      "senses": [
+        {
+          "id": "sense-76a9293d",
+          "pos": "verb",
+          "meaningZh": "投資",
+          "definitionEn": "make an investment",
+          "examples": [
+            "I am planning to invest in stocks to earn more money."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-2da4f0aa",
+          "pos": "verb",
+          "meaningZh": "授予權力；賦予職權",
+          "definitionEn": "provide with power and authority",
+          "examples": [
+            "The boss decided to invest his assistant with the power to make important decisions on his behalf while he was away on vacation."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "investigation",
+      "word": "investigation",
+      "senses": [
+        {
+          "id": "sense-8333469e",
+          "pos": "noun",
+          "meaningZh": "調查；深入審查",
+          "definitionEn": "the work of inquiring into something thoroughly and systematically",
+          "examples": [
+            "The detective conducted an investigation to uncover the truth about the crime."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-d9a411a8",
+          "pos": "noun",
+          "meaningZh": "偵查；查察",
+          "definitionEn": "an inquiry into unfamiliar or questionable activities",
+          "examples": [
+            "The detective conducted a thorough investigation into the mysterious disappearance of the valuable artifact."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L3 +1",
+        "textbookTitle": "龍騰 B5·L3、三民 B2·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "investment",
+      "word": "investment",
+      "senses": [
+        {
+          "id": "sense-bad38d6b",
+          "pos": "noun",
+          "meaningZh": "投資；資金投入",
+          "definitionEn": "dedicating time, energy, or effort towards a project with the expectation of a worthwhile result",
+          "examples": [
+            "After researching various stocks, I made an investment in a technology company with the hope of earning a profit."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-85c7229b",
+          "pos": "noun",
+          "meaningZh": "（正式）授職儀式",
+          "definitionEn": "the ceremonial promotion of a person to an office or rank, often involving the act of clothing them in the symbols of that office or rank",
+          "examples": [
+            "During the inauguration ceremony, the new president received the investment of power from the outgoing president."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "involve",
+      "word": "involve",
+      "senses": [
+        {
+          "id": "sense-8270136e",
+          "pos": "verb",
+          "meaningZh": "包含；涵蓋",
+          "definitionEn": "contain as a part",
+          "examples": [
+            "The recipe for chocolate cake involves mixing butter, sugar, eggs, and cocoa powder."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-3c0152ad",
+          "pos": "verb",
+          "meaningZh": "需要；必然有",
+          "definitionEn": "have as a necessary feature",
+          "examples": [
+            "Effective leadership often involves clear communication and strong decision-making skills."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B2·L2",
+        "textbookTitle": "三民 B2·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "involvement",
+      "word": "involvement",
+      "senses": [
+        {
+          "id": "sense-55d367e3",
+          "pos": "noun",
+          "meaningZh": "參與；投入",
+          "definitionEn": "a connection or inclusion within a group or activity",
+          "examples": [
+            "John’s involvement in the company’s decision-making process made him a valuable asset to the team."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-6da8902d",
+          "pos": "noun",
+          "meaningZh": "捲入；關聯",
+          "definitionEn": "the condition of being included within something",
+          "examples": [
+            "Samantha felt a sense of involvement when she joined the community service project."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B2·L2",
+        "textbookTitle": "三民 B2·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "isolate",
+      "word": "isolate",
+      "senses": [
+        {
+          "id": "sense-55abf03a",
+          "pos": "verb",
+          "meaningZh": "隔離；使孤立",
+          "definitionEn": "to set apart from others",
+          "examples": [
+            "During the pandemic, people need to isolate themselves to prevent the spread of the virus."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-1688b740",
+          "pos": "verb",
+          "meaningZh": "提純；分離（物質）",
+          "definitionEn": "to obtain in pure form",
+          "examples": [
+            "The chemist was able to isolate the specific enzyme from the mixture of proteins."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L1 +1",
+        "textbookTitle": "龍騰 B4·L1、三民 B4·L10"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "isolation",
+      "word": "isolation",
+      "senses": [
+        {
+          "id": "sense-07253ca7",
+          "pos": "noun",
+          "meaningZh": "隔離；孤立",
+          "definitionEn": "the act of setting something apart from others; isolating something",
+          "examples": [
+            "In order to prevent the spread of COVID-19, the government recommended a two-week isolation period for individuals who have been in close contact with a positive case."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-5cb0890f",
+          "pos": "noun",
+          "meaningZh": "孤立狀態；隔絕",
+          "definitionEn": "a state of separation between individuals or groups",
+          "examples": [
+            "During the pandemic, many people experienced isolation due to social distancing and quarantine measures."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L1 +1",
+        "textbookTitle": "龍騰 B4·L1、三民 B4·L10"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "issue",
+      "word": "issue",
+      "senses": [
+        {
+          "id": "sense-96223abe",
+          "pos": "noun",
+          "meaningZh": "議題；問題",
+          "definitionEn": "an important topic or problem that people are discussing or disagreeing about",
+          "examples": [
+            "The issue of climate change has sparked a heated debate among scientists and policymakers."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-c6c71f9e",
+          "pos": "verb",
+          "meaningZh": "發行；發售（股票/債券）",
+          "definitionEn": "to offer financial products like shares or bonds for sale",
+          "examples": [
+            "The company decided to issue new shares to raise capital for expansion."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L2 +1",
+        "textbookTitle": "龍騰 B4·L2、三民 B4·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "jealousy",
+      "word": "jealousy",
+      "senses": [
+        {
+          "id": "sense-74a39ba5",
+          "pos": "noun",
+          "meaningZh": "嫉妒；忌妒",
+          "definitionEn": "a feeling of jealous envy (especially of a rival)",
+          "examples": [
+            "Her jealousy of her younger sister’s achievements led her to sabotage her opportunities whenever possible."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "keen",
+      "word": "keen",
+      "senses": [
+        {
+          "id": "sense-60875949",
+          "pos": "adjective",
+          "meaningZh": "敏銳的；犀利的",
+          "definitionEn": "demonstrating the ability to recognize or draw fine distinctions",
+          "examples": [
+            "The detective's keen observation skills allowed him to notice the smallest details at the crime scene."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-05db801d",
+          "pos": "adjective",
+          "meaningZh": "熱切的；渴望的",
+          "definitionEn": "having or showing great excitement and interest",
+          "examples": [
+            "Anna was keen to start her new job, so she arrived at the office early and eagerly greeted everyone she met."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L4 +1",
+        "textbookTitle": "龍騰 B1·L4、三民 B2·L10"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "kettle",
+      "word": "kettle",
+      "senses": [
+        {
+          "id": "sense-8a55a18d",
+          "pos": "noun",
+          "meaningZh": "水壺；茶壺",
+          "definitionEn": "a metal container with a handle and spout used for boiling water or cooking; usually has a lid",
+          "examples": [
+            "I like to start my day with a cup of tea, so I fill up the kettle with water and put it on the stove to boil."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-a56f1b4b",
+          "pos": "noun",
+          "meaningZh": "一壺的量",
+          "definitionEn": "the amount of liquid a kettle can hold",
+          "examples": [
+            "This kettle has a capacity of 1.5 liters which is sufficient for making tea for a small family."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "kneel",
+      "word": "kneel",
+      "senses": [
+        {
+          "id": "sense-fbd9a168",
+          "pos": "verb",
+          "meaningZh": "跪下；屈膝",
+          "definitionEn": "to rest one’s weight on one’s knees",
+          "examples": [
+            "During the wedding ceremony, the bride and groom kneel down to receive a blessing from the priest."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-4d8a5833",
+          "pos": "noun",
+          "meaningZh": "跪姿；下跪",
+          "definitionEn": "the act or position of supporting oneself on one’s knees",
+          "examples": [
+            "During the wedding ceremony, the groom decided to kneel down and propose to his girlfriend."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L9",
+        "textbookTitle": "龍騰 B3·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "knob",
+      "word": "knob",
+      "senses": [
+        {
+          "id": "sense-bb0cdcb4",
+          "pos": "noun",
+          "meaningZh": "圓形把手；旋鈕",
+          "definitionEn": "a round handle",
+          "examples": [
+            "She turned the knob to open the door."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-e51de6db",
+          "pos": "noun",
+          "meaningZh": "球形突起；圓形凸出物",
+          "definitionEn": "a circular rounded projection or protuberance",
+          "examples": [
+            "She grasped the knob firmly and turned it to open the door."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "labor",
+      "word": "labor",
+      "senses": [
+        {
+          "id": "sense-e15879ec",
+          "pos": "noun",
+          "meaningZh": "勞動；工作",
+          "definitionEn": "any work that is attempted or done",
+          "examples": [
+            "After a long day of labor in the fields, the farmer finally sat down to rest."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-95bd51b1",
+          "pos": "noun",
+          "meaningZh": "勞工運動；工會",
+          "definitionEn": "united effort by workers to enhance their conditions (often through labor unions) or the leaders of this movement",
+          "examples": [
+            "The labor union organized a strike to negotiate for better wages and benefits."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "lag",
+      "word": "lag",
+      "senses": [
+        {
+          "id": "sense-45316540",
+          "pos": "noun",
+          "meaningZh": "落後；滯後",
+          "definitionEn": "the act of slowing down or falling behind compared to others.",
+          "examples": [
+            "In the marathon, John started to lag behind the other runners after the first few miles."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-bac3b109",
+          "pos": "noun",
+          "meaningZh": "時間差；延遲",
+          "definitionEn": "the period of time between one event, process, or period and another.",
+          "examples": [
+            "There was a lag of a few seconds between pressing the button and the screen responding."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "landmark",
+      "word": "landmark",
+      "senses": [
+        {
+          "id": "sense-c4e722e0",
+          "pos": "noun",
+          "meaningZh": "地標；標誌性建物",
+          "definitionEn": "a prominent or well-known object or feature in a landscape",
+          "examples": [
+            "The Eiffel Tower is a famous landmark in Paris."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-ee5e165c",
+          "pos": "noun",
+          "meaningZh": "地界標；界樁",
+          "definitionEn": "a boundary marker for a plot of land",
+          "examples": [
+            "The surveyor placed a landmark at each corner of the property to clearly define the boundaries."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L5",
+        "textbookTitle": "龍騰 B3·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "landscape",
+      "word": "landscape",
+      "senses": [
+        {
+          "id": "sense-c7cba6c9",
+          "pos": "noun",
+          "meaningZh": "風景；景色",
+          "definitionEn": "a wide and beautiful view of natural scenery in a single glance",
+          "examples": [
+            "As I stood on the mountaintop, I couldn't help but marvel at the breathtaking landscape before me, with rolling hills, vibrant green forests, and a shimmering lake in the distance."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-29f4104e",
+          "pos": "verb",
+          "meaningZh": "美化庭園；從事景觀設計",
+          "definitionEn": "engage in the art or practice of designing and rearranging gardens and outdoor spaces",
+          "examples": [
+            "As a landscape designer, Sarah transformed the plain backyard into a lush oasis with carefully planned flower beds, a tranquil pond, and a cozy seating area."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "largely",
+      "word": "largely",
+      "senses": [
+        {
+          "id": "sense-e84f54b1",
+          "pos": "adverb",
+          "meaningZh": "主要地；大部分",
+          "definitionEn": "mainly or chiefly; in large part",
+          "examples": [
+            "She attributed her success largely to her hard work and determination."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-096e3d23",
+          "pos": "adverb",
+          "meaningZh": "大規模地；廣泛地",
+          "definitionEn": "on a large scale",
+          "examples": [
+            "The concert was largely attended, with thousands of fans filling the stadium."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "launch",
+      "word": "launch",
+      "senses": [
+        {
+          "id": "sense-a7cc9dcf",
+          "pos": "verb",
+          "meaningZh": "啟動；發起",
+          "definitionEn": "to start or set in motion; to embark on",
+          "examples": [
+            "The company will launch its new product line next month."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        },
+        {
+          "id": "sense-1f0c86cb",
+          "pos": "verb",
+          "meaningZh": "創立；成立",
+          "definitionEn": "to establish or set up",
+          "examples": [
+            "After months of planning, they were finally ready to launch their new startup."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-4.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "4"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L7 +1",
+        "textbookTitle": "龍騰 B2·L7、三民 B2·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    }
+  ]
+}

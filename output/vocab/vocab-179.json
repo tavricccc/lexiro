@@ -1,0 +1,1356 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 179,
+  "words": [
+    {
+      "wordKey": "feeble",
+      "word": "feeble",
+      "senses": [
+        {
+          "id": "sense-de4e6577",
+          "pos": "adjective",
+          "meaningZh": "虛弱的；體力不支的",
+          "definitionEn": "lacking bodily or muscular strength or vitality",
+          "examples": [
+            "The feeble old man struggled to carry the heavy grocery bag to his car."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-11731f69",
+          "pos": "adjective",
+          "meaningZh": "無力的；衰弱的",
+          "definitionEn": "lacking strength or vigor",
+          "examples": [
+            "The feeble old man could barely walk without assistance."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "feminine",
+      "word": "feminine",
+      "senses": [
+        {
+          "id": "sense-3fa2017d",
+          "pos": "noun",
+          "meaningZh": "陰性；女性特質",
+          "definitionEn": "a gender that refers chiefly (but not exclusively) to females or to objects classified as female",
+          "examples": [
+            "Sara's elegant dress and graceful movements showcased her feminine charm."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "fertility",
+      "word": "fertility",
+      "senses": [
+        {
+          "id": "sense-a96dc734",
+          "pos": "noun",
+          "meaningZh": "生育力；受孕能力",
+          "definitionEn": "the ability to produce children",
+          "examples": [
+            "After two years of trying, the couple finally celebrated their fertility when they became parents to twins."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-64a8255c",
+          "pos": "noun",
+          "meaningZh": "（土地）肥沃度；豐產",
+          "definitionEn": "the state of being able to produce plants or crops in abundance",
+          "examples": [
+            "The combination of rich soil, ample sunlight, and regular rainfall creates the perfect conditions for fertility, allowing the farmers to cultivate bountiful crops year after year."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "fertilizer",
+      "word": "fertilizer",
+      "senses": [
+        {
+          "id": "sense-1a12d596",
+          "pos": "noun",
+          "meaningZh": "肥料；化學肥料",
+          "definitionEn": "a substance, such as manure or a mixture of nitrates, that is used to make soil more fertile by providing essential nutrients.",
+          "examples": [
+            "The farmer spread fertilizer on his crops to help them grow."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "fin",
+      "word": "fin",
+      "senses": [
+        {
+          "id": "sense-22849999",
+          "pos": "noun",
+          "meaningZh": "鰭；翼狀突",
+          "definitionEn": "an organ that helps fish and other aquatic animals move and balance in the water",
+          "examples": [
+            "The sleek shark gracefully maneuvered through the ocean depths, its powerful fin effortlessly propelling it forward."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "finite",
+      "word": "finite",
+      "senses": [
+        {
+          "id": "sense-86b290e6",
+          "pos": "adjective",
+          "meaningZh": "有限的；有界的",
+          "definitionEn": "having bounds; limited in size, range, or scope",
+          "examples": [
+            "The budget for the project is finite, so we need to prioritize our expenses carefully."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-701d3df4",
+          "pos": "adjective",
+          "meaningZh": "限定式的（語法）",
+          "definitionEn": "denoting a verb form that expresses tense, such as the past tense, and that can occur in a limited number of forms showing agreement with the subject",
+          "examples": [
+            "In the sentence 'She walked to the store,' the verb 'walked' is a finite form indicating past tense."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "firecracker",
+      "word": "firecracker",
+      "senses": [
+        {
+          "id": "sense-1eafb1b7",
+          "pos": "noun",
+          "meaningZh": "爆竹；鞭炮",
+          "definitionEn": "A type of firework that explodes with a loud noise and bright flash of light",
+          "examples": [
+            "The children screamed with excitement as they lit the firecracker on New Year’s Eve, enjoying the loud noise and bright flash of colors."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-651c602d",
+          "pos": "noun",
+          "meaningZh": "鞭炮；炮仗",
+          "definitionEn": "firework consisting of a small explosive charge and fuse in a heavy paper casing",
+          "examples": [
+            "The children were excited to light the firecracker they had purchased from the store for the Fourth of July celebration."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "fireproof",
+      "word": "fireproof",
+      "senses": [
+        {
+          "id": "sense-2c7fbe7f",
+          "pos": "adjective",
+          "meaningZh": "防火的；耐火的",
+          "definitionEn": "able to withstand fire without being damaged",
+          "examples": [
+            "The fireproof safe protected all of our important documents from the blazing flames."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-abf7f00d",
+          "pos": "verb",
+          "meaningZh": "防火處理；阻燃",
+          "definitionEn": "to make something resistant to fire",
+          "examples": [
+            "The construction company installed fireproof doors and windows to ensure the safety of the building in case of a fire."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "fishery",
+      "word": "fishery",
+      "senses": [
+        {
+          "id": "sense-af9d4b6e",
+          "pos": "noun",
+          "meaningZh": "漁場；水產業",
+          "definitionEn": "a place where fish are caught and sold or raised for commercial purposes",
+          "examples": [
+            "The local fishery employs a team of skilled fishermen who catch fresh fish daily to be sold at the market."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "flake",
+      "word": "flake",
+      "senses": [
+        {
+          "id": "sense-1a33ac2d",
+          "pos": "noun",
+          "meaningZh": "薄片；碎屑",
+          "definitionEn": "a small, thin, flat piece that has come off",
+          "examples": [
+            "As I was brushing my hair, a flake of dandruff fell onto my shoulder."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-bbcd96cc",
+          "pos": "verb",
+          "meaningZh": "剝落；脫落",
+          "definitionEn": "to come off easily in small, thin, flat pieces",
+          "examples": [
+            "After the storm, the old paint on the house started to flake and needed to be repainted."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "flaw",
+      "word": "flaw",
+      "senses": [
+        {
+          "id": "sense-4e819047",
+          "pos": "noun",
+          "meaningZh": "缺陷；瑕疵",
+          "definitionEn": "a fault, mistake, or weakness in an object or machine that makes it imperfect or less effective",
+          "examples": [
+            "The car's flaw was that it frequently stalled when driving uphill."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-60a584de",
+          "pos": "noun",
+          "meaningZh": "性格缺點；弱點",
+          "definitionEn": "a fault or weakness in a person’s character or behavior",
+          "examples": [
+            "Her inability to take criticism without getting defensive is a major flaw in her character."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L6 +1",
+        "textbookTitle": "龍騰 B4·L6、龍騰 B5·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "flourish",
+      "word": "flourish",
+      "senses": [
+        {
+          "id": "sense-6a044fbf",
+          "pos": "verb",
+          "meaningZh": "茁壯；繁盛",
+          "definitionEn": "to grow or develop in a healthy or vigorous way",
+          "examples": [
+            "After receiving proper care and sunlight, the young plant began to flourish, growing tall and producing vibrant flowers."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-e0638004",
+          "pos": "verb",
+          "meaningZh": "興旺；成功",
+          "definitionEn": "to be successful; to prosper",
+          "examples": [
+            "After years of hard work, Sarah's business began to flourish and she was able to expand to multiple locations."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L8",
+        "textbookTitle": "三民 B4·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "flunk",
+      "word": "flunk",
+      "senses": [
+        {
+          "id": "sense-cba9a4d7",
+          "pos": "verb",
+          "meaningZh": "當掉；不及格",
+          "definitionEn": "to fail to achieve a passing grade",
+          "examples": [
+            "I knew I was going to flunk the test, as I didn’t study much for it."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-ec34c97c",
+          "pos": "noun",
+          "meaningZh": "不及格；落第",
+          "definitionEn": "the act or result of failing to meet a minimum performance standard or requirement",
+          "examples": [
+            "I studied all night but still ended up flunking the test."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "foe",
+      "word": "foe",
+      "senses": [
+        {
+          "id": "sense-bff8d9f3",
+          "pos": "noun",
+          "meaningZh": "敵人；仇敵",
+          "definitionEn": "a personal enemy",
+          "examples": [
+            "In the ultimate battle between superheroes, Batman fought his arch-nemesis, the Joker, with all the cunning and strength he could muster. The Joker, his perennial foe, taunted him every step of the way."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-f41589e0",
+          "pos": "noun",
+          "meaningZh": "敵軍；對手",
+          "definitionEn": "an armed adversary (especially a member of an opposing military force)",
+          "examples": [
+            "The soldiers prepared to engage with their foes on the battlefield."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L1",
+        "textbookTitle": "龍騰 B5·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "folklore",
+      "word": "folklore",
+      "senses": [
+        {
+          "id": "sense-dacd579a",
+          "pos": "noun",
+          "meaningZh": "民間傳說；民俗文化",
+          "definitionEn": "the traditional beliefs, customs, stories, and songs of a community or culture, passed down orally from generation to generation",
+          "examples": [
+            "During the festival, the elders gathered around the campfire to share the folklore of their ancestors, mesmerizing the younger generations with stories of mythical creatures and ancient rituals."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "formidable",
+      "word": "formidable",
+      "senses": [
+        {
+          "id": "sense-ade7dc7e",
+          "pos": "adjective",
+          "meaningZh": "令人生畏的；可怕的",
+          "definitionEn": "inspiring fear",
+          "examples": [
+            "The formidable roar of the lion was enough to scare away the intruders."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-8a87aff4",
+          "pos": "adjective",
+          "meaningZh": "強大的；出色的",
+          "definitionEn": "extremely impressive in strength or excellence",
+          "examples": [
+            "The formidable fighter easily defeated all of his opponents with his sheer strength and skill."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "formulate",
+      "word": "formulate",
+      "senses": [
+        {
+          "id": "sense-cb3bf822",
+          "pos": "verb",
+          "meaningZh": "建構；闡述",
+          "definitionEn": "to elaborate, as of theories and hypotheses",
+          "examples": [
+            "Scientists use various experiments and data to formulate their theories about the origin of the universe."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-f5c6603a",
+          "pos": "verb",
+          "meaningZh": "表述；撰寫成文",
+          "definitionEn": "to put into words or an expression",
+          "examples": [
+            "The scientist spent months formulating her research findings into a comprehensive report."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "forsake",
+      "word": "forsake",
+      "senses": [
+        {
+          "id": "sense-1a3d1103",
+          "pos": "verb",
+          "meaningZh": "拋棄；遺棄",
+          "definitionEn": "To abandon or desert, especially in time of need.",
+          "examples": [
+            "John decided to forsake his longtime friend when he was going through financial crisis and stood alone with his problem."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-9da9dd62",
+          "pos": "verb",
+          "meaningZh": "放棄；捨棄",
+          "definitionEn": "To renounce or give up (an action or intention)",
+          "examples": [
+            "She had to forsake her dream of becoming a doctor to take care of her sick parents."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "forthcoming",
+      "word": "forthcoming",
+      "senses": [
+        {
+          "id": "sense-2a603cc3",
+          "pos": "adjective",
+          "meaningZh": "即將到來的；近期的",
+          "definitionEn": "of the relatively near future",
+          "examples": [
+            "The company announced that a new product launch is forthcoming, scheduled for next month."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-da394ff0",
+          "pos": "adjective",
+          "meaningZh": "即將提供的；備妥的",
+          "definitionEn": "available when required or as promised",
+          "examples": [
+            "The company announced that the financial reports will be forthcoming by the end of the week."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "fortify",
+      "word": "fortify",
+      "senses": [
+        {
+          "id": "sense-fb947754",
+          "pos": "verb",
+          "meaningZh": "加強；鞏固",
+          "definitionEn": "make strong or stronger",
+          "examples": [
+            "After the earthquake, the government worked to fortify the buildings against future tremors."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-31603e54",
+          "pos": "verb",
+          "meaningZh": "設防；築工事",
+          "definitionEn": "enclose by or as if by a fortification",
+          "examples": [
+            "The city authorities planned to fortify the borders of the country to prevent any security breaches."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "fowl",
+      "word": "fowl",
+      "senses": [
+        {
+          "id": "sense-28d3abef",
+          "pos": "noun",
+          "meaningZh": "家禽；禽鳥",
+          "definitionEn": "a domesticated bird that is often kept for its eggs and meat, and is believed to be descended from the wild red jungle fowl",
+          "examples": [
+            "The farmer raised fowl for their eggs and meat."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-e7f7a3cf",
+          "pos": "noun",
+          "meaningZh": "禽肉；雞鴨肉",
+          "definitionEn": "the meat of a bird, typically chicken or turkey, used as food",
+          "examples": [
+            "My mom cooked fowl for thanksgiving dinner."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "fracture",
+      "word": "fracture",
+      "senses": [
+        {
+          "id": "sense-f575dbe8",
+          "pos": "verb",
+          "meaningZh": "斷裂；破裂",
+          "definitionEn": "To become broken or cracked.",
+          "examples": [
+            "The athlete suffered a fracture in his leg when he fell from the balance beam during practice."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-cf1b0e0b",
+          "pos": "noun",
+          "meaningZh": "骨折；裂縫",
+          "definitionEn": "A break or crack in hard tissue such as bone.",
+          "examples": [
+            "He suffered a fracture in his right arm while playing football."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "fragrance",
+      "word": "fragrance",
+      "senses": [
+        {
+          "id": "sense-442f1de2",
+          "pos": "noun",
+          "meaningZh": "香氣；芬芳",
+          "definitionEn": "a pleasant, sweet smell",
+          "examples": [
+            "As she walked into the room, the fragrance of fresh flowers filled the air."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-1f022469",
+          "pos": "noun",
+          "meaningZh": "幽香；香味",
+          "definitionEn": "a distinctive, pleasant odor",
+          "examples": [
+            "The garden was filled with the fragrance of blooming flowers."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "fragrant",
+      "word": "fragrant",
+      "senses": [
+        {
+          "id": "sense-c93cdfce",
+          "pos": "adjective",
+          "meaningZh": "芳香的；氣味宜人的",
+          "definitionEn": "having a sweet or pleasant smell",
+          "examples": [
+            "The fragrant aroma of freshly baked cookies filled the kitchen."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "frantic",
+      "word": "frantic",
+      "senses": [
+        {
+          "id": "sense-69cdf0cc",
+          "pos": "adjective",
+          "meaningZh": "驚慌失措的；極度焦慮的",
+          "definitionEn": "excessively agitated; distraught with fear or other violent emotion",
+          "examples": [
+            "When the little girl got separated from her mother, she became very frantic and started running around, crying and screaming."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-3ca34e16",
+          "pos": "adjective",
+          "meaningZh": "激動難以自制的；情緒失控的",
+          "definitionEn": "marked by uncontrolled excitement or emotion",
+          "examples": [
+            "After her team won the championship game, the coach was so frantic with joy that she jumped onto the field and started hugging her players."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "freak",
+      "word": "freak",
+      "senses": [
+        {
+          "id": "sense-418a1324",
+          "pos": "noun",
+          "meaningZh": "怪人；畸形者",
+          "definitionEn": "a person or animal that is noticeably unusual or deformed",
+          "examples": [
+            "In the circus, there was a freak show featuring individuals with unique physical characteristics."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-023a78a2",
+          "pos": "noun",
+          "meaningZh": "狂熱愛好者；迷",
+          "definitionEn": "someone who is very passionately devoted to something",
+          "examples": [
+            "She's a photography freak, always carrying her camera and looking for the perfect shot."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "freeway",
+      "word": "freeway",
+      "senses": [
+        {
+          "id": "sense-0d90401f",
+          "pos": "noun",
+          "meaningZh": "高速公路；快速道路",
+          "definitionEn": "a multi-lane limited-access highway designed for high-speed traffic and with no traffic lights or intersections",
+          "examples": [
+            "As we drove along the freeway, we enjoyed the smooth flow of traffic and the absence of any stoplights or intersections."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "friction",
+      "word": "friction",
+      "senses": [
+        {
+          "id": "sense-09239e86",
+          "pos": "noun",
+          "meaningZh": "摩擦力；阻力",
+          "definitionEn": "the resistance encountered when one body is moved in contact with another",
+          "examples": [
+            "When trying to push a heavy piece of furniture across the room, you may encounter friction as the chair legs rub against the carpet."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-801e71aa",
+          "pos": "noun",
+          "meaningZh": "摩擦；摩擦作用",
+          "definitionEn": "effort expended in moving one object over another with pressure",
+          "examples": [
+            "Sara had to apply more pressure and effort to push the heavy dresser across the carpet due to the friction between the furniture and the floor."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "fume",
+      "word": "fume",
+      "senses": [
+        {
+          "id": "sense-76aacb74",
+          "pos": "noun",
+          "meaningZh": "煙霧；有害氣體",
+          "definitionEn": "A cloud of fine particles suspended in a gas.",
+          "examples": [
+            "The workers in the factory wore masks to protect themselves from breathing in the toxic fumes released by the machines."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-a0f6d8d6",
+          "pos": "verb",
+          "meaningZh": "冒煙；散發煙霧",
+          "definitionEn": "To emit a cloud of fine particles.",
+          "examples": [
+            "The chimney of the factory was fuming smoke into the air."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    },
+    {
+      "wordKey": "fury",
+      "word": "fury",
+      "senses": [
+        {
+          "id": "sense-f4a7e865",
+          "pos": "noun",
+          "meaningZh": "盛怒；狂怒",
+          "definitionEn": "a feeling of intense anger",
+          "examples": [
+            "After waiting in line for two hours, the customer's fury reached its peak when the shop ran out of the item they wanted to purchase."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        },
+        {
+          "id": "sense-47d7f7e3",
+          "pos": "noun",
+          "meaningZh": "狂暴；猛烈",
+          "definitionEn": "the property of being wild or turbulent",
+          "examples": [
+            "The fury of the storm unleashing its powerful winds and torrential rain was a sight to behold."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-6.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "6"
+        ],
+        "cefr": "C2",
+        "exams": [
+          "學測",
+          "GEPT中高級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L3",
+        "textbookTitle": "龍騰 B3·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.723Z"
+    }
+  ]
+}

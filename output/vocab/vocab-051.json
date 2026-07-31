@@ -1,0 +1,1382 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 51,
+  "words": [
+    {
+      "wordKey": "noodle",
+      "word": "noodle",
+      "senses": [
+        {
+          "id": "sense-1030479e",
+          "pos": "noun",
+          "meaningZh": "麵條",
+          "definitionEn": "a ribbonlike strip of pasta",
+          "examples": [
+            "She twirled her fork in the bowl, capturing a long noodle with each rotation."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "nor",
+      "word": "nor",
+      "senses": [
+        {
+          "id": "sense-9d6c99c7",
+          "pos": "conjunction",
+          "meaningZh": "也不；（與neither連用）",
+          "definitionEn": "used before the second or last of a series of negative possibilities that usually begin with neither.",
+          "examples": [
+            "He had neither the time nor the inclination to attend the meeting."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-101986e2",
+          "pos": "conjunction",
+          "meaningZh": "亦不；也不",
+          "definitionEn": "and not; or not.",
+          "examples": [
+            "Lisa wants neither pizza nor pasta for dinner."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "northern",
+      "word": "northern",
+      "senses": [
+        {
+          "id": "sense-80bfbe5e",
+          "pos": "adjective",
+          "meaningZh": "北部的；北方的",
+          "definitionEn": "coming from or situated in regions to the north",
+          "examples": [
+            "There was a strong breeze blowing from the northern direction and it made the weather a bit chilly."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-5fec4a14",
+          "pos": "adjective",
+          "meaningZh": "來自北方的；北向的（風）",
+          "definitionEn": "coming from the north, especially in reference to wind",
+          "examples": [
+            "The northern wind was so strong that it toppled over several trees in our neighborhood."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "notebook",
+      "word": "notebook",
+      "senses": [
+        {
+          "id": "sense-0cc78322",
+          "pos": "noun",
+          "meaningZh": "筆記本；記事本",
+          "definitionEn": "a book with blank pages for recording notes or memoranda",
+          "examples": [
+            "I carry my notebook everywhere I go so that I can jot down any important ideas or reminders."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-5e78c927",
+          "pos": "noun",
+          "meaningZh": "筆記型電腦；手提電腦",
+          "definitionEn": "a small, portable computer that is designed for ease of use and portability",
+          "examples": [
+            "During his travels, Alex relied on his notebook to stay connected with his work and communicate with clients."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "novel",
+      "word": "novel",
+      "senses": [
+        {
+          "id": "sense-e0f8d942",
+          "pos": "noun",
+          "meaningZh": "小說",
+          "definitionEn": "a type of book that tells a story and is usually long",
+          "examples": [
+            "She spent the entire weekend curled up on the couch, engrossed in a captivating novel."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-76217d9a",
+          "pos": "adjective",
+          "meaningZh": "新穎的；獨特的",
+          "definitionEn": "new and different in an interesting or appealing way",
+          "examples": [
+            "The chef prepared a novel dish that combined traditional flavors with unique ingredients, creating a truly unforgettable dining experience."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "nut",
+      "word": "nut",
+      "senses": [
+        {
+          "id": "sense-11889174",
+          "pos": "noun",
+          "meaningZh": "堅果；硬殼果",
+          "definitionEn": "A usually large and hard-shelled seed.",
+          "examples": [
+            "I cracked open the nut to reveal a delicious almond inside."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-9c3bdf8b",
+          "pos": "noun",
+          "meaningZh": "（印刷單位）半個全身",
+          "definitionEn": "Half the width of an em.",
+          "examples": [
+            "The designer set the spacing between the paragraphs to be one nut, giving a clean and consistent look to the page."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "obey",
+      "word": "obey",
+      "senses": [
+        {
+          "id": "sense-528a7c4a",
+          "pos": "verb",
+          "meaningZh": "遵守；遵循",
+          "definitionEn": "to behave in accordance with a set of rules or laws",
+          "examples": [
+            "The students must obey the school's dress code by wearing their uniform."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-74b194d8",
+          "pos": "verb",
+          "meaningZh": "服從；聽從",
+          "definitionEn": "to comply with or follow someone’s command or authority",
+          "examples": [
+            "The students must obey the teacher's instructions and remain quiet during the exam."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "object",
+      "word": "object",
+      "senses": [
+        {
+          "id": "sense-6b00117d",
+          "pos": "noun",
+          "meaningZh": "物體；實物",
+          "definitionEn": "a tangible and visible thing that can be perceived by the senses",
+          "examples": [
+            "When I entered the room, the first thing that caught my eye was a shiny, silver object on the shelf."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-51bc13da",
+          "pos": "noun",
+          "meaningZh": "關注目標；對象",
+          "definitionEn": "something that someone cares about or is focused on",
+          "examples": [
+            "For Tom, his family is the most important object in his life."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L8",
+        "textbookTitle": "三民 B4·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "obvious",
+      "word": "obvious",
+      "senses": [
+        {
+          "id": "sense-0cac7820",
+          "pos": "adjective",
+          "meaningZh": "明顯的；顯而易見的",
+          "definitionEn": "easily noticed or understood",
+          "examples": [
+            "It was obvious from the look on her face that she was not happy with the surprise party."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L5 +2",
+        "textbookTitle": "龍騰 B1·L5、三民 B4·L1、翰林 B1·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "occur",
+      "word": "occur",
+      "senses": [
+        {
+          "id": "sense-d5117cbe",
+          "pos": "verb",
+          "meaningZh": "發生；出現",
+          "definitionEn": "be found to exist",
+          "examples": [
+            "A power outage occurred in our city yesterday due to a severe thunderstorm."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-de7e1e9b",
+          "pos": "verb",
+          "meaningZh": "浮現腦海；想到",
+          "definitionEn": "come to one’s mind; suggest itself",
+          "examples": [
+            "It did not occur to me to bring a sweater, and I regret it now that the weather has turned cold."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B1·L3",
+        "textbookTitle": "三民 B1·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "ocean",
+      "word": "ocean",
+      "senses": [
+        {
+          "id": "sense-590d7b76",
+          "pos": "noun",
+          "meaningZh": "海洋；大洋",
+          "definitionEn": "a principal part of the hydrosphere, consisting of seawater and freshwater",
+          "examples": [
+            "The scuba divers explored the vibrant coral reefs teeming with colorful fish in the warm, crystal-clear waters of the Pacific Ocean."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-0315d826",
+          "pos": "noun",
+          "meaningZh": "汪洋；廣袤海域",
+          "definitionEn": "an immense body of saltwater covering almost three-fourths of the Earth’s surface",
+          "examples": [
+            "Surrounded by palm trees, the crystal-clear ocean water stretched out as far as the eye could see, inviting beachgoers to take a refreshing swim."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "offer",
+      "word": "offer",
+      "senses": [
+        {
+          "id": "sense-a4b2b5c5",
+          "pos": "verb",
+          "meaningZh": "提供；供給",
+          "definitionEn": "make available; provide",
+          "examples": [
+            "I would like to offer my assistance with your project."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-0ef840d0",
+          "pos": "verb",
+          "meaningZh": "提出；呈獻",
+          "definitionEn": "present for acceptance or rejection",
+          "examples": [
+            "He offered his assistance to the elderly woman crossing the street."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L8",
+        "textbookTitle": "龍騰 B1·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "official",
+      "word": "official",
+      "senses": [
+        {
+          "id": "sense-be52d5a7",
+          "pos": "adjective",
+          "meaningZh": "官方的；正式的",
+          "definitionEn": "having official authority or being formally announced",
+          "examples": [
+            "The official announcement of the election results came through the television broadcast."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-1713941e",
+          "pos": "noun",
+          "meaningZh": "官員；公務人員",
+          "definitionEn": "a worker who holds or is invested with an office",
+          "examples": [
+            "The official representative of the company was present at the meeting to address all the concerns."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "operate",
+      "word": "operate",
+      "senses": [
+        {
+          "id": "sense-4f2fdd40",
+          "pos": "verb",
+          "meaningZh": "經營；管理",
+          "definitionEn": "to direct or control a project, business, or organization",
+          "examples": [
+            "John was hired to operate the new manufacturing facility, overseeing all aspects of production and ensuring efficiency."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-56a45f5e",
+          "pos": "verb",
+          "meaningZh": "使運作；使投入",
+          "definitionEn": "to keep someone or something engaged or busy",
+          "examples": [
+            "The teacher provided the students with hands-on activities to operate their minds and enhance their learning experience."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L8 +1",
+        "textbookTitle": "龍騰 B3·L8、翰林 B1·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "operator",
+      "word": "operator",
+      "senses": [
+        {
+          "id": "sense-df88043b",
+          "pos": "noun",
+          "meaningZh": "業者；經營者",
+          "definitionEn": "someone who owns or operates a business",
+          "examples": [
+            "The operator of the restaurant greeted each customer with a warm smile and ensured that their dining experience was delightful."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-b1e0e1b9",
+          "pos": "noun",
+          "meaningZh": "（數學）運算符號",
+          "definitionEn": "(mathematics) a symbol or function representing a mathematical operation",
+          "examples": [
+            "In the equation 4 + 2, the plus sign (+) is the operator that represents the addition operation."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L8",
+        "textbookTitle": "龍騰 B3·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "opinion",
+      "word": "opinion",
+      "senses": [
+        {
+          "id": "sense-5bf9f805",
+          "pos": "noun",
+          "meaningZh": "意見；個人看法",
+          "definitionEn": "a personal belief or judgment that is not founded on proof or certainty",
+          "examples": [
+            "I don’t agree with your opinion, but I respect your right to have it."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-dd05fe9c",
+          "pos": "noun",
+          "meaningZh": "見解；主張",
+          "definitionEn": "a message expressing a belief about something; the expression of a belief that is held with confidence but not substantiated by positive knowledge or proof",
+          "examples": [
+            "In my opinion, this new movie is not as good as the original version."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L9",
+        "textbookTitle": "龍騰 B1·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "ordinary",
+      "word": "ordinary",
+      "senses": [
+        {
+          "id": "sense-64fed687",
+          "pos": "adjective",
+          "meaningZh": "普通的；平凡的",
+          "definitionEn": "Commonly encountered and lacking special distinction, rank, or status.",
+          "examples": [
+            "The coffee shop was just an ordinary one, nothing special about it."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-fb68113b",
+          "pos": "adjective",
+          "meaningZh": "平庸的；毫無特色的",
+          "definitionEn": "Not exceptional in any way, especially in quality, ability, size, or degree.",
+          "examples": [
+            "My breakfast was just ordinary, nothing special."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "organ",
+      "word": "organ",
+      "senses": [
+        {
+          "id": "sense-2c056984",
+          "pos": "noun",
+          "meaningZh": "器官",
+          "definitionEn": "a part of the body that has a particular function, such as the heart or lungs",
+          "examples": [
+            "The heart is a vital organ that pumps blood."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-467d0201",
+          "pos": "noun",
+          "meaningZh": "機構；政府機關",
+          "definitionEn": "a government agency or instrument devoted to the performance of some specific function",
+          "examples": [
+            "The Ministry of Education is the organ responsible for developing and implementing educational policies in the country."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-06d72abd",
+          "pos": "noun",
+          "meaningZh": "管風琴",
+          "definitionEn": "a wind instrument whose sound is produced by means of pipes arranged in sets supplied with air from a bellows and controlled from a large complex musical keyboard",
+          "examples": [
+            "The organist played a powerful and haunting melody on the church organ during the wedding ceremony."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "organization",
+      "word": "organization",
+      "senses": [
+        {
+          "id": "sense-cd83d921",
+          "pos": "noun",
+          "meaningZh": "組織；機構",
+          "definitionEn": "a group of people who work together",
+          "examples": [
+            "The organization hosted a successful charity event last week."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-721adfc0",
+          "pos": "noun",
+          "meaningZh": "管理委員會；行政架構",
+          "definitionEn": "the persons, committees, or departments who make up a body for the purpose of administering something",
+          "examples": [
+            "The organization of the event was superb. The committee worked together like a well-oiled machine and every task was completed flawlessly."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L7 +2",
+        "textbookTitle": "龍騰 B2·L7、三民 B1·L6、翰林 B1·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "origin",
+      "word": "origin",
+      "senses": [
+        {
+          "id": "sense-94220d36",
+          "pos": "noun",
+          "meaningZh": "起源；源頭",
+          "definitionEn": "the point at which something begins or arises",
+          "examples": [
+            "The origin of a river can often be found high in the mountains."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L8 +2",
+        "textbookTitle": "龍騰 B2·L8、三民 B2·L1、翰林 B1·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "owner",
+      "word": "owner",
+      "senses": [
+        {
+          "id": "sense-a4424a41",
+          "pos": "noun",
+          "meaningZh": "擁有者；所有人",
+          "definitionEn": "a person who possesses or holds ownership of something, such as a property, car, or business",
+          "examples": [
+            "The owner of the apartment complex decided to renovate the common areas to attract more tenants."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-7f4bf9f5",
+          "pos": "noun",
+          "meaningZh": "業主；法定權利人",
+          "definitionEn": "a person who has legal title or right to something, such as a business or trademark",
+          "examples": [
+            "The owner of the restaurant decided to sell it to a local investor."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "pain",
+      "word": "pain",
+      "senses": [
+        {
+          "id": "sense-a60c63c8",
+          "pos": "noun",
+          "meaningZh": "疼痛；痛苦",
+          "definitionEn": "an unpleasant physical sensation",
+          "examples": [
+            "The pain in her ankle made it difficult for her to walk."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-d9145856",
+          "pos": "noun",
+          "meaningZh": "疼痛症狀；傷痛",
+          "definitionEn": "a symptom of physical injury or damage",
+          "examples": [
+            "She winced in pain when the doctor touched her injured arm."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L1 +1",
+        "textbookTitle": "龍騰 B2·L1、三民 B2·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "painful",
+      "word": "painful",
+      "senses": [
+        {
+          "id": "sense-c174a978",
+          "pos": "adjective",
+          "meaningZh": "疼痛的；痛苦的",
+          "definitionEn": "causing physical discomfort",
+          "examples": [
+            "The dentist hit a nerve while drilling my tooth, and the pain was so painful that I threw up."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-f19e94e3",
+          "pos": "adjective",
+          "meaningZh": "令人痛苦的；難受的",
+          "definitionEn": "causing physical or psychological pain",
+          "examples": [
+            "The patient’s wound was so deep that even a simple touch was too painful for him."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L1 +1",
+        "textbookTitle": "龍騰 B2·L1、三民 B2·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "painting",
+      "word": "painting",
+      "senses": [
+        {
+          "id": "sense-3c050aae",
+          "pos": "noun",
+          "meaningZh": "繪畫；作畫",
+          "definitionEn": "the act of creating a picture with paints",
+          "examples": [
+            "She spends most of her spare time painting in her studio."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-d647d7f2",
+          "pos": "noun",
+          "meaningZh": "粉刷；塗裝",
+          "definitionEn": "the act of applying paint to a surface",
+          "examples": [
+            "She has been painting the walls of her new house for the last three days."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "pajamas",
+      "word": "pajamas",
+      "senses": [
+        {
+          "id": "sense-8d29d5c5",
+          "pos": "noun",
+          "meaningZh": "睡衣；睡衣褲",
+          "definitionEn": "loosely-fitting clothes worn in bed, comprising of a shirt and pants.",
+          "examples": [
+            "After a long day at work, Lisa eagerly changed into her comfy pajamas and curled up in bed with a book."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "pale",
+      "word": "pale",
+      "senses": [
+        {
+          "id": "sense-173f77bd",
+          "pos": "adjective",
+          "meaningZh": "蒼白的；面無血色的",
+          "definitionEn": "having an abnormally low level of color, suggesting physical or emotional distress",
+          "examples": [
+            "Her face was very pale when she heard the terrible news about her friend’s death."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-4a957dc2",
+          "pos": "adjective",
+          "meaningZh": "黯淡的；乏善可陳的",
+          "definitionEn": "lacking in vitality, interest, or effectiveness",
+          "examples": [
+            "The presentation was pale and failed to captivate the audience."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L1",
+        "textbookTitle": "龍騰 B3·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "pan",
+      "word": "pan",
+      "senses": [
+        {
+          "id": "sense-a495b89b",
+          "pos": "noun",
+          "meaningZh": "平底鍋；煎鍋",
+          "definitionEn": "a cooking utensil consisting of a broad flat-bottomed vessel, usually of metal, and with slightly sloping sides, for holding liquids and cooking food",
+          "examples": [
+            "I heated the oil in the pan before adding the vegetables."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-bcd645c0",
+          "pos": "verb",
+          "meaningZh": "淘金；淘洗礦砂",
+          "definitionEn": "wash gravel, sand, etc. in a pan, as a means of finding gold or other precious minerals",
+          "examples": [
+            "After spending hours panning in the river, the gold miner finally found a few small nuggets of gold."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "panda",
+      "word": "panda",
+      "senses": [
+        {
+          "id": "sense-dd58e995",
+          "pos": "noun",
+          "meaningZh": "熊貓；大貓熊",
+          "definitionEn": "A panda is a large mammal that is black and white. It is similar to a bear and lives in forests in China. Pandas eat bamboo, which is a type of grass stem.",
+          "examples": [
+            "During my visit to the zoo, I was lucky enough to see a playful panda munching on bamboo in its enclosure."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "papaya",
+      "word": "papaya",
+      "senses": [
+        {
+          "id": "sense-b0ee2579",
+          "pos": "noun",
+          "meaningZh": "木瓜",
+          "definitionEn": "a large oval tropical fruit with yellow flesh, similar to a melon",
+          "examples": [
+            "I bought a ripe papaya from the fruit market and sliced it open to eat it for breakfast."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "pardon",
+      "word": "pardon",
+      "senses": [
+        {
+          "id": "sense-d7e1437f",
+          "pos": "verb",
+          "meaningZh": "原諒；寬恕",
+          "definitionEn": "To excuse someone for an offense or mistake.",
+          "examples": [
+            "When he accidentally spilled the water on his friend’s laptop, he apologized and asked for pardon."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-eeab1f46",
+          "pos": "noun",
+          "meaningZh": "寬恕；原諒",
+          "definitionEn": "The act of excusing a mistake or offense.",
+          "examples": [
+            "After realizing his mistake, he asked for a pardon from his boss."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    }
+  ]
+}

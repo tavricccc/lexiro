@@ -1,0 +1,1473 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 4,
+  "words": [
+    {
+      "wordKey": "blind",
+      "word": "blind",
+      "senses": [
+        {
+          "id": "sense-aa055e2f",
+          "pos": "adjective",
+          "meaningZh": "瞎的；失明的",
+          "definitionEn": "unable to see",
+          "examples": [
+            "He has been blind since birth."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-869a7bf3",
+          "pos": "noun",
+          "meaningZh": "盲人（總稱）",
+          "definitionEn": "people who have severe visual impairments, considered as a group",
+          "examples": [
+            "The organization provides support and resources for the blind to help them navigate the world around them."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-9ed965b9",
+          "pos": "noun",
+          "meaningZh": "掩護；幌子",
+          "definitionEn": "something intended to misrepresent the true nature of an activity",
+          "examples": [
+            "The company used the cloak of charity as a blind to hide their illegal activities."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "block",
+      "word": "block",
+      "senses": [
+        {
+          "id": "sense-e8546ae3",
+          "pos": "noun",
+          "meaningZh": "方塊；實心塊",
+          "definitionEn": "a solid piece of something (usually having flat rectangular sides)",
+          "examples": [
+            "The mason carefully placed each block on top of the other to build a sturdy wall."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-0cb30ec8",
+          "pos": "noun",
+          "meaningZh": "積木；方形立體塊",
+          "definitionEn": "a three-dimensional shape with six square or rectangular sides",
+          "examples": [
+            "The construction worker stacked one block on top of another to build a sturdy wall."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 翰林 B1·L6",
+        "textbookTitle": "翰林 B1·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "blow",
+      "word": "blow",
+      "senses": [
+        {
+          "id": "sense-5024833a",
+          "pos": "verb",
+          "meaningZh": "（風）吹；飄動",
+          "definitionEn": "be in motion due to air or water currents",
+          "examples": [
+            "The wind gusts would blow leaves across the yard."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-245dd1cf",
+          "pos": "verb",
+          "meaningZh": "洩露（秘密）；曝光",
+          "definitionEn": "reveal and endanger something, usually a secret",
+          "examples": [
+            "During interrogation, the spy refused to blow his cover despite intense pressure from the enemy."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "blue",
+      "word": "blue",
+      "senses": [
+        {
+          "id": "sense-92f7b0cf",
+          "pos": "noun",
+          "meaningZh": "藍色；天藍色",
+          "definitionEn": "the color of the sky on a clear day",
+          "examples": [
+            "We spent the sunny afternoon lying on our picnic blankets, gazing up at the beautiful blue sky."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-c2cc6382",
+          "pos": "verb",
+          "meaningZh": "變成藍色；轉藍",
+          "definitionEn": "to become blue in color",
+          "examples": [
+            "The sky started to blue as the sun began to set."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "boat",
+      "word": "boat",
+      "senses": [
+        {
+          "id": "sense-b92f5044",
+          "pos": "noun",
+          "meaningZh": "小船；船艇",
+          "definitionEn": "a small vessel for travel on water",
+          "examples": [
+            "Jenny and her friends decided to rent a boat for the day and explore the nearby islands."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-3cbf1b6d",
+          "pos": "noun",
+          "meaningZh": "船形醬汁碗；醬汁船",
+          "definitionEn": "a dish (often boat-shaped) for serving gravy or sauce",
+          "examples": [
+            "The waiter placed the boat of thick gravy on the table alongside the roast beef."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "body",
+      "word": "body",
+      "senses": [
+        {
+          "id": "sense-710ba378",
+          "pos": "noun",
+          "meaningZh": "身體；軀體（整體）",
+          "definitionEn": "the entire structure of an organism (an animal, plant, or human being)",
+          "examples": [
+            "After the accident, he suffered multiple injuries to his body."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-a2ea794f",
+          "pos": "noun",
+          "meaningZh": "軀幹（不含頭頸四肢）",
+          "definitionEn": "the body excluding the head and neck and limbs",
+          "examples": [
+            "She wore a strapless gown that showcased her beautiful body."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "book",
+      "word": "book",
+      "senses": [
+        {
+          "id": "sense-558b187b",
+          "pos": "noun",
+          "meaningZh": "書；書本",
+          "definitionEn": "a physical object consisting of a set of printed pages that are bound together, used for reading or writing.",
+          "examples": [
+            "I spend my evenings curled up on the couch with a good book."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-0ae6e089",
+          "pos": "noun",
+          "meaningZh": "著作；出版書籍",
+          "definitionEn": "a written or printed work that is published or intended for publication, especially one that is bound and presented in a volume.",
+          "examples": [
+            "I love getting lost in a good book on a rainy day."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "bored",
+      "word": "bored",
+      "senses": [
+        {
+          "id": "sense-43f56a81",
+          "pos": "adjective",
+          "meaningZh": "無聊的；百無聊賴的",
+          "definitionEn": "tired of the world",
+          "examples": [
+            "After weeks of quarantine, I was so bored that I even started playing cards with myself."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-c6163ea7",
+          "pos": "adjective",
+          "meaningZh": "厭倦的；失去興趣的",
+          "definitionEn": "uninterested because of frequent exposure or indulgence",
+          "examples": [
+            "She was bored with the movie because she had watched it several times before."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "boring",
+      "word": "boring",
+      "senses": [
+        {
+          "id": "sense-824c59e3",
+          "pos": "adjective",
+          "meaningZh": "無聊的；乏味的",
+          "definitionEn": "causing feelings of uninteresting or tediousness",
+          "examples": [
+            "The lecture was so boring that half of the class fell asleep."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-1f760b74",
+          "pos": "noun",
+          "meaningZh": "鑽孔；挖掘",
+          "definitionEn": "the act of creating a hole or tunnel",
+          "examples": [
+            "The construction workers were boring through the mountain to create a new tunnel for the train."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "born",
+      "word": "born",
+      "senses": [
+        {
+          "id": "sense-de55aaf3",
+          "pos": "adjective",
+          "meaningZh": "出生的；誕生的",
+          "definitionEn": "brought into existence, existing as a result of birth",
+          "examples": [
+            "He was born on a cold winter's night, surrounded by his loving family."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-7b914d61",
+          "pos": "adjective",
+          "meaningZh": "天生的；與生俱來的",
+          "definitionEn": "having a natural ability or talent from birth",
+          "examples": [
+            "Ever since he was a baby, Sarah showed an exceptional knack for playing the piano. It was clear that he was born with musical talent."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "borrow",
+      "word": "borrow",
+      "senses": [
+        {
+          "id": "sense-f8705afd",
+          "pos": "verb",
+          "meaningZh": "借用；借入",
+          "definitionEn": "take and use (something) with the intention of returning it.",
+          "examples": [
+            "I need to borrow a pen to sign the contract, and I’ll return it to you tomorrow."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-2e1df82d",
+          "pos": "verb",
+          "meaningZh": "借鑑；採用",
+          "definitionEn": "adopt or use (an idea or method) as one’s own.",
+          "examples": [
+            "After reading her favorite author's book, she was inspired to borrow his writing style and incorporate it into her own work."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "boss",
+      "word": "boss",
+      "senses": [
+        {
+          "id": "sense-3a671a59",
+          "pos": "noun",
+          "meaningZh": "老闆；主管；上司",
+          "definitionEn": "a person who is responsible for managing a group of workers or a department in an organization",
+          "examples": [
+            "The boss called a meeting to discuss the new project deadlines with the team."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-227b0810",
+          "pos": "noun",
+          "meaningZh": "黨魁；政治領袖",
+          "definitionEn": "a political leader who controls votes or dictates appointments within a party",
+          "examples": [
+            "In the midst of a heated party election, the boss of the party strategically assigned key positions to win over support and secure victory."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "both",
+      "word": "both",
+      "senses": [
+        {
+          "id": "sense-d5c59eec",
+          "pos": "pronoun",
+          "meaningZh": "兩者；雙方",
+          "definitionEn": "used to refer to two people or things together.",
+          "examples": [
+            "Both Sarah and John will be attending the party tonight."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-62199840",
+          "pos": "adverb",
+          "meaningZh": "兩者都；同時",
+          "definitionEn": "together; in addition.",
+          "examples": [
+            "The couple decided to take a vacation together and invited both sets of parents to join them."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "bottle",
+      "word": "bottle",
+      "senses": [
+        {
+          "id": "sense-503f998c",
+          "pos": "noun",
+          "meaningZh": "瓶子；酒瓶",
+          "definitionEn": "a container with a narrow neck and a cap, used for storing and pouring liquids",
+          "examples": [
+            "The bartender poured the sparkling water from the bottle into a glass."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-03a036ac",
+          "pos": "verb",
+          "meaningZh": "裝瓶；灌瓶",
+          "definitionEn": "to put liquid into bottles",
+          "examples": [
+            "After the wine was fermented, they began to bottle it for distribution."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "bottom",
+      "word": "bottom",
+      "senses": [
+        {
+          "id": "sense-9bf79167",
+          "pos": "noun",
+          "meaningZh": "底部；最下面",
+          "definitionEn": "the lowest part of something",
+          "examples": [
+            "The keys were at the bottom of my bag."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-9e9ad0db",
+          "pos": "verb",
+          "meaningZh": "裝底；觸底；弄清楚",
+          "definitionEn": "provide with a bottom or a seat, or strike the ground, as with a ship’s bottom, or come to understand",
+          "examples": [
+            "The ship was dry-docked so that the workers could bottom it."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "bow",
+      "word": "bow",
+      "senses": [
+        {
+          "id": "sense-05230cc9",
+          "pos": "verb",
+          "meaningZh": "鞠躬；低頭致意",
+          "definitionEn": "to bend the upper part of your body forward to show respect or greeting",
+          "examples": [
+            "The actors bowed to the audience after the show."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-40d0eba8",
+          "pos": "noun",
+          "meaningZh": "蝴蝶結；蝶形結",
+          "definitionEn": "a knot made with two loops and having loose ends, used to tie shoes",
+          "examples": [
+            "Sarah bent down to tie her shoelaces, carefully looping the laces into a perfect bow."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-0b4feb02",
+          "pos": "noun",
+          "meaningZh": "弧形；弓形",
+          "definitionEn": "a curved shape",
+          "examples": [
+            "The rainbow stretched across the sky, forming a beautiful bow."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "bowl",
+      "word": "bowl",
+      "senses": [
+        {
+          "id": "sense-96e45b7a",
+          "pos": "noun",
+          "meaningZh": "碗；缽",
+          "definitionEn": "a container, usually round and open at the top, used for holding food or liquids",
+          "examples": [
+            "I placed the hot soup in a ceramic bowl, ready to be enjoyed."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-e90fd05c",
+          "pos": "noun",
+          "meaningZh": "（盛食物的）碗",
+          "definitionEn": "a dish with a round and open top used for serving food",
+          "examples": [
+            "She placed the steaming soup in the bowl and served it to the guests."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "box",
+      "word": "box",
+      "senses": [
+        {
+          "id": "sense-a780eeda",
+          "pos": "noun",
+          "meaningZh": "箱子；盒子",
+          "definitionEn": "a container with a typically rectangular shape and may have a lid",
+          "examples": [
+            "I packed my books into a sturdy cardboard box before moving to my new apartment."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-27aa72ba",
+          "pos": "noun",
+          "meaningZh": "一箱的量",
+          "definitionEn": "the amount of something that can be contained in a box",
+          "examples": [
+            "The box was so large that it could hold a dozen pairs of shoes."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "boy",
+      "word": "boy",
+      "senses": [
+        {
+          "id": "sense-a47b8d1c",
+          "pos": "noun",
+          "meaningZh": "男孩；兒子",
+          "definitionEn": "a male human offspring",
+          "examples": [
+            "Yesterday, Mary and John proudly watched their little boy perform in his first piano recital."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-c7e721f0",
+          "pos": "noun",
+          "meaningZh": "少年；年輕男性",
+          "definitionEn": "a youthful male person",
+          "examples": [
+            "The boy rode his bike to school every day."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "brave",
+      "word": "brave",
+      "senses": [
+        {
+          "id": "sense-075fd89e",
+          "pos": "adjective",
+          "meaningZh": "勇敢的；英勇的",
+          "definitionEn": "having or showing courage; able to face and deal with danger or fear without backing down",
+          "examples": [
+            "The firefighter was incredibly brave as he entered the burning building to rescue the trapped children."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-6257d763",
+          "pos": "adjective",
+          "meaningZh": "無所畏懼的；膽大的",
+          "definitionEn": "not easily frightened; fearless and confident",
+          "examples": [
+            "The firefighter was brave as he charged into the burning building to save the trapped child."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "bread",
+      "word": "bread",
+      "senses": [
+        {
+          "id": "sense-ada1e939",
+          "pos": "noun",
+          "meaningZh": "麵包",
+          "definitionEn": "a type of food made from dough of flour or meal which is mixed with yeast or baking powder, and then baked",
+          "examples": [
+            "After a long day at work, I enjoy coming home to the smell of freshly baked bread."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-bea63381",
+          "pos": "noun",
+          "meaningZh": "錢；生活費",
+          "definitionEn": "money, especially money used to buy food or other necessities",
+          "examples": [
+            "After payday, I always make sure to set aside some bread for emergency expenses."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "break",
+      "word": "break",
+      "senses": [
+        {
+          "id": "sense-27e2b0af",
+          "pos": "verb",
+          "meaningZh": "打破；弄碎",
+          "definitionEn": "cause something to separate into pieces or fragments, usually by force",
+          "examples": [
+            "John accidentally dropped the glass, causing it to break into countless shards on the kitchen floor."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-726d93fb",
+          "pos": "verb",
+          "meaningZh": "摧毀；瓦解（意志）",
+          "definitionEn": "weaken or destroy in spirit or body",
+          "examples": [
+            "The prisoner endured weeks of relentless interrogation, which eventually broke his resolve."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "breakfast",
+      "word": "breakfast",
+      "senses": [
+        {
+          "id": "sense-551cf2c0",
+          "pos": "noun",
+          "meaningZh": "早餐；早飯",
+          "definitionEn": "A meal typically eaten in the morning as the first meal of the day.",
+          "examples": [
+            "Every morning, Susan enjoys a hearty breakfast of scrambled eggs, toast, and a cup of coffee."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-d9887caf",
+          "pos": "verb",
+          "meaningZh": "吃早餐",
+          "definitionEn": "To eat a meal in the morning.",
+          "examples": [
+            "I usually have a bowl of cereal for breakfast before heading to work."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "bridge",
+      "word": "bridge",
+      "senses": [
+        {
+          "id": "sense-5ce62c68",
+          "pos": "noun",
+          "meaningZh": "橋；橋梁",
+          "definitionEn": "a structure that allows people or vehicles to cross an obstacle such as a river, canal, or railway",
+          "examples": [
+            "The old stone bridge provided a safe passage over the roaring river."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-fe7e8ad0",
+          "pos": "verb",
+          "meaningZh": "架橋；橫越",
+          "definitionEn": "to make a bridge over something",
+          "examples": [
+            "The construction crew worked tirelessly to bridge the gap between the two cliffs, allowing for safe passage across the ravine."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "bright",
+      "word": "bright",
+      "senses": [
+        {
+          "id": "sense-7f5a6475",
+          "pos": "adjective",
+          "meaningZh": "明亮的；光線強的",
+          "definitionEn": "emitting or reflecting a lot of light",
+          "examples": [
+            "The bright sun rising over the horizon filled the sky with an array of colors."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-263406d7",
+          "pos": "adjective",
+          "meaningZh": "光亮的；閃亮的",
+          "definitionEn": "having a smooth and shiny surface that reflects light",
+          "examples": [
+            "The sun’s rays reflected off the bright new car parked outside."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "bring",
+      "word": "bring",
+      "senses": [
+        {
+          "id": "sense-b860f687",
+          "pos": "verb",
+          "meaningZh": "帶來；攜來",
+          "definitionEn": "to cause something to come to a specific place or point",
+          "examples": [
+            "Please bring the cake to the party tonight."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-3fc58d83",
+          "pos": "verb",
+          "meaningZh": "帶給；引起（某種狀態）",
+          "definitionEn": "to cause or generate a specific state or condition",
+          "examples": [
+            "His motivational speech brought hope to the discouraged team."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "brother",
+      "word": "brother",
+      "senses": [
+        {
+          "id": "sense-a7d86f0e",
+          "pos": "noun",
+          "meaningZh": "兄弟",
+          "definitionEn": "a male sibling",
+          "examples": [
+            "I have an older brother who always looks out for me."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-155fe963",
+          "pos": "noun",
+          "meaningZh": "兄弟般的好友；摯友",
+          "definitionEn": "a close male friend or companion",
+          "examples": [
+            "Ralph has been my brother since kindergarten, we do everything together."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "brown",
+      "word": "brown",
+      "senses": [
+        {
+          "id": "sense-81c8b170",
+          "pos": "adjective",
+          "meaningZh": "棕色的；褐色的",
+          "definitionEn": "of the colour of chocolate, soil, or coffee, between orange and black",
+          "examples": [
+            "She has long brown hair and brown eyes."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-901e24eb",
+          "pos": "noun",
+          "meaningZh": "棕色；褐色",
+          "definitionEn": "the colour of chocolate or soil",
+          "examples": [
+            "He painted the old fence a dark brown."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "bug",
+      "word": "bug",
+      "senses": [
+        {
+          "id": "sense-eea64de7",
+          "pos": "noun",
+          "meaningZh": "昆蟲；小蟲",
+          "definitionEn": "a small insect",
+          "examples": [
+            "A bug crawled across the kitchen floor."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-878c025c",
+          "pos": "noun",
+          "meaningZh": "細菌；病蟲；微生物",
+          "definitionEn": "a very small living organism, especially one that causes disease; this term is not typically used in technical settings",
+          "examples": [
+            "During the camping trip, we had to be cautious of ticks and other bugs that could carry diseases."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "build",
+      "word": "build",
+      "senses": [
+        {
+          "id": "sense-93eea8da",
+          "pos": "verb",
+          "meaningZh": "建造；建設",
+          "definitionEn": "make something by combining materials and parts",
+          "examples": [
+            "John decided to build a treehouse for his kids in the backyard using wood and nails."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-3ce44432",
+          "pos": "verb",
+          "meaningZh": "出資興建；監督施工",
+          "definitionEn": "order, supervise or provide finance for the construction of something",
+          "examples": [
+            "The wealthy entrepreneur decided to build a new hospital in the small town, ensuring that the community would have access to quality healthcare."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    }
+  ]
+}

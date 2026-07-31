@@ -1,0 +1,1392 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 44,
+  "words": [
+    {
+      "wordKey": "following",
+      "word": "following",
+      "senses": [
+        {
+          "id": "sense-e50cef5a",
+          "pos": "adjective",
+          "meaningZh": "緊接著的；下一個",
+          "definitionEn": "immediately coming after in time or order",
+          "examples": [
+            "After finishing his presentation, James called for questions from the following audience members."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-9e64b9f5",
+          "pos": "noun",
+          "meaningZh": "支持者；粉絲群",
+          "definitionEn": "a group of supporters or admirers",
+          "examples": [
+            "As a famous author, she had a dedicated following who eagerly awaited her next book."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B1·L1",
+        "textbookTitle": "三民 B1·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "foolish",
+      "word": "foolish",
+      "senses": [
+        {
+          "id": "sense-d5c2a1e2",
+          "pos": "adjective",
+          "meaningZh": "愚蠢的；不明智的",
+          "definitionEn": "lacking good sense or judgment",
+          "examples": [
+            "It would be foolish to drive without wearing a seatbelt."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-812c4d02",
+          "pos": "adjective",
+          "meaningZh": "欠缺判斷力的",
+          "definitionEn": "showing a lack of intelligence or good judgment",
+          "examples": [
+            "It would be foolish to go hiking in the middle of a hurricane."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "football",
+      "word": "football",
+      "senses": [
+        {
+          "id": "sense-3cb8c941",
+          "pos": "noun",
+          "meaningZh": "足球；美式橄欖球",
+          "definitionEn": "a sport played with a ball (round or oval) in which two teams try to score points by carrying, kicking or propelling the ball into the opposing team’s goal",
+          "examples": [
+            "He played football with his friends every Sunday at the park."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-163ffff8",
+          "pos": "noun",
+          "meaningZh": "橄欖球（球本身）",
+          "definitionEn": "the inflated oval-shaped ball used in playing American football",
+          "examples": [
+            "During the Super Bowl, the football was thrown through the air with precision and caught by the receiver for a touchdown."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "force",
+      "word": "force",
+      "senses": [
+        {
+          "id": "sense-bed61458",
+          "pos": "noun",
+          "meaningZh": "武力；強制力",
+          "definitionEn": "An act of aggression, as in one against a person who resists.",
+          "examples": [
+            "The police officers had to use force to subdue the violent suspect."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-6d60fc22",
+          "pos": "verb",
+          "meaningZh": "硬塞；強行擠入",
+          "definitionEn": "Squeeze like a wedge into a tight space.",
+          "examples": [
+            "Marcus had to force the suitcase into the overhead bin, as it was too big for the limited space available."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "forest",
+      "word": "forest",
+      "senses": [
+        {
+          "id": "sense-f74ea247",
+          "pos": "noun",
+          "meaningZh": "森林；林地",
+          "definitionEn": "a large area covered primarily by trees and underbrush",
+          "examples": [
+            "The forest was dark and mysterious as we hiked through the thick trees, listening to the rustling of leaves and chirping of birds."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-506af4e5",
+          "pos": "verb",
+          "meaningZh": "造林；植樹",
+          "definitionEn": "to plant trees and establish a forest on previously unforested land",
+          "examples": [
+            "The government is planning to forest a large area of land to combat deforestation."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "forgive",
+      "word": "forgive",
+      "senses": [
+        {
+          "id": "sense-c55ef047",
+          "pos": "verb",
+          "meaningZh": "原諒；寬恕",
+          "definitionEn": "grant pardon for an offense",
+          "examples": [
+            "After realizing that he made a mistake, John asked his friend to forgive him for his behavior."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-0601214e",
+          "pos": "verb",
+          "meaningZh": "不再怨恨；放下",
+          "definitionEn": "stop feeling angry or resentful toward someone for an offense",
+          "examples": [
+            "After a heated argument, Sarah was able to forgive her friend for what was said and move forward with their friendship."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B1·L2",
+        "textbookTitle": "三民 B1·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "form",
+      "word": "form",
+      "senses": [
+        {
+          "id": "sense-27e1410d",
+          "pos": "noun",
+          "meaningZh": "形式；格局",
+          "definitionEn": "an arrangement of the elements in a composition or discourse",
+          "examples": [
+            "In order to pass the exam, it is important to answer each question in the required form."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-a9001203",
+          "pos": "noun",
+          "meaningZh": "種類；類型",
+          "definitionEn": "a category of things distinguished by some common characteristic or quality",
+          "examples": [],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L9 +1",
+        "textbookTitle": "龍騰 B1·L9、三民 B2·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "formal",
+      "word": "formal",
+      "senses": [
+        {
+          "id": "sense-a75ea3fb",
+          "pos": "adjective",
+          "meaningZh": "正式的；隆重的",
+          "definitionEn": "refined or imposing in manner or appearance; befitting a royal court",
+          "examples": [
+            "The guests at the gala were dressed in formal attire, with elegant gowns and tuxedos."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-57ba4769",
+          "pos": "adjective",
+          "meaningZh": "官方的；正規的",
+          "definitionEn": "characteristic of or befitting a person in authority",
+          "examples": [
+            "During the conference, the speaker delivered their presentations with a formal tone, maintaining professionalism and authority."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "former",
+      "word": "former",
+      "senses": [
+        {
+          "id": "sense-a465295d",
+          "pos": "adjective",
+          "meaningZh": "前者；前述的",
+          "definitionEn": "referring to the first of two things or persons mentioned, or the earlier one of several; previous.",
+          "examples": [
+            "I used to be a teacher, but now I am a former teacher."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-6c9650dd",
+          "pos": "adjective",
+          "meaningZh": "前任的；過去的",
+          "definitionEn": "belonging to the immediate past.",
+          "examples": [
+            "John is a former employee of the company, he left last year."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "forth",
+      "word": "forth",
+      "senses": [
+        {
+          "id": "sense-80624d7c",
+          "pos": "adverb",
+          "meaningZh": "向前；向外",
+          "definitionEn": "out from a starting point; forward",
+          "examples": [
+            "From that day forth, they were close friends."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-c034db07",
+          "pos": "adverb",
+          "meaningZh": "向前；往後",
+          "definitionEn": "forward in time, order, or degree",
+          "examples": [
+            "After months of hard work, Sarah finally made a significant breakthrough in her research, propelling her forth in her academic career."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "forward",
+      "word": "forward",
+      "senses": [
+        {
+          "id": "sense-522cb866",
+          "pos": "adverb",
+          "meaningZh": "向前；往前",
+          "definitionEn": "at or to or toward the front",
+          "examples": [
+            "Please move forward in the line so we can let others pass through."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-d0c67dd9",
+          "pos": "adverb",
+          "meaningZh": "朝前方；前進",
+          "definitionEn": "in a forward direction",
+          "examples": [
+            "The runner took a step forward before the starting signal."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B2·L6",
+        "textbookTitle": "三民 B2·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "found",
+      "word": "found",
+      "senses": [
+        {
+          "id": "sense-0c20a5c2",
+          "pos": "verb",
+          "meaningZh": "創立；建立",
+          "definitionEn": "establish or create (something) for the first time",
+          "examples": [
+            "The company was founded in 1995 by two Stanford University graduates."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-0ec1573a",
+          "pos": "adjective",
+          "meaningZh": "被發現的；偶然找到的",
+          "definitionEn": "discovered by chance or unexpectedly, in particular",
+          "examples": [
+            "While hiking in the forest, we found a hidden waterfall."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L7",
+        "textbookTitle": "龍騰 B2·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "fox",
+      "word": "fox",
+      "senses": [
+        {
+          "id": "sense-03e711e8",
+          "pos": "noun",
+          "meaningZh": "狐狸",
+          "definitionEn": "a wild animal with reddish fur, a pointed face, and a bushy tail",
+          "examples": [
+            "A fox crept silently through the bushes."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-97e24f14",
+          "pos": "verb",
+          "meaningZh": "使困惑；迷惑",
+          "definitionEn": "to confuse or perplex, making it difficult to think.",
+          "examples": [
+            "The complex math problem had me completely foxed and I couldn’t solve it."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "freedom",
+      "word": "freedom",
+      "senses": [
+        {
+          "id": "sense-fcb21108",
+          "pos": "noun",
+          "meaningZh": "自由；解放",
+          "definitionEn": "the state of being free from restrictions, imprisonment or slavery",
+          "examples": [
+            "After years of fighting for independence, the country finally achieved freedom from colonial rule."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-1158afd6",
+          "pos": "noun",
+          "meaningZh": "豁免；不受束縛",
+          "definitionEn": "exemption from an obligation or duty",
+          "examples": [
+            "After years of hard work, she finally achieved financial freedom and was able to retire early."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L6",
+        "textbookTitle": "龍騰 B1·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "friendship",
+      "word": "friendship",
+      "senses": [
+        {
+          "id": "sense-dc7236f5",
+          "pos": "noun",
+          "meaningZh": "友誼；友情",
+          "definitionEn": "the state of being friends",
+          "examples": [
+            "John and Mary’s friendship started in kindergarten and has lasted through high school."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B4·L7",
+        "textbookTitle": "三民 B4·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "fries",
+      "word": "fries",
+      "senses": [
+        {
+          "id": "sense-991a6962",
+          "pos": "noun",
+          "meaningZh": "薯條",
+          "definitionEn": "long thin pieces of potato fried in oil",
+          "examples": [
+            "I ordered a burger with a side of fries."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-4ad51aa1",
+          "pos": "noun",
+          "meaningZh": "小孩；年輕人（俚語）",
+          "definitionEn": "a young person, usually referring to teenagers or children",
+          "examples": [
+            "The group of frys excitedly gathered at the amusement park."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "fry",
+      "word": "fry",
+      "senses": [
+        {
+          "id": "sense-c0b1f9b7",
+          "pos": "verb",
+          "meaningZh": "油炸；煎炒",
+          "definitionEn": "to cook food in hot oil or fat",
+          "examples": [
+            "I decided to fry some chicken for dinner tonight."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-fe738529",
+          "pos": "noun",
+          "meaningZh": "小孩；年輕人（俚語）",
+          "definitionEn": "a young person, usually referring to teenagers or children",
+          "examples": [
+            "The group of frys excitedly gathered at the amusement park."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "function",
+      "word": "function",
+      "senses": [
+        {
+          "id": "sense-24dd35f2",
+          "pos": "verb",
+          "meaningZh": "運作；正常運行",
+          "definitionEn": "to work correctly and as expected.",
+          "examples": [
+            "The dishwasher is not functioning properly, it's not cleaning the dishes thoroughly."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-2e1dafa1",
+          "pos": "noun",
+          "meaningZh": "函數；數學函式",
+          "definitionEn": "a mathematical relationship between two or more sets of inputs and outputs, typically represented by a formula or a set of rules.",
+          "examples": [
+            "To calculate the area of a circle, you can use the function A = πr², where A represents the area and r represents the radius of the circle."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L2 +1",
+        "textbookTitle": "龍騰 B2·L2、三民 B4·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "furniture",
+      "word": "furniture",
+      "senses": [
+        {
+          "id": "sense-44a8e246",
+          "pos": "noun",
+          "meaningZh": "傢俱；家具",
+          "definitionEn": "the movable articles that are used to make a room or other area suitable for living or working",
+          "examples": [
+            "The new office building was completely empty, except for some furniture that had been left behind. The movers quickly arranged the desks, chairs, and filing cabinets to create a comfortable workspace."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 翰林 B1·L7",
+        "textbookTitle": "翰林 B1·L7"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "further",
+      "word": "further",
+      "senses": [
+        {
+          "id": "sense-30bf8401",
+          "pos": "adverb",
+          "meaningZh": "進一步地；更深入地",
+          "definitionEn": "to a greater extent or degree or at a more advanced stage; used more often than farther in an abstract sense.",
+          "examples": [
+            "In order to achieve further success in his career, he decided to pursue a higher degree."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-4eb534bf",
+          "pos": "adverb",
+          "meaningZh": "更遠地；更遠處",
+          "definitionEn": "to a greater distance in time or space; used more frequently than further in a physical sense.",
+          "examples": [
+            "In order to reach the desired destination, we need to drive further along this road."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 翰林 B1·L6",
+        "textbookTitle": "翰林 B1·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "gain",
+      "word": "gain",
+      "senses": [
+        {
+          "id": "sense-249f9e83",
+          "pos": "verb",
+          "meaningZh": "抵達；達成；獲得",
+          "definitionEn": "to reach a destination, whether physical or abstract",
+          "examples": [
+            "After months of hard work and dedication, John was able to gain admission into his dream school."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B2·L2 +1",
+        "textbookTitle": "三民 B2·L2、翰林 B1·L6"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "garbage",
+      "word": "garbage",
+      "senses": [
+        {
+          "id": "sense-c742fa91",
+          "pos": "noun",
+          "meaningZh": "垃圾；廢棄物",
+          "definitionEn": "Worthless or useless material that is thrown away and needs to be disposed of properly.",
+          "examples": [
+            "The community decided to hold a garbage collection day to clean up the streets and properly dispose of all the garbage."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-8f79c0b6",
+          "pos": "noun",
+          "meaningZh": "廚餘；食物殘渣",
+          "definitionEn": "Food or organic material that is discarded usually from a kitchen.",
+          "examples": [
+            "Please dispose of all your garbage in the designated bin."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "gardener",
+      "word": "gardener",
+      "senses": [
+        {
+          "id": "sense-e752546d",
+          "pos": "noun",
+          "meaningZh": "園丁；園藝工人",
+          "definitionEn": "someone employed to work in a garden",
+          "examples": [
+            "Alice hired a gardener to maintain her flower garden."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-fcc4e70f",
+          "pos": "noun",
+          "meaningZh": "愛好園藝者；照顧花園的人",
+          "definitionEn": "someone who takes care of a garden",
+          "examples": [
+            "My neighbor is a skilled gardener, she can turn any vacant lot into a beautiful garden."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "garlic",
+      "word": "garlic",
+      "senses": [
+        {
+          "id": "sense-0165e66a",
+          "pos": "noun",
+          "meaningZh": "大蒜；蒜頭",
+          "definitionEn": "A bulbous herb from southern Europe that is widely naturalized. The bulb breaks up into separate, strong-flavored cloves.",
+          "examples": [
+            "I love adding minced garlic to my pasta sauce to really bring out the flavor."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-03454b01",
+          "pos": "noun",
+          "meaningZh": "大蒜（調味用）",
+          "definitionEn": "An aromatic bulb used as seasoning.",
+          "examples": [
+            "The pasta sauce was delicious, thanks to the garlic I added to it."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "gather",
+      "word": "gather",
+      "senses": [
+        {
+          "id": "sense-a7ced998",
+          "pos": "verb",
+          "meaningZh": "集合；聚集",
+          "definitionEn": "to assemble or bring together, often in a group or crowd",
+          "examples": [
+            "We will gather outside the town hall to protest the new policy."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-7f7d5fce",
+          "pos": "noun",
+          "meaningZh": "收集；匯聚",
+          "definitionEn": "the act of gathering things together",
+          "examples": [
+            "Before the picnic, we need to gather all the food, plates, and utensils together."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B2·L4",
+        "textbookTitle": "三民 B2·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "general",
+      "word": "general",
+      "senses": [
+        {
+          "id": "sense-11aeaa5c",
+          "pos": "adjective",
+          "meaningZh": "一般的；普遍的",
+          "definitionEn": "affecting or concerning all or most people or things; not specific",
+          "examples": [
+            "There is a general feeling that prices are too high."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-ef1a3103",
+          "pos": "noun",
+          "meaningZh": "一般情況；整體概念",
+          "definitionEn": "a fact about the whole (as opposed to particular)",
+          "examples": [
+            "In general, cats are known for their independent nature."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L9",
+        "textbookTitle": "龍騰 B2·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "generous",
+      "word": "generous",
+      "senses": [
+        {
+          "id": "sense-47b6f692",
+          "pos": "adjective",
+          "meaningZh": "慷慨的；大方的",
+          "definitionEn": "willing to give and share without hesitation or condition",
+          "examples": [
+            "Ana is always generous with her time; she volunteers at the local shelter and spends many hours helping those in need."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-a73a9d82",
+          "pos": "adjective",
+          "meaningZh": "豐盛的；充裕的",
+          "definitionEn": "abundant; more than enough",
+          "examples": [
+            "The generous rain allowed the crops to flourish, producing a bountiful harvest."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L3",
+        "textbookTitle": "龍騰 B3·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "gentle",
+      "word": "gentle",
+      "senses": [
+        {
+          "id": "sense-eb0936ed",
+          "pos": "adjective",
+          "meaningZh": "溫和的；和善的",
+          "definitionEn": "soft and mild; not harsh or stern or severe",
+          "examples": [
+            "The mother cradled her newborn baby in her arms, speaking to it in a gentle and soothing voice."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-a949e448",
+          "pos": "adjective",
+          "meaningZh": "輕柔的；舒緩的",
+          "definitionEn": "quiet and soothing",
+          "examples": [
+            "As the sun sets, a gentle breeze rustles through the trees, creating a serene and peaceful atmosphere."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B1·L7 +1",
+        "textbookTitle": "三民 B1·L7、翰林 B1·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "gentleman",
+      "word": "gentleman",
+      "senses": [
+        {
+          "id": "sense-df936ead",
+          "pos": "noun",
+          "meaningZh": "紳士；有教養的男士",
+          "definitionEn": "a man of good social position, manners, and education",
+          "examples": [
+            "At the charity event, the gentleman graciously offered his seat to an elderly lady."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        },
+        {
+          "id": "sense-b9a3262f",
+          "pos": "noun",
+          "meaningZh": "彬彬有禮的男士；謙謙君子",
+          "definitionEn": "a chivalrous and courteous man",
+          "examples": [
+            "The gentleman held the door open for the elderly woman and graciously allowed her to enter first."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    },
+    {
+      "wordKey": "giraffe",
+      "word": "giraffe",
+      "senses": [
+        {
+          "id": "sense-353b3431",
+          "pos": "noun",
+          "meaningZh": "長頸鹿",
+          "definitionEn": "A giraffe is the tallest living land animal. It has a spotted coat and small horns and is found in savannas of tropical Africa. Giraffes have long necks and legs.",
+          "examples": [
+            "During our African safari, we were thrilled to spot a majestic giraffe gracefully striding through the savanna."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-2.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "2"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.720Z"
+    }
+  ]
+}

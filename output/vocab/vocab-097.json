@@ -1,0 +1,1395 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 97,
+  "words": [
+    {
+      "wordKey": "valuable",
+      "word": "valuable",
+      "senses": [
+        {
+          "id": "sense-b82fea5c",
+          "pos": "adjective",
+          "meaningZh": "有價值的；珍貴的",
+          "definitionEn": "having worth, merit or value",
+          "examples": [
+            "The antique necklace is valuable because it is made from rare gemstones and has been passed down through generations."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-516d9c9d",
+          "pos": "noun",
+          "meaningZh": "貴重物品；財物",
+          "definitionEn": "something that holds worth or is considered precious",
+          "examples": [
+            "Her grandmother's antique necklace was a valuable heirloom."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B1·L9",
+        "textbookTitle": "三民 B1·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "value",
+      "word": "value",
+      "senses": [
+        {
+          "id": "sense-e6fd8979",
+          "pos": "noun",
+          "meaningZh": "價值；重要性",
+          "definitionEn": "the quality that makes something desirable or worthwhile",
+          "examples": [
+            "The value of teamwork becomes evident when everyone collaborates effectively to achieve a common goal."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-b3683db8",
+          "pos": "noun",
+          "meaningZh": "數值；金額；估值",
+          "definitionEn": "a number or amount assigned to something, often based on a calculation or measurement",
+          "examples": [
+            "The appraiser determined the value of the antique vase to be $5000."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 三民 B1·L9",
+        "textbookTitle": "三民 B1·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "van",
+      "word": "van",
+      "senses": [
+        {
+          "id": "sense-d50f07a6",
+          "pos": "noun",
+          "meaningZh": "廂型車；貨車",
+          "definitionEn": "a truck or vehicle with an enclosed area used for carrying goods or people",
+          "examples": [
+            "I rented a van to transport all the equipment for the music festival."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-1d7233b1",
+          "pos": "noun",
+          "meaningZh": "前鋒部隊；先頭部隊",
+          "definitionEn": "the leading units moving at the head of an army",
+          "examples": [
+            "The van of the army marched forward, clearing a path through the dense forest."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "vanish",
+      "word": "vanish",
+      "senses": [
+        {
+          "id": "sense-5b19775c",
+          "pos": "verb",
+          "meaningZh": "消失；不見蹤影",
+          "definitionEn": "to become invisible or impossible to see.",
+          "examples": [
+            "When the magician waved his wand, the rabbit vanished into thin air."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-5b59a866",
+          "pos": "verb",
+          "meaningZh": "突然消失；憑空消失",
+          "definitionEn": "to disappear suddenly, especially in a way that cannot be easily explained.",
+          "examples": [
+            "The magician made the rabbit vanish from the hat, leaving the audience in awe."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "variety",
+      "word": "variety",
+      "senses": [
+        {
+          "id": "sense-ac505aa2",
+          "pos": "noun",
+          "meaningZh": "種類；多樣性；各種各樣",
+          "definitionEn": "a collection of various types of things",
+          "examples": [
+            "The farmers market had a variety of fruits and vegetables, including apples, oranges, kale, and carrots."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-35c3236a",
+          "pos": "noun",
+          "meaningZh": "多元化；豐富多樣",
+          "definitionEn": "a pleasant difference or diversity",
+          "examples": [
+            "The restaurant had a variety of dishes on its menu, catering to the tastes of different customers."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L3 +1",
+        "textbookTitle": "龍騰 B1·L3、三民 B1·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "various",
+      "word": "various",
+      "senses": [
+        {
+          "id": "sense-91f31746",
+          "pos": "adjective",
+          "meaningZh": "各種各樣的；多樣的",
+          "definitionEn": "having great diversity or variety",
+          "examples": [
+            "The clothing store offers various styles and sizes to cater to different customers."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-ed1a2b1d",
+          "pos": "adjective",
+          "meaningZh": "不同的；形形色色的",
+          "definitionEn": "distinctly dissimilar or unlike",
+          "examples": [
+            "The students in the classroom come from various backgrounds and cultures."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L3 +1",
+        "textbookTitle": "龍騰 B1·L3、三民 B4·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "vary",
+      "word": "vary",
+      "senses": [
+        {
+          "id": "sense-86349ecf",
+          "pos": "verb",
+          "meaningZh": "因地而異；有所不同",
+          "definitionEn": "to become different in some way without permanently losing one’s or its former characteristics or essence",
+          "examples": [
+            "The flavors of the soup vary depending on the region it is made in."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-32fe7f25",
+          "pos": "verb",
+          "meaningZh": "隨變數改變；有差異",
+          "definitionEn": "to be subject to change in accordance with a variable",
+          "examples": [
+            "The amount of rainfall can vary greatly depending on the location and season."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L3 +1",
+        "textbookTitle": "龍騰 B1·L3、三民 B1·L8"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "vase",
+      "word": "vase",
+      "senses": [
+        {
+          "id": "sense-40f099d1",
+          "pos": "noun",
+          "meaningZh": "花瓶；裝飾瓶",
+          "definitionEn": "a container of various materials, such as glass or porcelain, typically used for holding flowers or as an ornament",
+          "examples": [
+            "Emma carefully arranged the fresh-cut roses in the delicate porcelain vase, creating a stunning centerpiece for the dining table."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "vehicle",
+      "word": "vehicle",
+      "senses": [
+        {
+          "id": "sense-7f3284e7",
+          "pos": "noun",
+          "meaningZh": "車輛；交通工具",
+          "definitionEn": "a car, bus, truck, or other means of transportation",
+          "examples": [
+            "I rely on my vehicle to commute to work every day."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-3dd86a17",
+          "pos": "noun",
+          "meaningZh": "投資工具；金融載體",
+          "definitionEn": "a financial instrument or asset used for investment",
+          "examples": [
+            "Many people choose to invest in stocks and bonds as their preferred vehicles for long-term financial growth."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B2·L8 +1",
+        "textbookTitle": "龍騰 B2·L8、翰林 B1·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "verse",
+      "word": "verse",
+      "senses": [
+        {
+          "id": "sense-9e02103e",
+          "pos": "noun",
+          "meaningZh": "詩；韻文",
+          "definitionEn": "writing arranged in lines, often with rhythm or rhyme; poetry",
+          "examples": [
+            "The poem was written in beautiful verse."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-97ca8bb7",
+          "pos": "verb",
+          "meaningZh": "以詩歌形式寫作；作詩",
+          "definitionEn": "put into metrical form; compose verses",
+          "examples": [
+            "Shakespeare was known to verse his plays in iambic pentameter."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "vest",
+      "word": "vest",
+      "senses": [
+        {
+          "id": "sense-8be53e11",
+          "pos": "noun",
+          "meaningZh": "背心；馬甲",
+          "definitionEn": "a sleeveless garment that is worn underneath a coat by men",
+          "examples": [
+            "John wore a white vest under his navy blazer for the formal event."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-8ffc152c",
+          "pos": "verb",
+          "meaningZh": "賦予；授予（權力或職責）",
+          "definitionEn": "to give someone the power or authority to do something",
+          "examples": [
+            "The CEO decided to vest the new employee with the authority to make executive decisions on behalf of the company."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "C1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "victim",
+      "word": "victim",
+      "senses": [
+        {
+          "id": "sense-ba56c6f5",
+          "pos": "noun",
+          "meaningZh": "受害者；犧牲者",
+          "definitionEn": "an unfortunate person who suffers from some adverse circumstance",
+          "examples": [
+            "She became a victim of identity theft and lost all her savings."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-54fcc46e",
+          "pos": "noun",
+          "meaningZh": "受騙者；詐騙對象",
+          "definitionEn": "a person who is tricked or swindled",
+          "examples": [
+            "John fell victim to an online scam and lost all his savings."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B3·L3 +1",
+        "textbookTitle": "龍騰 B3·L3、三民 B4·L2"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "victory",
+      "word": "victory",
+      "senses": [
+        {
+          "id": "sense-656c86b3",
+          "pos": "noun",
+          "meaningZh": "勝利；戰勝",
+          "definitionEn": "the act of defeating an enemy or opponent in a battle or competition",
+          "examples": [
+            "Despite being the underdog, the team celebrated their victory after an intense basketball game."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-1c774aef",
+          "pos": "noun",
+          "meaningZh": "成功；征服",
+          "definitionEn": "a successful ending of a struggle or contest",
+          "examples": [
+            "After years of hard work and determination, he finally achieved victory and won the championship."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B4·L9",
+        "textbookTitle": "龍騰 B4·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "view",
+      "word": "view",
+      "senses": [
+        {
+          "id": "sense-c94fd2d6",
+          "pos": "noun",
+          "meaningZh": "景色；視野",
+          "definitionEn": "the visual perception of a region",
+          "examples": [
+            "From the top of the mountain, we had a breathtaking view of the entire valley."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-5712dc33",
+          "pos": "noun",
+          "meaningZh": "視野範圍；能見範圍",
+          "definitionEn": "the range of sight",
+          "examples": [
+            "From the top of the hill, we had a breathtaking view of the entire city."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "village",
+      "word": "village",
+      "senses": [
+        {
+          "id": "sense-aa181afe",
+          "pos": "noun",
+          "meaningZh": "村莊；農村社區",
+          "definitionEn": "a small community of people living in a rural area",
+          "examples": [
+            "In the village, everyone knows each other and lives a peaceful and simple life."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-4c5868bf",
+          "pos": "noun",
+          "meaningZh": "村落；小鎮",
+          "definitionEn": "a settlement generally smaller than a town",
+          "examples": [
+            "In the village, everyone knows each other and there is a strong sense of community."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "violence",
+      "word": "violence",
+      "senses": [
+        {
+          "id": "sense-268f5bb6",
+          "pos": "noun",
+          "meaningZh": "暴力；暴行",
+          "definitionEn": "an act of aggression, especially against a person who resists",
+          "examples": [
+            "The victim suffered from verbal and physical violence at the hands of her abusive partner."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-b3495894",
+          "pos": "noun",
+          "meaningZh": "猛烈；狂暴（自然力）",
+          "definitionEn": "the property of being wild or turbulent",
+          "examples": [
+            "The violence of the storm caused trees to fall and roofs to be ripped off of houses."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L9 +1",
+        "textbookTitle": "龍騰 B1·L9、三民 B2·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "violent",
+      "word": "violent",
+      "senses": [
+        {
+          "id": "sense-e38757ee",
+          "pos": "adjective",
+          "meaningZh": "暴力的；血腥的",
+          "definitionEn": "characterized by violence or bloodshed",
+          "examples": [
+            "The rioters turned the peaceful protest violent and started destroying public property."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-5bea6a7f",
+          "pos": "adjective",
+          "meaningZh": "強烈的；震耳欲聾的",
+          "definitionEn": "(of colors or sounds) intensely vivid or loud",
+          "examples": [
+            "The fireworks display was accompanied by violent explosions of light and sound."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L9 +1",
+        "textbookTitle": "龍騰 B1·L9、三民 B2·L1"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "violet",
+      "word": "violet",
+      "senses": [
+        {
+          "id": "sense-d7e5d73c",
+          "pos": "noun",
+          "meaningZh": "紫羅蘭（植物）",
+          "definitionEn": "any of various plants of the genus Viola, especially V. odorata, having short-stalked, fragrant, purple, white, or yellow flowers used in perfumery and medicine",
+          "examples": [
+            "The garden was filled with the delicate scent of violets wafting through the air."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-37c99636",
+          "pos": "noun",
+          "meaningZh": "藍紫色；紫色",
+          "definitionEn": "a bluish-purple color",
+          "examples": [
+            "She wore a stunning dress in a rich shade of violet."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "visible",
+      "word": "visible",
+      "senses": [
+        {
+          "id": "sense-160c072c",
+          "pos": "adjective",
+          "meaningZh": "看得見的；可見的",
+          "definitionEn": "capable of being seen; easily seen, or open to easy view",
+          "examples": [
+            "The bright neon sign was clearly visible from miles away."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-53547ca1",
+          "pos": "adjective",
+          "meaningZh": "明顯的；清晰可見的",
+          "definitionEn": "obvious to the eye; easily noticed",
+          "examples": [
+            "The bright orange sign was clearly visible from the highway."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L8 +1",
+        "textbookTitle": "龍騰 B1·L8、翰林 B1·L9"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "vote",
+      "word": "vote",
+      "senses": [
+        {
+          "id": "sense-b096d4bf",
+          "pos": "noun",
+          "meaningZh": "選票；投票",
+          "definitionEn": "a choice made by people to select a candidate or to decide on a measure, typically by counting the number of people in favor of each option",
+          "examples": [
+            "In the upcoming election, citizens of this country will vote to choose the next president."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-6c5621ce",
+          "pos": "verb",
+          "meaningZh": "投票；表決",
+          "definitionEn": "to express one’s preference for a candidate or a measure by casting a vote",
+          "examples": [
+            "John went to the polling booth to vote for his favorite candidate running for mayor in the local election."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "waist",
+      "word": "waist",
+      "senses": [
+        {
+          "id": "sense-349aee25",
+          "pos": "noun",
+          "meaningZh": "腰部；腰身",
+          "definitionEn": "the narrowing of the body between the ribs and hips",
+          "examples": [
+            "She cinched her waist with a belt to accentuate her hourglass figure."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-7bda127e",
+          "pos": "noun",
+          "meaningZh": "腰部（衣物）",
+          "definitionEn": "the part of a garment, especially a dress or shirt, that is shaped to fit the waist",
+          "examples": [
+            "She cinched the belt around her waist to create an hourglass figure."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "wallet",
+      "word": "wallet",
+      "senses": [
+        {
+          "id": "sense-c32ff3d8",
+          "pos": "noun",
+          "meaningZh": "皮夾；錢包",
+          "definitionEn": "a small, flat case for holding cash and cards, typically fitting into a pocket or purse",
+          "examples": [
+            "When I went to pay for my coffee, I reached into my pocket and pulled out my wallet to find my credit card."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "war",
+      "word": "war",
+      "senses": [
+        {
+          "id": "sense-ac4a1a40",
+          "pos": "noun",
+          "meaningZh": "戰爭；武裝衝突",
+          "definitionEn": "an active struggle or fight between countries or groups",
+          "examples": [
+            "The two neighboring nations were locked in a bitter war over disputed territories."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-c31b27d0",
+          "pos": "noun",
+          "meaningZh": "戰爭狀態；交戰",
+          "definitionEn": "the state of armed conflict between countries or groups",
+          "examples": [
+            "The two neighboring countries were in a state of war, with frequent clashes between their armies and ongoing territorial disputes."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "wash",
+      "word": "wash",
+      "senses": [
+        {
+          "id": "sense-828be0b5",
+          "pos": "verb",
+          "meaningZh": "清洗；洗滌",
+          "definitionEn": "clean something with a chemical process",
+          "examples": [
+            "I need to wash my clothes before wearing them again."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-36a79e05",
+          "pos": "verb",
+          "meaningZh": "清洗；用皂水洗",
+          "definitionEn": "cleanse something with soap and water",
+          "examples": [
+            "Please wash your hands thoroughly before dinner."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "waste",
+      "word": "waste",
+      "senses": [
+        {
+          "id": "sense-42ad1334",
+          "pos": "noun",
+          "meaningZh": "廢棄物；垃圾",
+          "definitionEn": "any materials unused and rejected as worthless or unwanted",
+          "examples": [
+            "We need to reduce the amount of waste we produce by recycling more."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-c34ccf59",
+          "pos": "noun",
+          "meaningZh": "浪費；無益消耗",
+          "definitionEn": "useless or profitless activity; using or expending or consuming thoughtlessly or carelessly",
+          "examples": [
+            "Leaving the lights on all day is just a waste of electricity and money."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 翰林 B1·L3",
+        "textbookTitle": "翰林 B1·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "watermelon",
+      "word": "watermelon",
+      "senses": [
+        {
+          "id": "sense-dfdfc507",
+          "pos": "noun",
+          "meaningZh": "西瓜（果實）",
+          "definitionEn": "A large fruit with a hard green outer layer and sweet, juicy red or yellow pulp inside.",
+          "examples": [
+            "She sliced the watermelon and shared it with her friends."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "wealth",
+      "word": "wealth",
+      "senses": [
+        {
+          "id": "sense-1a52b803",
+          "pos": "noun",
+          "meaningZh": "財富；資產",
+          "definitionEn": "An abundance of material possessions and resources.",
+          "examples": [
+            "After years of hard work and smart investments, John amassed great wealth, allowing him to live a life of luxury and financial security."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-7922fde9",
+          "pos": "noun",
+          "meaningZh": "財產；有價資源",
+          "definitionEn": "Property that has economic utility, such as a monetary or exchange value.",
+          "examples": [
+            "Despite being one of the wealthiest people in the world, he leads a modest lifestyle and donates a significant amount to charity."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B5·L1 +1",
+        "textbookTitle": "龍騰 B5·L1、三民 B2·L4"
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "wedding",
+      "word": "wedding",
+      "senses": [
+        {
+          "id": "sense-16aeb073",
+          "pos": "noun",
+          "meaningZh": "婚禮；結婚儀式",
+          "definitionEn": "the nuptial ceremony; the act of getting married",
+          "examples": [
+            "The wedding ceremony was held at a picturesque beach with the bride wearing a white gown and the groom in a classic black suit."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-a37dc42a",
+          "pos": "noun",
+          "meaningZh": "婚宴；婚慶活動",
+          "definitionEn": "the social event at which the ceremony of marriage is performed; a celebration of a marriage",
+          "examples": [
+            "The couple invited all of their family and friends to their wedding, where they exchanged their vows and began their new life together."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "weekday",
+      "word": "weekday",
+      "senses": [
+        {
+          "id": "sense-a512028e",
+          "pos": "noun",
+          "meaningZh": "工作日；平日",
+          "definitionEn": "any day except Saturday or Sunday",
+          "examples": [
+            "I have a lot of work to do during the weekday, but I relax during the weekend."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    },
+    {
+      "wordKey": "weigh",
+      "word": "weigh",
+      "senses": [
+        {
+          "id": "sense-1dbd6591",
+          "pos": "verb",
+          "meaningZh": "稱重；量體重",
+          "definitionEn": "to have a certain amount of heaviness or mass",
+          "examples": [
+            "The doctor asked me to weigh myself every morning to track my weight loss progress."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        },
+        {
+          "id": "sense-eece5a78",
+          "pos": "verb",
+          "meaningZh": "衡量；權衡",
+          "definitionEn": "to consider or take into account something when making a decision",
+          "examples": [
+            "Before making a decision, you must weigh the pros and cons of each choice."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-3.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "3"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.721Z"
+    }
+  ]
+}

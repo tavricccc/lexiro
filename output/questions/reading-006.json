@@ -1,0 +1,2767 @@
+{
+  "schemaVersion": 1,
+  "kind": "questions",
+  "questionKind": "reading",
+  "questions": [
+    {
+      "id": "reading-4834-8f69bedf",
+      "kind": "reading",
+      "title": "Bridges",
+      "passage": "A bridge is a clever structure that lets people cross over rivers, valleys, or busy roads. Builders must plan it with great care so that it can hold heavy cars and trucks. Strong ropes or thick stone columns support the road above, while deep bases hold everything in place under the water. Some bridges are so long that they take many years to finish. When one is done, it connects two places that were once far apart, and travelers no longer need a boat to reach the other side.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-b361ac91",
+          "kind": "multipleChoice",
+          "prompt": "What does \"it\" in \"it connects two places\" most likely refer to?",
+          "options": [
+            "A river",
+            "A boat",
+            "A bridge",
+            "A traveler"
+          ],
+          "answerIndex": 2
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4835-2536f792",
+      "kind": "reading",
+      "title": "Farmers' market",
+      "passage": "On weekend mornings, local farmers gather in the town square to sell fresh fruit and vegetables. They wake up early to pick everything while it is still cool. Shoppers walk from stall to stall, choosing ripe tomatoes, sweet corn, and crisp apples. Because the food comes straight from nearby fields, it tastes better and costs less than at big stores. The farmers enjoy meeting their customers and sharing tips on how to cook each item. In this friendly place, people learn where their meals truly come from.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-26940b70",
+          "kind": "multipleChoice",
+          "prompt": "What does \"They\" in \"They wake up early\" most likely refer to?",
+          "options": [
+            "The vegetables",
+            "The shoppers",
+            "The stores",
+            "The farmers"
+          ],
+          "answerIndex": 3
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4836-7db1366f",
+      "kind": "reading",
+      "title": "Honeybees",
+      "passage": "Honeybees live together in large groups called colonies. Each colony has thousands of worker bees, and they share many important jobs. Some bees clean the hive, while others fly out to collect sweet liquid from flowers. When the workers return home, they tell the rest of the group where the best flowers are. They do this by moving their bodies in a special dance. In this way, the whole colony can find food quickly and stay healthy through the warm season.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-c0c67774",
+          "kind": "multipleChoice",
+          "prompt": "What does \"They\" in \"They do this by moving their bodies\" most likely refer to?",
+          "options": [
+            "the flowers",
+            "the worker bees",
+            "the colonies",
+            "the warm seasons"
+          ],
+          "answerIndex": 1
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4837-14b8f601",
+      "kind": "reading",
+      "title": "Lighthouses",
+      "passage": "A lighthouse is a tall tower built near the sea. Long ago, sailors used these towers to find their way at night. A bright light shines from the top, and it can be seen from far away. When ships notice this light, the people on board know that dangerous rocks may be close. Then they can change direction and stay safe. Today many lighthouses still stand on the coast, and visitors enjoy climbing them to see the wide ocean below.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-688cd3da",
+          "kind": "multipleChoice",
+          "prompt": "What does \"it\" in \"it can be seen from far away\" most likely refer to?",
+          "options": [
+            "the tall tower",
+            "the bright light",
+            "the sea",
+            "the night"
+          ],
+          "answerIndex": 1
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4838-b1b4cff0",
+      "kind": "reading",
+      "title": "Migrating birds",
+      "passage": "Every autumn, many birds leave the cold north and fly south. These travelers may cover thousands of kilometers before they rest. They follow rivers, mountains, and even the position of the sun to find their way. Some young birds make this long trip for the first time without any adult to lead them. Scientists are still surprised by how they know the right path. When spring returns, the same birds fly back north to build new nests and raise their babies.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-801a9607",
+          "kind": "multipleChoice",
+          "prompt": "What does \"They\" in \"They follow rivers, mountains\" most likely refer to?",
+          "options": [
+            "the mountains",
+            "the migrating birds",
+            "the scientists",
+            "the new nests"
+          ],
+          "answerIndex": 1
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4839-875f08ad",
+      "kind": "reading",
+      "title": "Rainbows",
+      "passage": "A rainbow appears when sunlight passes through tiny drops of rain. Each drop acts like a small mirror and bends the light. As it bends, the white sunlight breaks into many colors. People on the ground then see a curved band of red, orange, yellow, green, and blue across the sky. A rainbow usually shows up after a short storm, when the sun comes out again. Because of this, many people feel happy and hopeful whenever they spot one.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-9341083c",
+          "kind": "multipleChoice",
+          "prompt": "What does \"it\" in \"As it bends\" most likely refer to?",
+          "options": [
+            "the rain drop",
+            "the light",
+            "the sky",
+            "the storm"
+          ],
+          "answerIndex": 1
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4840-fe6aa175",
+      "kind": "reading",
+      "title": "Public libraries",
+      "passage": "A public library is a place where everyone can borrow books for free. Librarians take care of the shelves and help readers find what they need. They also plan story times for children and quiet rooms for students. Many people visit the library after school or work to study or relax. Some libraries even lend films, music, and board games. Because these services cost nothing, families with little money can still enjoy learning and reading together all year long.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-08ea45d9",
+          "kind": "multipleChoice",
+          "prompt": "What does \"They\" in \"They also plan story times\" most likely refer to?",
+          "options": [
+            "the readers",
+            "the librarians",
+            "the children",
+            "the shelves"
+          ],
+          "answerIndex": 1
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4841-1a37bbbb",
+      "kind": "reading",
+      "title": "Coral reefs",
+      "passage": "Coral reefs are colorful structures that grow in warm, shallow seas. Although they look like rocks or plants, corals are actually tiny living animals. These small creatures build hard shells around their soft bodies over many years. Thousands of fish, crabs, and turtles depend on the reef for food and shelter. When the water becomes too warm, the corals lose their bright colors and may grow weak. For this reason, scientists watch them carefully and try to protect these living homes.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-2261435e",
+          "kind": "multipleChoice",
+          "prompt": "What does \"them\" in \"scientists watch them carefully\" most likely refer to?",
+          "options": [
+            "the corals",
+            "the turtles",
+            "the scientists",
+            "the warm seas"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4842-416cbff3",
+      "kind": "reading",
+      "title": "Volcanoes",
+      "passage": "A volcano is a mountain with an opening at the top. Deep under the ground, hot melted rock waits in a large space. When pressure grows too strong, this material rushes up and flows out of the opening. As it cools in the air, it becomes hard rock again. Over time, many layers of this rock build a taller and taller mountain. Some islands in the ocean were formed in exactly this way, born from fire beneath the sea.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-ee679c60",
+          "kind": "multipleChoice",
+          "prompt": "What does \"this material\" most likely refer to?",
+          "options": [
+            "the mountain",
+            "the hot melted rock",
+            "the opening",
+            "the ocean island"
+          ],
+          "answerIndex": 1
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4843-00ba0d7f",
+      "kind": "reading",
+      "title": "Farmers' markets",
+      "passage": "On weekend mornings, many towns hold a farmers' market in the main square. Local farmers bring fresh fruit and vegetables straight from their fields. They set up small tables and sell what they grew that week. Shoppers like to talk with these growers and ask how the food was raised. Because the produce travels only a short way, it stays fresh and tastes wonderful. By buying here, people also help nearby families earn a living from their hard work.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-7e611923",
+          "kind": "multipleChoice",
+          "prompt": "What does \"They\" in \"They set up small tables\" most likely refer to?",
+          "options": [
+            "the shoppers",
+            "the local farmers",
+            "the towns",
+            "the tables"
+          ],
+          "answerIndex": 1
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4844-5de9e346",
+      "kind": "reading",
+      "title": "The water cycle",
+      "passage": "The water on our planet keeps moving in a never-ending circle. Heat from the sun warms the ocean, and some water rises into the air as invisible gas. High in the sky, this gas cools and turns into tiny drops that form clouds. When the drops grow heavy, they fall back down as rain or snow. The water then runs into rivers and returns to the sea. In this way, the same water has traveled around the world for millions of years.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-fea0692a",
+          "kind": "multipleChoice",
+          "prompt": "What does \"they\" in \"they fall back down as rain or snow\" most likely refer to?",
+          "options": [
+            "the clouds",
+            "the tiny drops",
+            "the rivers",
+            "the sun"
+          ],
+          "answerIndex": 1
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4845-81dbd6b0",
+      "kind": "reading",
+      "title": "Ants",
+      "passage": "Ants are small insects that live and work in busy groups. A single nest may hold thousands of them under the ground. Each ant has a job, such as finding food, caring for eggs, or guarding the home. When one ant finds a meal, it leaves a smell on the path back to the nest. Other ants follow this scent and quickly join the search. By working as a team, they can carry food much larger than their own bodies.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-60c9c890",
+          "kind": "multipleChoice",
+          "prompt": "What does \"this scent\" most likely refer to?",
+          "options": [
+            "the eggs",
+            "the smell left on the path",
+            "the nest",
+            "the meal"
+          ],
+          "answerIndex": 1
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4846-296739b5",
+      "kind": "reading",
+      "title": "Recycling",
+      "passage": "Recycling helps our city stay clean and saves many natural materials. Workers collect old paper, glass, and plastic from homes each week. They carry these items to a large center outside the town. There, machines sort the waste and clean it before sending it to factories. The factories then turn the old materials into brand-new products. Thanks to this careful work, fewer trees are cut down and less trash fills the ground every single year.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-d531f93c",
+          "kind": "multipleChoice",
+          "prompt": "What does \"They\" in \"They carry these items\" most likely refer to?",
+          "options": [
+            "the homes",
+            "the workers",
+            "the factories",
+            "the products"
+          ],
+          "answerIndex": 1
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4847-bfe2266c",
+      "kind": "reading",
+      "title": "Spiders and webs",
+      "passage": "Spiders are clever builders that create webs to catch their meals. A spider makes thin thread inside its own body and pulls it out with its legs. This thread is light but very strong, even stronger than a metal wire of the same size. The spider weaves it into a round net between branches or walls. When a small insect touches the sticky net, the spider feels the movement and hurries over. In this quiet way, the patient hunter always finds enough food.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-a22b3bd1",
+          "kind": "multipleChoice",
+          "prompt": "What does \"it\" in \"pulls it out with its legs\" most likely refer to?",
+          "options": [
+            "the spider",
+            "the thin thread",
+            "the meal",
+            "the metal wire"
+          ],
+          "answerIndex": 1
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4848-785f0464",
+      "kind": "reading",
+      "title": "The moon",
+      "passage": "The moon is the brightest object we see in the night sky. It does not make any light of its own, however. Instead, sunlight hits its surface and bounces back toward our eyes. As the moon travels around the Earth, we see different amounts of this bright side. Sometimes it looks like a thin curve, and sometimes it appears as a full circle. People long ago used these changing shapes to count the days and plan their festivals.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-be353e7f",
+          "kind": "multipleChoice",
+          "prompt": "What does \"It\" in \"It does not make any light of its own\" most likely refer to?",
+          "options": [
+            "the night sky",
+            "the moon",
+            "the sunlight",
+            "the Earth"
+          ],
+          "answerIndex": 1
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4849-85334449",
+      "kind": "reading",
+      "title": "Firefighters",
+      "passage": "Firefighters work hard to keep people and homes safe from fire. When an alarm rings, they put on heavy coats and rush to their bright red truck. They drive quickly through the streets to reach the place in trouble. Once there, they spray water and help anyone who is stuck inside. After the danger is over, these brave helpers also teach families how to stay careful at home. Their job is tiring, but it saves lives every day.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-ba3fc50f",
+          "kind": "multipleChoice",
+          "prompt": "What does \"they\" in \"they put on heavy coats\" most likely refer to?",
+          "options": [
+            "the firefighters",
+            "the homes",
+            "the streets",
+            "the families"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4850-4c728afa",
+      "kind": "reading",
+      "title": "Seeds and the wind",
+      "passage": "Many plants cannot move, yet their seeds still need to spread far away. Some plants solve this problem with the help of the wind. They grow seeds with tiny wings or soft hairs that catch the moving air. When a breeze blows, these light seeds float away from the parent plant. They may land in a fresh field where there is plenty of sunlight and space. There, far from the crowded home garden, each one can sprout and grow into a strong new plant.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-90098d0b",
+          "kind": "multipleChoice",
+          "prompt": "What does \"They\" in \"They may land in a fresh field\" most likely refer to?",
+          "options": [
+            "the parent plants",
+            "the light seeds",
+            "the soft hairs",
+            "the fields"
+          ],
+          "answerIndex": 1
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4851-1254439b",
+      "kind": "reading",
+      "title": "Maps",
+      "passage": "A map is a small drawing that shows a large place from above. People have made maps for thousands of years to help travelers find their way. A good map uses simple lines and tiny pictures to stand for roads, rivers, and towns. It also shows which direction is north, so readers do not get lost. Before phones existed, sailors and explorers trusted these drawings to cross unknown lands. Even today, a clear map can turn a confusing city into an easy walk.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-57e8b023",
+          "kind": "multipleChoice",
+          "prompt": "What does \"It\" in \"It also shows which direction is north\" most likely refer to?",
+          "options": [
+            "the good map",
+            "the traveler",
+            "the river",
+            "the town"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4852-ea176a96",
+      "kind": "reading",
+      "title": "bees",
+      "passage": "Honeybees live together in large groups called colonies. When worker bees find a good patch of flowers, they fly back to the hive and dance in a special way. This dance tells the other bees where the flowers are and how far away they sit. The watching bees then follow these directions and fly straight to the food. In this way, thousands of bees can share one map without ever speaking. Scientists are amazed that such small insects can pass on so much useful information just by moving their tiny bodies in the air.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-9e83d48b",
+          "kind": "multipleChoice",
+          "prompt": "What does \"they\" in the second sentence most likely refer to?",
+          "options": [
+            "worker bees",
+            "the flowers",
+            "the scientists",
+            "the colonies"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4853-c67916da",
+      "kind": "reading",
+      "title": "volunteers",
+      "passage": "Every spring, a group of local volunteers gathers at the river to clean the banks. They bring gloves, bags, and small tools to pick up the trash that washes ashore during winter storms. The work is tiring, but the volunteers enjoy it because the river becomes clean and safe for fish again. After a long morning, they sit together and share simple snacks. Many of them have done this for years, and they are proud that the water near their town is now much clearer than it used to be.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-3399805e",
+          "kind": "multipleChoice",
+          "prompt": "What does \"They\" in the second sentence most likely refer to?",
+          "options": [
+            "the storms",
+            "the local volunteers",
+            "the fish",
+            "the banks"
+          ],
+          "answerIndex": 1
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4854-2556e52e",
+      "kind": "reading",
+      "title": "ants",
+      "passage": "Leafcutter ants do not eat the leaves they carry. Instead, they cut small pieces and bring them deep into their nest. There, the ants chew the leaves into a soft paste and grow a special fungus on it. This fungus is the real food for the whole colony. The ants take great care of their garden, keeping it clean and free of harmful mold. Without this tiny crop, the young ants would not survive. Farmers may be surprised to learn that these insects were growing their own food long before humans began to plant fields.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-bbd53acd",
+          "kind": "multipleChoice",
+          "prompt": "What does \"it\" in the third sentence most likely refer to?",
+          "options": [
+            "the nest",
+            "the soft paste",
+            "the colony",
+            "the field"
+          ],
+          "answerIndex": 1
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4855-4d2f3b94",
+      "kind": "reading",
+      "title": "builders",
+      "passage": "Long ago, builders in the city had no machines to lift heavy stones. Instead, they used ramps, ropes, and the strength of many workers. Day after day, these builders pulled huge blocks up the slopes and set them in place. The work was slow and careful, since one wrong move could ruin months of effort. When the great hall was finished, it stood taller than any building around it. People came from far away just to look at this wonder, and they wondered how human hands alone had raised such a mighty thing.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-3f71c162",
+          "kind": "multipleChoice",
+          "prompt": "What does \"they\" in the last sentence most likely refer to?",
+          "options": [
+            "the heavy stones",
+            "the builders",
+            "the people",
+            "the ropes"
+          ],
+          "answerIndex": 2
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4856-3de78ee2",
+      "kind": "reading",
+      "title": "students",
+      "passage": "A small group of students at our school started a recycling club last year. At first, only a few people joined, and many classmates ignored them. But the students did not give up. They put colorful bins in every hallway and made funny posters about saving paper. Slowly, more and more people began to care. By the end of the year, the whole school was sorting its trash. The teachers were proud of what these young people had built from almost nothing, and they often point to the club as an example of how small actions grow.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-d65e64be",
+          "kind": "multipleChoice",
+          "prompt": "What does \"They\" in the fourth sentence most likely refer to?",
+          "options": [
+            "the students",
+            "the classmates",
+            "the teachers",
+            "the bins"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4857-fda8a135",
+      "kind": "reading",
+      "title": "machines",
+      "passage": "Modern factories use robot arms to do many difficult jobs. These machines never grow tired and can repeat the same motion thousands of times each day. Engineers program them carefully so that they place each part in exactly the right spot. If something goes wrong, the arm stops at once and waits for a human to check it. Because the robots are so steady, the products they make are almost always the same size and shape. Workers say the machines have made their jobs safer, since people no longer need to lift the heaviest parts by hand.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-3751f53e",
+          "kind": "multipleChoice",
+          "prompt": "What does \"them\" in the third sentence most likely refer to?",
+          "options": [
+            "the engineers",
+            "the robot arms",
+            "the products",
+            "the workers"
+          ],
+          "answerIndex": 1
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4858-242aaa78",
+      "kind": "reading",
+      "title": "artists",
+      "passage": "A team of street artists was asked to brighten an old, gray wall near the train station. For two weeks, they climbed ladders and painted a huge picture of a forest full of birds. Passers-by stopped to watch the colors appear day by day. When the painting was done, the dull corner had become the most cheerful spot in town. The artists felt happy that their hard work had given so many people a reason to smile. Now the wall is a favorite place where families take photos before they catch their morning train.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-0330cf4d",
+          "kind": "multipleChoice",
+          "prompt": "What does \"they\" in the second sentence most likely refer to?",
+          "options": [
+            "the birds",
+            "the street artists",
+            "the passers-by",
+            "the families"
+          ],
+          "answerIndex": 1
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4859-7321ab57",
+      "kind": "reading",
+      "title": "athletes",
+      "passage": "Before a big race, runners follow a careful plan. For weeks, they wake up early, stretch, and run long distances to build strong legs. Coaches watch them closely and give advice about food and rest. On race day, the athletes feel nervous but ready. When the signal sounds, they push off the line and try to keep a steady pace. The crowd cheers loudly, hoping their favorite runner will win. After the finish, the tired but happy athletes thank the coaches who helped them reach this important moment in their sport.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-fd214113",
+          "kind": "multipleChoice",
+          "prompt": "What does \"them\" in the third sentence most likely refer to?",
+          "options": [
+            "the coaches",
+            "the runners",
+            "the strong legs",
+            "the crowd"
+          ],
+          "answerIndex": 1
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4860-8e41589c",
+      "kind": "reading",
+      "title": "companies",
+      "passage": "Two small companies in the same town decided to work together on a new bicycle. One company was good at building light frames, while the other knew how to make smooth, quiet wheels. By sharing their skills, they created a bike that was both fast and comfortable. The new model sold quickly, and customers wrote letters of praise. Because the partners trusted each other, they were able to solve problems that neither could have fixed alone. Today, both firms are larger, and they still meet often to plan their next clever idea together.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-8ff2fdc0",
+          "kind": "multipleChoice",
+          "prompt": "What does \"they\" in the third sentence most likely refer to?",
+          "options": [
+            "the two companies",
+            "the customers",
+            "the wheels",
+            "the letters"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4861-4d3bbeb4",
+      "kind": "reading",
+      "title": "scientists",
+      "passage": "A team of ocean scientists spent months studying a coral reef that was slowly turning white. They dived under the waves each day to take photos and collect tiny samples of water. Back on the ship, they tested the water and found it was warmer than usual. This warm water, they learned, was making the coral sick. The scientists shared their results with leaders around the world, hoping to protect other reefs. Many people who read the report were moved, and they began to support new rules that keep the ocean cooler and cleaner.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-090b0b9c",
+          "kind": "multipleChoice",
+          "prompt": "What does \"they\" in the last sentence most likely refer to?",
+          "options": [
+            "the scientists",
+            "the reefs",
+            "the people who read the report",
+            "the leaders"
+          ],
+          "answerIndex": 2
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4862-8e90d6d0",
+      "kind": "reading",
+      "title": "wolves",
+      "passage": "Wolves are social animals that live and hunt in packs. Each pack works as a team, and every member has a job. The older wolves teach the young ones how to track and chase animals across the snow. When a hunt is hard, they spread out and surround their prey together. After the meal, the whole group rests close to one another for warmth. Because they cooperate so well, a pack can catch food that a single wolf could never bring down alone. This teamwork is the secret to the wolves' long survival in the wild.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-1938740f",
+          "kind": "multipleChoice",
+          "prompt": "What does \"they\" in the fourth sentence most likely refer to?",
+          "options": [
+            "the wolves in the pack",
+            "the young ones only",
+            "the prey",
+            "the older wolves only"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4863-51159c06",
+      "kind": "reading",
+      "title": "students",
+      "passage": "Maria wrote a short story for the school magazine, but she was not sure it was good enough. Her teacher read the pages and smiled warmly. \"This is full of feeling,\" she said. \"Just fix a few small mistakes, and it will shine.\" Maria felt proud and worked hard to make it better. When the magazine came out, many readers told her how much they liked the tale. Maria learned that even a simple story can touch people if the writer is honest. She now keeps a notebook and fills it with new ideas every week.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-df523532",
+          "kind": "multipleChoice",
+          "prompt": "What does \"it\" in the first sentence most likely refer to?",
+          "options": [
+            "the school magazine",
+            "the short story",
+            "the teacher",
+            "the notebook"
+          ],
+          "answerIndex": 1
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4864-fec31228",
+      "kind": "reading",
+      "title": "builders",
+      "passage": "After the heavy floods, the families of a small village had nowhere to live. A group of young builders heard the news and traveled there to help. For a whole month, they cut wood, mixed cement, and raised new walls under the hot sun. The villagers brought them food and water and worked beside them whenever they could. Slowly, simple but strong houses rose along the muddy street. When the work was done, the builders said goodbye, proud that families would sleep safely once more. The village still remembers the kindness of these hardworking strangers.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-731d7fff",
+          "kind": "multipleChoice",
+          "prompt": "What does \"them\" in the fourth sentence most likely refer to?",
+          "options": [
+            "the villagers",
+            "the young builders",
+            "the floods",
+            "the houses"
+          ],
+          "answerIndex": 1
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4865-67403362",
+      "kind": "reading",
+      "title": "birds",
+      "passage": "In autumn, many small birds leave the cold north and fly south to warmer lands. They travel in large flocks, sometimes for thousands of miles. To find their way, the birds use the sun, the stars, and even the shape of the coast below. Older birds seem to remember the path and lead the younger ones along. When they grow tired, the flock lands in a safe field to rest and eat seeds. Scientists still study how such tiny creatures can cross whole oceans without ever getting lost on their long journey.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-025f8635",
+          "kind": "multipleChoice",
+          "prompt": "What does \"They\" in the second sentence most likely refer to?",
+          "options": [
+            "the warmer lands",
+            "the small birds",
+            "the stars",
+            "the scientists"
+          ],
+          "answerIndex": 1
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4866-c0df907a",
+      "kind": "reading",
+      "title": "machines",
+      "passage": "A farmer bought a new harvesting machine to help with the autumn work. It could cut and gather grain far faster than a team of people. Each morning, he drove it across the golden fields, and by evening the crop was safely stored. The machine saved so much time that the farmer could finally rest on weekends. His neighbors were curious and often came to watch it work. Soon they wanted one too, and the whole valley began to harvest more grain than ever before, with less effort for every family that lived there.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-a9cec87c",
+          "kind": "multipleChoice",
+          "prompt": "What does \"it\" in the third sentence most likely refer to?",
+          "options": [
+            "the grain",
+            "the harvesting machine",
+            "the field",
+            "the farmer"
+          ],
+          "answerIndex": 1
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4867-ce80058f",
+      "kind": "reading",
+      "title": "volunteers",
+      "passage": "Each weekend, a few neighbors meet at the community garden to grow vegetables for the local food bank. They dig the soil, plant seeds, and water the young plants with great care. As the weeks pass, the garden fills with carrots, beans, and bright tomatoes. The volunteers then pick the ripe vegetables and carry them to people who need fresh food. Children from nearby homes often join in, learning where their meals really come from. Thanks to this small green patch, many families now enjoy healthy dinners they could not easily afford before.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-f2e6cdd1",
+          "kind": "multipleChoice",
+          "prompt": "What does \"them\" in the fourth sentence most likely refer to?",
+          "options": [
+            "the ripe vegetables",
+            "the volunteers",
+            "the seeds",
+            "the children"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4868-6c1b0d78",
+      "kind": "reading",
+      "title": "community garden",
+      "passage": "Last spring, the people on Maple Street started a community garden on an empty lot. The neighbours cleared the weeds, built wooden beds, and planted tomatoes, beans, and sunflowers. Every Saturday morning, the children water the plants and pull out small weeds. By summer, the garden was full of colour. People who walk past often stop to take photos. They are proud of how green and lovely the once-empty space has become. Now the families share fresh vegetables, and the neighbours have become good friends through their shared work.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-f51cf64a",
+          "kind": "multipleChoice",
+          "prompt": "What does \"They\" most likely refer to?",
+          "options": [
+            "the neighbours on Maple Street",
+            "the wooden beds",
+            "the photos",
+            "the small weeds"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4869-1357a33c",
+      "kind": "reading",
+      "title": "lantern festival",
+      "passage": "Every winter, our town holds a lantern festival by the lake. Families make paper lanterns in many shapes, such as fish, stars, and rabbits. On the big night, everyone carries their lanterns down to the water. When the sky grows dark, people light the candles inside them. The lanterns then float across the lake like a river of soft light. Visitors say it is the most beautiful sight of the whole year. Children laugh and point as the glowing shapes drift slowly away. The festival reminds people to be thankful and to hope for a bright new year.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-cf98f573",
+          "kind": "multipleChoice",
+          "prompt": "What does \"them\" in the underlined idea most likely refer to?",
+          "options": [
+            "the candles",
+            "the visitors",
+            "the paper lanterns",
+            "the children"
+          ],
+          "answerIndex": 2
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4870-e1d81c1f",
+      "kind": "reading",
+      "title": "inventions",
+      "passage": "The umbrella is a very old invention. Long ago, people in hot countries used it to block the strong sun, not the rain. The first umbrellas were made of paper or silk and could not get wet. Later, someone covered the cloth with oil so that water would run off. This simple change made the umbrella useful in the rain too. Today, umbrellas come in many bright colours and sizes. They keep us dry on stormy days and cool on sunny ones. It is hard to imagine a rainy city street without them.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-8c1266bc",
+          "kind": "multipleChoice",
+          "prompt": "What does \"it\" most likely refer to?",
+          "options": [
+            "the rain",
+            "the umbrella",
+            "the strong sun",
+            "the silk"
+          ],
+          "answerIndex": 1
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4871-47997e1d",
+      "kind": "reading",
+      "title": "rivers",
+      "passage": "The Nile is one of the longest rivers in the world. It flows from the south to the north through several countries before reaching the sea. For thousands of years, farmers have depended on it for water and rich soil. Each year the river used to rise and spread mud over the fields. This mud helped crops grow strong and tall. Without the river, the land along its banks would be dry desert. Today, a large dam controls the water, but the Nile is still the lifeline of the people who live near it.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-d51b2583",
+          "kind": "multipleChoice",
+          "prompt": "What does \"it\" in \"depended on it\" most likely refer to?",
+          "options": [
+            "the sea",
+            "the rich soil",
+            "the desert",
+            "the Nile"
+          ],
+          "answerIndex": 3
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4872-98935936",
+      "kind": "reading",
+      "title": "schools",
+      "passage": "Our new school stands at the top of a small hill. It has wide windows that let in plenty of sunlight and a roof painted bright blue. Inside, the library is the busiest room of all. Students go there to read, study, and borrow books for the weekend. The teachers say that it is the heart of the school. Every afternoon, soft music plays while children turn pages quietly. Older students often help younger ones find the books they need. Because of this friendly place, many children now love reading more than they ever did before.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-3219405b",
+          "kind": "multipleChoice",
+          "prompt": "What does \"it\" in \"the heart of the school\" most likely refer to?",
+          "options": [
+            "the hill",
+            "the roof",
+            "the library",
+            "the music"
+          ],
+          "answerIndex": 2
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4873-bcefc869",
+      "kind": "reading",
+      "title": "markets",
+      "passage": "On weekend mornings, the old town square turns into a busy market. Farmers bring fresh fruit, vegetables, eggs, and honey from the countryside. They set up colourful tents and call out friendly greetings to every customer. Shoppers walk slowly between the stalls, tasting samples and chatting with the sellers. Children love the stall that sells warm bread because of its sweet smell. By noon, most of the goods are sold, and the farmers begin to pack up. They are tired but happy, for the long drive home will be lighter than the trip in.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-d166478a",
+          "kind": "multipleChoice",
+          "prompt": "What does \"They\" in \"They are tired but happy\" most likely refer to?",
+          "options": [
+            "the shoppers",
+            "the farmers",
+            "the children",
+            "the tents"
+          ],
+          "answerIndex": 1
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4874-547186a8",
+      "kind": "reading",
+      "title": "museums",
+      "passage": "The science museum downtown opened a new room last month. Inside it, visitors can touch real rocks, push buttons, and watch tiny robots move. The most popular machine shows how lightning is made in the sky. Long lines form in front of it every weekend. A guide stands nearby and explains each step in a clear, kind voice. Parents say that it teaches children more in one hour than a whole book. After the show, everyone claps, and many ask when they can see the next one. The museum hopes more people will fall in love with science.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-b56150ab",
+          "kind": "multipleChoice",
+          "prompt": "What does \"it\" in \"Long lines form in front of it\" most likely refer to?",
+          "options": [
+            "the new room",
+            "the guide",
+            "the book",
+            "the popular machine"
+          ],
+          "answerIndex": 3
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4875-19dd6ffe",
+      "kind": "reading",
+      "title": "sports teams",
+      "passage": "The Riverside Rockets are the youngest football team in our city. Most of the players are only fourteen years old, yet they train very hard every day after school. Their coach teaches them to pass the ball quickly and to help one another on the field. Last month, they won their first big match against an older team. The fans cheered loudly as the final whistle blew. They were so happy that some of them cried with joy. Now the whole city talks about the young Rockets and waits eagerly for their next exciting game.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-81b6d028",
+          "kind": "multipleChoice",
+          "prompt": "What does \"they\" in \"they won their first big match\" most likely refer to?",
+          "options": [
+            "the players",
+            "the fans",
+            "the coach",
+            "the older team"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4876-eacdb5c8",
+      "kind": "reading",
+      "title": "neighbourhoods",
+      "passage": "Our neighbourhood used to be very quiet and grey. Then a few families decided to paint their front doors in bright colours. Soon other people did the same, and the whole street looked cheerful. The families also planted small trees along the sidewalk. These give cool shade in summer and lovely flowers in spring. Visitors from other towns now come just to walk down the colourful street. They take pictures and ask the residents about their friendly plan. Everyone agrees that a little paint and a few trees can change a place in a wonderful way.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-a5f94d84",
+          "kind": "multipleChoice",
+          "prompt": "What does \"These\" in \"These give cool shade\" most likely refer to?",
+          "options": [
+            "the front doors",
+            "the bright colours",
+            "the small trees",
+            "the visitors"
+          ],
+          "answerIndex": 2
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4877-3433bfb4",
+      "kind": "reading",
+      "title": "weather events",
+      "passage": "Last August, a strong storm passed over our small island. For two days, heavy rain fell and the wind shook every window. When it finally stopped, the streets were full of fallen branches and brown water. The whole town came outside to help clean up the mess together. Neighbours shared tools, food, and warm words with one another. By the weekend, the roads were clear again and gardens began to grow back. People say it taught them how strong a community can be when everyone works as one. The island felt closer than ever before.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-0c816b2e",
+          "kind": "multipleChoice",
+          "prompt": "What does \"it\" in \"it taught them\" most likely refer to?",
+          "options": [
+            "the warm food",
+            "the weekend",
+            "the garden",
+            "the storm"
+          ],
+          "answerIndex": 3
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4878-424bd313",
+      "kind": "reading",
+      "title": "gardens",
+      "passage": "My grandmother keeps a small garden behind her house. In it, she grows roses, mint, and a tall lemon tree. Every morning she walks outside with a green watering can. She gives each plant just enough water and talks softly to the flowers. The roses are her favourite because they smell sweet and bloom in many colours. When neighbours visit, she often cuts a few and gives them away as gifts. People always smile when they receive such a kind present. My grandmother says that caring for plants keeps her healthy, busy, and full of joy each day.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-a2ddff86",
+          "kind": "multipleChoice",
+          "prompt": "What does \"they\" in \"they smell sweet\" most likely refer to?",
+          "options": [
+            "the neighbours",
+            "the roses",
+            "the gifts",
+            "the mint"
+          ],
+          "answerIndex": 1
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4879-52606544",
+      "kind": "reading",
+      "title": "inventions",
+      "passage": "The bicycle changed the way ordinary people travel. Before it, most families could not afford a horse or a carriage. The first bicycles had a huge front wheel and were very hard to ride. Later, makers gave them two wheels of equal size and added a chain. This made the machine safe and easy for almost everyone. Soon workers used bicycles to reach factories far from home. Women, too, gained more freedom to move around their towns. Today millions of people ride them to work, to school, and just for the simple joy of fresh air.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-4fda20c9",
+          "kind": "multipleChoice",
+          "prompt": "What does \"This\" in \"This made the machine safe\" most likely refer to?",
+          "options": [
+            "the huge front wheel",
+            "giving them equal wheels and a chain",
+            "the carriage",
+            "the factory"
+          ],
+          "answerIndex": 1
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4880-25f8324f",
+      "kind": "reading",
+      "title": "festivals",
+      "passage": "Every autumn, the village holds a harvest festival to thank the land. Farmers display their biggest pumpkins, apples, and bright yellow corn. Cooks prepare long tables of warm soup and fresh bread for the guests. Musicians play cheerful songs while families dance on the green. The mayor gives a small prize to the farmer who grows the largest pumpkin. He smiles proudly as the crowd claps for his hard year of work. Children run between the tables with bread in their hands. When night comes, the whole village shares one big meal under the stars together.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-cc58084d",
+          "kind": "multipleChoice",
+          "prompt": "What does \"He\" in \"He smiles proudly\" most likely refer to?",
+          "options": [
+            "the mayor",
+            "the cook",
+            "the winning farmer",
+            "a musician"
+          ],
+          "answerIndex": 2
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4881-344ef3d5",
+      "kind": "reading",
+      "title": "rivers",
+      "passage": "A small river runs through the centre of our city. Years ago, it was dirty, and few fish could live in the water. Then the city built a clean station to remove the waste before it reached the river. Volunteers also cleared the trash from the banks every month. Slowly, the water grew clear, and silver fish returned to swim in it. Birds now rest along the banks, and people walk there on warm evenings. Children sometimes feed the ducks near the bridge. Everyone is glad that careful work brought their old river back to life again.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-4d9c790f",
+          "kind": "multipleChoice",
+          "prompt": "What does \"it\" in \"swim in it\" most likely refer to?",
+          "options": [
+            "the clean station",
+            "the trash",
+            "the bridge",
+            "the water"
+          ],
+          "answerIndex": 3
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4882-8cfcf649",
+      "kind": "reading",
+      "title": "schools",
+      "passage": "Our school started a kindness club this year. The members write friendly notes and leave them on classroom desks. Each note thanks a student for something good they have done. At first, some children felt shy about reading them aloud. Soon, however, everyone looked forward to finding one in the morning. Teachers noticed that students began to help each other more often. The club also collects old toys to give to younger children nearby. They are always happy to see how a small note can brighten a whole day. The principal hopes other schools will start clubs like this one too.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-ce1db133",
+          "kind": "multipleChoice",
+          "prompt": "What does \"them\" in \"reading them aloud\" most likely refer to?",
+          "options": [
+            "the friendly notes",
+            "the members",
+            "the old toys",
+            "the teachers"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4883-f938f5de",
+      "kind": "reading",
+      "title": "markets",
+      "passage": "The night market opens just as the sun goes down. Strings of small lamps light the narrow street from end to end. Cooks fry noodles and grill sweet corn while sellers wave to the crowd. The smell of food fills the warm evening air. Tourists love the stall that sells little clay animals. The owner makes each one by hand, so no two are exactly the same. Visitors buy them as gifts for friends back home. By midnight the lamps go dark, and the busy street grows quiet at last. The sellers count their coins and plan for the next night.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-a025fa1e",
+          "kind": "multipleChoice",
+          "prompt": "What does \"them\" in \"buy them as gifts\" most likely refer to?",
+          "options": [
+            "the small lamps",
+            "the clay animals",
+            "the noodles",
+            "the sellers"
+          ],
+          "answerIndex": 1
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4884-9f121667",
+      "kind": "reading",
+      "title": "City rooftop gardens",
+      "passage": "More and more cities are turning empty rooftops into green gardens, and the results are wonderful to see. These gardens cool buildings, feed bees, and give tired office workers a peaceful place to rest. What a clever way to use space that once sat unused! Children visit on school trips and learn how vegetables grow above busy streets. The plants clean the air, and neighbors who never spoke now chat among the flowers. Every new rooftop garden brings a little more life and beauty to the gray city below. It is truly a delightful change worth celebrating everywhere.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-83a404f7",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's attitude toward rooftop gardens?",
+          "options": [
+            "Admiring / 讚賞",
+            "Critical / 批評",
+            "Worried / 擔憂",
+            "Indifferent / 漠不關心"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4885-69a7b57d",
+      "kind": "reading",
+      "title": "Fast fashion waste",
+      "passage": "Every year, shoppers buy cheap clothes that fall apart after a few washes, and this troubling habit is harming our planet. Factories rush out new styles weekly, encouraging people to throw away shirts they barely wore. Mountains of unwanted clothing pile up in landfills, where they sit for decades. It is shameful that so much effort and material end up wasted so quickly. Companies care more about quick sales than quality or the environment. We should be ashamed of a system that treats clothing as garbage. This careless cycle cannot continue if we truly value the world we share.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-f1e4b3e7",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's attitude toward fast fashion?",
+          "options": [
+            "Amused / 覺得有趣",
+            "Critical / 批評",
+            "Admiring / 讚賞",
+            "Hopeful / 充滿希望"
+          ],
+          "answerIndex": 1
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4886-651f3a4d",
+      "kind": "reading",
+      "title": "Coral reefs warming",
+      "passage": "Scientists who study coral reefs are growing anxious about what they see underwater. The colorful reefs that once teemed with fish are slowly turning pale and lifeless as the ocean warms. Many fear that, unless temperatures stop rising, these ancient living structures may not survive the coming decades. The loss would be heartbreaking, since reefs shelter a quarter of all sea creatures. Researchers warn that time is running short and worry that we are not acting fast enough. Their reports are filled with concern, urging the world to protect these fragile homes before it is too late.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-13ef29fc",
+          "kind": "multipleChoice",
+          "prompt": "What is the tone of the passage?",
+          "options": [
+            "Cheerful / 愉快",
+            "Indifferent / 漠不關心",
+            "Worried / 擔憂",
+            "Proud / 自豪"
+          ],
+          "answerIndex": 2
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4887-f6cdd6f2",
+      "kind": "reading",
+      "title": "Local library reopening",
+      "passage": "Good news has finally arrived for our small town: the old library will reopen next spring after years of repairs. Residents are excited to walk again through those familiar doors and borrow their favorite books. With bright new reading rooms and a cozy corner for children, the library promises to become the heart of the community once more. Many believe that brighter days lie ahead, and volunteers are eagerly planning a grand opening party. After so long, this fresh start fills everyone with optimism. The future of reading in our town looks wonderfully bright and full of promise.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-a1039ebd",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's attitude toward the library reopening?",
+          "options": [
+            "Hopeful / 充滿希望",
+            "Sad / 悲傷",
+            "Annoyed / 惱怒",
+            "Bored / 無聊厭倦"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4888-db561724",
+      "kind": "reading",
+      "title": "Cats and their owners",
+      "passage": "Anyone who lives with a cat knows the funny rules these little rulers set. Your cat decides when you may pet it, when you must wake up, and which expensive chair belongs to it now. You may buy a fancy bed, yet your cat will proudly choose the cardboard box it came in. It stares at you as if you are the pet, not the owner. Honestly, it is hilarious how seriously cats take themselves while doing absolutely nothing all day. We laugh, we sigh, and somehow we love these silly, bossy creatures even more for it.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-71c5ff74",
+          "kind": "multipleChoice",
+          "prompt": "What is the tone of the passage?",
+          "options": [
+            "Angry / 憤怒",
+            "Amused / 覺得有趣好笑",
+            "Disappointed / 失望",
+            "Fearful / 害怕"
+          ],
+          "answerIndex": 1
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4889-8aeca5f6",
+      "kind": "reading",
+      "title": "How rainbows form",
+      "passage": "A rainbow appears when sunlight passes through tiny drops of water in the air. As light enters each drop, it bends and splits into different colors. The drops then send this colored light back to our eyes, forming the familiar arc across the sky. We usually see seven colors, from red on the outside to violet on the inside. Rainbows often appear after rain, when the sun returns and droplets still hang in the air. The higher the sun sits, the lower the rainbow lies. This simple process explains a sight that people in every country can observe.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-fb612585",
+          "kind": "multipleChoice",
+          "prompt": "What is the tone of the passage?",
+          "options": [
+            "Excited / 興奮",
+            "Sorrowful / 哀傷",
+            "Neutral and informative / 中立、提供資訊",
+            "Sarcastic / 諷刺"
+          ],
+          "answerIndex": 2
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4890-6ed77208",
+      "kind": "reading",
+      "title": "Phones at the dinner table",
+      "passage": "It is frustrating to watch families sit together yet stare silently at their glowing screens. Parents scold children for bad manners, then check their own phones between bites. Meals that once filled homes with laughter and stories have grown cold and quiet. How sad that we let little devices steal the warm moments we can never get back. A shared dinner should be a time to listen and connect, not to scroll alone in a crowd. We are losing something precious, and far too few people seem to notice or even care about it.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-25e41795",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's attitude toward phones at the dinner table?",
+          "options": [
+            "Approving / 贊同",
+            "Disapproving / 不贊同批評",
+            "Curious / 好奇",
+            "Joyful / 喜悅"
+          ],
+          "answerIndex": 1
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4891-805d2819",
+      "kind": "reading",
+      "title": "A young inventor",
+      "passage": "At just thirteen, Maya built a simple machine that cleans dirty water for her village, and her achievement is nothing short of remarkable. Using parts from broken radios and old bottles, she solved a problem that adults had ignored for years. Engineers who visited were amazed by her clever design and her calm confidence. What an inspiring example of how a curious young mind can change real lives! Maya now teaches other students to build the same machines. Her brilliant work proves that great ideas need no fancy lab, only courage and imagination. We can all learn from her.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-c6ae8b35",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's attitude toward Maya?",
+          "options": [
+            "Jealous / 嫉妒",
+            "Doubtful / 懷疑",
+            "Admiring / 讚賞佩服",
+            "Indifferent / 漠不關心"
+          ],
+          "answerIndex": 2
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4892-a7308aea",
+      "kind": "reading",
+      "title": "Plastic in the ocean",
+      "passage": "Each day, tons of plastic bottles and bags drift into the sea, and the situation is becoming alarming. Sea turtles mistake floating bags for food, while tiny bits of plastic spread into the fish we eat. Scientists are deeply concerned that the damage may soon be impossible to undo. Beaches that once shone with clean sand now hide broken plastic beneath every wave. It is distressing to think how careless choices on land hurt creatures far out at sea. Unless people change their habits soon, experts fear the oceans will only grow sicker year after year.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-89336824",
+          "kind": "multipleChoice",
+          "prompt": "What is the tone of the passage?",
+          "options": [
+            "Relaxed / 輕鬆自在",
+            "Concerned / 憂心關切",
+            "Amused / 覺得有趣",
+            "Admiring / 讚賞"
+          ],
+          "answerIndex": 1
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4893-3f4461a7",
+      "kind": "reading",
+      "title": "Community volunteers",
+      "passage": "On weekends, a group of neighbors gathers to repair homes for elderly residents who cannot do the work themselves. Their kindness is heartwarming to witness. They fix leaky roofs, paint faded walls, and plant flowers, asking for nothing in return. Old folks who once felt forgotten now smile and share tea with their helpers. It is beautiful how a few caring hands can brighten a whole street. These generous volunteers remind us that small acts of love still matter. Their selfless spirit fills the neighborhood with warmth, and everyone who sees it feels proud of such wonderful people.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-d06f6566",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's attitude toward the volunteers?",
+          "options": [
+            "Appreciative / 感佩讚許",
+            "Suspicious / 懷疑猜疑",
+            "Annoyed / 惱怒",
+            "Uninterested / 不感興趣"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4894-62fe8276",
+      "kind": "reading",
+      "title": "Bottled water marketing",
+      "passage": "Companies sell us bottled water as if it were something rare and special, yet much of it comes straight from ordinary taps. They print pictures of mountains and springs on the labels, charging high prices for what flows freely at home. How clever of them to make plain water seem like a luxury! Shoppers happily pay, never questioning the fancy promises. Meanwhile, the empty bottles pile up as trash. It is almost laughable that we trust a pretty label over our own kitchen sink. Perhaps the real product being sold here is not water, but a clever illusion.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-d1fe2137",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's attitude toward bottled water marketing?",
+          "options": [
+            "Sincerely admiring / 真心讚賞",
+            "Mocking / 嘲諷",
+            "Hopeful / 充滿希望",
+            "Indifferent / 漠不關心"
+          ],
+          "answerIndex": 1
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4895-75d2c4fb",
+      "kind": "reading",
+      "title": "Honeybees disappearing",
+      "passage": "Beekeepers across the country are growing uneasy as honeybees vanish from their hives in greater numbers each season. These tiny workers pollinate the fruits and vegetables we depend on, so their loss troubles many farmers. Scientists are not yet sure of the cause, and that uncertainty makes the problem even more worrying. If bees keep disappearing, our markets could one day hold far less food. Researchers warn that we must act before the situation worsens. Their growing concern reminds us how fragile nature's balance truly is, and how much we still rely on creatures we rarely notice.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-725742d1",
+          "kind": "multipleChoice",
+          "prompt": "What is the tone of the passage?",
+          "options": [
+            "Carefree / 無憂無慮",
+            "Worried / 擔憂",
+            "Proud / 自豪",
+            "Amused / 覺得有趣"
+          ],
+          "answerIndex": 1
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4896-9f14fed3",
+      "kind": "reading",
+      "title": "How a thermometer works",
+      "passage": "A simple thermometer measures temperature using liquid inside a thin glass tube. When the air or water around it grows warmer, the liquid expands and rises up the tube. When it cools, the liquid shrinks and falls. Numbers along the side let us read the exact temperature. Many thermometers today use digital sensors instead of liquid, showing the result on a small screen. Doctors, cooks, and weather watchers all rely on these tools every day. Whether old or new, a thermometer simply turns invisible heat into a number we can see and understand clearly.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-1b0ce7e5",
+          "kind": "multipleChoice",
+          "prompt": "What is the tone of the passage?",
+          "options": [
+            "Objective and explanatory / 客觀說明",
+            "Frightened / 驚恐",
+            "Excited / 興奮",
+            "Disapproving / 不贊同"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4897-1fce168c",
+      "kind": "reading",
+      "title": "Night sky losing stars",
+      "passage": "Once, anyone could look up and count thousands of stars sparkling overhead, but those nights are sadly slipping away. Bright city lights now wash out the sky, leaving only a few faint points where galaxies once shone. Children today may never see the glowing band of the Milky Way that amazed their grandparents. It saddens me that we are trading such a free and ancient wonder for streetlamps and glowing signs. We barely notice what we have lost. I hope towns will dim their lights so that future families can once again gaze up in quiet awe.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-95c959cf",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's attitude toward the loss of dark skies?",
+          "options": [
+            "Delighted / 欣喜",
+            "Regretful / 惋惜遺憾",
+            "Bored / 厭倦",
+            "Proud / 自豪"
+          ],
+          "answerIndex": 1
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4898-7e001a89",
+      "kind": "reading",
+      "title": "City Library Reopening",
+      "passage": "Our old city library has finally reopened, and I could not be happier! The shelves are full of wonderful new books, and the bright reading room feels warm and welcoming. Children laugh softly at story time, and kind staff are always ready to help. After two long years of waiting, walking through those doors felt like coming home. What a delightful gift for our whole town. I truly hope every family will visit soon and enjoy this lovely, peaceful place together.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-ea2b5e42",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's attitude toward the library reopening?",
+          "options": [
+            "Joyful 喜悅的",
+            "Annoyed 惱怒的",
+            "Indifferent 漠不關心的",
+            "Worried 擔憂的"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4899-1a4f84be",
+      "kind": "reading",
+      "title": "Plastic in the Ocean",
+      "passage": "Every year, tons of plastic end up in our oceans, and it is truly heartbreaking to see. Sea turtles mistake floating bags for food, and beautiful beaches are buried under trash. It is shameful that so many people still throw bottles away without a second thought. We are slowly ruining the home of countless creatures. I find this careless habit deeply troubling, and I worry about the damage we leave behind. Something must change before it is too late.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-b74060e9",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's attitude toward ocean plastic pollution?",
+          "options": [
+            "Amused 覺得好笑的",
+            "Distressed 痛心的",
+            "Hopeful 充滿希望的",
+            "Neutral 中立的"
+          ],
+          "answerIndex": 1
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4900-fe1be3af",
+      "kind": "reading",
+      "title": "Honeybees",
+      "passage": "Honeybees are among the most remarkable creatures on Earth. With tiny brains, they perform an amazing dance to tell friends exactly where flowers grow. They build perfect six-sided cells and never waste a drop of honey. It is astonishing how such small insects work together so smoothly, like one giant mind. The more I learn about bees, the more impressed I become. Truly, nature has given us a wonderful example of teamwork that humans could learn so much from.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-731c0a1b",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's attitude toward honeybees?",
+          "options": [
+            "Dismissive 輕視的",
+            "Fearful 害怕的",
+            "Admiring 讚嘆的",
+            "Bored 厭煩的"
+          ],
+          "answerIndex": 2
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4901-0be4daa8",
+      "kind": "reading",
+      "title": "Online Reviews",
+      "passage": "Oh sure, every product online now has five glowing stars and a thousand \"perfect\" reviews. How wonderfully honest, right? Apparently no toaster ever breaks and no phone ever freezes. We are simply expected to believe that strangers spent their precious time praising a cheap pen as life-changing. Of course these reviews are totally real and not paid for at all. It is amazing how trusting we are supposed to be. Maybe, just maybe, we should read these flawless ratings with one raised eyebrow.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-13790bbe",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's tone toward online reviews?",
+          "options": [
+            "Sincere 真誠的",
+            "Sarcastic 諷刺的",
+            "Grateful 感激的",
+            "Anxious 焦慮的"
+          ],
+          "answerIndex": 1
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4902-7eef8c30",
+      "kind": "reading",
+      "title": "Endangered Tigers",
+      "passage": "Once, thousands of tigers roamed the forests of Asia, proud and free. Sadly, only a few hundred now remain in some areas, and their wild home shrinks each year. It breaks my heart to think future children may never see one outside a picture book. These gentle giants ask for nothing but space to live. Losing them forever would be a tragic loss for the whole world. I cannot help feeling sorrow whenever I imagine such silent, empty forests.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-52b7159a",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's attitude toward the tigers' situation?",
+          "options": [
+            "Cheerful 開朗的",
+            "Mournful 哀傷的",
+            "Curious 好奇的",
+            "Proud 自豪的"
+          ],
+          "answerIndex": 1
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4903-e8cada24",
+      "kind": "reading",
+      "title": "Self-Driving Cars",
+      "passage": "Self-driving cars may one day fill our streets, and that prospect leaves me uneasy. Supporters promise smooth, safe rides, yet I cannot fully trust a computer to decide in a split second. What happens when the software fails on a busy road? I admit the idea is clever, but I remain doubtful that machines truly understand human judgment. Until these systems prove themselves over many careful years, I would rather keep my hands firmly on the wheel.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-c228d850",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's attitude toward self-driving cars?",
+          "options": [
+            "Enthusiastic 熱情擁護的",
+            "Skeptical 存疑的",
+            "Terrified 恐懼的",
+            "Delighted 欣喜的"
+          ],
+          "answerIndex": 1
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4904-2d079b7f",
+      "kind": "reading",
+      "title": "First Snowfall",
+      "passage": "This morning I woke to the first snow of winter, and my heart filled with quiet wonder. Soft white flakes drifted down, covering the rooftops in a gentle, silent blanket. Everything looked fresh and magical, as if the whole town had been wrapped in a fairy tale overnight. I stood at the window, smiling, my breath fogging the glass. How beautiful and peaceful the world can be. Mornings like this remind me to slow down and treasure simple joys.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-f94b9bb0",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's tone in describing the snowfall?",
+          "options": [
+            "Wonder-filled 充滿驚喜讚嘆的",
+            "Frustrated 沮喪的",
+            "Suspicious 多疑的",
+            "Angry 憤怒的"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4905-d44142a5",
+      "kind": "reading",
+      "title": "Phone Use at Dinner",
+      "passage": "It bothers me to see whole families sitting together yet staring silently at their screens. Parents scroll, children tap, and nobody speaks a single word over dinner. Honestly, this habit is rude and quite frustrating to watch. We waste precious moments that could be spent laughing and sharing our day. I am tired of meals where the loudest sound is a buzzing notification. Surely we can put the phones away for one short hour and simply talk.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-7b413ecd",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's attitude toward phone use at dinner?",
+          "options": [
+            "Approving 讚許的",
+            "Irritated 不悅的",
+            "Carefree 無所謂的",
+            "Fascinated 著迷的"
+          ],
+          "answerIndex": 1
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4906-65f8da05",
+      "kind": "reading",
+      "title": "Community Garden",
+      "passage": "Last spring, neighbors who barely knew each other came together to build a small community garden. Now, fresh tomatoes and bright flowers grow where weeds once stood. I am so proud of what ordinary people can achieve when they work side by side. Children water the plants, and elders share old recipes. It warms my heart to see strangers become friends over a handful of soil. This little garden proves that kindness and effort can blossom anywhere.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-c1351f47",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's attitude toward the community garden?",
+          "options": [
+            "Disappointed 失望的",
+            "Proud and warm 自豪而溫暖的",
+            "Jealous 嫉妒的",
+            "Confused 困惑的"
+          ],
+          "answerIndex": 1
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4907-adc0c25f",
+      "kind": "reading",
+      "title": "Fast Fashion",
+      "passage": "Wow, what a bargain—a brand-new shirt for almost nothing! Never mind that it falls apart after three washes. Of course it makes perfect sense to buy clothes we wear twice and toss away. Mountains of waste? A tiny price for looking trendy, surely. We pretend not to notice the workers paid pennies far away. How clever of us to call this progress. Perhaps, though, true style is choosing fewer things that actually last.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-baf83297",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's tone toward fast fashion?",
+          "options": [
+            "Genuinely excited 真心興奮的",
+            "Sarcastic 諷刺的",
+            "Calmly neutral 平靜中立的",
+            "Mildly hopeful 略帶希望的"
+          ],
+          "answerIndex": 1
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4908-35d5e00e",
+      "kind": "reading",
+      "title": "Space Telescope Images",
+      "passage": "The new space telescope has sent back images that simply take my breath away. Distant galaxies glow like scattered jewels across the dark, and colors no human eye has ever seen now shine on my screen. It is almost beyond belief that we can peer so far across the universe. Each picture fills me with awe and reminds me how wonderfully vast everything is. We are tiny, yet lucky enough to witness such staggering, magnificent beauty.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-e218afd1",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's attitude toward the telescope images?",
+          "options": [
+            "Awestruck 敬畏驚嘆的",
+            "Unimpressed 不以為然的",
+            "Nervous 緊張的",
+            "Regretful 後悔的"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4909-9eb1260b",
+      "kind": "reading",
+      "title": "Learning to Bake",
+      "passage": "When I first tried to bake bread, every loaf came out hard as a rock, and I nearly gave up. But I kept practicing, week after week, and slowly things improved. Today my kitchen smells of warm, golden bread, and my family asks for more. I feel so encouraged by how far a little patience has carried me. If a clumsy beginner like me can learn, anyone can. Keep trying, and one day your own efforts will surely pay off.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-9faf9656",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's tone in this passage?",
+          "options": [
+            "Bitter 怨懟的",
+            "Encouraging 鼓勵的",
+            "Fearful 害怕的",
+            "Indifferent 漠不關心的"
+          ],
+          "answerIndex": 1
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4910-a6105af5",
+      "kind": "reading",
+      "title": "New Mall Replacing Park",
+      "passage": "So the city plans to replace our last green park with yet another shopping mall. How thoughtful of them. We clearly needed a fifth place to buy sneakers more than a single patch of grass. The birds and old oak trees can simply move along, no problem. Children will surely love playing on concrete instead. What a brilliant vision for the future. Honestly, I struggle to imagine a more pointless way to spend our shared money.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-930640c9",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's tone toward the city's plan?",
+          "options": [
+            "Supportive 支持的",
+            "Sarcastic and critical 諷刺批判的",
+            "Indifferent 漠不關心的",
+            "Hopeful 充滿希望的"
+          ],
+          "answerIndex": 1
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4911-7e743b66",
+      "kind": "reading",
+      "title": "Lost Hiker Rescued",
+      "passage": "After a long, frightening night lost on the mountain, the young hiker was finally found safe this morning. Thankfully, a brave rescue team followed her faint footprints through the cold. Her parents wept with relief as she stepped off the helicopter, smiling weakly. How fortunate that the weather cleared just in time. It is such a comfort to know caring strangers will risk so much for one frightened girl. Stories like this restore my faith in people.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-1940f469",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's attitude toward the rescue?",
+          "options": [
+            "Relieved and grateful 寬慰而感激的",
+            "Bored 厭煩的",
+            "Resentful 憤恨的",
+            "Mocking 嘲弄的"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4912-94be54a4",
+      "kind": "reading",
+      "title": "Homework Overload",
+      "passage": "Every night I face a towering pile of homework that never seems to end. By the time I finish, the moon is high and my eyes ache. It feels unfair that we are given so much that there is no time left to rest or simply be young. I am exhausted and a little discouraged, honestly. Learning should open doors, not crush us under endless worksheets. I only wish teachers would remember that tired minds rarely learn their best.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-ff43b235",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's attitude toward the homework load?",
+          "options": [
+            "Content 滿足的",
+            "Weary and discouraged 疲憊而沮喪的",
+            "Amused 覺得有趣的",
+            "Grateful 感激的"
+          ],
+          "answerIndex": 1
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4913-9380cd6f",
+      "kind": "reading",
+      "title": "Recycling Confusion",
+      "passage": "Recycling is important, no doubt, yet I confess I am often baffled by it. One bin says paper here, another says no greasy paper there, and the rules change from town to town. I genuinely want to do right, but I never feel quite sure which box deserves my yogurt cup. It is a bit frustrating, though I keep trying anyway. Perhaps clearer signs would help ordinary folks like me. Until then, I sort with hopeful guesses and crossed fingers.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-716d0f79",
+          "kind": "multipleChoice",
+          "prompt": "What best describes the author's tone toward recycling?",
+          "options": [
+            "Furious 暴怒的",
+            "Confused but willing 困惑卻仍願嘗試的",
+            "Completely uninterested 毫不在意的",
+            "Smug 自鳴得意的"
+          ],
+          "answerIndex": 1
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4914-e523960c",
+      "kind": "reading",
+      "title": "community garden",
+      "passage": "Our small town just opened a community garden, and I am thrilled about it. For years, the empty lot was an ugly pile of weeds that nobody cared about. Now it is full of bright flowers, fresh vegetables, and happy neighbors who chat while they water their plants. Children laugh as they learn to grow tomatoes. Old friends meet again over cups of tea. I truly believe this lovely garden will make our whole town kinder and closer. What a wonderful change for everyone who lives here!",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-63dfed53",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's attitude toward the community garden?",
+          "options": [
+            "Delighted 欣喜的",
+            "Doubtful 懷疑的",
+            "Annoyed 惱怒的",
+            "Indifferent 漠不關心的"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4915-9edd0fe0",
+      "kind": "reading",
+      "title": "plastic in the ocean",
+      "passage": "More and more plastic bottles and bags are floating in our oceans every year. Sadly, sea turtles often mistake these bags for food and become sick. Scientists warn that if we do nothing, the problem will only grow worse. I find this deeply troubling. We use plastic for a few minutes, but it stays in the water for hundreds of years. It worries me that so few people seem to notice the danger. We must act soon, before the harm to our seas becomes too great to repair.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-101a8dc6",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's tone in this passage?",
+          "options": [
+            "Concerned 憂心的",
+            "Cheerful 愉快的",
+            "Amused 覺得有趣的",
+            "Proud 自豪的"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4916-e0fd420b",
+      "kind": "reading",
+      "title": "a kind teacher",
+      "passage": "Looking back, I owe so much to my third-grade teacher, Mrs. Lin. When I was a shy, frightened child, she spent extra hours helping me read. She never laughed at my mistakes. Instead, she smiled and said, \"Try again; you can do it.\" Thanks to her patience, I learned to love books and believe in myself. I am truly thankful for everything she gave me. Even now, whenever I open a good story, I remember her warm voice and feel deeply grateful that such a caring teacher entered my life.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-4e271db2",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's attitude toward Mrs. Lin?",
+          "options": [
+            "Grateful 感激的",
+            "Regretful 後悔的",
+            "Jealous 嫉妒的",
+            "Bored 無聊的"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4917-de93bfa4",
+      "kind": "reading",
+      "title": "a robot helper",
+      "passage": "Last week I visited a hospital that uses a new robot to deliver medicine to each room. Honestly, I was amazed by what it could do. The little machine moved smoothly down the hallway, opened doors by itself, and even said \"Good morning\" to patients in a friendly voice. It never got lost or made a single mistake. I had not expected a robot to be so clever and gentle. It is remarkable how far technology has come. Watching it work, I could only shake my head in wonder at such a brilliant invention.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-3289a485",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's tone toward the robot?",
+          "options": [
+            "Impressed 印象深刻的",
+            "Frightened 害怕的",
+            "Disappointed 失望的",
+            "Suspicious 疑慮的"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4918-891ad865",
+      "kind": "reading",
+      "title": "an old neighborhood",
+      "passage": "Yesterday I walked past the street where I grew up. The little bakery is gone now, but I could almost smell the warm bread again. I remembered playing marbles on these very steps and waving to old Mr. Wang at his fruit stand. Those golden afternoons felt so simple and sweet. How I miss the laughter of those long-ago summers! The streets have changed, yet a part of my heart still lives there. Sometimes I wish I could return, just once, to those happy days that will never come back.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-a9e13a10",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's tone in this passage?",
+          "options": [
+            "Nostalgic 懷舊的",
+            "Furious 憤怒的",
+            "Hopeful 充滿希望的",
+            "Confused 困惑的"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4919-1ee7e8af",
+      "kind": "reading",
+      "title": "learning to swim",
+      "passage": "If you are afraid of the water, please do not give up. I was once just like you, shaking at the edge of the pool. But step by step, I learned to float, then to kick, and finally to swim across the whole pool. You can do it too. Start small, practice often, and be patient with yourself. Every great swimmer was once a beginner who almost quit. Trust me, the day you finally swim will fill you with joy. Keep trying, and never let one bad day stop your dream.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-9b4bb485",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's attitude toward the reader?",
+          "options": [
+            "Encouraging 鼓勵的",
+            "Mocking 嘲諷的",
+            "Hopeless 絕望的",
+            "Cold 冷淡的"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4920-d03d45c9",
+      "kind": "reading",
+      "title": "city air quality",
+      "passage": "City leaders proudly announced that the air is \"perfectly clean\" now. Yet every morning I see a gray haze hanging over the rooftops, and many people still cough on their way to work. It is hard to believe the cheerful numbers in their reports. If the air is truly so fresh, why do my eyes sting whenever I step outside? I worry that these comforting words are meant to calm us rather than to fix the real problem. We deserve honest answers, not pretty promises that the dusty sky clearly does not support.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-975a5365",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's attitude toward the leaders' announcement?",
+          "options": [
+            "Skeptical 質疑的",
+            "Convinced 信服的",
+            "Delighted 欣喜的",
+            "Calm 平靜的"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4921-cb5e287e",
+      "kind": "reading",
+      "title": "tree planting plan",
+      "passage": "Next spring our school will plant a thousand young trees along the river. I cannot wait to see them grow. In a few years, these tiny seedlings will become a green forest full of birds and shade. Students will study under their branches, and the air will smell fresh and sweet. I truly believe our small effort today will give future children a brighter, greener world. Every seed we plant is a promise of better days ahead. The future of our river looks bright, and that fills me with great hope.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-b4f50b8d",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's tone about the tree-planting plan?",
+          "options": [
+            "Hopeful 充滿希望的",
+            "Fearful 恐懼的",
+            "Tired 疲憊的",
+            "Angry 憤怒的"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4922-cf8d87b2",
+      "kind": "reading",
+      "title": "a science fair",
+      "passage": "I attended the city science fair, and I was truly impressed by the young inventors. One girl built a small device that turns dirty water clean using only sunlight. A boy designed a backpack that lights up so cyclists can be seen at night. Their ideas were clever, useful, and surprisingly mature. I kept thinking, how did such young minds create these brilliant tools? It is wonderful to see children solve real problems with such skill. These bright students give me great respect for what the next generation can achieve.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-f505d11e",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's attitude toward the young inventors?",
+          "options": [
+            "Admiring 讚賞的",
+            "Unimpressed 不以為然的",
+            "Worried 擔憂的",
+            "Jealous 嫉妒的"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4923-e5347b20",
+      "kind": "reading",
+      "title": "a lost dog returns",
+      "passage": "Our dog Lucky ran away during a storm, and for three days we searched everywhere. Then, this morning, a kind stranger knocked on our door with Lucky in her arms. I was so relieved that I almost cried. Thankfully, he was safe and only a little muddy. I hugged him tightly and could not stop smiling. I am also so grateful to the stranger who took the time to bring him home. What a happy ending to three worried days! Now Lucky is asleep by the fire, and our family feels whole again.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-bf6bff59",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's tone when Lucky returns?",
+          "options": [
+            "Relieved 鬆一口氣的",
+            "Disappointed 失望的",
+            "Fearful 恐懼的",
+            "Bitter 怨恨的"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4924-8e69e01d",
+      "kind": "reading",
+      "title": "fast fashion",
+      "passage": "Stores now sell cheap shirts that fall apart after one wash, and people throw them away without a second thought. Frankly, I find this habit foolish and wasteful. We buy piles of clothes we hardly wear, while mountains of fabric pile up as trash. It troubles me that we treat the earth's resources so carelessly. Surely we can be wiser than this. I wish shoppers would pause and ask whether they really need yet another shirt. Our throwaway culture is harming the planet, and it is time we faced this uncomfortable truth.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-8210cbe3",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's attitude toward throwaway fashion?",
+          "options": [
+            "Critical 批判的",
+            "Approving 贊同的",
+            "Playful 玩笑的",
+            "Neutral 中立的"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4925-bfc69cfb",
+      "kind": "reading",
+      "title": "first day of spring",
+      "passage": "This morning I opened my window and felt the first warm breeze of spring. How lovely it was! The cherry trees were covered in soft pink blossoms, and birds sang sweetly in the bright sky. After a long, gray season, everything seems fresh and full of life again. I feel light and happy, as if the world is smiling with me. I cannot help but grin as I walk to school. What a beautiful day to be alive! Spring always lifts my spirits and reminds me that good things come around again.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-f4b92e67",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's tone in this passage?",
+          "options": [
+            "Joyful 喜悅的",
+            "Gloomy 陰鬱的",
+            "Nervous 緊張的",
+            "Annoyed 惱怒的"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4926-dfa0f3a7",
+      "kind": "reading",
+      "title": "library closing early",
+      "passage": "I just learned that our town library will close two hours earlier each day to save money. This news disappoints me greatly. For many students, the library is the only quiet place to study after school. Now they will be turned out into the cold streets just when they need it most. It seems unfair to cut the hours of a place that helps so many. Surely there are better ways to save a little money. I hope the council will reconsider, because losing those quiet evening hours is a real loss for us all.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-879834c5",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's attitude toward the new closing time?",
+          "options": [
+            "Disappointed 失望的",
+            "Pleased 高興的",
+            "Excited 興奮的",
+            "Carefree 無憂無慮的"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4927-95208d9b",
+      "kind": "reading",
+      "title": "volunteers after a flood",
+      "passage": "When the river overflowed and filled our streets with mud, I feared our small village could never recover. But then something amazing happened. Strangers arrived from nearby towns, carrying shovels, food, and warm blankets. They worked beside us for days without asking for anything. I was deeply moved by their kindness. Thanks to these generous helpers, families soon had clean homes again. I will never forget how people I had never met treated us like their own. Their warm hearts remind me that goodness still shines, even in the hardest of times.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-5325bf80",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's attitude toward the volunteers?",
+          "options": [
+            "Touched 感動的",
+            "Resentful 怨恨的",
+            "Amused 覺得好笑的",
+            "Bored 厭倦的"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4928-bc450df1",
+      "kind": "reading",
+      "title": "endless homework",
+      "passage": "Oh, what a joy it is to receive five hours of homework every single night! Of course, we students have nothing better to do than copy the same sentences again and again. Who needs sleep, friends, or a moment of rest? Clearly, the more worksheets we finish, the smarter we magically become. I am sure no one ever felt tired or stressed from such a \"wonderful\" system. After all, learning should feel like a heavy chain, not a happy adventure. Yes, our endless homework is truly the finest gift a school could ever give us.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-58862a73",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's true tone in this passage?",
+          "options": [
+            "Sarcastic 諷刺的",
+            "Sincere 真誠的",
+            "Grateful 感激的",
+            "Hopeful 充滿希望的"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4929-e2ce84d2",
+      "kind": "reading",
+      "title": "saving an old bridge",
+      "passage": "The city plans to tear down our hundred-year-old stone bridge and build a plain concrete one. I find this idea quite upsetting. That old bridge is more than stone and steel; it holds the memories of generations who crossed it. My grandparents met on that very bridge long ago. To lose it would be to lose a piece of who we are. I strongly hope the city will listen to us and protect this treasure. We should mend the bridge with care, not destroy the beautiful past that still stands so proudly above the water.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-5d839bee",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's attitude toward tearing down the bridge?",
+          "options": [
+            "Opposed 反對的",
+            "Supportive 支持的",
+            "Curious 好奇的",
+            "Cheerful 愉快的"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4930-026ba68c",
+      "kind": "reading",
+      "title": "City Library",
+      "passage": "The new city library is simply wonderful. From the moment you step inside, the bright reading rooms and friendly staff make you feel welcome. Children laugh quietly in the story corner, and the smell of fresh paper fills the air. There are cozy chairs by every window, and the gardens outside are lovely too. Best of all, everything is free for anyone who wants to learn. This is exactly the kind of warm, helpful place every town deserves. Visiting it always lifts my spirits and reminds me how special a good library can be.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-09ebc2ee",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's attitude toward the library?",
+          "options": [
+            "admiring 讚賞的",
+            "bored 無聊的",
+            "doubtful 懷疑的",
+            "annoyed 惱怒的"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4931-0c09e795",
+      "kind": "reading",
+      "title": "Online Shopping",
+      "passage": "Online shopping can be useful, but I would warn first-time buyers to be careful. Some websites look professional yet hide extra fees until the final step. Photos may make a product seem larger or nicer than it really is. Before you click \"buy,\" read the reviews slowly and check the return policy twice. It is wise to compare prices on several sites, since deals are not always as good as they appear. A little patience now can save you trouble later. Shopping smartly means thinking carefully instead of rushing into a purchase you might regret.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-3bc34d6c",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's tone in this passage?",
+          "options": [
+            "excited 興奮的",
+            "cautious 謹慎的",
+            "angry 生氣的",
+            "playful 嬉鬧的"
+          ],
+          "answerIndex": 1
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4932-a50be7a9",
+      "kind": "reading",
+      "title": "Penguin Walk",
+      "passage": "Watching penguins waddle across the ice is one of the funniest sights in nature. They tip from side to side like tiny businessmen late for a meeting, flippers out for balance. Sometimes one slips and slides on its belly, then pops back up as if nothing happened. When a whole group marches together, they look like a clumsy little parade. You can't help but giggle at their serious faces and silly steps. Honestly, these birds are nature's best comedians, and a few minutes of watching them is enough to brighten anyone's day.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-127735dd",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's attitude toward the penguins?",
+          "options": [
+            "critical 批評的",
+            "amused 覺得好笑的",
+            "fearful 害怕的",
+            "indifferent 漠不關心的"
+          ],
+          "answerIndex": 1
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4933-332891cc",
+      "kind": "reading",
+      "title": "School Recycling",
+      "passage": "Last year our school started a recycling program, and the results have been remarkable. Students now sort paper, plastic, and cans into clearly marked bins, and the amount of trash has dropped by half. Teachers are proud of how quickly everyone learned the new habit. The money saved was used to plant trees in the yard, which already give us cool shade. I truly admire the way our whole school worked together for this goal. Small efforts, repeated every day, can lead to big changes, and our campus is greener and cleaner because of it.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-62a1aee8",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's tone when describing the program?",
+          "options": [
+            "disappointed 失望的",
+            "admiring 讚賞的",
+            "uncertain 不確定的",
+            "bored 無聊的"
+          ],
+          "answerIndex": 1
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4934-bfafd5b5",
+      "kind": "reading",
+      "title": "Weather Forecast",
+      "passage": "The weather report for the coming week is straightforward. Monday and Tuesday will be cloudy, with light rain in the afternoon. Temperatures will stay around twenty degrees, neither hot nor cold. By Wednesday the clouds will clear, and the rest of the week should be sunny. Winds will be gentle, coming from the east. People planning outdoor trips may want to bring a light jacket on the cooler mornings. There is nothing unusual to expect this week, just ordinary spring weather. Overall, conditions will be calm and steady, making it an easy week for travel and outdoor plans.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-6cc8e184",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's tone in the report?",
+          "options": [
+            "matter-of-fact 就事論事的",
+            "worried 擔憂的",
+            "thrilled 激動的",
+            "sarcastic 諷刺的"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4935-0ca7d8b3",
+      "kind": "reading",
+      "title": "First Garden",
+      "passage": "This spring I grew my very first vegetable garden, and I could not be happier with how it turned out. After weeks of watering and pulling weeds, tiny green leaves finally pushed through the soil. Now bright red tomatoes hang from the vines, and the lettuce is crisp and fresh. Friends say my salads taste better than any from the store, and I beam with pride every time. Growing food with my own hands has taught me patience and given me real joy. I feel so proud of what these small seeds and a little care have become.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-c39344d9",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's attitude toward the garden?",
+          "options": [
+            "regretful 後悔的",
+            "proud 自豪的",
+            "nervous 緊張的",
+            "jealous 嫉妒的"
+          ],
+          "answerIndex": 1
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4936-ee09ff1f",
+      "kind": "reading",
+      "title": "Future Trains",
+      "passage": "The future of train travel looks bright. Engineers are designing faster, quieter trains that run on clean energy, and many cities are already building new lines. Soon a trip that once took hours by car may take only minutes by rail. I believe these changes will make travel easier and kinder to our planet. With more people choosing trains, our roads will be less crowded and our air will be cleaner. Of course, there is work ahead, but the path forward is clear and hopeful. I look forward to the day when smooth, green train rides are part of everyday life.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-cdeb0934",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's tone about future train travel?",
+          "options": [
+            "pessimistic 悲觀的",
+            "optimistic 樂觀的",
+            "confused 困惑的",
+            "bitter 憤恨的"
+          ],
+          "answerIndex": 1
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4937-dac33344",
+      "kind": "reading",
+      "title": "New Smartphone App",
+      "passage": "A new app promises to organize your whole life with one tap. That sounds amazing, but I am not so sure it will work as well as the ads claim. Many apps make big promises and then crash after a week or fill your screen with ads. Before downloading, it might be smart to wait and see what other users say. Are the reviews real, or were they paid for? I would rather test a free version first than trust every shiny promise. Until I see solid proof, I will keep my hopes modest and my expectations low.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-aa4e2f1f",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's attitude toward the new app?",
+          "options": [
+            "enthusiastic 熱情的",
+            "skeptical 存疑的",
+            "grateful 感激的",
+            "frightened 恐懼的"
+          ],
+          "answerIndex": 1
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4938-3c81143f",
+      "kind": "reading",
+      "title": "Old Bridge",
+      "passage": "Sadly, the old stone bridge in our village is falling apart. For over a hundred years it carried farmers, students, and travelers across the river. Now its cracks grow wider each season, and weeds creep through the gaps. It breaks my heart to see such a beautiful landmark slowly crumble. Many of us remember happy afternoons fishing beneath it or walking across at sunset. If no one repairs it soon, we may lose this gentle piece of our history forever. I only hope the town can find a way to save the bridge before it is too late.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-c5ff3174",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's tone about the old bridge?",
+          "options": [
+            "cheerful 愉快的",
+            "wistful 惆悵的",
+            "proud 自豪的",
+            "amused 覺得好笑的"
+          ],
+          "answerIndex": 1
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4939-72ba9f83",
+      "kind": "reading",
+      "title": "Star Athlete",
+      "passage": "Few athletes have impressed me as much as this young swimmer. She trains before sunrise every day, then studies long into the night, never once complaining. Last month she broke a national record, yet she stayed humble and thanked her coach and family first. Her focus and kindness are truly inspiring to everyone who watches her. What a remarkable example she sets for young people who dream big. I cannot help but respect someone who works so hard while staying so gracious. She reminds us that real success comes from effort, patience, and a generous heart.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-fa47f095",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's attitude toward the swimmer?",
+          "options": [
+            "admiring 讚賞的",
+            "jealous 嫉妒的",
+            "neutral 中立的",
+            "dismissive 輕視的"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4940-7f87c799",
+      "kind": "reading",
+      "title": "Hiking Safety",
+      "passage": "Hiking in the mountains is rewarding, but it must be done with care. Trails can turn slippery after rain, and the weather may change without warning. I urge every hiker to check the forecast, carry enough water, and tell someone where you are going. Never wander off the marked path, even if a shortcut looks tempting. A map and a flashlight weigh little but can make a big difference. Respect the mountain, and it will reward you with beauty and peace. Being prepared is not about fear; it is about returning home safely after a wonderful day outdoors.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-af29546e",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's tone in giving this advice?",
+          "options": [
+            "careless 隨便的",
+            "cautious 謹慎的",
+            "joyful 歡欣的",
+            "mocking 嘲弄的"
+          ],
+          "answerIndex": 1
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4941-0d697401",
+      "kind": "reading",
+      "title": "Cat Naps",
+      "passage": "My cat has turned napping into a fine art. She can fall asleep anywhere: on warm laptops, inside empty boxes, even on top of a pile of clean laundry. One minute she is chasing a toy, and the next she is snoring softly with her paws in the air. She acts as if the whole house exists only to be her bed. Watching her stretch, yawn, and curl into a ball always makes me chuckle. Honestly, no creature on earth takes resting more seriously, and her lazy little life looks absolutely delightful to me.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-7ff7c42d",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's tone toward the cat?",
+          "options": [
+            "irritated 不耐煩的",
+            "light-hearted 輕鬆詼諧的",
+            "anxious 焦慮的",
+            "formal 正式的"
+          ],
+          "answerIndex": 1
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4942-1b0ab35d",
+      "kind": "reading",
+      "title": "Free Coding Class",
+      "passage": "Fortunately, our community center now offers free coding classes for teenagers every weekend. Just a year ago, families had to pay high fees to learn these skills, so many students were left out. Thanks to a kind local engineer who volunteers her time, anyone curious can now join. Students build simple games and websites, and their excitement is contagious. I am so glad that learning is finally open to all, not just to those who can afford it. This is the kind of generous, fair change our neighborhood needs more of, and it gives me real hope for the years ahead.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-067e5184",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's tone about the free classes?",
+          "options": [
+            "resentful 怨恨的",
+            "appreciative 感激欣慰的",
+            "doubtful 懷疑的",
+            "bored 無聊的"
+          ],
+          "answerIndex": 1
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4943-154c6bcd",
+      "kind": "reading",
+      "title": "Crowded Festival",
+      "passage": "The summer food festival had real promise, but in the end it was a letdown. The lines were endless, and we waited nearly an hour for a single small bowl of noodles. Prices were far too high, and many stalls ran out of food by noon. Trash piled up because there were too few bins, and the music was so loud we could hardly talk. I had looked forward to this all month, so the whole afternoon felt like a waste. Honestly, I left tired, hungry, and rather disappointed by the messy, poorly planned event.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-a96eea0e",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's tone toward the festival?",
+          "options": [
+            "delighted 喜悅的",
+            "disappointed 失望的",
+            "calm 平靜的",
+            "admiring 讚賞的"
+          ],
+          "answerIndex": 1
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4944-315b3291",
+      "kind": "reading",
+      "title": "Learning Piano",
+      "passage": "When I first sat at the piano, my fingers felt clumsy and the notes sounded all wrong. But I kept practicing a little every day, and slowly things began to improve. Now I can play three full songs, and each small win fills me with quiet confidence. Learning an instrument is not easy, yet I am sure that anyone can do it with steady effort. If I can come this far, so can you. I truly believe the next song will be even smoother, and I look forward to every lesson ahead with a hopeful smile.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-db4ad64a",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's tone about learning the piano?",
+          "options": [
+            "hopeless 絕望的",
+            "encouraging 鼓勵樂觀的",
+            "furious 暴怒的",
+            "indifferent 漠不關心的"
+          ],
+          "answerIndex": 1
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4945-605f6935",
+      "kind": "reading",
+      "title": "Public Transport Rules",
+      "passage": "This notice explains the rules for riding the city bus. Passengers should pay the fare when boarding and keep their tickets until the end of the trip. Please offer seats near the front to elderly riders and parents with young children. Eating and loud music are not allowed on board. Each bus stops only at marked stations, and the schedule is posted at every stop. If you have questions, the driver or staff will be glad to help. Following these simple rules keeps the ride smooth and pleasant for everyone who travels with us.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-b7a4012b",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's tone in this notice?",
+          "options": [
+            "matter-of-fact 就事論事的",
+            "excited 興奮的",
+            "sarcastic 諷刺的",
+            "gloomy 陰鬱的"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4946-a4978a63",
+      "kind": "reading",
+      "title": "environment",
+      "passage": "Many cities now ask people to bring their own bags when they shop. Plastic bags are cheap and easy to use, but they cause a serious problem. They do not break down for hundreds of years, so they pile up in rivers and oceans. Animals sometimes eat them by mistake and become sick. To protect the environment, some shops have stopped giving free plastic bags. Instead, they sell cloth bags that people can use again and again. Small changes like this can make a real difference.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-e538b36b",
+          "kind": "multipleChoice",
+          "prompt": "In the sentence \"They do not break down for hundreds of years,\" what does the word \"They\" refer to?",
+          "options": [
+            "Many cities",
+            "Plastic bags",
+            "Rivers and oceans",
+            "Cloth bags"
+          ],
+          "answerIndex": 1
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4947-4d0ff806",
+      "kind": "reading",
+      "title": "environment",
+      "passage": "Many cities now ask people to bring their own bags when they shop. Plastic bags are cheap and easy to use, but they cause a serious problem. They do not break down for hundreds of years, so they pile up in rivers and oceans. Animals sometimes eat them by mistake and become sick. To protect the environment, some shops have stopped giving free plastic bags. Instead, they sell cloth bags that people can use again and again. Small changes like this can make a real difference.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-b8047293",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's attitude toward the use of plastic bags?",
+          "options": [
+            "Concerned and encouraging change",
+            "Amused and light-hearted",
+            "Indifferent and detached",
+            "Angry and accusatory"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4948-d7550f2a",
+      "kind": "reading",
+      "title": "technology",
+      "passage": "Smartphones have changed the way students study. With a single device, learners can look up words, watch lessons, and practice quizzes anywhere. However, these benefits come with a cost. Notifications constantly interrupt attention, and it is easy to waste hours on apps that have nothing to do with learning. Researchers suggest that the problem is not the phone itself but how we manage it. Turning off alerts during study time, for example, can improve focus significantly. In other words, the device is only as helpful as the habits that surround it.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-2e611624",
+          "kind": "multipleChoice",
+          "prompt": "In the sentence \"However, these benefits come with a cost,\" what do \"these benefits\" refer to?",
+          "options": [
+            "The costs of using smartphones",
+            "Being able to look up words, watch lessons, and practice quizzes anywhere",
+            "The constant notifications",
+            "The habits that surround the device"
+          ],
+          "answerIndex": 1
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4949-f50d7bda",
+      "kind": "reading",
+      "title": "technology",
+      "passage": "Smartphones have changed the way students study. With a single device, learners can look up words, watch lessons, and practice quizzes anywhere. However, these benefits come with a cost. Notifications constantly interrupt attention, and it is easy to waste hours on apps that have nothing to do with learning. Researchers suggest that the problem is not the phone itself but how we manage it. Turning off alerts during study time, for example, can improve focus significantly. In other words, the device is only as helpful as the habits that surround it.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-274186d4",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's attitude toward smartphones as study tools?",
+          "options": [
+            "Balanced and analytical",
+            "Strongly opposed and dismissive",
+            "Enthusiastic and uncritical",
+            "Fearful and alarmed"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4950-4f637458",
+      "kind": "reading",
+      "title": "campus",
+      "passage": "Last spring, Mia decided to join the school art club. On her first day, she felt very nervous because she did not know anyone. The older members welcomed her with warm smiles, and slowly her fear began to fade. The teacher asked each new student to share one drawing on the small stage at the front. Mia was shy, but she took a deep breath and showed her picture of a sleeping cat. Everyone clapped and cheered for her. With a little effort, she had made her first new friend. Now the art club is her favorite part of school.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-c73aa023",
+          "kind": "multipleChoice",
+          "prompt": "In the sentence \"Everyone clapped and cheered for her,\" who does \"her\" refer to?",
+          "options": [
+            "Mia",
+            "The teacher",
+            "The older members",
+            "Each new student"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4951-6332e2ff",
+      "kind": "reading",
+      "title": "campus",
+      "passage": "Last spring, Mia decided to join the school art club. On her first day, she felt very nervous because she did not know anyone. The older members welcomed her with warm smiles, and slowly her fear began to fade. The teacher asked each new student to share one drawing on the small stage at the front. Mia was shy, but she took a deep breath and showed her picture of a sleeping cat. Everyone clapped and cheered for her. With a little effort, she had made her first new friend. Now the art club is her favorite part of school.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-a89ed803",
+          "kind": "multipleChoice",
+          "prompt": "What is the overall tone of the passage?",
+          "options": [
+            "Warm and encouraging",
+            "Tense and frightening",
+            "Sad and regretful",
+            "Cold and businesslike"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4952-1ad69fdb",
+      "kind": "reading",
+      "title": "health",
+      "passage": "Many teenagers treat sleep as something they can sacrifice whenever life gets busy. Yet a growing number of researchers argue that enough sleep is absolutely crucial for teenagers, not a luxury to be traded for an extra hour of studying. During the teenage years, the brain is still developing, and sleep is when it stores memories and repairs itself. When students are constantly short of rest, the overall result appears quickly, because concentration weakens and mood becomes unstable. Some experts even warn that a chronic lack of sleep may harm long-term health. Critics may respond that ambitious students simply have too much to do. However, this argument confuses being busy with being effective. Doctors generally recommend that teenagers sleep at least eight hours each night, and schools that start later often report calmer classrooms. The lesson is clear: protecting sleep is not laziness but a sensible choice that helps a young mind learn faster.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-89a3c1b7",
+          "kind": "multipleChoice",
+          "prompt": "In the sentence \"However, this argument confuses being busy with being effective,\" what does \"this argument\" refer to?",
+          "options": [
+            "The claim that ambitious students simply have too much to do",
+            "The researchers' view that sleep is crucial",
+            "The doctors' recommendation of eight hours of sleep",
+            "The warning that lack of sleep harms long-term health"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    },
+    {
+      "id": "reading-4953-055a92fd",
+      "kind": "reading",
+      "title": "health",
+      "passage": "Many teenagers treat sleep as something they can sacrifice whenever life gets busy. Yet a growing number of researchers argue that enough sleep is absolutely crucial for teenagers, not a luxury to be traded for an extra hour of studying. During the teenage years, the brain is still developing, and sleep is when it stores memories and repairs itself. When students are constantly short of rest, the overall result appears quickly, because concentration weakens and mood becomes unstable. Some experts even warn that a chronic lack of sleep may harm long-term health. Critics may respond that ambitious students simply have too much to do. However, this argument confuses being busy with being effective. Doctors generally recommend that teenagers sleep at least eight hours each night, and schools that start later often report calmer classrooms. The lesson is clear: protecting sleep is not laziness but a sensible choice that helps a young mind learn faster.",
+      "wordKeys": [],
+      "questions": [
+        {
+          "id": "child-444f1b9c",
+          "kind": "multipleChoice",
+          "prompt": "What is the author's attitude toward getting enough sleep?",
+          "options": [
+            "Strongly supportive and persuasive",
+            "Neutral and uncommitted",
+            "Skeptical and doubtful",
+            "Mildly amused"
+          ],
+          "answerIndex": 0
+        }
+      ],
+      "source": "import",
+      "sourceType": "comprehension"
+    }
+  ]
+}

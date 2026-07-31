@@ -1,0 +1,1407 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 12,
+  "words": [
+    {
+      "wordKey": "fun",
+      "word": "fun",
+      "senses": [
+        {
+          "id": "sense-fd0a6e93",
+          "pos": "noun",
+          "meaningZh": "樂趣；娛樂",
+          "definitionEn": "activities that are enjoyable or amusing",
+          "examples": [
+            "Playing board games with friends is always a lot of fun."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-6b740844",
+          "pos": "noun",
+          "meaningZh": "歡樂；趣味",
+          "definitionEn": "a mindset of finding or creating amusement",
+          "examples": [
+            "Playing board games with my family is always so much fun."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "funny",
+      "word": "funny",
+      "senses": [
+        {
+          "id": "sense-a1093f6b",
+          "pos": "adjective",
+          "meaningZh": "好笑的；滑稽的",
+          "definitionEn": "arousing or provoking laughter",
+          "examples": [
+            "The stand-up comedian told a series of hilarious jokes, leaving the audience in stitches."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-9d64384b",
+          "pos": "adjective",
+          "meaningZh": "奇怪的；異乎尋常的",
+          "definitionEn": "beyond or deviating from the usual or expected",
+          "examples": [
+            "The comedian's jokes were so funny that the entire audience was in stitches."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "future",
+      "word": "future",
+      "senses": [
+        {
+          "id": "sense-5bbea97a",
+          "pos": "noun",
+          "meaningZh": "未來；將來",
+          "definitionEn": "the period of time that is yet to come",
+          "examples": [
+            "Planning for the future, she decided to enroll in college and pursue her dream career."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-bcc80828",
+          "pos": "noun",
+          "meaningZh": "將來式；未來時態",
+          "definitionEn": "a grammatical tense used to talk about things that will happen",
+          "examples": [
+            "In the future, I will travel the world and experience different cultures."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "game",
+      "word": "game",
+      "senses": [
+        {
+          "id": "sense-112726d7",
+          "pos": "noun",
+          "meaningZh": "遊戲；玩樂",
+          "definitionEn": "an activity that people do for fun or enjoyment",
+          "examples": [
+            "On a rainy day, the family gathered around the table and played a board game together."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-ae279f13",
+          "pos": "noun",
+          "meaningZh": "比賽；競技",
+          "definitionEn": "a competition with rules to determine a winner",
+          "examples": [
+            "At the school's annual sports day, the students participated in a relay race, showing great teamwork and determination to win the game."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "garden",
+      "word": "garden",
+      "senses": [
+        {
+          "id": "sense-31c9641e",
+          "pos": "noun",
+          "meaningZh": "花園；菜園",
+          "definitionEn": "a piece of land, usually next to a house, where flowers, vegetables, fruits, or herbs are grown and taken care of",
+          "examples": [
+            "My mother loves to tend to her garden every morning; she plants tomatoes, cucumbers, and peppers."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-4f2449f6",
+          "pos": "noun",
+          "meaningZh": "庭院；院子",
+          "definitionEn": "an area of grass or plants, typically next to a house, that is used for relaxing, playing, or entertaining",
+          "examples": [
+            "After a long day at work, she enjoys spending time in her garden, tending to her flowers and vegetable patches."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "gate",
+      "word": "gate",
+      "senses": [
+        {
+          "id": "sense-92684717",
+          "pos": "noun",
+          "meaningZh": "大門；柵門",
+          "definitionEn": "a movable barrier, such as a door or fence, that can be opened or closed to block an entrance or exit",
+          "examples": [
+            "I opened the garden gate to let the children play outside."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-967d014f",
+          "pos": "noun",
+          "meaningZh": "出入口；閘門",
+          "definitionEn": "an entrance or exit that is equipped with such barriers",
+          "examples": [
+            "Don't forget to close the gate behind you when you leave the farm."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "get",
+      "word": "get",
+      "senses": [
+        {
+          "id": "sense-413872f3",
+          "pos": "verb",
+          "meaningZh": "得到；取得",
+          "definitionEn": "to receive or obtain something",
+          "examples": [
+            "I need to get a new pair of shoes before my old ones completely fall apart."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-05064a19",
+          "pos": "verb",
+          "meaningZh": "接受；遭受",
+          "definitionEn": "to become the recipient of a specified treatment",
+          "examples": [
+            "After his surgery, he got the necessary medical attention."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "ghost",
+      "word": "ghost",
+      "senses": [
+        {
+          "id": "sense-671d7b6a",
+          "pos": "noun",
+          "meaningZh": "鬼魂；幽靈",
+          "definitionEn": "the spirit of a dead person that some people believe appears to the living",
+          "examples": [
+            "The children were afraid there was a ghost in the old house."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-998f0411",
+          "pos": "noun",
+          "meaningZh": "些許痕跡；隱約感",
+          "definitionEn": "a mere suggestion of something",
+          "examples": [
+            "The faint sound of footsteps down the empty hallway gave a ghost of a presence."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-94973eb3",
+          "pos": "verb",
+          "meaningZh": "悄悄移動；如鬼魂般穿行",
+          "definitionEn": "move silently and imperceptibly like a ghost",
+          "examples": [
+            "As the cat stalked its prey, it ghosted through the tall grass, making no sound."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "giant",
+      "word": "giant",
+      "senses": [
+        {
+          "id": "sense-4f9150ab",
+          "pos": "noun",
+          "meaningZh": "巨人；龐然大物",
+          "definitionEn": "a creature or person that is unusually large in size",
+          "examples": [
+            "The giant towered over the city, casting a long shadow."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-ff65a417",
+          "pos": "noun",
+          "meaningZh": "（神話）巨人；巨怪",
+          "definitionEn": "an imaginary figure from stories or legends who is very large and strong",
+          "examples": [
+            "In the tale of Jack and the Beanstalk, the giant living at the top of the beanstalk had an insatiable appetite for human flesh."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "gift",
+      "word": "gift",
+      "senses": [
+        {
+          "id": "sense-0c443578",
+          "pos": "noun",
+          "meaningZh": "禮物；贈品",
+          "definitionEn": "something given voluntarily without payment in return",
+          "examples": [
+            "Maria received a surprise gift from her best friend on her birthday."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-5b70bdd9",
+          "pos": "verb",
+          "meaningZh": "賦予才能；授予",
+          "definitionEn": "to endow with qualities or abilities",
+          "examples": [
+            "The piano lessons that my parents gave me as a child were a gift that allowed me to develop a lifelong talent."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "girl",
+      "word": "girl",
+      "senses": [
+        {
+          "id": "sense-2a628784",
+          "pos": "noun",
+          "meaningZh": "女孩；少女",
+          "definitionEn": "a female human offspring",
+          "examples": [
+            "The girl danced with her father at the wedding."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-20b0a66d",
+          "pos": "noun",
+          "meaningZh": "年輕女性；女生",
+          "definitionEn": "a young woman",
+          "examples": [
+            "The girl was excited to start her first day of college."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "give",
+      "word": "give",
+      "senses": [
+        {
+          "id": "sense-642377df",
+          "pos": "verb",
+          "meaningZh": "給予；贈與",
+          "definitionEn": "to offer something to someone or provide them with it, especially without asking for any payment",
+          "examples": [
+            "My generous neighbor always gives me fresh vegetables from her garden without expecting anything in return."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-2c6f245d",
+          "pos": "verb",
+          "meaningZh": "付錢；支付",
+          "definitionEn": "to pay a particular amount of money to someone for something",
+          "examples": [
+            "I will give the cashier $20 for the groceries."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "glad",
+      "word": "glad",
+      "senses": [
+        {
+          "id": "sense-f4afa569",
+          "pos": "adjective",
+          "meaningZh": "高興的；開心的",
+          "definitionEn": "feeling pleased and happy",
+          "examples": [
+            "I was glad to see my best friend after being apart for so long."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-0a6f6d61",
+          "pos": "adjective",
+          "meaningZh": "顯出喜悅的；愉快的",
+          "definitionEn": "showing joy or pleasure",
+          "examples": [
+            "Sarah was glad to hear that she had won the scholarship."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "glass",
+      "word": "glass",
+      "senses": [
+        {
+          "id": "sense-9b3e6db3",
+          "pos": "noun",
+          "meaningZh": "玻璃",
+          "definitionEn": "a brittle, transparent solid with an irregular atomic structure",
+          "examples": [
+            "He carefully held the glass dish, admiring the intricate design."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-0ca3c613",
+          "pos": "noun",
+          "meaningZh": "玻璃杯；飲料杯",
+          "definitionEn": "a container for holding liquids, typically used for drinking",
+          "examples": [
+            "She poured some water into the glass and took a sip."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "glasses",
+      "word": "glasses",
+      "senses": [
+        {
+          "id": "sense-851a1792",
+          "pos": "noun",
+          "meaningZh": "眼鏡",
+          "definitionEn": "a pair of lenses set in a frame worn on the nose and ears to improve vision",
+          "examples": [
+            "I can’t read the board without my glasses."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-4d760d9d",
+          "pos": "noun",
+          "meaningZh": "眼鏡；視力矯正鏡",
+          "definitionEn": "an optical instrument consisting of a frame that holds a pair of lenses for correcting defective vision",
+          "examples": [
+            "Without her glasses, she could not read the menu."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "glove",
+      "word": "glove",
+      "senses": [
+        {
+          "id": "sense-290e4222",
+          "pos": "noun",
+          "meaningZh": "手套",
+          "definitionEn": "Handwear that covers the hand and wrist.",
+          "examples": [
+            "Before heading out to play in the snow, make sure you wear your gloves to keep your hands warm."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-c76a3c80",
+          "pos": "noun",
+          "meaningZh": "（棒球）接球手套",
+          "definitionEn": "The handwear used by fielders in playing baseball.",
+          "examples": [
+            "The outfielder caught the soaring fly ball with his glove, making an impressive catch."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "gloves",
+      "word": "gloves",
+      "senses": [
+        {
+          "id": "sense-024dd8eb",
+          "pos": "noun",
+          "meaningZh": "手套",
+          "definitionEn": "Handwear that covers the hand and wrist.",
+          "examples": [
+            "Before heading out to play in the snow, make sure you wear your gloves to keep your hands warm."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-01be2431",
+          "pos": "noun",
+          "meaningZh": "（棒球）接球手套",
+          "definitionEn": "The handwear used by fielders in playing baseball.",
+          "examples": [
+            "The outfielder caught the soaring fly ball with his glove, making an impressive catch."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "go",
+      "word": "go",
+      "senses": [
+        {
+          "id": "sense-c19a599d",
+          "pos": "verb",
+          "meaningZh": "去；前往",
+          "definitionEn": "to move from one place to another",
+          "examples": [
+            "I go to school every morning."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-675b06d1",
+          "pos": "verb",
+          "meaningZh": "按照程序進行；走流程",
+          "definitionEn": "to follow a procedure or course",
+          "examples": [
+            "When you arrive at the airport, make sure to go through the check-in process before boarding your flight."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "good",
+      "word": "good",
+      "senses": [
+        {
+          "id": "sense-b483843b",
+          "pos": "adjective",
+          "meaningZh": "好的；優秀的",
+          "definitionEn": "having desirable or positive qualities, especially those suitable for a specified thing",
+          "examples": [
+            "She is a good candidate for the leadership position due to her experience and strong communication skills."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-2edccc70",
+          "pos": "adjective",
+          "meaningZh": "合適的；適當的",
+          "definitionEn": "most suitable or appropriate for a particular purpose",
+          "examples": [
+            "Wearing comfortable shoes is a good idea when you're going hiking."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "goodbye",
+      "word": "goodbye",
+      "senses": [
+        {
+          "id": "sense-22899729",
+          "pos": "exclamation",
+          "meaningZh": "再見",
+          "definitionEn": "said when you are leaving someone or when they are leaving you",
+          "examples": [
+            "Goodbye! See you at school tomorrow."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-cafbb4d6",
+          "pos": "noun",
+          "meaningZh": "告別；道別",
+          "definitionEn": "the act of saying farewell when you or someone else leaves",
+          "examples": [
+            "We said a quick goodbye at the train station before she left for Kaohsiung."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "grade",
+      "word": "grade",
+      "senses": [
+        {
+          "id": "sense-5da83c1e",
+          "pos": "noun",
+          "meaningZh": "等級；成績",
+          "definitionEn": "a relative position or degree of value in a group that has been ordered or classified based on quality, intensity, or amount",
+          "examples": [
+            "I got a higher grade in Math than in English."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-1274aeb4",
+          "pos": "noun",
+          "meaningZh": "年級；班級",
+          "definitionEn": "a body of students attending a school or a part of a school; a class",
+          "examples": [
+            "The fifth-grade students went on a field trip to the zoo."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "grandfather",
+      "word": "grandfather",
+      "senses": [
+        {
+          "id": "sense-5f2cd3cc",
+          "pos": "noun",
+          "meaningZh": "祖父；外祖父",
+          "definitionEn": "the father of your father or mother",
+          "examples": [
+            "My grandfather fought in World War II and I always loved listening to his stories about it."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "grandmother",
+      "word": "grandmother",
+      "senses": [
+        {
+          "id": "sense-fa452701",
+          "pos": "noun",
+          "meaningZh": "祖母；外祖母",
+          "definitionEn": "a woman who is the mother of your father or mother",
+          "examples": [
+            "I visited my grandmother every weekend and we would bake cookies together."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "grass",
+      "word": "grass",
+      "senses": [
+        {
+          "id": "sense-7a521ede",
+          "pos": "noun",
+          "meaningZh": "草；青草",
+          "definitionEn": "a low, green plant with narrow leaves that covers a large part of the earth’s surface",
+          "examples": [
+            "The children were playing tag and running barefoot through the lush grass in the park."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "gray",
+      "word": "gray",
+      "senses": [
+        {
+          "id": "sense-b2925876",
+          "pos": "noun",
+          "meaningZh": "灰色",
+          "definitionEn": "a neutral achromatic color midway between white and black",
+          "examples": [
+            "The living room walls were painted a soft shade of gray, giving the space a modern and elegant feel."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-fbb09b7b",
+          "pos": "adjective",
+          "meaningZh": "白髮蒼蒼的；顯老的",
+          "definitionEn": "showing characteristics of age, especially having gray or white hair",
+          "examples": [
+            "The elderly man walked slowly, his gray hair glistening in the sunlight."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "great",
+      "word": "great",
+      "senses": [
+        {
+          "id": "sense-27cacb43",
+          "pos": "adjective",
+          "meaningZh": "很好的；出色的",
+          "definitionEn": "very good or excellent",
+          "examples": [
+            "The meal at that restaurant was great, I highly recommend it."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-39f4ebb5",
+          "pos": "adjective",
+          "meaningZh": "重大的；意義深遠的",
+          "definitionEn": "of major significance or importance",
+          "examples": [
+            "The launch of the new product was a great milestone for the company’s success."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "green",
+      "word": "green",
+      "senses": [
+        {
+          "id": "sense-586de954",
+          "pos": "noun",
+          "meaningZh": "綠色",
+          "definitionEn": "green color or pigment; resembling the color of growing grass",
+          "examples": [
+            "The green grass in the park was a refreshing sight after a long winter."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-87f17c61",
+          "pos": "noun",
+          "meaningZh": "環保的；生態友善的",
+          "definitionEn": "of or pertaining to an environmentalist or environmentalism, advocating protection of natural resources",
+          "examples": [
+            "The green movement promotes the use of sustainable materials and the reduction of waste to protect the planet’s natural resources."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "ground",
+      "word": "ground",
+      "senses": [
+        {
+          "id": "sense-73d79b89",
+          "pos": "noun",
+          "meaningZh": "地面；地表",
+          "definitionEn": "the solid surface of the Earth’s crust",
+          "examples": [
+            "We sat on the ground and had a picnic."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "group",
+      "word": "group",
+      "senses": [
+        {
+          "id": "sense-e670f195",
+          "pos": "noun",
+          "meaningZh": "群體；組",
+          "definitionEn": "a number of individuals considered together as a unit",
+          "examples": [
+            "In order to complete the project efficiently, the teacher divided the students into smaller groups."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-641a044f",
+          "pos": "noun",
+          "meaningZh": "（化學）基；原子團",
+          "definitionEn": "(chemistry) two or more atoms that are bound together and form part of a molecule",
+          "examples": [
+            "In organic chemistry, a common example of a group is the hydroxyl group (-OH) found in alcohols such as ethanol."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "grow",
+      "word": "grow",
+      "senses": [
+        {
+          "id": "sense-4e2a40ef",
+          "pos": "verb",
+          "meaningZh": "生長；增大",
+          "definitionEn": "to naturally increase in size",
+          "examples": [
+            "Over the summer, the tomato plants in my garden grew tall and produced lots of juicy tomatoes."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-2f5031e6",
+          "pos": "verb",
+          "meaningZh": "成長；發育成熟",
+          "definitionEn": "to develop and reach maturity",
+          "examples": [
+            "After months of watering and care, the plant began to grow, eventually blooming with vibrant flowers."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    }
+  ]
+}

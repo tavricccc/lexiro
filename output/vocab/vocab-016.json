@@ -1,0 +1,1421 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 16,
+  "words": [
+    {
+      "wordKey": "knee",
+      "word": "knee",
+      "senses": [
+        {
+          "id": "sense-ad9f031c",
+          "pos": "noun",
+          "meaningZh": "膝蓋",
+          "definitionEn": "the joint in the middle of the human leg where it bends",
+          "examples": [
+            "He fell and hurt his knee."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-a1b9cfae",
+          "pos": "noun",
+          "meaningZh": "（動物）膝關節",
+          "definitionEn": "the middle part of a leg joint in some animals, such as horses and dogs",
+          "examples": [
+            "The horse's knee was swollen from the strain of jumping over the fence."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "knife",
+      "word": "knife",
+      "senses": [
+        {
+          "id": "sense-d239a758",
+          "pos": "noun",
+          "meaningZh": "餐刀；切割刀",
+          "definitionEn": "a sharp tool used for cutting, with a pointed blade and handle",
+          "examples": [
+            "He used a knife to cut the cake into slices."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-58671c48",
+          "pos": "noun",
+          "meaningZh": "刀具（武器）",
+          "definitionEn": "a weapon with a sharp blade and pointed tip, and a handle",
+          "examples": [
+            "Some people use a knife for hunting and self defense, while others use it for cooking and other domestic tasks."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "knock",
+      "word": "knock",
+      "senses": [
+        {
+          "id": "sense-4a9ca1ba",
+          "pos": "verb",
+          "meaningZh": "敲打；輕叩",
+          "definitionEn": "make light, repeated taps on a surface.",
+          "examples": [
+            "She had to knock on the door several times before her friend finally answered."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-c004c69e",
+          "pos": "verb",
+          "meaningZh": "以指關節敲擊",
+          "definitionEn": "rap with the knuckles.",
+          "examples": [
+            "He knocked on the door three times to get their attention."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "know",
+      "word": "know",
+      "senses": [
+        {
+          "id": "sense-790e0fa1",
+          "pos": "verb",
+          "meaningZh": "知道；了解",
+          "definitionEn": "possess knowledge or information about; be cognizant or aware of a fact or specific piece of information",
+          "examples": [
+            "I know that her favorite color is blue because she mentioned it in conversation."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-b6837f7f",
+          "pos": "verb",
+          "meaningZh": "確信；深信",
+          "definitionEn": "believe or have faith in something; regard as true beyond any doubt; be aware of the truth of something",
+          "examples": [
+            "After extensive research and experimentation, the scientists now know that the Earth revolves around the sun."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "knowledge",
+      "word": "knowledge",
+      "senses": [
+        {
+          "id": "sense-cb114222",
+          "pos": "noun",
+          "meaningZh": "知識；學問",
+          "definitionEn": "the understanding of or information about a subject that you get by experience or study, either known by one person or generally within a community",
+          "examples": [
+            "After years of studying medicine, she gained extensive knowledge of human anatomy and physiology."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-f7c26abd",
+          "pos": "noun",
+          "meaningZh": "認知；見識",
+          "definitionEn": "the psychological result of perception, learning, and reasoning",
+          "examples": [
+            "After years of studying, he gained a wealth of knowledge about the history of ancient civilizations."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "lake",
+      "word": "lake",
+      "senses": [
+        {
+          "id": "sense-547334f3",
+          "pos": "noun",
+          "meaningZh": "湖；湖泊",
+          "definitionEn": "a body of water surrounded by land, typically freshwater",
+          "examples": [
+            "After a long hike, we reached the beautiful lake nestled in the mountains."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "lamp",
+      "word": "lamp",
+      "senses": [
+        {
+          "id": "sense-326cd3ec",
+          "pos": "noun",
+          "meaningZh": "燈；照明器具",
+          "definitionEn": "an artificial source of visible illumination",
+          "examples": [
+            "We couldn’t see anything in the cave, so we used a lamp to light the way."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-1f1dc06c",
+          "pos": "noun",
+          "meaningZh": "檯燈；燈具",
+          "definitionEn": "a piece of furniture holding one or more electric light bulbs",
+          "examples": [
+            "She switched on the lamp and the room was instantly filled with a warm, soft glow."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "land",
+      "word": "land",
+      "senses": [
+        {
+          "id": "sense-3e88d52a",
+          "pos": "noun",
+          "meaningZh": "陸地；土地",
+          "definitionEn": "the solid part of the earth’s surface",
+          "examples": [
+            "The farmer plowed the land to prepare it for planting crops."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-0ceff7c0",
+          "pos": "noun",
+          "meaningZh": "地（農耕地）；土壤",
+          "definitionEn": "material in the top layer of the earth’s surface in which plants can grow, usually referring to its quality or use",
+          "examples": [
+            "The fertile land in the valley provided ideal conditions for farming."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "language",
+      "word": "language",
+      "senses": [
+        {
+          "id": "sense-86eba11f",
+          "pos": "noun",
+          "meaningZh": "語言",
+          "definitionEn": "a systematic way of communicating using sounds or symbols",
+          "examples": [
+            "Learning a new language can be challenging, but it can greatly enhance your ability to communicate and connect with people from different cultures."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-91db5b1e",
+          "pos": "noun",
+          "meaningZh": "術語；行業用語",
+          "definitionEn": "a set of words used in a particular field to name things",
+          "examples": [
+            "The medical language used by doctors is very technical and hard to understand for non-medical people."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "large",
+      "word": "large",
+      "senses": [
+        {
+          "id": "sense-1f1997bd",
+          "pos": "adjective",
+          "meaningZh": "大的；大型的",
+          "definitionEn": "above average in size or quantity",
+          "examples": [
+            "The elephant was a large animal, towering over the other creatures in the zoo."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-0b637b1d",
+          "pos": "adjective",
+          "meaningZh": "廣泛的；廣博的",
+          "definitionEn": "having broad power and range",
+          "examples": [
+            "The large corporation dominated the market, with its extensive resources and influence."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "last",
+      "word": "last",
+      "senses": [
+        {
+          "id": "sense-d7ece80e",
+          "pos": "adjective",
+          "meaningZh": "最後的；末尾的",
+          "definitionEn": "occurring at the end of a series or after everything else has happened",
+          "examples": [
+            "The last piece of pizza was saved for me."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-0a245ae8",
+          "pos": "adjective",
+          "meaningZh": "最後剩下的；唯一的",
+          "definitionEn": "being the only one remaining, after everything else has been used, done, or gone",
+          "examples": [
+            "He was the last person to leave the party, since he was picking up the remaining pieces of trash after everyone had gone."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 翰林 B1·L3",
+        "textbookTitle": "翰林 B1·L3"
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "late",
+      "word": "late",
+      "senses": [
+        {
+          "id": "sense-9836886a",
+          "pos": "adjective",
+          "meaningZh": "遲到的；晚期的",
+          "definitionEn": "occurring at the end or towards the end of a period of time or development",
+          "examples": [
+            "She always arrives late to meetings."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-15ba1a8e",
+          "pos": "adjective",
+          "meaningZh": "後期的；晚期（語言）",
+          "definitionEn": "belonging to a subsequent stage in the development of a language or literature, particularly relating to dead languages",
+          "examples": [
+            "The scholar was studying the late Middle English period, which was marked by the development of the printing press."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "later",
+      "word": "later",
+      "senses": [
+        {
+          "id": "sense-3f0cb30a",
+          "pos": "adverb",
+          "meaningZh": "稍後；之後",
+          "definitionEn": "happening at a time after the current time",
+          "examples": [
+            "I will finish this task later today when I have more time."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-8a401c18",
+          "pos": "adverb",
+          "meaningZh": "以後；將來",
+          "definitionEn": "at a time in the future after the current time",
+          "examples": [
+            "I’m busy right now, can we talk later?"
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "laugh",
+      "word": "laugh",
+      "senses": [
+        {
+          "id": "sense-b37ae833",
+          "pos": "verb",
+          "meaningZh": "笑；大笑",
+          "definitionEn": "to make sounds with one’s voice, usually accompanied with a happy feeling",
+          "examples": [
+            "After telling a hilarious joke, everyone burst into laughter."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-ce838e0c",
+          "pos": "noun",
+          "meaningZh": "笑聲；笑容",
+          "definitionEn": "a facial expression that shows happiness and amusement",
+          "examples": [
+            "After telling a funny joke, everyone in the room burst into laughter."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "lawyer",
+      "word": "lawyer",
+      "senses": [
+        {
+          "id": "sense-8ca8aeba",
+          "pos": "noun",
+          "meaningZh": "律師；法律顧問",
+          "definitionEn": "a person who is qualified to give legal advice and services to people and businesses; typically represents clients in court",
+          "examples": [
+            "I hired a lawyer to represent me in the court hearing for my divorce."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "lazy",
+      "word": "lazy",
+      "senses": [
+        {
+          "id": "sense-4371a7ea",
+          "pos": "adjective",
+          "meaningZh": "懶惰的；不勤奮的",
+          "definitionEn": "unwilling to work or make an effort",
+          "examples": [
+            "After sleeping until noon, John showed his lazy nature by refusing to help with household chores."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-675de6f2",
+          "pos": "adjective",
+          "meaningZh": "慢吞吞的；懶散的",
+          "definitionEn": "moving slowly or without enthusiasm",
+          "examples": [
+            "Despite having a lot of work to do, John spent the entire day lying on the couch and watching TV, showing his lazy nature."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "lead",
+      "word": "lead",
+      "senses": [
+        {
+          "id": "sense-0f6d9528",
+          "pos": "verb",
+          "meaningZh": "帶領；引導",
+          "definitionEn": "to guide or direct someone, especially by going in front",
+          "examples": [
+            "The guide led us through the forest."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-a4967bc4",
+          "pos": "verb",
+          "meaningZh": "領導；率領",
+          "definitionEn": "to be in charge of or in control of a group or activity",
+          "examples": [
+            "She leads a team of ten engineers."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "leader",
+      "word": "leader",
+      "senses": [
+        {
+          "id": "sense-a654a05a",
+          "pos": "noun",
+          "meaningZh": "領導者；領袖",
+          "definitionEn": "a person who guides or inspires others; a person in charge",
+          "examples": [
+            "As the leader of the team, John inspired his colleagues with his work ethic and dedication to the project."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-367e283a",
+          "pos": "noun",
+          "meaningZh": "特價招攬商品",
+          "definitionEn": "a featured article of merchandise sold at a loss in order to draw customers",
+          "examples": [
+            "The bookstore offered the latest bestseller as a leader at a discount price to attract readers to the store."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "learn",
+      "word": "learn",
+      "senses": [
+        {
+          "id": "sense-c311cefe",
+          "pos": "verb",
+          "meaningZh": "學習；習得",
+          "definitionEn": "to gain knowledge or acquire skills through study, experience, or being taught",
+          "examples": [
+            "It’s never too late to learn a new language."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-cbac5520",
+          "pos": "verb",
+          "meaningZh": "得知；查明",
+          "definitionEn": "to discover or find out something by making an effort or inquiry",
+          "examples": [
+            "If you want to learn a new language, you should practice regularly and try to immerse yourself in the culture where that language is spoken."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "least",
+      "word": "least",
+      "senses": [
+        {
+          "id": "sense-b3e2e948",
+          "pos": "adjective",
+          "meaningZh": "最少的；最小的",
+          "definitionEn": "smallest in amount or extent or degree, typically preceded by `the’",
+          "examples": [
+            "She chose the least expensive item on the menu."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-6354db81",
+          "pos": "adverb",
+          "meaningZh": "最少；最不",
+          "definitionEn": "used to form the superlative degree in adjectives and adverbs",
+          "examples": [
+            "This is the least expensive option available."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "leave",
+      "word": "leave",
+      "senses": [
+        {
+          "id": "sense-d2d9d19a",
+          "pos": "verb",
+          "meaningZh": "離開；離去",
+          "definitionEn": "to go away from a place or a situation",
+          "examples": [
+            "After finishing his work, John decided to leave the office and go home."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-37452733",
+          "pos": "verb",
+          "meaningZh": "遷離；永久離開",
+          "definitionEn": "to go away from a place permanently",
+          "examples": [
+            "After living in the city for many years, she decided to leave and move to the countryside to enjoy a quieter lifestyle."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "left",
+      "word": "left",
+      "senses": [
+        {
+          "id": "sense-d557eaee",
+          "pos": "noun",
+          "meaningZh": "左手；左側",
+          "definitionEn": "the hand on the side of the body that is towards the west when facing towards the north",
+          "examples": [
+            "When giving directions, turn left at the traffic light."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-70d6f054",
+          "pos": "noun",
+          "meaningZh": "左方；左邊方向",
+          "definitionEn": "the direction or location towards the side of the body that is towards the north when facing towards the east",
+          "examples": [
+            "After turning right at the traffic light, take your second left onto Main Street."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "leg",
+      "word": "leg",
+      "senses": [
+        {
+          "id": "sense-f5722f4f",
+          "pos": "noun",
+          "meaningZh": "小腿；腿部（膝至踝）",
+          "definitionEn": "the part of the lower human limb between the knee and ankle; shinbone and calf",
+          "examples": [
+            "After running the marathon, Sarah's legs were sore and tired."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-d83530c6",
+          "pos": "noun",
+          "meaningZh": "（動物）後腿肉",
+          "definitionEn": "the meaty part of an animal’s hind leg used for food",
+          "examples": [
+            "The chef grilled the leg of lamb to perfection, serving it with a side of roasted vegetables."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "lemon",
+      "word": "lemon",
+      "senses": [
+        {
+          "id": "sense-26f2b1a5",
+          "pos": "noun",
+          "meaningZh": "檸檬（水果）",
+          "definitionEn": "yellow citrus fruit with sour juicy flesh, typically oblong or oval in shape",
+          "examples": [
+            "She squeezed some lemon onto the fish for extra flavor."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-7c30ac37",
+          "pos": "noun",
+          "meaningZh": "檸檬樹",
+          "definitionEn": "a small evergreen tree that originated in Asia but is widely cultivated for its fruit",
+          "examples": [
+            "My grandmother loves to use lemon in her baking, so she has a lemon tree in her backyard."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "less",
+      "word": "less",
+      "senses": [
+        {
+          "id": "sense-d0e846bd",
+          "pos": "adjective",
+          "meaningZh": "較少的；更少的",
+          "definitionEn": "A quantifier indicating a smaller amount or degree than some other amount or degree. Typically used with mass nouns.",
+          "examples": [
+            "I have less sugar than you do."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-62d37a2a",
+          "pos": "adverb",
+          "meaningZh": "較少；程度更低",
+          "definitionEn": "Used to form the comparative of some adjectives and adverbs.",
+          "examples": [
+            "She is less aggressive than her brother."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "lesson",
+      "word": "lesson",
+      "senses": [
+        {
+          "id": "sense-f4d6de3b",
+          "pos": "noun",
+          "meaningZh": "課；課程",
+          "definitionEn": "a unit of instruction",
+          "examples": [
+            "In today's math lesson, the teacher explained how to solve equations step by step."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-4b3701b7",
+          "pos": "noun",
+          "meaningZh": "作業；自習任務",
+          "definitionEn": "a task assigned for individual study",
+          "examples": [
+            "After reading a chapter, the teacher gave us a lesson to summarize the main points and write a reflection."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "let",
+      "word": "let",
+      "senses": [
+        {
+          "id": "sense-230157e3",
+          "pos": "verb",
+          "meaningZh": "讓；允許",
+          "definitionEn": "to actively cause something to happen",
+          "examples": [
+            "She let her children stay up late on weekends."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-60b1f108",
+          "pos": "verb",
+          "meaningZh": "使……成為可能；促成",
+          "definitionEn": "to make something possible by taking a specific action or refraining from taking action",
+          "examples": [
+            "Let's go to the park tomorrow if the weather is nice."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "letter",
+      "word": "letter",
+      "senses": [
+        {
+          "id": "sense-f59c2a68",
+          "pos": "noun",
+          "meaningZh": "信件；書信",
+          "definitionEn": "a written message addressed to a person or organization",
+          "examples": [
+            "I wrote a heartfelt letter to my best friend, expressing my gratitude and love for our lifelong friendship."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-d2a5dca0",
+          "pos": "noun",
+          "meaningZh": "字母；文字",
+          "definitionEn": "the characters of the alphabet used for writing and printing words",
+          "examples": [
+            "She wrote a heartfelt letter to her grandmother expressing her gratitude."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "level",
+      "word": "level",
+      "senses": [
+        {
+          "id": "sense-8dea9d01",
+          "pos": "adjective",
+          "meaningZh": "水平的；平坦的",
+          "definitionEn": "not sloping or tilted; having a surface without slope, tilt, or inclination",
+          "examples": [
+            "The carpenter made sure the shelves were level by using a spirit level to ensure they were perfectly horizontal."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-179a6692",
+          "pos": "adjective",
+          "meaningZh": "平局的；同分的",
+          "definitionEn": "of or relating to the score in a contest",
+          "examples": [
+            "In the basketball game, the teams were tied with the same level of points."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "library",
+      "word": "library",
+      "senses": [
+        {
+          "id": "sense-5fc22a02",
+          "pos": "noun",
+          "meaningZh": "圖書館",
+          "definitionEn": "a building or room that stores and lends books, magazines, newspapers, and other reading materials with supplementary resources for study and research",
+          "examples": [
+            "I spent all day studying at the library for my history exam and was able to find all the resources I needed."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-8f7047c5",
+          "pos": "noun",
+          "meaningZh": "藏書；資料館藏",
+          "definitionEn": "a collection of literary documents, records, or media stored for reference or borrowing",
+          "examples": [
+            "I spent my Saturday afternoon at the library, immersed in a book that I had borrowed from the shelves."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    }
+  ]
+}

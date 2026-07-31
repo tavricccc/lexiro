@@ -1,0 +1,1374 @@
+{
+  "schemaVersion": 1,
+  "kind": "vocab",
+  "batch": 1,
+  "words": [
+    {
+      "wordKey": "ability",
+      "word": "ability",
+      "senses": [
+        {
+          "id": "sense-e98cdb10",
+          "pos": "noun",
+          "meaningZh": "能力；才能",
+          "definitionEn": "possession of the qualities (especially mental qualities) required to do something or get something done",
+          "examples": [
+            "Her ability to speak multiple languages made her an asset to the international team."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-cb547f78",
+          "pos": "noun",
+          "meaningZh": "本事；資質",
+          "definitionEn": "the quality of being able to perform; a quality that permits or facilitates achievement or accomplishment",
+          "examples": [
+            "Her ability to speak multiple languages made her an ideal candidate for the job."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": true,
+        "textbookLabel": "📘 龍騰 B1·L4 +1",
+        "textbookTitle": "龍騰 B1·L4、三民 B2·L5"
+      },
+      "updatedAt": "2026-07-31T14:53:14.718Z"
+    },
+    {
+      "wordKey": "able",
+      "word": "able",
+      "senses": [
+        {
+          "id": "sense-76fb075d",
+          "pos": "adjective",
+          "meaningZh": "能夠；有能力的",
+          "definitionEn": "having the necessary means, skill, know-how, or authority to do something, and thereby being capable of accomplishing it.",
+          "examples": [
+            "After years of training, she became able to play the piano fluently."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-340913c2",
+          "pos": "adjective",
+          "meaningZh": "熟練的；有資格的",
+          "definitionEn": "possessing adequate skills and qualifications to perform a task with proficiency.",
+          "examples": [
+            "John is able to speak five different languages fluently."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "about",
+      "word": "about",
+      "senses": [
+        {
+          "id": "sense-e272d4cc",
+          "pos": "preposition",
+          "meaningZh": "關於；對於",
+          "definitionEn": "on the subject of; concerning",
+          "examples": [
+            "We talked about the exam for an hour."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-f5e87ac1",
+          "pos": "adverb",
+          "meaningZh": "正要；即將",
+          "definitionEn": "Nearly, almost, all but.",
+          "examples": [
+            "I was about to leave my house for office when I realized that I forgot my phone."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "above",
+      "word": "above",
+      "senses": [
+        {
+          "id": "sense-95d145dc",
+          "pos": "preposition",
+          "meaningZh": "在…上方；高於",
+          "definitionEn": "in or to a higher position than something",
+          "examples": [
+            "The plane flew above the clouds."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-bc169b0f",
+          "pos": "adverb",
+          "meaningZh": "如前所述；上文",
+          "definitionEn": "at an earlier point in a written or spoken discussion",
+          "examples": [
+            "As mentioned above, we need to provide the necessary documents to proceed with the application."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-f666aa79",
+          "pos": "adjective",
+          "meaningZh": "上述的；前面提到的",
+          "definitionEn": "written or discussed earlier in the same piece of work or discussion",
+          "examples": [
+            "In the previous paragraph, we discussed the benefits of exercise. In the above paragraph, we will discuss the risks associated with excessive exercise."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "abroad",
+      "word": "abroad",
+      "senses": [
+        {
+          "id": "sense-5f3f5cc3",
+          "pos": "adverb",
+          "meaningZh": "在國外；到海外",
+          "definitionEn": "in or to a foreign country",
+          "examples": [
+            "After finishing college, she decided to study abroad in France to immerse herself in the language and culture."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-a4f40043",
+          "pos": "adverb",
+          "meaningZh": "在異國；越洋",
+          "definitionEn": "in a place across an ocean",
+          "examples": [
+            "Sarah decided to study abroad in Spain to experience a new culture and learn Spanish."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "across",
+      "word": "across",
+      "senses": [
+        {
+          "id": "sense-bb0a3250",
+          "pos": "adverb",
+          "meaningZh": "橫越；橫穿",
+          "definitionEn": "transversely",
+          "examples": [
+            "She swam across the river to reach the other side."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-53889873",
+          "pos": "adverb",
+          "meaningZh": "到對面；穿越",
+          "definitionEn": "to the opposite side",
+          "examples": [
+            "She carefully stepped across the narrow bridge to reach the other side."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "act",
+      "word": "act",
+      "senses": [
+        {
+          "id": "sense-e8163182",
+          "pos": "verb",
+          "meaningZh": "表現；行事",
+          "definitionEn": "Behave or conduct oneself in a particular manner.",
+          "examples": [
+            "She always acts professionally in the workplace."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-0ce64622",
+          "pos": "verb",
+          "meaningZh": "採取行動；執行",
+          "definitionEn": "Perform a task, a deed, an action or work.",
+          "examples": [
+            "She had to act quickly when she saw the child running towards the road."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "action",
+      "word": "action",
+      "senses": [
+        {
+          "id": "sense-065964df",
+          "pos": "noun",
+          "meaningZh": "行動；行為",
+          "definitionEn": "something done, usually as opposed to something said",
+          "examples": [
+            "Tom's boss appreciated his strong work ethic and ability to take action on projects."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-a4ff11ff",
+          "pos": "noun",
+          "meaningZh": "活動狀態；積極作為",
+          "definitionEn": "the state of being active",
+          "examples": [
+            "In order to achieve success, it is important to turn your goals into action."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "add",
+      "word": "add",
+      "senses": [
+        {
+          "id": "sense-8c1fba26",
+          "pos": "verb",
+          "meaningZh": "加入；添加",
+          "definitionEn": "to make something larger or increase in quantity, size, or scope by joining or combining with others",
+          "examples": [
+            "She decided to add some cream to her coffee to make it taste better."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-fee319cd",
+          "pos": "verb",
+          "meaningZh": "加總；相加",
+          "definitionEn": "to find the total of two or more numbers",
+          "examples": [],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "afraid",
+      "word": "afraid",
+      "senses": [
+        {
+          "id": "sense-2e29443e",
+          "pos": "adjective",
+          "meaningZh": "害怕的；恐懼的",
+          "definitionEn": "feeling fear or anxiety",
+          "examples": [
+            "The child was afraid to go to the dentist for the first time, but her mother reassured her that it would be okay."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-181dd0e9",
+          "pos": "adjective",
+          "meaningZh": "擔心的；憂慮的",
+          "definitionEn": "feeling worried or insecure",
+          "examples": [
+            "She was afraid of heights, so she didn’t go on the roller coaster."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "after",
+      "word": "after",
+      "senses": [
+        {
+          "id": "sense-77c1847b",
+          "pos": "adverb",
+          "meaningZh": "之後；隨後",
+          "definitionEn": "happening at a time after a reference time",
+          "examples": [
+            "We will meet tomorrow after the conference."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-93253c3d",
+          "pos": "adverb",
+          "meaningZh": "在後面；在後頭",
+          "definitionEn": "behind or in the rear",
+          "examples": [
+            "The car behind us turned left after us."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "afternoon",
+      "word": "afternoon",
+      "senses": [
+        {
+          "id": "sense-3116a82d",
+          "pos": "noun",
+          "meaningZh": "下午；午後",
+          "definitionEn": "the time of day between noon and evening",
+          "examples": [
+            "In the afternoon, we went for a leisurely walk in the park."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-7d7637a5",
+          "pos": "noun",
+          "meaningZh": "午安（問候語）",
+          "definitionEn": "an expression of greeting or farewell typically used in the afternoon",
+          "examples": [
+            "As Sarah bid her coworkers farewell in the office, she cheerfully exclaimed, 'Have a great afternoon, everyone!'"
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "again",
+      "word": "again",
+      "senses": [
+        {
+          "id": "sense-b9cce3ae",
+          "pos": "adverb",
+          "meaningZh": "再一次；重新；又",
+          "definitionEn": "one more time or anew; in addition",
+          "examples": [
+            "I have to rewrite this paper again because the first draft wasn’t satisfactory."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "age",
+      "word": "age",
+      "senses": [
+        {
+          "id": "sense-b025fecc",
+          "pos": "noun",
+          "meaningZh": "年齡；年紀",
+          "definitionEn": "how long something has existed",
+          "examples": [
+            "The age of the universe is estimated to be around 13.8 billion years."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-e392356f",
+          "pos": "noun",
+          "meaningZh": "時代；時期",
+          "definitionEn": "a prolonged period of time",
+          "examples": [],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "ago",
+      "word": "ago",
+      "senses": [
+        {
+          "id": "sense-8bfd19ae",
+          "pos": "adverb",
+          "meaningZh": "以前；前",
+          "definitionEn": "in the past",
+          "examples": [
+            "I visited Paris two years ago."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-c600d240",
+          "pos": "adjective",
+          "meaningZh": "過去的；從前的",
+          "definitionEn": "gone by; in the past",
+          "examples": [
+            "She left her hometown five years ago."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "agree",
+      "word": "agree",
+      "senses": [
+        {
+          "id": "sense-858d1f25",
+          "pos": "verb",
+          "meaningZh": "同意；答應",
+          "definitionEn": "to give consent or assent to a condition, or agree to do something",
+          "examples": [
+            "I agree to meet you at the restaurant for dinner tonight."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-5528c6ce",
+          "pos": "verb",
+          "meaningZh": "意見一致；達成共識",
+          "definitionEn": "to be in accord or agreement with someone",
+          "examples": [
+            "After much discussion, the board finally agreed on a budget for the new project."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "agreement",
+      "word": "agreement",
+      "senses": [
+        {
+          "id": "sense-c9f191e8",
+          "pos": "noun",
+          "meaningZh": "協議；合約",
+          "definitionEn": "A document that formalizes an arrangement or agreement between two or more parties, typically in legal or business contexts",
+          "examples": [
+            "Both parties signed the agreement before a notary public at the lawyer’s office."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B2",
+        "exams": [
+          "學測",
+          "GEPT中級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "air",
+      "word": "air",
+      "senses": [
+        {
+          "id": "sense-37ea68d7",
+          "pos": "noun",
+          "meaningZh": "空氣；大氣",
+          "definitionEn": "a mixture of gases, including oxygen, that is essential for breathing; the invisible substance that surrounds the Earth and has weight and volume",
+          "examples": [
+            "While hiking in the mountains, it is important to take frequent breaks to catch your breath and fill your lungs with fresh air."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-fcba76f3",
+          "pos": "noun",
+          "meaningZh": "微風；清風",
+          "definitionEn": "a gentle breeze or wind, often refreshing",
+          "examples": [
+            "The air was pleasantly cool and refreshing on a hot summer day."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "airport",
+      "word": "airport",
+      "senses": [
+        {
+          "id": "sense-6f86f425",
+          "pos": "noun",
+          "meaningZh": "機場；航空站",
+          "definitionEn": "a place where airplanes land and take off, with buildings for passengers and cargo",
+          "examples": [
+            "My flight is departing from the international airport in Atlanta, Georgia."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "all",
+      "word": "all",
+      "senses": [
+        {
+          "id": "sense-1ad6947d",
+          "pos": "adjective",
+          "meaningZh": "所有的；全部的",
+          "definitionEn": "used with both countable and uncountable nouns to refer to the whole amount or every member of a group",
+          "examples": [],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-ac4403b7",
+          "pos": "adverb",
+          "meaningZh": "完全地；全部地",
+          "definitionEn": "to the full extent or completely; wholly",
+          "examples": [
+            "The little boy was all wet after playing in the rain."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "allow",
+      "word": "allow",
+      "senses": [
+        {
+          "id": "sense-bc494ed7",
+          "pos": "verb",
+          "meaningZh": "允許；批准",
+          "definitionEn": "give permission for something to happen or be done",
+          "examples": [
+            "The teacher will allow the students to use calculators during the math exam."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-43ef05db",
+          "pos": "verb",
+          "meaningZh": "容許；默許",
+          "definitionEn": "permit the presence or use of something without opposing or prohibiting",
+          "examples": [],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "almost",
+      "word": "almost",
+      "senses": [
+        {
+          "id": "sense-b2c48657",
+          "pos": "adverb",
+          "meaningZh": "幾乎；差不多",
+          "definitionEn": "Nearly all; practically; just about.",
+          "examples": [
+            "I was almost hit by a car while crossing the street."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-39b7edde",
+          "pos": "adverb",
+          "meaningZh": "接近；將近",
+          "definitionEn": "(of actions or states) slightly short of or not quite accomplished; all but.",
+          "examples": [
+            "I was almost at the finish line when my shoelaces got untied."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "along",
+      "word": "along",
+      "senses": [
+        {
+          "id": "sense-e67167de",
+          "pos": "adverb",
+          "meaningZh": "沿著；順著",
+          "definitionEn": "in line with a length or direction, often next to someone or something else",
+          "examples": [
+            "The hikers walked along the mountain trail, enjoying the scenic views."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-51c6a140",
+          "pos": "adverb",
+          "meaningZh": "一起；隨行",
+          "definitionEn": "in addition, usually accompanied by something else",
+          "examples": [
+            "Sarah brought a picnic basket along for our hike in the woods."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "already",
+      "word": "already",
+      "senses": [
+        {
+          "id": "sense-534667e6",
+          "pos": "adverb",
+          "meaningZh": "已經；早已",
+          "definitionEn": "before a specified or implied time has occurred or passed",
+          "examples": [
+            "She had already finished her homework before her friends arrived."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "also",
+      "word": "also",
+      "senses": [
+        {
+          "id": "sense-036c627a",
+          "pos": "adverb",
+          "meaningZh": "也；此外；同樣",
+          "definitionEn": "in addition to what has already been mentioned",
+          "examples": [
+            "I have a meeting with my boss, but I also need to finish my project before the deadline."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "although",
+      "word": "although",
+      "senses": [
+        {
+          "id": "sense-dee26472",
+          "pos": "conjunction",
+          "meaningZh": "雖然；儘管；即使",
+          "definitionEn": "despite the fact that or despite being",
+          "examples": [
+            "Although it was raining, they still went for a walk."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "B1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "always",
+      "word": "always",
+      "senses": [
+        {
+          "id": "sense-285ee9dd",
+          "pos": "adverb",
+          "meaningZh": "一直；總是",
+          "definitionEn": "at all times and every occasion",
+          "examples": [
+            "She always arrives early to work."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-ef656ded",
+          "pos": "adverb",
+          "meaningZh": "隨時；無論如何",
+          "definitionEn": "at any time or in any event",
+          "examples": [
+            "She always carries an umbrella in case it rains."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "and",
+      "word": "and",
+      "senses": [
+        {
+          "id": "sense-40583625",
+          "pos": "conjunction",
+          "meaningZh": "和；與；並且",
+          "definitionEn": "Used to join two words, phrases, or parts of sentences, indicating addition or similarity.",
+          "examples": [
+            "I like to have peanut butter and jelly sandwiches for lunch."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-ef68d9ae",
+          "pos": "conjunction",
+          "meaningZh": "加上；還有",
+          "definitionEn": "Also used when adding numbers together.",
+          "examples": [
+            "Tom has 5 apples and 3 bananas, so he has a total of 8 pieces of fruit."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "angry",
+      "word": "angry",
+      "senses": [
+        {
+          "id": "sense-fb825d9a",
+          "pos": "adjective",
+          "meaningZh": "憤怒的；生氣的",
+          "definitionEn": "feeling or showing anger",
+          "examples": [
+            "After waiting for over an hour, the angry customers started shouting at the cashier."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-6c2b92f4",
+          "pos": "adjective",
+          "meaningZh": "（傷口）紅腫發炎的",
+          "definitionEn": "severely inflamed and painful",
+          "examples": [
+            "She was rushed to the hospital due to an angry sore on her leg."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A2",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    },
+    {
+      "wordKey": "animal",
+      "word": "animal",
+      "senses": [
+        {
+          "id": "sense-d45b8af6",
+          "pos": "noun",
+          "meaningZh": "動物；獸",
+          "definitionEn": "a living organism that feeds on organic matter, typically having specialized sense organs and nervous system and able to respond rapidly to stimuli.",
+          "examples": [
+            "We went to the zoo and saw various animals such as lions, tigers, elephants, and giraffes."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        },
+        {
+          "id": "sense-7848efa7",
+          "pos": "adjective",
+          "meaningZh": "動物性的；本能的",
+          "definitionEn": "relating to the physical, sensual, or carnal nature of humans or animals.",
+          "examples": [
+            "The lion’s behavior displayed his animal instincts when he hunted down its prey."
+          ],
+          "source": "import",
+          "sourceFiles": [
+            "level-1.json"
+          ]
+        }
+      ],
+      "synonyms": [],
+      "antonyms": [],
+      "metadata": {
+        "levels": [
+          "1"
+        ],
+        "cefr": "A1",
+        "exams": [
+          "學測",
+          "GEPT初級"
+        ],
+        "textbook": false,
+        "textbookLabel": "",
+        "textbookTitle": ""
+      },
+      "updatedAt": "2026-07-31T14:53:14.719Z"
+    }
+  ]
+}

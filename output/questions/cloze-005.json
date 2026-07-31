@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 1,
+  "kind": "questions",
+  "questionKind": "cloze",
+  "questions": [
+    {
+      "id": "child-3ce32601",
+      "kind": "cloze",
+      "prompt": "If I had enough money, I would travel _____ to learn about different cultures.",
+      "answers": [
+        "abroad"
+      ],
+      "wordKey": "abroad",
+      "senseId": "sense-5f3f5cc3",
+      "source": "import",
+      "sourceType": "translate_blank"
+    },
+    {
+      "id": "child-4a1d7e99",
+      "kind": "cloze",
+      "prompt": "If she were more _____, she would tell her parents what really happened that night.",
+      "answers": [
+        "honest"
+      ],
+      "wordKey": "honest",
+      "senseId": "sense-c40f574f",
+      "source": "import",
+      "sourceType": "translate_blank"
+    },
+    {
+      "id": "child-d94a278f",
+      "kind": "cloze",
+      "prompt": "The _____ who discovered this new medicine was awarded a prize for saving countless lives.",
+      "answers": [
+        "scientist"
+      ],
+      "wordKey": "scientist",
+      "senseId": "sense-508a0f0e",
+      "source": "import",
+      "sourceType": "translate_blank"
+    },
+    {
+      "id": "child-42cfa99d",
+      "kind": "cloze",
+      "prompt": "The small _____ where my grandparents grew up has now become a popular tourist spot.",
+      "answers": [
+        "village"
+      ],
+      "wordKey": "village",
+      "senseId": "sense-aa181afe",
+      "source": "import",
+      "sourceType": "translate_blank"
+    },
+    {
+      "id": "child-2536debc",
+      "kind": "cloze",
+      "prompt": "Nothing is more _____ than your health, so remember to eat well and sleep enough every day.",
+      "answers": [
+        "important"
+      ],
+      "wordKey": "important",
+      "senseId": "sense-3cd58002",
+      "source": "import",
+      "sourceType": "translate_blank"
+    },
+    {
+      "id": "child-abfba2a8",
+      "kind": "cloze",
+      "prompt": "The harder the diamond is to find, the more _____ it usually becomes in the market.",
+      "answers": [
+        "expensive"
+      ],
+      "wordKey": "expensive",
+      "senseId": "sense-2390ec09",
+      "source": "import",
+      "sourceType": "translate_blank"
+    },
+    {
+      "id": "child-6affe31c",
+      "kind": "cloze",
+      "prompt": "So clear was the mountain _____ that we could see the colorful fish swimming near the bottom.",
+      "answers": [
+        "lake"
+      ],
+      "wordKey": "lake",
+      "senseId": "sense-547334f3",
+      "source": "import",
+      "sourceType": "translate_blank"
+    },
+    {
+      "id": "child-d36c935f",
+      "kind": "cloze",
+      "prompt": "Never did I imagine that my best friend would _____ to me about something so serious.",
+      "answers": [
+        "lie"
+      ],
+      "wordKey": "lie",
+      "senseId": "sense-9846ba6c",
+      "source": "import",
+      "sourceType": "translate_blank"
+    },
+    {
+      "id": "child-bec3750e",
+      "kind": "cloze",
+      "prompt": "She studied day and night in order to _____ in the national singing competition.",
+      "answers": [
+        "succeed"
+      ],
+      "wordKey": "succeed",
+      "senseId": "sense-d3f15583",
+      "source": "import",
+      "sourceType": "translate_blank"
+    },
+    {
+      "id": "child-dd7f8f32",
+      "kind": "cloze",
+      "prompt": "Many young people are willing to change their habits to protect the _____ for future generations.",
+      "answers": [
+        "environment"
+      ],
+      "wordKey": "environment",
+      "senseId": "sense-b6634efd",
+      "source": "import",
+      "sourceType": "translate_blank"
+    }
+  ]
+}
