@@ -9,10 +9,10 @@ Workflow 位於 `.github/workflows/deploy.yml`。
 
 ## GitHub Secrets
 
-目前 workflow 的 `verify` 與 `deploy-firebase-rules` job 都使用 `github-pages` Environment。
-請到 `Settings > Environments > github-pages > Environment secrets` 新增以下項目；不要只新增在其他 Environment。
+整份 workflow 的所有 job 都使用 `Production` Environment。
+請到 `Settings > Environments > Production > Environment secrets` 新增以下項目；Environment 名稱必須完全一致。
 
-也可以放在 repository secrets，但同名的 `github-pages` Environment secret 會優先使用。
+也可以放在 repository secrets，但同名的 `Production` Environment secret 會優先使用。
 
 需要新增：
 

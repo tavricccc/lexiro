@@ -15,7 +15,7 @@ jobs:
   verify:
     runs-on: ubuntu-latest
     environment:
-      name: github-pages
+      name: Production
     env:
       VITE_FIREBASE_API_KEY: ${{ secrets.VITE_FIREBASE_API_KEY }}
       VITE_FIREBASE_AUTH_DOMAIN: ${{ secrets.VITE_FIREBASE_AUTH_DOMAIN }}
@@ -87,7 +87,7 @@ jobs:
       pages: write
       id-token: write
     environment:
-      name: github-pages
+      name: Production
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Deploy to GitHub Pages
@@ -99,7 +99,7 @@ jobs:
     needs: verify
     runs-on: ubuntu-latest
     environment:
-      name: github-pages
+      name: Production
     env:
       VITE_FIREBASE_PROJECT_ID: ${{ secrets.VITE_FIREBASE_PROJECT_ID }}
     permissions:
