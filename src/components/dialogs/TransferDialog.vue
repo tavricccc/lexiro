@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import { Cloud, Download, FileArchive, Upload } from 'lucide-vue-next'
+import { Download, FileArchive, Upload } from 'lucide-vue-next'
 import { storeToRefs } from 'pinia'
 import { useBackupStore } from '@/stores/backup'
 import { useUIStore } from '@/stores/ui'
-import SyncProgressPanel from '../SyncProgressPanel.vue'
 import Button from '../ui/button/Button.vue'
 import Dialog from '../ui/dialog/Dialog.vue'
 import SectionPanel from '../ui/section-panel/SectionPanel.vue'
@@ -34,25 +33,6 @@ const { resetZipImportState, handleZipImportChange, applyZipImport } = backupSto
     @close="closeTransfer"
   >
     <div class="space-y-6">
-      <SyncProgressPanel />
-
-      <SectionPanel>
-        <div class="flex items-start gap-3">
-          <Cloud class="mt-0.5 h-5 w-5 text-accent-primary" />
-          <div>
-            <p class="text-sm font-bold text-ink-950 dark:text-ink-50">
-              {{ $t('sync.cloudTitle') }}
-            </p>
-            <p class="mt-1 text-xs leading-relaxed text-ink-400 dark:text-ink-500">
-              {{ $t('sync.cloudDescription') }}
-            </p>
-          </div>
-        </div>
-        <p class="mt-4 rounded-xl bg-ink-100/70 p-3 text-xs font-semibold leading-relaxed text-ink-600 dark:bg-ink-900 dark:text-ink-400">
-          {{ $t('sync.cloudSafety') }}
-        </p>
-      </SectionPanel>
-
       <SectionPanel>
         <div class="flex items-start justify-between gap-4">
           <div class="flex items-start gap-3">

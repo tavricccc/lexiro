@@ -3,25 +3,37 @@ import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { RouterLink, useRoute } from 'vue-router'
 import { APP_NAV_ITEMS } from '@/constants/navigation'
+import SidebarAccountMenu from './SidebarAccountMenu.vue'
 
 const route = useRoute()
 const { t } = useI18n()
+const itemCount = APP_NAV_ITEMS.length + 1
 const activeIndex = computed(() => APP_NAV_ITEMS.findIndex(item => route.name === item.key))
 </script>
 
 <template>
-  <nav class="mobile-bottom-tabs fixed inset-x-3 bottom-3 z-40 mx-auto max-w-md rounded-full border border-ink-200/60 bg-white/90 px-2 py-1.5 shadow-floating backdrop-blur-xl dark:border-ink-700/60 dark:bg-ink-950/90 md:hidden" :aria-label="t('nav.main')">
-    <div class="relative grid grid-cols-5 gap-1">
-      <span v-if="activeIndex >= 0" class="mobile-bottom-tabs__indicator" :style="{ width: `${100 / APP_NAV_ITEMS.length}%`, transform: `translateX(${activeIndex * 100}%)` }" aria-hidden="true" />
+  <nav class="mobile-bottom-tabs fixed z-40 mx-auto max-w-md rounded-full border-0 bg-white/95 px-3 py-1.5 backdrop-blur-xl dark:bg-ink-950/95 md:hidden" :aria-label="t('nav.main')">
+    <div class="relative grid grid-cols-6">
+      <span v-if="activeIndex >= 0" class="mobile-bottom-tabs__indicator" :style="{ width: `${100 / itemCount}%`, transform: `translateX(${activeIndex * 100}%)` }" aria-hidden="true" />
       <RouterLink v-for="item in APP_NAV_ITEMS" :key="item.key" :to="item.to" class="mobile-bottom-tab" :class="route.name === item.key ? 'mobile-bottom-tab--active' : ''">
-        <component :is="item.icon" class="h-5 w-5" :stroke-width="1.9" />
+        <component :is="item.icon" class="h-6 w-6" :stroke-width="1.9" />
         <span>{{ t(item.label) }}</span>
       </RouterLink>
+      <SidebarAccountMenu mobile class="min-w-0" />
     </div>
   </nav>
 </template>
 
 <style scoped>
+.mobile-bottom-tabs {
+  bottom: max(0.9375rem, env(safe-area-inset-bottom));
+  left: max(var(--app-viewport-gutter), env(safe-area-inset-left));
+  right: max(var(--app-viewport-gutter), env(safe-area-inset-right));
+  box-shadow: var(--shadow-floating);
+  isolation: isolate;
+  transform: translateZ(0);
+}
+
 .mobile-bottom-tabs__indicator {
   position: absolute;
   inset-block: 0;
@@ -32,7 +44,7 @@ const activeIndex = computed(() => APP_NAV_ITEMS.findIndex(item => route.name ==
   transition: transform 0.42s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.mobile-bottom-tab {
+.mobile-bottom-tabs :deep(.mobile-bottom-tab) {
   position: relative;
   z-index: 1;
   display: flex;
@@ -41,19 +53,25 @@ const activeIndex = computed(() => APP_NAV_ITEMS.findIndex(item => route.name ==
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.1rem;
+  gap: 0.125rem;
   border-radius: 9999px;
   color: var(--color-on-surface-variant);
-  font-size: 0.65rem;
-  font-weight: 800;
+  font-size: 0.6875rem;
+  font-weight: 700;
   transition: transform 0.2s ease, color 0.2s ease;
 }
 
-.mobile-bottom-tab--active {
+.mobile-bottom-tabs :deep(.mobile-bottom-tab--active) {
   color: var(--color-on-surface);
 }
 
-.mobile-bottom-tab:active {
+.mobile-bottom-tabs :deep(.mobile-bottom-tab:active) {
   transform: scale(1.05);
+}
+
+.mobile-bottom-tabs :deep(.mobile-bottom-tab:is(:active, .is-pressing):not([aria-disabled='true'])) {
+  background: color-mix(in srgb, var(--color-secondary-container) 96%, transparent);
+  box-shadow: var(--shadow-card);
+  filter: brightness(1.08) saturate(1.04);
 }
 </style>

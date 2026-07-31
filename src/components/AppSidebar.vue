@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import { ChevronLeft, ChevronRight, CircleUserRound, Moon, Settings, Sun } from 'lucide-vue-next'
+import { ChevronLeft, ChevronRight, Moon, Settings, Sun } from 'lucide-vue-next'
 import { storeToRefs } from 'pinia'
 import { useI18n } from 'vue-i18n'
 import { RouterLink, useRoute } from 'vue-router'
 import { APP_NAV_ITEMS } from '@/constants/navigation'
 import { useUIStore } from '@/stores/ui'
+import SidebarAccountMenu from './SidebarAccountMenu.vue'
 import Button from './ui/button/Button.vue'
 
 const route = useRoute()
@@ -49,10 +50,7 @@ function toggle() {
         <Moon v-else class="h-5 w-5 shrink-0" />
         <span v-if="expanded" class="text-sm font-bold">{{ theme === 'dark' ? t('nav.lightMode') : t('nav.darkMode') }}</span>
       </button>
-      <div class="mt-2 flex items-center gap-3 rounded-2xl bg-ink-100/70 px-3 py-3 dark:bg-ink-900/70" :class="expanded ? '' : 'justify-center px-0'">
-        <CircleUserRound class="h-5 w-5 shrink-0 text-ink-500" />
-        <span v-if="expanded" class="min-w-0 truncate text-xs font-bold text-ink-500">{{ t('nav.localMode') }}</span>
-      </div>
+      <SidebarAccountMenu class="mt-2" :collapsed="!expanded" />
     </div>
   </aside>
 </template>

@@ -1,11 +1,10 @@
 <script setup lang="ts">
-import { Check, Cloud, KeyRound, LockKeyhole, Save, Settings2, Upload } from 'lucide-vue-next'
+import { Check, KeyRound, LockKeyhole, Save, Settings2, Upload } from 'lucide-vue-next'
 import { reactive, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 import { defaultAiSettings, loadAiSettings, saveAiSettings } from '@/lib/ai-provider'
 import { useUIStore } from '@/stores/ui'
-import SyncProgressPanel from './SyncProgressPanel.vue'
 import Button from './ui/button/Button.vue'
 import Card from './ui/card/Card.vue'
 import Input from './ui/input/Input.vue'
@@ -71,16 +70,8 @@ function updateBatchSize(value: string) {
         <LockKeyhole class="mt-0.5 h-4 w-4 shrink-0" />{{ $t('settings.keySafety') }}
       </div>
     </Card>
-    <div class="grid gap-4 lg:grid-cols-2">
+    <div>
       <Card class="p-6">
-        <div class="flex items-center gap-2">
-          <Cloud class="h-5 w-5" /><h2 class="font-black">
-            {{ $t('sync.cloudTitle') }}
-          </h2>
-        </div><p class="mt-2 text-sm font-semibold text-ink-500">
-          {{ $t('sync.cloudDescription') }}
-        </p><SyncProgressPanel class="mt-5" />
-      </Card><Card class="p-6">
         <div class="flex items-center gap-2">
           <Upload class="h-5 w-5" /><h2 class="font-black">
             {{ $t('home.backupAndImport') }}

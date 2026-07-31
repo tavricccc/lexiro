@@ -3,7 +3,7 @@ import type { Unsubscribe } from 'firebase/firestore'
 import type { FirestoreDailyStatsDoc, FirestoreProgressDoc, FirestoreSetDoc, FirestoreStatsDoc, SetSyncConflict, SyncStatus } from '@/types'
 import { useDocumentVisibility, useOnline } from '@vueuse/core'
 import { GoogleAuthProvider, onAuthStateChanged, signInWithCredential, signOut } from 'firebase/auth'
-import { collection, deleteDoc, doc, getDoc, getDocs, onSnapshot, setDoc } from 'firebase/firestore'
+import { collection, deleteDoc, doc, onSnapshot, setDoc } from 'firebase/firestore'
 import { defineStore, storeToRefs } from 'pinia'
 import { computed, ref, watch } from 'vue'
 import { configureFirebaseAuth, getFirebaseAuth, getFirebaseFirestore, isFirebaseConfigured } from '@/lib/firebase'
@@ -33,6 +33,7 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
   let learningSyncTimer: ReturnType<typeof setTimeout> | null = null
   let started = false
   let activeUid = ''
+  let realtimeUid = ''
   let applyingRemote = false
   let previousSetIds = new Set<string>()
   const knownSetHashes = new Map<string, string>()
@@ -73,6 +74,7 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
     setsUnsubscribe = null
     progressUnsubscribe = null
     statsUnsubscribe = null
+    realtimeUid = ''
   }
 
   function setStatus(next: SyncStatus) {
@@ -111,144 +113,13 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
     knownSetHashes.set(payload.id, payload.checksum)
   }
 
-  async function syncLocalSets(uid: string) {
-    const setsStore = useSetsStore()
-    const remoteSnapshot = await getDocs(userCollection(uid, 'sets'))
-    const remoteSets = remoteSnapshot.docs.map(snapshot => snapshot.data() as FirestoreSetDoc)
-    const canonicalRemoteSets = deduplicateSetsByName(remoteSets)
-    const canonicalRemoteIds = new Set(canonicalRemoteSets.map(set => set.id))
-    const remoteById = new Map(canonicalRemoteSets.map(set => [set.id, set]))
-    const localSets = deduplicateSetsByName(setsStore.sets)
-    const merged = [...localSets]
-    const writes: Promise<void>[] = []
-
-    for (const staleRemote of remoteSets) {
-      if (!canonicalRemoteIds.has(staleRemote.id))
-        writes.push(deleteDoc(userDocument(uid, 'sets', staleRemote.id)).then(() => undefined))
-    }
-
-    for (const remote of canonicalRemoteSets) {
-      const local = localSets.find(set => set.id === remote.id)
-      if (!local) {
-        merged.push(remote)
-        knownSetHashes.set(remote.id, remote.checksum)
-        continue
-      }
-      const localHash = stableHash({ id: local.id, setName: local.setName, difficulty: local.difficulty, items: local.items })
-      if (localHash !== remote.checksum) {
-        if (isRemoteSetNewer(local, remote)) {
-          const index = merged.findIndex(set => set.id === remote.id)
-          if (index >= 0)
-            merged[index] = remote
-          knownSetHashes.set(remote.id, remote.checksum)
-        }
-        else {
-          writes.push(writeSet(uid, local as FirestoreSetDoc))
-        }
-        continue
-      }
-      knownSetHashes.set(remote.id, remote.checksum)
-    }
-
-    applyingRemote = true
-    try {
-      const canonicalMerged = deduplicateSetsByName(merged)
-      const canonicalMergedIds = new Set(canonicalMerged.map(set => set.id))
-      for (const remote of canonicalRemoteSets) {
-        if (!canonicalMergedIds.has(remote.id))
-          writes.push(deleteDoc(userDocument(uid, 'sets', remote.id)).then(() => undefined))
-      }
-      for (const local of localSets) {
-        const canonical = canonicalMerged.find(set => set.setName.trim().toLocaleLowerCase() === local.setName.trim().toLocaleLowerCase())
-        if (canonical?.id === local.id && !remoteById.has(local.id))
-          writes.push(writeSet(uid, local as FirestoreSetDoc))
-      }
-      if (canonicalMerged.length !== setsStore.sets.length || canonicalMerged.some((set, index) => set.id !== setsStore.sets[index]?.id))
-        setsStore.applyRemoteSets(canonicalMerged)
-    }
-    finally {
-      applyingRemote = false
-    }
-    await Promise.all(writes)
-    previousSetIds = new Set(setsStore.sets.map(set => set.id))
-  }
-
-  async function syncLocalLearning(uid: string) {
-    const learningStore = useLearningStore()
-    const progressSnapshot = await getDocs(userCollection(uid, 'progress'))
-    const remoteProgress = progressSnapshot.docs.map(snapshot => snapshot.data() as FirestoreProgressDoc)
-    const remoteProgressBySet = new Map(remoteProgress.map(progress => [progress.setId, progress]))
-    const localProgress = learningStore.progressBySet
-    for (const remote of remoteProgress) {
-      const local = localProgress[remote.setId]
-      if (!local || new Date(remote.updatedAt).getTime() > new Date(local.updatedAt).getTime()) {
-        localProgress[remote.setId] = remote
-        knownProgressHashes.set(remote.setId, stableHash(remote))
-      }
-      else {
-        knownProgressHashes.set(remote.setId, stableHash(local))
-      }
-    }
-    const statsSnapshot = await getDocs(userCollection(uid, 'stats'))
-    const summary = statsSnapshot.docs.find(snapshot => snapshot.id === 'summary')
-    if (summary) {
-      const remoteStats = summary.data() as FirestoreStatsDoc
-      if (new Date(remoteStats.updatedAt).getTime() > new Date(learningStore.stats.updatedAt).getTime())
-        learningStore.stats = remoteStats
-      knownStatsHash = stableHash(learningStore.stats)
-    }
-    learningStore.saveState()
-
-    const writes = Object.values(localProgress)
-      .filter((progress) => {
-        const remote = remoteProgressBySet.get(progress.setId)
-        return !remote || new Date(progress.updatedAt).getTime() >= new Date(remote.updatedAt).getTime()
-      })
-      .filter(progress => knownProgressHashes.get(progress.setId) !== stableHash(progress))
-      .map((progress) => {
-        const hash = stableHash(progress)
-        knownProgressHashes.set(progress.setId, hash)
-        return setDoc(
-          userDocument(uid, 'progress', progress.setId),
-          { ...progress, ownerId: uid, schemaVersion: SCHEMA_VERSION },
-        )
-      })
-    const statsHash = stableHash(learningStore.stats)
-    if (knownStatsHash !== statsHash) {
-      knownStatsHash = statsHash
-      writes.push(setDoc(userDocument(uid, 'stats', 'summary'), {
-        ...learningStore.stats,
-        ownerId: uid,
-        schemaVersion: SCHEMA_VERSION,
-      }))
-    }
-    if (learningStore.stats.todayReviews > 0) {
-      const daily: FirestoreDailyStatsDoc = {
-        date: learningStore.stats.lastStudyDate,
-        reviews: learningStore.stats.todayReviews,
-        correctReviews: learningStore.stats.todayCorrectReviews,
-        xpEarned: learningStore.stats.xp,
-        updatedAt: learningStore.stats.updatedAt,
-        ownerId: uid,
-        schemaVersion: SCHEMA_VERSION,
-      }
-      const remoteDaily = await getDoc(dailyStatsDocument(uid, daily.date))
-      const remoteDailyData = remoteDaily.exists() ? remoteDaily.data() as FirestoreDailyStatsDoc : null
-      knownDailyHash = remoteDailyData ? stableHash(remoteDailyData) : ''
-      if (knownDailyHash !== stableHash(daily)) {
-        knownDailyHash = stableHash(daily)
-        writes.push(setDoc(dailyStatsDocument(uid, daily.date), daily))
-      }
-    }
-    await Promise.all(writes)
-  }
-
   function applyRemoteSetChanges(uid: string) {
     setsUnsubscribe = onSnapshot(userCollection(uid, 'sets'), (snapshot) => {
       const setsStore = useSetsStore()
       const remoteSets = deduplicateSetsByName(snapshot.docs.map(item => item.data() as FirestoreSetDoc))
       const remoteMap = new Map(remoteSets.map(set => [set.id, set]))
       const nextSets = setsStore.sets.filter(set => remoteMap.has(set.id) || !knownSetHashes.has(set.id))
+      const writes: Promise<void>[] = []
       for (const remote of remoteSets) {
         const local = setsStore.sets.find(set => set.id === remote.id)
         if (!local) {
@@ -267,12 +138,38 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
           knownSetHashes.set(remote.id, remote.checksum)
         }
         else if (!applyingRemote) {
-          void writeSet(uid, local as FirestoreSetDoc).catch(syncError => setError((syncError as Error).message))
+          writes.push(writeSet(uid, local as FirestoreSetDoc))
         }
       }
       const canonicalNextSets = deduplicateSetsByName(nextSets)
-      if (!applyingRemote && (canonicalNextSets.length !== setsStore.sets.length || canonicalNextSets.some((set, index) => set.id !== setsStore.sets[index]?.id)))
-        setsStore.applyRemoteSets(canonicalNextSets)
+      const canonicalNextIds = new Set(canonicalNextSets.map(set => set.id))
+      for (const remote of remoteSets) {
+        if (!canonicalNextIds.has(remote.id))
+          writes.push(deleteDoc(userDocument(uid, 'sets', remote.id)).then(() => undefined))
+      }
+      for (const local of setsStore.sets) {
+        const canonical = canonicalNextSets.find(set => set.setName.trim().toLocaleLowerCase() === local.setName.trim().toLocaleLowerCase())
+        if (canonical?.id === local.id && !remoteMap.has(local.id))
+          writes.push(writeSet(uid, local as FirestoreSetDoc))
+      }
+      const setsChanged = canonicalNextSets.length !== setsStore.sets.length || canonicalNextSets.some((set, index) => {
+        const current = setsStore.sets[index]
+        if (!current || current.id !== set.id)
+          return true
+        return stableHash({ id: current.id, setName: current.setName, difficulty: current.difficulty, items: current.items }) !== stableHash({ id: set.id, setName: set.setName, difficulty: set.difficulty, items: set.items })
+      })
+      if (!applyingRemote && setsChanged) {
+        applyingRemote = true
+        try {
+          setsStore.applyRemoteSets(canonicalNextSets)
+        }
+        finally {
+          applyingRemote = false
+        }
+      }
+      previousSetIds = new Set(canonicalNextSets.map(set => set.id))
+      if (writes.length)
+        void Promise.all(writes).catch(syncError => setError((syncError as Error).message))
       markSynced()
     }, snapshotError => setError(snapshotError.message))
   }
@@ -280,21 +177,46 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
   function applyRemoteLearningChanges(uid: string) {
     progressUnsubscribe = onSnapshot(userCollection(uid, 'progress'), (snapshot) => {
       const learningStore = useLearningStore()
+      const remoteProgressIds = new Set<string>()
       for (const item of snapshot.docs) {
         const remote = item.data() as FirestoreProgressDoc
+        remoteProgressIds.add(remote.setId)
         const local = learningStore.progressBySet[remote.setId]
         if (!local || new Date(remote.updatedAt).getTime() > new Date(local.updatedAt).getTime()) {
           learningStore.progressBySet[remote.setId] = remote
           knownProgressHashes.set(remote.setId, stableHash(remote))
         }
       }
+      const writes = Object.values(learningStore.progressBySet)
+        .filter(progress => !remoteProgressIds.has(progress.setId))
+        .filter(progress => knownProgressHashes.get(progress.setId) !== stableHash(progress))
+        .map((progress) => {
+          knownProgressHashes.set(progress.setId, stableHash(progress))
+          return setDoc(userDocument(uid, 'progress', progress.setId), {
+            ...progress,
+            ownerId: uid,
+            schemaVersion: SCHEMA_VERSION,
+          })
+        })
       learningStore.saveState()
+      if (writes.length)
+        void Promise.all(writes).catch(syncError => setError((syncError as Error).message))
       markSynced()
     }, snapshotError => setError(snapshotError.message))
     statsUnsubscribe = onSnapshot(userDocument(uid, 'stats', 'summary'), (snapshot) => {
-      if (!snapshot.exists())
-        return
       const learningStore = useLearningStore()
+      if (!snapshot.exists()) {
+        const localHash = stableHash(learningStore.stats)
+        if (knownStatsHash !== localHash) {
+          knownStatsHash = localHash
+          void setDoc(userDocument(uid, 'stats', 'summary'), {
+            ...learningStore.stats,
+            ownerId: uid,
+            schemaVersion: SCHEMA_VERSION,
+          }).catch(syncError => setError((syncError as Error).message))
+        }
+        return
+      }
       const remote = snapshot.data() as FirestoreStatsDoc
       if (new Date(remote.updatedAt).getTime() > new Date(learningStore.stats.updatedAt).getTime()) {
         learningStore.stats = remote
@@ -395,14 +317,14 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
   }
 
   async function startRealtime(uid: string) {
+    if (realtimeUid === uid && setsUnsubscribe && progressUnsubscribe && statsUnsubscribe)
+      return
     clearListeners()
+    realtimeUid = uid
     setStatus('connecting')
     try {
-      await syncLocalSets(uid)
-      await syncLocalLearning(uid)
       applyRemoteSetChanges(uid)
       applyRemoteLearningChanges(uid)
-      markSynced()
     }
     catch (syncError) {
       setError((syncError as Error).message)
@@ -449,11 +371,12 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
     watch([isOnline, visibility], ([online, pageVisibility]) => {
       if (!user.value)
         return
-      if (!online || pageVisibility === 'hidden') {
+      if (!online) {
         stopRealtime()
         return
       }
-      void startRealtime(user.value.uid)
+      if (pageVisibility === 'visible' && realtimeUid !== user.value.uid)
+        void startRealtime(user.value.uid)
     })
   }
 

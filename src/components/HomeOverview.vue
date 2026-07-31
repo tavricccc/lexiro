@@ -7,7 +7,6 @@ import { useLearningStore } from '@/stores/learning'
 import { useSessionStore } from '@/stores/session'
 import { useSetsStore } from '@/stores/sets'
 import { useUIStore } from '@/stores/ui'
-import SyncProgressPanel from './SyncProgressPanel.vue'
 import Button from './ui/button/Button.vue'
 import Card from './ui/card/Card.vue'
 import IconTile from './ui/icon-tile/IconTile.vue'
@@ -160,7 +159,6 @@ function startTodayReview() {
         <p class="mb-3 text-xs font-extrabold uppercase tracking-widest text-ink-400 dark:text-ink-500">
           {{ $t('home.dataSafety') }}
         </p>
-        <SyncProgressPanel compact />
         <p class="mt-3 text-[11px] font-semibold leading-relaxed text-ink-400">
           {{ $t('home.localSaveHint') }}
         </p>

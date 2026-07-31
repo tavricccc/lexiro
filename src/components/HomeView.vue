@@ -33,15 +33,9 @@ function startReview() {
   <section class="space-y-6 text-left">
     <div class="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
       <div>
-        <p class="text-xs font-black uppercase tracking-[0.18em] text-ink-400">
-          {{ $t('home.todayEyebrow') }}
-        </p>
-        <h1 class="mt-2 text-3xl font-black tracking-tight text-ink-950 dark:text-ink-50">
+        <h1 class="text-3xl font-black tracking-tight text-ink-950 dark:text-ink-50">
           {{ $t('home.todayTitle') }}
         </h1>
-        <p class="mt-2 max-w-xl text-sm font-semibold leading-relaxed text-ink-500 dark:text-ink-400">
-          {{ hasSets ? $t('home.todayDescription') : $t('home.description') }}
-        </p>
       </div>
       <div class="flex gap-2">
         <Button variant="outline" class="gap-2" @click="openImport">

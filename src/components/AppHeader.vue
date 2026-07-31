@@ -8,7 +8,6 @@ import { useLearningStore } from '@/stores/learning'
 import { useSessionStore } from '@/stores/session'
 import { useSetsStore } from '@/stores/sets'
 import { useUIStore } from '@/stores/ui'
-import SyncProgressPanel from './SyncProgressPanel.vue'
 import Badge from './ui/badge/Badge.vue'
 import Button from './ui/button/Button.vue'
 import Progress from './ui/progress/Progress.vue'
@@ -147,8 +146,6 @@ const progressValue = computed(() => isReview.value ? reviewProgress.value : pro
         </template>
 
         <span class="w-px h-5 bg-ink-200/60 dark:bg-ink-200/10 mx-1 hidden sm:inline-block" />
-
-        <SyncProgressPanel compact class="hidden sm:block max-w-[10rem]" />
 
         <Button
           variant="ghost"
