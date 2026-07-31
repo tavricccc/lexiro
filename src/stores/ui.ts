@@ -19,7 +19,7 @@ export const useUIStore = defineStore('ui', () => {
   const versionUpdateLoading = ref(false)
 
   let confirmResolver: ((value: boolean) => void) | null = null
-  let toastTimer: ReturnType<typeof setTimeout> | null = null
+  let toastTimer: number | null = null
 
   function showToast(message: string) {
     toastMessage.value = message

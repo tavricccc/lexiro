@@ -11,6 +11,8 @@ export interface VocabItem {
   meaning: string
   example: string
   question: Question
+  tags?: string[]
+  favorite?: boolean
 }
 
 export interface VocabSet {
@@ -18,6 +20,8 @@ export interface VocabSet {
   setName: string
   difficulty: number
   items: VocabItem[]
+  createdAt?: string
+  updatedAt?: string
 }
 
 export interface EditorItem {
@@ -26,6 +30,8 @@ export interface EditorItem {
   pos: string
   meaning: string
   example: string
+  tags?: string[]
+  favorite?: boolean
   question: EditorQuestion
 }
 

@@ -6,8 +6,10 @@ import { defineConfig } from 'vite'
 import { VitePWA } from 'vite-plugin-pwa'
 
 const appVersion = Date.now().toString()
+const basePath = process.env.VITE_BASE_PATH || '/'
 
 export default defineConfig({
+  base: basePath,
   define: {
     __APP_VERSION__: JSON.stringify(appVersion),
   },
@@ -37,8 +39,8 @@ export default defineConfig({
         name: 'lexiro',
         short_name: 'lexiro',
         description: 'lexiro vocabulary practice and backup app.',
-        start_url: '/',
-        scope: '/',
+        start_url: basePath,
+        scope: basePath,
         display: 'standalone',
         background_color: '#fafafa',
         theme_color: '#111111',
@@ -46,7 +48,7 @@ export default defineConfig({
         orientation: 'portrait-primary',
         icons: [
           {
-            src: '/icons/lexiro.svg',
+            src: `${basePath}icons/lexiro.svg`,
             sizes: 'any',
             type: 'image/svg+xml',
             purpose: 'any maskable',
@@ -54,7 +56,7 @@ export default defineConfig({
         ],
       },
       workbox: {
-        navigateFallback: '/index.html',
+        navigateFallback: `${basePath}index.html`,
         navigateFallbackAllowlist: [/./],
         globPatterns: ['**/*.{js,css,html,svg,png,ico,webmanifest}'],
         cleanupOutdatedCaches: true,

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { EditorItem } from '@/types'
-import { Trash2 } from 'lucide-vue-next'
+import { Star, Trash2 } from 'lucide-vue-next'
 import Button from '../ui/button/Button.vue'
 import Input from '../ui/input/Input.vue'
 import Textarea from '../ui/textarea/Textarea.vue'
@@ -57,6 +57,16 @@ function updateOption(item: EditorItem, optionIndex: number, value: string) {
       <div class="flex flex-col gap-1.5 sm:col-span-2">
         <label class="text-xs font-semibold uppercase tracking-wider text-ink-500 dark:text-ink-400">{{ $t('editor.example') }}</label>
         <Textarea :model-value="item.example" :rows="2" :placeholder="$t('editor.example')" @update:model-value="updateItem(item, { example: $event })" />
+      </div>
+      <div class="flex flex-col gap-1.5">
+        <label class="text-xs font-semibold uppercase tracking-wider text-ink-500 dark:text-ink-400">{{ $t('editor.tags') }}</label>
+        <Input :model-value="item.tags?.join(', ') ?? ''" :placeholder="$t('editor.tagsPlaceholder')" @update:model-value="updateItem(item, { tags: $event.split(',').map(tag => tag.trim()).filter(Boolean) })" />
+      </div>
+      <div class="flex items-end">
+        <Button type="button" variant="outline" class="gap-2" :class="item.favorite ? 'border-amber-400 text-amber-600' : ''" :aria-pressed="item.favorite" @click="updateItem(item, { favorite: !item.favorite })">
+          <Star class="h-4 w-4" :class="item.favorite ? 'fill-current' : ''" />
+          {{ item.favorite ? $t('editor.favoriteOn') : $t('editor.favoriteOff') }}
+        </Button>
       </div>
       <div class="flex flex-col gap-1.5 sm:col-span-2">
         <label class="text-xs font-semibold uppercase tracking-wider text-ink-500 dark:text-ink-400">{{ $t('editor.questionPrompt') }}</label>

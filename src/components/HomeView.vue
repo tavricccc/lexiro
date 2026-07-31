@@ -26,7 +26,8 @@ const filteredSets = computed(() => {
   const q = query.value.trim().toLowerCase()
   if (!q)
     return sets.value
-  return sets.value.filter(set => set.setName.toLowerCase().includes(q))
+  return sets.value.filter(set => set.setName.toLowerCase().includes(q)
+    || set.items.some(item => [item.word, item.meaning, ...(item.tags ?? [])].some(value => value.toLowerCase().includes(q))))
 })
 
 function startPractice(mode: PracticeMode, setId: string) {

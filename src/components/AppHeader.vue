@@ -4,9 +4,11 @@ import { storeToRefs } from 'pinia'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRoute } from 'vue-router'
+import { useLearningStore } from '@/stores/learning'
 import { useSessionStore } from '@/stores/session'
 import { useSetsStore } from '@/stores/sets'
 import { useUIStore } from '@/stores/ui'
+import SyncProgressPanel from './SyncProgressPanel.vue'
 import Badge from './ui/badge/Badge.vue'
 import Button from './ui/button/Button.vue'
 import Progress from './ui/progress/Progress.vue'
@@ -14,10 +16,12 @@ import Progress from './ui/progress/Progress.vue'
 const sessionStore = useSessionStore()
 const setsStore = useSetsStore()
 const uiStore = useUIStore()
+const learningStore = useLearningStore()
 const route = useRoute()
 const { t } = useI18n()
 const { exitCurrentView } = sessionStore
 const { currentSession, currentIndex, totalItems, progressPercent, flashcardIndex } = storeToRefs(sessionStore)
+const { currentReviewEntry, reviewIndex, reviewTotal, reviewProgress } = storeToRefs(learningStore)
 const { hasSets, sets, totalWordCount, activeSet } = storeToRefs(setsStore)
 const { editActiveSet, deleteActiveSet, openImport } = setsStore
 const { theme } = storeToRefs(uiStore)
@@ -26,7 +30,8 @@ const { openTransfer, toggleTheme } = uiStore
 const isHome = computed(() => route.name === 'home')
 const isPractice = computed(() => route.name === 'quiz' || route.name === 'spelling')
 const isFlashcard = computed(() => route.name === 'flashcard')
-const showSessionProgress = computed(() => (isPractice.value || isFlashcard.value) && !!currentSession.value)
+const isReview = computed(() => route.name === 'review')
+const showSessionProgress = computed(() => ((isPractice.value || isFlashcard.value) && !!currentSession.value) || (isReview.value && !!currentReviewEntry.value))
 
 const practiceLabel = computed(() => {
   if (route.name === 'quiz')
@@ -35,14 +40,21 @@ const practiceLabel = computed(() => {
     return t('practice.spelling')
   if (route.name === 'flashcard')
     return t('flashcard.title')
+  if (route.name === 'review')
+    return t('learning.todayReview')
   return ''
 })
 
 const progressIndex = computed(() => {
+  if (isReview.value)
+    return reviewIndex.value
   if (isFlashcard.value)
     return flashcardIndex.value
   return currentIndex.value
 })
+
+const progressTotal = computed(() => isReview.value ? reviewTotal.value : totalItems.value)
+const progressValue = computed(() => isReview.value ? reviewProgress.value : progressPercent.value)
 </script>
 
 <template>
@@ -81,9 +93,9 @@ const progressIndex = computed(() => {
 
       <div class="flex items-center gap-2 shrink-0">
         <template v-if="showSessionProgress">
-          <Progress :model-value="progressPercent" class="hidden h-1.5 w-16 sm:block sm:w-24" />
+          <Progress :model-value="progressValue" class="hidden h-1.5 w-16 sm:block sm:w-24" />
           <span class="text-xs sm:text-sm font-bold tabular-nums text-ink-950 dark:text-ink-50">
-            {{ progressIndex + 1 }}<span class="text-[10px] sm:text-xs text-ink-400">/{{ totalItems }}</span>
+            {{ progressIndex + 1 }}<span class="text-[10px] sm:text-xs text-ink-400">/{{ progressTotal }}</span>
           </span>
         </template>
 
@@ -136,6 +148,8 @@ const progressIndex = computed(() => {
 
         <span class="w-px h-5 bg-ink-200/60 dark:bg-ink-200/10 mx-1 hidden sm:inline-block" />
 
+        <SyncProgressPanel compact class="hidden sm:block max-w-[10rem]" />
+
         <Button
           variant="ghost"
           size="icon"
@@ -152,7 +166,7 @@ const progressIndex = computed(() => {
       </div>
     </div>
     <div v-if="showSessionProgress" class="sm:hidden px-4 pb-2">
-      <Progress :model-value="progressPercent" class="h-1 w-full" />
+      <Progress :model-value="progressValue" class="h-1 w-full" />
     </div>
   </header>
 </template>

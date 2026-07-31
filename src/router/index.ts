@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import { useSessionStore } from '@/stores/session'
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory(import.meta.env.BASE_URL),
   scrollBehavior: () => false,
   routes: [
     {
@@ -30,6 +30,12 @@ const router = createRouter({
       component: () => import('@/components/PracticeView.vue'),
       props: { mode: 'spelling' },
       meta: { requiresSession: true },
+    },
+    {
+      path: '/review/:setId',
+      name: 'review',
+      component: () => import('@/components/ReviewView.vue'),
+      props: true,
     },
     {
       path: '/result',

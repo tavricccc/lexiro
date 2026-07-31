@@ -27,13 +27,3 @@ export interface VersionDiff {
 }
 
 export type ImportMode = 'append' | 'overwrite'
-
-export type SyncTaskKind = 'backup' | 'list' | 'restore' | 'import'
-export type SyncTaskStatus = 'idle' | 'running' | 'success' | 'error'
-
-export interface SyncTaskState {
-  kind: SyncTaskKind | null
-  status: SyncTaskStatus
-  progress: number
-  messageKey: string
-}

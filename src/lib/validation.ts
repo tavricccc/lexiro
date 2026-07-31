@@ -62,6 +62,8 @@ export function normalizeItem(item: unknown, itemIndex: number): VocabItem {
     meaning: (it.meaning as string).trim(),
     example: (it.example as string).trim(),
     question: normalizeQuestion(it.question, itemIndex),
+    tags: Array.isArray(it.tags) ? it.tags.filter(isNonEmptyString).map(tag => tag.trim()) : [],
+    favorite: Boolean(it.favorite),
   }
 }
 
@@ -85,6 +87,8 @@ export function normalizeSet(data: unknown, fallbackId = generateId()): VocabSet
     setName: isNonEmptyString(d.setName) ? (d.setName as string).trim() : fallbackName,
     difficulty: (d.difficulty as number) ?? 2,
     items: (d.items as unknown[]).map((item, index) => normalizeItem(item, index)),
+    createdAt: isNonEmptyString(d.createdAt) ? d.createdAt as string : undefined,
+    updatedAt: isNonEmptyString(d.updatedAt) ? d.updatedAt as string : undefined,
   }
 }
 
@@ -164,6 +168,8 @@ export function createEditorItem(item?: VocabItem | null, index = 0): EditorItem
     pos: item?.pos ?? '',
     meaning: item?.meaning ?? '',
     example: item?.example ?? '',
+    tags: item?.tags ?? [],
+    favorite: item?.favorite ?? false,
     question: createEditorQuestion(item?.question),
   }
 }

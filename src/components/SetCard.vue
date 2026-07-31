@@ -3,6 +3,7 @@ import type { VocabItem } from '@/types'
 import { BookOpenText, PencilLine, Play, SpellCheck2, Trash2 } from 'lucide-vue-next'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useLearningStore } from '@/stores/learning'
 import { useSessionStore } from '@/stores/session'
 import Badge from './ui/badge/Badge.vue'
 import Button from './ui/button/Button.vue'
@@ -24,9 +25,17 @@ defineEmits<{
 
 const { t } = useI18n()
 const sessionStore = useSessionStore()
+const learningStore = useLearningStore()
 
 const progressLabel = computed(() => sessionStore.getInProgressModesLabel(props.set.id))
 const inProgressModes = computed(() => sessionStore.getInProgressModes(props.set.id))
+const dueCount = computed(() => learningStore.getDueCount(props.set))
+const mastery = computed(() => learningStore.getMasteryPercent(props.set))
+const favoriteCount = computed(() => props.set.items.filter(item => item.favorite).length)
+const weakCount = computed(() => props.set.items.filter((item) => {
+  const card = learningStore.getSetProgress(props.set.id).cards[item.id]
+  return Boolean(card && card.reviewCount >= 2 && card.correctCount / card.reviewCount < 0.6)
+}).length)
 
 function modeActive(mode: 'flashcard' | 'quiz' | 'spelling') {
   return inProgressModes.value.includes(mode)
@@ -79,6 +88,19 @@ function modeActive(mode: 'flashcard' | 'quiz' | 'spelling') {
     <div class="mt-5 flex flex-wrap gap-2">
       <MetricPill :label="$t('setCard.difficulty')" :value="set.difficulty" />
       <MetricPill :value="$t('practice.questions', { count: set.items.length })" />
+      <MetricPill v-if="dueCount" :label="$t('learning.due')" :value="dueCount" />
+      <MetricPill v-if="favoriteCount" :label="$t('learning.favorites')" :value="favoriteCount" />
+      <MetricPill v-if="weakCount" :label="$t('learning.weak')" :value="weakCount" />
+    </div>
+
+    <div class="mt-4">
+      <div class="mb-1.5 flex items-center justify-between text-[11px] font-bold text-ink-400">
+        <span>{{ $t('learning.mastery') }}</span>
+        <span>{{ mastery }}%</span>
+      </div>
+      <div class="h-1.5 overflow-hidden rounded-full bg-ink-200 dark:bg-ink-800">
+        <div class="h-full rounded-full bg-accent-primary transition-all duration-500" :style="{ width: `${mastery}%` }" />
+      </div>
     </div>
 
     <div class="mt-5 grid gap-2.5">

@@ -62,6 +62,17 @@ export const useSetsStore = defineStore('sets', () => {
     })
   }
 
+  function applyRemoteSets(remoteSets: VocabSet[]) {
+    sets.value = remoteSets
+    exportSelectedIds.value = remoteSets.map(set => set.id)
+    if (activeSetId.value && remoteSets.some(set => set.id === activeSetId.value)) {
+      saveState()
+      return
+    }
+    activeSetId.value = remoteSets[0]?.id ?? null
+    saveState()
+  }
+
   async function loadState() {
     const loaded = await loadFromStorage(SETS_STORAGE_KEY, [LEGACY_STORAGE_KEY])
     if (!loaded.value)
@@ -144,6 +155,8 @@ export const useSetsStore = defineStore('sets', () => {
           setName: setEditorName.value.trim(),
           difficulty: importDifficulty.value,
           items,
+          createdAt: new Date().toISOString(),
+          updatedAt: new Date().toISOString(),
         }
         sets.value = [...sets.value, nextSet]
         exportSelectedIds.value = [...exportSelectedIds.value, nextSet.id]
@@ -159,6 +172,7 @@ export const useSetsStore = defineStore('sets', () => {
           ...sets.value[targetIndex],
           setName: setEditorName.value.trim(),
           items,
+          updatedAt: new Date().toISOString(),
         }
         sets.value = sets.value.map(s => (s.id === setEditorId.value ? nextSet : s))
 
@@ -300,7 +314,7 @@ export const useSetsStore = defineStore('sets', () => {
     const result = applyImportedSets(sets.value, targetSets, mode, importVersionChoices.value)
 
     if (mode === 'overwrite') {
-      sets.value = result.imported
+      sets.value = result.imported.map(set => ({ ...set, updatedAt: new Date().toISOString() }))
       exportSelectedIds.value = result.imported.map(s => s.id)
       activeSetId.value = result.imported[0]?.id ?? null
       sessionStore.resetStudyView()
@@ -319,12 +333,14 @@ export const useSetsStore = defineStore('sets', () => {
     const nextSets = sets.value.map((s) => {
       if (result.replacedVersions.includes(s.setName)) {
         const replacement = result.imported.find(imp => imp.setName === s.setName)
-        return replacement ? { ...replacement, id: s.id } : s
+        return replacement ? { ...replacement, id: s.id, updatedAt: new Date().toISOString() } : s
       }
       return s
     })
 
-    const newSets = result.imported.filter(imp => !result.replacedVersions.includes(imp.setName))
+    const newSets = result.imported
+      .filter(imp => !result.replacedVersions.includes(imp.setName))
+      .map(set => ({ ...set, updatedAt: new Date().toISOString() }))
     sets.value = [...nextSets, ...newSets]
     exportSelectedIds.value = [...exportSelectedIds.value, ...newSets.map(s => s.id)]
 
@@ -346,6 +362,7 @@ export const useSetsStore = defineStore('sets', () => {
 
   return {
     sets,
+    applyRemoteSets,
     activeSetId,
     hasSets,
     activeSet,

@@ -2,11 +2,18 @@ export type {
   BackupPayload,
   ImportMode,
   ImportResult,
-  SyncTaskKind,
-  SyncTaskState,
-  SyncTaskStatus,
   VersionDiff,
 } from './backup'
+export type { FirestoreDailyStatsDoc, FirestoreProgressDoc, FirestoreSetDoc, FirestoreStatsDoc, SetSyncConflict } from './cloud'
+export type {
+  Achievement,
+  CardProgress,
+  DashboardStats,
+  LearningProgress,
+  ReviewEntry,
+  ReviewRating,
+  SyncStatus,
+} from './learning'
 export type {
   AnswerRecord,
   Draft,

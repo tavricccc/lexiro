@@ -208,7 +208,7 @@ describe('store persistence', () => {
     expect(JSON.parse(localStorage.getItem(SETS_STORAGE_KEY) ?? '{}').activeSetId).toBe(validSet.id)
   })
 
-  it('persists imported sets through the shared import path used by ZIP and Drive restore', () => {
+  it('persists imported sets through the shared ZIP import path', () => {
     const setsStore = useSetsStore()
 
     const result = setsStore.applyImported([validSet], 'overwrite')
