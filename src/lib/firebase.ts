@@ -16,6 +16,7 @@ const config = {
   appId: import.meta.env.VITE_FIREBASE_APP_ID as string | undefined,
   appCheckSiteKey: import.meta.env.VITE_FIREBASE_APPCHECK_SITE_KEY as string | undefined,
   appCheckEnabled: import.meta.env.VITE_FIREBASE_APPCHECK_ENABLED as string | undefined,
+  appCheckDebugToken: import.meta.env.VITE_FIREBASE_APPCHECK_DEBUG_TOKEN as string | undefined,
   googleClientId: import.meta.env.VITE_GOOGLE_CLIENT_ID as string | undefined,
 }
 
@@ -32,16 +33,24 @@ export function getFirebaseApp(): FirebaseApp | null {
   if (!isFirebaseConfigured())
     return null
   firebaseApp ??= getApps().length ? getApp() : initializeApp(config)
-  const shouldUseAppCheck = Boolean(config.appCheckSiteKey && (import.meta.env.PROD || config.appCheckEnabled === 'true'))
+  const hasDebugToken = Boolean(config.appCheckDebugToken && !import.meta.env.PROD)
+  // App Check is always enabled in production when the production site key is
+  // present. The explicit flag is only a local-development switch; it must
+  // never become a production bypass when Firestore enforcement is enabled.
+  const shouldUseAppCheck = Boolean(config.appCheckSiteKey && (import.meta.env.PROD || config.appCheckEnabled === 'true' || hasDebugToken))
   if (shouldUseAppCheck && !appCheck) {
     try {
+      if (hasDebugToken) {
+        const debugGlobal = globalThis as typeof globalThis & { FIREBASE_APPCHECK_DEBUG_TOKEN?: boolean | string }
+        debugGlobal.FIREBASE_APPCHECK_DEBUG_TOKEN = config.appCheckDebugToken === 'true' ? true : config.appCheckDebugToken
+      }
       appCheck = initializeAppCheck(firebaseApp, {
         provider: new ReCaptchaEnterpriseProvider(config.appCheckSiteKey!),
         isTokenAutoRefreshEnabled: true,
       })
     }
-    catch {
-      // App Check is optional for local development; Firestore will still report its own actionable error if enforcement is enabled.
+    catch (error) {
+      console.error('[Firebase App Check] initialization failed', error)
       appCheck = null
     }
   }

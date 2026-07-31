@@ -19,39 +19,60 @@ service cloud.firestore {
     function validSet() {
       return request.resource.data.keys().hasOnly([
         'id', 'setName', 'difficulty', 'items', 'createdAt', 'updatedAt',
-        'ownerId', 'schemaVersion', 'checksum'
+        'folderId', 'ownerId', 'schemaVersion', 'checksum'
       ])
         && request.resource.data.id is string
         && request.resource.data.setName is string
         && request.resource.data.setName.size() > 0
+        && request.resource.data.difficulty is number
         && request.resource.data.items is list
         && request.resource.data.items.size() > 0
         && request.resource.data.items.size() <= 500
-        && request.resource.data.schemaVersion == 1
+        && request.resource.data.schemaVersion == 2
         && request.resource.data.checksum is string;
     }
 
     function validProgress() {
       return request.resource.data.keys().hasOnly([
         'setId', 'cards', 'updatedAt', 'ownerId', 'schemaVersion'
-      ])
+        ])
         && request.resource.data.setId is string
         && request.resource.data.cards is map
-        && request.resource.data.schemaVersion == 1;
+        && request.resource.data.schemaVersion == 2;
     }
 
     function validStats() {
       return request.resource.data.keys().hasOnly([
         'totalReviews', 'correctReviews', 'streakDays', 'longestStreak',
-        'xp', 'level', 'lastStudyDate', 'dailyGoal', 'todayReviews',
-        'todayCorrectReviews', 'achievements', 'updatedAt', 'ownerId', 'schemaVersion'
+        'xp', 'level', 'lastStudyDate', 'dailyGoal', 'dailyWordGoal',
+        'dailyQuestionGoal', 'todayReviews', 'todayCorrectReviews',
+        'todayLearningReviews', 'todayLearningCorrectReviews',
+        'todayQuestionReviews', 'todayQuestionCorrectReviews', 'achievements',
+        'updatedAt', 'ownerId', 'schemaVersion'
       ])
         && request.resource.data.totalReviews is number
         && request.resource.data.correctReviews is number
         && request.resource.data.xp is number
         && request.resource.data.level is number
         && request.resource.data.todayCorrectReviews is number
-        && request.resource.data.schemaVersion == 1;
+        && request.resource.data.todayLearningReviews is number
+        && request.resource.data.todayLearningCorrectReviews is number
+        && request.resource.data.todayQuestionReviews is number
+        && request.resource.data.todayQuestionCorrectReviews is number
+        && request.resource.data.schemaVersion == 2;
+    }
+
+    function validLibraryChunk(chunkId) {
+      return request.resource.data.keys().hasOnly([
+        'ownerId', 'schemaVersion', 'chunkId', 'updatedAt', 'checksum', 'section', 'items'
+      ])
+        && request.resource.data.ownerId is string
+        && request.resource.data.schemaVersion == 2
+        && request.resource.data.chunkId == chunkId
+        && request.resource.data.updatedAt is string
+        && request.resource.data.checksum is string
+        && request.resource.data.section in ['words', 'memberships', 'folders', 'questions']
+        && request.resource.data.items is list;
     }
 
     match /users/{uid} {
@@ -62,6 +83,13 @@ service cloud.firestore {
         allow read: if signedIn(uid);
         allow create: if ownerCreate(uid) && validSet();
         allow update: if ownerUpdate(uid) && validSet();
+        allow delete: if signedIn(uid) && resource.data.ownerId == uid;
+      }
+
+      match /library/{chunkId} {
+        allow read: if signedIn(uid);
+        allow create: if ownerCreate(uid) && validLibraryChunk(chunkId);
+        allow update: if ownerUpdate(uid) && validLibraryChunk(chunkId);
         allow delete: if signedIn(uid) && resource.data.ownerId == uid;
       }
 
@@ -80,14 +108,17 @@ service cloud.firestore {
       match /stats/daily/{day} {
         allow read: if signedIn(uid);
         allow create, update: if signedIn(uid) && request.resource.data.keys().hasOnly([
-          'date', 'reviews', 'correctReviews', 'xpEarned', 'updatedAt', 'ownerId', 'schemaVersion'
+          'date', 'reviews', 'correctReviews', 'questionReviews',
+          'correctQuestionReviews', 'xpEarned', 'updatedAt', 'ownerId', 'schemaVersion'
         ])
           && request.resource.data.ownerId == uid
           && request.resource.data.date == day
           && request.resource.data.reviews is number
           && request.resource.data.correctReviews is number
+          && (!request.resource.data.keys().hasAny(['questionReviews']) || request.resource.data.questionReviews is number)
+          && (!request.resource.data.keys().hasAny(['correctQuestionReviews']) || request.resource.data.correctQuestionReviews is number)
           && request.resource.data.xpEarned is number
-          && request.resource.data.schemaVersion == 1;
+          && request.resource.data.schemaVersion == 2;
         allow delete: if signedIn(uid) && resource.data.ownerId == uid;
       }
     }

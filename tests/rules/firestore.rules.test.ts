@@ -34,10 +34,10 @@ rulesDescribe('Firestore security rules', () => {
     const payload = {
       id: 'set-1',
       setName: 'Basics',
-      difficulty: 'beginner',
+      difficulty: 1,
       items: [{ word: 'hello', meaning: '你好', pos: 'interjection', example: 'Hello!' }],
       ownerId: 'alice',
-      schemaVersion: 1,
+      schemaVersion: 2,
       checksum: 'abc123',
       updatedAt: new Date().toISOString(),
     }
@@ -52,9 +52,9 @@ rulesDescribe('Firestore security rules', () => {
     const base = {
       id: 'set-2',
       setName: 'Basics',
-      difficulty: 'beginner',
+      difficulty: 1,
       ownerId: 'alice',
-      schemaVersion: 1,
+      schemaVersion: 2,
       checksum: 'abc123',
       updatedAt: new Date().toISOString(),
     }
@@ -69,5 +69,23 @@ rulesDescribe('Firestore security rules', () => {
       items: Array.from({ length: 501 }, (_, index) => ({ word: `word-${index}`, meaning: '意思', pos: 'noun', example: 'Example' })),
     }))
     expect(true).toBe(true)
+  })
+
+  it('allows the v2 library chunks and keeps them isolated', async () => {
+    const alice = testEnv.authenticatedContext('alice').firestore()
+    const bob = testEnv.authenticatedContext('bob').firestore()
+    const payload = {
+      ownerId: 'alice',
+      schemaVersion: 2,
+      chunkId: 'words-001',
+      updatedAt: new Date().toISOString(),
+      checksum: 'abc123',
+      section: 'words',
+      items: [],
+    }
+
+    await assertSucceeds(alice.doc('users/alice/library/words-001').set(payload))
+    await assertFails(bob.doc('users/alice/library/words-001').get())
+    await assertFails(alice.doc('users/alice/library/words-001').update({ schemaVersion: 1 }))
   })
 })

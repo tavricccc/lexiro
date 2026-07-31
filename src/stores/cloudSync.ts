@@ -40,6 +40,7 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
   let started = false
   let activeUid = ''
   let realtimeUid = ''
+  let syncPaused = false
   let applyingRemote = false
   let previousSetIds = new Set<string>()
   const knownSetHashes = new Map<string, string>()
@@ -86,17 +87,41 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
     realtimeUid = ''
   }
 
+  function clearSyncTimers() {
+    if (setSyncTimer) {
+      clearTimeout(setSyncTimer)
+      setSyncTimer = null
+    }
+    if (learningSyncTimer) {
+      clearTimeout(learningSyncTimer)
+      learningSyncTimer = null
+    }
+    if (librarySyncTimer) {
+      clearTimeout(librarySyncTimer)
+      librarySyncTimer = null
+    }
+  }
+
+  function pauseSync() {
+    syncPaused = true
+    clearListeners()
+    clearSyncTimers()
+  }
+
   function setStatus(next: SyncStatus) {
     status.value = next
   }
 
   function explainSyncError(error: unknown): string {
     const message = error instanceof Error ? error.message : String(error)
-    const normalized = message.toLowerCase()
-    if (normalized.includes('permission-denied') || normalized.includes('missing or insufficient permissions'))
-      return 'Firestore 權限不足，請確認登入帳號、Firestore Rules 與 App Check 設定。'
+    const code = error && typeof error === 'object' && 'code' in error ? String(error.code) : ''
+    const normalized = `${code} ${message}`.toLowerCase()
+    if (normalized.includes('err_blocked_by_client') || normalized.includes('blocked by client'))
+      return '雲端同步已暫停：Firestore 請求被瀏覽器擴充功能或網路攔截。請停用攔截後再按「重新連線」。'
     if (normalized.includes('app check') || normalized.includes('recaptcha') || normalized.includes('token is invalid'))
-      return 'Firebase App Check／reCAPTCHA 驗證失敗；本機開發已停用 App Check，正式環境請確認網域與 site key。'
+      return '雲端同步已暫停：Firebase App Check／reCAPTCHA 驗證失敗。請確認是 Enterprise Website score-based site key（不是 checkbox key）；若在 localhost，請改用已註冊的 App Check debug token。'
+    if (normalized.includes('permission-denied') || normalized.includes('missing or insufficient permissions'))
+      return '雲端同步已暫停：Firestore Rules 或 App Check 拒絕這次存取。請確認登入帳號、Rules、site key 與部署網域。'
     if (normalized.includes('unauthenticated') || normalized.includes('auth'))
       return '登入狀態已失效，請重新登入 Google。'
     if (normalized.includes('unavailable') || normalized.includes('network'))
@@ -104,10 +129,17 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
     return message || 'Firebase 回傳未命名的同步錯誤。'
   }
 
-  function setError(message: string) {
-    error.value = explainSyncError(message)
+  function setError(syncError: unknown) {
+    error.value = explainSyncError(syncError)
     status.value = 'error'
   }
+
+  function handleSyncError(syncError: unknown) {
+    pauseSync()
+    setError(syncError)
+  }
+
+  const handleRealtimeError = handleSyncError
 
   function markSynced() {
     lastSyncedAt.value = new Date().toISOString()
@@ -270,9 +302,9 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
       }
       previousSetIds = new Set(canonicalNextSets.map(set => set.id))
       if (writes.length)
-        void Promise.all(writes).catch(syncError => setError((syncError as Error).message))
+        void Promise.all(writes).catch(handleSyncError)
       markSynced()
-    }, snapshotError => setError(snapshotError.message))
+    }, handleRealtimeError)
   }
 
   function applyRemoteLibraryChanges(uid: string) {
@@ -300,7 +332,7 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
         applyingRemote = false
       }
       markSynced()
-    }, snapshotError => setError(snapshotError.message))
+    }, handleRealtimeError)
   }
 
   function applyRemoteLearningChanges(uid: string) {
@@ -329,9 +361,9 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
         })
       learningStore.saveState()
       if (writes.length)
-        void Promise.all(writes).catch(syncError => setError((syncError as Error).message))
+        void Promise.all(writes).catch(handleSyncError)
       markSynced()
-    }, snapshotError => setError(snapshotError.message))
+    }, handleRealtimeError)
     statsUnsubscribe = onSnapshot(userDocument(uid, 'stats', 'summary'), (snapshot) => {
       const learningStore = useLearningStore()
       if (!snapshot.exists()) {
@@ -342,7 +374,7 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
             ...learningStore.stats,
             ownerId: uid,
             schemaVersion: SCHEMA_VERSION,
-          }).catch(syncError => setError((syncError as Error).message))
+          }).catch(handleSyncError)
         }
         return
       }
@@ -359,11 +391,11 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
         knownStatsHash = stableHash(remote)
         learningStore.saveState()
       }
-    }, snapshotError => setError(snapshotError.message))
+    }, handleRealtimeError)
   }
 
   async function flushLearning() {
-    if (!user.value)
+    if (!user.value || syncPaused)
       return
     const learningStore = useLearningStore()
     pendingWrites.value += 1
@@ -413,12 +445,12 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
       markSynced()
     }
     catch (syncError) {
-      setError((syncError as Error).message)
+      handleSyncError(syncError)
     }
   }
 
   async function flushLibrary() {
-    if (!user.value || applyingRemote)
+    if (!user.value || syncPaused || applyingRemote)
       return
     const libraryStore = useLibraryStore()
     pendingWrites.value += 1
@@ -428,18 +460,18 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
       markSynced()
     }
     catch (syncError) {
-      setError((syncError as Error).message)
+      handleSyncError(syncError)
     }
   }
 
   async function flushAll() {
-    if (!user.value)
+    if (!user.value || syncPaused)
       return
     await Promise.all([flushLearning(), flushLibrary()])
   }
 
   function scheduleLearningSync() {
-    if (!user.value)
+    if (!user.value || syncPaused)
       return
     if (learningSyncTimer)
       clearTimeout(learningSyncTimer)
@@ -447,7 +479,7 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
   }
 
   function scheduleLibrarySync() {
-    if (!user.value || applyingRemote)
+    if (!user.value || syncPaused || applyingRemote)
       return
     if (librarySyncTimer)
       clearTimeout(librarySyncTimer)
@@ -455,7 +487,7 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
   }
 
   function scheduleSetSync(nextSets: FirestoreSetDoc[]) {
-    if (!user.value || applyingRemote)
+    if (!user.value || syncPaused || applyingRemote)
       return
     if (setSyncTimer)
       clearTimeout(setSyncTimer)
@@ -476,12 +508,14 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
         markSynced()
       }
       catch (syncError) {
-        setError((syncError as Error).message)
+        handleSyncError(syncError)
       }
     }, 900)
   }
 
   async function startRealtime(uid: string) {
+    if (syncPaused)
+      return
     if (realtimeUid === uid && setsUnsubscribe && libraryUnsubscribe && progressUnsubscribe && statsUnsubscribe)
       return
     clearListeners()
@@ -493,7 +527,7 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
       applyRemoteLearningChanges(uid)
     }
     catch (syncError) {
-      setError((syncError as Error).message)
+      handleSyncError(syncError)
     }
   }
 
@@ -504,8 +538,11 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
   }
 
   function retryConnection() {
-    if (user.value)
+    if (user.value) {
+      syncPaused = false
+      error.value = ''
       void startRealtime(user.value.uid)
+    }
   }
 
   async function init() {
@@ -528,6 +565,7 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
         knownDailyHash = ''
         knownLibraryHashes.clear()
         previousSetIds = new Set()
+        syncPaused = false
       }
       activeUid = nextUser?.uid || ''
       user.value = nextUser
@@ -569,7 +607,7 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
       await signInWithCredential(auth, credential)
     }
     catch (authError) {
-      setError((authError as Error).message)
+      setError(authError)
     }
   }
 
@@ -602,7 +640,7 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
       conflicts.value = conflicts.value.filter(item => item.setId !== setId)
     }
     catch (syncError) {
-      setError((syncError as Error).message)
+      handleSyncError(syncError)
     }
   }
 
