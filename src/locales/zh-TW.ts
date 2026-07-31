@@ -4,6 +4,18 @@ export default {
   },
   nav: {
     lookup: '查單字',
+    home: '首頁',
+    study: '學習',
+    library: '字庫',
+    dictionary: '字典',
+    stats: '統計',
+    settings: '設定',
+    main: '主要導覽',
+    expandSidebar: '展開側欄',
+    collapseSidebar: '收合側欄',
+    lightMode: '淺色模式',
+    darkMode: '深色模式',
+    localMode: '本機學習模式',
   },
   home: {
     title: 'lexiro 尚未載入單字集',

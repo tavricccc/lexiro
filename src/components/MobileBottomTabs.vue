@@ -1,26 +1,21 @@
 <script setup lang="ts">
-import { BarChart3, BookMarked, BookOpen, Brain, Library } from 'lucide-vue-next'
 import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { RouterLink, useRoute } from 'vue-router'
+import { APP_NAV_ITEMS } from '@/constants/navigation'
 
 const route = useRoute()
-const items = [
-  { key: 'home', to: '/', label: '首頁', icon: Brain },
-  { key: 'study', to: '/study', label: '學習', icon: BookOpen },
-  { key: 'library', to: '/library', label: '字庫', icon: Library },
-  { key: 'dictionary', to: '/dictionary', label: '字典', icon: BookMarked },
-  { key: 'stats', to: '/stats', label: '統計', icon: BarChart3 },
-]
-const activeIndex = computed(() => items.findIndex(item => route.name === item.key))
+const { t } = useI18n()
+const activeIndex = computed(() => APP_NAV_ITEMS.findIndex(item => route.name === item.key))
 </script>
 
 <template>
-  <nav class="mobile-bottom-tabs fixed inset-x-3 bottom-3 z-40 mx-auto max-w-md rounded-full border border-ink-200/60 bg-white/90 px-2 py-1.5 shadow-floating backdrop-blur-xl dark:border-ink-700/60 dark:bg-ink-950/90 md:hidden" aria-label="主要導覽">
+  <nav class="mobile-bottom-tabs fixed inset-x-3 bottom-3 z-40 mx-auto max-w-md rounded-full border border-ink-200/60 bg-white/90 px-2 py-1.5 shadow-floating backdrop-blur-xl dark:border-ink-700/60 dark:bg-ink-950/90 md:hidden" :aria-label="t('nav.main')">
     <div class="relative grid grid-cols-5 gap-1">
-      <span v-if="activeIndex >= 0" class="mobile-bottom-tabs__indicator" :style="{ width: `${100 / items.length}%`, transform: `translateX(${activeIndex * 100}%)` }" aria-hidden="true" />
-      <RouterLink v-for="item in items" :key="item.key" :to="item.to" class="mobile-bottom-tab" :class="route.name === item.key ? 'mobile-bottom-tab--active' : ''">
+      <span v-if="activeIndex >= 0" class="mobile-bottom-tabs__indicator" :style="{ width: `${100 / APP_NAV_ITEMS.length}%`, transform: `translateX(${activeIndex * 100}%)` }" aria-hidden="true" />
+      <RouterLink v-for="item in APP_NAV_ITEMS" :key="item.key" :to="item.to" class="mobile-bottom-tab" :class="route.name === item.key ? 'mobile-bottom-tab--active' : ''">
         <component :is="item.icon" class="h-5 w-5" :stroke-width="1.9" />
-        <span>{{ item.label }}</span>
+        <span>{{ t(item.label) }}</span>
       </RouterLink>
     </div>
   </nav>

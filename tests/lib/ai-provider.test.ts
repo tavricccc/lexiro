@@ -1,7 +1,7 @@
 import { describe, expect, it, vi } from 'vitest'
 import { defaultAiSettings, extractJsonText, generateWithAi } from '@/lib/ai-provider'
 
-describe('AI provider adapter', () => {
+describe('aI provider adapter', () => {
   it('extracts JSON from fenced or explanatory responses', () => {
     expect(extractJsonText('Here you go:\n```json\n{"items":[]}\n```')).toBe('{"items":[]}')
     expect(extractJsonText('Result: {"items":[]}')).toBe('{"items":[]}')
