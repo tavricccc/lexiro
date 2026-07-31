@@ -35,6 +35,12 @@ jobs:
           node-version: 22
           cache: npm
 
+      - name: Setup Java 25 for Firebase emulators
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '25'
+
       - name: Install dependencies
         run: npm ci
 
