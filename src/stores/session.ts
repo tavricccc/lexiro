@@ -710,6 +710,7 @@ export const useSessionStore = defineStore('session', () => {
     isSetInProgress,
     getInProgressModes,
     getInProgressModesLabel,
+    getPracticeCount,
     startFlashcards,
     startRound,
     handlePracticeCountChange,

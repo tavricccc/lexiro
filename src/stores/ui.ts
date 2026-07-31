@@ -1,6 +1,5 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
-import { THEME_KEY } from '@/constants'
 
 export const useUIStore = defineStore('ui', () => {
   const theme = ref<'light' | 'dark'>('light')
@@ -18,6 +17,8 @@ export const useUIStore = defineStore('ui', () => {
   const versionUpdateReady = ref(false)
   const versionUpdateLoading = ref(false)
   const sidebarExpanded = ref(localStorage.getItem('lexiro_sidebar_expanded') !== 'false')
+  let themeMediaQuery: MediaQueryList | null = null
+  let themeListener: ((event: MediaQueryListEvent) => void) | null = null
 
   let confirmResolver: ((value: boolean) => void) | null = null
   let toastTimer: number | null = null
@@ -59,38 +60,22 @@ export const useUIStore = defineStore('ui', () => {
     }
   }
 
-  function toggleTheme() {
-    if (theme.value === 'light') {
-      theme.value = 'dark'
-      document.documentElement.classList.add('dark')
-      document.documentElement.dataset.theme = 'dark'
-      localStorage.setItem(THEME_KEY, 'dark')
-    }
-    else {
-      theme.value = 'light'
-      document.documentElement.classList.remove('dark')
-      document.documentElement.dataset.theme = 'light'
-      localStorage.setItem(THEME_KEY, 'light')
-    }
-  }
-
   function toggleSidebar() {
     sidebarExpanded.value = !sidebarExpanded.value
     localStorage.setItem('lexiro_sidebar_expanded', String(sidebarExpanded.value))
   }
 
   function initTheme() {
-    const saved = localStorage.getItem(THEME_KEY)
-    if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      theme.value = 'dark'
-      document.documentElement.classList.add('dark')
-      document.documentElement.dataset.theme = 'dark'
+    themeListener && themeMediaQuery?.removeEventListener('change', themeListener)
+    themeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
+    const applySystemTheme = (isDark: boolean) => {
+      theme.value = isDark ? 'dark' : 'light'
+      document.documentElement.classList.toggle('dark', isDark)
+      document.documentElement.dataset.theme = isDark ? 'dark' : 'light'
     }
-    else {
-      theme.value = 'light'
-      document.documentElement.classList.remove('dark')
-      document.documentElement.dataset.theme = 'light'
-    }
+    applySystemTheme(themeMediaQuery.matches)
+    themeListener = event => applySystemTheme(event.matches)
+    themeMediaQuery.addEventListener('change', themeListener)
   }
 
   function openTransfer() {
@@ -120,7 +105,6 @@ export const useUIStore = defineStore('ui', () => {
     showToast,
     showConfirm,
     resolveConfirm,
-    toggleTheme,
     toggleSidebar,
     initTheme,
     openTransfer,

@@ -10,11 +10,15 @@ import Badge from './ui/badge/Badge.vue'
 import Button from './ui/button/Button.vue'
 import Card from './ui/card/Card.vue'
 import Input from './ui/input/Input.vue'
+import Select from './ui/select/Select.vue'
+
 import Textarea from './ui/textarea/Textarea.vue'
 
 const setsStore = useSetsStore()
 const { sets } = storeToRefs(setsStore)
 const { addItemToSet } = setsStore
+
+const setOptions = computed(() => sets.value.map(set => ({ value: set.id, label: set.setName })))
 
 const query = ref('')
 const loading = ref(false)
@@ -94,13 +98,9 @@ function addToLibrary() {
 <template>
   <section class="space-y-6 text-left">
     <div>
-      <p class="text-xs font-black uppercase tracking-[0.18em] text-ink-400">
-        {{ $t('dictionary.eyebrow') }}
-      </p><h1 class="mt-2 text-3xl font-black tracking-tight">
+      <h1 class="text-3xl font-black tracking-tight">
         {{ $t('dictionary.title') }}
-      </h1><p class="mt-2 max-w-2xl text-sm font-semibold leading-relaxed text-ink-500">
-        {{ $t('dictionary.description') }}
-      </p>
+      </h1>
     </div>
 
     <Card class="p-4 sm:p-5">
@@ -123,21 +123,15 @@ function addToLibrary() {
       <Card class="p-6">
         <Search class="h-5 w-5 text-ink-400" /><h2 class="mt-6 text-lg font-black">
           {{ $t('dictionary.featureLookup') }}
-        </h2><p class="mt-2 text-sm font-semibold leading-relaxed text-ink-500">
-          {{ $t('dictionary.featureLookupDescription') }}
-        </p>
+        </h2>
       </Card><Card class="p-6">
         <AudioLines class="h-5 w-5 text-ink-400" /><h2 class="mt-6 text-lg font-black">
           {{ $t('dictionary.featurePronunciation') }}
-        </h2><p class="mt-2 text-sm font-semibold leading-relaxed text-ink-500">
-          {{ $t('dictionary.featurePronunciationDescription') }}
-        </p>
+        </h2>
       </Card><Card class="p-6">
         <BookOpen class="h-5 w-5 text-ink-400" /><h2 class="mt-6 text-lg font-black">
           {{ $t('dictionary.featureSave') }}
-        </h2><p class="mt-2 text-sm font-semibold leading-relaxed text-ink-500">
-          {{ $t('dictionary.featureSaveDescription') }}
-        </p>
+        </h2>
       </Card>
     </div>
 
@@ -187,10 +181,11 @@ function addToLibrary() {
           <Plus class="h-4 w-4" /><h2 class="font-black">
             {{ $t('dictionary.addTitle') }}
           </h2>
-        </div><p class="mt-2 text-xs font-semibold leading-relaxed text-ink-500">
-          {{ $t('dictionary.addDescription') }}
-        </p><div v-if="sets.length" class="mt-6 space-y-4">
-          <label class="block text-xs font-black text-ink-500">{{ $t('dictionary.chooseSet') }}<select v-model="selectedSetId" class="mt-2 h-11 w-full rounded-xl border border-ink-200 bg-white px-3 text-sm font-bold dark:border-ink-700 dark:bg-ink-900"><option value="">{{ $t('dictionary.chooseSetPlaceholder') }}</option><option v-for="set in sets" :key="set.id" :value="set.id">{{ set.setName }}</option></select></label><label class="block text-xs font-black text-ink-500">{{ $t('dictionary.myMeaning') }}<Input v-model="meaning" class="mt-2" :placeholder="$t('dictionary.myMeaningPlaceholder')" /></label><label class="block text-xs font-black text-ink-500">{{ $t('dictionary.myExample') }}<Textarea v-model="example" :rows="3" class="mt-2" :placeholder="$t('dictionary.myExamplePlaceholder')" /></label><Button class="w-full gap-2" :disabled="!selectedSetId || !meaning.trim()" @click="addToLibrary">
+        </div><div v-if="sets.length" class="mt-6 space-y-4">
+          <div class="block text-xs font-black text-ink-500">
+            {{ $t('dictionary.chooseSet') }}
+            <Select v-model="selectedSetId" :options="setOptions" :placeholder="$t('dictionary.chooseSetPlaceholder')" class="mt-2" />
+          </div><label class="block text-xs font-black text-ink-500">{{ $t('dictionary.myMeaning') }}<Input v-model="meaning" class="mt-2" :placeholder="$t('dictionary.myMeaningPlaceholder')" /></label><label class="block text-xs font-black text-ink-500">{{ $t('dictionary.myExample') }}<Textarea v-model="example" :rows="3" class="mt-2" :placeholder="$t('dictionary.myExamplePlaceholder')" /></label><Button class="w-full gap-2" :disabled="!selectedSetId || !meaning.trim()" @click="addToLibrary">
             <Plus class="h-4 w-4" />{{ $t('dictionary.addButton') }}
           </Button><p v-if="saved" class="text-center text-xs font-bold text-emerald-600">
             {{ $t('dictionary.added') }}

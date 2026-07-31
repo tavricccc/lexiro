@@ -1,10 +1,11 @@
 <script setup lang="ts">
+import type { VocabSet } from '@/types'
 import { ClipboardPaste, FileQuestion, Plus, Search, Upload } from 'lucide-vue-next'
 import { storeToRefs } from 'pinia'
 import { computed, ref } from 'vue'
-import { useSessionStore } from '@/stores/session'
 import { useSetsStore } from '@/stores/sets'
 import { useUIStore } from '@/stores/ui'
+import SetStudyModal from './dialogs/SetStudyModal.vue'
 import SetCard from './SetCard.vue'
 import Button from './ui/button/Button.vue'
 import Card from './ui/card/Card.vue'
@@ -12,12 +13,14 @@ import EmptyState from './ui/empty-state/EmptyState.vue'
 import Input from './ui/input/Input.vue'
 
 const setsStore = useSetsStore()
-const sessionStore = useSessionStore()
 const uiStore = useUIStore()
 const { hasSets, sets } = storeToRefs(setsStore)
 const { isSetInProgress, requestDelete, openSetEditor, openImport } = setsStore
 const { openTransfer } = uiStore
+
 const query = ref('')
+const studyModalOpen = ref(false)
+const studyModalSet = ref<VocabSet | null>(null)
 
 const filteredSets = computed(() => {
   const q = query.value.trim().toLowerCase()
@@ -26,12 +29,12 @@ const filteredSets = computed(() => {
   return sets.value.filter(set => set.setName.toLowerCase().includes(q) || set.items.some(item => [item.word, item.meaning, item.definition ?? '', ...(item.tags ?? [])].some(value => value.toLowerCase().includes(q))))
 })
 
-function startPractice(mode: 'quiz' | 'spelling', setId: string) {
-  if (sessionStore.getInProgressModes(setId).includes(mode)) {
-    sessionStore.startRound(mode, setId)
-    return
+function handleStudy(setId: string) {
+  const found = sets.value.find(s => s.id === setId)
+  if (found) {
+    studyModalSet.value = found
+    studyModalOpen.value = true
   }
-  sessionStore.openPracticeDialog(mode, setId)
 }
 </script>
 
@@ -39,13 +42,9 @@ function startPractice(mode: 'quiz' | 'spelling', setId: string) {
   <section class="space-y-6 text-left">
     <div class="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
       <div>
-        <p class="text-xs font-black uppercase tracking-[0.18em] text-ink-400">
-          {{ $t('library.eyebrow') }}
-        </p><h1 class="mt-2 text-3xl font-black tracking-tight">
+        <h1 class="text-3xl font-black tracking-tight">
           {{ $t('library.title') }}
-        </h1><p class="mt-2 text-sm font-semibold text-ink-500">
-          {{ $t('library.description') }}
-        </p>
+        </h1>
       </div>
       <div class="flex gap-2">
         <Button variant="outline" class="gap-2" @click="openTransfer">
@@ -56,7 +55,7 @@ function startPractice(mode: 'quiz' | 'spelling', setId: string) {
       </div>
     </div>
 
-    <EmptyState v-if="!hasSets" :title="$t('home.title')" :description="$t('home.description')">
+    <EmptyState v-if="!hasSets" :title="$t('home.title')">
       <template #icon>
         <FileQuestion class="h-7 w-7" />
       </template>
@@ -87,14 +86,27 @@ function startPractice(mode: 'quiz' | 'spelling', setId: string) {
           <Search class="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-ink-400" /><Input v-model="query" :placeholder="$t('home.searchPlaceholder')" class="rounded-xl pl-9" />
         </div>
       </Card>
+
       <div v-if="filteredSets.length" class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
         <div v-for="(set, i) in filteredSets" :key="set.id" class="set-card-enter" :style="{ animationDelay: `${Math.min(i, 10) * 40}ms` }">
-          <SetCard :set="set" :active="isSetInProgress(set.id)" @flashcards="sessionStore.startFlashcards" @quiz="startPractice('quiz', $event)" @spelling="startPractice('spelling', $event)" @delete="requestDelete" @edit="openSetEditor('edit', sets.find(item => item.id === $event))" />
+          <SetCard
+            :set="set"
+            :active="isSetInProgress(set.id)"
+            @study="handleStudy"
+            @delete="requestDelete"
+            @edit="openSetEditor('edit', sets.find(item => item.id === $event))"
+          />
         </div>
       </div>
       <div v-else class="py-16 text-center text-sm font-semibold text-ink-400">
         {{ $t('home.noSearchResults') }}
       </div>
     </template>
+
+    <SetStudyModal
+      :open="studyModalOpen"
+      :set="studyModalSet"
+      @close="studyModalOpen = false"
+    />
   </section>
 </template>

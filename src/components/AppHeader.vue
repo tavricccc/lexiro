@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ArrowLeft, Moon, PencilLine, Plus, Sun, Trash2, Upload } from 'lucide-vue-next'
+import { ArrowLeft, PencilLine, Plus, Trash2, Upload } from 'lucide-vue-next'
 import { storeToRefs } from 'pinia'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
@@ -23,8 +23,7 @@ const { currentSession, currentIndex, totalItems, progressPercent, flashcardInde
 const { currentReviewEntry, reviewIndex, reviewTotal, reviewProgress } = storeToRefs(learningStore)
 const { hasSets, sets, totalWordCount, activeSet } = storeToRefs(setsStore)
 const { editActiveSet, deleteActiveSet, openImport } = setsStore
-const { theme } = storeToRefs(uiStore)
-const { openTransfer, toggleTheme } = uiStore
+const { openTransfer } = uiStore
 
 const isHome = computed(() => route.name === 'home')
 const isPractice = computed(() => route.name === 'quiz' || route.name === 'spelling')
@@ -144,22 +143,6 @@ const progressValue = computed(() => isReview.value ? reviewProgress.value : pro
             <Trash2 class="h-4 w-4" />
           </Button>
         </template>
-
-        <span class="w-px h-5 bg-ink-200/60 dark:bg-ink-200/10 mx-1 hidden sm:inline-block" />
-
-        <Button
-          variant="ghost"
-          size="icon"
-          class="h-9 w-9 relative overflow-hidden"
-          :title="t('appHeader.toggleTheme')"
-          :aria-label="t('appHeader.toggleTheme')"
-          @click="toggleTheme"
-        >
-          <Transition name="theme-icon" mode="out-in">
-            <Sun v-if="theme === 'dark'" key="sun" class="h-4.5 w-4.5 text-accent-primary" />
-            <Moon v-else key="moon" class="h-4.5 w-4.5 text-accent-primary" />
-          </Transition>
-        </Button>
       </div>
     </div>
     <div v-if="showSessionProgress" class="sm:hidden px-4 pb-2">

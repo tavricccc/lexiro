@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ChevronLeft, ChevronRight, Moon, Settings, Sun } from 'lucide-vue-next'
+import { ChevronLeft, ChevronRight, Settings } from 'lucide-vue-next'
 import { storeToRefs } from 'pinia'
 import { useI18n } from 'vue-i18n'
 import { RouterLink, useRoute } from 'vue-router'
@@ -11,7 +11,7 @@ import Button from './ui/button/Button.vue'
 const route = useRoute()
 const uiStore = useUIStore()
 const { t } = useI18n()
-const { sidebarExpanded: expanded, theme } = storeToRefs(uiStore)
+const { sidebarExpanded: expanded } = storeToRefs(uiStore)
 
 const isActive = (key: string) => route.name === key
 
@@ -45,11 +45,6 @@ function toggle() {
         <Settings class="h-5 w-5 shrink-0" :stroke-width="1.9" />
         <span v-if="expanded" class="text-sm font-bold">{{ t('nav.settings') }}</span>
       </RouterLink>
-      <button type="button" class="app-sidebar-item" :data-label="theme === 'dark' ? t('nav.lightMode') : t('nav.darkMode')" @click="uiStore.toggleTheme">
-        <Sun v-if="theme === 'dark'" class="h-5 w-5 shrink-0" />
-        <Moon v-else class="h-5 w-5 shrink-0" />
-        <span v-if="expanded" class="text-sm font-bold">{{ theme === 'dark' ? t('nav.lightMode') : t('nav.darkMode') }}</span>
-      </button>
       <SidebarAccountMenu class="mt-2" :collapsed="!expanded" />
     </div>
   </aside>

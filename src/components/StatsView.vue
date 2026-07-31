@@ -16,13 +16,9 @@ const setStats = computed(() => sets.value.map(set => ({ set, mastery: learningS
 <template>
   <section class="space-y-6 text-left">
     <div>
-      <p class="text-xs font-black uppercase tracking-[0.18em] text-ink-400">
-        {{ $t('stats.eyebrow') }}
-      </p><h1 class="mt-2 text-3xl font-black tracking-tight">
+      <h1 class="text-3xl font-black tracking-tight">
         {{ $t('stats.title') }}
-      </h1><p class="mt-2 text-sm font-semibold text-ink-500">
-        {{ $t('stats.description') }}
-      </p>
+      </h1>
     </div><div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
       <Card class="p-5">
         <Target class="h-5 w-5 text-ink-500" /><p class="mt-4 text-3xl font-black">

@@ -7,13 +7,20 @@ import { defaultAiSettings, loadAiSettings, saveAiSettings } from '@/lib/ai-prov
 import { useUIStore } from '@/stores/ui'
 import Button from './ui/button/Button.vue'
 import Card from './ui/card/Card.vue'
-import Input from './ui/input/Input.vue'
+import Select from './ui/select/Select.vue'
 
 const router = useRouter()
 const uiStore = useUIStore()
 const { t } = useI18n()
 const settings = reactive({ ...loadAiSettings() })
 const saved = ref(false)
+
+const providerOptions = [
+  { value: 'openai', label: 'OpenAI-compatible' },
+  { value: 'anthropic', label: 'Anthropic' },
+  { value: 'google', label: 'Google Gemini' },
+  { value: 'custom', label: 'Custom OpenAI-compatible' },
+]
 
 function save() {
   saveAiSettings({ ...settings, batchSize: Math.min(Math.max(Number(settings.batchSize) || 10, 5), 20) })
@@ -36,13 +43,9 @@ function updateBatchSize(value: string) {
   <section class="space-y-6 text-left">
     <div class="flex items-end justify-between gap-4">
       <div>
-        <p class="text-xs font-black uppercase tracking-[0.18em] text-ink-400">
-          {{ $t('settings.eyebrow') }}
-        </p><h1 class="mt-2 text-3xl font-black tracking-tight">
+        <h1 class="text-3xl font-black tracking-tight">
           {{ $t('settings.title') }}
-        </h1><p class="mt-2 text-sm font-semibold text-ink-500">
-          {{ $t('settings.description') }}
-        </p>
+        </h1>
       </div><Button variant="outline" class="gap-2" @click="router.push('/')">
         <Settings2 class="h-4 w-4" />{{ $t('settings.backHome') }}
       </Button>
@@ -54,12 +57,30 @@ function updateBatchSize(value: string) {
         </div><div>
           <h2 class="font-black">
             {{ $t('settings.aiTitle') }}
-          </h2><p class="mt-1 text-sm font-semibold leading-relaxed text-ink-500">
-            {{ $t('settings.aiDescription') }}
-          </p>
+          </h2>
         </div>
-      </div><div class="mt-7 grid gap-4 sm:grid-cols-2">
-        <label class="text-xs font-black text-ink-500">{{ $t('settings.provider') }}<select v-model="settings.provider" class="mt-2 h-11 w-full rounded-xl border border-ink-200 bg-white px-3 text-sm font-bold dark:border-ink-700 dark:bg-ink-900"><option value="openai">OpenAI-compatible</option><option value="anthropic">Anthropic</option><option value="google">Google Gemini</option><option value="custom">Custom OpenAI-compatible</option></select></label><label class="text-xs font-black text-ink-500">{{ $t('settings.model') }}<Input v-model="settings.model" class="mt-2" placeholder="gpt-4o-mini / claude / gemini" /></label><label class="text-xs font-black text-ink-500 sm:col-span-2">{{ $t('settings.endpoint') }}<Input v-model="settings.baseUrl" class="mt-2" :placeholder="$t('settings.endpointPlaceholder')" /><span class="mt-1 block text-[11px] font-semibold text-ink-400">{{ $t('settings.endpointHint') }}</span></label><label class="text-xs font-black text-ink-500 sm:col-span-2">{{ $t('settings.apiKey') }}<Input v-model="settings.apiKey" type="password" class="mt-2" :placeholder="$t('settings.apiKeyPlaceholder')" /></label><label class="text-xs font-black text-ink-500">{{ $t('settings.batchSize') }}<Input :model-value="String(settings.batchSize)" type="number" min="5" max="20" class="mt-2" @update:model-value="updateBatchSize" /></label><label class="flex items-center gap-3 pt-6 text-sm font-bold"><input v-model="settings.enabled" type="checkbox" class="h-4 w-4 rounded accent-black">{{ $t('settings.enableAi') }}</label>
+      </div>
+      <div class="mt-7">
+        <p class="text-xs font-black text-ink-500">
+          {{ $t('settings.aiMode') }}
+        </p>
+        <div class="mt-2 grid grid-cols-2 gap-1 rounded-2xl bg-ink-100 p-1 dark:bg-ink-900">
+          <button type="button" class="rounded-xl px-3 py-3 text-left text-sm font-black transition" :class="settings.enabled ? 'text-ink-500 hover:bg-white/70 dark:hover:bg-ink-800' : 'bg-white text-ink-950 shadow-sm dark:bg-ink-800 dark:text-ink-50'" @click="settings.enabled = false">
+            {{ $t('settings.manualMode') }}
+          </button>
+          <button type="button" class="rounded-xl px-3 py-3 text-left text-sm font-black transition" :class="settings.enabled ? 'bg-white text-ink-950 shadow-sm dark:bg-ink-800 dark:text-ink-50' : 'text-ink-500 hover:bg-white/70 dark:hover:bg-ink-800'" @click="settings.enabled = true">
+            {{ $t('settings.apiMode') }}
+          </button>
+        </div>
+        <p class="mt-2 text-xs font-semibold leading-relaxed text-ink-400">
+          {{ settings.enabled ? $t('settings.apiModeHint') : $t('settings.manualModeHint') }}
+        </p>
+      </div>
+      <div v-if="settings.enabled" class="mt-5 grid gap-4 sm:grid-cols-2">
+        <div class="text-xs font-black text-ink-500">
+          {{ $t('settings.provider') }}
+          <Select v-model="settings.provider" :options="providerOptions" class="mt-2" />
+        </div><label class="text-xs font-black text-ink-500">{{ $t('settings.model') }}<Input v-model="settings.model" class="mt-2" placeholder="gpt-4o-mini / claude / gemini" /></label><label class="text-xs font-black text-ink-500 sm:col-span-2">{{ $t('settings.endpoint') }}<Input v-model="settings.baseUrl" class="mt-2" :placeholder="$t('settings.endpointPlaceholder')" /><span class="mt-1 block text-[11px] font-semibold text-ink-400">{{ $t('settings.endpointHint') }}</span></label><label class="text-xs font-black text-ink-500 sm:col-span-2">{{ $t('settings.apiKey') }}<Input v-model="settings.apiKey" type="password" class="mt-2" :placeholder="$t('settings.apiKeyPlaceholder')" /></label><label class="text-xs font-black text-ink-500">{{ $t('settings.batchSize') }}<Input :model-value="String(settings.batchSize)" type="number" min="5" max="20" class="mt-2" @update:model-value="updateBatchSize" /></label>
       </div><div class="mt-7 flex flex-wrap items-center gap-2">
         <Button variant="default" class="gap-2" @click="save">
           <Save class="h-4 w-4" />{{ $t('settings.save') }}

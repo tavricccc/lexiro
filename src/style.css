@@ -157,26 +157,26 @@
 .dark {
   --theme-primary: #f6f0e7;
   --theme-on-primary: #2c2925;
-  --theme-primary-container: #4a4640;
-  --theme-on-primary-container: #f5f1ea;
+  --theme-primary-container: #3a3631;
+  --theme-on-primary-container: #f6f0e7;
 
   --theme-secondary: #beb6ab;
-  --theme-on-secondary: #2c2925;
+  --theme-on-secondary: #262320;
   --theme-secondary-container: #3a3631;
-  --theme-on-secondary-container: #ded8cf;
+  --theme-on-secondary-container: #eae4da;
 
   --theme-tertiary: #eae4da;
   --theme-on-tertiary: #2c2925;
   --theme-tertiary-container: #4a4640;
   --theme-on-tertiary-container: #f5f1ea;
 
-  --theme-error: #ff6369;
-  --theme-on-error: #ffffff;
-  --theme-error-container: #2a1214;
-  --theme-on-error-container: #ffb3b8;
+  --theme-error: #cd9b9f;
+  --theme-on-error: #2a2222;
+  --theme-error-container: #4c3134;
+  --theme-on-error-container: #f2e2e3;
 
-  --theme-warning: #f59e0b;
-  --theme-warning-container: #1f1605;
+  --theme-warning: #bcada3;
+  --theme-warning-container: #423b37;
 
   --theme-background: #1c1b19;
   --theme-on-background: #f5f1ea;
@@ -200,12 +200,12 @@
   --theme-shadow-popover: 0 12px 32px rgb(0 0 0 / 0.48);
   --theme-shadow-modal: 0 16px 48px rgb(0 0 0 / 0.55);
   --theme-shadow-cta: 0 4px 16px rgb(255 255 255 / 0.10);
-  --shadow-control: 0 0 5px rgb(0 0 0 / 0.28), 0 2px 4px rgb(0 0 0 / 0.18);
-  --shadow-card: 0 0 10px rgb(0 0 0 / 0.38), 0 3px 6px rgb(0 0 0 / 0.24);
-  --shadow-floating: 0 0 14px rgb(0 0 0 / 0.48), 0 4px 9px rgb(0 0 0 / 0.32);
+  --shadow-control: 0 0 6px rgb(0 0 0 / 0.42), 0 2px 4px rgb(0 0 0 / 0.28);
+  --shadow-card: 0 0 11px rgb(0 0 0 / 0.58), 0 3px 7px rgb(0 0 0 / 0.40);
+  --shadow-floating: 0 0 15px rgb(0 0 0 / 0.72), 0 4px 10px rgb(0 0 0 / 0.50);
 
   --ink-50: var(--color-on-background);
-  --ink-100: #ded8cf;
+  --ink-100: #3a3631;
   --ink-200: var(--color-outline-variant);
   --ink-300: #bdb5aa;
   --ink-400: var(--color-on-surface-variant);
@@ -735,22 +735,6 @@ textarea {
 
 .animate-perfect-in {
   animation: set-card-in 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
-/* Theme icon crossfade */
-.theme-icon-enter-active,
-.theme-icon-leave-active {
-  transition: opacity 0.15s ease, transform 0.15s ease;
-}
-
-.theme-icon-enter-from {
-  opacity: 0;
-  transform: rotate(-30deg) scale(0.8);
-}
-
-.theme-icon-leave-to {
-  opacity: 0;
-  transform: rotate(30deg) scale(0.8);
 }
 
 /* Pause infinite animations when tab hidden */

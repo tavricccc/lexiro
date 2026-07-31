@@ -105,7 +105,7 @@ function startReview() {
             {{ $t('learning.startToday', { count: dueCount }) }}
             <ArrowRight class="h-4 w-4" />
           </Button>
-          <RouterLink v-else to="/study" class="mt-6 inline-flex items-center gap-2 text-sm font-black underline-offset-4 hover:underline">
+          <RouterLink v-else to="/library" class="mt-6 inline-flex items-center gap-2 text-sm font-black underline-offset-4 hover:underline">
             {{ $t('home.exploreStudy') }} <ArrowRight class="h-4 w-4" />
           </RouterLink>
         </Card>
@@ -156,7 +156,7 @@ function startReview() {
         <div class="flex items-center justify-between">
           <h2 class="text-lg font-black">
             {{ $t('home.continueTitle') }}
-          </h2><RouterLink to="/study" class="text-xs font-black text-ink-500">
+          </h2><RouterLink to="/library" class="text-xs font-black text-ink-500">
             {{ $t('home.viewAll') }}
           </RouterLink>
         </div>
@@ -168,7 +168,7 @@ function startReview() {
             <p class="mt-1 text-xs font-semibold text-ink-500">
               {{ $t('home.inProgress') }} · {{ set.items.length }} {{ $t('home.wordUnit') }}
             </p>
-            <RouterLink to="/study" class="mt-4 inline-flex items-center gap-1 text-xs font-black text-ink-600 dark:text-ink-300">
+            <RouterLink to="/library" class="mt-4 inline-flex items-center gap-1 text-xs font-black text-ink-600 dark:text-ink-300">
               {{ $t('home.continue') }} <ArrowRight class="h-3.5 w-3.5" />
             </RouterLink>
           </Card>

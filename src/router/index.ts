@@ -12,8 +12,7 @@ const router = createRouter({
     },
     {
       path: '/study',
-      name: 'study',
-      component: () => import('@/components/StudyHub.vue'),
+      redirect: '/library',
     },
     {
       path: '/library',
