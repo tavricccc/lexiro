@@ -76,16 +76,31 @@ jobs:
             exit 1
           fi
 
+      - name: Reset Vercel local state
+        if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+        run: rm -rf .vercel vercel-artifact
+
+      - name: Pull Vercel production settings
+        if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+        run: npx vercel pull --yes --environment=production --project "$VERCEL_PROJECT_ID" --token "$VERCEL_TOKEN"
+
       - name: Build Vercel prebuilt output
         if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
         run: npx vercel build --yes --prod --project "$VERCEL_PROJECT_ID" --token "$VERCEL_TOKEN"
+
+      - name: Prepare Vercel prebuilt artifact
+        if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+        run: |
+          mkdir -p vercel-artifact/.vercel
+          cp -R .vercel/output vercel-artifact/.vercel/output
+          cp .vercel/project.json vercel-artifact/.vercel/project.json
 
       - name: Upload Vercel prebuilt artifact
         if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
         uses: actions/upload-artifact@v7
         with:
           name: vercel-prebuilt
-          path: .vercel/output
+          path: vercel-artifact
           include-hidden-files: true
 
   deploy-vercel:
@@ -118,7 +133,7 @@ jobs:
         uses: actions/download-artifact@v8
         with:
           name: vercel-prebuilt
-          path: .vercel/output
+          path: .
 
       - name: Deploy prebuilt output to Vercel
         id: deployment
