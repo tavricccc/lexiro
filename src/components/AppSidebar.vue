@@ -4,13 +4,16 @@ import { storeToRefs } from 'pinia'
 import { useI18n } from 'vue-i18n'
 import { RouterLink, useRoute } from 'vue-router'
 import { APP_NAV_ITEMS } from '@/constants/navigation'
+import { useAccountStore } from '@/stores/account'
 import { useUIStore } from '@/stores/ui'
+import AccountAvatar from './AccountAvatar.vue'
 import Button from './ui/button/Button.vue'
 
 const route = useRoute()
 const uiStore = useUIStore()
 const { t } = useI18n()
 const { sidebarExpanded: expanded } = storeToRefs(uiStore)
+const { label: accountLabel } = storeToRefs(useAccountStore())
 
 const isActive = (key: string) => route.name === key
 
@@ -40,9 +43,10 @@ function toggle() {
     </nav>
 
     <div class="flex flex-col gap-2 px-3">
-      <RouterLink to="/settings" class="app-sidebar-item" :class="isActive('settings') ? 'app-sidebar-item--active' : ''" :data-label="t('nav.settings')">
-        <Settings class="h-5 w-5 shrink-0" :stroke-width="1.9" />
-        <span v-if="expanded" class="text-sm font-bold">{{ t('nav.settings') }}</span>
+      <RouterLink to="/settings" class="app-sidebar-item settings-account-entry" :class="isActive('settings') ? 'app-sidebar-item--active' : ''" :data-label="t('nav.settings')">
+        <AccountAvatar />
+        <span v-if="expanded" class="min-w-0 flex-1 truncate text-sm font-bold">{{ accountLabel || t('nav.settings') }}</span>
+        <Settings v-if="expanded" class="h-4 w-4 shrink-0 text-ink-400" :stroke-width="1.9" />
       </RouterLink>
     </div>
   </aside>

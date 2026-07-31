@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { Settings } from 'lucide-vue-next'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { RouterLink, useRoute } from 'vue-router'
 import { APP_NAV_ITEMS } from '@/constants/navigation'
+import AccountAvatar from './AccountAvatar.vue'
 
 const route = useRoute()
 const { t } = useI18n()
@@ -23,7 +23,7 @@ const activeIndex = computed(() => {
         <span>{{ t(item.label) }}</span>
       </RouterLink>
       <RouterLink to="/settings" class="mobile-bottom-tab" :class="route.name === 'settings' ? 'mobile-bottom-tab--active' : ''" :aria-label="t('nav.settings')">
-        <Settings class="h-5 w-5" :stroke-width="1.9" />
+        <AccountAvatar size="sm" />
         <span>{{ t('nav.settings') }}</span>
       </RouterLink>
     </div>

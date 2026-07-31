@@ -10,6 +10,7 @@ import { configureFirebaseAuth, getFirebaseAuth, getFirebaseFirestore, isFirebas
 import { requestGoogleAccessToken } from '@/lib/googleIdentity'
 import { estimateJsonBytes, stableHash } from '@/lib/hash'
 import { deduplicateSetsByName, isRemoteSetNewer } from '@/lib/set-utils'
+import { useAccountStore } from './account'
 import { useLearningStore } from './learning'
 import { useSetsStore } from './sets'
 
@@ -18,6 +19,7 @@ const MAX_SET_BYTES = 700 * 1024
 
 export const useCloudSyncStore = defineStore('cloudSync', () => {
   const configured = ref(isFirebaseConfigured())
+  const accountStore = useAccountStore()
   const authReady = ref(false)
   const user = ref<User | null>(null)
   const status = ref<SyncStatus>(configured.value ? 'signed-out' : 'disabled')
@@ -365,6 +367,10 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
       }
       activeUid = nextUser?.uid || ''
       user.value = nextUser
+      if (nextUser)
+        accountStore.setProfile(nextUser.displayName || nextUser.email || '', nextUser.photoURL || '')
+      else
+        accountStore.clearProfile()
       authReady.value = true
       if (nextUser) {
         void startRealtime(nextUser.uid)
