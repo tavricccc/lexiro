@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ArrowRight } from 'lucide-vue-next'
+import { ArrowRight, Bookmark, BookmarkCheck } from 'lucide-vue-next'
 import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
 import { cn } from '@/lib/cn'
 import Button from './ui/button/Button.vue'
@@ -11,10 +11,12 @@ const props = defineProps<{
   total: number
   review?: boolean
   draft: { selectedIndex: number | null } | null
+  markedForReview?: boolean
 }>()
 
 const emit = defineEmits<{
   'draft-change': [payload: { selectedIndex: number | null }]
+  'toggle-review-mark': []
   'next': []
 }>()
 
@@ -103,6 +105,20 @@ onUnmounted(() => window.removeEventListener('keydown', onKeydown))
 
 <template>
   <Card :class="cn('p-5 sm:p-8', feedbackClass)">
+    <div class="mb-4 flex justify-end">
+      <Button
+        variant="outline"
+        size="sm"
+        class="gap-2"
+        :aria-pressed="props.markedForReview"
+        :aria-label="props.markedForReview ? $t('practice.unmarkForReview') : $t('practice.markForReview')"
+        @click="emit('toggle-review-mark')"
+      >
+        <BookmarkCheck v-if="props.markedForReview" class="h-4 w-4" />
+        <Bookmark v-else class="h-4 w-4" />
+        <span>{{ props.markedForReview ? $t('practice.markedForReview') : $t('practice.markForReview') }}</span>
+      </Button>
+    </div>
     <div class="rounded-2xl bg-ink-100/80 dark:bg-ink-900 border border-ink-200/70 dark:border-ink-200/25 p-5 text-left">
       <p class="text-xs font-extrabold uppercase tracking-widest text-ink-400 dark:text-ink-500">
         {{ $t('practice.quizPromptLabel') }}

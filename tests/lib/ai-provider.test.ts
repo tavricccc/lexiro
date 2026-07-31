@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest'
-import { defaultAiSettings, extractJsonText, generateWithAi } from '@/lib/ai-provider'
+import { defaultAiSettings, extractJsonText, generateWithAi, parseAiSettingsJson } from '@/lib/ai-provider'
 
 describe('aI provider adapter', () => {
   it('extracts JSON from fenced or explanatory responses', () => {
@@ -17,5 +17,17 @@ describe('aI provider adapter', () => {
       method: 'POST',
       headers: expect.objectContaining({ Authorization: 'Bearer test-key' }),
     }))
+  })
+
+  it('imports the exported envelope and clamps unsafe batch sizes', () => {
+    const settings = parseAiSettingsJson(JSON.stringify({
+      version: 1,
+      settings: { provider: 'custom', model: 'local-model', apiKey: 'secret', batchSize: 99 },
+    }))
+
+    expect(settings.provider).toBe('custom')
+    expect(settings.model).toBe('local-model')
+    expect(settings.apiKey).toBe('secret')
+    expect(settings.batchSize).toBe(20)
   })
 })

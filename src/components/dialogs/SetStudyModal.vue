@@ -2,6 +2,7 @@
 import type { VocabSet } from '@/types'
 import { ArrowRight, BookOpenText, Brain, Check, Flame, RotateCcw, SpellCheck2 } from 'lucide-vue-next'
 import { computed, ref, watch } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 import { useLearningStore } from '@/stores/learning'
 import { useSessionStore } from '@/stores/session'
@@ -19,6 +20,7 @@ const emit = defineEmits<{
 }>()
 
 const router = useRouter()
+const { t } = useI18n()
 const sessionStore = useSessionStore()
 const learningStore = useLearningStore()
 
@@ -28,7 +30,7 @@ const selectedCount = ref<number>(10)
 
 const dueCount = computed(() => props.set ? learningStore.getDueCount(props.set) : 0)
 const totalItems = computed(() => props.set?.items.length ?? 0)
-const mastery = computed(() => props.set ? learningStore.getMasteryPercent(props.set) : 0)
+const learnedCount = computed(() => props.set ? learningStore.getLearnedCount(props.set) : 0)
 const inProgressModes = computed(() => props.set ? sessionStore.getInProgressModes(props.set.id) : [])
 
 watch(() => props.open, (isOpen) => {
@@ -42,15 +44,35 @@ watch(() => props.open, (isOpen) => {
     else
       selectedMode.value = 'flashcard'
 
-    selectedCount.value = sessionStore.getPracticeCount(props.set.id, totalItems.value)
+    const savedCount = sessionStore.getPracticeCount(props.set.id, totalItems.value)
+    selectedCount.value = countOptions.value.find(option => option >= savedCount) ?? countOptions.value[countOptions.value.length - 1] ?? 1
   }
 })
 
-const countPresetOptions = computed(() => {
+const countOptions = computed(() => {
   const total = totalItems.value
-  const presets = [5, 10, 20, 50].filter(n => n < total)
-  return [...presets, total]
+  if (total <= 5)
+    return [Math.max(total, 1)]
+
+  const options = Array.from({ length: Math.floor(total / 5) }, (_, index) => (index + 1) * 5)
+  if (options[options.length - 1] !== total)
+    options.push(total)
+  return options
 })
+
+const selectedCountIndex = computed(() => {
+  const index = countOptions.value.indexOf(selectedCount.value)
+  return index >= 0 ? index : 0
+})
+
+const selectedCountLabel = computed(() => selectedCount.value === totalItems.value
+  ? t('study.allCount', { count: totalItems.value })
+  : `${selectedCount.value} ${t('home.wordUnit')}`)
+
+function updateSelectedCount(event: Event) {
+  const index = Number((event.target as HTMLInputElement).value)
+  selectedCount.value = countOptions.value[index] ?? countOptions.value[0] ?? 1
+}
 
 function startStudy() {
   if (!props.set)
@@ -83,14 +105,13 @@ function startStudy() {
     @close="emit('close')"
   >
     <div v-if="set" class="space-y-5 text-left">
-      <!-- Top Mastery & Due Info Banner -->
       <div class="flex items-center justify-between rounded-2xl bg-ink-100/70 p-4 dark:bg-ink-900/70">
         <div class="space-y-1">
           <p class="text-xs font-black uppercase tracking-wider text-ink-400">
-            {{ $t('learning.mastery') }}
+            {{ $t('learning.learned') }}
           </p>
           <p class="text-xl font-black text-ink-950 dark:text-ink-50">
-            {{ mastery }}%
+            {{ learnedCount }}/{{ totalItems }}
           </p>
         </div>
         <div v-if="dueCount > 0" class="text-right">
@@ -126,22 +147,17 @@ function startStudy() {
         </div>
       </div>
 
-      <!-- Stepped Learning Modes -->
       <div>
         <p class="mb-3 text-xs font-black uppercase tracking-wider text-ink-400">
           {{ $t('study.chooseStepTitle') }}
         </p>
         <div class="grid gap-3">
-          <!-- Step 1: Flashcards -->
           <div
             class="flex cursor-pointer items-center justify-between rounded-2xl border p-4 transition-all duration-200"
             :class="selectedMode === 'flashcard' ? 'border-accent-primary bg-accent-primary/10 shadow-soft' : 'border-ink-200/60 dark:border-ink-800 hover:border-accent-primary/40'"
             @click="selectedMode = 'flashcard'"
           >
             <div class="flex items-center gap-3 min-w-0">
-              <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-ink-200 dark:bg-ink-800 text-ink-950 dark:text-white font-black text-xs">
-                1
-              </div>
               <div class="min-w-0">
                 <p class="text-sm font-black text-ink-950 dark:text-ink-50 flex items-center gap-2">
                   <BookOpenText class="h-4 w-4 text-accent-primary" />
@@ -158,16 +174,12 @@ function startStudy() {
             <Check v-if="selectedMode === 'flashcard'" class="h-5 w-5 text-accent-primary shrink-0" />
           </div>
 
-          <!-- Step 2: Quiz -->
           <div
             class="flex cursor-pointer items-center justify-between rounded-2xl border p-4 transition-all duration-200"
             :class="selectedMode === 'quiz' ? 'border-accent-primary bg-accent-primary/10 shadow-soft' : 'border-ink-200/60 dark:border-ink-800 hover:border-accent-primary/40'"
             @click="selectedMode = 'quiz'"
           >
             <div class="flex items-center gap-3 min-w-0">
-              <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-ink-200 dark:bg-ink-800 text-ink-950 dark:text-white font-black text-xs">
-                2
-              </div>
               <div class="min-w-0">
                 <p class="text-sm font-black text-ink-950 dark:text-ink-50 flex items-center gap-2">
                   <Brain class="h-4 w-4 text-accent-primary" />
@@ -184,16 +196,12 @@ function startStudy() {
             <Check v-if="selectedMode === 'quiz'" class="h-5 w-5 text-accent-primary shrink-0" />
           </div>
 
-          <!-- Step 3: Spelling -->
           <div
             class="flex cursor-pointer items-center justify-between rounded-2xl border p-4 transition-all duration-200"
             :class="selectedMode === 'spelling' ? 'border-accent-primary bg-accent-primary/10 shadow-soft' : 'border-ink-200/60 dark:border-ink-800 hover:border-accent-primary/40'"
             @click="selectedMode = 'spelling'"
           >
             <div class="flex items-center gap-3 min-w-0">
-              <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-ink-200 dark:bg-ink-800 text-ink-950 dark:text-white font-black text-xs">
-                3
-              </div>
               <div class="min-w-0">
                 <p class="text-sm font-black text-ink-950 dark:text-ink-50 flex items-center gap-2">
                   <SpellCheck2 class="h-4 w-4 text-accent-primary" />
@@ -214,20 +222,24 @@ function startStudy() {
 
       <!-- Question Count Picker (for Quiz & Spelling) -->
       <div v-if="selectedMode === 'quiz' || selectedMode === 'spelling'" class="space-y-2">
-        <label class="text-xs font-black uppercase tracking-wider text-ink-400">
-          {{ $t('practice.countLabel') }}
+        <label class="flex items-center justify-between text-xs font-black uppercase tracking-wider text-ink-400">
+          <span>{{ $t('practice.countLabel') }}</span>
+          <span class="text-ink-950 dark:text-ink-50">{{ selectedCountLabel }}</span>
         </label>
-        <div class="flex flex-wrap gap-2">
-          <button
-            v-for="countOption in countPresetOptions"
-            :key="countOption"
-            type="button"
-            class="rounded-xl px-3 py-1.5 text-xs font-bold transition-all duration-150 border"
-            :class="selectedCount === countOption ? 'bg-accent-primary text-white border-accent-primary' : 'border-ink-200 dark:border-ink-700 hover:bg-ink-100 dark:hover:bg-ink-900 text-ink-800 dark:text-ink-200'"
-            @click="selectedCount = countOption"
-          >
-            {{ countOption === totalItems ? $t('study.allCount', { count: totalItems }) : `${countOption} ${$t('home.wordUnit')}` }}
-          </button>
+        <input
+          type="range"
+          :min="0"
+          :max="Math.max(0, countOptions.length - 1)"
+          :step="1"
+          :value="selectedCountIndex"
+          class="mt-3 h-2 w-full cursor-pointer appearance-none rounded-full bg-ink-200 accent-accent-primary dark:bg-ink-800"
+          :aria-label="$t('practice.countLabel')"
+          @input="updateSelectedCount"
+        >
+        <div class="flex justify-between text-[11px] font-semibold text-ink-400">
+          <span>{{ countOptions[0] }} {{ $t('home.wordUnit') }}</span>
+          <span>{{ selectedCountLabel }}</span>
+          <span>{{ countOptions[countOptions.length - 1] }} {{ $t('home.wordUnit') }}</span>
         </div>
       </div>
 

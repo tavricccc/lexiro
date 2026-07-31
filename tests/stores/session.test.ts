@@ -113,6 +113,7 @@ describe('normalizeSession', () => {
     expect(result!.wrongEntries).toEqual([])
     expect(result!.answers).toEqual([])
     expect(result!.drafts).toEqual([])
+    expect(result!.markedForReview).toEqual([false])
   })
 
   it('preserves completed status', () => {

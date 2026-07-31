@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
 @import url('https://cdn.jsdelivr.net/npm/harmonyos-sans-webfont-splitted@1.2.1/dist/HarmonyOS_Sans_TC/index.css');
 @import url('https://cdn.jsdelivr.net/npm/harmonyos-sans-webfont-splitted@1.2.1/dist/HarmonyOS_Sans_SC/index.css');
 @import "tailwindcss";
@@ -66,7 +66,7 @@
 }
 
 :root {
-  --vp-font-family-base: "Inter", "HarmonyOS Sans TC", "HarmonyOS Sans SC", system-ui, sans-serif;
+  --vp-font-family-base: "HarmonyOS Sans TC", "PingFang TC", "Microsoft JhengHei", "HarmonyOS Sans SC", system-ui, sans-serif;
   --vp-font-family-mono: "JetBrains Mono", monospace;
 
   /* Novae-inspired surface, motion and layout tokens. */
@@ -240,6 +240,11 @@ body {
   overflow-x: clip;
   background-color: var(--color-background);
   color: var(--color-on-background);
+  font-family: var(--vp-font-family-base);
+  font-size: 0.9375rem;
+  font-weight: 400;
+  letter-spacing: 0.012em;
+  line-height: 1.65;
   transition: background-color 0.25s cubic-bezier(0.25, 1, 0.5, 1), color 0.25s ease;
 }
 
@@ -381,7 +386,7 @@ body {
     width: 100%;
     margin-left: 0;
     padding-top: 1rem;
-    padding-bottom: 6.5rem;
+    padding-bottom: calc(5.5rem + env(safe-area-inset-bottom));
   }
 }
 
@@ -416,25 +421,36 @@ body {
 }
 
 .button-primary {
-  background-color: var(--color-primary);
-  color: var(--color-on-primary);
-  border: 1px solid var(--color-primary);
-  box-shadow: var(--shadow-cta);
+  background-color: var(--color-surface);
+  color: var(--color-on-surface);
+  border: 0;
+  box-shadow: var(--shadow-control);
 }
 
 .dark .button-primary {
-  background-color: var(--color-primary);
-  color: var(--color-on-primary);
-  border: 1px solid var(--color-primary);
-  box-shadow: var(--shadow-cta);
+  background-color: var(--color-surface);
+  color: var(--color-on-surface);
+  border: 0;
+  box-shadow: var(--shadow-control);
 }
 
 .button-primary:hover {
-  filter: brightness(1.06);
+  box-shadow: var(--shadow-floating);
 }
 
 .button-primary:active {
-  filter: brightness(0.94);
+  box-shadow: var(--shadow-control);
+}
+
+@layer utilities {
+  .font-black,
+  .font-extrabold {
+    font-weight: 700;
+  }
+
+  .font-bold {
+    font-weight: 600;
+  }
 }
 
 button,

@@ -13,10 +13,10 @@ const activeIndex = computed(() => APP_NAV_ITEMS.findIndex(item => route.name ==
 
 <template>
   <nav class="mobile-bottom-tabs fixed z-40 mx-auto max-w-md rounded-full border-0 bg-white/95 px-3 py-1.5 backdrop-blur-xl dark:bg-ink-950/95 md:hidden" :aria-label="t('nav.main')">
-    <div class="relative grid grid-cols-6">
+    <div class="relative mx-auto grid w-full" :style="{ gridTemplateColumns: `repeat(${itemCount}, minmax(0, 1fr))` }">
       <span v-if="activeIndex >= 0" class="mobile-bottom-tabs__indicator" :style="{ width: `${100 / itemCount}%`, transform: `translateX(${activeIndex * 100}%)` }" aria-hidden="true" />
       <RouterLink v-for="item in APP_NAV_ITEMS" :key="item.key" :to="item.to" class="mobile-bottom-tab" :class="route.name === item.key ? 'mobile-bottom-tab--active' : ''">
-        <component :is="item.icon" class="h-6 w-6" :stroke-width="1.9" />
+        <component :is="item.icon" class="h-5 w-5" :stroke-width="1.9" />
         <span>{{ t(item.label) }}</span>
       </RouterLink>
       <SidebarAccountMenu mobile class="min-w-0" />
@@ -30,6 +30,7 @@ const activeIndex = computed(() => APP_NAV_ITEMS.findIndex(item => route.name ==
   left: max(var(--app-viewport-gutter), env(safe-area-inset-left));
   right: max(var(--app-viewport-gutter), env(safe-area-inset-right));
   box-shadow: var(--shadow-floating);
+  contain: layout paint;
   isolation: isolate;
   transform: translateZ(0);
 }
@@ -57,7 +58,7 @@ const activeIndex = computed(() => APP_NAV_ITEMS.findIndex(item => route.name ==
   border-radius: 9999px;
   color: var(--color-on-surface-variant);
   font-size: 0.6875rem;
-  font-weight: 700;
+  font-weight: 600;
   transition: transform 0.2s ease, color 0.2s ease;
 }
 

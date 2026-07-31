@@ -20,12 +20,11 @@ const { sets, totalWordCount } = storeToRefs(setsStore)
 const { stats, todayProgress, accuracy } = storeToRefs(learningStore)
 
 const inProgressCount = computed(() => sets.value.filter(set => sessionStore.isSetInProgress(set.id)).length)
-const dueCount = computed(() => sets.value.reduce((total, set) => total + learningStore.getDueCount(set), 0))
+const dailyReviewCount = computed(() => learningStore.getDailyReviewEntries().length)
 
 function startTodayReview() {
-  const target = sets.value.find(set => learningStore.getDueCount(set) > 0)
-  if (target && learningStore.startReview(target.id))
-    router.push({ name: 'review', params: { setId: target.id } })
+  if (learningStore.startDailyReview())
+    router.push({ name: 'review' })
 }
 </script>
 
@@ -46,9 +45,9 @@ function startTodayReview() {
             <Cloud class="h-3.5 w-3.5" />
             {{ $t('home.manageBackup') }}
           </Button>
-          <Button v-if="dueCount" variant="default" size="sm" class="gap-2 self-start" @click="startTodayReview">
+          <Button v-if="dailyReviewCount" variant="default" size="sm" class="gap-2 self-start" @click="startTodayReview">
             <Sparkles class="h-3.5 w-3.5" />
-            {{ $t('learning.startToday', { count: dueCount }) }}
+            {{ $t('learning.startToday', { count: dailyReviewCount }) }}
           </Button>
         </div>
 

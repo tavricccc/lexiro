@@ -18,14 +18,13 @@ const { sets, hasSets, totalWordCount } = storeToRefs(setsStore)
 const { stats, todayProgress, accuracy } = storeToRefs(learningStore)
 const { openImport } = setsStore
 
-const dueCount = computed(() => sets.value.reduce((total, set) => total + learningStore.getDueCount(set), 0))
+const dailyReviewCount = computed(() => learningStore.getDailyReviewEntries().length)
 const activeSessions = computed(() => sets.value.filter(set => sessionStore.isSetInProgress(set.id)).slice(0, 3))
 const recentSets = computed(() => [...sets.value].sort((a, b) => (b.updatedAt ?? '').localeCompare(a.updatedAt ?? '')).slice(0, 3))
 
 function startReview() {
-  const target = sets.value.find(set => learningStore.getDueCount(set) > 0)
-  if (target && learningStore.startReview(target.id))
-    router.push({ name: 'review', params: { setId: target.id } })
+  if (learningStore.startDailyReview())
+    router.push({ name: 'review' })
 }
 </script>
 
@@ -92,7 +91,7 @@ function startReview() {
                 {{ stats.todayReviews }}<span class="text-xl opacity-50">/{{ stats.dailyGoal }}</span>
               </p>
               <p class="mt-2 text-sm font-semibold opacity-70">
-                {{ dueCount ? $t('home.dueHint', { count: dueCount }) : $t('learning.noDue') }}
+                {{ dailyReviewCount ? $t('home.dailyQueueHint', { count: dailyReviewCount }) : $t('learning.noDue') }}
               </p>
             </div>
             <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/10">
@@ -100,9 +99,9 @@ function startReview() {
             </div>
           </div>
           <Progress :model-value="todayProgress" class="mt-7 bg-white/15 [&>div]:bg-white dark:bg-ink-200/30 dark:[&>div]:bg-ink-950" />
-          <Button v-if="dueCount" variant="secondary" class="mt-6 gap-2" @click="startReview">
+          <Button v-if="dailyReviewCount" variant="secondary" class="mt-6 gap-2" @click="startReview">
             <RotateCcw class="h-4 w-4" />
-            {{ $t('learning.startToday', { count: dueCount }) }}
+            {{ $t('learning.startToday', { count: dailyReviewCount }) }}
             <ArrowRight class="h-4 w-4" />
           </Button>
           <RouterLink v-else to="/library" class="mt-6 inline-flex items-center gap-2 text-sm font-black underline-offset-4 hover:underline">

@@ -83,6 +83,7 @@ const validSession: PracticeSession = {
   wrongEntries: [],
   answers: [],
   drafts: [],
+  markedForReview: [false],
   review: false,
   status: 'in-progress',
 }
@@ -144,6 +145,25 @@ describe('store persistence', () => {
     expect(saved.sessionsByKey[cardKey].index).toBe(5)
     expect(saved.sessionsByKey[quizKey].mode).toBe('quiz')
     expect(saved.sessionsByKey[cardKey].mode).toBe('flashcard')
+  })
+
+  it('marks quiz questions for review after the round', async () => {
+    const setsStore = useSetsStore()
+    setsStore.sets = [validSet]
+    const sessionStore = useSessionStore()
+
+    await sessionStore.startRound('quiz', validSet.id)
+    sessionStore.toggleReviewMark(0)
+    sessionStore.handleQuizDraftChange(0, { selectedIndex: 0 })
+    sessionStore.submitCurrentRound()
+
+    expect(sessionStore.resultSummary?.markedCount).toBe(1)
+    expect(sessionStore.currentSession?.markedForReview).toEqual([true])
+
+    sessionStore.reviewMarkedQuestions()
+    expect(sessionStore.currentSession?.review).toBe(true)
+    expect(sessionStore.currentSession?.entries).toHaveLength(1)
+    expect(sessionStore.currentSession?.entries[0].item.id).toBe(validSet.items[0].id)
   })
 
   it('migrates legacy sets payload to the new sets key', async () => {

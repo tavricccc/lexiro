@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { ResultRow } from '@/types'
-import { BookOpenText, ClipboardCopy, RotateCcw, SpellCheck2 } from 'lucide-vue-next'
+import { BookmarkCheck, BookOpenText, ClipboardCopy, RotateCcw, SpellCheck2 } from 'lucide-vue-next'
 import { storeToRefs } from 'pinia'
 import { computed, nextTick, onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
@@ -22,6 +22,7 @@ const { resultSummary, resultRows } = storeToRefs(sessionStore)
 const {
   restartCurrentMode,
   reviewWrongAnswers,
+  reviewMarkedQuestions,
   switchModeAfterResult,
 } = sessionStore
 const { t } = useI18n()
@@ -110,6 +111,15 @@ onMounted(() => {
         >
           <BookOpenText class="h-4 w-4 text-accent-primary" />
           <span>{{ $t('result.reviewWrong', { count: resultSummary.wrongCount }) }}</span>
+        </Button>
+        <Button
+          v-if="resultSummary.mode === 'quiz' && resultSummary.markedCount"
+          variant="outline"
+          class="gap-2"
+          @click="reviewMarkedQuestions"
+        >
+          <BookmarkCheck class="h-4 w-4 text-accent-primary" />
+          <span>{{ $t('result.reviewMarked', { count: resultSummary.markedCount }) }}</span>
         </Button>
         <Button
           v-if="resultSummary.wrongCount"

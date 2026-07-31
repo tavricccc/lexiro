@@ -48,6 +48,7 @@ export interface PracticeSession {
   wrongEntries: SessionEntry[]
   answers: AnswerRecord[]
   drafts: Draft[]
+  markedForReview: boolean[]
   review: boolean
   status: SessionStatus
 }
@@ -58,6 +59,7 @@ export interface ResultSummary {
   total: number
   correctCount: number
   wrongCount: number
+  markedCount: number
   score: number
 }
 

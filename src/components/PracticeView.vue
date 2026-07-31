@@ -12,7 +12,7 @@ const setsStore = useSetsStore()
 const sessionStore = useSessionStore()
 const { activeSet } = storeToRefs(setsStore)
 const { currentView, currentSession, currentIndex, currentEntry, totalItems } = storeToRefs(sessionStore)
-const { handleQuizDraftChange, handleSpellingDraftChange, advanceToNext } = sessionStore
+const { handleQuizDraftChange, toggleReviewMark, handleSpellingDraftChange, advanceToNext } = sessionStore
 
 const currentDraft = computed(() => {
   return currentSession.value?.drafts[currentIndex.value] ?? null
@@ -47,7 +47,9 @@ const spellingDraft = computed<{ answer: string } | null>(() => {
           :total="totalItems"
           :review="currentSession.review"
           :draft="quizDraft"
+          :marked-for-review="currentSession.markedForReview[currentIndex] ?? false"
           @draft-change="(payload) => handleQuizDraftChange(currentIndex, payload)"
+          @toggle-review-mark="toggleReviewMark(currentIndex)"
           @next="advanceToNext"
         />
 

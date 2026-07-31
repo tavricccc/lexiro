@@ -10,7 +10,7 @@ const learningStore = useLearningStore()
 const setsStore = useSetsStore()
 const { stats, accuracy } = storeToRefs(learningStore)
 const { sets } = storeToRefs(setsStore)
-const setStats = computed(() => sets.value.map(set => ({ set, mastery: learningStore.getMasteryPercent(set), due: learningStore.getDueCount(set) })).sort((a, b) => b.mastery - a.mastery))
+const setStats = computed(() => sets.value.map(set => ({ set, learned: learningStore.getLearnedCount(set), due: learningStore.getDueCount(set) })).sort((a, b) => b.learned - a.learned))
 </script>
 
 <template>
@@ -52,10 +52,8 @@ const setStats = computed(() => sets.value.map(set => ({ set, mastery: learningS
         </h2>
       </div><div v-if="setStats.length" class="mt-6 space-y-5">
         <div v-for="item in setStats" :key="item.set.id">
-          <div class="mb-2 flex items-center justify-between gap-3 text-sm">
-            <span class="truncate font-black">{{ item.set.setName }}</span><span class="shrink-0 text-xs font-bold text-ink-500">{{ item.mastery }}% · {{ item.due }} {{ $t('learning.due') }}</span>
-          </div><div class="h-2 overflow-hidden rounded-full bg-ink-100 dark:bg-ink-800">
-            <div class="h-full rounded-full bg-ink-950 transition-all dark:bg-white" :style="{ width: `${item.mastery}%` }" />
+          <div class="flex items-center justify-between gap-3 text-sm">
+            <span class="truncate font-black">{{ item.set.setName }}</span><span class="shrink-0 text-xs font-bold text-ink-500">{{ item.learned }}/{{ item.set.items.length }} {{ $t('learning.learned') }} · {{ item.due }} {{ $t('learning.due') }}</span>
           </div>
         </div>
       </div><div v-else class="py-10 text-center text-sm font-semibold text-ink-400">

@@ -10,18 +10,61 @@ export const defaultAiSettings: AiSettings = {
   batchSize: 10,
 }
 
+const aiProviders: AiProvider[] = ['openai', 'anthropic', 'google', 'custom']
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === 'object' && value !== null
+}
+
+export function normalizeAiSettings(value: unknown): AiSettings {
+  if (!isRecord(value))
+    throw new Error('AI 設定格式不正確')
+
+  const provider = aiProviders.includes(value.provider as AiProvider) ? value.provider as AiProvider : defaultAiSettings.provider
+  const batchSize = Number(value.batchSize)
+
+  return {
+    enabled: value.enabled === true,
+    provider,
+    apiKey: typeof value.apiKey === 'string' ? value.apiKey : '',
+    baseUrl: typeof value.baseUrl === 'string' ? value.baseUrl : '',
+    model: typeof value.model === 'string' && value.model.trim() ? value.model : defaultAiSettings.model,
+    batchSize: Number.isFinite(batchSize) ? Math.min(Math.max(Math.round(batchSize), 5), 20) : defaultAiSettings.batchSize,
+  }
+}
+
 export function loadAiSettings(): AiSettings {
   try {
     const raw = localStorage.getItem(AI_SETTINGS_KEY)
-    return raw ? { ...defaultAiSettings, ...JSON.parse(raw) as Partial<AiSettings> } : { ...defaultAiSettings }
+    return raw ? normalizeAiSettings(JSON.parse(raw)) : { ...defaultAiSettings }
   }
   catch {
     return { ...defaultAiSettings }
   }
 }
 
+export function parseAiSettingsJson(raw: string): AiSettings {
+  const parsed: unknown = JSON.parse(raw)
+  const payload = isRecord(parsed) && 'settings' in parsed ? parsed.settings : parsed
+  return normalizeAiSettings(payload)
+}
+
+export function downloadAiSettings(settings: AiSettings): void {
+  const payload = JSON.stringify({
+    version: 1,
+    exportedAt: new Date().toISOString(),
+    settings: normalizeAiSettings(settings),
+  }, null, 2)
+  const url = URL.createObjectURL(new Blob([payload], { type: 'application/json' }))
+  const anchor = document.createElement('a')
+  anchor.href = url
+  anchor.download = 'lexiro-ai-settings.json'
+  anchor.click()
+  window.setTimeout(() => URL.revokeObjectURL(url), 0)
+}
+
 export function saveAiSettings(settings: AiSettings) {
-  localStorage.setItem(AI_SETTINGS_KEY, JSON.stringify(settings))
+  localStorage.setItem(AI_SETTINGS_KEY, JSON.stringify(normalizeAiSettings(settings)))
 }
 
 function normalizeText(value: unknown): string {

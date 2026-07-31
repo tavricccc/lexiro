@@ -123,6 +123,9 @@ export const useSessionStore = defineStore('session', () => {
       total,
       correctCount,
       wrongCount: currentSession.value.wrongEntries.length,
+      markedCount: currentSession.value.mode === 'quiz'
+        ? currentSession.value.markedForReview.filter(Boolean).length
+        : 0,
       score,
     }
   })
@@ -348,6 +351,7 @@ export const useSessionStore = defineStore('session', () => {
       wrongEntries: [],
       answers: [],
       drafts: [],
+      markedForReview: Array.from({ length: entries.length }).map(() => false),
       review,
       status: 'in-progress',
     }
@@ -583,6 +587,16 @@ export const useSessionStore = defineStore('session', () => {
     saveState()
   }
 
+  function toggleReviewMark(entryIndex: number): boolean {
+    const session = currentSession.value
+    if (!session || session.mode !== 'quiz' || entryIndex < 0 || entryIndex >= session.entries.length)
+      return false
+
+    session.markedForReview[entryIndex] = !session.markedForReview[entryIndex]
+    saveState()
+    return session.markedForReview[entryIndex]
+  }
+
   function handleSpellingDraftChange(entryIndex: number, payload: { answer: string }) {
     if (!currentSession.value)
       return
@@ -648,6 +662,18 @@ export const useSessionStore = defineStore('session', () => {
     if (!setsStore.activeSet || !currentSession.value?.wrongEntries.length)
       return
     startRound(currentSession.value.mode, setsStore.activeSet.id, currentSession.value.wrongEntries)
+  }
+
+  function reviewMarkedQuestions() {
+    const session = currentSession.value
+    if (!session || session.mode !== 'quiz')
+      return
+
+    const markedEntries = session.entries.filter((_, index) => session.markedForReview[index])
+    if (!markedEntries.length)
+      return
+
+    startRound('quiz', session.sourceSetId, markedEntries)
   }
 
   function exitCurrentView() {
@@ -721,6 +747,7 @@ export const useSessionStore = defineStore('session', () => {
     finishRound,
     advanceToNext,
     handleQuizDraftChange,
+    toggleReviewMark,
     handleSpellingDraftChange,
     advanceFlashcard,
     prevFlashcard,
@@ -728,6 +755,7 @@ export const useSessionStore = defineStore('session', () => {
     restartCurrentMode,
     switchModeAfterResult,
     reviewWrongAnswers,
+    reviewMarkedQuestions,
     exitCurrentView,
     hasValidSessionForRoute,
   }

@@ -20,10 +20,13 @@ const learningStore = useLearningStore()
 const setsStore = useSetsStore()
 const uiStore = useUIStore()
 const { t } = useI18n()
-const { currentReviewEntry, reviewIndex, reviewTotal, reviewProgress, reviewAnswered } = storeToRefs(learningStore)
-const { answerCurrent, nextReview, startReview, clearReview } = learningStore
-const setId = computed(() => typeof route.params.setId === 'string' ? route.params.setId : '')
-const activeSet = computed(() => setsStore.sets.find(set => set.id === setId.value) ?? null)
+const { currentReviewEntry, reviewSetId, reviewIndex, reviewTotal, reviewProgress, reviewAnswered } = storeToRefs(learningStore)
+const { answerCurrent, nextReview, startReview, startDailyReview, clearReview } = learningStore
+const routeSetId = computed(() => typeof route.params.setId === 'string' ? route.params.setId : null)
+const activeSet = computed(() => {
+  const currentSetId = currentReviewEntry.value?.setId ?? routeSetId.value
+  return currentSetId ? setsStore.sets.find(set => set.id === currentSetId) ?? null : null
+})
 
 const ratingKeys: ReviewRating[] = ['again', 'hard', 'good', 'easy']
 
@@ -64,8 +67,9 @@ function onKeydown(event: KeyboardEvent) {
 }
 
 onMounted(() => {
-  if (!activeSet.value || learningStore.reviewSetId !== setId.value || !currentReviewEntry.value) {
-    if (!setId.value || !startReview(setId.value)) {
+  if (!activeSet.value || reviewSetId.value !== routeSetId.value || !currentReviewEntry.value) {
+    const started = routeSetId.value ? startReview(routeSetId.value) : startDailyReview()
+    if (!started) {
       uiStore.showToast(t('learning.noDue'))
       router.replace({ name: 'home' })
       return

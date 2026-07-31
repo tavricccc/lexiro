@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import type { VocabItem } from '@/types'
-import { ArrowRight, Flame, PencilLine, Play, RotateCcw, Trash2 } from 'lucide-vue-next'
+import { ArrowRight, Flame, PencilLine, Trash2 } from 'lucide-vue-next'
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useLearningStore } from '@/stores/learning'
-import { useSessionStore } from '@/stores/session'
 import Badge from './ui/badge/Badge.vue'
 import Button from './ui/button/Button.vue'
 import Card from './ui/card/Card.vue'
@@ -22,15 +21,13 @@ defineEmits<{
 }>()
 
 const { t } = useI18n()
-const sessionStore = useSessionStore()
 const learningStore = useLearningStore()
 
-const progressLabel = computed(() => sessionStore.getInProgressModesLabel(props.set.id))
 const dueCount = computed(() => learningStore.getDueCount(props.set))
-const mastery = computed(() => learningStore.getMasteryPercent(props.set))
+const learnedCount = computed(() => learningStore.getLearnedCount(props.set))
 const favoriteCount = computed(() => props.set.items.filter(item => item.favorite).length)
 const weakCount = computed(() => props.set.items.filter((item) => {
-  const card = learningStore.getSetProgress(props.set.id).cards[item.id]
+  const card = learningStore.peekSetProgress(props.set.id)?.cards[item.id]
   return Boolean(card && card.reviewCount >= 2 && card.correctCount / card.reviewCount < 0.6)
 }).length)
 </script>
@@ -66,9 +63,6 @@ const weakCount = computed(() => props.set.items.filter((item) => {
         <p class="text-xs font-semibold text-ink-500 dark:text-ink-400">
           {{ $t('home.wordsCount', { count: set.items.length }) }}
         </p>
-        <p v-if="progressLabel" class="text-[11px] font-semibold text-accent-primary">
-          {{ $t('home.inProgressModes', { modes: progressLabel }) }}
-        </p>
       </div>
 
       <div class="flex shrink-0 items-center gap-1.5" @click.stop>
@@ -90,18 +84,9 @@ const weakCount = computed(() => props.set.items.filter((item) => {
     <div class="mt-4 flex flex-wrap gap-2">
       <MetricPill :label="$t('setCard.difficulty')" :value="set.difficulty" />
       <MetricPill :value="$t('practice.questions', { count: set.items.length })" />
+      <MetricPill v-if="learnedCount" :label="$t('learning.learned')" :value="`${learnedCount}/${set.items.length}`" />
       <MetricPill v-if="favoriteCount" :label="$t('learning.favorites')" :value="favoriteCount" />
       <MetricPill v-if="weakCount" :label="$t('learning.weak')" :value="weakCount" />
-    </div>
-
-    <div class="mt-4">
-      <div class="mb-1.5 flex items-center justify-between text-[11px] font-bold text-ink-400">
-        <span>{{ $t('learning.mastery') }}</span>
-        <span>{{ mastery }}%</span>
-      </div>
-      <div class="h-1.5 overflow-hidden rounded-full bg-ink-200 dark:bg-ink-800">
-        <div class="h-full rounded-full bg-accent-primary transition-all duration-500" :style="{ width: `${mastery}%` }" />
-      </div>
     </div>
 
     <div class="mt-5">
@@ -110,8 +95,6 @@ const weakCount = computed(() => props.set.items.filter((item) => {
         class="w-full justify-center gap-2 font-black"
         @click.stop="$emit('study', set.id)"
       >
-        <RotateCcw v-if="dueCount > 0" class="h-4 w-4" />
-        <Play v-else class="h-4 w-4" />
         <span>{{ dueCount > 0 ? $t('study.review') : (active ? $t('home.continue') : $t('study.startStudy')) }}</span>
         <ArrowRight class="h-4 w-4" />
       </Button>

@@ -1,7 +1,7 @@
 import type { DashboardStats, LearningProgress, ReviewEntry, ReviewRating, VocabSet } from '@/types'
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
-import { LEARNING_STORAGE_KEY } from '@/constants'
+import { DAILY_GOAL_OPTIONS, LEARNING_STORAGE_KEY } from '@/constants'
 import { isDue, reviewCard } from '@/lib/fsrs'
 import { loadFromStorage, saveToStorage } from '@/lib/persist'
 import { useSetsStore } from './sets'
@@ -22,7 +22,7 @@ function defaultStats(): DashboardStats {
     xp: 0,
     level: 1,
     lastStudyDate: '',
-    dailyGoal: 10,
+    dailyGoal: DAILY_GOAL_OPTIONS[0],
     todayReviews: 0,
     todayCorrectReviews: 0,
     achievements: [],
@@ -60,30 +60,79 @@ export const useLearningStore = defineStore('learning', () => {
     return ensureProgress(setId)
   }
 
+  function peekSetProgress(setId: string): LearningProgress | null {
+    return progressBySet.value[setId] ?? null
+  }
+
   function getDueEntries(set: VocabSet, limit = 20): ReviewEntry[] {
-    const progress = getSetProgress(set.id)
+    const progress = peekSetProgress(set.id)
     const now = new Date()
     const due = set.items
-      .filter(item => isDue(progress.cards[item.id] ?? null, now))
-      .map(item => ({ item, progress: progress.cards[item.id] ?? null }))
+      .filter((item) => {
+        const card = progress?.cards[item.id]
+        return Boolean(card && isDue(card, now))
+      })
+      .map(item => ({ setId: set.id, item, progress: progress?.cards[item.id] ?? null }))
+      .sort((a, b) => new Date(a.progress?.due ?? 0).getTime() - new Date(b.progress?.due ?? 0).getTime())
     return due.slice(0, limit)
+  }
+
+  function getNewEntries(set: VocabSet, limit = Number.MAX_SAFE_INTEGER): ReviewEntry[] {
+    const progress = peekSetProgress(set.id)
+    return set.items
+      .filter(item => !progress?.cards[item.id])
+      .map(item => ({ setId: set.id, item, progress: null }))
+      .slice(0, limit)
   }
 
   function getDueCount(set: VocabSet): number {
     return getDueEntries(set, Number.MAX_SAFE_INTEGER).length
   }
 
-  function getMasteryPercent(set: VocabSet): number {
-    if (!set.items.length)
-      return 0
-    const progress = getSetProgress(set.id)
-    const scores = set.items.map((item) => {
-      const card = progress.cards[item.id]
-      if (!card)
-        return 0
-      return Math.min(100, Math.round((card.stability / 30) * 100))
-    })
-    return Math.round(scores.reduce((sum, score) => sum + score, 0) / scores.length)
+  function getAvailableReviewCount(set: VocabSet): number {
+    return getDueCount(set) + getNewEntries(set).length
+  }
+
+  function interleaveEntries(first: ReviewEntry[], second: ReviewEntry[]): ReviewEntry[] {
+    const result: ReviewEntry[] = []
+    const maxLength = Math.max(first.length, second.length)
+    for (let index = 0; index < maxLength; index += 1) {
+      if (first[index])
+        result.push(first[index])
+      if (second[index])
+        result.push(second[index])
+    }
+    return result
+  }
+
+  function getDailyReviewEntries(limit = stats.value.dailyGoal): ReviewEntry[] {
+    const setsStore = useSetsStore()
+    const dueEntries = setsStore.sets
+      .flatMap(set => getDueEntries(set, Number.MAX_SAFE_INTEGER))
+      .sort((a, b) => new Date(a.progress?.due ?? 0).getTime() - new Date(b.progress?.due ?? 0).getTime())
+    const newEntries = setsStore.sets.flatMap(set => getNewEntries(set))
+    const target = Math.min(Math.max(0, limit), dueEntries.length + newEntries.length)
+    if (!target)
+      return []
+
+    const newQuota = Math.min(newEntries.length, Math.ceil(target / 3))
+    const dueQuota = Math.min(dueEntries.length, target - newQuota)
+    const selectedDue = dueEntries.slice(0, dueQuota)
+    const selectedNew = newEntries.slice(0, newQuota)
+    const selected = interleaveEntries(selectedDue, selectedNew)
+
+    if (selected.length < target) {
+      const remainingDue = dueEntries.slice(dueQuota)
+      const remainingNew = newEntries.slice(newQuota)
+      selected.push(...interleaveEntries(remainingDue, remainingNew).slice(0, target - selected.length))
+    }
+
+    return selected
+  }
+
+  function getLearnedCount(set: VocabSet): number {
+    const progress = peekSetProgress(set.id)
+    return set.items.filter(item => (progress?.cards[item.id]?.reviewCount ?? 0) > 0).length
   }
 
   function saveState() {
@@ -115,7 +164,23 @@ export const useLearningStore = defineStore('learning', () => {
       stats.value.todayReviews = 0
     if (stats.value.lastStudyDate !== today)
       stats.value.todayCorrectReviews = 0
+    if (!DAILY_GOAL_OPTIONS.includes(stats.value.dailyGoal as typeof DAILY_GOAL_OPTIONS[number])) {
+      stats.value.dailyGoal = DAILY_GOAL_OPTIONS[0]
+      stats.value.updatedAt = new Date().toISOString()
+      saveState()
+    }
     loaded.value = true
+  }
+
+  function setDailyGoal(value: number) {
+    const nextGoal = DAILY_GOAL_OPTIONS.includes(value as typeof DAILY_GOAL_OPTIONS[number])
+      ? value
+      : DAILY_GOAL_OPTIONS[0]
+    if (stats.value.dailyGoal === nextGoal)
+      return
+    stats.value.dailyGoal = nextGoal
+    stats.value.updatedAt = new Date().toISOString()
+    saveState()
   }
 
   function unlockAchievements() {
@@ -175,11 +240,22 @@ export const useLearningStore = defineStore('learning', () => {
     return true
   }
 
+  function startDailyReview() {
+    const entries = getDailyReviewEntries()
+    if (!entries.length)
+      return false
+    reviewSetId.value = null
+    reviewEntries.value = entries
+    reviewIndex.value = 0
+    reviewAnswered.value = false
+    return true
+  }
+
   function answerCurrent(rating: ReviewRating) {
     const current = currentReviewEntry.value
-    if (!current || !reviewSetId.value || reviewAnswered.value)
+    if (!current || reviewAnswered.value)
       return false
-    const progress = ensureProgress(reviewSetId.value)
+    const progress = ensureProgress(current.setId)
     const nextCard = reviewCard(current.progress, rating)
     progress.cards[current.item.id] = nextCard
     progress.updatedAt = new Date().toISOString()
@@ -238,10 +314,16 @@ export const useLearningStore = defineStore('learning', () => {
     loadState,
     saveState,
     getSetProgress,
+    peekSetProgress,
     getDueEntries,
+    getNewEntries,
     getDueCount,
-    getMasteryPercent,
+    getAvailableReviewCount,
+    getDailyReviewEntries,
+    getLearnedCount,
+    setDailyGoal,
     startReview,
+    startDailyReview,
     answerCurrent,
     nextReview,
     clearReview,

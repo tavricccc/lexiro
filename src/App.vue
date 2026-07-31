@@ -25,12 +25,17 @@ const isSessionRoute = computed(() => ['quiz', 'spelling', 'flashcard', 'review'
 
 let versionCheckInterval: ReturnType<typeof setInterval> | null = null
 let controllerChangeListener: (() => void) | null = null
+let lastVersionCheckAt = 0
+const VERSION_CHECK_INTERVAL = 10 * 60 * 1000
 
-async function checkVersion() {
+async function checkVersion(force = false) {
   if (import.meta.env.DEV)
+    return
+  if (!force && Date.now() - lastVersionCheckAt < VERSION_CHECK_INTERVAL)
     return
   if (uiStore.versionUpdateAvailable || uiStore.versionUpdatePending)
     return
+  lastVersionCheckAt = Date.now()
   try {
     const res = await fetch(`/version.json?t=${Date.now()}`)
     if (!res.ok)
@@ -76,7 +81,7 @@ onMounted(() => {
 
   if (!import.meta.env.DEV) {
     setTimeout(checkVersion, 2000)
-    versionCheckInterval = setInterval(checkVersion, 10 * 60 * 1000)
+    versionCheckInterval = setInterval(checkVersion, VERSION_CHECK_INTERVAL, true)
   }
 
   router.afterEach((to) => {

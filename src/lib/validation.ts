@@ -146,6 +146,12 @@ export function normalizeSession(
   if (!['quiz', 'spelling', 'flashcard'].includes(s.mode as string))
     return null
 
+  const markedForReview = Array.isArray(s.markedForReview)
+    ? s.markedForReview.slice(0, s.entries.length).map(Boolean)
+    : []
+  while (markedForReview.length < s.entries.length)
+    markedForReview.push(false)
+
   return {
     sourceSetId: s.sourceSetId as string,
     mode: s.mode as PracticeSession['mode'],
@@ -155,6 +161,7 @@ export function normalizeSession(
     wrongEntries: Array.isArray(s.wrongEntries) ? s.wrongEntries as PracticeSession['wrongEntries'] : [],
     answers: Array.isArray(s.answers) ? s.answers as PracticeSession['answers'] : [],
     drafts: Array.isArray(s.drafts) ? s.drafts as PracticeSession['drafts'] : [],
+    markedForReview,
     review: Boolean(s.review),
     status: s.status === 'completed' || view === 'result' ? 'completed' : 'in-progress',
   }

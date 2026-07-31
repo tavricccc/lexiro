@@ -46,6 +46,7 @@ export interface DashboardStats {
 }
 
 export interface ReviewEntry {
+  setId: string
   item: VocabItem
   progress: CardProgress | null
 }

@@ -56,7 +56,7 @@ const router = createRouter({
       meta: { requiresSession: true },
     },
     {
-      path: '/review/:setId',
+      path: '/review/:setId?',
       name: 'review',
       component: () => import('@/components/ReviewView.vue'),
       props: true,
