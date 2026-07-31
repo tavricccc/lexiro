@@ -10,6 +10,10 @@ export const defaultAiSettings: AiSettings = {
   batchSize: 10,
 }
 
+export interface AiGenerationOptions {
+  responseFormat?: 'json' | 'text'
+}
+
 const aiProviders: AiProvider[] = ['openai', 'anthropic', 'google', 'custom']
 
 function isRecord(value: unknown): value is Record<string, unknown> {
@@ -79,11 +83,12 @@ function googleUrl(settings: AiSettings) {
   return settings.baseUrl.trim() || `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(settings.model)}:generateContent`
 }
 
-export async function generateWithAi(settings: AiSettings, prompt: string): Promise<string> {
+export async function generateWithAi(settings: AiSettings, prompt: string, options: AiGenerationOptions = {}): Promise<string> {
   if (!settings.apiKey.trim())
     throw new Error('請先在設定中填入 API key')
 
   const provider: AiProvider = settings.provider
+  const responseFormat = options.responseFormat ?? 'json'
   let url = ''
   let headers: Record<string, string> = { 'Content-Type': 'application/json' }
   let body: Record<string, unknown>
@@ -107,7 +112,7 @@ export async function generateWithAi(settings: AiSettings, prompt: string): Prom
     headers = { ...headers, 'x-goog-api-key': settings.apiKey }
     body = {
       contents: [{ role: 'user', parts: [{ text: prompt }] }],
-      generationConfig: { responseMimeType: 'application/json' },
+      ...(responseFormat === 'json' ? { generationConfig: { responseMimeType: 'application/json' } } : {}),
     }
   }
   else {
@@ -116,7 +121,7 @@ export async function generateWithAi(settings: AiSettings, prompt: string): Prom
     body = {
       model: settings.model,
       messages: [{ role: 'user', content: prompt }],
-      response_format: { type: 'json_object' },
+      ...(responseFormat === 'json' ? { response_format: { type: 'json_object' } } : {}),
     }
   }
 

@@ -149,6 +149,46 @@ export const useSetsStore = defineStore('sets', () => {
     setEditorOpen.value = false
   }
 
+  function createSetFromItems(
+    sourceItems: Array<Pick<EditorItem, 'word' | 'pos' | 'meaning'> & Partial<EditorItem>>,
+    name = '',
+    difficulty = 2,
+  ): VocabSet | null {
+    const uiStore = useUIStore()
+    try {
+      const items = sourceItems.map((item, index) => normalizeItem(item, index))
+      if (!items.length)
+        throw new Error(t('editor.itemsRequired'))
+
+      const now = new Date()
+      const fallbackName = `單字集 ${now.getMonth() + 1}/${now.getDate()} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`
+      const nextSet: VocabSet = {
+        id: `${Date.now()}`,
+        setName: name.trim() || fallbackName,
+        difficulty: typeof difficulty === 'number' ? difficulty : 2,
+        items,
+        createdAt: now.toISOString(),
+        updatedAt: now.toISOString(),
+      }
+      const existing = sets.value.find(set => set.setName.trim().toLocaleLowerCase() === nextSet.setName.toLocaleLowerCase())
+      const savedSet = existing ? { ...nextSet, id: existing.id, createdAt: existing.createdAt } : nextSet
+      sets.value = deduplicateSetsByName([...sets.value.filter(set => set.id !== existing?.id), savedSet])
+      exportSelectedIds.value = sets.value.map(set => set.id)
+      activeSetId.value = savedSet.id
+      saveState()
+      useLibraryStore().linkSet(savedSet)
+      setEditorOpen.value = false
+      importOpen.value = false
+      setEditorError.value = ''
+      uiStore.showToast(t(existing ? 'editor.replaced' : 'editor.created', { name: savedSet.setName, count: savedSet.items.length }))
+      return savedSet
+    }
+    catch (error) {
+      setEditorError.value = (error as Error).message
+      return null
+    }
+  }
+
   function saveSetEditor() {
     const uiStore = useUIStore()
     try {
@@ -164,21 +204,8 @@ export const useSetsStore = defineStore('sets', () => {
       }
 
       if (setEditorMode.value === 'create') {
-        const nextSet: VocabSet = {
-          id: `${Date.now()}`,
-          setName: setEditorName.value.trim(),
-          difficulty: importDifficulty.value,
-          items,
-          folderId: setEditorFolderId.value || undefined,
-          createdAt: new Date().toISOString(),
-          updatedAt: new Date().toISOString(),
-        }
-        const existing = sets.value.find(set => set.setName.trim().toLocaleLowerCase() === nextSet.setName.toLocaleLowerCase())
-        const savedSet = existing ? { ...nextSet, id: existing.id, createdAt: existing.createdAt } : nextSet
-        sets.value = deduplicateSetsByName([...sets.value.filter(set => set.id !== existing?.id), savedSet])
-        exportSelectedIds.value = sets.value.map(set => set.id)
-        activeSetId.value = savedSet.id
-        uiStore.showToast(t(existing ? 'editor.replaced' : 'editor.created', { name: savedSet.setName, count: savedSet.items.length }))
+        createSetFromItems(items, setEditorName.value, importDifficulty.value)
+        return
       }
       else {
         const targetIndex = sets.value.findIndex(s => s.id === setEditorId.value)
@@ -202,9 +229,7 @@ export const useSetsStore = defineStore('sets', () => {
       }
 
       saveState()
-      useLibraryStore().linkSet(setEditorMode.value === 'create'
-        ? sets.value.find(set => set.id === activeSetId.value)!
-        : sets.value.find(set => set.id === setEditorId.value)!)
+      useLibraryStore().linkSet(sets.value.find(set => set.id === setEditorId.value)!)
       setEditorOpen.value = false
       importOpen.value = false
     }
@@ -246,13 +271,7 @@ export const useSetsStore = defineStore('sets', () => {
       return
     }
 
-    setEditorMode.value = 'create'
-    setEditorId.value = null
-    setEditorName.value = ''
-    pendingSetItems.value = createEditorItems(result.data.items)
-    setEditorError.value = ''
-    setEditorOpen.value = true
-    importOpen.value = false
+    createSetFromItems(result.data.items, result.data.setName, result.data.difficulty)
   }
 
   async function requestDelete(setId: string) {
@@ -480,6 +499,7 @@ export const useSetsStore = defineStore('sets', () => {
     isSetInProgress,
     openSetEditor,
     closeSetEditor,
+    createSetFromItems,
     saveSetEditor,
     addEditorItem,
     removeEditorItem,

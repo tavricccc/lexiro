@@ -21,6 +21,18 @@ function findButton(label: string): HTMLButtonElement {
   return button
 }
 
+function findExactButton(label: string): HTMLButtonElement {
+  const button = Array.from(document.body.querySelectorAll('button')).find(element =>
+    element.textContent?.trim() === label,
+  )
+
+  if (!(button instanceof HTMLButtonElement)) {
+    throw new TypeError(`Button not found: ${label}`)
+  }
+
+  return button
+}
+
 function mountImportDialog() {
   const pinia = createPinia()
   const wrapper = mount(ImportDialog, {
@@ -43,7 +55,7 @@ afterEach(() => {
 })
 
 describe('import dialog', () => {
-  it('keeps the dialog open and shows the JSON step after clicking next', async () => {
+  it('defaults to manual fields and can switch to the AI JSON flow', async () => {
     const mounted = mountImportDialog()
     wrapper = mounted.wrapper
     const { store } = mounted
@@ -52,24 +64,32 @@ describe('import dialog', () => {
     await nextTick()
 
     expect(store.importOpen).toBe(true)
-    expect(document.body.textContent).toContain('請輸入想學習的單字')
+    expect(document.body.textContent).toContain('每個單字只需要填寫英文單字、詞性與繁體中文意思')
 
-    findButton('下一步').click()
+    findButton('AI JSON 匯入').click()
     await nextTick()
 
     expect(store.importOpen).toBe(true)
+    expect(store.importStep).toBe(1)
+    expect(document.body.textContent).toContain('輸入要交給 AI 整理的英文單字')
+
+    store.nextImportStep()
+    await nextTick()
+
     expect(store.importStep).toBe(2)
     expect(document.body.textContent).toContain('或者直接貼上 JSON')
     expect(document.body.textContent).toContain('匯入')
-    expect(document.body.querySelector('textarea')?.getAttribute('placeholder')).toContain('{"items"')
+    expect(document.body.querySelector('textarea')?.getAttribute('placeholder')).toContain('items')
   })
 
-  it('opens the set editor after importing valid JSON from the second step', async () => {
+  it('creates a set after importing valid JSON from the second step', async () => {
     const mounted = mountImportDialog()
     wrapper = mounted.wrapper
     const { store } = mounted
 
     store.openImport()
+    await nextTick()
+    findButton('AI JSON 匯入').click()
     store.nextImportStep()
     store.importJson = JSON.stringify({
       setName: 'Fruits',
@@ -88,13 +108,14 @@ describe('import dialog', () => {
     })
     await nextTick()
 
-    findButton('匯入').click()
+    findExactButton('匯入').click()
     await nextTick()
 
     expect(store.importOpen).toBe(false)
-    expect(store.setEditorOpen).toBe(true)
-    expect(store.setEditorMode).toBe('create')
-    expect(store.pendingSetItems).toHaveLength(1)
-    expect(store.pendingSetItems[0].word).toBe('apple')
+    expect(store.setEditorOpen).toBe(false)
+    expect(store.sets).toHaveLength(1)
+    expect(store.sets[0].setName).toBe('Fruits')
+    expect(store.sets[0].items[0].word).toBe('apple')
+    expect(store.sets[0].items[0].pos).toBe('')
   })
 })

@@ -2,8 +2,9 @@
 import type { ResultRow } from '@/types'
 import { BookmarkCheck, BookOpenText, ClipboardCopy, RotateCcw } from 'lucide-vue-next'
 import { storeToRefs } from 'pinia'
-import { computed, nextTick, onMounted } from 'vue'
+import { computed, nextTick, onMounted, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { generateWithAi, loadAiSettings } from '@/lib/ai-provider'
 import { copyToClipboard } from '@/lib/clipboard'
 import { buildAllWrongQuestionsPrompt, buildQuestionExplainPrompt } from '@/lib/resultPrompts'
 import { useSessionStore } from '@/stores/session'
@@ -13,6 +14,7 @@ import Badge from './ui/badge/Badge.vue'
 import Button from './ui/button/Button.vue'
 import Card from './ui/card/Card.vue'
 import ScoreRing from './ui/score-ring/ScoreRing.vue'
+import StatusMessage from './ui/status-message/StatusMessage.vue'
 
 const setsStore = useSetsStore()
 const sessionStore = useSessionStore()
@@ -27,6 +29,11 @@ const {
 } = sessionStore
 const { t } = useI18n()
 const { showToast } = uiStore
+const aiSettings = ref(loadAiSettings())
+const aiResponses = ref<Record<string, string>>({})
+const allAiResponse = ref('')
+const aiLoading = ref<string | null>(null)
+const aiError = ref('')
 
 const wrongRows = computed(() => resultRows.value.filter(row => !row.record?.isCorrect))
 const displaySet = computed(() => activeSet.value ?? setsStore.sets[0] ?? null)
@@ -48,11 +55,40 @@ function questionFor(row: typeof resultRows.value[number]) {
   return row.entry.question
 }
 const isPerfect = computed(() => resultSummary.value != null && resultSummary.value.wrongCount === 0)
+const aiModeIsApi = computed(() => aiSettings.value.enabled)
 
-async function copyQuestionExplainPrompt(row: ResultRow) {
+function rowKey(row: ResultRow) {
+  return `${row.index}-${row.entry.item.id}`
+}
+
+async function explainQuestion(row: ResultRow) {
   if (!resultSummary.value)
     return
   const promptText = buildQuestionExplainPrompt(row.entry, row.record, resultSummary.value.mode, t('result.notAnswered'))
+  const settings = loadAiSettings()
+  aiSettings.value = settings
+  aiError.value = ''
+
+  if (settings.enabled) {
+    if (!settings.apiKey.trim()) {
+      aiError.value = t('result.aiConfigError')
+      return
+    }
+    const key = rowKey(row)
+    aiLoading.value = key
+    try {
+      const response = await generateWithAi(settings, promptText, { responseFormat: 'text' })
+      aiResponses.value = { ...aiResponses.value, [key]: response }
+    }
+    catch (error) {
+      aiError.value = (error as Error).message || t('result.aiFailed')
+    }
+    finally {
+      aiLoading.value = null
+    }
+    return
+  }
+
   try {
     await copyToClipboard(promptText)
     showToast(t('result.copiedAiPromptSingle', { word: row.entry.item.word }))
@@ -62,7 +98,7 @@ async function copyQuestionExplainPrompt(row: ResultRow) {
   }
 }
 
-async function copyAllWrongQuestionsPrompt() {
+async function explainAllWrongQuestions() {
   if (!resultSummary.value || resultSummary.value.wrongCount === 0)
     return
 
@@ -71,6 +107,27 @@ async function copyAllWrongQuestionsPrompt() {
     return
 
   const promptText = buildAllWrongQuestionsPrompt(rows, resultSummary.value.mode)
+  const settings = loadAiSettings()
+  aiSettings.value = settings
+  aiError.value = ''
+
+  if (settings.enabled) {
+    if (!settings.apiKey.trim()) {
+      aiError.value = t('result.aiConfigError')
+      return
+    }
+    aiLoading.value = 'all'
+    try {
+      allAiResponse.value = await generateWithAi(settings, promptText, { responseFormat: 'text' })
+    }
+    catch (error) {
+      aiError.value = (error as Error).message || t('result.aiFailed')
+    }
+    finally {
+      aiLoading.value = null
+    }
+    return
+  }
 
   try {
     await copyToClipboard(promptText)
@@ -143,16 +200,30 @@ onMounted(() => {
           v-if="resultSummary.wrongCount"
           variant="outline"
           class="gap-2"
-          @click="copyAllWrongQuestionsPrompt"
+          :loading="aiLoading === 'all'"
+          @click="explainAllWrongQuestions"
         >
           <ClipboardCopy class="h-4 w-4 text-accent-primary" />
-          <span>{{ $t('result.aiExplainAll') }}</span>
+          <span>{{ aiModeIsApi ? $t('result.aiGenerateAll') : $t('result.aiExplainAll') }}</span>
         </Button>
         <Button v-if="isChoiceMode" variant="outline" class="gap-2" @click="switchModeAfterResult">
           <BookOpenText class="h-4 w-4 text-accent-primary" />
           <span>{{ $t('result.switchMode', { next: resultSummary.mode === 'cloze' ? $t('practice.reading') : $t('practice.fillBlank') }) }}</span>
         </Button>
       </div>
+
+      <StatusMessage v-if="aiError" tone="error" class="mt-4">
+        {{ aiError }}
+      </StatusMessage>
+
+      <Card v-if="allAiResponse" class="mt-5 border-accent-primary/15 bg-accent-primary/5 p-5 text-left">
+        <p class="text-sm font-extrabold text-accent-primary">
+          {{ $t('result.aiResponseTitle') }}
+        </p>
+        <div class="mt-3 whitespace-pre-wrap text-sm leading-relaxed text-ink-700 dark:text-ink-300">
+          {{ allAiResponse }}
+        </div>
+      </Card>
 
       <p
         v-if="isPerfect"
@@ -184,10 +255,11 @@ onMounted(() => {
               variant="outline"
               size="sm"
               class="h-8 px-3 text-xs text-ink-600 dark:text-ink-400 border-ink-200 dark:border-ink-200/40 hover:bg-ink-100 dark:hover:bg-ink-200 rounded-xl"
-              @click="copyQuestionExplainPrompt(row)"
+              :loading="aiLoading === rowKey(row)"
+              @click="explainQuestion(row)"
             >
               <ClipboardCopy class="h-3.5 w-3.5 mr-1 text-accent-primary" />
-              <span>{{ $t('result.aiExplain') }}</span>
+              <span>{{ aiModeIsApi ? $t('result.aiGenerate') : $t('result.aiExplain') }}</span>
             </Button>
             <Badge
               :variant="row.record?.skipped ? 'secondary' : 'destructive'"
@@ -217,6 +289,14 @@ onMounted(() => {
               <p>{{ $t('result.yourAnswer') }}：<span class="font-bold text-red-500">{{ row.record?.userAnswer ?? $t('result.notAnswered') }}</span></p>
               <p>{{ $t('result.correctAnswer') }}：<span class="font-bold text-emerald-600 dark:text-emerald-400">{{ row.record?.correctAnswer ?? row.entry.item.word }}</span></p>
             </div>
+          </div>
+        </div>
+        <div v-if="aiResponses[rowKey(row)]" class="mt-4 rounded-xl border border-accent-primary/15 bg-accent-primary/5 p-4 text-sm leading-relaxed text-ink-700 dark:text-ink-300">
+          <p class="mb-2 text-xs font-extrabold text-accent-primary">
+            {{ $t('result.aiResponseTitle') }}
+          </p>
+          <div class="whitespace-pre-wrap">
+            {{ aiResponses[rowKey(row)] }}
           </div>
         </div>
       </Card>

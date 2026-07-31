@@ -4,6 +4,7 @@ import type { LibraryQuestion, WordEntry } from '@/types'
 import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { extractJsonText, generateWithAi, loadAiSettings } from '@/lib/ai-provider'
+import { copyToClipboard } from '@/lib/clipboard'
 import { parseLibraryImport } from '@/lib/library-import'
 import { buildQuestionGenerationPrompt } from '@/lib/question-generation'
 import { useLibraryStore } from '@/stores/library'
@@ -11,6 +12,7 @@ import { useUIStore } from '@/stores/ui'
 import Button from './ui/button/Button.vue'
 import Input from './ui/input/Input.vue'
 import StatusMessage from './ui/status-message/StatusMessage.vue'
+import Textarea from './ui/textarea/Textarea.vue'
 
 const props = defineProps<{ setId: string }>()
 const libraryStore = useLibraryStore()
@@ -22,6 +24,9 @@ const kind = ref<GeneratedQuestionKind>('fillBlank')
 const preview = ref<LibraryQuestion[]>([])
 const error = ref('')
 const generating = ref(false)
+const manualResponse = ref('')
+const waitingForManualResponse = ref(false)
+const aiSettings = ref(loadAiSettings())
 
 const matches = computed(() => {
   const normalized = query.value.trim().toLocaleLowerCase()
@@ -38,31 +43,59 @@ function toggleWord(wordKey: string) {
     : [...selectedKeys.value, wordKey]
 }
 
+function keepQuestionsForWords(questions: LibraryQuestion[], words: WordEntry[]) {
+  const allowedKeys = new Set(words.map(word => word.wordKey))
+  return questions.filter((question) => {
+    if (question.kind === 'reading')
+      return question.wordKeys.some(wordKey => allowedKeys.has(wordKey))
+    return Boolean(question.wordKey && allowedKeys.has(question.wordKey))
+  })
+}
+
 async function generate() {
   if (!selectedWords.value.length) {
     error.value = t('library.selectWordsError')
     return
   }
   const settings = loadAiSettings()
-  if (!settings.enabled || !settings.apiKey.trim()) {
+  aiSettings.value = settings
+  error.value = ''
+  const promptWords = kind.value === 'reading' ? selectedWords.value.slice(0, 15) : selectedWords.value
+  const prompt = buildQuestionGenerationPrompt(promptWords, kind.value)
+
+  if (!settings.enabled) {
+    try {
+      await copyToClipboard(prompt)
+      waitingForManualResponse.value = true
+      uiStore.showToast(t('library.promptCopied'))
+    }
+    catch {
+      error.value = t('library.copyFailed')
+    }
+    return
+  }
+  if (!settings.apiKey.trim()) {
     error.value = t('library.aiConfigError')
     return
   }
+
   generating.value = true
-  error.value = ''
   try {
     const batches = kind.value === 'reading'
-      ? [selectedWords.value.slice(0, 15)]
-      : Array.from({ length: Math.ceil(selectedWords.value.length / 15) }, (_, index) => selectedWords.value.slice(index * 15, (index + 1) * 15))
+      ? [promptWords]
+      : Array.from({ length: Math.ceil(promptWords.length / 15) }, (_, index) => promptWords.slice(index * 15, (index + 1) * 15))
     const generated: LibraryQuestion[] = []
     for (const batch of batches) {
       const response = await generateWithAi(settings, buildQuestionGenerationPrompt(batch, kind.value))
       const parsed = parseLibraryImport(extractJsonText(response))
       if (!parsed.valid || parsed.data.kind !== 'questions')
         throw new Error(parsed.valid ? t('library.aiResponseError') : parsed.error)
-      generated.push(...parsed.data.questions)
+      generated.push(...keepQuestionsForWords(parsed.data.questions, batch))
     }
+    if (!generated.length)
+      throw new Error(t('library.aiResponseError'))
     preview.value = generated
+    waitingForManualResponse.value = false
   }
   catch (generationError) {
     error.value = (generationError as Error).message
@@ -70,6 +103,27 @@ async function generate() {
   finally {
     generating.value = false
   }
+}
+
+function parseManualResponse() {
+  if (!manualResponse.value.trim()) {
+    error.value = t('library.responseRequired')
+    return
+  }
+  const parsed = parseLibraryImport(extractJsonText(manualResponse.value))
+  if (!parsed.valid || parsed.data.kind !== 'questions') {
+    error.value = parsed.valid ? t('library.aiResponseError') : parsed.error
+    return
+  }
+  const selected = selectedWords.value.slice(0, kind.value === 'reading' ? 15 : selectedWords.value.length)
+  const questions = keepQuestionsForWords(parsed.data.questions, selected)
+  if (!questions.length) {
+    error.value = t('library.aiResponseError')
+    return
+  }
+  preview.value = questions
+  error.value = ''
+  waitingForManualResponse.value = false
 }
 
 function importPreview() {
@@ -101,7 +155,7 @@ function importPreview() {
           </option>
         </select>
         <Button variant="default" :loading="generating" :disabled="!selectedWords.length" @click="generate">
-          {{ $t('library.generateSelected') }}（{{ selectedWords.length }}）
+          {{ aiSettings.enabled ? $t('library.generateSelected') : $t('library.copyPrompt') }}（{{ selectedWords.length }}）
         </Button>
       </div>
       <div class="grid max-h-48 gap-2 overflow-y-auto pr-1 sm:grid-cols-2 lg:grid-cols-3">
@@ -114,6 +168,15 @@ function importPreview() {
       <StatusMessage v-if="error" tone="error">
         {{ error }}
       </StatusMessage>
+      <div v-if="waitingForManualResponse" class="space-y-3">
+        <StatusMessage tone="info">
+          {{ $t('library.promptCopiedHint') }}
+        </StatusMessage>
+        <Textarea v-model="manualResponse" :rows="7" class="font-mono text-xs" :placeholder="$t('library.responsePlaceholder')" />
+        <Button variant="outline" size="sm" @click="parseManualResponse">
+          {{ $t('library.parseResponse') }}
+        </Button>
+      </div>
       <div v-if="preview.length" class="rounded-xl bg-ink-50 p-3 dark:bg-ink-950/30">
         <p class="text-sm font-bold">
           {{ $t('library.generationPreview', { count: preview.length }) }}

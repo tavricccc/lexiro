@@ -19,6 +19,17 @@ describe('aI provider adapter', () => {
     }))
   })
 
+  it('supports plain-text responses for AI explanations', async () => {
+    const fetchMock = vi.fn().mockResolvedValue(new Response(JSON.stringify({ choices: [{ message: { content: '這是解析內容' } }] }), { status: 200 }))
+    vi.stubGlobal('fetch', fetchMock)
+
+    const result = await generateWithAi({ ...defaultAiSettings, apiKey: 'test-key', enabled: true }, 'explain this', { responseFormat: 'text' })
+    const request = fetchMock.mock.calls[0]?.[1] as RequestInit
+
+    expect(result).toBe('這是解析內容')
+    expect(JSON.parse(String(request.body))).not.toHaveProperty('response_format')
+  })
+
   it('imports the exported envelope and clamps unsafe batch sizes', () => {
     const settings = parseAiSettingsJson(JSON.stringify({
       version: 1,

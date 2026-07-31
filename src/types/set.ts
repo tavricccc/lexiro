@@ -49,3 +49,9 @@ export interface EditorItem {
   tags?: string[]
   favorite?: boolean
 }
+
+export interface WordDraft {
+  word: string
+  pos: string
+  meaning: string
+}
