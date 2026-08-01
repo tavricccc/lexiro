@@ -16,6 +16,7 @@ import { computed, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { SESSION_STORAGE_KEY } from '@/constants'
 import { i18n } from '@/lib/i18n'
+import { normalizeWordKey } from '@/lib/library'
 import { createDebouncedSaver, loadFromStorage, saveToStorage } from '@/lib/persist'
 import { shuffleEntries, shuffleQuizEntry } from '@/lib/shuffle'
 import { isSpellingAnswerCorrect } from '@/lib/spelling'
@@ -321,7 +322,11 @@ export const useSessionStore = defineStore('session', () => {
     if (mode === 'reading') {
       const reading = libraryStore.questions.filter((question): question is Extract<LibraryQuestion, { kind: 'reading' }> => question.kind === 'reading')
       return reading.flatMap((pack) => {
-        const relatedItem = items.find(item => pack.wordKeys.includes(item.word.toLocaleLowerCase())) ?? items[0]
+        const packWordKeys = new Set([
+          ...pack.wordKeys,
+          ...pack.questions.map(question => question.wordKey ?? ''),
+        ].map(normalizeWordKey).filter(Boolean))
+        const relatedItem = items.find(item => packWordKeys.has(normalizeWordKey(item.word)))
         if (!relatedItem)
           return []
         return pack.questions
@@ -470,7 +475,7 @@ export const useSessionStore = defineStore('session', () => {
     const learningStore = useLearningStore()
     const entries = reviewEntries ?? (() => {
       const clozeEntries = setsStore.sets.flatMap(set => buildQuestionEntries(set.id, set.items, 'cloze'))
-      const readingEntries = setsStore.sets[0] ? buildQuestionEntries(setsStore.sets[0].id, setsStore.sets[0].items, 'reading') : []
+      const readingEntries = setsStore.sets.flatMap(set => buildQuestionEntries(set.id, set.items, 'reading'))
       const unique = new Map<string, SessionEntry>()
       for (const entry of [...clozeEntries, ...readingEntries]) {
         const key = `${entry.item.word}|${entry.question?.prompt}|${entry.readingPassage ?? ''}`

@@ -65,6 +65,8 @@ export default {
     newFolderShort: '新增',
     newFolderPlaceholder: '資料夾名稱',
     folderCreateHint: '在目前選取的資料夾中新增子資料夾；選擇未分類則建立在最上層。',
+    folderTitle: '資料夾',
+    folderDescription: '用資料夾整理單字集，支援巢狀分類。',
     generateQuestions: '只用選取的單字生成題目',
     searchWordsToGenerate: '搜尋要生成題目的單字…',
     questionTypeChoice: '四選一',

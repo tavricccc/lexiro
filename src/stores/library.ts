@@ -2,7 +2,8 @@ import type { LibraryQuestion, LibraryState, VocabFolder, VocabSet, VocabSetMemb
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
 import { LIBRARY_STORAGE_KEY } from '@/constants'
-import { itemToMembership, itemToWordEntry, mergeWord, normalizeWordKey } from '@/lib/library'
+import { stableHash } from '@/lib/hash'
+import { canonicalizeQuestion, itemToMembership, itemToWordEntry, mergeWord, normalizeWordKey } from '@/lib/library'
 import { loadFromStorage, saveToStorage } from '@/lib/persist'
 
 const CURRENT_VERSION = 1
@@ -18,6 +19,19 @@ function emptyState(): LibraryState {
   }
 }
 
+function normalizeQuestions(value: unknown): LibraryQuestion[] {
+  if (!Array.isArray(value))
+    return []
+  const byId = new Map<string, LibraryQuestion>()
+  for (const question of value) {
+    if (!question || typeof question !== 'object' || Array.isArray(question))
+      continue
+    const normalized = canonicalizeQuestion(question as LibraryQuestion)
+    byId.set(normalized.id, normalized)
+  }
+  return Array.from(byId.values())
+}
+
 function normalizeState(value: unknown): LibraryState {
   if (!value || typeof value !== 'object' || Array.isArray(value))
     return emptyState()
@@ -28,7 +42,7 @@ function normalizeState(value: unknown): LibraryState {
     words: source.words && typeof source.words === 'object' ? source.words as Record<string, WordEntry> : {},
     memberships: source.memberships && typeof source.memberships === 'object' ? source.memberships as Record<string, VocabSetMember[]> : {},
     folders: Array.isArray(source.folders) ? source.folders as VocabFolder[] : [],
-    questions: Array.isArray(source.questions) ? source.questions as LibraryQuestion[] : [],
+    questions: normalizeQuestions(source.questions),
     updatedAt: typeof source.updatedAt === 'string' ? source.updatedAt : base.updatedAt,
   }
 }
@@ -49,8 +63,10 @@ export const useLibraryStore = defineStore('library', () => {
   function upsertWordInternal(incoming: WordEntry): WordEntry {
     const wordKey = normalizeWordKey(incoming.wordKey || incoming.word)
     const normalized = { ...incoming, wordKey }
-    const merged = mergeWord(state.value.words[wordKey], normalized)
-    state.value.words = { ...state.value.words, [wordKey]: merged }
+    const existing = state.value.words[wordKey]
+    const merged = mergeWord(existing, normalized)
+    if (merged !== existing)
+      state.value.words = { ...state.value.words, [wordKey]: merged }
     return merged
   }
 
@@ -75,33 +91,40 @@ export const useLibraryStore = defineStore('library', () => {
 
   function importQuestions(entries: LibraryQuestion[]) {
     const byId = new Map(state.value.questions.map(question => [question.id, question]))
-    for (const question of entries)
-      byId.set(question.id, question)
+    for (const question of entries) {
+      const normalized = canonicalizeQuestion(question)
+      byId.set(normalized.id, normalized)
+    }
     state.value.questions = Array.from(byId.values())
     touch()
   }
 
   function linkSet(set: VocabSet) {
-    const memberships = [...(state.value.memberships[set.id] ?? [])]
-    const seen = new Set(memberships.map(member => member.wordKey))
+    const previousWords = state.value.words
+    const nextMemberships = new Map<string, VocabSetMember>()
     for (const item of set.items) {
-      const word = upsertWordInternal(itemToWordEntry(item))
+      upsertWordInternal(itemToWordEntry(item))
       const membership = itemToMembership(item)
-      const existing = memberships.find(member => member.wordKey === membership.wordKey)
+      const existing = nextMemberships.get(membership.wordKey)
       if (existing) {
         existing.senseIds = Array.from(new Set([...existing.senseIds, ...membership.senseIds]))
         existing.tags = Array.from(new Set([...existing.tags, ...membership.tags]))
-        existing.note ||= membership.note
-        existing.favorite ||= membership.favorite
+        existing.note = membership.note || existing.note
+        existing.favorite = Boolean(existing.favorite || membership.favorite)
       }
       else {
-        memberships.push({ ...membership, senseIds: word.senses.map(sense => sense.id).filter(id => membership.senseIds.includes(id)) })
+        nextMemberships.set(membership.wordKey, { ...membership })
       }
-      seen.add(membership.wordKey)
     }
-    state.value.memberships = { ...state.value.memberships, [set.id]: memberships.filter(member => seen.has(member.wordKey)) }
-    pruneOrphans()
-    touch()
+    const memberships = Array.from(nextMemberships.values())
+    const currentMemberships = state.value.memberships[set.id] ?? []
+    const membershipsChanged = JSON.stringify(currentMemberships) !== JSON.stringify(memberships)
+    if (membershipsChanged)
+      state.value.memberships = { ...state.value.memberships, [set.id]: memberships }
+    const wordsChanged = state.value.words !== previousWords
+    const orphansPruned = pruneOrphans()
+    if (membershipsChanged || wordsChanged || orphansPruned)
+      touch()
   }
 
   function unlinkSet(setId: string) {
@@ -114,14 +137,68 @@ export const useLibraryStore = defineStore('library', () => {
     touch()
   }
 
-  function pruneOrphans() {
-    const referenced = new Set(Object.values(state.value.memberships).flat().map(member => member.wordKey))
-    state.value.words = Object.fromEntries(Object.entries(state.value.words).filter(([wordKey]) => referenced.has(wordKey)))
-    state.value.questions = state.value.questions.filter((question) => {
-      if (question.kind === 'reading')
-        return question.wordKeys.length === 0 || question.wordKeys.some(wordKey => referenced.has(wordKey))
-      return !question.wordKey || referenced.has(question.wordKey)
-    })
+  function pruneOrphans(): boolean {
+    const memberships = Object.values(state.value.memberships).flat()
+    const referenced = new Set(memberships.map(member => normalizeWordKey(member.wordKey)))
+    const senseReferences = new Map<string, Set<string>>()
+    const keepAllSenses = new Set<string>()
+    for (const member of memberships) {
+      const wordKey = normalizeWordKey(member.wordKey)
+      if (!member.senseIds.length) {
+        keepAllSenses.add(wordKey)
+        continue
+      }
+      const senseIds = senseReferences.get(wordKey) ?? new Set<string>()
+      for (const senseId of member.senseIds)
+        senseIds.add(senseId)
+      senseReferences.set(wordKey, senseIds)
+    }
+
+    function keepsLink(wordKey: string, senseId?: string): boolean {
+      const normalizedWordKey = normalizeWordKey(wordKey)
+      if (!referenced.has(normalizedWordKey))
+        return false
+      return !senseId || keepAllSenses.has(normalizedWordKey) || Boolean(senseReferences.get(normalizedWordKey)?.has(senseId))
+    }
+
+    const nextWords = Object.fromEntries(Object.entries(state.value.words)
+      .filter(([wordKey]) => referenced.has(wordKey))
+      .map(([wordKey, word]) => {
+        if (keepAllSenses.has(wordKey) || !senseReferences.get(wordKey)?.size)
+          return [wordKey, word]
+        const senseIds = senseReferences.get(wordKey)!
+        const senses = word.senses.filter(sense => senseIds.has(sense.id))
+        return [wordKey, senses.length ? { ...word, senses } : word]
+      }))
+
+    const nextQuestions: LibraryQuestion[] = []
+    for (const question of state.value.questions) {
+      if (question.kind !== 'reading') {
+        if (!question.wordKey || keepsLink(question.wordKey, question.senseId))
+          nextQuestions.push(question)
+        continue
+      }
+
+      const wordKeys = question.wordKeys.map(normalizeWordKey).filter(wordKey => referenced.has(wordKey))
+      const questions = question.questions.filter((child) => {
+        if (child.wordKey)
+          return keepsLink(child.wordKey, child.senseId)
+        return wordKeys.length > 0
+      })
+      if (!wordKeys.length && !questions.length)
+        continue
+      if (question.senseId && !wordKeys.some(wordKey => keepsLink(wordKey, question.senseId)))
+        continue
+      nextQuestions.push({ ...question, wordKeys, questions })
+    }
+
+    const wordsChanged = stableHash(nextWords) !== stableHash(state.value.words)
+    const questionsChanged = stableHash(nextQuestions) !== stableHash(state.value.questions)
+    if (wordsChanged)
+      state.value.words = nextWords
+    if (questionsChanged)
+      state.value.questions = nextQuestions
+    return wordsChanged || questionsChanged
   }
 
   function getWord(word: string): WordEntry | null {

@@ -68,6 +68,12 @@ export const useSetsStore = defineStore('sets', () => {
   }
 
   function applyRemoteSets(remoteSets: VocabSet[]) {
+    const libraryStore = useLibraryStore()
+    const remoteIds = new Set(remoteSets.map(set => set.id))
+    for (const localSet of sets.value) {
+      if (!remoteIds.has(localSet.id))
+        libraryStore.unlinkSet(localSet.id)
+    }
     const canonicalSets = deduplicateSetsByName(remoteSets)
     sets.value = canonicalSets
     exportSelectedIds.value = canonicalSets.map(set => set.id)
@@ -78,7 +84,7 @@ export const useSetsStore = defineStore('sets', () => {
     activeSetId.value = canonicalSets[0]?.id ?? null
     saveState()
     for (const set of canonicalSets)
-      useLibraryStore().linkSet(set)
+      libraryStore.linkSet(set)
   }
 
   async function loadState() {
@@ -416,10 +422,19 @@ export const useSetsStore = defineStore('sets', () => {
     const result = applyImportedSets(sets.value, targetSets, mode, importVersionChoices.value)
 
     if (mode === 'overwrite') {
+      const previousSetIds = new Set(sets.value.map(set => set.id))
       sets.value = result.imported.map(set => ({ ...set, folderId, updatedAt: new Date().toISOString() }))
       exportSelectedIds.value = result.imported.map(s => s.id)
       activeSetId.value = result.imported[0]?.id ?? null
       sessionStore.resetStudyView()
+      const libraryStore = useLibraryStore()
+      const nextSetIds = new Set(sets.value.map(set => set.id))
+      for (const setId of previousSetIds) {
+        if (!nextSetIds.has(setId))
+          libraryStore.unlinkSet(setId)
+      }
+      for (const set of sets.value)
+        libraryStore.linkSet(set)
       saveState()
       duplicateSummary.value = result
       uiStore.showToast(t('backup.overwriteSuccess', { count: result.imported.length }))

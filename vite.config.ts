@@ -28,6 +28,11 @@ export default defineConfig({
               test: /node_modules[\\/](?:firebase|@firebase)[\\/]/,
               priority: 10,
             },
+            {
+              name: 'fsrs',
+              test: /node_modules[\\/]ts-fsrs[\\/]/,
+              priority: 20,
+            },
           ],
         },
       },

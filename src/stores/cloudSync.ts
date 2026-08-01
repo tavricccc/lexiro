@@ -230,16 +230,16 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
   async function writeLibraryChunks(uid: string, library: LibraryState) {
     const chunks = buildLibraryChunks(uid, library)
     const liveIds = new Set(chunks.map(chunk => chunk.chunkId))
-    const writes = chunks
+    const writes: Promise<void>[] = chunks
       .filter(chunk => knownLibraryHashes.get(chunk.chunkId) !== chunk.checksum)
-      .map((chunk) => {
+      .map(chunk => setDoc(userDocument(uid, 'library', chunk.chunkId), chunk).then(() => {
         knownLibraryHashes.set(chunk.chunkId, chunk.checksum)
-        return setDoc(userDocument(uid, 'library', chunk.chunkId), chunk)
-      })
-    for (const oldId of knownLibraryHashes.keys()) {
+      }))
+    for (const oldId of Array.from(knownLibraryHashes.keys())) {
       if (!liveIds.has(oldId)) {
-        knownLibraryHashes.delete(oldId)
-        writes.push(deleteDoc(userDocument(uid, 'library', oldId)).then(() => undefined))
+        writes.push(deleteDoc(userDocument(uid, 'library', oldId)).then(() => {
+          knownLibraryHashes.delete(oldId)
+        }))
       }
     }
     if (writes.length)
@@ -404,19 +404,22 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
       const writes = Object.values(learningStore.progressBySet)
         .filter(progress => knownProgressHashes.get(progress.setId) !== stableHash(progress))
         .map((progress) => {
-          knownProgressHashes.set(progress.setId, stableHash(progress))
+          const progressHash = stableHash(progress)
           return setDoc(
             userDocument(user.value!.uid, 'progress', progress.setId),
             { ...progress, ownerId: user.value!.uid, schemaVersion: SCHEMA_VERSION },
-          )
+          ).then(() => {
+            knownProgressHashes.set(progress.setId, progressHash)
+          })
         })
       const statsHash = stableHash(learningStore.stats)
       if (knownStatsHash !== statsHash) {
-        knownStatsHash = statsHash
         writes.push(setDoc(userDocument(user.value.uid, 'stats', 'summary'), {
           ...learningStore.stats,
           ownerId: user.value.uid,
           schemaVersion: SCHEMA_VERSION,
+        }).then(() => {
+          knownStatsHash = statsHash
         }))
       }
       if (learningStore.stats.todayReviews > 0 || learningStore.stats.todayQuestionReviews > 0) {
@@ -433,8 +436,9 @@ export const useCloudSyncStore = defineStore('cloudSync', () => {
         }
         const dailyHash = stableHash(daily)
         if (dailyHash !== knownDailyHash) {
-          knownDailyHash = dailyHash
-          writes.push(setDoc(dailyStatsDocument(user.value.uid, daily.date), daily))
+          writes.push(setDoc(dailyStatsDocument(user.value.uid, daily.date), daily).then(() => {
+            knownDailyHash = dailyHash
+          }))
         }
       }
       if (!writes.length) {

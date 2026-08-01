@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import { ClipboardPaste, FileQuestion, Plus, Search, Upload } from 'lucide-vue-next'
+import { ClipboardPaste, FileQuestion, FolderOpen, Plus, Search, Upload } from 'lucide-vue-next'
 import { storeToRefs } from 'pinia'
 import { computed, ref } from 'vue'
-import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
-import { ALL_FOLDER_ID, buildFolderOptions, UNCATEGORIZED_FOLDER_ID } from '@/lib/folders'
+import { ALL_FOLDER_ID, UNCATEGORIZED_FOLDER_ID } from '@/lib/folders'
 import { useLibraryStore } from '@/stores/library'
 import { useSetsStore } from '@/stores/sets'
 import { useUIStore } from '@/stores/ui'
+import FolderTree from './FolderTree.vue'
 import SetCard from './SetCard.vue'
 import Button from './ui/button/Button.vue'
 import Card from './ui/card/Card.vue'
@@ -18,7 +18,6 @@ const setsStore = useSetsStore()
 const libraryStore = useLibraryStore()
 const uiStore = useUIStore()
 const router = useRouter()
-const { t } = useI18n()
 const { hasSets, sets } = storeToRefs(setsStore)
 const { isSetInProgress, requestDelete, openSetEditor, openImport } = setsStore
 const { openTransfer } = uiStore
@@ -35,8 +34,6 @@ const filteredSets = computed(() => {
     return inFolder && (!q || set.setName.toLowerCase().includes(q) || set.items.some(item => [item.word, item.meaning, item.definition ?? '', ...(item.tags ?? [])].some(value => value.toLowerCase().includes(q))))
   })
 })
-
-const folderOptions = computed(() => buildFolderOptions(libraryStore.folders, t('library.rootFolder')))
 
 function createFolder() {
   const name = newFolderName.value.trim()
@@ -114,23 +111,31 @@ function moveSet(setId: string, folderId: string) {
         </div>
       </Card>
 
-      <Card class="p-3 sm:p-4">
-        <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <div class="flex min-w-0 flex-1 flex-wrap items-center gap-1">
-            <button type="button" class="rounded-lg px-2.5 py-1.5 text-xs font-medium text-ink-500 transition hover:bg-ink-100 hover:text-ink-900 dark:hover:bg-ink-800 dark:hover:text-ink-50" :class="selectedFolderId === ALL_FOLDER_ID ? 'bg-ink-100 text-ink-900 dark:bg-ink-800 dark:text-ink-50' : ''" @click="selectedFolderId = ALL_FOLDER_ID">
-              {{ $t('library.allFolders') }}
-            </button>
-            <button v-for="folder in folderOptions" :key="folder.id" type="button" class="min-w-0 rounded-lg py-1.5 pr-2.5 text-left text-xs font-medium text-ink-500 transition hover:bg-ink-100 hover:text-ink-900 dark:hover:bg-ink-800 dark:hover:text-ink-50" :class="selectedFolderId === folder.id ? 'bg-ink-100 text-ink-900 dark:bg-ink-800 dark:text-ink-50' : ''" :style="{ paddingLeft: `${0.625 + folder.depth * 0.75}rem` }" @click="selectedFolderId = folder.id">
-              {{ folder.label }}
-            </button>
+      <Card class="space-y-3 p-3 sm:p-4">
+        <div class="flex items-start gap-2">
+          <FolderOpen class="mt-0.5 h-4 w-4 shrink-0 text-ink-500" />
+          <div>
+            <p class="text-sm font-semibold text-ink-800 dark:text-ink-100">
+              {{ $t('library.folderTitle') }}
+            </p>
+            <p class="mt-0.5 text-xs text-ink-500 dark:text-ink-400">
+              {{ $t('library.folderDescription') }}
+            </p>
           </div>
-          <form class="flex gap-2" @submit.prevent="createFolder">
-            <Input v-model="newFolderName" :placeholder="$t('library.newFolderPlaceholder')" class="h-9 w-36 rounded-xl" />
-            <Button type="submit" size="sm" variant="outline">
-              {{ $t('library.newFolder') }}
-            </Button>
-          </form>
         </div>
+        <FolderTree
+          v-model="selectedFolderId"
+          :folders="libraryStore.folders"
+          :include-all="true"
+          :all-label="$t('library.allFolders')"
+          :root-label="$t('library.rootFolder')"
+        />
+        <form class="flex flex-col gap-2 sm:flex-row sm:items-center" @submit.prevent="createFolder">
+          <Input v-model="newFolderName" :placeholder="$t('library.newFolderPlaceholder')" class="min-w-0 flex-1 rounded-xl" />
+          <Button type="submit" size="sm" variant="outline">
+            {{ $t('library.newFolder') }}
+          </Button>
+        </form>
       </Card>
 
       <div v-if="filteredSets.length" class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">

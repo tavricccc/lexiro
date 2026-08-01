@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { VocabFolder, VocabItem } from '@/types'
 import { onClickOutside } from '@vueuse/core'
-import { ArrowRight, Ellipsis, Flame, FolderInput, PencilLine, Trash2 } from 'lucide-vue-next'
+import { ArrowRight, Ellipsis, Flame, Folder, FolderOpen, PencilLine, Trash2 } from 'lucide-vue-next'
 import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { buildFolderOptions, UNCATEGORIZED_FOLDER_ID } from '@/lib/folders'
@@ -60,7 +60,7 @@ function moveSet(folderId = '') {
 
 <template>
   <Card
-    class="relative p-5 text-left sm:p-6"
+    class="relative overflow-visible p-5 text-left sm:p-6"
     :class="active ? 'ring-2 ring-accent-primary/25 border-accent-primary/30' : ''"
   >
     <div class="flex items-start justify-between gap-4">
@@ -90,7 +90,7 @@ function moveSet(folderId = '') {
         </p>
       </div>
 
-      <div ref="menuRef" class="relative shrink-0" @click.stop>
+      <div ref="menuRef" class="relative z-30 shrink-0" @click.stop>
         <Button
           variant="ghost"
           size="icon"
@@ -105,7 +105,7 @@ function moveSet(folderId = '') {
 
         <div
           v-if="menuOpen"
-          class="absolute right-0 top-full z-30 mt-2 w-60 rounded-2xl border border-ink-200/80 bg-white/95 p-1.5 text-left shadow-floating backdrop-blur-xl dark:border-ink-700/80 dark:bg-ink-950/95"
+          class="absolute right-0 top-full z-50 mt-2 max-h-72 w-64 overflow-y-auto rounded-2xl border border-ink-200/80 bg-white/95 p-1.5 text-left shadow-floating backdrop-blur-xl dark:border-ink-700/80 dark:bg-ink-950/95"
           role="menu"
         >
           <button type="button" class="flex w-full items-center gap-2 rounded-xl px-3 py-2.5 text-xs font-bold text-ink-800 transition-colors hover:bg-ink-100/80 dark:text-ink-200 dark:hover:bg-ink-800/80" role="menuitem" @click="editSet">
@@ -118,12 +118,13 @@ function moveSet(folderId = '') {
             {{ t('setCard.moveFolder') }}
           </p>
           <button type="button" class="flex w-full items-center gap-2 rounded-xl px-3 py-2.5 text-xs font-medium transition-colors hover:bg-ink-100/80 disabled:cursor-default disabled:opacity-60 dark:hover:bg-ink-800/80" :class="!set.folderId ? 'text-accent-primary' : 'text-ink-700 dark:text-ink-300'" role="menuitem" :disabled="!set.folderId" @click="moveSet()">
-            <FolderInput class="h-4 w-4" />
+            <Folder class="h-4 w-4" />
             {{ $t('study.folderNone') }}
           </button>
           <button v-for="folder in folderOptions" :key="folder.id" type="button" class="flex w-full items-center gap-2 rounded-xl py-2.5 pr-3 text-xs font-medium transition-colors hover:bg-ink-100/80 disabled:cursor-default disabled:opacity-60 dark:hover:bg-ink-800/80" :class="set.folderId === folder.id ? 'text-accent-primary' : 'text-ink-700 dark:text-ink-300'" :style="{ paddingLeft: `${0.75 + folder.depth * 0.75}rem` }" role="menuitem" :disabled="set.folderId === folder.id" @click="moveSet(folder.id)">
-            <FolderInput class="h-4 w-4" />
-            <span class="truncate">{{ folder.label }}</span>
+            <FolderOpen v-if="set.folderId === folder.id" class="h-4 w-4" />
+            <Folder v-else class="h-4 w-4" />
+            <span class="truncate">{{ folder.name }}</span>
           </button>
 
           <div class="my-1 border-t border-ink-200/70 dark:border-ink-700/70" />

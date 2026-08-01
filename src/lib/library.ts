@@ -1,4 +1,4 @@
-import type { LibraryQuestion, VocabSet, VocabSetMember, WordEntry, WordSense } from '@/types'
+import type { LibraryQuestion, ReadingChildQuestion, ReadingPack, VocabSet, VocabSetMember, WordEntry, WordSense } from '@/types'
 import { stableHash } from './hash'
 
 export function normalizeWordKey(word: string): string {
@@ -11,6 +11,25 @@ export function buildSenseId(wordKey: string, pos: string, meaningZh: string): s
 
 export function buildQuestionId(question: Omit<LibraryQuestion, 'id' | 'createdAt' | 'updatedAt'>, sourceIndex = 0): string {
   return `question-${stableHash({ question, sourceIndex })}`
+}
+
+export function canonicalizeQuestion(question: LibraryQuestion): LibraryQuestion {
+  const { id: _id, createdAt: rawCreatedAt, updatedAt: rawUpdatedAt, ...rawContent } = question
+  const now = new Date().toISOString()
+  const createdAt = rawCreatedAt || now
+  const updatedAt = rawUpdatedAt || createdAt
+
+  if (question.kind === 'reading') {
+    const questions = question.questions.map((child: ReadingChildQuestion) => {
+      const { id: _childId, ...content } = child
+      return { ...content, id: `child-${stableHash(content)}` }
+    })
+    const content = { ...rawContent, questions } as Omit<ReadingPack, 'id' | 'createdAt' | 'updatedAt'>
+    return { ...content, id: buildQuestionId(content), createdAt, updatedAt }
+  }
+
+  const content = rawContent as Omit<LibraryQuestion, 'id' | 'createdAt' | 'updatedAt'>
+  return { ...content, id: buildQuestionId(content), createdAt, updatedAt } as LibraryQuestion
 }
 
 export function mergeUniqueStrings(first: string[] = [], second: string[] = []): string[] {
@@ -32,11 +51,19 @@ export function mergeUniqueStrings(first: string[] = [], second: string[] = []):
 export function mergeSense(existing: WordSense | undefined, incoming: WordSense): WordSense {
   if (!existing)
     return incoming
+  const nextDefinition = existing.definitionEn || incoming.definitionEn
+  const nextExamples = mergeUniqueStrings(existing.examples, incoming.examples)
+  const nextSource = existing.source === 'user' ? existing.source : incoming.source ?? existing.source
+  const changed = nextDefinition !== existing.definitionEn
+    || nextSource !== existing.source
+    || stableHash(nextExamples) !== stableHash(existing.examples)
+  if (!changed)
+    return existing
   return {
     ...existing,
-    definitionEn: existing.definitionEn || incoming.definitionEn,
-    examples: mergeUniqueStrings(existing.examples, incoming.examples),
-    source: existing.source === 'user' ? existing.source : incoming.source ?? existing.source,
+    definitionEn: nextDefinition,
+    examples: nextExamples,
+    source: nextSource,
     updatedAt: new Date().toISOString(),
   }
 }
@@ -55,7 +82,7 @@ export function mergeWord(existing: WordEntry | undefined, incoming: WordEntry):
     else
       senses[index] = mergeSense(senses[index], incomingSense)
   }
-  return {
+  const next: WordEntry = {
     ...existing,
     word: existing.word || incoming.word,
     senses,
@@ -68,6 +95,10 @@ export function mergeWord(existing: WordEntry | undefined, incoming: WordEntry):
     metadata: { ...existing.metadata, ...incoming.metadata },
     updatedAt: new Date().toISOString(),
   }
+  const comparableNext = { ...next, updatedAt: existing.updatedAt }
+  if (stableHash(comparableNext) === stableHash(existing))
+    return existing
+  return next
 }
 
 export function itemToWordEntry(item: VocabSet['items'][number]): WordEntry {

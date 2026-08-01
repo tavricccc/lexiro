@@ -1,13 +1,17 @@
-import type { ClozeQuestion, LibraryQuestion, MultipleChoiceQuestion, ReadingPack, WordEntry, WordSense } from '@/types'
-import { buildSenseId, normalizeWordKey } from './library'
+import type { ClozeQuestion, LibraryDataSource, LibraryQuestion, MultipleChoiceQuestion, ReadingChildQuestion, ReadingPack, WordEntry, WordSense } from '@/types'
+import { stableHash } from './hash'
+import { buildQuestionId, buildSenseId, normalizeWordKey } from './library'
 
 function text(value: unknown): string {
   return typeof value === 'string' ? value.trim() : ''
 }
 
-function id(prefix: string, value: unknown, index: number): string {
-  const raw = `${prefix}-${index}-${text((value as Record<string, unknown>)?.id) || Math.random().toString(36).slice(2, 8)}`
-  return raw
+function childQuestionId(question: Omit<ReadingChildQuestion, 'id'>): string {
+  return `child-${stableHash(question)}`
+}
+
+function questionId(question: Omit<LibraryQuestion, 'id' | 'createdAt' | 'updatedAt'>): string {
+  return buildQuestionId(question)
 }
 
 function normalizeSense(value: unknown, wordKey: string, index: number): WordSense {
@@ -61,21 +65,18 @@ function normalizeQuestion(value: unknown, index: number): LibraryQuestion {
     throw new Error(`第 ${index + 1} 題格式錯誤`)
   const source = value as Record<string, unknown>
   const now = new Date().toISOString()
+  const createdAt = text(source.createdAt) || now
   const base = {
-    id: text(source.id) || id('question', source, index),
     wordKey: text(source.wordKey) ? normalizeWordKey(text(source.wordKey)) : undefined,
     senseId: text(source.senseId) || undefined,
-    source: source.source === 'ai' || source.source === 'user' || source.source === 'dictionary' || source.source === 'import' ? source.source : 'import',
+    source: (source.source === 'ai' || source.source === 'user' || source.source === 'dictionary' || source.source === 'import' ? source.source : 'import') as LibraryDataSource,
     sourceType: text(source.sourceType) || undefined,
-    createdAt: text(source.createdAt) || now,
-    updatedAt: now,
   }
   if (source.kind === 'reading') {
-    const questions = Array.isArray(source.questions)
-      ? source.questions.map((item, childIndex) => {
+    const rawQuestions = Array.isArray(source.questions)
+      ? source.questions.map((item) => {
           const child = item as Record<string, unknown>
-          return {
-            id: text(child.id) || `${base.id}-child-${childIndex + 1}`,
+          const normalized: Omit<ReadingChildQuestion, 'id'> = {
             kind: child.kind === 'cloze' ? 'cloze' : 'multipleChoice',
             prompt: text(child.prompt),
             options: Array.isArray(child.options) ? child.options.map(text).filter(Boolean) : undefined,
@@ -84,23 +85,50 @@ function normalizeQuestion(value: unknown, index: number): LibraryQuestion {
             wordKey: text(child.wordKey) ? normalizeWordKey(text(child.wordKey)) : undefined,
             senseId: text(child.senseId) || undefined,
           }
+          return { ...normalized, id: childQuestionId(normalized) }
         })
       : []
-    if (!text(source.title) || !text(source.passage) || !questions.length)
+    if (!text(source.title) || !text(source.passage) || !rawQuestions.length)
       throw new Error(`第 ${index + 1} 題閱讀資料不完整`)
-    return { ...base, kind: 'reading', title: text(source.title), passage: text(source.passage), wordKeys: Array.isArray(source.wordKeys) ? source.wordKeys.map(value => normalizeWordKey(text(value))).filter(Boolean) : [], questions } as ReadingPack
+    const wordKeys = Array.isArray(source.wordKeys) ? source.wordKeys.map(value => normalizeWordKey(text(value))).filter(Boolean) : []
+    const content: Omit<ReadingPack, 'id' | 'createdAt' | 'updatedAt'> = {
+      ...base,
+      kind: 'reading',
+      title: text(source.title),
+      passage: text(source.passage),
+      wordKeys,
+      questions: rawQuestions,
+    }
+    return { ...content, id: questionId(content), createdAt, updatedAt: now }
   }
   if (source.kind === 'cloze') {
     const answers = Array.isArray(source.answers) ? source.answers.map(text).filter(Boolean) : []
     if (!text(source.prompt) || !answers.length)
       throw new Error(`第 ${index + 1} 題填空資料不完整`)
-    return { ...base, kind: 'cloze', prompt: text(source.prompt), answers, options: Array.isArray(source.options) ? source.options.map(text).filter(Boolean) : undefined } as ClozeQuestion
+    const content: Omit<ClozeQuestion, 'id' | 'createdAt' | 'updatedAt'> = {
+      ...base,
+      kind: 'cloze',
+      prompt: text(source.prompt),
+      answers,
+      options: Array.isArray(source.options) ? source.options.map(text).filter(Boolean) : undefined,
+    }
+    return { ...content, id: questionId(content), createdAt, updatedAt: now }
   }
   const options = Array.isArray(source.options) ? source.options.map(text).filter(Boolean) : []
   const answerIndex = Number(source.answerIndex)
   if (!text(source.prompt) || options.length !== 4 || !Number.isInteger(answerIndex) || answerIndex < 0 || answerIndex >= options.length)
     throw new Error(`第 ${index + 1} 題選擇題資料不完整`)
-  return { ...base, kind: 'multipleChoice', questionStyle: source.questionStyle === 'fillBlank' || text(source.prompt).includes('_____') ? 'fillBlank' : 'standard', prompt: text(source.prompt), options, answerIndex, trap: text(source.trap) || undefined, whyWrong: source.whyWrong && typeof source.whyWrong === 'object' ? source.whyWrong as Record<string, string> : undefined } as MultipleChoiceQuestion
+  const content: Omit<MultipleChoiceQuestion, 'id' | 'createdAt' | 'updatedAt'> = {
+    ...base,
+    kind: 'multipleChoice',
+    questionStyle: source.questionStyle === 'fillBlank' || text(source.prompt).includes('_____') ? 'fillBlank' : 'standard',
+    prompt: text(source.prompt),
+    options,
+    answerIndex,
+    trap: text(source.trap) || undefined,
+    whyWrong: source.whyWrong && typeof source.whyWrong === 'object' ? source.whyWrong as Record<string, string> : undefined,
+  }
+  return { ...content, id: questionId(content), createdAt, updatedAt: now }
 }
 
 export type LibraryImportPayload = { kind: 'vocab', words: WordEntry[] } | { kind: 'questions', questions: LibraryQuestion[] }

@@ -45,4 +45,33 @@ describe('parseLibraryImport', () => {
       expect(result.data.questions).toHaveLength(1)
     }
   })
+
+  it('assigns stable unique ids when generated questions omit ids', () => {
+    const payload = {
+      kind: 'questions',
+      questions: [
+        { id: '由你產生', kind: 'multipleChoice', wordKey: 'abandon', prompt: '_____ the plan.', options: ['abandon', 'keep', 'start', 'build'], answerIndex: 0 },
+        { id: '由你產生', kind: 'multipleChoice', wordKey: 'abandon', prompt: 'They decided to _____ the old building.', options: ['abandon', 'repair', 'paint', 'sell'], answerIndex: 0 },
+      ],
+    }
+    const first = parseLibraryImport(JSON.stringify(payload))
+    const second = parseLibraryImport(JSON.stringify(payload))
+    expect(first.valid).toBe(true)
+    expect(second.valid).toBe(true)
+    if (first.valid && second.valid && first.data.kind === 'questions' && second.data.kind === 'questions') {
+      expect(first.data.questions).toHaveLength(2)
+      expect(new Set(first.data.questions.map(question => question.id)).size).toBe(2)
+      expect(first.data.questions.map(question => question.id)).toEqual(second.data.questions.map(question => question.id))
+    }
+  })
+
+  it('ignores supplied question ids and hashes the normalized content', () => {
+    const question = { kind: 'multipleChoice', wordKey: 'abandon', prompt: '_____ the plan.', options: ['abandon', 'keep', 'start', 'build'], answerIndex: 0 }
+    const first = parseLibraryImport(JSON.stringify({ kind: 'questions', questions: [{ ...question, id: 'ai-id-one' }] }))
+    const second = parseLibraryImport(JSON.stringify({ kind: 'questions', questions: [{ ...question, id: 'ai-id-two' }] }))
+    expect(first.valid).toBe(true)
+    expect(second.valid).toBe(true)
+    if (first.valid && second.valid && first.data.kind === 'questions' && second.data.kind === 'questions')
+      expect(first.data.questions[0].id).toBe(second.data.questions[0].id)
+  })
 })
