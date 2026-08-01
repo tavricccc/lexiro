@@ -52,4 +52,10 @@ describe('persist', () => {
       value: 'target',
     })
   })
+
+  it('keeps small values in localStorage', () => {
+    saveToStorage('target-key', { value: 'small' })
+
+    expect(localStorage.getItem('target-key')).toBe(JSON.stringify({ value: 'small' }))
+  })
 })
