@@ -75,6 +75,30 @@ describe('library shared word membership', () => {
     expect(libraryStore.questions).toHaveLength(1)
   })
 
+  it('keeps every imported sense attached to the set membership', () => {
+    const libraryStore = useLibraryStore()
+    const firstSenseId = buildSenseId('abandon', 'v.', '放棄')
+    const secondSenseId = buildSenseId('abandon', 'n.', '遺棄')
+    libraryStore.importWords([{
+      wordKey: 'abandon',
+      word: 'abandon',
+      senses: [
+        { id: firstSenseId, pos: 'v.', meaningZh: '放棄', examples: [] },
+        { id: secondSenseId, pos: 'n.', meaningZh: '遺棄', examples: [] },
+      ],
+      synonyms: [],
+      antonyms: [],
+      updatedAt: new Date().toISOString(),
+    }])
+
+    libraryStore.linkSet(baseSet, {
+      additionalSenseIdsByWordKey: { abandon: [firstSenseId, secondSenseId] },
+    })
+
+    expect(libraryStore.getMembership('set-1', 'abandon')?.senseIds).toEqual([firstSenseId, secondSenseId])
+    expect(libraryStore.getWord('abandon')?.senses.map(sense => sense.id)).toEqual([firstSenseId, secondSenseId])
+  })
+
   it('removes deleted set senses and linked questions without removing shared words', () => {
     const libraryStore = useLibraryStore()
     const firstSenseId = buildSenseId('abandon', 'v.', '放棄')

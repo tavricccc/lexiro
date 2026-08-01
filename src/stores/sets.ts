@@ -379,7 +379,10 @@ export const useSetsStore = defineStore('sets', () => {
     exportSelectedIds.value = sets.value.map(item => item.id)
     activeSetId.value = set.id
     saveState()
-    useLibraryStore().linkSet(set)
+    const additionalSenseIdsByWordKey = Object.fromEntries(
+      words.map(word => [word.wordKey, word.senses.map(sense => sense.id)]),
+    )
+    useLibraryStore().linkSet(set, { additionalSenseIdsByWordKey })
     return set
   }
 

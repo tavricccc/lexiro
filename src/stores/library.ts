@@ -99,12 +99,16 @@ export const useLibraryStore = defineStore('library', () => {
     touch()
   }
 
-  function linkSet(set: VocabSet) {
+  function linkSet(set: VocabSet, options: { additionalSenseIdsByWordKey?: Record<string, string[]> } = {}) {
     const previousWords = state.value.words
     const nextMemberships = new Map<string, VocabSetMember>()
     for (const item of set.items) {
-      upsertWordInternal(itemToWordEntry(item))
+      const word = upsertWordInternal(itemToWordEntry(item))
       const membership = itemToMembership(item)
+      const allowedSenseIds = new Set(word.senses.map(sense => sense.id))
+      const additionalSenseIds = (options.additionalSenseIdsByWordKey?.[membership.wordKey] ?? [])
+        .filter(senseId => allowedSenseIds.has(senseId))
+      membership.senseIds = Array.from(new Set([...membership.senseIds, ...additionalSenseIds]))
       const existing = nextMemberships.get(membership.wordKey)
       if (existing) {
         existing.senseIds = Array.from(new Set([...existing.senseIds, ...membership.senseIds]))
