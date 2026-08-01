@@ -76,7 +76,7 @@
   --panel-padding: 1.5rem;
   --control-height: 2.75rem;
   --tap-target: 2.75rem;
-  --app-header-height: 4.5rem;
+  --app-header-height: 4rem;
   --app-content-max-width: 80rem;
   --app-viewport-gutter: 1rem;
   --motion-ease: cubic-bezier(0.16, 1, 0.3, 1);
@@ -445,11 +445,11 @@ body {
 @layer utilities {
   .font-black,
   .font-extrabold {
-    font-weight: 700;
+    font-weight: 600;
   }
 
   .font-bold {
-    font-weight: 600;
+    font-weight: 500;
   }
 }
 

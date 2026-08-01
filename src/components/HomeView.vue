@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ArrowRight, BookOpen, Flame, Library, Plus, RotateCcw, Search, Sparkles, Target } from 'lucide-vue-next'
+import { ArrowRight, BookOpen, Flame, Library, Plus, RotateCcw, Sparkles, Target } from 'lucide-vue-next'
 import { storeToRefs } from 'pinia'
 import { computed } from 'vue'
 import { RouterLink, useRouter } from 'vue-router'
@@ -38,28 +38,16 @@ async function continueSet(setId: string) {
 
 <template>
   <section class="space-y-6 text-left">
-    <div class="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+    <div class="flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
       <div>
-        <h1 class="text-3xl font-black tracking-tight text-ink-950 dark:text-ink-50">
+        <h1 class="text-2xl font-semibold tracking-tight text-ink-950 dark:text-ink-50">
           {{ $t('home.todayTitle') }}
         </h1>
-      </div>
-      <div class="flex gap-2">
-        <Button variant="outline" class="gap-2" @click="openImport">
-          <Plus class="h-4 w-4" />
-          {{ $t('home.addSet') }}
-        </Button>
-        <RouterLink to="/dictionary">
-          <Button variant="default" class="gap-2">
-            <Search class="h-4 w-4" />
-            {{ $t('nav.lookup') }}
-          </Button>
-        </RouterLink>
       </div>
     </div>
 
     <div v-if="!hasSets" class="grid min-w-0 gap-4 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)]">
-      <Card class="min-w-0 border-0 bg-ink-950 p-6 text-white dark:bg-white dark:text-ink-950 sm:p-8">
+      <Card class="min-w-0 border-0 bg-ink-950 p-5 text-white dark:bg-white dark:text-ink-950 sm:p-6">
         <Sparkles class="h-6 w-6" />
         <h2 class="mt-10 text-2xl font-black tracking-tight">
           {{ $t('home.emptyTitle') }}
@@ -72,7 +60,7 @@ async function continueSet(setId: string) {
           {{ $t('home.addSet') }}
         </Button>
       </Card>
-      <Card class="min-w-0 p-6 sm:p-8">
+      <Card class="min-w-0 p-5 sm:p-6">
         <p class="text-xs font-black uppercase tracking-[0.18em] text-ink-400">
           {{ $t('home.howItWorks') }}
         </p>
@@ -89,7 +77,7 @@ async function continueSet(setId: string) {
 
     <template v-else>
       <div class="grid min-w-0 gap-4 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
-        <Card class="min-w-0 overflow-hidden border-0 bg-ink-950 p-6 text-white dark:bg-white dark:text-ink-950 sm:p-8">
+        <Card class="min-w-0 overflow-hidden border-0 bg-ink-950 p-5 text-white dark:bg-white dark:text-ink-950 sm:p-6">
           <div class="flex items-start justify-between gap-5">
             <div>
               <p class="text-xs font-black uppercase tracking-[0.18em] opacity-60">
@@ -120,7 +108,7 @@ async function continueSet(setId: string) {
           </RouterLink>
         </Card>
 
-        <Card class="min-w-0 p-6 sm:p-8">
+        <Card class="min-w-0 p-5 sm:p-6">
           <div class="flex items-center justify-between">
             <p class="text-xs font-black uppercase tracking-[0.18em] text-ink-400">
               {{ $t('home.snapshot') }}

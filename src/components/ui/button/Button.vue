@@ -28,10 +28,10 @@ const classes = computed(() =>
       'text-accent-primary underline-offset-4 hover:underline active:scale-100': props.variant === 'link',
       'bg-red-50 dark:bg-red-950/15 text-red-600 dark:text-red-400 border border-red-100/80 dark:border-red-900/30 hover:bg-red-100/80 dark:hover:bg-red-950/30': props.variant === 'destructive',
 
-      'px-6 py-2.5': props.size === 'default',
+      'px-4 py-2.5': props.size === 'default',
       'min-h-9 px-4 py-1.5 text-xs rounded-[calc(var(--radius-inner)-0.25rem)]': props.size === 'sm',
       'h-11 w-11 min-h-11 p-0 rounded-[var(--radius-inner)]': props.size === 'icon',
-      'min-h-12 px-8 py-3.5 text-base': props.size === 'lg',
+      'min-h-11 px-6 py-2.5 text-sm': props.size === 'lg',
     },
     props.class,
   ),

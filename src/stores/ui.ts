@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
+import { UNCATEGORIZED_FOLDER_ID } from '@/lib/folders'
 
 export const useUIStore = defineStore('ui', () => {
   const theme = ref<'light' | 'dark'>('light')
@@ -12,6 +13,7 @@ export const useUIStore = defineStore('ui', () => {
   const confirmCancelLabel = ref('')
   const confirmDestructive = ref(true)
   const transferOpen = ref(false)
+  const transferFolderId = ref(UNCATEGORIZED_FOLDER_ID)
   const versionUpdateAvailable = ref(false)
   const versionUpdatePending = ref(false)
   const versionUpdateReady = ref(false)
@@ -78,7 +80,8 @@ export const useUIStore = defineStore('ui', () => {
     themeMediaQuery.addEventListener('change', themeListener)
   }
 
-  function openTransfer() {
+  function openTransfer(folderId?: string) {
+    transferFolderId.value = folderId ?? UNCATEGORIZED_FOLDER_ID
     transferOpen.value = true
   }
 
@@ -97,6 +100,7 @@ export const useUIStore = defineStore('ui', () => {
     confirmCancelLabel,
     confirmDestructive,
     transferOpen,
+    transferFolderId,
     versionUpdateAvailable,
     versionUpdatePending,
     versionUpdateReady,

@@ -3,6 +3,7 @@ import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
 import { SETS_STORAGE_KEY } from '@/constants'
 import { buildExportFileName, buildExportZipBlob, downloadBlob } from '@/lib/file'
+import { folderIdFromSelection, UNCATEGORIZED_FOLDER_ID } from '@/lib/folders'
 import { i18n } from '@/lib/i18n'
 import { applyImportedSets, parseImportJson, refreshImportVersionDiffs, summarizeDuplicateResult } from '@/lib/import'
 import { loadFromStorage, saveToStorage } from '@/lib/persist'
@@ -34,6 +35,7 @@ export const useSetsStore = defineStore('sets', () => {
   const importError = ref('')
   const importPreview = ref('')
   const importDifficulty = ref(2)
+  const importFolderId = ref(UNCATEGORIZED_FOLDER_ID)
   const pendingDeleteId = ref<string | null>(null)
 
   const importMode = ref<ImportMode>('append')
@@ -153,6 +155,7 @@ export const useSetsStore = defineStore('sets', () => {
     sourceItems: Array<Pick<EditorItem, 'word' | 'pos' | 'meaning'> & Partial<EditorItem>>,
     name = '',
     difficulty = 2,
+    folderId?: string,
   ): VocabSet | null {
     const uiStore = useUIStore()
     try {
@@ -167,6 +170,7 @@ export const useSetsStore = defineStore('sets', () => {
         setName: name.trim() || fallbackName,
         difficulty: typeof difficulty === 'number' ? difficulty : 2,
         items,
+        folderId,
         createdAt: now.toISOString(),
         updatedAt: now.toISOString(),
       }
@@ -204,7 +208,7 @@ export const useSetsStore = defineStore('sets', () => {
       }
 
       if (setEditorMode.value === 'create') {
-        createSetFromItems(items, setEditorName.value, importDifficulty.value)
+        createSetFromItems(items, setEditorName.value, importDifficulty.value, setEditorFolderId.value)
         return
       }
       else {
@@ -246,13 +250,14 @@ export const useSetsStore = defineStore('sets', () => {
     setEditorDraftItems.value = setEditorDraftItems.value.filter((_, i) => i !== index)
   }
 
-  function openImport() {
+  function openImport(folderId?: string) {
     importStep.value = 1
     importWords.value = ''
     importJson.value = ''
     importError.value = ''
     importPreview.value = ''
     importDifficulty.value = 2
+    importFolderId.value = folderId ?? UNCATEGORIZED_FOLDER_ID
     importOpen.value = true
   }
 
@@ -271,7 +276,7 @@ export const useSetsStore = defineStore('sets', () => {
       return
     }
 
-    createSetFromItems(result.data.items, result.data.setName, result.data.difficulty)
+    createSetFromItems(result.data.items, result.data.setName, result.data.difficulty, folderIdFromSelection(importFolderId.value))
   }
 
   async function requestDelete(setId: string) {
@@ -343,7 +348,7 @@ export const useSetsStore = defineStore('sets', () => {
     return true
   }
 
-  function importLibraryWords(words: WordEntry[], setName: string) {
+  function importLibraryWords(words: WordEntry[], setName: string, folderId?: string) {
     if (!words.length)
       return null
     const items = words.map((word, index) => {
@@ -363,7 +368,7 @@ export const useSetsStore = defineStore('sets', () => {
         antonyms: word.antonyms,
       }, index)
     })
-    const set = normalizeSet({ id: `import-${Date.now()}`, setName: setName.trim() || `匯入單字 ${new Date().toLocaleDateString()}`, difficulty: 2, items })
+    const set = normalizeSet({ id: `import-${Date.now()}`, setName: setName.trim() || `匯入單字 ${new Date().toLocaleDateString()}`, difficulty: 2, items, folderId })
     sets.value = deduplicateSetsByName([...sets.value, set])
     exportSelectedIds.value = sets.value.map(item => item.id)
     activeSetId.value = set.id
@@ -404,14 +409,14 @@ export const useSetsStore = defineStore('sets', () => {
     importVersionChoices.value = { ...importVersionChoices.value, [setName]: choice }
   }
 
-  function applyImported(targetSets: VocabSet[], mode: ImportMode): ImportResult | null {
+  function applyImported(targetSets: VocabSet[], mode: ImportMode, folderId?: string): ImportResult | null {
     const uiStore = useUIStore()
     const sessionStore = useSessionStore()
 
     const result = applyImportedSets(sets.value, targetSets, mode, importVersionChoices.value)
 
     if (mode === 'overwrite') {
-      sets.value = result.imported.map(set => ({ ...set, updatedAt: new Date().toISOString() }))
+      sets.value = result.imported.map(set => ({ ...set, folderId, updatedAt: new Date().toISOString() }))
       exportSelectedIds.value = result.imported.map(s => s.id)
       activeSetId.value = result.imported[0]?.id ?? null
       sessionStore.resetStudyView()
@@ -430,14 +435,14 @@ export const useSetsStore = defineStore('sets', () => {
     const nextSets = sets.value.map((s) => {
       if (result.replacedVersions.includes(s.setName)) {
         const replacement = result.imported.find(imp => imp.setName === s.setName)
-        return replacement ? { ...replacement, id: s.id, updatedAt: new Date().toISOString() } : s
+        return replacement ? { ...replacement, id: s.id, folderId, updatedAt: new Date().toISOString() } : s
       }
       return s
     })
 
     const newSets = result.imported
       .filter(imp => !result.replacedVersions.includes(imp.setName))
-      .map(set => ({ ...set, updatedAt: new Date().toISOString() }))
+      .map(set => ({ ...set, folderId, updatedAt: new Date().toISOString() }))
     sets.value = [...nextSets, ...newSets]
     exportSelectedIds.value = [...exportSelectedIds.value, ...newSets.map(s => s.id)]
 
@@ -481,6 +486,7 @@ export const useSetsStore = defineStore('sets', () => {
     importError,
     importPreview,
     importDifficulty,
+    importFolderId,
     pendingDeleteId,
     importMode,
     duplicateSummary,

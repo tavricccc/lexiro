@@ -6,6 +6,7 @@ import { computed, nextTick, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { extractJsonText, generateWithAi, loadAiSettings } from '@/lib/ai-provider'
 import { copyToClipboard } from '@/lib/clipboard'
+import { folderIdFromSelection } from '@/lib/folders'
 import { parseImportJson } from '@/lib/import'
 import { buildImportPrompt } from '@/lib/importPrompt'
 import { parseLibraryImport } from '@/lib/library-import'
@@ -18,6 +19,7 @@ import Dialog from '../ui/dialog/Dialog.vue'
 import SectionPanel from '../ui/section-panel/SectionPanel.vue'
 import StatusMessage from '../ui/status-message/StatusMessage.vue'
 import Textarea from '../ui/textarea/Textarea.vue'
+import FolderPicker from './FolderPicker.vue'
 import ManualWordEntryForm from './ManualWordEntryForm.vue'
 
 type InputMode = 'manual' | 'ai'
@@ -26,7 +28,7 @@ const { t } = useI18n()
 const setsStore = useSetsStore()
 const libraryStore = useLibraryStore()
 const uiStore = useUIStore()
-const { importOpen, importStep, importWords, importJson, importError, importPreview, setEditorError } = storeToRefs(setsStore)
+const { importOpen, importStep, importWords, importJson, importError, importPreview, importFolderId, setEditorError } = storeToRefs(setsStore)
 const { closeImport, nextImportStep, importSet, createSetFromItems } = setsStore
 const { showToast } = uiStore
 
@@ -90,7 +92,7 @@ function createManualSet() {
   }
 
   setEditorError.value = ''
-  const created = createSetFromItems(entries)
+  const created = createSetFromItems(entries, '', 2, folderIdFromSelection(importFolderId.value))
   if (!created)
     setsStore.importError = setEditorError.value || t('import.manualFailed')
 }
@@ -164,7 +166,7 @@ async function importLibraryFiles(event: Event) {
       }
       if (result.data.kind === 'vocab') {
         libraryStore.importWords(result.data.words)
-        setsStore.importLibraryWords(result.data.words, file.name.replace(/\.json$/i, ''))
+        setsStore.importLibraryWords(result.data.words, file.name.replace(/\.json$/i, ''), folderIdFromSelection(importFolderId.value))
         messages.push(`${file.name}：${result.data.words.length} 個單字`)
       }
       else {
@@ -189,6 +191,8 @@ async function importLibraryFiles(event: Event) {
 <template>
   <Dialog :open="importOpen" :title="$t('import.title')" :description="$t('import.description')" @close="closeImport">
     <div class="space-y-5">
+      <FolderPicker v-model="importFolderId" :title="$t('import.folderLabel')" />
+
       <div class="flex items-center justify-between gap-3">
         <p class="text-xs font-bold uppercase tracking-wider text-ink-500 dark:text-ink-400">
           {{ $t('import.inputMode') }}

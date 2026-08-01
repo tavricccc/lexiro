@@ -8,11 +8,12 @@ import Dialog from '../ui/dialog/Dialog.vue'
 import SectionPanel from '../ui/section-panel/SectionPanel.vue'
 import StatusMessage from '../ui/status-message/StatusMessage.vue'
 import ExportSettings from './ExportSettings.vue'
+import FolderPicker from './FolderPicker.vue'
 import ImportSettings from './ImportSettings.vue'
 
 const uiStore = useUIStore()
 const backupStore = useBackupStore()
-const { transferOpen } = storeToRefs(uiStore)
+const { transferOpen, transferFolderId } = storeToRefs(uiStore)
 const { closeTransfer } = uiStore
 const {
   zipImportInputKey,
@@ -52,6 +53,7 @@ const { resetZipImportState, handleZipImportChange, applyZipImport } = backupSto
         </div>
 
         <div class="mt-4 space-y-2">
+          <FolderPicker v-model="transferFolderId" :title="$t('backup.importFolderLabel')" />
           <input
             :key="zipImportInputKey"
             type="file"

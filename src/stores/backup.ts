@@ -2,6 +2,7 @@ import type { ImportMode, VocabSet } from '@/types'
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import { buildExportFileName, buildExportZipBlob, formatBackupPreview, parseBackupZipBuffer } from '@/lib/file'
+import { folderIdFromSelection } from '@/lib/folders'
 import { i18n } from '@/lib/i18n'
 import { useSetsStore } from './sets'
 import { useUIStore } from './ui'
@@ -55,7 +56,7 @@ export const useBackupStore = defineStore('backup', () => {
       zipImportError.value = t('backup.zipImportError')
       return
     }
-    const result = setsStore.applyImported(zipImportSets.value, setsStore.importMode as ImportMode)
+    const result = setsStore.applyImported(zipImportSets.value, setsStore.importMode as ImportMode, folderIdFromSelection(uiStore.transferFolderId))
     if (!result)
       return
     resetZipImportState()
