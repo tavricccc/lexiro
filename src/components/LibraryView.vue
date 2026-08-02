@@ -4,6 +4,7 @@ import { ChevronRight, ClipboardPaste, FileQuestion, Folder, FolderOpen, Plus, S
 import { storeToRefs } from 'pinia'
 import { computed, ref } from 'vue'
 import { useRouter } from 'vue-router'
+import { confirmAndRemoveFolder } from '@/lib/folder-deletion'
 import { ALL_FOLDER_ID, getFolderChildren } from '@/lib/folders'
 import { useLibraryStore } from '@/stores/library'
 import { useSetsStore } from '@/stores/sets'
@@ -86,6 +87,12 @@ function openFolderManage(folderId: string) {
   folderManageOpen.value = Boolean(managedFolder.value)
 }
 
+async function deleteFolder(folderId: string) {
+  const folder = libraryStore.folders.find(item => item.id === folderId)
+  if (folder && await confirmAndRemoveFolder(folder))
+    handleFolderDeleted()
+}
+
 function closeFolderManage() {
   folderManageOpen.value = false
   managedFolder.value = null
@@ -160,7 +167,7 @@ function handleFolderDeleted() {
               :all-label="$t('library.allFolders')"
               :root-label="$t('library.rootFolder')"
               @edit="openFolderManage"
-              @delete="openFolderManage"
+              @delete="deleteFolder"
             />
           </div>
         </aside>

@@ -28,6 +28,7 @@ const confirmText = computed(() => confirmConfirmLabel.value || t('confirm.confi
     :title="confirmTitle"
     :description="confirmMessage"
     :show-close="false"
+    :overlay-z-index="60"
     width-class="max-w-md"
     @close="resolveConfirm(false)"
   >

@@ -3,7 +3,6 @@ import type { WordEntry } from '@/types'
 import { Volume2 } from 'lucide-vue-next'
 import { useI18n } from 'vue-i18n'
 import { RouterLink } from 'vue-router'
-import Badge from './ui/badge/Badge.vue'
 import Button from './ui/button/Button.vue'
 
 const props = defineProps<{ word: WordEntry | null, setId?: string }>()
@@ -34,9 +33,6 @@ function speak() {
           </Button>
         </div>
       </div>
-      <Badge variant="secondary" class="rounded-lg px-2.5 py-1 text-xs font-bold">
-        {{ $t('study.wordList') }}
-      </Badge>
       <RouterLink v-if="setId && word" :to="{ name: 'vocabulary', params: { wordKey: word.wordKey }, query: { setId } }" class="text-xs font-bold text-accent-primary hover:underline">
         {{ $t('vocabulary.openEditor') }}
       </RouterLink>

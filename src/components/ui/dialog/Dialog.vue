@@ -10,11 +10,13 @@ const props = withDefaults(defineProps<{
   description?: string
   widthClass?: string
   showClose?: boolean
+  overlayZIndex?: number
 }>(), {
   title: '',
   description: '',
   widthClass: 'max-w-lg',
   showClose: true,
+  overlayZIndex: 50,
 })
 
 const emit = defineEmits<{
@@ -114,6 +116,7 @@ onUnmounted(() => {
       <div
         v-if="open"
         class="dialog-overlay fixed inset-0 z-50 flex items-end justify-center overflow-y-auto overscroll-contain bg-black/35 p-0 backdrop-blur-sm sm:items-center sm:p-6"
+        :style="{ zIndex: overlayZIndex }"
         role="presentation"
         @click.self="$emit('close')"
       >
