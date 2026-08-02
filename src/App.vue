@@ -23,11 +23,11 @@ const cloudStore = useCloudSyncStore()
 const router = useRouter()
 const route = useRoute()
 const { sidebarExpanded, hasDirtyForms } = storeToRefs(uiStore)
-const { appReady, configured, progress, pendingWrites } = storeToRefs(cloudStore)
+const { appReady, configured, operationBlocked, progress, pendingWrites } = storeToRefs(cloudStore)
 const { setVersionUpdateAvailable, setVersionUpdatePending, setVersionUpdateReady } = uiStore
 
 const isSessionRoute = computed(() => ['quiz', 'fillBlank', 'reading', 'review', 'result'].includes(String(route.name)))
-const showSyncGate = computed(() => configured.value && !appReady.value)
+const showSyncGate = computed(() => configured.value && (!appReady.value || operationBlocked.value))
 const showInlineSync = computed(() => !showSyncGate.value && ['preparing', 'downloading', 'reconciling', 'uploading', 'verifying', 'offline', 'error'].includes(progress.value.phase))
 
 let versionCheckInterval: ReturnType<typeof setInterval> | null = null
@@ -128,7 +128,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <SyncProgress v-if="showSyncGate" fullscreen :state="progress" allow-offline @retry="cloudStore.retryConnection" @continue-offline="cloudStore.continueOffline" />
+  <SyncProgress v-if="showSyncGate" fullscreen :state="progress" allow-cancel @retry="cloudStore.retryConnection" @cancel="cloudStore.continueOffline" />
   <div v-else class="app-root min-h-screen text-ink-950 dark:text-ink-50 transition-colors duration-250 relative overflow-x-hidden" :class="[isSessionRoute ? 'app-root--session' : 'app-root--workspace', sidebarExpanded ? 'app-root--sidebar-expanded' : '']">
     <AppSidebar v-if="!isSessionRoute" />
     <MobileBottomTabs v-if="!isSessionRoute" />
@@ -154,7 +154,7 @@ onUnmounted(() => {
     <Toast :message="uiStore.toastMessage" :visible="uiStore.toastVisible" :action-label="uiStore.toastActionLabel" @action="uiStore.triggerToastAction" />
     <Transition name="toast-slide">
       <div v-if="showInlineSync" class="fixed bottom-4 left-4 z-[80] w-[min(26rem,calc(100vw-2rem))]">
-        <SyncProgress :state="progress" allow-offline @retry="cloudStore.retryConnection" @continue-offline="cloudStore.continueOffline" />
+        <SyncProgress :state="progress" allow-cancel @retry="cloudStore.retryConnection" @cancel="cloudStore.continueOffline" />
       </div>
     </Transition>
     <div v-if="pendingWrites > 0" class="fixed right-4 top-4 z-[80] rounded-full border border-amber-300/70 bg-amber-50/95 px-3 py-2 text-xs font-black text-amber-800 shadow-soft backdrop-blur dark:border-amber-700/60 dark:bg-amber-950/90 dark:text-amber-100" role="status">

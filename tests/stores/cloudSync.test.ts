@@ -20,10 +20,11 @@ const mockedCloud = vi.hoisted(() => ({
   libraryBatchCommits: 0,
   runTransaction: vi.fn(),
   serverSnapshotsEnabled: true,
+  online: { value: true, __v_isRef: true },
 }))
 
 vi.mock('@vueuse/core', () => ({
-  useOnline: () => ref(true),
+  useOnline: () => mockedCloud.online,
   useDocumentVisibility: () => ref('visible'),
 }))
 
@@ -106,6 +107,7 @@ describe('cloud sync baseline rebase', () => {
     mockedCloud.transactionDocuments.clear()
     mockedCloud.libraryBatchCommits = 0
     mockedCloud.serverSnapshotsEnabled = true
+    mockedCloud.online.value = true
     mockedCloud.remoteSettings = {
       enabled: true,
       provider: 'openai',
@@ -195,7 +197,44 @@ describe('cloud sync baseline rebase', () => {
     }))
   })
 
+  it('does not upload watcher changes until an explicit committed sync', async () => {
+    vi.useFakeTimers()
+    await saveToStorage('lexiro_sync_outbox:cloud-user', [])
+    const cloudStore = useCloudSyncStore()
+    await cloudStore.init()
+    await mockedCloud.authCallbacks[0]({ uid: 'cloud-user', displayName: 'Cloud', email: 'cloud@example.com', photoURL: '' })
+    await vi.waitFor(() => expect(cloudStore.appReady).toBe(true))
+
+    mockedCloud.transactionSets.length = 0
+    const learningStore = useLearningStore()
+    learningStore.replaceStats({ ...learningStore.stats, xp: learningStore.stats.xp + 1 })
+    await nextTick()
+    await vi.advanceTimersByTimeAsync(1500)
+
+    expect(mockedCloud.transactionSets).toHaveLength(0)
+    const sync = cloudStore.syncCommittedChange()
+    expect(cloudStore.operationBlocked).toBe(true)
+    await sync
+    expect(mockedCloud.transactionSets.length).toBeGreaterThan(0)
+    expect(cloudStore.operationBlocked).toBe(false)
+  })
+
+  it('skips cloud writes when an explicit sync has no record changes', async () => {
+    await saveToStorage('lexiro_sync_outbox:cloud-user', [])
+    const cloudStore = useCloudSyncStore()
+    await cloudStore.init()
+    await mockedCloud.authCallbacks[0]({ uid: 'cloud-user', displayName: 'Cloud', email: 'cloud@example.com', photoURL: '' })
+    await vi.waitFor(() => expect(cloudStore.appReady).toBe(true))
+
+    mockedCloud.transactionSets.length = 0
+    mockedCloud.libraryBatchCommits = 0
+    expect(await cloudStore.syncNow()).toBe(true)
+    expect(mockedCloud.transactionSets).toHaveLength(0)
+    expect(mockedCloud.libraryBatchCommits).toBe(0)
+  })
+
   it('queues offline account edits before a server baseline exists without flushing them', async () => {
+    vi.useFakeTimers()
     mockedCloud.serverSnapshotsEnabled = false
     const cloudStore = useCloudSyncStore()
     await cloudStore.init()
@@ -271,6 +310,25 @@ describe('cloud sync baseline rebase', () => {
     expect(cloudStore.status).toBe('offline')
     expect(await cloudStore.syncNow()).toBe(true)
     expect(mockedCloud.runTransaction).not.toHaveBeenCalled()
+  })
+
+  it('keeps an offline commit blocked until the user cancels the sync dialog', async () => {
+    mockedCloud.online.value = false
+    await saveToStorage('lexiro_sync_outbox:cloud-user', [])
+    const cloudStore = useCloudSyncStore()
+    await cloudStore.init()
+    await mockedCloud.authCallbacks[0]({ uid: 'cloud-user', displayName: 'Cloud', email: 'cloud@example.com', photoURL: '' })
+
+    const learningStore = useLearningStore()
+    learningStore.replaceStats({ ...learningStore.stats, xp: 5 })
+    await nextTick()
+    expect(await cloudStore.syncCommittedChange()).toBe(true)
+    expect(cloudStore.operationBlocked).toBe(true)
+    expect(cloudStore.status).toBe('offline')
+
+    cloudStore.continueOffline()
+    expect(cloudStore.operationBlocked).toBe(false)
+    expect(cloudStore.pendingWrites).toBeGreaterThan(0)
   })
 
   it('uploads repository-only Library pending work after reconnect', async () => {

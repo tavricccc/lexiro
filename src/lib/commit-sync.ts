@@ -9,7 +9,7 @@ import { i18n } from './i18n'
  */
 export async function syncAfterLocalCommit(): Promise<boolean> {
   const cloudStore = useCloudSyncStore()
-  const synced = await cloudStore.syncNow()
+  const synced = await cloudStore.syncCommittedChange()
   if (cloudStore.status === 'offline' || (!synced && cloudStore.status !== 'error'))
     useUIStore().showToast(i18n.global.t('sync.savedLocally'))
   return synced

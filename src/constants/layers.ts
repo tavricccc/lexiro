@@ -12,6 +12,7 @@ export const LAYERS = {
   nestedDialog: 60,
   nestedDialogContent: 61,
   toast: 70,
+  syncGate: 100,
 } as const
 
 export const DIALOG_CONTENT_LAYER_KEY: InjectionKey<Readonly<Ref<number>>> = Symbol('dialog-content-layer')

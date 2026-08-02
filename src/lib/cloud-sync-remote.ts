@@ -12,6 +12,7 @@ import { prepareFirestoreData } from './firestore-data'
 import { createUncategorizedFolder } from './folders'
 import { canonicalHash } from './hash'
 import { createDefaultStats } from './learning-defaults'
+import { withSyncTimeout } from './sync-timeout'
 
 export function requireCloudFirestore(): Firestore {
   const db = getFirebaseFirestore()
@@ -105,6 +106,7 @@ export interface CloudLibraryBatch {
 
 export interface CloudLibraryReadOptions {
   existingChunks?: ReadonlyMap<string, FirestoreLibraryChunk | FirestoreLibraryV5Chunk>
+  manifestData?: unknown
 }
 
 const LIBRARY_WRITE_LOCK_ID = 'v5-write'
@@ -119,7 +121,7 @@ async function acquireLibraryWriteLease(db: Firestore, uid: string): Promise<Lib
   const token = crypto.randomUUID()
   const reference = cloudDocument(db, uid, 'libraryLocks', LIBRARY_WRITE_LOCK_ID)
 
-  await runTransaction(db, async (transaction) => {
+  await withSyncTimeout(runTransaction(db, async (transaction) => {
     const snapshot = await transaction.get(reference)
     const current = snapshot.exists() ? snapshot.data() : null
     const expiresAt = current && typeof current.expiresAt === 'number' ? current.expiresAt : 0
@@ -131,10 +133,10 @@ async function acquireLibraryWriteLease(db: Firestore, uid: string): Promise<Lib
       token,
       expiresAt: Date.now() + LIBRARY_WRITE_LOCK_TTL_MS,
     }))
-  })
+  }), 'Library publish lease')
 
   async function refresh() {
-    await runTransaction(db, async (transaction) => {
+    await withSyncTimeout(runTransaction(db, async (transaction) => {
       const snapshot = await transaction.get(reference)
       const current = snapshot.exists() ? snapshot.data() : null
       if (!current || current.ownerId !== uid || current.token !== token || typeof current.expiresAt !== 'number' || current.expiresAt <= Date.now())
@@ -145,17 +147,17 @@ async function acquireLibraryWriteLease(db: Firestore, uid: string): Promise<Lib
         token,
         expiresAt: Date.now() + LIBRARY_WRITE_LOCK_TTL_MS,
       }))
-    })
+    }), 'Library publish lease refresh')
   }
 
   async function release() {
     try {
-      await runTransaction(db, async (transaction) => {
+      await withSyncTimeout(runTransaction(db, async (transaction) => {
         const snapshot = await transaction.get(reference)
         const current = snapshot.exists() ? snapshot.data() : null
         if (current?.ownerId === uid && current.token === token)
           transaction.delete(reference)
-      })
+      }), 'Library publish lease release')
     }
     catch {
       // The lease will expire. Release must never turn a successfully published
@@ -174,17 +176,26 @@ export async function readCloudLibraryV5(
   onBatch?: (batch: CloudLibraryBatch) => void | Promise<void>,
   options: CloudLibraryReadOptions = {},
 ): Promise<CloudLibraryReadResult> {
-  const manifestSnapshot = await getDocFromServer(cloudDocument(db, uid, 'library', 'manifest'))
-  if (!manifestSnapshot.exists())
-    return { library: emptyCloudLibrary(), hashes: new Map(), revision: '', legacy: false }
-  const data = manifestSnapshot.data()
-  if (data.schemaVersion !== LIBRARY_CLOUD_SCHEMA_VERSION) {
+  let data = options.manifestData
+  if (data === undefined) {
+    const manifestSnapshot = await withSyncTimeout(
+      getDocFromServer(cloudDocument(db, uid, 'library', 'manifest')),
+      'Library manifest download',
+    )
+    if (!manifestSnapshot.exists())
+      return { library: emptyCloudLibrary(), hashes: new Map(), revision: '', legacy: false }
+    data = manifestSnapshot.data()
+  }
+  if (!data || typeof data !== 'object')
+    throw new CloudSyncError('cloud/data-invalid', 'Cloud library manifest 格式錯誤')
+  if (!('schemaVersion' in data) || data.schemaVersion !== LIBRARY_CLOUD_SCHEMA_VERSION) {
     const manifest = validateLibraryManifest(data, uid)
     return readLegacyCloudLibraryInBatches(db, uid, manifest, onProgress, onBatch, options)
   }
   const manifest = validateV5LibraryManifest(data, uid)
   const ids = Object.keys(manifest.chunks)
   const totalBatches = Math.max(1, Math.ceil(ids.length / CLOUD_LIBRARY_BATCH_SIZE))
+  onProgress?.({ currentBatch: 0, totalBatches, completed: 0, total: ids.length })
   const chunks: FirestoreLibraryV5Chunk[] = []
   for (let offset = 0; offset < ids.length; offset += CLOUD_LIBRARY_BATCH_SIZE) {
     const currentBatch = Math.floor(offset / CLOUD_LIBRARY_BATCH_SIZE) + 1
@@ -214,13 +225,13 @@ export async function readCloudLibraryV5(
         throw new CloudSyncError('cloud/checksum-mismatch', 'Cloud library v5 chunk 不屬於目前 manifest')
       batchChunks.push(chunk)
       chunks.push(chunk)
+      onProgress?.({ currentBatch, totalBatches, completed: offset + batchChunks.length, total: ids.length })
     }
     const progress = { currentBatch, totalBatches, completed: Math.min(offset + batchIds.length, ids.length), total: ids.length }
     // A caller may persist this verified batch before the next network read.
     // This keeps a failed download resumable without ever changing the active
     // generation.
     await onBatch?.({ chunks: batchChunks, newChunks, revision: manifest.revision, progress })
-    onProgress?.(progress)
   }
   return { library: combineV5LibraryChunks(chunks), hashes: new Map(chunks.map(chunk => [chunk.chunkId, chunk.checksum])), revision: manifest.revision, legacy: false }
 }
@@ -237,6 +248,7 @@ async function readLegacyCloudLibraryInBatches(
   if (!ids.length)
     throw new CloudSyncError('cloud/data-invalid', 'Cloud library manifest 缺少 chunks')
   const totalBatches = Math.ceil(ids.length / CLOUD_LIBRARY_BATCH_SIZE)
+  onProgress?.({ currentBatch: 0, totalBatches, completed: 0, total: ids.length })
   const chunks: FirestoreLibraryChunk[] = []
   for (let offset = 0; offset < ids.length; offset += CLOUD_LIBRARY_BATCH_SIZE) {
     const currentBatch = Math.floor(offset / CLOUD_LIBRARY_BATCH_SIZE) + 1
@@ -253,7 +265,10 @@ async function readLegacyCloudLibraryInBatches(
             throw new Error('staged chunk belongs to another manifest')
         }
         catch {
-          const snapshot = await getDocFromServer(cloudDocument(db, uid, 'library', id))
+          const snapshot = await withSyncTimeout(
+            getDocFromServer(cloudDocument(db, uid, 'library', id)),
+            `Library chunk ${id} download`,
+          )
           if (!snapshot.exists())
             throw new CloudSyncError('cloud/data-invalid', 'Cloud library manifest 與 chunks 不一致')
           chunk = validateLibraryChunk(snapshot.data(), uid, id)
@@ -261,7 +276,10 @@ async function readLegacyCloudLibraryInBatches(
         }
       }
       else {
-        const snapshot = await getDocFromServer(cloudDocument(db, uid, 'library', id))
+        const snapshot = await withSyncTimeout(
+          getDocFromServer(cloudDocument(db, uid, 'library', id)),
+          `Library chunk ${id} download`,
+        )
         if (!snapshot.exists())
           throw new CloudSyncError('cloud/data-invalid', 'Cloud library manifest 與 chunks 不一致')
         chunk = validateLibraryChunk(snapshot.data(), uid, id)
@@ -271,16 +289,19 @@ async function readLegacyCloudLibraryInBatches(
         throw new CloudSyncError('cloud/checksum-mismatch', 'Cloud library chunk 不屬於目前 manifest')
       batchChunks.push(chunk)
       chunks.push(chunk)
+      onProgress?.({ currentBatch, totalBatches, completed: offset + batchChunks.length, total: ids.length })
     }
     const progress = { currentBatch, totalBatches, completed: Math.min(offset + batchIds.length, ids.length), total: ids.length }
     await onBatch?.({ chunks: batchChunks, newChunks, revision: manifest.revision, progress })
-    onProgress?.(progress)
   }
   return { library: combineLibraryChunks(chunks), hashes: new Map(chunks.map(chunk => [chunk.chunkId, chunk.checksum])), revision: manifest.revision, legacy: true }
 }
 
 async function readV5Chunk(db: Firestore, uid: string, id: string): Promise<FirestoreLibraryV5Chunk> {
-  const snapshot = await getDocFromServer(cloudDocument(db, uid, 'library', id))
+  const snapshot = await withSyncTimeout(
+    getDocFromServer(cloudDocument(db, uid, 'library', id)),
+    `Library chunk ${id} download`,
+  )
   if (!snapshot.exists())
     throw new CloudSyncError('cloud/data-invalid', 'Cloud library manifest 與 chunks 不一致')
   return validateV5LibraryChunk(snapshot.data(), uid, id)
@@ -332,6 +353,7 @@ export async function writeCloudLibraryChunksV5(
   const chunks = buildV5LibraryChunks(uid, library)
   const manifest = buildV5LibraryManifest(uid, chunks, library.updatedAt)
   const totalBatches = Math.max(1, Math.ceil(chunks.length / CLOUD_LIBRARY_BATCH_SIZE))
+  onProgress?.({ currentBatch: 0, totalBatches, completed: 0, total: chunks.length })
   const lease = await acquireLibraryWriteLease(db, uid)
   try {
     for (let offset = 0; offset < chunks.length; offset += CLOUD_LIBRARY_BATCH_SIZE) {
@@ -341,7 +363,7 @@ export async function writeCloudLibraryChunksV5(
       const writeBatchOperation = writeBatch(db)
       for (const chunk of batch)
         writeBatchOperation.set(cloudDocument(db, uid, 'library', chunk.chunkId), prepareFirestoreData(chunk))
-      await writeBatchOperation.commit()
+      await withSyncTimeout(writeBatchOperation.commit(), `Library upload batch ${currentBatch}`)
       onProgress?.({ currentBatch, totalBatches, completed: Math.min(offset + batch.length, chunks.length), total: chunks.length })
     }
     await lease.refresh()
@@ -389,7 +411,10 @@ async function cleanupUnreferencedV5Chunks(
       const pageQuery = cursor
         ? query(libraryReference, orderBy(documentId()), startAfter(cursor), limit(CLOUD_LIBRARY_BATCH_SIZE))
         : query(libraryReference, orderBy(documentId()), limit(CLOUD_LIBRARY_BATCH_SIZE))
-      const snapshot: QuerySnapshot<DocumentData> = await getDocsFromServer(pageQuery)
+      const snapshot: QuerySnapshot<DocumentData> = await withSyncTimeout(
+        getDocsFromServer(pageQuery),
+        'Library cleanup scan',
+      )
       for (const document of snapshot.docs) {
         if (document.id !== 'manifest' && !liveIds.has(document.id))
           scannedStaleIds.push(document.id)
@@ -404,7 +429,7 @@ async function cleanupUnreferencedV5Chunks(
       const batch = writeBatch(db)
       for (const staleId of staleIds.slice(offset, offset + CLOUD_LIBRARY_BATCH_SIZE))
         batch.delete(cloudDocument(db, uid, 'library', staleId))
-      await batch.commit()
+      await withSyncTimeout(batch.commit(), 'Library cleanup batch')
     }
   }
   catch {
@@ -428,11 +453,15 @@ export async function writeCloudLearningState(
   progress: LearningProgress,
   stats: DashboardStats,
   knownHashes: { progress: string, stats: string },
+  onProgress?: (completed: number, total: number) => void,
 ): Promise<CloudLearningWriteResult> {
   const progressHash = canonicalHash(progress)
   const statsHash = canonicalHash(stats)
   const progressChanged = knownHashes.progress !== progressHash
   const statsChanged = knownHashes.stats !== statsHash
+  const total = Number(progressChanged) + Number(statsChanged)
+  let completed = 0
+  onProgress?.(completed, total)
   const progressResult = progressChanged
     ? await setDocIfUnchanged(
         db,
@@ -442,6 +471,10 @@ export async function writeCloudLearningState(
         value => value === null ? '' : canonicalHash(normalizeCloudProgress(value, uid)),
       )
     : { written: true } satisfies ConditionalWriteResult
+  if (progressChanged) {
+    completed += 1
+    onProgress?.(completed, total)
+  }
   const statsResult = statsChanged
     ? await setDocIfUnchanged(
         db,
@@ -451,6 +484,10 @@ export async function writeCloudLearningState(
         value => value === null ? '' : canonicalHash(normalizeCloudStats(value, uid)),
       )
     : { written: true } satisfies ConditionalWriteResult
+  if (statsChanged) {
+    completed += 1
+    onProgress?.(completed, total)
+  }
   return { progress: progressResult, stats: statsResult, progressHash, statsHash, progressChanged, statsChanged }
 }
 
@@ -460,11 +497,18 @@ export interface CloudAiSettingsWriteResult {
   changed: boolean
 }
 
-export async function writeCloudAiSettings(db: Firestore, uid: string, settings: AiSettings, knownHash: string): Promise<CloudAiSettingsWriteResult> {
+export async function writeCloudAiSettings(
+  db: Firestore,
+  uid: string,
+  settings: AiSettings,
+  knownHash: string,
+  onProgress?: (completed: number, total: number) => void,
+): Promise<CloudAiSettingsWriteResult> {
   const shareable = getShareableAiSettings(settings)
   const hash = canonicalHash(shareable)
   if (knownHash === hash)
     return { result: { written: true }, hash, changed: false }
+  onProgress?.(0, 1)
 
   const payload: FirestoreAiSettingsDoc = {
     ...shareable,
@@ -479,5 +523,6 @@ export async function writeCloudAiSettings(db: Firestore, uid: string, settings:
     payload,
     value => value === null ? '' : canonicalHash(normalizeCloudAiSettings(value, uid)),
   )
+  onProgress?.(1, 1)
   return { result, hash, changed: true }
 }

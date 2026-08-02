@@ -107,24 +107,28 @@ describe('cloud sync remote repository', () => {
     setupSuccessfulTransaction()
     const progress = { cards: {}, updatedAt: '2026-08-01T00:00:00.000Z' }
     const stats = createDefaultStats()
+    const reported: Array<[number, number]> = []
 
-    const result = await writeCloudLearningState({} as Firestore, 'cloud-user', progress, stats, { progress: '', stats: '' })
+    const result = await writeCloudLearningState({} as Firestore, 'cloud-user', progress, stats, { progress: '', stats: '' }, (completed, total) => reported.push([completed, total]))
 
     expect(result.progress).toEqual({ written: true })
     expect(result.stats).toEqual({ written: true })
     expect(mockedCloud.sets).toHaveLength(2)
     expect(mockedCloud.sets[0][1]).toMatchObject({ ownerId: 'cloud-user', schemaVersion: 4 })
     expect(mockedCloud.sets[1][1]).toMatchObject({ ownerId: 'cloud-user', schemaVersion: 4 })
+    expect(reported).toEqual([[0, 2], [1, 2], [2, 2]])
   })
 
   it('keeps AI API keys out of Cloud payloads', async () => {
     setupSuccessfulTransaction()
-    const result = await writeCloudAiSettings({} as Firestore, 'cloud-user', { ...defaultAiSettings, apiKey: 'device-secret', model: 'cloud-model' }, '')
+    const reported: Array<[number, number]> = []
+    const result = await writeCloudAiSettings({} as Firestore, 'cloud-user', { ...defaultAiSettings, apiKey: 'device-secret', model: 'cloud-model' }, '', (completed, total) => reported.push([completed, total]))
 
     expect(result.result).toEqual({ written: true })
     expect(mockedCloud.sets).toHaveLength(1)
     expect(mockedCloud.sets[0][1]).not.toHaveProperty('apiKey')
     expect(mockedCloud.sets[0][1]).toMatchObject({ model: 'cloud-model', ownerId: 'cloud-user', schemaVersion: 4 })
+    expect(reported).toEqual([[0, 1], [1, 1]])
   })
 
   it('transports a fresh local set without undefined Firestore values', async () => {
@@ -242,7 +246,8 @@ describe('cloud sync remote repository', () => {
     expect(legacy.revision).toBe(v4Manifest.revision)
     expect(legacyCalls[0]).toBe('manifest')
     expect(legacyCalls.slice(1)).toEqual(v4Chunks.map(chunk => chunk.chunkId))
-    expect(legacyProgress).toHaveLength(Math.ceil(v4Chunks.length / 8))
+    expect(legacyProgress).toHaveLength(v4Chunks.length + 1)
+    expect(legacyProgress[0]).toMatchObject({ currentBatch: 0, completed: 0, total: v4Chunks.length })
     expect(legacyProgress.every(item => item.completed <= item.total && item.totalBatches <= Math.ceil(v4Chunks.length / 8))).toBe(true)
 
     const resumedLegacyCalls: string[] = []
@@ -310,12 +315,13 @@ describe('cloud sync remote repository', () => {
     )
     expect(read.library.words).toHaveProperty('large-word-99')
     expect(readCalls[0]).toBe('manifest')
-    expect(progress).toHaveLength(Math.ceil(chunks.length / 8))
-    expect(stagedBatches).toHaveLength(progress.length)
+    expect(progress).toHaveLength(chunks.length + 1)
+    expect(progress[0]).toMatchObject({ currentBatch: 0, completed: 0, total: chunks.length })
+    expect(stagedBatches).toHaveLength(Math.ceil(chunks.length / 8))
     expect(stagedBatches.flat()).toEqual(chunks.map(chunk => chunk.chunkId))
     expect(stagedBatches.every(batch => batch.length <= 8)).toBe(true)
-    expect(progress.every(item => item.totalBatches === progress.length && item.completed <= item.total)).toBe(true)
-    expect(progress.every((item, index) => index === 0 || item.completed - progress[index - 1].completed <= 8)).toBe(true)
+    expect(progress.every(item => item.totalBatches === Math.ceil(chunks.length / 8) && item.completed <= item.total)).toBe(true)
+    expect(progress.every((item, index) => index === 0 || item.completed - progress[index - 1].completed === 1)).toBe(true)
 
     const resumedCalls: string[] = []
     mockedCloud.getDocFromServer.mockImplementation(async (reference: { path?: string }) => {
@@ -336,10 +342,13 @@ describe('cloud sync remote repository', () => {
 
     setupSuccessfulTransaction()
     mockedCloud.getDocsFromServer.mockResolvedValue({ docs: [] })
-    const written = await writeCloudLibraryChunksV5({} as Firestore, 'cloud-user', library, new Map())
+    const uploadProgress: Array<{ completed: number, total: number }> = []
+    const written = await writeCloudLibraryChunksV5({} as Firestore, 'cloud-user', library, new Map(), '', progress => uploadProgress.push(progress))
     expect(written.conflicted).toBe(false)
     expect(mockedCloud.batchSets).toHaveLength(Math.ceil(chunks.length / 8))
     expect(mockedCloud.batchSets.every(batch => batch.length <= 8)).toBe(true)
     expect(mockedCloud.sets.at(-1)?.[0]).toMatchObject({ path: expect.stringMatching(/\/library\/manifest$/) })
+    expect(uploadProgress[0]).toMatchObject({ completed: 0, total: chunks.length })
+    expect(uploadProgress.at(-1)).toMatchObject({ completed: chunks.length, total: chunks.length })
   })
 })

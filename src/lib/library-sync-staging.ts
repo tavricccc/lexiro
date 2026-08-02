@@ -1,0 +1,77 @@
+import type { Firestore } from 'firebase/firestore'
+import type { CloudLibraryBatchProgress, CloudLibraryReadResult } from './cloud-sync-remote'
+import type { LibraryRemoteStagingBatch, LibraryRepositoryRecord } from './library-repository'
+import type { FirestoreLibraryChunk, FirestoreLibraryV5Chunk, LibraryQuestion, LibrarySet, SetMembership, VocabFolder, WordEntry } from '@/types'
+import { readCloudLibraryV5 } from './cloud-sync-remote'
+import { getLibraryRepository } from './library-repository'
+import { normalizeLibraryState } from './share'
+
+function recordsFromChunks(chunks: readonly (FirestoreLibraryChunk | FirestoreLibraryV5Chunk)[]): LibraryRepositoryRecord[] {
+  const records: LibraryRepositoryRecord[] = []
+  for (const chunk of chunks) {
+    if (chunk.section === 'words') {
+      for (const word of chunk.items as WordEntry[])
+        records.push({ kind: 'word', id: word.wordKey, value: word })
+    }
+    else if (chunk.section === 'sets') {
+      for (const set of chunk.items as LibrarySet[])
+        records.push({ kind: 'set', id: set.id, value: set })
+    }
+    else if (chunk.section === 'memberships') {
+      for (const entry of chunk.items as { setId: string, members: SetMembership[] }[])
+        records.push({ kind: 'membership', id: entry.setId, value: entry.members })
+    }
+    else if (chunk.section === 'folders') {
+      for (const folder of chunk.items as VocabFolder[])
+        records.push({ kind: 'folder', id: folder.id, value: folder })
+    }
+    else {
+      for (const question of chunk.items as LibraryQuestion[])
+        records.push({ kind: 'question', id: question.id, value: question })
+    }
+  }
+  return records
+}
+
+export async function stageCloudLibrary(options: {
+  db: Firestore
+  uid: string
+  manifestData?: unknown
+  onProgress?: (progress: CloudLibraryBatchProgress) => void
+}): Promise<CloudLibraryReadResult & { stagingGeneration: string }> {
+  const repository = getLibraryRepository()
+  const resumable = await repository.findResumableRemoteGeneration()
+  let stagingGeneration = resumable?.generation ?? `remote-${Date.now()}-${crypto.randomUUID()}`
+  let stagedRevision = resumable?.revision ?? ''
+  let stageAllVerifiedChunks = false
+  const existingChunks = resumable
+    ? await repository.loadStagedRemoteChunks(resumable.generation, resumable.chunkIds)
+    : new Map<string, FirestoreLibraryChunk | FirestoreLibraryV5Chunk>()
+
+  const result = await readCloudLibraryV5(
+    options.db,
+    options.uid,
+    options.onProgress,
+    async ({ chunks, newChunks, revision }) => {
+      if (stagedRevision && stagedRevision !== revision) {
+        stagingGeneration = `remote-${Date.now()}-${crypto.randomUUID()}`
+        stageAllVerifiedChunks = true
+      }
+      stagedRevision = revision
+      const chunksToStage = stageAllVerifiedChunks ? chunks : newChunks
+      if (!chunksToStage.length)
+        return
+      const batch: LibraryRemoteStagingBatch = {
+        kind: 'remote',
+        revision,
+        chunks: chunksToStage,
+        records: recordsFromChunks(chunksToStage),
+      }
+      await repository.stageRemoteBatch(stagingGeneration, batch)
+    },
+    { existingChunks, manifestData: options.manifestData },
+  )
+
+  await repository.stageRemoteBatch(stagingGeneration, normalizeLibraryState(result.library))
+  return { ...result, stagingGeneration }
+}

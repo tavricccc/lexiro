@@ -311,7 +311,7 @@ async function signIn() {
       <p v-if="error" class="mt-3 rounded-xl bg-red-50 p-3 text-xs font-semibold leading-relaxed text-red-600 dark:bg-red-950/20 dark:text-red-300" role="alert">
         {{ $t('sync.errorDetail', { message: error }) }}
       </p>
-      <SyncProgress v-if="isSyncing" class="mt-4" :state="progress" @retry="cloudStore.retryConnection" @continue-offline="cloudStore.continueOffline" />
+      <SyncProgress v-if="isSyncing" class="mt-4" :state="progress" @retry="cloudStore.retryConnection" />
       <div class="mt-5 flex flex-wrap gap-2">
         <Button variant="outline" class="gap-2" @click="uiStore.openTransfer">
           <Upload class="h-4 w-4" />{{ $t('backup.exportImport') }}
