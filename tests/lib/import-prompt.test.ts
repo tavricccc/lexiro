@@ -2,16 +2,18 @@ import { describe, expect, it } from 'vitest'
 import { buildImportPrompt } from '@/lib/importPrompt'
 
 describe('buildImportPrompt', () => {
-  it('injects the original input and source references for word metadata', () => {
+  it('keeps only useful source metadata in the word prompt', () => {
     const prompt = buildImportPrompt('  adapt, resilient  ')
 
-    expect(prompt).toContain('adapt, resilient')
+    expect(prompt).toContain('"word": "adapt"')
+    expect(prompt).not.toContain('"input"')
     expect(prompt).toContain('source-1')
     expect(prompt).toContain('sourceRef')
     expect(prompt).toContain('word')
     expect(prompt).toContain('pos')
     expect(prompt).toContain('meaning')
     expect(prompt).toContain('examples')
+    expect(prompt).not.toContain('"word":"單字"')
     expect(prompt).not.toContain('question')
   })
 

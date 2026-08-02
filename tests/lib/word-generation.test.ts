@@ -13,10 +13,9 @@ describe('ai word generation contract', () => {
   it('merges duplicate source words without losing distinct senses', () => {
     const sources = buildWordGenerationSources('run 跑步\nrun 經營')
     const drafts = parseWordGenerationJson(JSON.stringify({
-      kind: 'words',
       words: [
-        { sourceRef: 'source-2', word: 'run', senses: [{ pos: 'v.', meaningZh: '經營', examples: [] }] },
-        { sourceRef: 'source-1', word: 'run', senses: [{ pos: 'v.', meaningZh: '跑步', examples: [] }] },
+        { sourceRef: 'source-2', senses: [{ pos: 'v.', meaningZh: '經營', examples: [] }] },
+        { sourceRef: 'source-1', senses: [{ pos: 'v.', meaningZh: '跑步', examples: [] }] },
       ],
     }), sources, false)
 
@@ -26,15 +25,23 @@ describe('ai word generation contract', () => {
 
   it('requires known source references and rejects generated identity fields', () => {
     const sources = buildWordGenerationSources('adapt')
-    const base = { sourceRef: 'source-1', word: 'adapt', senses: [{ pos: 'v.', meaningZh: '適應', examples: [] }] }
-    expect(() => parseWordGenerationJson(JSON.stringify({ kind: 'words', words: [{ ...base, sourceRef: 'unknown' }] }), sources, false)).toThrow('未知 sourceRef')
-    expect(() => parseWordGenerationJson(JSON.stringify({ kind: 'words', words: [{ ...base, id: 'old-id' }] }), sources, false)).toThrow('不支援欄位')
+    const base = { sourceRef: 'source-1', senses: [{ pos: 'v.', meaningZh: '適應', examples: [] }] }
+    expect(() => parseWordGenerationJson(JSON.stringify({ words: [{ ...base, sourceRef: 'unknown' }] }), sources, false)).toThrow('未知 sourceRef')
+    expect(() => parseWordGenerationJson(JSON.stringify({ words: [{ ...base, id: 'old-id' }] }), sources, false)).toThrow('不支援欄位')
+    expect(() => parseWordGenerationJson(JSON.stringify({ words: [{ ...base, word: 'adapt' }] }), sources, false)).toThrow('不支援欄位')
   })
 
   it('requires exactly one English example only when requested', () => {
     const sources = buildWordGenerationSources('adapt')
-    const response = JSON.stringify({ kind: 'words', words: [{ sourceRef: 'source-1', word: 'adapt', senses: [{ pos: 'v.', meaningZh: '適應', examples: ['We adapt quickly.'] }] }] })
+    const response = JSON.stringify({ words: [{ sourceRef: 'source-1', senses: [{ pos: 'v.', meaningZh: '適應', examples: ['We adapt quickly.'] }] }] })
     expect(() => parseWordGenerationJson(response, sources, false)).toThrow('不應包含例句')
     expect(parseWordGenerationJson(response, sources, true)[0].senses[0].examples).toEqual(['We adapt quickly.'])
+  })
+
+  it('fills the word from sourceRef in the only supported response format', () => {
+    const sources = buildWordGenerationSources('adapt')
+    const response = JSON.stringify({ words: [{ sourceRef: 'source-1', senses: [{ pos: 'v.', meaningZh: '適應', examples: [] }] }] })
+
+    expect(parseWordGenerationJson(response, sources, false)[0].word).toBe('adapt')
   })
 })

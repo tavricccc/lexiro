@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { ResultRow } from '@/types'
-import { ArrowRight, BookmarkCheck, BookOpenText, ClipboardCopy, RotateCcw, Sparkles, Trophy } from 'lucide-vue-next'
+import { ArrowRight, BookmarkCheck, BookOpenText, RotateCcw, Sparkles, Trophy } from 'lucide-vue-next'
 import { storeToRefs } from 'pinia'
 import { computed, nextTick, onMounted, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
@@ -253,7 +253,7 @@ onMounted(() => {
             :loading="aiLoading === 'all'"
             @click="explainAllWrongQuestions"
           >
-            <ClipboardCopy class="h-3.5 w-3.5 text-accent-primary" />
+            <Sparkles class="h-3.5 w-3.5 text-accent-primary" />
             <span>{{ aiModeIsApi ? $t('result.aiGenerateAll') : $t('result.aiExplainAll') }}</span>
           </Button>
         </div>
@@ -297,7 +297,7 @@ onMounted(() => {
               :loading="aiLoading === rowKey(row)"
               @click="explainQuestion(row)"
             >
-              <ClipboardCopy class="h-3.5 w-3.5 mr-1 text-accent-primary" />
+              <Sparkles class="h-3.5 w-3.5 mr-1 text-accent-primary" />
               <span>{{ aiModeIsApi ? $t('result.aiGenerate') : $t('result.aiExplain') }}</span>
             </Button>
             <Badge

@@ -1,6 +1,7 @@
 <script setup lang="ts">
+import type { LibraryImportResult } from '@/lib/library-import'
 import type { GeneratedQuestionDifficulty, GeneratedQuestionKind } from '@/lib/question-generation'
-import type { LibraryQuestion } from '@/types'
+import type { LibraryQuestion, WordEntry } from '@/types'
 import { ArrowLeft, Sparkles } from 'lucide-vue-next'
 import { computed, onMounted, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
@@ -10,7 +11,7 @@ import { copyToClipboard } from '@/lib/clipboard'
 import { syncAfterLocalCommit } from '@/lib/commit-sync'
 import { useDirtyForm } from '@/lib/dirty-form'
 import { parseLibraryImport } from '@/lib/library-import'
-import { buildQuestionGenerationPrompt, filterQuestionsForWords, getGenerationWords, getQuestionSourceRefs, getSelectedGenerationWords, QUESTION_BATCH_SIZE, splitGenerationBatches } from '@/lib/question-generation'
+import { buildQuestionGenerationPrompt, filterQuestionsForWords, generatedQuestionCoverageIssue, getGenerationWords, getQuestionSourceRefs, getSelectedGenerationWords, normalizeQuestionGenerationJson, QUESTION_BATCH_SIZE, splitGenerationBatches } from '@/lib/question-generation'
 import { useLibraryStore } from '@/stores/library'
 import { useSetsStore } from '@/stores/sets'
 import { useUIStore } from '@/stores/ui'
@@ -65,13 +66,31 @@ function draftSnapshot(): string {
 initialDraftSnapshot.value = draftSnapshot()
 const draftDirty = computed(() => pendingLocalCommit.value || initialDraftSnapshot.value !== draftSnapshot())
 
-function questionOptions() {
+function questionOptions(words: WordEntry[]) {
   return {
-    questionSources: getQuestionSourceRefs(getGenerationWords(selectedWords.value, kind.value)),
+    questionSources: getQuestionSourceRefs(words),
     allowedDifficulty: difficulty.value,
     expectedQuestionKind: kind.value === 'reading' ? 'reading' as const : 'multipleChoice' as const,
     expectedQuestionStyle: kind.value === 'reading' ? undefined : kind.value === 'fillBlank' ? 'fillBlank' as const : 'standard' as const,
     requireEnglish: true,
+  }
+}
+
+function parseGeneratedQuestions(response: string, words: WordEntry[]): LibraryImportResult {
+  try {
+    const parsed = parseLibraryImport(
+      normalizeQuestionGenerationJson(extractJsonText(response), kind.value, difficulty.value, words),
+      questionOptions(words),
+    )
+    if (parsed.valid && parsed.data.kind === 'questions') {
+      const coverageIssue = generatedQuestionCoverageIssue(parsed.data.questions, words, kind.value)
+      if (coverageIssue)
+        return { valid: false, error: coverageIssue }
+    }
+    return parsed
+  }
+  catch (cause) {
+    return { valid: false, error: cause instanceof Error ? cause.message : 'AI 題目回覆格式錯誤' }
   }
 }
 
@@ -98,7 +117,7 @@ async function generate() {
     const generated: LibraryQuestion[] = []
     for (const batch of splitGenerationBatches(selectedWords.value, kind.value)) {
       const response = await generateWithAi(settings, buildQuestionGenerationPrompt(batch, kind.value, difficulty.value))
-      const parsed = parseLibraryImport(extractJsonText(response), { ...questionOptions(), questionSources: getQuestionSourceRefs(batch) })
+      const parsed = parseGeneratedQuestions(response, batch)
       if (!parsed.valid || parsed.data.kind !== 'questions')
         throw new Error(t('library.aiResponseError'))
       generated.push(...filterQuestionsForWords(parsed.data.questions, batch))
@@ -154,7 +173,7 @@ function parseManualResponse() {
   if (!validateSelection())
     return
   const selected = getGenerationWords(selectedWords.value, kind.value)
-  const parsed = parseLibraryImport(extractJsonText(manualResponse.value), { ...questionOptions(), questionSources: getQuestionSourceRefs(selected) })
+  const parsed = parseGeneratedQuestions(manualResponse.value, selected)
   if (!parsed.valid || parsed.data.kind !== 'questions') {
     error.value = t('library.aiResponseError')
     return

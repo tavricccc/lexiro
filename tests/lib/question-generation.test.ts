@@ -1,6 +1,7 @@
 import type { LibraryQuestion, WordEntry } from '@/types'
 import { describe, expect, it } from 'vitest'
-import { buildQuestionGenerationPrompt, filterQuestionsForWords, generationSenseKey, getGenerationWords, getQuestionSourceRefs, getSelectedGenerationWords, splitGenerationBatches } from '@/lib/question-generation'
+import { parseLibraryImport } from '@/lib/library-import'
+import { buildQuestionGenerationPrompt, filterQuestionsForWords, generatedQuestionCoverageIssue, generationSenseKey, getGenerationWords, getQuestionSourceRefs, getSelectedGenerationWords, normalizeQuestionGenerationJson, splitGenerationBatches } from '@/lib/question-generation'
 import { createSourceRef } from '@/lib/source-ref'
 
 function word(wordKey: string): WordEntry {
@@ -40,8 +41,84 @@ describe('question generation selection rules', () => {
   })
 
   it('includes the selected difficulty in the prompt', () => {
-    expect(buildQuestionGenerationPrompt([word('keep')], 'multipleChoice', 1)).toContain('每一題的 difficulty 必須是 1')
-    expect(buildQuestionGenerationPrompt([word('keep')], 'multipleChoice', 1)).toContain('"difficulty":1')
+    const easyPrompt = buildQuestionGenerationPrompt([word('keep')], 'multipleChoice', 1)
+    const hardPrompt = buildQuestionGenerationPrompt([word('keep')], 'multipleChoice', 3)
+
+    expect(easyPrompt).toContain('本次內容目標難度是 1')
+    expect(easyPrompt).toContain('短而直接')
+    expect(hardPrompt).toContain('本次內容目標難度是 3')
+    expect(hardPrompt).toContain('較長或更細緻')
+    expect(easyPrompt).toContain('回覆不要輸出 difficulty')
+    expect(hardPrompt).not.toBe(easyPrompt)
+  })
+
+  it('expands the compact response into the canonical parser contract', () => {
+    const compact = JSON.stringify({
+      questions: [{ sourceRef: 'source-1-1', prompt: 'Which word means keep?', options: ['keep', 'leave', 'lose', 'drop'], answerIndex: 0 }],
+    })
+    const normalized = normalizeQuestionGenerationJson(compact, 'multipleChoice', 3, [word('keep')])
+    const parsed = parseLibraryImport(normalized, {
+      questionSources: getQuestionSourceRefs([word('keep')]),
+      allowedDifficulty: 3,
+      expectedQuestionKind: 'multipleChoice',
+      expectedQuestionStyle: 'standard',
+      requireEnglish: true,
+    })
+
+    expect(parsed.valid).toBe(true)
+    if (parsed.valid && parsed.data.kind === 'questions')
+      expect(parsed.data.questions[0]).toMatchObject({ kind: 'multipleChoice', questionStyle: 'standard', difficulty: 3, wordKey: 'keep', senseId: 'keep-sense' })
+  })
+
+  it('rejects response fields that the program owns', () => {
+    const compact = JSON.stringify({
+      questions: [{ sourceRef: 'source-1-1', difficulty: 1, prompt: 'Which word means keep?', options: ['keep', 'leave', 'lose', 'drop'], answerIndex: 0 }],
+    })
+    expect(() => normalizeQuestionGenerationJson(compact, 'multipleChoice', 3, [word('keep')])).toThrow('不支援欄位')
+  })
+
+  it('requires complete one-question-per-sense coverage', () => {
+    const source = word('keep')
+    const normalized = normalizeQuestionGenerationJson(JSON.stringify({
+      questions: [{ sourceRef: 'source-1-1', prompt: 'Which word means keep?', options: ['keep', 'leave', 'lose', 'drop'], answerIndex: 0 }],
+    }), 'multipleChoice', 2, [source])
+    const parsed = parseLibraryImport(normalized, {
+      questionSources: getQuestionSourceRefs([source]),
+      allowedDifficulty: 2,
+      expectedQuestionKind: 'multipleChoice',
+      expectedQuestionStyle: 'standard',
+      requireEnglish: true,
+    })
+
+    expect(parsed.valid && parsed.data.kind === 'questions' ? generatedQuestionCoverageIssue(parsed.data.questions, [source], 'multipleChoice') : 'parse failed').toBeNull()
+    expect(generatedQuestionCoverageIssue([], [source], 'multipleChoice')).toBe('每個輸入 sense 必須且只能生成一題')
+  })
+
+  it('injects reading wordKeys and metadata owned by the program', () => {
+    const sources = [word('keep'), word('run')]
+    const normalized = normalizeQuestionGenerationJson(JSON.stringify({
+      questions: [{
+        title: 'A short story',
+        passage: 'Keep the plan simple while the team runs a careful test.',
+        questions: [
+          { sourceRef: 'source-1-1', prompt: 'What should the team keep?', options: ['The plan', 'The test', 'The room', 'The result'], answerIndex: 0 },
+          { sourceRef: 'source-2-1', prompt: 'What does the team run?', options: ['A test', 'A store', 'A race', 'A river'], answerIndex: 0 },
+          { sourceRef: 'source-1-1', prompt: 'Which idea is supported?', options: ['The plan is simple', 'The plan is hidden', 'The team is late', 'The test is canceled'], answerIndex: 0 },
+        ],
+      }],
+    }), 'reading', 3, sources)
+    const parsed = parseLibraryImport(normalized, {
+      questionSources: getQuestionSourceRefs(sources),
+      allowedDifficulty: 3,
+      expectedQuestionKind: 'reading',
+      requireEnglish: true,
+    })
+
+    expect(parsed.valid).toBe(true)
+    if (parsed.valid && parsed.data.kind === 'questions') {
+      expect(parsed.data.questions[0]).toMatchObject({ kind: 'reading', difficulty: 3, wordKeys: ['keep', 'run'] })
+      expect(generatedQuestionCoverageIssue(parsed.data.questions, sources, 'reading')).toBeNull()
+    }
   })
 
   it('selects senses while keeping the vocabulary grouped by word', () => {

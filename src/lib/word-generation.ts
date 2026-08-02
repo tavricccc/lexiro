@@ -101,8 +101,8 @@ export function parseWordGenerationJson(text: string, sources: WordGenerationSou
   if (!data || typeof data !== 'object' || Array.isArray(data))
     throw new Error('JSON 必須是 object')
   const source = data as Record<string, unknown>
-  assertKnownKeys(source, ['kind', 'words'], 'AI 單字資料')
-  if (source.kind !== 'words' || !Array.isArray(source.words) || !source.words.length)
+  assertKnownKeys(source, ['words'], 'AI 單字資料')
+  if (!Array.isArray(source.words) || !source.words.length)
     throw new Error('缺少有效的 words 陣列')
   if (source.words.length !== sources.length)
     throw new Error(`AI 回覆必須逐一對應 ${sources.length} 個 sourceRef`)
@@ -113,7 +113,7 @@ export function parseWordGenerationJson(text: string, sources: WordGenerationSou
     if (!value || typeof value !== 'object' || Array.isArray(value))
       throw new Error(`第 ${wordIndex + 1} 個單字格式錯誤`)
     const item = value as Record<string, unknown>
-    assertKnownKeys(item, ['sourceRef', 'word', 'senses'], `words[${wordIndex}]`)
+    assertKnownKeys(item, ['sourceRef', 'senses'], `words[${wordIndex}]`)
     const sourceRef = requireText(item.sourceRef, `words[${wordIndex}].sourceRef`)
     const expected = sourcesByRef.get(sourceRef)
     if (!expected)
@@ -121,7 +121,7 @@ export function parseWordGenerationJson(text: string, sources: WordGenerationSou
     if (usedRefs.has(sourceRef))
       throw new Error(`sourceRef ${sourceRef} 不可重複`)
     usedRefs.add(sourceRef)
-    const word = requireText(item.word, `words[${wordIndex}].word`)
+    const word = expected.word
     if (containsHan(word))
       throw new Error(`第 ${wordIndex + 1} 個單字必須使用英文`)
     if (normalizeWordKey(word) !== normalizeWordKey(expected.word))

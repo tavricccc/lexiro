@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { LibraryQuestion, VocabularyDifficultyFilter, VocabularyQuestionTypeFilter } from '@/types'
-import { Pencil, Plus, Search, Trash2 } from 'lucide-vue-next'
+import { Pencil, Plus, Search, Sparkles, Trash2 } from 'lucide-vue-next'
 import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
@@ -104,7 +104,7 @@ async function deleteQuestion(question: LibraryQuestion) {
           <Plus class="h-4 w-4" />{{ $t('set.addReading') }}
         </Button>
         <Button class="gap-2" @click="router.push({ name: 'question-generation', params: { setId } })">
-          <Plus class="h-4 w-4" />{{ $t('set.generateQuestions') }}
+          <Sparkles class="h-4 w-4" />{{ $t('set.generateQuestions') }}
         </Button>
       </div>
     </div>
