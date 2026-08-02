@@ -6,6 +6,7 @@ export default antfu({
   ignores: [
     'dev-dist',
     'dist',
+    '.impeccable',
   ],
   rules: {
     'node/prefer-global/process': 'off',

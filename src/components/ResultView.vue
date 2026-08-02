@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { ResultRow } from '@/types'
-import { BookmarkCheck, BookOpenText, ClipboardCopy, RotateCcw } from 'lucide-vue-next'
+import { ArrowRight, BookmarkCheck, BookOpenText, ClipboardCopy, RotateCcw, Sparkles, Trophy } from 'lucide-vue-next'
 import { storeToRefs } from 'pinia'
 import { computed, nextTick, onMounted, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
@@ -54,6 +54,7 @@ function questionFor(row: typeof resultRows.value[number]) {
   return row.entry.question
 }
 const isPerfect = computed(() => resultSummary.value != null && resultSummary.value.wrongCount === 0)
+const isHighScore = computed(() => resultSummary.value != null && resultSummary.value.score >= 80)
 const aiModeIsApi = computed(() => aiSettings.value.enabled)
 
 function rowKey(row: ResultRow) {
@@ -146,23 +147,38 @@ onMounted(() => {
 
 <template>
   <section v-if="displaySet && resultSummary" class="space-y-6">
-    <Card id="completion-panel" class="p-5 sm:p-8 text-left">
+    <Card id="completion-panel" class="p-5 sm:p-8 text-left transition-all duration-300 animate-celebration-pop">
       <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 pb-6 border-b border-ink-200/50 dark:border-ink-200/10">
         <div class="flex items-start gap-4">
-          <span class="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-accent-primary/10 text-accent-primary border border-accent-primary/15 shadow-sm" aria-hidden="true">
-            <BookOpenText class="h-6 w-6" />
+          <span
+            class="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-accent-primary/10 text-accent-primary border border-accent-primary/20 shadow-sm"
+            :class="{ 'animate-pulse-ring': isHighScore }"
+            aria-hidden="true"
+          >
+            <Trophy v-if="isPerfect" class="h-7 w-7 text-accent-primary" />
+            <Sparkles v-else-if="isHighScore" class="h-7 w-7 text-accent-primary" />
+            <BookOpenText v-else class="h-6 w-6" />
           </span>
           <div class="space-y-1">
-            <h2 class="text-xl sm:text-2xl font-extrabold tracking-tight text-ink-950 dark:text-ink-50">
-              {{ resultSummary.review ? $t('result.reviewCompleted') : $t('result.completed') }}
-            </h2>
+            <div class="flex items-center gap-2 flex-wrap">
+              <h2 class="text-xl sm:text-2xl font-extrabold tracking-tight text-ink-950 dark:text-ink-50">
+                {{ resultSummary.review ? $t('result.reviewCompleted') : $t('result.completed') }}
+              </h2>
+              <Badge v-if="isPerfect" variant="success" class="gap-1 animate-celebration-pop">
+                <Trophy class="h-3 w-3" />
+                {{ $t('result.perfectScore') }}
+              </Badge>
+            </div>
             <p class="text-xs font-bold text-ink-400 dark:text-ink-500 uppercase tracking-widest">
               {{ $t('result.modeLabel') }}{{ modeLabel }}
             </p>
           </div>
         </div>
 
-        <div class="flex items-center gap-4 self-start md:self-auto shrink-0 bg-ink-100/80 dark:bg-ink-900 border border-ink-200/70 dark:border-ink-200/25 rounded-2xl p-4">
+        <div
+          class="flex items-center gap-4 self-start md:self-auto shrink-0 bg-ink-100/80 dark:bg-ink-900 border border-ink-200/70 dark:border-ink-200/25 rounded-2xl p-4 transition-all"
+          :class="{ 'ring-2 ring-accent-primary/30 shadow-lg': isHighScore }"
+        >
           <ScoreRing :score="resultSummary.score" />
           <div class="text-left">
             <p class="text-xs font-semibold text-ink-500 dark:text-ink-400">
@@ -172,43 +188,75 @@ onMounted(() => {
         </div>
       </div>
 
-      <div class="mt-6 flex flex-wrap items-center justify-start gap-3">
-        <Button variant="default" class="gap-2" @click="restartCurrentMode">
-          <RotateCcw class="h-4 w-4" />
-          <span>{{ $t('result.retry') }}</span>
-        </Button>
-        <Button
-          v-if="resultSummary.wrongCount"
-          variant="outline"
-          class="gap-2"
-          @click="reviewWrongAnswers"
-        >
-          <BookOpenText class="h-4 w-4 text-accent-primary" />
-          <span>{{ $t('result.reviewWrong', { count: resultSummary.wrongCount }) }}</span>
-        </Button>
-        <Button
-          v-if="resultSummary.markedCount"
-          variant="outline"
-          class="gap-2"
-          @click="reviewMarkedQuestions"
-        >
-          <BookmarkCheck class="h-4 w-4 text-accent-primary" />
-          <span>{{ $t('result.reviewMarked', { count: resultSummary.markedCount }) }}</span>
-        </Button>
-        <Button
-          v-if="resultSummary.wrongCount"
-          variant="outline"
-          class="gap-2"
-          :loading="aiLoading === 'all'"
-          @click="explainAllWrongQuestions"
-        >
-          <ClipboardCopy class="h-4 w-4 text-accent-primary" />
-          <span>{{ aiModeIsApi ? $t('result.aiGenerateAll') : $t('result.aiExplainAll') }}</span>
-        </Button>
-        <Button variant="outline" class="gap-2" @click="switchModeAfterResult">
-          <BookOpenText class="h-4 w-4 text-accent-primary" />
-          <span>{{ $t('result.switchMode', { next: nextModeLabel }) }}</span>
-        </Button>
+      <!-- Action Area with Primary CTA vs Secondary Action Hierarchy -->
+      <div class="mt-6 space-y-4">
+        <!-- Recommended Primary CTA -->
+        <div class="flex flex-wrap items-center gap-3">
+          <Button
+            v-if="resultSummary.wrongCount"
+            variant="default"
+            size="lg"
+            class="gap-2 shadow-md hover:shadow-lg transition-all text-base px-6 font-bold"
+            @click="reviewWrongAnswers"
+          >
+            <BookOpenText class="h-5 w-5" />
+            <span>{{ $t('result.reviewWrong', { count: resultSummary.wrongCount }) }}</span>
+            <ArrowRight class="h-4 w-4 ml-1 opacity-80" />
+          </Button>
+
+          <Button
+            v-else
+            variant="default"
+            size="lg"
+            class="gap-2 shadow-md hover:shadow-lg transition-all text-base px-6 font-bold"
+            @click="switchModeAfterResult"
+          >
+            <BookOpenText class="h-5 w-5" />
+            <span>{{ $t('result.switchMode', { next: nextModeLabel }) }}</span>
+            <ArrowRight class="h-4 w-4 ml-1 opacity-80" />
+          </Button>
+
+          <Button
+            v-if="resultSummary.wrongCount"
+            variant="outline"
+            class="gap-2"
+            @click="switchModeAfterResult"
+          >
+            <BookOpenText class="h-4 w-4 text-accent-primary" />
+            <span>{{ $t('result.switchMode', { next: nextModeLabel }) }}</span>
+          </Button>
+        </div>
+
+        <!-- Secondary Action Bar -->
+        <div class="flex flex-wrap items-center gap-2 pt-2 border-t border-ink-200/30 dark:border-ink-200/10">
+          <Button variant="ghost" size="sm" class="gap-1.5 text-xs text-ink-600 dark:text-ink-400" @click="restartCurrentMode">
+            <RotateCcw class="h-3.5 w-3.5" />
+            <span>{{ $t('result.retry') }}</span>
+          </Button>
+
+          <Button
+            v-if="resultSummary.markedCount"
+            variant="ghost"
+            size="sm"
+            class="gap-1.5 text-xs text-ink-600 dark:text-ink-400"
+            @click="reviewMarkedQuestions"
+          >
+            <BookmarkCheck class="h-3.5 w-3.5 text-accent-primary" />
+            <span>{{ $t('result.reviewMarked', { count: resultSummary.markedCount }) }}</span>
+          </Button>
+
+          <Button
+            v-if="resultSummary.wrongCount"
+            variant="ghost"
+            size="sm"
+            class="gap-1.5 text-xs text-ink-600 dark:text-ink-400"
+            :loading="aiLoading === 'all'"
+            @click="explainAllWrongQuestions"
+          >
+            <ClipboardCopy class="h-3.5 w-3.5 text-accent-primary" />
+            <span>{{ aiModeIsApi ? $t('result.aiGenerateAll') : $t('result.aiExplainAll') }}</span>
+          </Button>
+        </div>
       </div>
 
       <StatusMessage v-if="aiError" tone="error" class="mt-4">
@@ -223,14 +271,6 @@ onMounted(() => {
           {{ allAiResponse }}
         </div>
       </Card>
-
-      <p
-        v-if="isPerfect"
-        class="mt-6 text-xs text-accent-primary dark:text-accent-primary font-extrabold flex items-center gap-1.5 animate-perfect-in"
-      >
-        <span class="h-2 w-2 rounded-full bg-accent-primary inline-block animate-ping" />
-        {{ $t('result.perfectScore') }}
-      </p>
     </Card>
 
     <div v-if="wrongRows.length" class="space-y-4">

@@ -173,7 +173,7 @@ onUnmounted(() => window.removeEventListener('keydown', onKeydown))
           <Check v-if="reviewIndex + 1 >= reviewTotal" class="h-4 w-4" />
           <ChevronRight v-else class="h-4 w-4" />
         </Button>
-        <p class="mt-5 text-[11px] font-semibold text-ink-400">
+        <p class="mt-5 text-[11px] font-semibold text-ink-400 keyboard-hint">
           {{ $t('learning.keyboardHint') }}
         </p>
       </Card>

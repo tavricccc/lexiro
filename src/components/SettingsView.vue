@@ -196,26 +196,58 @@ async function signIn() {
           </p>
         </div>
         <div v-if="settings.enabled" class="mt-5 grid gap-4 sm:grid-cols-2">
-          <div class="text-xs font-semibold text-ink-500">
-            {{ $t('settings.provider') }}
+          <div>
+            <label class="text-xs font-bold text-ink-500">{{ $t('settings.provider') }}</label>
             <Select v-model="settings.provider" :options="providerOptions" class="mt-2" />
-          </div><label class="text-xs font-semibold text-ink-500">{{ $t('settings.model') }}<Input v-model="settings.model" class="mt-2" :placeholder="$t('settings.modelPlaceholder')" /></label><label class="text-xs font-semibold text-ink-500 sm:col-span-2">{{ $t('settings.endpoint') }}<Input v-model="settings.baseUrl" class="mt-2" :placeholder="$t('settings.endpointPlaceholder')" /><span class="mt-1 block text-[11px] font-medium text-ink-400">{{ $t('settings.endpointHint') }}</span></label><label class="text-xs font-semibold text-ink-500 sm:col-span-2">{{ $t('settings.apiKey') }}<Input v-model="settings.apiKey" type="password" class="mt-2" :placeholder="$t('settings.apiKeyPlaceholder')" /></label><label class="text-xs font-semibold text-ink-500">{{ $t('settings.batchSize') }}<Input :model-value="String(settings.batchSize)" type="number" min="5" max="20" class="mt-2" @update:model-value="updateBatchSize" /></label>
+          </div>
+
+          <div>
+            <label class="text-xs font-bold text-ink-500">{{ $t('settings.model') }}</label>
+            <Input v-model="settings.model" class="mt-2" :placeholder="$t('settings.modelPlaceholder')" />
+          </div>
+
+          <div class="sm:col-span-2">
+            <label class="text-xs font-bold text-ink-500">{{ $t('settings.endpoint') }}</label>
+            <Input v-model="settings.baseUrl" class="mt-2" :placeholder="$t('settings.endpointPlaceholder')" />
+            <span class="mt-1 block text-[11px] font-medium text-ink-400">{{ $t('settings.endpointHint') }}</span>
+          </div>
+
+          <div class="sm:col-span-2">
+            <label class="text-xs font-bold text-ink-500">{{ $t('settings.apiKey') }}</label>
+            <Input v-model="settings.apiKey" type="password" class="mt-2" :placeholder="$t('settings.apiKeyPlaceholder')" />
+          </div>
+
+          <div>
+            <label class="text-xs font-bold text-ink-500">{{ $t('settings.batchSize') }}</label>
+            <Input :model-value="String(settings.batchSize)" type="number" min="5" max="20" class="mt-2" @update:model-value="updateBatchSize" />
+          </div>
         </div>
       </fieldset>
       <div class="mt-6 flex flex-wrap items-center gap-2">
         <Button variant="default" class="gap-2" @click="save">
-          <Save class="h-4 w-4" />{{ $t('settings.save') }}
-        </Button><Button variant="ghost" :disabled="pendingAiSave" @click="reset">
+          <Save class="h-4 w-4" />
+          <span>{{ $t('settings.save') }}</span>
+        </Button>
+        <Button variant="ghost" :disabled="pendingAiSave" @click="reset">
           {{ $t('settings.reset') }}
         </Button>
         <Button variant="outline" class="gap-2" @click="exportAiSettings">
-          <Download class="h-4 w-4" />{{ $t('settings.aiExport') }}
-        </Button><Button variant="outline" class="gap-2" :disabled="pendingAiSave" @click="openAiImport">
-          <Upload class="h-4 w-4" />{{ $t('settings.aiImport') }}
-        </Button><input ref="aiImportInput" type="file" accept="application/json,.json" class="hidden" :disabled="pendingAiSave" @change="importAiSettings">
-        <span v-if="saved" class="inline-flex items-center gap-1 text-xs font-semibold text-emerald-600"><Check class="h-3.5 w-3.5" />{{ $t('settings.saved') }}</span>
-      </div><div class="mt-5 flex gap-3 rounded-2xl bg-amber-50 p-3.5 text-xs font-medium leading-relaxed text-amber-800 dark:bg-amber-950/20 dark:text-amber-200">
-        <LockKeyhole class="mt-0.5 h-4 w-4 shrink-0" />{{ $t('settings.keySafety') }}
+          <Download class="h-4 w-4" />
+          <span>{{ $t('settings.aiExport') }}</span>
+        </Button>
+        <Button variant="outline" class="gap-2" :disabled="pendingAiSave" @click="openAiImport">
+          <Upload class="h-4 w-4" />
+          <span>{{ $t('settings.aiImport') }}</span>
+        </Button>
+        <input ref="aiImportInput" type="file" accept="application/json,.json" class="hidden" :disabled="pendingAiSave" @change="importAiSettings">
+        <span v-if="saved" class="inline-flex items-center gap-1 text-xs font-semibold text-emerald-600">
+          <Check class="h-3.5 w-3.5" />
+          <span>{{ $t('settings.saved') }}</span>
+        </span>
+      </div>
+      <div class="mt-5 flex gap-3 rounded-2xl bg-amber-50 p-3.5 text-xs font-medium leading-relaxed text-amber-800 dark:bg-amber-950/20 dark:text-amber-200">
+        <LockKeyhole class="mt-0.5 h-4 w-4 shrink-0" />
+        <span>{{ $t('settings.keySafety') }}</span>
       </div>
     </Card>
     <Card class="p-5 sm:p-6">

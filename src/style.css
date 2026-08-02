@@ -149,13 +149,23 @@
   --ink-400: var(--color-on-surface-variant);
   --ink-500: var(--color-secondary);
   --ink-600: #525252;
+
+  --ink-50: var(--color-background);
+  --ink-100: var(--color-surface-container);
+  --ink-200: var(--color-outline-variant);
+  --ink-300: var(--color-outline);
+  --ink-400: var(--color-on-surface-variant);
+  --ink-500: var(--color-secondary);
+  --ink-600: #525252;
   --ink-700: var(--color-tertiary);
   --ink-800: #262626;
   --ink-850: #171717;
   --ink-900: var(--color-on-primary-container);
   --ink-950: var(--color-on-background);
 
-  --accent-primary: var(--color-primary);
+  --accent-primary: #5c54ed;
+  --accent-primary-hover: #4b42e0;
+  --accent-primary-subtle: #f0effe;
   
   color-scheme: light;
   font-family: var(--vp-font-family-base);
@@ -226,7 +236,9 @@
   --ink-900: var(--color-surface);
   --ink-950: var(--color-background);
 
-  --accent-primary: var(--color-primary);
+  --accent-primary: #7b73ff;
+  --accent-primary-hover: #928bff;
+  --accent-primary-subtle: #29264f;
   
   color-scheme: dark;
 }
@@ -363,13 +375,17 @@ body {
   padding-top: calc(var(--app-header-height) + 1rem);
 }
 
+.app-root--workspace {
+  display: grid;
+  grid-template-columns: var(--app-sidebar-width) 1fr;
+  transition: grid-template-columns 0.42s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
 .app-root--workspace .app-main-content {
   min-height: 100vh;
-  width: calc(100% - var(--app-sidebar-width));
-  margin-left: var(--app-sidebar-width);
+  min-width: 0;
   padding-top: 2rem;
   padding-bottom: 2rem;
-  transition: margin-left 0.42s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .app-root--workspace {
@@ -743,8 +759,25 @@ textarea {
   transition: stroke-dashoffset 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Home set cards enter */
-.set-card-enter {
+
+/* Score ring */
+.score-ring-progress {
+  transition: stroke-dashoffset 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animate-perfect-in {
+  animation: set-card-in 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Pause infinite animations when tab hidden */
+html.motion-paused *,
+html.motion-paused *::before,
+html.motion-paused *::after {
+  animation-play-state: paused !important;
+}
+
+.set-card-enter,
+.result-row-enter {
   animation: set-card-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
@@ -759,17 +792,9 @@ textarea {
   }
 }
 
-.result-row-enter {
-  animation: set-card-in 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
-.animate-perfect-in {
-  animation: set-card-in 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
-/* Pause infinite animations when tab hidden */
-html.motion-paused *,
-html.motion-paused *::before,
-html.motion-paused *::after {
-  animation-play-state: paused !important;
+/* Touch device adapt: Hide physical keyboard shortcut hints on touch devices */
+@media (pointer: coarse) {
+  .keyboard-hint {
+    display: none !important;
+  }
 }

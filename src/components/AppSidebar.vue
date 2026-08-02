@@ -55,7 +55,7 @@ function toggle() {
 
 <style scoped>
 .app-sidebar {
-  transition: width 0.42s cubic-bezier(0.16, 1, 0.3, 1);
+  width: 100%;
 }
 
 .app-sidebar-item {

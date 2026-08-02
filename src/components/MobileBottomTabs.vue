@@ -47,9 +47,9 @@ const activeIndex = computed(() => {
   inset-block: 0;
   left: 0;
   border-radius: 9999px;
-  background: var(--color-surface-container);
+  background: color-mix(in srgb, var(--accent-primary) 12%, var(--color-surface-container));
   box-shadow: var(--shadow-control);
-  transition: transform 0.42s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .mobile-bottom-tabs :deep(.mobile-bottom-tab) {
@@ -70,7 +70,8 @@ const activeIndex = computed(() => {
 }
 
 .mobile-bottom-tabs :deep(.mobile-bottom-tab--active) {
-  color: var(--color-on-surface);
+  color: var(--accent-primary);
+  font-weight: 800;
 }
 
 .mobile-bottom-tabs :deep(.mobile-bottom-tab:active) {

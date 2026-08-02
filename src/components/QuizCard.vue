@@ -167,7 +167,7 @@ onUnmounted(() => window.removeEventListener('keydown', onKeydown))
       </button>
     </div>
 
-    <p v-if="!answered" class="mt-3 text-center text-[11px] font-semibold text-ink-400">
+    <p v-if="!answered" class="mt-3 text-center text-[11px] font-semibold text-ink-400 keyboard-hint">
       {{ $t('practice.keyboardHint') }}
     </p>
 
