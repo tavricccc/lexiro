@@ -163,9 +163,9 @@
   --ink-900: var(--color-on-primary-container);
   --ink-950: var(--color-on-background);
 
-  --accent-primary: #5c54ed;
-  --accent-primary-hover: #4b42e0;
-  --accent-primary-subtle: #f0effe;
+  --accent-primary: #111111;
+  --accent-primary-hover: #000000;
+  --accent-primary-subtle: #f0f0f0;
   
   color-scheme: light;
   font-family: var(--vp-font-family-base);
@@ -236,9 +236,9 @@
   --ink-900: var(--color-surface);
   --ink-950: var(--color-background);
 
-  --accent-primary: #7b73ff;
-  --accent-primary-hover: #928bff;
-  --accent-primary-subtle: #29264f;
+  --accent-primary: #f5f5f5;
+  --accent-primary-hover: #ffffff;
+  --accent-primary-subtle: #333333;
   
   color-scheme: dark;
 }
@@ -382,6 +382,7 @@ body {
 }
 
 .app-root--workspace .app-main-content {
+  grid-column: 2;
   min-height: 100vh;
   min-width: 0;
   padding-top: 2rem;
@@ -407,7 +408,13 @@ body {
 }
 
 @media (max-width: 767px) {
+  .app-root--workspace {
+    display: block;
+    --app-sidebar-width: 0px;
+  }
+
   .app-root--workspace .app-main-content {
+    grid-column: auto;
     width: 100%;
     margin-left: 0;
     padding-top: 1rem;

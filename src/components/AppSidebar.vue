@@ -24,7 +24,7 @@ function toggle() {
 </script>
 
 <template>
-  <aside class="app-sidebar fixed inset-y-0 left-0 hidden flex-col border-r border-ink-200/60 bg-white/90 py-4 shadow-soft backdrop-blur-xl dark:border-ink-200/10 dark:bg-ink-950/90 md:flex" :style="{ zIndex: LAYERS.navigation }" :class="expanded ? 'app-sidebar--expanded w-64' : 'app-sidebar--collapsed w-20'">
+  <aside class="app-sidebar fixed inset-y-0 left-0 hidden flex-col border-r border-ink-200/60 bg-white/90 py-4 shadow-soft backdrop-blur-xl dark:border-ink-200/10 dark:bg-ink-950/90 md:flex" :style="{ zIndex: LAYERS.navigation }" :class="expanded ? 'app-sidebar--expanded' : 'app-sidebar--collapsed'">
     <div class="relative flex h-12 items-center px-3">
       <RouterLink to="/" class="flex h-12 min-w-0 flex-1 items-center gap-3 rounded-2xl px-3 text-ink-950 hover:bg-ink-100 dark:text-ink-50 dark:hover:bg-ink-900" :aria-label="t('app.name')">
         <img src="/icons/lexiro.png" alt="" class="h-9 w-9 shrink-0 rounded-xl object-cover" aria-hidden="true">
@@ -55,7 +55,7 @@ function toggle() {
 
 <style scoped>
 .app-sidebar {
-  width: 100%;
+  width: var(--app-sidebar-width, 5rem);
 }
 
 .app-sidebar-item {
@@ -88,10 +88,6 @@ function toggle() {
 }
 
 @media (min-width: 768px) and (max-width: 1100px) {
-  .app-sidebar--expanded {
-    width: 5rem;
-  }
-
   .app-sidebar--expanded .app-sidebar-item {
     justify-content: center;
     padding-inline: 0;
